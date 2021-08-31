@@ -135,7 +135,7 @@ qFP16_t qFP16_Mul( qFP16_t x, qFP16_t y )
 {
     qFP16_t RetValue = QFP16_OVERFLOW;
     int32_t a, c, ac, adcb, mulH;
-    uint32_t b, d, bd, tmp, tmp2, mulL;
+    uint32_t b, d, bd, tmp, mulL;
     
     a = ( x >> 16 );
     c = ( y >> 16 );
@@ -152,6 +152,7 @@ qFP16_t qFP16_Mul( qFP16_t x, qFP16_t y )
     }
     if ( ( mulH >> 31 ) == ( mulH >> 15 ) ) {
         if ( fp->rounding ) {
+            uint32_t tmp2;
             tmp2 = mulL;
             mulL -= QFP16_1_DIV_2;
             mulL -= (uint32_t)mulH >> 31;
@@ -237,11 +238,12 @@ qFP16_t qFP16_Mod( qFP16_t x, qFP16_t y )
 /*============================================================================*/
 qFP16_t qFP16_Sqrt( qFP16_t x )
 {
-    uint32_t bit;
-    uint8_t  n;
     qFP16_t RetValue = QFP16_OVERFLOW;
    
     if( x > 0 ) {
+        uint32_t bit;
+        uint8_t  n;
+
         RetValue = 0;
         bit = ( x & (qFP16_t)0xFFF00000uL )? (uint32_t)1 << 30 : (uint32_t)1 << 18;
         while ( bit > (uint32_t)x ) {
@@ -328,10 +330,11 @@ qFP16_t qFP16_Log( qFP16_t x )
     qFP16_t guess = QFP16_2;
     qFP16_t delta, e;
     qFP16_t RetValue = (qFP16_t)QFP16_OVERFLOW;
-    int scaling = 0;
-    int count = 0;
     
     if ( x > 0 ) {
+        int scaling = 0;
+        int count = 0;
+        
         while ( x > QFP16_100 ){
             x = qFP16_Div( x, QFP16_E4 );
             scaling += 4;
@@ -758,7 +761,6 @@ static qFP16_t qFP16_rs( qFP16_t x )
 static qFP16_t qFP16_log2i( qFP16_t x )
 {
     qFP16_t RetValue = 0;
-    int i;
 
     while ( x >= QFP16_2 ) {
 	    RetValue++;
@@ -769,6 +771,7 @@ static qFP16_t qFP16_log2i( qFP16_t x )
         RetValue = RetValue << 16;
     }
     else {
+        int i;
         for ( i = 16 ; i > 0 ; --i ) {
             x = qFP16_Mul( x, x );
             RetValue <<= 1;

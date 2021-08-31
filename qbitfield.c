@@ -89,7 +89,7 @@ int qBitField_ToggleBit( qBitField_t *instance, size_t index )
 uint8_t qBitField_ReadBit( const qBitField_t *instance, size_t index )
 {
     uint8_t retValue = 0u;
-    if ( NULL == instance ) {
+    if ( NULL != instance ) {
         retValue = ( 0u != BITGET( instance, index ) )? 1u : 0u;
     }
     return retValue;
