@@ -69,7 +69,7 @@ int qPID_SetParallel( qPID_controller_t *c )
 int qPID_SetEpsilon( qPID_controller_t *c, float eps )
 {
     int retVal = 0;
-    if ( ( NULL != c ) && ( 0u == c->init) ) {
+    if ( ( NULL != c ) && ( 0u == c->init) && ( eps > 0.0f) ) {
         c->epsilon = eps;
         retVal = 1;
     }
@@ -91,9 +91,9 @@ float qPID_Control( qPID_controller_t *c, float w, float y )
         else {
             c->ie += ( e + c->u1 )*( c->dt );
             de = ( e - c->e1 )/c->dt;
+            v  = c->kc*e + c->ki*c->ie + c->kd*de;
         }
-        
-        v  = c->kc*e + c->ki*c->ie + c->kd*de;
+
         u = v;
         if ( u > c->max ) {
             u = c->max;

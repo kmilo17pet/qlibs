@@ -32,11 +32,56 @@ extern "C" {
         /*! @endcond  */
     } qPID_controller_t;
 
+    /**
+    * @brief Setup and initialize the PID controller instance.
+    * @param[in] c A pointer to the PID controller instance.
+    * @param[in] kc Proportional Gain.
+    * @param[in] ki Integral Gain
+    * @param[in] kd Derivative Gain
+    * @param[in] dt Time step in seconds.
+    * @return 1 on success, otherwise return 0.
+    */  
     int qPID_Setup( qPID_controller_t *c, float kc, float ki, float kd, float dt );
+
+    /**
+    * @brief Reset the internal PID controller calculations.
+    * @param[in] c A pointer to the PID controller instance.
+    * @return 1 on success, otherwise return 0.
+    */      
     int qPID_Reset( qPID_controller_t *c );
+
+    /**
+    * @brief Setup the output saturation for the PID controller.
+    * @param[in] c A pointer to the discrete LST system instance
+    * @param[in] min The minimal value allowed for the output.
+    * @param[in] max The maximal value allowed for the output.
+    * @param[in] kw Anti-windup feedback gain.
+    * @return 1 on success, otherwise return 0.
+    */     
     int qPID_SetSaturation( qPID_controller_t *c, float min, float max, float kw );
-    int qPID_SetParallel( qPID_controller_t *c );
+
+    /**
+    * @brief Convert the controller gains to conform the parallel form.
+    * @param[in] sys A pointer to the discrete LST system instance
+    * @return 1 on success, otherwise return 0.
+    */     
+    int qPID_SetParallel( qPID_controller_t *c );.
+
+    /**
+    * @brief Set the minimum value considered as error
+    * @param[in] c A pointer to the discrete LST system instance
+    * @param[in] epsilon The minimal error value.
+    * @return 1 on success, otherwise return 0.
+    */      
     int qPID_SetEpsilon( qPID_controller_t *c, float eps );
+
+    /**
+    * @brief Computes the control action for given PID controller instance.
+    * @param[in] c A pointer to the discrete LST system instance
+    * @param[in] w The reference value aka SetPoint.
+    * @param[in] y The controlled variable aka Process-variable.
+    * @return The control action.
+    */       
     float qPID_Control( qPID_controller_t *c, float w, float y );    
 
 #ifdef __cplusplus
