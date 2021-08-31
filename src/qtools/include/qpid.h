@@ -65,7 +65,7 @@ extern "C" {
     * @param[in] sys A pointer to the discrete LST system instance
     * @return 1 on success, otherwise return 0.
     */     
-    int qPID_SetParallel( qPID_controller_t *c );.
+    int qPID_SetParallel( qPID_controller_t *c );
 
     /**
     * @brief Set the minimum value considered as error
