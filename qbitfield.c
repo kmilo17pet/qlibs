@@ -27,7 +27,7 @@ static void qBitField_Write_uint32( qBitField_t *instance, size_t index, uint32_
 int qBitField_Setup( qBitField_t *instance, void *area, size_t area_size )
 {
     int retValue = 0;
-    if ( ( NULL == instance ) && ( NULL == area ) && ( area_size > 0u ) ) {
+    if ( ( NULL != instance ) && ( NULL != area ) && ( area_size > 0u ) ) {
         instance->field = area;
         instance->size = area_size*8u;
         instance->nSlots = area_size/sizeof(uint32_t);      
@@ -39,7 +39,7 @@ int qBitField_Setup( qBitField_t *instance, void *area, size_t area_size )
 int qBitField_ClearAll( qBitField_t *instance )
 {
     int retValue = 0;
-    if ( NULL == instance ) {
+    if ( NULL != instance ) {
         (void)memset( instance->field, 0, instance->size/8u );
         retValue = 1;
     }
@@ -49,7 +49,7 @@ int qBitField_ClearAll( qBitField_t *instance )
 int qBitField_SetAll( qBitField_t *instance )
 {
     int retValue = 0;
-    if ( NULL == instance ) {
+    if ( NULL != instance ) {
         (void)memset( instance->field, 0xFF, instance->size/8u );
         retValue = 1;
     }
@@ -59,7 +59,7 @@ int qBitField_SetAll( qBitField_t *instance )
 int qBitField_SetBit( qBitField_t *instance, size_t index )
 {
     int retValue = 0;
-    if ( NULL == instance ) {
+    if ( NULL != instance ) {
         BITSET( instance, index );
         retValue = 1;
     }
@@ -69,7 +69,7 @@ int qBitField_SetBit( qBitField_t *instance, size_t index )
 int qBitField_ClearBit( qBitField_t *instance, size_t index )
 {
     int retValue = 0;
-    if ( NULL == instance ) {
+    if ( NULL != instance ) {
         BITCLEAR( instance, index );
         retValue = 1;
     }
@@ -79,7 +79,7 @@ int qBitField_ClearBit( qBitField_t *instance, size_t index )
 int qBitField_ToggleBit( qBitField_t *instance, size_t index )
 {
     int retValue = 0;
-    if ( NULL == instance ) {
+    if ( NULL != instance ) {
         BITTOGGLE( instance, index );
         retValue = 1;
     }
@@ -98,7 +98,7 @@ uint8_t qBitField_ReadBit( const qBitField_t *instance, size_t index )
 int qBitField_WriteBit( qBitField_t *instance, size_t index, uint8_t value )
 {
     int retValue = 0;
-    if ( NULL == instance ) {
+    if ( NULL != instance ) {
         if ( 0u != value ) {
             BITSET( instance, index );
         }
@@ -113,7 +113,7 @@ int qBitField_WriteBit( qBitField_t *instance, size_t index, uint8_t value )
 uint32_t qBitField_ReadUINTn( qBitField_t *instance, size_t index, size_t xBits )
 {
     uint32_t retValue = 0uL;
-    if ( ( NULL == instance ) && ( xBits <= 32u ) ) {
+    if ( ( NULL != instance ) && ( xBits <= 32u ) ) {
         if ( 1u == xBits ) {
             retValue = (uint32_t)qBitField_ReadBit( instance, index );
         }
@@ -131,7 +131,7 @@ uint32_t qBitField_ReadUINTn( qBitField_t *instance, size_t index, size_t xBits 
 int qBitField_WriteUINTn( qBitField_t *instance, size_t index, uint32_t value, size_t xBits )
 {
     int retValue = 0;
-    if ( ( NULL == instance ) && ( xBits <= 32u ) ) {
+    if ( ( NULL != instance ) && ( xBits <= 32u ) ) {
         uint32_t w, mask;
         if( 1u == xBits ) {
             qBitField_WriteBit( instance, index, (uint8_t)value );
@@ -153,7 +153,7 @@ int qBitField_WriteUINTn( qBitField_t *instance, size_t index, uint32_t value, s
 float qBitField_ReadFloat( const qBitField_t *instance, size_t index )
 {
     float retValue = 0.0f;
-    if ( NULL == instance ) {
+    if ( NULL != instance ) {
         uint32_t rval;
         rval = qBitField_Read_uint32( instance, index );
         (void)memcpy( &retValue, &rval, sizeof(float) );
@@ -164,7 +164,7 @@ float qBitField_ReadFloat( const qBitField_t *instance, size_t index )
 int qBitField_WriteFloat( qBitField_t *instance, size_t index, float value )
 {
     int retValue = 0;
-    if ( NULL == instance ) {
+    if ( NULL != instance ) {
         uint32_t fval;
         (void)memcpy( &fval, &value, sizeof(float) );
         qBitField_Write_uint32( instance, index, fval );
@@ -176,7 +176,7 @@ int qBitField_WriteFloat( qBitField_t *instance, size_t index, float value )
 void* qBitField_Dump( qBitField_t *instance, void* dst, size_t n )
 {
     void *retValue = NULL;
-    if ( NULL == instance ) {
+    if ( NULL != instance ) {
         if( n <= ( instance->size/8u ) ){
             retValue = memcpy( dst, instance->field, n );
         }
