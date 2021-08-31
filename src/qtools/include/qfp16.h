@@ -22,7 +22,7 @@ extern "C" {
     #define QFP16_EPSILON             (  1 ) 
     #define QFP16_MIN                 ( -2147483647 ) /* -32767.99998 */
     #define QFP16_MAX                 (  2147483647 ) /* +32767.99998 */
-    #define QFP16_OVERFLOW            ( (qFP16_t)( 0x80000000 ) ) /* overflow */
+    #define QFP16_OVERFLOW            ( -2147483648 ) /* overflow( 0x80000000 ) */
     
     #define QFP16_PI                  (  205887  )    /* pi */
     #define QFP16_2PI                 (  411775 )     /* 2*pi */ 
@@ -52,7 +52,7 @@ extern "C" {
     #define QFP16_N16                 ( -1048576 )    /* -16 */
     #define QFP16_100                 (  6553600 )    /* 100 */
 
-    #define qFP16_Constant(x)      ( (fp_t)(((x) >= 0) ? ((x) * 65536.0 + 0.5) : ((x) * 65536.0 - 0.5)) )
+    #define qFP16_Constant(x)      ( (qFP16_t)(((x) >= 0) ? ((x) * 65536.0 + 0.5) : ((x) * 65536.0 - 0.5)) )
 
 
     typedef struct

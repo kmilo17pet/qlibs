@@ -634,7 +634,7 @@ char* qFP16_FPtoA( qFP16_t num, char *str, int decimals )
     const uint32_t itoa_scales[6] = { 1E0, 1E1, 1E2, 1E3, 1E4, 1E5 };
     char *RetValue = str;
     
-    if(QFP16_OVERFLOW == num ) {
+    if( QFP16_OVERFLOW == num ) {
         str[0] = 'o';
         str[1] = 'v';
         str[2] = 'e';
@@ -766,7 +766,7 @@ static qFP16_t qFP16_log2i( qFP16_t x )
         for ( i = 16 ; i > 0 ; --i ) {
             x = qFP16_Mul( x, x );
             RetValue <<= 1;
-            if (x >= QFP16_2 ) {
+            if ( x >= QFP16_2 ) {
                 RetValue |= 1;
                 x = qFP16_rs(x);
             }
