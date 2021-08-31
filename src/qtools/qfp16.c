@@ -1,3 +1,9 @@
+/*!
+ * @file qfp16.c   
+ * @author J. Camilo Gomez C.
+ * @note This file is part of the qTools distribution.
+ **/
+
 #include "qfp16.h"
 
 static qFP16_Settings_t fp_default = { QFP16_MIN, QFP16_MAX, 1u, 0u };
@@ -35,7 +41,7 @@ void qFP16_SettingsSelect( qFP16_Settings_t *instance )
     }
 }
 /*============================================================================*/
-int qFP16_FP2Int( qFP16_t x )
+int qFP16_FPToInt( qFP16_t x )
 {
     int RetValue;
     if ( fp->rounding ) {
@@ -52,12 +58,12 @@ int qFP16_FP2Int( qFP16_t x )
     return RetValue;
 }
 /*============================================================================*/
-qFP16_t qFP16_Int2FP( int x )
+qFP16_t qFP16_IntToFP( int x )
 {
     return x << 16; 
 }
 /*============================================================================*/
-qFP16_t qFP16_Float2FP( float x )
+qFP16_t qFP16_FloatToFP( float x )
 {
     float RetValue;
     RetValue = x * (float)fp_unity;
@@ -67,12 +73,12 @@ qFP16_t qFP16_Float2FP( float x )
     return (qFP16_t)RetValue;
 }
 /*============================================================================*/
-float qFP16_FP2Float( qFP16_t x )
+float qFP16_FPToFloat( qFP16_t x )
 {
     return (float)x * fp_1divunity_float; 
 }
 /*============================================================================*/
-qFP16_t qFP16_Double2FP( double x )
+qFP16_t qFP16_DoubleToFP( double x )
 {
     double RetValue;
     RetValue = x * (double)fp_unity;
@@ -82,7 +88,7 @@ qFP16_t qFP16_Double2FP( double x )
     return (qFP16_t)RetValue;
 }
 /*============================================================================*/
-double qFP16_FP2Double( qFP16_t x )
+double qFP16_FPToDouble( qFP16_t x )
 {
     return (double)x * fp_1divunity_double; 
 }     
@@ -302,7 +308,7 @@ qFP16_t qFP16_Exp( qFP16_t x )
         term = x;
        
         for ( i = 2; i < 30; ++i ) {
-            term = qFP16_Mul( term, qFP16_Div( x, qFP16_Int2FP( i ) ) );
+            term = qFP16_Mul( term, qFP16_Div( x, qFP16_IntToFP( i ) ) );
             RetValue += term;
 
             if ( ( term < 500 ) && ( (i > 15) || ( term < 20 ) ) ) {
@@ -346,7 +352,7 @@ qFP16_t qFP16_Log( qFP16_t x )
             guess += delta;
         } while ( ( count++ < 10 ) && ( ( delta > 1 ) || ( delta < -1 ) ) );
 
-        RetValue = guess + qFP16_Int2FP( scaling );
+        RetValue = guess + qFP16_IntToFP( scaling );
     } 
     return RetValue;
 }
@@ -378,12 +384,12 @@ qFP16_t qFP16_Log2( qFP16_t x )
     return RetValue;
 }
 /*============================================================================*/
-qFP16_t fp16_Rad2Deg( qFP16_t x )
+qFP16_t fp16_RadToDeg( qFP16_t x )
 {
     return qFP16_Mul( qFP16_WrapToPi( x ), QFP16_180_DIV_PI );
 }
 /*============================================================================*/
-qFP16_t fp16_Deg2Rad( qFP16_t x )
+qFP16_t fp16_DegToRad( qFP16_t x )
 {
     return qFP16_Mul( qFP16_WrapTo180(x), QFP16_PI_DIV_180 );
 }
@@ -627,7 +633,7 @@ qFP16_t qFP16_Pow( qFP16_t x, qFP16_t y )
     return RetValue;
 }
 /*============================================================================*/
-char* qFP16_FPtoA( qFP16_t num, char *str, int decimals )
+char* qFP16_FPToA( qFP16_t num, char *str, int decimals )
 {
     uint32_t uValue, fPart, scale;
     int32_t iPart;
@@ -677,7 +683,7 @@ char* qFP16_FPtoA( qFP16_t num, char *str, int decimals )
     return RetValue;
 }
 /*============================================================================*/
-qFP16_t qFP16_AtoFP(char *s)
+qFP16_t qFP16_AToFP(char *s)
 {
     uint8_t negative;
     uint32_t iPart = 0ul, fPart = 0ul, scale = 1ul;
