@@ -1,3 +1,8 @@
+/*!
+ * @file qbitfield.c   
+ * @author J. Camilo Gomez C.
+ * @note This file is part of the qTools distribution.
+ **/
 #include "qbitfield.h"
 
 
@@ -108,19 +113,17 @@ int qBitField_WriteBit( qBitField_t *instance, size_t index, uint8_t value )
 uint32_t qBitField_ReadUINTn( qBitField_t *instance, size_t index, size_t xBits )
 {
     uint32_t retValue = 0uL;
-    if ( NULL == instance ) {
-        if ( xBits <= 32u ) {
-            if ( 1u == xBits ) {
-                retValue = (uint32_t)qBitField_ReadBit( instance, index );
-            }
-            else if ( 32u == xBits ) {
-                retValue = qBitField_Read_uint32( instance, index );
-            }
-            else {
-                retValue = qBitField_Read_uint32( instance, index );
-                retValue &= ( ( ~((uint32_t)0) ) >> ( 32u - xBits ) ); /*safe mask*/    /*ATH-shift-bounds,MISRAC2012-Rule-12.2 deviation allowed*/
-            }        
+    if ( ( NULL == instance ) && ( xBits <= 32u ) ) {
+        if ( 1u == xBits ) {
+            retValue = (uint32_t)qBitField_ReadBit( instance, index );
         }
+        else if ( 32u == xBits ) {
+            retValue = qBitField_Read_uint32( instance, index );
+        }
+        else {
+            retValue = qBitField_Read_uint32( instance, index );
+            retValue &= ( ( ~((uint32_t)0) ) >> ( 32u - xBits ) ); /*safe mask*/    /*ATH-shift-bounds,MISRAC2012-Rule-12.2 deviation allowed*/
+        }        
     }
     return retValue;
 }
@@ -128,22 +131,20 @@ uint32_t qBitField_ReadUINTn( qBitField_t *instance, size_t index, size_t xBits 
 int qBitField_WriteUINTn( qBitField_t *instance, size_t index, uint32_t value, size_t xBits )
 {
     int retValue = 0;
-    if ( NULL == instance ) {
+    if ( ( NULL == instance ) && ( xBits <= 32u ) ) {
         uint32_t w, mask;
-        if( xBits <= 32u ) {
-            if( 1u == xBits ) {
-                qBitField_WriteBit( instance, index, (uint8_t)value );
-            }
-            else if( 32u == xBits ) {
-                qBitField_Write_uint32( instance, index, value );
-            }
-            else {
-                w = qBitField_Read_uint32( instance, index );
-                value &= ( ( ~((uint32_t)0) ) >> ( 32u - xBits ) ); /*safe mask*/ /*ATH-shift-bounds,MISRAC2012-Rule-12.2 deviation allowed*/
-                mask = ( ~((uint32_t)0) ) << xBits;  /*!#ok*/
-                qBitField_Write_uint32( instance, index, BITMASKMERGE( w, value, mask ) );         
-            }        
+        if( 1u == xBits ) {
+            qBitField_WriteBit( instance, index, (uint8_t)value );
         }
+        else if( 32u == xBits ) {
+            qBitField_Write_uint32( instance, index, value );
+        }
+        else {
+            w = qBitField_Read_uint32( instance, index );
+            value &= ( ( ~((uint32_t)0) ) >> ( 32u - xBits ) ); /*safe mask*/ /*ATH-shift-bounds,MISRAC2012-Rule-12.2 deviation allowed*/
+            mask = ( ~((uint32_t)0) ) << xBits;  /*!#ok*/
+            qBitField_Write_uint32( instance, index, BITMASKMERGE( w, value, mask ) );         
+        }        
         retValue = 1;
     }
     return retValue;
@@ -211,8 +212,8 @@ static void qBitField_Write_uint32( qBitField_t *instance, size_t index, uint32_
         instance->field[ slot ] = value;
     }
     else {
-        mask = BITMASK32(of);
-        instance->field[ slot   ] = ( value<<of ) | ( instance->field[slot] & mask )    ;
+        mask = BITMASK32( of );
+        instance->field[ slot   ] = ( value << of ) | ( instance->field[slot] & mask )    ;
         if( slot+1u < instance->nSlots ){
             instance->field[ slot+1u ] = ( value >> (32u - of) ) | ( instance->field[ slot+1u ] & ( ~mask ) );  
         }
