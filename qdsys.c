@@ -9,18 +9,18 @@
 /*============================================================================*/
 float qDSys_FIRUpdate( float *w, float *c, size_t wsize, float x )
 {
-	size_t i;
+    size_t i;
     float y = 0.0f;
     if ( NULL != c ) {
         for ( i = ( wsize - 1u ); i >= 1u ; --i ) { 
-            w[ i ] = w[ i - 1 ];
+            w[ i ] = w[ i - 1u ];
             y += w[ i ]*c[ i ];
         }
         y += c[ 0 ]*x;
     }
     else {
         for ( i = ( wsize - 1u ); i >= 1u ; --i ) { 
-            w[ i ] = w[ i - 1 ];
+            w[ i ] = w[ i - 1u ];
             y += w[ i ];
         }
         y += x;
@@ -36,10 +36,10 @@ int qDSys_Setup( qDSys_t *sys, float *num, float *den, float *v, size_t nb, size
         size_t i;
         float a0;
         sys->b = num;
-        sys->a = den + 1;
+        sys->a = &den[ 1 ];
         sys->v = v;
         sys->na = na;
-        sys->n = na > nb ? na : nb;
+        sys->n = ( na > nb ) ? na : nb;
         sys->min = -100.0f;
         sys->max =  100.0f;
         a0 = den[ 0 ];
@@ -59,7 +59,7 @@ int qDSys_IsInitialized( qDSys_t *sys )
 {
     int retVal = 0;
     if ( NULL != sys ) {
-        retVal = ( 1u == sys->init ) && ( NULL != sys->v );
+        retVal = (int)( ( 1u == sys->init ) && ( NULL != sys->v ) );
     }
     return retVal;
 }

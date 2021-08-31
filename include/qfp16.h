@@ -23,7 +23,7 @@ extern "C" {
     #define QFP16_EPSILON             (  1 ) 
     #define QFP16_MIN                 ( -2147483647 ) /* -32767.99998 */
     #define QFP16_MAX                 (  2147483647 ) /* +32767.99998 */
-    #define QFP16_OVERFLOW            ( -2147483648 ) /* overflow( 0x80000000 ) */
+    #define QFP16_OVERFLOW            ( (qFP16_t)-2147483648 ) /* overflow( 0x80000000 ) */
     
     #define QFP16_PI                  (  205887  )    /* pi */
     #define QFP16_2PI                 (  411775 )     /* 2*pi */ 

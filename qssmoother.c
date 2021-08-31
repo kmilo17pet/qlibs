@@ -29,7 +29,7 @@ int qSSmoother_IsInitialized( qSSmootherPtr_t s )
     int retVal = 0;
     if ( NULL != s ) {
         _qSSmoother_t *f = (_qSSmoother_t*)s;
-        return ( NULL != f->filtFcn );
+        retVal = (int)( NULL != f->filtFcn );
     }    
     return retVal;
 } 
@@ -61,10 +61,9 @@ int qSSmoother_Setup_LPF1( qSSmoother_LPF1_t *s, float alpha )
 {
     int retVal = 0;
     if ( ( NULL != s ) && ( alpha > 0.0f ) && ( alpha < 1.0f ) ) {
-        qSSmoother_Reset( s );
         s->alpha = alpha;
         s->f.filtFcn = &qSSmoother_Filter_LPF1;
-        retVal = 1;
+        retVal = qSSmoother_Reset( s );
     }
     return retVal;
 }
@@ -74,9 +73,7 @@ int qSSmoother_Setup_LPF2( qSSmoother_LPF2_t *s, float alpha )
     int retVal = 0;
     if ( ( NULL != s ) && ( alpha > 0.0f ) && ( alpha < 1.0f ) ) {
         float aa, p1, r;
-        qSSmoother_Reset( s );
         s->alpha = alpha;
-        
         aa = s->alpha*s->alpha;
         p1 = sqrtf( 2.0f*s->alpha );
         r = 1.0f + p1 + aa;
@@ -85,7 +82,7 @@ int qSSmoother_Setup_LPF2( qSSmoother_LPF2_t *s, float alpha )
         s->a2 = ( 1.0f - p1 + aa )/r;
         s->b1 = 2.0f*s->k;        
         s->f.filtFcn = &qSSmoother_Filter_LPF2;
-        retVal = 1;
+        retVal = qSSmoother_Reset( s );
     }
     return retVal;
 }
@@ -94,11 +91,10 @@ int qSSmoother_Setup_MWM( qSSmoother_MWM_t *s, float *window, size_t wsize )
 {
     int retVal = 0;
     if ( ( NULL != s ) && ( NULL != window ) && ( wsize > 0u ) ) {
-        qSSmoother_Reset( s ); 
         s->w = window;
         s->wsize = wsize;
         s->f.filtFcn = &qSSmoother_Filter_MWM;
-        retVal = 1;
+        retVal = qSSmoother_Reset( s );
     }
     return retVal;
 }
@@ -107,12 +103,11 @@ int qSSmoother_Setup_MWOR( qSSmoother_MWOR_t *s, float *window, size_t wsize, fl
 {
     int retVal = 0;
     if ( ( NULL != s ) && ( NULL != window ) && ( wsize > 0u ) && ( alpha > 0.0f ) && ( alpha < 1.0f ) ) {
-        qSSmoother_Reset( s ); 
         s->w = window;
         s->wsize = wsize;
         s->alpha  = alpha;
         s->f.filtFcn = &qSSmoother_Filter_MWOR;
-        retVal = 1;
+        retVal = qSSmoother_Reset( s ); ;
     }
     return retVal;
 }
@@ -128,10 +123,9 @@ int qSSmoother_Setup_GAUSSIAN( qSSmoother_GAUSSIAN_t *s, float *window, float *k
         
         L = (float)(wsize - 1u)/2.0f;
         center = (float)c - L;
-        qSSmoother_Reset( s ); 
         r =  2.0f*sigma*sigma ;
         for ( i = 0u ; i < wsize ; ++i ) {
-            d = (float)i - L;  /*symetr*/     
+            d = (float)i - L;  /*symetry*/     
             d -= center;     
             kernel[ i ] =  expf( -(d*d)/r );            
             sum += kernel[ i ];
@@ -144,7 +138,7 @@ int qSSmoother_Setup_GAUSSIAN( qSSmoother_GAUSSIAN_t *s, float *window, float *k
         s->k = kernel;
         s->wsize = wsize;
         s->f.filtFcn = &qSSmoother_Filter_GAUSSIAN;
-        retVal = 1;
+        retVal = qSSmoother_Reset( s );
     }
     return retVal;
 }
@@ -154,11 +148,11 @@ static float qSSmoother_Filter_LPF1( _qSSmoother_t *f, float x )
     float y;
     qSSmoother_LPF1_t *s = (qSSmoother_LPF1_t*)f;
        
-    if ( f->init ) {
+    if ( 1u == f->init ) {
         s->y1 = x;
         f->init = 0u;
     }
-    y = ( 1.0f - s->alpha )*x + s->alpha*s->y1;
+    y = ( ( 1.0f - s->alpha )*x ) + ( s->alpha*s->y1 );
     s->y1 = y;    
     
     return y;
@@ -168,14 +162,14 @@ static float qSSmoother_Filter_LPF2( _qSSmoother_t *f, float x )
 {
     float y;
     qSSmoother_LPF2_t *s = (qSSmoother_LPF2_t*)f;
-    if ( f->init ) {
+    if ( 1u == f->init ) {
         s->y1 = x;
         s->y2 = x;
         s->x1 = x;
         s->x2 = x;
         f->init = 0u;
     }     
-    y = s->k*x + s->b1*s->x1 + s->k*s->x2 - s->a1*s->y1 - s->a2*s->y2;
+    y = ( s->k*x  ) + ( s->b1*s->x1 ) + ( s->k*s->x2 ) - ( s->a1*s->y1 ) - ( s->a2*s->y2 );
     s->x2 = s->x1;
     s->x1 = x;
     s->y2 = s->y1;
@@ -188,7 +182,7 @@ static float qSSmoother_Filter_MWM( _qSSmoother_t *f, float x )
 {
     qSSmoother_MWM_t *s = (qSSmoother_MWM_t*)f;
     
-    if ( f->init ) {
+    if ( 1u == f->init ) {
         qSSmoother_WindowSet( s->w, s->wsize, x );
         f->init = 0u;
     }        
@@ -200,7 +194,7 @@ static float qSSmoother_Filter_MWOR( _qSSmoother_t *f, float x )
     float m;
     qSSmoother_MWOR_t *s = (qSSmoother_MWOR_t*)f;
     
-    if ( f->init ) {
+    if ( 1u == f->init ) {
         qSSmoother_WindowSet( s->w, s->wsize, x );
         s->m = x; 
         f->init = 0u;
@@ -218,7 +212,7 @@ static float qSSmoother_Filter_GAUSSIAN( _qSSmoother_t *f, float x )
 {
     qSSmoother_GAUSSIAN_t *s = (qSSmoother_GAUSSIAN_t*)f;
     
-    if ( f->init ) {
+    if ( 1u == f->init ) {
         qSSmoother_WindowSet( s->w, s->wsize, x );
         f->init = 0u;
     }   

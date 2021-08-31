@@ -20,8 +20,7 @@ int qPID_Setup( qPID_controller_t *c, float kc, float ki, float kd, float dt )
         c->kw = 1.0f;
         c->epsilon = FLT_MIN;
         c->init = 1u;
-        qPID_Reset( c );
-        retVal = 1;
+        retVal = qPID_Reset( c );
     }
     return retVal;
 }
@@ -86,12 +85,12 @@ float qPID_Control( qPID_controller_t *c, float w, float y )
             e = 0.0f;
             c->ie += c->u1*( c->dt );
             de = -c->e1/c->dt;
-            v  = c->ki*c->ie + c->kd*de;
+            v  = ( c->ki*c->ie ) + ( c->kd*de );
         }
         else {
             c->ie += ( e + c->u1 )*( c->dt );
             de = ( e - c->e1 )/c->dt;
-            v  = c->kc*e + c->ki*c->ie + c->kd*de;
+            v  = ( c->kc*e ) + ( c->ki*c->ie ) + ( c->kd*de );
         }
 
         u = v;

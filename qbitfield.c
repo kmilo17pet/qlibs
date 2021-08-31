@@ -6,7 +6,7 @@
 #include "qbitfield.h"
 
 
-#define LONG_BIT                (size_t) (sizeof(uint32_t) * 8uL )
+#define LONG_BIT                ( (size_t) (sizeof(uint32_t) * 8uL ) )
 #define BITMASK(b)              ( (uint32_t)1uL << ((b) % LONG_BIT) )
 #define BITSLOT(b)              ( (b) / LONG_BIT) /*((b) >> 6 )*/
 #define BITGET(a, b)            ( ((a)->field[BITSLOT(b)] >> ((b) % LONG_BIT)) & 1uL)
@@ -134,7 +134,7 @@ int qBitField_WriteUINTn( qBitField_t *instance, size_t index, uint32_t value, s
     if ( ( NULL != instance ) && ( xBits <= 32u ) ) {
         uint32_t w, mask;
         if( 1u == xBits ) {
-            qBitField_WriteBit( instance, index, (uint8_t)value );
+            (void)qBitField_WriteBit( instance, index, (uint8_t)value );
         }
         else if( 32u == xBits ) {
             qBitField_Write_uint32( instance, index, value );
@@ -165,7 +165,7 @@ int qBitField_WriteFloat( qBitField_t *instance, size_t index, float value )
 {
     int retValue = 0;
     if ( NULL != instance ) {
-        uint32_t fval;
+        uint32_t fval = 0uL;
         (void)memcpy( &fval, &value, sizeof(float) );
         qBitField_Write_uint32( instance, index, fval );
         retValue = 1;
@@ -176,7 +176,7 @@ int qBitField_WriteFloat( qBitField_t *instance, size_t index, float value )
 void* qBitField_Dump( qBitField_t *instance, void* dst, size_t n )
 {
     void *retValue = NULL;
-    if ( NULL != instance ) {
+    if ( ( NULL != instance ) && ( NULL != dst ) ) {
         if( n <= ( instance->size/8u ) ){
             retValue = memcpy( dst, instance->field, n );
         }
@@ -196,7 +196,7 @@ static uint32_t qBitField_Read_uint32( const qBitField_t *instance, size_t index
     bits_taken  = (uint8_t)( 32u - of );
     
     if ( ( 0u != of ) && ( ( index + bits_taken ) < instance->size ) ) {
-        result |= instance->field[ slot+1u ] << (uint32_t)bits_taken ; /*ATH-shift-bounds,MISRAC2012-Rule-12.2 deviation allowed*/
+        result |= instance->field[ slot + 1u ] << (uint32_t)bits_taken ; /*ATH-shift-bounds,MISRAC2012-Rule-12.2 deviation allowed*/
     }
     return result;
 }
@@ -214,7 +214,7 @@ static void qBitField_Write_uint32( qBitField_t *instance, size_t index, uint32_
     else {
         mask = BITMASK32( of );
         instance->field[ slot   ] = ( value << of ) | ( instance->field[slot] & mask )    ;
-        if( slot+1u < instance->nSlots ){
+        if( ( slot+1u ) < instance->nSlots ){
             instance->field[ slot+1u ] = ( value >> (32u - of) ) | ( instance->field[ slot+1u ] & ( ~mask ) );  
         }
      }

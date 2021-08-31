@@ -21,7 +21,7 @@ static char *qFP16_itoa( char *buf, uint32_t scale, uint32_t value, uint8_t skip
 int qFP16_SettingsSet( qFP16_Settings_t *instance, qFP16_t min, qFP16_t max, uint8_t rounding, uint8_t saturate )
 {
     int retVal = 0;
-    if ( ( NULL != instance ) && ( max > min) && ( rounding <= 1) && ( saturate <= 1) ) {
+    if ( ( NULL != instance ) && ( max > min) && ( rounding <= 1u ) && ( saturate <= 1u ) ) {
         instance->min = min;
         instance->max = max;
         instance->rounding = rounding;
@@ -44,7 +44,7 @@ void qFP16_SettingsSelect( qFP16_Settings_t *instance )
 int qFP16_FPToInt( qFP16_t x )
 {
     int RetValue;
-    if ( fp->rounding ) {
+    if ( 1u == fp->rounding ) {
         if ( x >= 0 ) {
             RetValue =  ( x + ( fp_unity >> 1 ) ) / fp_unity;
         }
@@ -53,21 +53,21 @@ int qFP16_FPToInt( qFP16_t x )
         }	        
     }
     else {
-        RetValue = x >> 16;
+        RetValue = (int)( (uint32_t)x >> 16 );
     }
     return RetValue;
 }
 /*============================================================================*/
 qFP16_t qFP16_IntToFP( int x )
 {
-    return x << 16; 
+    return (qFP16_t)( (uint32_t)x << 16 ); 
 }
 /*============================================================================*/
 qFP16_t qFP16_FloatToFP( float x )
 {
     float RetValue;
     RetValue = x * (float)fp_unity;
-    if ( fp->rounding ) {
+    if ( 1u == fp->rounding ) {
         RetValue += (RetValue >= 0.0f) ? 0.5f : -0.5f;
     }    
     return (qFP16_t)RetValue;
@@ -82,7 +82,7 @@ qFP16_t qFP16_DoubleToFP( double x )
 {
     double RetValue;
     RetValue = x * (double)fp_unity;
-    if( fp->rounding ){
+    if( 1u == fp->rounding ){
         RetValue += ( RetValue >= 0.0 )? 0.5 : -0.5;
     }    
     return (qFP16_t)RetValue;
@@ -142,7 +142,7 @@ qFP16_t qFP16_Mul( qFP16_t x, qFP16_t y )
     b = ( x & 0xFFFF );
     d = ( y & 0xFFFF );
     ac = a*c;
-    adcb = (int32_t)( (uint32_t)a*d + (uint32_t)c*b );
+    adcb = (int32_t)( ( (uint32_t)a*d ) + ( (uint32_t)c*b ) );
     bd = b*d;    
     mulH = ac + ( adcb >> 16 );
     tmp = (uint32_t)adcb << 16;
@@ -151,10 +151,10 @@ qFP16_t qFP16_Mul( qFP16_t x, qFP16_t y )
         mulH++;
     }
     if ( ( mulH >> 31 ) == ( mulH >> 15 ) ) {
-        if ( fp->rounding ) {
+        if ( 1u == fp->rounding ) {
             uint32_t tmp2;
             tmp2 = mulL;
-            mulL -= QFP16_1_DIV_2;
+            mulL -= (uint32_t)QFP16_1_DIV_2;
             mulL -= (uint32_t)mulH >> 31;
             if ( mulL > tmp2 ) {
                 mulH--;
@@ -171,8 +171,7 @@ qFP16_t qFP16_Mul( qFP16_t x, qFP16_t y )
 /*============================================================================*/
 qFP16_t qFP16_Div( qFP16_t x, qFP16_t y )
 {
-    uint32_t xRem, xDiv;
-    uint32_t quotient = 0ul, bit = 0x10000ul;
+    uint32_t xRem, xDiv, quotient = 0uL, bit = 0x10000uL;
     qFP16_t RetValue;
     RetValue = fp->min;
     if ( 0 != y ) {
@@ -184,8 +183,8 @@ qFP16_t qFP16_Div( qFP16_t x, qFP16_t y )
             bit <<= 1;
         }
         RetValue = QFP16_OVERFLOW;
-        if ( bit ) {
-            if ( xDiv & 0x80000000 ) {
+        if ( 0uL != bit ) {
+            if ( 0uL != ( xDiv & 0x80000000uL ) ) {
                 if ( xRem >= xDiv ) {
                     quotient |= bit;
                     xRem -= xDiv;
@@ -194,7 +193,7 @@ qFP16_t qFP16_Div( qFP16_t x, qFP16_t y )
                 bit >>= 1;
             }
 
-            while ( bit && xRem ) {
+            while ( ( 0uL != bit ) && ( 0uL != xRem ) ) {
                 if ( xRem >= xDiv ) {
                     quotient |= bit;
                     xRem -= xDiv;
@@ -202,7 +201,7 @@ qFP16_t qFP16_Div( qFP16_t x, qFP16_t y )
                 xRem <<= 1;
                 bit >>= 1;
             }	 
-            if ( fp->rounding ) {
+            if ( 1u == fp->rounding ) {
                 if ( xRem >= xDiv ) {
                     quotient++;
                 }
@@ -210,7 +209,7 @@ qFP16_t qFP16_Div( qFP16_t x, qFP16_t y )
 
             RetValue = (qFP16_t)quotient;
 
-            if ( (x ^ y ) & (qFP16_t)0x80000000 ) {
+            if ( 0uL != ( (uint32_t)( x ^ y ) & 0x80000000uL ) ) {
                 if ( quotient == (uint32_t)fp->min ) {
                     RetValue = QFP16_OVERFLOW;
                 }
@@ -220,7 +219,7 @@ qFP16_t qFP16_Div( qFP16_t x, qFP16_t y )
             }
         }
         
-        if ( fp->saturate ) {
+        if ( 1u == fp->saturate ) {
             if ( QFP16_OVERFLOW == RetValue ) {
                 RetValue = ( ( x >= 0 ) == ( y >= 0 ) )? fp->max : fp->min;
             }
@@ -231,8 +230,10 @@ qFP16_t qFP16_Div( qFP16_t x, qFP16_t y )
 /*============================================================================*/
 qFP16_t qFP16_Mod( qFP16_t x, qFP16_t y )
 {
-    qFP16_t RetValue;
-    RetValue = x % y;
+    qFP16_t RetValue = 0;
+    if ( 0 != y ) {
+      RetValue = x % y;
+    }
     return RetValue;
 }
 /*============================================================================*/
@@ -245,13 +246,13 @@ qFP16_t qFP16_Sqrt( qFP16_t x )
         uint8_t  n;
 
         RetValue = 0;
-        bit = ( x & (qFP16_t)0xFFF00000uL )? (uint32_t)1 << 30 : (uint32_t)1 << 18;
+        bit = ( x & (qFP16_t)0xFFF00000uL )? (uint32_t)( 1 << 30 ) : (uint32_t)( 1 << 18 );
         while ( bit > (uint32_t)x ) {
             bit >>= 2;
         }
             
        	for ( n = 0u ; n < 2u ; ++n ) {
-            while ( bit ) {
+            while ( 0u != bit ) {
                 if ( x >= (qFP16_t)( (uint32_t)RetValue + bit ) ) {
                     x -= (qFP16_t)( (uint32_t)RetValue + bit );
                     RetValue = (qFP16_t)( ( (uint32_t)RetValue >> 1uL ) + bit );
@@ -274,7 +275,7 @@ qFP16_t qFP16_Sqrt( qFP16_t x )
                 }
                 bit = 1 << 14;
             }
-	    }  
+        }  
     }
     if( ( 1u == fp->rounding ) && ( x > RetValue ) ) {
             RetValue++;    
@@ -301,8 +302,8 @@ qFP16_t qFP16_Exp( qFP16_t x )
         RetValue = 0;
     }
     else {
-        isNegative = (x < 0);
-        if ( isNegative ) {
+        isNegative = (uint8_t)( x < 0 );
+        if ( 1u == isNegative ) {
             x = -x;
         }
         
@@ -318,7 +319,7 @@ qFP16_t qFP16_Exp( qFP16_t x )
             }	
         }
 
-        if ( isNegative ){
+        if ( 1u == isNegative ){
             RetValue = qFP16_Div( fp_unity, RetValue );  
         }
     }
@@ -378,7 +379,7 @@ qFP16_t qFP16_Log2( qFP16_t x )
             RetValue = qFP16_log2i(x);
         }
     }
-    if ( fp->saturate ) {
+    if ( 1u == fp->saturate ) {
         if ( QFP16_OVERFLOW == RetValue ) {
             RetValue = fp->min;
         }
@@ -452,15 +453,18 @@ qFP16_t qFP16_Cos( qFP16_t x )
 }
 /*============================================================================*/
 qFP16_t qFP16_Tan( qFP16_t x )
-{
-    return qFP16_Div( qFP16_Sin( x ), qFP16_Cos( x ) );
+{       
+    qFP16_t a ,b;
+    a = qFP16_Sin( x );
+    b = qFP16_Cos( x );
+    return qFP16_Div( a, b );
 }
 /*============================================================================*/
 qFP16_t qFP16_Atan2( qFP16_t y , qFP16_t x )
 {
     qFP16_t absY, mask, angle, r, r_3;
 
-    mask = ( y >> ( sizeof(qFP16_t)*7 ) );
+    mask = ( y >> ( sizeof(qFP16_t)*7u ) );
     absY = ( y + mask ) ^ mask;
     if ( x >= 0 ) {
         r = qFP16_Div( ( x - absY ), ( x + absY ) );
@@ -549,7 +553,7 @@ qFP16_t qFP16_Sinh( qFP16_t x )
 /*============================================================================*/
 qFP16_t qFP16_Tanh( qFP16_t x )
 {
-    qFP16_t RetValue = QFP16_OVERFLOW;
+    qFP16_t RetValue;
     qFP16_t epx, enx;
     
     if( 0 == x ) {
@@ -620,7 +624,7 @@ qFP16_t qFP16_Pow( qFP16_t x, qFP16_t y )
     qFP16_t RetValue = QFP16_OVERFLOW;
     qFP16_t tmp;
     
-    if ( ( 0 == ( y & 0x0000FFFF ) ) && ( y > 0 ) ) { /*handle integer exponent explicitly*/
+    if ( ( 0uL == ( (uint32_t)y & 0x0000FFFFuL ) ) && ( y > 0 ) ) { /*handle integer exponent explicitly*/
         RetValue = qFP16_IPow( x, y );
     }
     else{
@@ -640,7 +644,7 @@ char* qFP16_FPToA( qFP16_t num, char *str, int decimals )
 {
     uint32_t uValue, fPart, scale;
     int32_t iPart;
-    const uint32_t itoa_scales[6] = { 1E0, 1E1, 1E2, 1E3, 1E4, 1E5 };
+    const uint32_t itoa_scales[6] = { 1uL, 10uL, 100uL, 1000uL, 10000uL, 100000uL };
     char *RetValue = str;
     
     if( QFP16_OVERFLOW == num ) {
@@ -661,7 +665,7 @@ char* qFP16_FPToA( qFP16_t num, char *str, int decimals )
         }
 
         iPart = (int32_t)( uValue >> 16 );
-        fPart = uValue & 0xFFFF;
+        fPart = uValue & 0xFFFFuL;
         if ( decimals > 5 ) {
             decimals = 5;
         }
@@ -677,9 +681,9 @@ char* qFP16_FPToA( qFP16_t num, char *str, int decimals )
         }
         str = qFP16_itoa(str, 10000, (uint32_t)iPart, 1u);
 
-        if ( 1 != scale ) {
+        if ( 1u != scale ) {
             *str++ = '.';
-            str = qFP16_itoa( str, scale / 10, fPart, 0u );
+            str = qFP16_itoa( str, scale / 10U, fPart, 0u );
         }
         *str = '\0';        
     }
@@ -689,39 +693,39 @@ char* qFP16_FPToA( qFP16_t num, char *str, int decimals )
 qFP16_t qFP16_AToFP(char *s)
 {
     uint8_t negative;
-    uint32_t iPart = 0ul, fPart = 0ul, scale = 1ul;
+    uint32_t iPart = 0uL, fPart = 0uL, scale = 1uL;
     int32_t count = 0;
-    qFP16_t RetValue = QFP16_OVERFLOW;
+    qFP16_t RetValue = (qFP16_t)QFP16_OVERFLOW;
     int point_seen, overflow = 0;
     char c;
     uint32_t digit;
     
-    while ( isspace( (int)*s) ) {
+    while ( 1 == isspace( (int)*s) ) {
         s++; /*discard whitespaces*/
     }
 
-    negative = ( '-' == *s );
+    negative = (uint8_t)( '-' == *s );
     if( ( '+' == *s ) || ( '-' == *s ) ) {
         s++; /*move to the next sign*/
     }
 
-    for ( point_seen = 0; '\0' != (c=*s); s++ ) {
+    for ( point_seen = 0; '\0' != ( c = *s ); s++ ) {
         if ( '.' == c ) {
             point_seen = 1;
         }
-        else if ( isdigit( (int)c ) ) {
+        else if ( 1 == isdigit( (int)c ) ) {
             digit = (uint32_t)c - (uint32_t)'0';
-            if ( point_seen ) { /* Decode the fractional part */
-                scale *= 10;
-                fPart *= 10;
+            if ( 0 != point_seen ) { /* Decode the fractional part */
+                scale *= 10u;
+                fPart *= 10u;
                 fPart += digit;
             }
             else { /* Decode the decimal part */
-                iPart *= 10;
+                iPart *= 10u;
                 iPart += digit;
                 count++;        
-                overflow = ( ( 0 == count ) || ( count > 5 ) || ( iPart > 32768 ) || ( !negative && iPart  > 32767 ) );
-                if ( overflow ) {
+                overflow = (int)( ( 0 == count ) || ( count > 5 ) || ( iPart > 32768uL ) || ( ( 0u == negative ) && ( iPart  > 32767uL ) ) );
+                if ( 0 != overflow ) {
                     break;
                 }
             }
@@ -733,14 +737,14 @@ qFP16_t qFP16_AToFP(char *s)
     if ( 0 == overflow ) {
         RetValue = (qFP16_t)iPart << 16;
         RetValue += qFP16_Div( (qFP16_t)fPart, (qFP16_t)scale );
-        RetValue = ( negative )? -RetValue : RetValue;
+        RetValue = ( 1u == negative )? -RetValue : RetValue;
     }   
     return RetValue;
 }
 /*============================================================================*/
 static uint32_t qFP16_OverflowCheck( uint32_t res, uint32_t x, uint32_t y )
 {
-    if ( !( ( x ^ y ) & 0x80000000 ) && ( ( x ^ res ) & 0x80000000 ) ) {
+    if ( !( ( x ^ y ) & 0x80000000uL ) && ( ( x ^ res ) & 0x80000000uL ) ) {
         res =  (uint32_t)QFP16_OVERFLOW;
     }    
     return res;
@@ -749,8 +753,8 @@ static uint32_t qFP16_OverflowCheck( uint32_t res, uint32_t x, uint32_t y )
 static qFP16_t qFP16_rs( qFP16_t x )
 {
     qFP16_t RetValue;
-    if ( fp->rounding ) {
-        RetValue = ( x >> 1 ) + ( x & 1 );
+    if ( 1u == fp->rounding ) {
+        RetValue = ( x >> 1u ) + ( x & 1 );
     }
     else {
         RetValue = x >> 1;
@@ -780,7 +784,7 @@ static qFP16_t qFP16_log2i( qFP16_t x )
                 x = qFP16_rs(x);
             }
         }
-        if ( fp->rounding ) {
+        if ( 1u == fp->rounding ) {
             x = qFP16_Mul( x, x );
             if ( x >= QFP16_2 ) {
                 RetValue++;
@@ -794,9 +798,9 @@ static qFP16_t qFP16_log2i( qFP16_t x )
 static char *qFP16_itoa( char *buf, uint32_t scale, uint32_t value, uint8_t skip )
 {
     uint32_t digit;  
-    while ( scale ) {
+    while ( 0u != scale ) {
         digit = ( value / scale );
-        if ( !skip || digit || ( 1 == scale ) ) {
+        if ( ( 0u == skip ) || ( 0u != digit ) || ( 1u == scale ) ) {
             skip = 0u;
             *buf++ = (char)'0' + (char)digit;
             value %= scale;

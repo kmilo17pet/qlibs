@@ -13,10 +13,10 @@ int qCSys_Setup( qCSys_t *sys, float *num, float *den, float *x, size_t n, float
     if ( ( NULL != sys ) && ( NULL != num ) && ( NULL != den ) && ( NULL != x )  && ( n > 0u) && ( dt > 0.0f ) ) {
         size_t i;
         float a0;
-        sys->b = num + 1;
-        sys->a = den + 1;
+        sys->b = &num[ 1 ];
+        sys->a = &den[ 1 ];
         sys->x = x;
-        sys->n = n - 1;
+        sys->n = n - 1u;
         sys->dt = dt;
         sys->min = -100.0f;
         sys->max =  100.0f;
@@ -35,7 +35,7 @@ int qCSys_IsInitialized( qCSys_t *sys )
 {
     int retVal = 0;
     if ( NULL != sys ) {
-        retVal = ( 1u == sys->init ) && ( NULL != sys->x );
+        retVal = (int)( ( 1u == sys->init ) && ( NULL != sys->x ) );
     }
     return retVal;
 }
@@ -58,19 +58,19 @@ float qCSys_Excite( qCSys_t *sys, float u )
         float dx0 = 0.0f;
 
         if ( 1u == sys->n ) {
-            sys->x[ 0 ] += ( u - sys->x[ 0 ]*sys->a[ 0 ] )*sys->dt; 
-            y = ( sys->b[ 0 ] - sys->a[ 0 ]*sys->b0 )*sys->x[ 0 ];
+            sys->x[ 0 ] += ( u - ( sys->x[ 0 ]*sys->a[ 0 ] ) )*sys->dt; 
+            y = ( sys->b[ 0 ] - ( sys->a[ 0 ]*sys->b0 ) )*sys->x[ 0 ];
         }
         else {    
             size_t i;
             for (  i = ( sys->n - 1u) ; i >= 1u ; --i ) {
                 dx0 += sys->a[ i ]*sys->x[ i ]; 
-                sys->x[ i ] += sys->x[ i - 1 ]*sys->dt;
-                y += ( sys->b[ i ] - sys->a[ i ]*sys->b0 )*sys->x[ i ];
+                sys->x[ i ] += sys->x[ i - 1u ]*sys->dt;
+                y += ( sys->b[ i ] - ( sys->a[ i ]*sys->b0 ) )*sys->x[ i ];
             }
-            dx0 = u - ( dx0 + sys->a[ 0 ]*sys->x[ 0 ] );
+            dx0 = u - ( dx0 + ( sys->a[ 0 ]*sys->x[ 0 ] ) );
             sys->x[ 0 ] += dx0*sys->dt;
-            y+= ( sys->b[ 0 ] - sys->a[ 0 ]*sys->b0 )*sys->x[ 0 ];
+            y+= ( sys->b[ 0 ] - ( sys->a[ 0 ]*sys->b0 ) )*sys->x[ 0 ];
         }
 
         if ( y < sys->min ) {

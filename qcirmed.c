@@ -16,8 +16,7 @@ int qCirMed_Setup( qCirMed_t *b, float *dataarea, size_t n, float initval )
     if ( NULL != b ) {
         b->itemcount = n;
         b->head = dataarea;
-        qCirMed_Reset( b, initval );
-        retVal = 1;
+        retVal = qCirMed_Reset( b, initval );
     }
     return retVal;
 }
@@ -29,7 +28,7 @@ int qCirMed_Reset( qCirMed_t *b, float initval )
         size_t i;
         b->recent = initval;
         b->oldest = initval;
-        b->sum = 0.0;
+        b->sum = 0.0f;
         for ( i = 0u; i < b->itemcount; ++i ) {
             b->head[ i ] = initval;
             b->sum += initval;
