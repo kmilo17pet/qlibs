@@ -17,6 +17,8 @@ static qFP16_t qFP16_rs( qFP16_t x );
 static qFP16_t qFP16_log2i( qFP16_t x );
 static char *qFP16_itoa( char *buf, uint32_t scale, uint32_t value, uint8_t skip );
 
+/*cstat -MISRAC2012-Rule-10.8 -CERT-FLP34-C -MISRAC2012-Rule-1.3_n -MISRAC2012-Rule-10.1_R6 -ATH-shift-neg -CERT-INT34-C_c*/
+
 /*============================================================================*/
 int qFP16_SettingsSet( qFP16_Settings_t *instance, qFP16_t min, qFP16_t max, uint8_t rounding, uint8_t saturate )
 {
@@ -66,7 +68,9 @@ qFP16_t qFP16_IntToFP( int x )
 qFP16_t qFP16_FloatToFP( float x )
 {
     float RetValue;
+    /*cstat -CERT-FLP36-C*/
     RetValue = x * (float)fp_unity;
+    /*cstat +CERT-FLP36-C*/
     if ( 1u == fp->rounding ) {
         RetValue += (RetValue >= 0.0f) ? 0.5f : -0.5f;
     }    
@@ -75,13 +79,17 @@ qFP16_t qFP16_FloatToFP( float x )
 /*============================================================================*/
 float qFP16_FPToFloat( qFP16_t x )
 {
+    /*cstat -CERT-FLP36-C*/
     return (float)x * fp_1divunity_float; 
+    /*cstat +CERT-FLP36-C*/
 }
 /*============================================================================*/
 qFP16_t qFP16_DoubleToFP( double x )
 {
     double RetValue;
+    /*cstat -CERT-FLP36-C*/
     RetValue = x * (double)fp_unity;
+    /*cstat +CERT-FLP36-C*/
     if( 1u == fp->rounding ){
         RetValue += ( RetValue >= 0.0 )? 0.5 : -0.5;
     }    
@@ -90,7 +98,9 @@ qFP16_t qFP16_DoubleToFP( double x )
 /*============================================================================*/
 double qFP16_FPToDouble( qFP16_t x )
 {
+    /*cstat -CERT-FLP36-C*/
     return (double)x * fp_1divunity_double; 
+    /*cstat +CERT-FLP36-C*/
 }     
 /*============================================================================*/
 qFP16_t qFP16_Abs( qFP16_t x )
@@ -105,7 +115,9 @@ qFP16_t qFP16_Floor( qFP16_t x )
 /*============================================================================*/
 qFP16_t qFP16_Ceil( qFP16_t x )
 {
+    /*cstat -MISRAC2012-Rule-10.1_R2*/
     return ( x & (qFP16_t)0xFFFF0000uL ) + ( ( x & (qFP16_t)0x0000FFFFuL ) ? fp_unity : 0 ); 
+    /*cstat +MISRAC2012-Rule-10.1_R2*/
 }
 /*============================================================================*/
 qFP16_t qFP16_Round( qFP16_t x )
@@ -136,11 +148,12 @@ qFP16_t qFP16_Mul( qFP16_t x, qFP16_t y )
     qFP16_t RetValue = QFP16_OVERFLOW;
     int32_t a, c, ac, adcb, mulH;
     uint32_t b, d, bd, tmp, mulL;
-    
+    /*cstat -MISRAC2012-Rule-10.3*/
     a = ( x >> 16 );
     c = ( y >> 16 );
     b = ( x & 0xFFFF );
     d = ( y & 0xFFFF );
+    /*cstat +MISRAC2012-Rule-10.3*/
     ac = a*c;
     adcb = (int32_t)( ( (uint32_t)a*d ) + ( (uint32_t)c*b ) );
     bd = b*d;    
@@ -477,7 +490,7 @@ qFP16_t qFP16_Atan2( qFP16_t y , qFP16_t x )
     r_3 = qFP16_Mul( qFP16_Mul( r, r ), r );
     angle += qFP16_Mul( 0x00003240, r_3 ) - qFP16_Mul( 0x0000FB50, r );
     if ( y < 0 ) {
-	    angle = -angle;
+        angle = -angle;
     }
     return angle;
 }
@@ -767,8 +780,8 @@ static qFP16_t qFP16_log2i( qFP16_t x )
     qFP16_t RetValue = 0;
 
     while ( x >= QFP16_2 ) {
-	    RetValue++;
-	    x = qFP16_rs( x );
+        RetValue++;
+        x = qFP16_rs( x );
     }
 
     if ( 0 == x ) {
@@ -781,7 +794,7 @@ static qFP16_t qFP16_log2i( qFP16_t x )
             RetValue <<= 1;
             if ( x >= QFP16_2 ) {
                 RetValue |= 1;
-                x = qFP16_rs(x);
+                x = qFP16_rs( x );
             }
         }
         if ( 1u == fp->rounding ) {
@@ -802,7 +815,9 @@ static char *qFP16_itoa( char *buf, uint32_t scale, uint32_t value, uint8_t skip
         digit = ( value / scale );
         if ( ( 0u == skip ) || ( 0u != digit ) || ( 1u == scale ) ) {
             skip = 0u;
+            /*cstat -MISRAC2012-Rule-10.2 -MISRAC2012-Rule-10.3*/
             *buf++ = (char)'0' + (char)digit;
+            /*cstat +MISRAC2012-Rule-10.2 +MISRAC2012-Rule-10.3*/
             value %= scale;
         }
         scale /= 10u;
@@ -810,3 +825,5 @@ static char *qFP16_itoa( char *buf, uint32_t scale, uint32_t value, uint8_t skip
     return buf;
 }
 /*============================================================================*/
+
+/*cstat +MISRAC2012-Rule-10.8 +CERT-FLP34-C +MISRAC2012-Rule-1.3_n +MISRAC2012-Rule-10.1_R6 +ATH-shift-neg +CERT-INT34-C_c*/

@@ -55,14 +55,14 @@ float qCSys_Excite( qCSys_t *sys, float u )
 {
     float y = 0.0f;
     if ( NULL != sys ) {
-        float dx0 = 0.0f;
-
         if ( 1u == sys->n ) {
             sys->x[ 0 ] += ( u - ( sys->x[ 0 ]*sys->a[ 0 ] ) )*sys->dt; 
             y = ( sys->b[ 0 ] - ( sys->a[ 0 ]*sys->b0 ) )*sys->x[ 0 ];
         }
         else {    
             size_t i;
+            float dx0 = 0.0f;
+            
             for (  i = ( sys->n - 1u) ; i >= 1u ; --i ) {
                 dx0 += sys->a[ i ]*sys->x[ i ]; 
                 sys->x[ i ] += sys->x[ i - 1u ]*sys->dt;

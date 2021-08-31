@@ -17,7 +17,7 @@
 #define BITNSLOTS(nb)           ( (nb + LONG_BIT - 1) / LONG_BIT)
 #define BITOFFSET(index)        ( (index) & (uint32_t)31u)
 #define BITMASKMERGE(a,b,abits) ( (b) ^ (((a) ^ (b)) & (abits)))
-#define BITMASK32(nbits)        ( ( 0u != (nbits) )? ~(uint32_t)0 >> (sizeof(uint32_t)*8uL-(nbits)) : (uint32_t)0) 
+#define BITMASK32(nbits)        ( ( 0u != ( nbits) )? ( ~(uint32_t)0 >> ( ( sizeof(uint32_t)*8uL ) - (nbits) ) ) : (uint32_t)0) 
 
 
 static uint32_t qBitField_Read_uint32( const qBitField_t *instance, size_t index );
@@ -28,7 +28,9 @@ int qBitField_Setup( qBitField_t *instance, void *area, size_t area_size )
 {
     int retValue = 0;
     if ( ( NULL != instance ) && ( NULL != area ) && ( area_size > 0u ) ) {
-        instance->field = area;
+        /*cstat -MISRAC2012-Rule-11.5 -CERT-EXP36-C_b*/
+        instance->field = (uint32_t *)area;
+        /*cstat +MISRAC2012-Rule-11.5 +CERT-EXP36-C_b*/
         instance->size = area_size*8u;
         instance->nSlots = area_size/sizeof(uint32_t);      
         retValue = 1; 
@@ -122,7 +124,9 @@ uint32_t qBitField_ReadUINTn( qBitField_t *instance, size_t index, size_t xBits 
         }
         else {
             retValue = qBitField_Read_uint32( instance, index );
-            retValue &= ( ( ~((uint32_t)0) ) >> ( 32u - xBits ) ); /*safe mask*/    /*ATH-shift-bounds,MISRAC2012-Rule-12.2 deviation allowed*/
+            /*cstat -ATH-shift-bounds -MISRAC2012-Rule-12.2 -CERT-INT34-C_b*/
+            retValue &= ( ( ~((uint32_t)0) ) >> ( 32u - xBits ) ); /*safe mask*/ 
+            /*cstat +ATH-shift-bounds +MISRAC2012-Rule-12.2 +CERT-INT34-C_b*/
         }        
     }
     return retValue;
@@ -141,8 +145,12 @@ int qBitField_WriteUINTn( qBitField_t *instance, size_t index, uint32_t value, s
         }
         else {
             w = qBitField_Read_uint32( instance, index );
+            /*cstat -ATH-shift-bounds -MISRAC2012-Rule-12.2 -CERT-INT34-C_b*/
             value &= ( ( ~((uint32_t)0) ) >> ( 32u - xBits ) ); /*safe mask*/ /*ATH-shift-bounds,MISRAC2012-Rule-12.2 deviation allowed*/
-            mask = ( ~((uint32_t)0) ) << xBits;  /*!#ok*/
+            /*cstat +ATH-shift-bounds +MISRAC2012-Rule-12.2 +CERT-INT34-C_b*/
+            /*cstat -ATH-overflow*/
+            mask = ( ~((uint32_t)0) ) << xBits;
+            /*cstat +ATH-overflow*/
             qBitField_Write_uint32( instance, index, BITMASKMERGE( w, value, mask ) );         
         }        
         retValue = 1;
@@ -178,7 +186,7 @@ void* qBitField_Dump( qBitField_t *instance, void* dst, size_t n )
     void *retValue = NULL;
     if ( ( NULL != instance ) && ( NULL != dst ) ) {
         if( n <= ( instance->size/8u ) ){
-            retValue = memcpy( dst, instance->field, n );
+            retValue = memcpy( dst, (void*)instance->field, n );
         }
     }
     return retValue;
@@ -196,7 +204,9 @@ static uint32_t qBitField_Read_uint32( const qBitField_t *instance, size_t index
     bits_taken  = (uint8_t)( 32u - of );
     
     if ( ( 0u != of ) && ( ( index + bits_taken ) < instance->size ) ) {
-        result |= instance->field[ slot + 1u ] << (uint32_t)bits_taken ; /*ATH-shift-bounds,MISRAC2012-Rule-12.2 deviation allowed*/
+        /*cstat -CERT-INT30-C_a -ATH-shift-bounds -MISRAC2012-Rule-12.2 -CERT-INT34-C_b*/
+        result |= instance->field[ slot + 1u ] << (uint32_t)bits_taken ;
+        /*cstat +CERT-INT30-C_a +ATH-shift-bounds +MISRAC2012-Rule-12.2 +CERT-INT34-C_b*/
     }
     return result;
 }

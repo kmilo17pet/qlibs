@@ -80,10 +80,10 @@ int qCirMed_Insert( qCirMed_t *b, float xk )
         }
         
         if ( b->itemswaiting == b->itemcount ) {
-            b->oldest = ( ( b->reader + 1 ) >= b->tail )? b->head[ 0 ] : b->reader[ 1 ];
+            b->oldest = ( ( b->reader + 1u ) >= b->tail )? b->head[ 0 ] : b->reader[ 1 ];
         }
         else {
-            b->oldest = *( b->tail - 1 );  
+            b->oldest = *( b->tail - 1u );  
         }
         retVal = 1;
     }
