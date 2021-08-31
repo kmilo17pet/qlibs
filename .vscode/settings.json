@@ -1,0 +1,11 @@
+{
+    "files.associations": {
+        "qsignalsmoother.h": "c",
+        "type_traits": "c",
+        "qpid.h": "c",
+        "qcsys.h": "c",
+        "*.d": "c",
+        "qdsys.h": "c",
+        "qcirmed.h": "c"
+    }
+}
