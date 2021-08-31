@@ -16,6 +16,11 @@ extern "C" {
     #include <stdint.h>
     #include <string.h>
 
+    /** 
+    * @brief A BitField object
+    * @details The instance should be initialized using the qBitField_Setup() API.
+    * @note Do not access any member of this structure directly. 
+    */
     typedef struct
     {
         /*! @cond  */
@@ -25,6 +30,9 @@ extern "C" {
         /*! @endcond  */
     } qBitField_t;
 
+    /** 
+    * @brief Use to determine the array size for a BitField.
+    */  
     #define QBITFIELD_SIZE( NBITS )     ( 4* ( ( ( NBITS-1 ) / 32 ) + 1 ) )
 
     /**
