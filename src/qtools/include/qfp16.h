@@ -393,7 +393,7 @@ extern "C" {
     * @return A pointer to the resulting null-terminated string, same as 
     * parameter @a str 
     */ 
-    char* qFP16_FPtoA( qFP16_t num, char *str, int decimals );
+    char* qFP16_FPToA( qFP16_t num, char *str, int decimals );
 
     /**
     * @brief Parses the C string @a s, interpreting its content as a fixed-point
@@ -412,7 +412,7 @@ extern "C" {
     * would be out of the range of representable values by a fixed-point Q16.16,
     * the function returns QFP16_OVERFLOW.
     */       
-    qFP16_t qFP16_AtoFP( char *s );
+    qFP16_t qFP16_AToFP( char *s );
 
 #ifdef __cplusplus
 }
