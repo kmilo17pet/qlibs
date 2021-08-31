@@ -62,8 +62,10 @@ extern "C" {
     */
     typedef struct
     {
+        /*! @cond  */
         qFP16_t min, max;
         uint8_t rounding, saturate;
+        /*! @endcond  */
     }qFP16_Settings_t;
 
     /**
