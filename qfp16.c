@@ -6,11 +6,12 @@
 
 #include "qfp16.h"
 
+#define QFP16_6_5               ( 425984 )              /*6.5*/
+#define QFP16_1DIVUNITY_FLOAT   ( 0.0000152587890625f ) /*1/65536*/
+#define QFP16_1DIVUNITY_DOUBLE  ( 0.0000152587890625  )
+
 static qFP16_Settings_t fp_default = { QFP16_MIN, QFP16_MAX, 1u, 0u };
 static qFP16_Settings_t *fp = &fp_default;
-static const qFP16_t fp_unity = QFP16_1;
-static const float fp_1divunity_float = 1.0f/65536.0f;
-static const double fp_1divunity_double = 1.0/65536.0;
 
 static uint32_t qFP16_OverflowCheck( uint32_t res, uint32_t x, uint32_t y );
 static qFP16_t qFP16_rs( qFP16_t x );
@@ -49,10 +50,10 @@ int qFP16_FPToInt( qFP16_t x )
     int RetValue;
     if ( 1u == fp->rounding ) {
         if ( x >= 0 ) {
-            RetValue =  ( x + ( fp_unity >> 1 ) ) / fp_unity;
+            RetValue =  ( x + ( QFP16_1 >> 1 ) ) / QFP16_1;
         }
         else {
-            RetValue =  ( x - ( fp_unity >> 1 ) ) / fp_unity;
+            RetValue =  ( x - ( QFP16_1 >> 1 ) ) / QFP16_1;
         }	        
     }
     else {
@@ -70,7 +71,7 @@ qFP16_t qFP16_FloatToFP( float x )
 {
     float RetValue;
     /*cstat -CERT-FLP36-C*/
-    RetValue = x * (float)fp_unity;
+    RetValue = x * (float)QFP16_1;
     /*cstat +CERT-FLP36-C*/
     if ( 1u == fp->rounding ) {
         RetValue += (RetValue >= 0.0f) ? 0.5f : -0.5f;
@@ -81,7 +82,7 @@ qFP16_t qFP16_FloatToFP( float x )
 float qFP16_FPToFloat( qFP16_t x )
 {
     /*cstat -CERT-FLP36-C*/
-    return (float)x * fp_1divunity_float; 
+    return (float)x * QFP16_1DIVUNITY_FLOAT; 
     /*cstat +CERT-FLP36-C*/
 }
 /*============================================================================*/
@@ -89,7 +90,7 @@ qFP16_t qFP16_DoubleToFP( double x )
 {
     double RetValue;
     /*cstat -CERT-FLP36-C*/
-    RetValue = x * (double)fp_unity;
+    RetValue = x * (double)QFP16_1;
     /*cstat +CERT-FLP36-C*/
     if( 1u == fp->rounding ){
         RetValue += ( RetValue >= 0.0 )? 0.5 : -0.5;
@@ -100,7 +101,7 @@ qFP16_t qFP16_DoubleToFP( double x )
 double qFP16_FPToDouble( qFP16_t x )
 {
     /*cstat -CERT-FLP36-C*/
-    return (double)x * fp_1divunity_double; 
+    return (double)x * QFP16_1DIVUNITY_DOUBLE; 
     /*cstat +CERT-FLP36-C*/
 }     
 /*============================================================================*/
@@ -124,7 +125,7 @@ qFP16_t qFP16_Floor( qFP16_t x )
 qFP16_t qFP16_Ceil( qFP16_t x )
 {
     /*cstat -MISRAC2012-Rule-10.1_R2*/
-    return ( x & (qFP16_t)0xFFFF0000uL ) + ( ( x & (qFP16_t)0x0000FFFFuL ) ? fp_unity : 0 ); 
+    return ( x & (qFP16_t)0xFFFF0000uL ) + ( ( x & (qFP16_t)0x0000FFFFuL ) ? QFP16_1 : 0 ); 
     /*cstat +MISRAC2012-Rule-10.1_R2*/
 }
 /*============================================================================*/
@@ -203,7 +204,9 @@ qFP16_t qFP16_Div( qFP16_t x, qFP16_t y )
             bit <<= 1;
         }
         RetValue = QFP16_OVERFLOW;
-        if ( 0uL != bit ) {
+        /*cstat -MISRAC2012-Rule-14.3_a*/
+        if ( 0uL != bit ) { /*MISRAC2012-Rule-14.3_a false positive*/
+        /*cstat +MISRAC2012-Rule-14.3_a*/  
             uint32_t quotient = 0uL;
             if ( 0uL != ( xDiv & 0x80000000uL ) ) {
                 if ( xRem >= xDiv ) {
@@ -240,7 +243,7 @@ qFP16_t qFP16_Div( qFP16_t x, qFP16_t y )
             }
         }
     }
-    return qFP16t_Saturate( RetValue, x, y );;    
+    return qFP16t_Saturate( RetValue, x, y );    
 }
 /*============================================================================*/
 qFP16_t qFP16_Mod( qFP16_t x, qFP16_t y )
@@ -261,7 +264,7 @@ qFP16_t qFP16_Sqrt( qFP16_t x )
         uint8_t  n;
 
         RetValue = 0;
-        bit = ( x & (qFP16_t)0xFFF00000uL )? (uint32_t)( 1 << 30 ) : (uint32_t)( 1 << 18 );
+        bit = ( 0 != ( x & (qFP16_t)0xFFF00000uL ) )? (uint32_t)( 1 << 30 ) : (uint32_t)( 1 << 18 );
         while ( bit > (uint32_t)x ) {
             bit >>= 2;
         }
@@ -305,9 +308,9 @@ qFP16_t qFP16_Exp( qFP16_t x )
     int i;
     
     if ( 0 == x ) {
-        RetValue = fp_unity;
+        RetValue = QFP16_1;
     }
-    else if ( x == fp_unity ) {
+    else if ( x == QFP16_1 ) {
         RetValue = QFP16_E;
     }
     else if ( x >= QFP16_EXP_MAX ) {
@@ -322,7 +325,7 @@ qFP16_t qFP16_Exp( qFP16_t x )
             x = -x;
         }
         
-        RetValue = x + fp_unity;
+        RetValue = x + QFP16_1;
         term = x;
        
         for ( i = 2; i < 30; ++i ) {
@@ -335,7 +338,7 @@ qFP16_t qFP16_Exp( qFP16_t x )
         }
 
         if ( 1u == isNegative ){
-            RetValue = qFP16_Div( fp_unity, RetValue );  
+            RetValue = qFP16_Div( QFP16_1, RetValue );  
         }
     }
     return RetValue; 
@@ -346,17 +349,15 @@ qFP16_t qFP16_Log( qFP16_t x )
     qFP16_t RetValue = (qFP16_t)QFP16_OVERFLOW;
     
     if ( x > 0 ) {
-        qFP16_t guess = QFP16_2;
-        qFP16_t delta, e;
-        int scaling = 0;
-        int count = 0;
+        qFP16_t guess = QFP16_2, delta, e;
+        int scaling = 0, count = 0;
         
         while ( x > QFP16_100 ){
             x = qFP16_Div( x, QFP16_E4 );
             scaling += 4;
         }
 
-        while ( x < fp_unity ) {
+        while ( x < QFP16_1 ) {
             x = qFP16_Mul(x, QFP16_E4 );
             scaling -= 4;
         }
@@ -381,12 +382,12 @@ qFP16_t qFP16_Log2( qFP16_t x )
     qFP16_t RetValue = QFP16_OVERFLOW;
     qFP16_t inv;
     if ( x > 0 ) {
-        if ( x < fp_unity ) {
+        if ( x < QFP16_1 ) {
             if ( 1 == x ) {
                 RetValue = QFP16_N16;
             }
             else {
-                inv = qFP16_Div( fp_unity, x );
+                inv = qFP16_Div( QFP16_1, x );
                 RetValue = -qFP16_log2i( inv );   
             }
         }        
@@ -441,8 +442,7 @@ qFP16_t qFP16_WrapTo180( qFP16_t x )
 /*============================================================================*/
 qFP16_t qFP16_Sin( qFP16_t x )
 {
-    qFP16_t RetValue;
-    qFP16_t x2;
+    qFP16_t RetValue, x2;
     
     x = qFP16_WrapToPi( x );
     x2 = qFP16_Mul( x ,x );
@@ -491,22 +491,24 @@ qFP16_t qFP16_Atan2( qFP16_t y , qFP16_t x )
     }
     r_3 = qFP16_Mul( qFP16_Mul( r, r ), r );
     angle += qFP16_Mul( 0x00003240, r_3 ) - qFP16_Mul( 0x0000FB50, r );
-    if ( y < 0 ) {
+    /*cstat -ATH-neg-check-nonneg*/
+    if ( y < 0 ) { /*ATH-neg-check-nonneg false positive*/
         angle = -angle;
     }
+    /*cstat +ATH-neg-check-nonneg*/
     return angle;
 }
 /*============================================================================*/
 qFP16_t qFP16_Atan( qFP16_t x )
 {
-    return qFP16_Atan2( x, fp_unity );
+    return qFP16_Atan2( x, QFP16_1 );
 }
 /*============================================================================*/
 qFP16_t qFP16_Asin( qFP16_t x )
 {
     qFP16_t RetValue = 0;
-    if ( ( x <= fp_unity ) && ( x >= -fp_unity ) ) {
-        RetValue = fp_unity - qFP16_Mul( x, x );
+    if ( ( x <= QFP16_1 ) && ( x >= -QFP16_1 ) ) {
+        RetValue = QFP16_1 - qFP16_Mul( x, x );
         RetValue = qFP16_Div( x, qFP16_Sqrt( RetValue ) );
         RetValue = qFP16_Atan( RetValue ); 
     }
@@ -520,11 +522,11 @@ qFP16_t qFP16_Acos( qFP16_t x )
 /*============================================================================*/
 qFP16_t qFP16_Cosh( qFP16_t x )
 {
-    qFP16_t epx, enx;
     qFP16_t RetValue = QFP16_OVERFLOW;
+    qFP16_t epx, enx;
     
     if ( 0 == x ) {
-        RetValue = fp_unity;
+        RetValue = QFP16_1;
     }
     else if ( ( x >= QFP16_EXP_MAX ) || ( x <= QFP16_EXP_MIN ) ) {
         RetValue = fp->max;
@@ -547,7 +549,7 @@ qFP16_t qFP16_Sinh( qFP16_t x )
     qFP16_t epx, enx;
     
     if ( 0 == x ) {
-        RetValue = fp_unity;
+        RetValue = QFP16_1;
     }
     else if ( x >= QFP16_EXP_MAX ) {
         RetValue = fp->max;
@@ -568,17 +570,16 @@ qFP16_t qFP16_Sinh( qFP16_t x )
 /*============================================================================*/
 qFP16_t qFP16_Tanh( qFP16_t x )
 {
-    qFP16_t RetValue;
-    qFP16_t epx, enx;
+    qFP16_t RetValue, epx, enx;
     
     if( 0 == x ) {
         RetValue = 0;
     }
-    else if ( x > 425984 ) { /* tanh for any x>6.5 ~= 1*/
-        RetValue = fp_unity;
+    else if ( x >  QFP16_6_5 ) { /* tanh for any x>6.5 ~= 1*/
+        RetValue = QFP16_1;
     }
-    else if (x < -425984 ) { /* tanh for any x<6.5 ~= -1*/
-        RetValue = -fp_unity;
+    else if ( x < -QFP16_6_5 ) { /* tanh for any x<6.5 ~= -1*/
+        RetValue = -QFP16_1;
     }
     else {
         RetValue = qFP16_Abs( x );
@@ -593,18 +594,17 @@ qFP16_t qFP16_Tanh( qFP16_t x )
 /*============================================================================*/
 qFP16_t qFP16_Polyval( qFP16_t *p, size_t n, qFP16_t x )
 {
-    qFP16_t fx;
-    qFP16_t tmp;
+    qFP16_t fx, tmp;
     int32_t i;
     /*polynomial evaluation using Horner's method*/
     fx = p[ 0 ];
-    for( i = 1 ; i < (int32_t)n ; ++i ) {
-        tmp = qFP16_Mul(fx, x); 
-        if( QFP16_OVERFLOW == tmp ) {
+    for ( i = 1 ; i < (int32_t)n ; ++i ) {
+        tmp = qFP16_Mul( fx, x ); 
+        if ( QFP16_OVERFLOW == tmp ) {
             fx = QFP16_OVERFLOW;
             break;
         }
-        fx =  qFP16_Add( tmp , p[i] );
+        fx =  qFP16_Add( tmp , p[ i ] );
     }   
     return fx;  
 }
@@ -615,12 +615,12 @@ qFP16_t qFP16_IPow( qFP16_t x, qFP16_t y )
     qFP16_t n;
     int32_t i;
     
-    RetValue = fp_unity;
+    RetValue = QFP16_1;
     n = y >> 16;
     if ( 0 == n ) {
-        RetValue = fp_unity;
+        RetValue = QFP16_1;
     }
-    else if ( fp_unity == n ) {
+    else if ( QFP16_1 == n ) {
         RetValue = x;
     }
     else {
@@ -671,7 +671,7 @@ char* qFP16_FPToA( qFP16_t num, char *str, int decimals )
         str[8] = '\0';
     }
     else {
-        const uint32_t itoa_scales[6] = { 1uL, 10uL, 100uL, 1000uL, 10000uL, 100000uL };
+        const uint32_t itoa_scales[ 6 ] = { 1uL, 10uL, 100uL, 1000uL, 10000uL, 100000uL };
         uint32_t uValue, fPart, scale;
         int32_t iPart;
         
@@ -695,7 +695,7 @@ char* qFP16_FPToA( qFP16_t num, char *str, int decimals )
             iPart++;
             fPart -= scale;    
         }
-        str = qFP16_itoa(str, 10000, (uint32_t)iPart, 1u);
+        str = qFP16_itoa( str, 10000, (uint32_t)iPart, 1u );
 
         if ( 1u != scale ) {
             *str++ = '.';
@@ -709,29 +709,29 @@ char* qFP16_FPToA( qFP16_t num, char *str, int decimals )
 qFP16_t qFP16_AToFP(char *s)
 {
     uint8_t negative;
-    uint32_t iPart = 0uL, fPart = 0uL, scale = 1uL;
+    uint32_t iPart = 0uL, fPart = 0uL, scale = 1uL, digit;
     int32_t count = 0;
-    qFP16_t RetValue = (qFP16_t)QFP16_OVERFLOW;
-    int point_seen, overflow = 0;
+    qFP16_t RetValue = QFP16_OVERFLOW;
+    int point_seen = 0, overflow = 0;
     char c;
-    uint32_t digit;
     
-    while ( 1 == isspace( (int)*s) ) {
+    /*cstat -MISRAC2012-Dir-4.11_h*/
+    while ( 0 != isspace( (int)*s) ) {
         s++; /*discard whitespaces*/
     }
-
+    
     negative = (uint8_t)( '-' == *s );
-    if( ( '+' == *s ) || ( '-' == *s ) ) {
+    if ( ( '+' == *s )  || ( '-' == *s ) ) {
         s++; /*move to the next sign*/
     }
 
-    for ( point_seen = 0; '\0' != ( c = *s ); s++ ) {
+    for ( c = s[0] ; '\0' != c ;  c = s[0] ) {
         if ( '.' == c ) {
             point_seen = 1;
         }
-        else if ( 1 == isdigit( (int)c ) ) {
+        else if ( 0 != isdigit( (int)c ) ) {
             digit = (uint32_t)c - (uint32_t)'0';
-            if ( 0 != point_seen ) { /* Decode the fractional part */
+            if ( 1 == point_seen ) { /* Decode the fractional part */
                 scale *= 10u;
                 fPart *= 10u;
                 fPart += digit;
@@ -741,26 +741,28 @@ qFP16_t qFP16_AToFP(char *s)
                 iPart += digit;
                 count++;        
                 overflow = (int)( ( 0 == count ) || ( count > 5 ) || ( iPart > 32768uL ) || ( ( 0u == negative ) && ( iPart  > 32767uL ) ) );
-                if ( 0 != overflow ) {
+                if ( 1 == overflow ){
                     break;
                 }
             }
         }
-        else {
+        else{
             break;
         }
+        s++;
     }
-    if ( 0 == overflow ) {
+    if( 0 == overflow ){
         RetValue = (qFP16_t)iPart << 16;
         RetValue += qFP16_Div( (qFP16_t)fPart, (qFP16_t)scale );
         RetValue = ( 1u == negative )? -RetValue : RetValue;
     }   
+    /*cstat +MISRAC2012-Dir-4.11_h*/
     return RetValue;
 }
 /*============================================================================*/
 static uint32_t qFP16_OverflowCheck( uint32_t res, uint32_t x, uint32_t y )
 {
-    if ( !( ( x ^ y ) & 0x80000000uL ) && ( ( x ^ res ) & 0x80000000uL ) ) {
+    if ( ( 0uL == ( ( x ^ y ) & 0x80000000uL ) ) && ( 0uL != ( ( x ^ res ) & 0x80000000uL ) ) ) {
         res =  (uint32_t)QFP16_OVERFLOW;
     }    
     return res;
