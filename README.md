@@ -20,3 +20,4 @@ A collection of tools for embedded systems including:
 - PID control
 - Recursive LTI systems evaluation
 - Fast moving-average for huge windows
+- Cyclic Redundancy Check (CRC) calculators (8/16/32 bits)
