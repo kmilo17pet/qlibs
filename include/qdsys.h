@@ -41,7 +41,7 @@ extern "C" {
     * @param[in] c An array of @a wsize elements with the coefficients of the 
     * FIR filter. Coefficients should be given in descending powersof the 
     * nth-degree polynomial. To ignore pass NULL.
-    * @param[wsize] The number of elements of @a w.
+    * @param[in] wsize The number of elements of @a w.
     * @return If @a c is provided, returns the evaluation of the FIR filter. 
     * otherwise return the sum of the updated window @a w.
     */  
