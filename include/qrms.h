@@ -30,7 +30,7 @@ extern "C" {
         float f1, f2;
     } qRMS_t;
 
-    #define QRMS_INITIALIZER        { 0.0f, 0.1f, QRMS_DEFAULT_ALPHA, QRMS_DEFAULT_A1, QRMS_DEFAULT_A2, ( 1.0f + QRMS_DEFAULT_A1 + QRMS_DEFAULT_A2 ), 0.0f, 0.0f }
+    #define QRMS_INITIALIZER        { 0.0f, QRMS_DEFAULT_ALPHA, QRMS_DEFAULT_A1, QRMS_DEFAULT_A2, ( 1.0f + QRMS_DEFAULT_A1 + QRMS_DEFAULT_A2 ), 0.0f, 0.0f }
     
     /**
     * @brief Initialize the RMS instance by setting the default optimal parameters.
