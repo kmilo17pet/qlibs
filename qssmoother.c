@@ -159,7 +159,7 @@ static float qSSmoother_Filter_LPF1( _qSSmoother_t *f, float x )
         s->y1 = x;
         f->init = 0u;
     }
-    y = ( ( 1.0f - s->alpha )*x ) + ( s->alpha*s->y1 );
+    y = x + ( s->alpha*( s->y1 - x ) ) ;
     s->y1 = y;    
     
     return y;
