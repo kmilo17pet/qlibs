@@ -19,7 +19,7 @@ int qPID_Setup( qPID_controller_t *c, float kc, float ki, float kd, float dt )
         c->max = 100.0f;
         c->kw = 1.0f;
         c->epsilon = FLT_MIN;
-        c->init = 1u;
+        c->init = 0u;
         retVal = qPID_Reset( c );
     }
     return retVal;
@@ -28,10 +28,10 @@ int qPID_Setup( qPID_controller_t *c, float kc, float ki, float kd, float dt )
 int qPID_Reset( qPID_controller_t *c )
 {
     int retVal = 0;
-    if ( ( NULL != c ) && ( 0u == c->init) ) {
+    if ( ( NULL != c ) ) {
         c->e1 = 0.0f;
         c->ie = 0.0f;
-        c->init = 0u;
+        c->init = 1u;
         retVal = 1;
     }
     return retVal;
@@ -40,7 +40,7 @@ int qPID_Reset( qPID_controller_t *c )
 int qPID_SetSaturation( qPID_controller_t *c, float min, float max, float kw )
 {
     int retVal = 0;
-    if ( ( NULL != c ) && ( max > min ) && ( 0u == c->init ) && ( kw > 0.0f ) ) {
+    if ( ( NULL != c ) && ( max > min ) && ( 0u != c->init ) && ( kw > 0.0f ) ) {
         c->min = min;
         c->max = max;
         c->kw = kw;
@@ -52,7 +52,7 @@ int qPID_SetSaturation( qPID_controller_t *c, float min, float max, float kw )
 int qPID_SetParallel( qPID_controller_t *c )
 {
     int retVal = 0;
-    if ( ( NULL != c ) && ( 0u == c->init) ) {
+    if ( ( NULL != c ) && ( 0u != c->init) ) {
         float ti, td, tmp;
         ti = c->kc/c->ki;
         td = c->kd/c->kc;
@@ -68,7 +68,7 @@ int qPID_SetParallel( qPID_controller_t *c )
 int qPID_SetEpsilon( qPID_controller_t *c, float eps )
 {
     int retVal = 0;
-    if ( ( NULL != c ) && ( 0u == c->init) && ( eps > 0.0f) ) {
+    if ( ( NULL != c ) && ( 0u != c->init) && ( eps > 0.0f) ) {
         c->epsilon = eps;
         retVal = 1;
     }
@@ -78,7 +78,7 @@ int qPID_SetEpsilon( qPID_controller_t *c, float eps )
 float qPID_Control( qPID_controller_t *c, float w, float y )
 {
     float u = w;
-    if ( ( NULL != c ) && ( 0u == c->init) ) {
+    if ( ( NULL != c ) && ( 0u != c->init) ) {
         float e, v, de;
         e = w - y;
         if ( fabs( e ) <= ( c->epsilon ) ) {
