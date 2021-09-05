@@ -27,7 +27,7 @@ extern "C" {
     {
         /*! @cond  */
         uint8_t init;    
-        float kc, ki, kd, dt, min, max, epsilon, kw, e1, ie, u1;
+        float kc, ki, kd, dt, min, max, epsilon, kw, e1, ie, D, u1, beta;
         /*! @endcond  */
     } qPID_controller_t;
 

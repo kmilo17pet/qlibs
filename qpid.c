@@ -18,6 +18,7 @@ int qPID_Setup( qPID_controller_t *c, float kc, float ki, float kd, float dt )
         c->min = 0.0f;
         c->max = 100.0f;
         c->kw = 1.0f;
+        c->beta = 0.98f;
         c->epsilon = FLT_MIN;
         c->init = 0u;
         retVal = qPID_Reset( c );
@@ -31,6 +32,7 @@ int qPID_Reset( qPID_controller_t *c )
     if ( ( NULL != c ) ) {
         c->e1 = 0.0f;
         c->ie = 0.0f;
+        c->D = 0.0f;
         c->init = 1u;
         retVal = 1;
     }
@@ -75,6 +77,16 @@ int qPID_SetEpsilon( qPID_controller_t *c, float eps )
     return retVal;
 }
 /*============================================================================*/
+int qPID_SetDerivativeFilter( qPID_controller_t *c, float beta )
+{
+    int retVal = 0;
+    if ( ( NULL != c ) && ( 0u != c->init) && ( beta > 0.0f) && ( beta < 1.0f) ) {
+        c->beta = beta;
+        retVal = 1;
+    }
+    return retVal;
+}
+/*============================================================================*/
 float qPID_Control( qPID_controller_t *c, float w, float y )
 {
     float u = w;
@@ -83,16 +95,12 @@ float qPID_Control( qPID_controller_t *c, float w, float y )
         e = w - y;
         if ( fabs( e ) <= ( c->epsilon ) ) {
             e = 0.0f;
-            c->ie += c->u1*( c->dt );
-            de = -c->e1/c->dt;
-            v  = ( c->ki*c->ie ) + ( c->kd*de );
         }
-        else {
-            c->ie += ( e + c->u1 )*( c->dt );
-            de = ( e - c->e1 )/c->dt;
-            v  = ( c->kc*e ) + ( c->ki*c->ie ) + ( c->kd*de );
-        }
-
+        c->ie += ( e + c->u1 )*( c->dt ); /*integral with anti-windup*/
+        de = ( e - c->e1 )/c->dt;   /*compute the derivative component*/
+        c->D = de + ( c->beta*( c->D - de ) ); /*derivative filtering*/
+        v  = ( c->kc*e ) + ( c->ki*c->ie ) + ( c->kd*c->D );
+        
         u = v;
         if ( u > c->max ) {
             u = c->max;
