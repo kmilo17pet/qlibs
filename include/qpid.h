@@ -75,6 +75,14 @@ extern "C" {
     int qPID_SetEpsilon( qPID_controller_t *c, float eps );
 
     /**
+    * @brief Set the tunning parameter for the derivative filter.
+    * @param[in] c A pointer to the discrete LST system instance
+    * @param[in] beta The tunning parameter. [ 0 < beta < 1 ]
+    * @return 1 on success, otherwise return 0.
+    */  
+    int qPID_SetDerivativeFilter( qPID_controller_t *c, float beta );
+    
+    /**
     * @brief Computes the control action for given PID controller instance.
     * @param[in] c A pointer to the discrete LST system instance
     * @param[in] w The reference value aka SetPoint.
