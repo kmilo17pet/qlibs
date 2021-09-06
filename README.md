@@ -18,6 +18,7 @@ A collection of tools for embedded systems including:
 - BitFields
 - Smooth filters
 - PID control
-- Recursive LTI systems evaluation
+- Recursive LTI systems evaluation.
+- Recursive RMS calculation.
 - Fast moving-average for huge windows
-- Cyclic Redundancy Check (CRC) calculators (8/16/32 bits)
+- Cyclic Redundancy Check (CRC) calculator (8/16/32 bits)
