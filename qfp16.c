@@ -6,9 +6,15 @@
 
 #include "qfp16.h"
 
-#define QFP16_6_5               ( 425984 )              /*6.5*/
-#define QFP16_1DIVUNITY_FLOAT   ( 0.0000152587890625f ) /*1/65536*/
-#define QFP16_1DIVUNITY_DOUBLE  ( 0.0000152587890625  )
+/*used only for internal operations*/
+#define QFP16_2                     (  131072 )     /* 2 */
+#define QFP16_3                     (  196608 )     /* 3 */
+#define QFP16_N16                   ( -1048576 )    /* -16 */
+#define QFP16_100                   (  6553600 )    /* 100 */
+#define QFP16_6_5                   (  425984 )              /*6.5*/
+#define QFP16_1DIVUNITY_FLOAT       (  0.0000152587890625f ) /*1/65536*/
+#define QFP16_1DIVUNITY_DOUBLE      (  0.0000152587890625  )
+
 
 static qFP16_Settings_t fp_default = { QFP16_MIN, QFP16_MAX, 1u, 0u };
 static qFP16_Settings_t *fp = &fp_default;
@@ -172,7 +178,8 @@ qFP16_t qFP16_Mul( qFP16_t x, qFP16_t y )
     if ( mulL < bd ) {
         mulH++;
     }
-    if ( ( mulH >> 31 ) == ( mulH >> 15 ) ) {
+    a = ( mulH < 0 )? -1 : 0;
+    if ( a == ( mulH >> 15 ) ) {
         if ( 1u == fp->rounding ) {
             uint32_t tmp2;
             tmp2 = mulL;

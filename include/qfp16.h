@@ -20,39 +20,43 @@ extern "C" {
     /**  @brief Fixed-point Q16.16 type with width of exactly 32 bits.*/ 
     typedef int32_t qFP16_t;
 
-    #define QFP16_EPSILON             (  1 ) 
-    #define QFP16_MIN                 ( -2147483647 ) /* -32767.99998 */
-    #define QFP16_MAX                 (  2147483647 ) /* +32767.99998 */
-    #define QFP16_OVERFLOW            ( (qFP16_t)-2147483648 ) /* overflow( 0x80000000 ) */
+    /*! @cond  */
+    #define QFP16_EPSILON       (  1 ) 
+    #define QFP16_MIN           ( -2147483647 ) /* -32767.99998 */
+    #define QFP16_MAX           (  2147483647 ) /* +32767.99998 */
+    #define QFP16_OVERFLOW      ( (qFP16_t)-2147483648 ) /* overflow( 0x80000000 ) */
     
-    #define QFP16_PI                  (  205887  )    /* pi */
-    #define QFP16_2PI                 (  411775 )     /* 2*pi */ 
-    #define QFP16_NPI                 ( -205887 )     /* -pi */
-    #define QFP16_1_DIV_PI            (  20861 )      /* 1/pi */
-    #define QFP16_E                   (  178145 )     /* e */
-    #define QFP16_E4                  (  3578144 )    /* e^4 */
-    #define QFP16_P4_DIV_PI           (  83443 )      /* 4/pi */
-    #define QFP16_N4_DIV_PI           ( -83443 )      /* -4/pi */
-    #define QFP16_PI_DIV_2            (  102944 )     /* pi/2 */
-    #define QFP16_PI_DIV_4            (  51471 )      /* pi/4 */
-    #define QFP16_3PI_DIV_4           (  154415 )     /* 3*pi/4 */      
-    #define QFP16_1_DIV_2             (  32768 )      /* 1/2 */
-    #define QFP16_LN2                 (  45426 )      /* log(2) */
-    #define QFP16_LN10                (  150902 )     /* log(10) */
-    #define QFP16_SQRT2               (  92682 )      /* sqrt(2) */
-    #define QFP16_180_DIV_PI          (  3754936 )    /* 180/pi */
-    #define QFP16_PI_DIV_180          (  1144 )       /* pi/180 */
-    #define QFP16_180                 (  11796480 )   /* 180 */
-    #define QFP16_360                 (  23592960 )   /* 360 */
-    #define QFP16_EXP_MAX             (  681391 )     /* max value for qFP16_Exp function*/
-    #define QFP16_EXP_MIN             ( -681391 )     /* min value for qFP16_Exp function*/
-    /*used only for internal operations*/
-    #define QFP16_1                   (  65536 )      /* 1 */
-    #define QFP16_2                   (  131072 )     /* 2 */
-    #define QFP16_3                   (  196608 )     /* 3 */
-    #define QFP16_N16                 ( -1048576 )    /* -16 */
-    #define QFP16_100                 (  6553600 )    /* 100 */
+    #define QFP16_PI            (  205887  )    /* pi */
+    #define QFP16_2PI           (  411775 )     /* 2*pi */ 
+    #define QFP16_NPI           ( -205887 )     /* -pi */
+    #define QFP16_1_DIV_PI      (  20861 )      /* 1/pi */
+    #define QFP16_E             (  178145 )     /* e */
+    #define QFP16_E4            (  3578144 )    /* e^4 */
+    #define QFP16_P4_DIV_PI     (  83443 )      /* 4/pi */
+    #define QFP16_N4_DIV_PI     ( -83443 )      /* -4/pi */
+    #define QFP16_PI_DIV_2      (  102944 )     /* pi/2 */
+    #define QFP16_PI_DIV_4      (  51471 )      /* pi/4 */
+    #define QFP16_3PI_DIV_4     (  154415 )     /* 3*pi/4 */      
+    #define QFP16_1_DIV_2       (  32768 )      /* 1/2 */
+    #define QFP16_LN2           (  45426 )      /* log(2) */
+    #define QFP16_LN10          (  150902 )     /* log(10) */
+    #define QFP16_SQRT2         (  92682 )      /* sqrt(2) */
+    #define QFP16_180_DIV_PI    (  3754936 )    /* 180/pi */
+    #define QFP16_PI_DIV_180    (  1144 )       /* pi/180 */
+    #define QFP16_180           (  11796480 )   /* 180 */
+    #define QFP16_360           (  23592960 )   /* 360 */
+    #define QFP16_EXP_MAX       (  681391 )     /* max value for qFP16_Exp function*/
+    #define QFP16_EXP_MIN       ( -681391 )     /* min value for qFP16_Exp function*/
+    #define QFP16_1             (  65536 )      /* 1 */
+    /*! @endcond  */
 
+    /** 
+    * @brief A macro for defining a fixed-point constant value.
+    * @note You should only use this for constant values. For runtime-conversions
+    * use qFP16_IntToFP(), qFP16_FloatToFP() or qFP16_DoubleToFP() instead.
+    * @param[in] x A literal value
+    * @return The literal argument @a x converted to fixed-point(qFP16_t).
+    */
     #define qFP16_Constant(x)      ( (qFP16_t)(((x) >= 0) ? ((x) * 65536.0 + 0.5) : ((x) * 65536.0 - 0.5)) )
 
     /** 
