@@ -117,7 +117,7 @@ float qPID_Control( qPID_controller_t *c, float w, float y )
         if ( fabs( e ) <= ( c->epsilon ) ) {
             e = 0.0f;
         }
-        c->ie += ( 0.5f*(e + c->e1) + c->u1 )*( c->dt ); /*integral with anti-windup*/
+        c->ie += ( ( 0.5f*(e + c->e1) ) + c->u1 )*( c->dt ); /*integral with anti-windup*/
         de = ( e - c->e1 )/c->dt;   /*compute the derivative component*/
         c->D = de + ( c->beta*( c->D - de ) ); /*derivative filtering*/
         v  = ( c->kc*e ) + ( c->ki*c->ie ) + ( c->kd*c->D );
