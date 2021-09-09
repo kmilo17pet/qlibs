@@ -11,17 +11,27 @@ int qPID_Setup( qPID_controller_t *c, float kc, float ki, float kd, float dt )
 {
     int retVal = 0;
     if ( ( NULL != c ) && ( dt > 0.0f ) ) {
+        c->dt = dt;
+        c->init = 1u;
+        (void)qPID_SetDerivativeFilter( c, 0.98f );
+        (void)qPID_SetEpsilon( c, FLT_MIN );
+        (void)qPID_SetGains( c, kc, ki, kd );
+        (void)qPID_SetSaturation( c , 0.0f, 100.0f, 1.0f );
+        (void)qPID_SetTrackingMode( c, NULL, 1.0f );
+        retVal = qPID_Reset( c );
+        
+    }
+    return retVal;
+}
+/*============================================================================*/
+int qPID_SetGains( qPID_controller_t *c, float kc, float ki, float kd )
+{
+    int retVal = 0;
+    if ( ( NULL != c ) && ( 0u != c->init ) ) {
         c->kc = kc;
         c->ki = ki;
         c->kd = kd;
-        c->dt = dt;
-        c->min = 0.0f;
-        c->max = 100.0f;
-        c->kw = 1.0f;
-        c->beta = 0.98f;
-        c->epsilon = FLT_MIN;
-        c->init = 0u;
-        retVal = qPID_Reset( c );
+        retVal = 1;
     }
     return retVal;
 }
@@ -29,11 +39,11 @@ int qPID_Setup( qPID_controller_t *c, float kc, float ki, float kd, float dt )
 int qPID_Reset( qPID_controller_t *c )
 {
     int retVal = 0;
-    if ( ( NULL != c ) ) {
+    if ( ( NULL != c ) && ( 0u != c->init ) ) {
         c->e1 = 0.0f;
         c->ie = 0.0f;
         c->D = 0.0f;
-        c->init = 1u;
+        c->u1 = 0.0f;
         retVal = 1;
     }
     return retVal;
@@ -42,7 +52,7 @@ int qPID_Reset( qPID_controller_t *c )
 int qPID_SetSaturation( qPID_controller_t *c, float min, float max, float kw )
 {
     int retVal = 0;
-    if ( ( NULL != c ) && ( max > min ) && ( 0u != c->init ) && ( kw > 0.0f ) ) {
+    if ( ( NULL != c ) && ( max > min ) && ( 0u != c->init ) && ( kw >= 0.0f ) ) {
         c->min = min;
         c->max = max;
         c->kw = kw;
@@ -51,7 +61,7 @@ int qPID_SetSaturation( qPID_controller_t *c, float min, float max, float kw )
     return retVal;
 }
 /*============================================================================*/
-int qPID_SetParallel( qPID_controller_t *c )
+int qPID_SetSeries( qPID_controller_t *c )
 {
     int retVal = 0;
     if ( ( NULL != c ) && ( 0u != c->init) ) {
@@ -80,11 +90,22 @@ int qPID_SetEpsilon( qPID_controller_t *c, float eps )
 int qPID_SetDerivativeFilter( qPID_controller_t *c, float beta )
 {
     int retVal = 0;
-    if ( ( NULL != c ) && ( 0u != c->init) && ( beta > 0.0f) && ( beta < 1.0f) ) {
+    if ( ( NULL != c ) && ( 0u != c->init ) && ( beta > 0.0f) && ( beta < 1.0f) ) {
         c->beta = beta;
         retVal = 1;
     }
     return retVal;
+}
+/*============================================================================*/
+int qPID_SetTrackingMode( qPID_controller_t *c, float *var, float kt )
+{
+    int retVal = 0;
+    if ( ( NULL != c ) && ( kt > 0.0f) && ( 0u != c->init ) ) {
+        c->kt = kt;
+        c->uEF = var;
+        retVal = 1;
+    }
+    return retVal;    
 }
 /*============================================================================*/
 float qPID_Control( qPID_controller_t *c, float w, float y )
@@ -96,7 +117,7 @@ float qPID_Control( qPID_controller_t *c, float w, float y )
         if ( fabs( e ) <= ( c->epsilon ) ) {
             e = 0.0f;
         }
-        c->ie += ( e + c->u1 )*( c->dt ); /*integral with anti-windup*/
+        c->ie += ( 0.5f*(e + c->e1) + c->u1 )*( c->dt ); /*integral with anti-windup*/
         de = ( e - c->e1 )/c->dt;   /*compute the derivative component*/
         c->D = de + ( c->beta*( c->D - de ) ); /*derivative filtering*/
         v  = ( c->kc*e ) + ( c->ki*c->ie ) + ( c->kd*c->D );
@@ -108,7 +129,10 @@ float qPID_Control( qPID_controller_t *c, float w, float y )
         if ( u < c->min ) {
             u = c->min;
         }
-        c->u1 = c->kw*( u - v );
+        c->u1 = c->kw*( u - v ); /*anti-windup feedback*/
+        if ( NULL != c->uEF ) { /*tracking mode*/
+            c->u1 += c->kt*( c->uEF[ 0 ] - u );
+        }
         c->e1 = e;
     }
     return u;
