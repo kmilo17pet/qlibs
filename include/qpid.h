@@ -45,7 +45,7 @@ extern "C" {
     int qPID_Setup( qPID_controller_t *c, float kc, float ki, float kd, float dt );
 
     /**
-    * @brief Set/Change the PIC controller gains.
+    * @brief Set/Change the PID controller gains.
     * @param[in] c A pointer to the PID controller instance.
     * @param[in] kc Proportional Gain.
     * @param[in] ki Integral Gain
@@ -99,7 +99,8 @@ extern "C" {
     /**
     * @brief Set the PID tracking mode. This allows the PID controller to adjust
     * its internal state by changing its integrator output so that the output 
-    * tracks a prescribed signal feeding this extra input. Can be used to achieve bumpless control transfer.
+    * tracks a prescribed signal feeding this extra input. Can be used to 
+    * achieve bumpless control transfer.
     * @param[in] c A pointer to the PID controller instance.
     * @param[in] var A pointer to the external feedback variable.
     * @param[in] kt Tracking gain.

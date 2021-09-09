@@ -33,8 +33,8 @@ extern "C" {
     } qCSys_t;
 
     /**
-    * @brief Setup and initialize an instance of the continuous LTI system.
-    * @param[in] sys A pointer to the continuous LST system instance
+    * @brief Setup and initialize an instance of a continuous LTI system.
+    * @param[in] sys A pointer to the continuous LTI system instance
     * @param[in,out] num An array of n+1 elements with the numerator coefficients 
     * of the transfer function. Coefficients should be given in descending powers
     * of the nth-degree polynomial. Coefficients will be normalized.
@@ -57,7 +57,7 @@ extern "C" {
 
     /**
     * @brief Setup the output saturation for the continuous LTI system.
-    * @param[in] sys A pointer to the continuous LST system instance
+    * @param[in] sys A pointer to the continuous LTI system instance
     * @param[in] min The minimal value allowed for the output.
     * @param[in] max The maximal value allowed for the output.
     * @return 1 on success, otherwise return 0.
@@ -66,7 +66,7 @@ extern "C" {
 
     /**
     * @brief Drives the system recursively using the input signal provided
-    * @param[in] sys A pointer to the continuous LST system instance
+    * @param[in] sys A pointer to the continuous LTI system instance
     * @param[in] u The current sample of the input signal
     * @return The system response.
     */       

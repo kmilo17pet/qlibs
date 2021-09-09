@@ -37,9 +37,9 @@ extern "C" {
     * the window @a w of size @a wsize with the coefficients given in @a c. If
     * @a c it's not supplied, this function just perform the window update.
     * @param[in,out] w An array of @a wsize elements that holds the window with
-    * the window with the delay lines of @a x. 
+    * the delay lines of @a x. 
     * @param[in] c An array of @a wsize elements with the coefficients of the 
-    * FIR filter. Coefficients should be given in descending powersof the 
+    * FIR filter. Coefficients should be given in descending powers of the 
     * nth-degree polynomial. To ignore pass NULL.
     * @param[in] wsize The number of elements of @a w.
     * @return If @a c is provided, returns the evaluation of the FIR filter. 
@@ -48,8 +48,8 @@ extern "C" {
     float qDSys_FIRUpdate( float *w, float *c, size_t wsize, float x );
 
     /**
-    * @brief Setup and initialize an instance of the discrete LTI system.
-    * @param[in] sys A pointer to the discrete LST system instance
+    * @brief Setup and initialize an instance of a discrete LTI system.
+    * @param[in] sys A pointer to the discrete LTI system instance
     * @param[in,out] num An array of nb+1 elements with the numerator coefficients 
     * of the transfer function. Coefficients should be given in descending powers
     * of the nb-degree polynomial. Coefficients will be normalized internally.
@@ -72,7 +72,7 @@ extern "C" {
 
     /**
     * @brief Setup the output saturation for the discrete LTI system.
-    * @param[in] sys A pointer to the discrete LST system instance
+    * @param[in] sys A pointer to the discrete LTI system instance
     * @param[in] min The minimal value allowed for the output.
     * @param[in] max The maximal value allowed for the output.
     * @return 1 on success, otherwise return 0.
@@ -81,7 +81,7 @@ extern "C" {
 
     /**
     * @brief Drives the system recursively using the input signal provided
-    * @param[in] sys A pointer to the discrete LST system instance
+    * @param[in] sys A pointer to the discrete LTI system instance
     * @param[in] u The current sample of the input signal
     * @return The system response.
     */       

@@ -34,7 +34,7 @@ extern "C" {
     
     /**
     * @brief Initialize the RMS instance by setting the default optimal parameters.
-    * @param[in] q A pointer to the RMS  instance.
+    * @param[in] q A pointer to the RMS instance.
     * @return 1 on success, otherwise returns 0.
     */  
     int qRMS_Init( qRMS_t *q );
@@ -67,7 +67,7 @@ extern "C" {
     int qRMS_SetParams( qRMS_t *q, float alpha, float a1, float a2 );
 
     /**
-    * @briefReset the internal RMS estimator calculations.
+    * @brief Reset the internal RMS estimator calculations.
     * @param[in] q A pointer to the RMS instance.
     * @return 1 on success, otherwise returns 0.
     */ 

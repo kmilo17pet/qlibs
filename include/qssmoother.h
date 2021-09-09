@@ -85,7 +85,7 @@ extern "C" {
     /**
     * @brief Reset the the smoother filter.
     * @param[in] s A pointer to the signal smoother instance.
-    * @return 1 if the smoother has been initialized, otherwise return 0.
+    * @return 1 on success, otherwise return 0.
     */     
     int qSSmoother_Reset( qSSmootherPtr_t s );
 
@@ -98,7 +98,7 @@ extern "C" {
     float qSSmoother_Perform( qSSmootherPtr_t s, float x );
 
     /**
-    * @brief Setup an initialize the order-1 Low-Pass for signal smoothing
+    * @brief Setup an initialize the order-1 Low-Pass filter for signal smoothing
     * @param[in] s A pointer to the signal smoother instance.
     * @param[in] alpha The smoother tune value. [ 0 < alpha < 1 ] 
     * @return 1 on success, otherwise return 0.
@@ -106,7 +106,7 @@ extern "C" {
     int qSSmoother_Setup_LPF1( qSSmoother_LPF1_t *s, float alpha );
 
     /**
-    * @brief Setup an initialize the order-2 Low-Pass for signal smoothing
+    * @brief Setup an initialize the order-2 Low-Pass filter for signal smoothing
     * @param[in] s A pointer to the signal smoother instance.
     * @param[in] alpha The smoother tune value. [ 0 < alpha < 1 ] 
     * @return 1 on success, otherwise return 0.

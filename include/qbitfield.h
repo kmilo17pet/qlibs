@@ -31,7 +31,7 @@ extern "C" {
     } qBitField_t;
 
     /** 
-    * @brief Use to determine the array size for a BitField.
+    * @brief Use to determine the uint8_t array-size for a BitField.
     */  
     #define QBITFIELD_SIZE( NBITS )     ( 4* ( ( ( NBITS-1 ) / 32 ) + 1 ) )
 
