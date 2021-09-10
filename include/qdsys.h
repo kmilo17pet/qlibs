@@ -16,6 +16,7 @@ extern "C" {
     #include <stdlib.h>
     #include <stdint.h>
     #include <float.h>
+    #include "qtdl.h"
 
     /** 
     * @brief A discrete-LTI system object
@@ -29,6 +30,7 @@ extern "C" {
         float *v, *b, *a;
         float b0, min, max;
         size_t n, na;
+        qTDL_t tDelay;
         /*! @endcond */
     } qDSys_t;
 
@@ -63,6 +65,17 @@ extern "C" {
     * @return 1 on success, otherwise return 0.
     */   
     int qDSys_Setup( qDSys_t *sys, float *num, float *den, float *v, size_t nb, size_t na );
+
+    /**
+    * @brief Set the input delay for the input channel.
+    * @param[in] sys A pointer to the discrete LTI system instance
+    * @param[in] delaywindow A array of n elements with the delay window for the
+    *  input channel.
+    * @param[in] n The number of elements of @delaywindow.
+    * @param[in] initval The initial value of the input channel. 
+    * @return 1 if the system has been initialized, otherwise return 0.
+    */  
+    int qDSys_SetInputDelay( qDSys_t *sys, float *delaywindow, size_t n, float initval );
 
     /**
     * @brief Check if the discrete LTI system is initialized.

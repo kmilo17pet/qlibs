@@ -20,5 +20,5 @@ A collection of tools for embedded systems including:
 - PID control
 - Recursive LTI systems evaluation.
 - Recursive RMS calculation.
-- Fast moving-average for huge windows
+- Tapped Delay Line in O(1). 
 - Cyclic Redundancy Check (CRC) calculator (8/16/32 bits)

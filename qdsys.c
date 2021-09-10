@@ -55,6 +55,16 @@ int qDSys_Setup( qDSys_t *sys, float *num, float *den, float *v, size_t nb, size
     return retVal;
 }
 /*============================================================================*/
+int qDSys_SetInputDelay( qDSys_t *sys, float *delaywindow, size_t n, float initval )
+{
+    int retVal = 0;
+    if ( NULL != sys ) {
+        qTDL_Setup( &sys->tDelay, delaywindow, n, initval );
+        retVal = 1;
+    }
+    return retVal;
+}
+/*============================================================================*/
 int qDSys_IsInitialized( qDSys_t *sys )
 {
     int retVal = 0;

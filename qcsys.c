@@ -27,6 +27,17 @@ int qCSys_Setup( qCSys_t *sys, float *num, float *den, float *x, size_t n, float
 		}
         sys->b0 = num[ 0 ];
         sys->init = 1u;
+        sys->tDelay.head = NULL;
+    }
+    return retVal;
+}
+/*============================================================================*/
+int qCSys_SetInputDelay( qCSys_t *sys, float *delaywindow, size_t n, float initval )
+{
+    int retVal = 0;
+    if ( NULL != sys ) {
+        qTDL_Setup( &sys->tDelay, delaywindow, n, initval );
+        retVal = 1;
     }
     return retVal;
 }
@@ -55,6 +66,11 @@ float qCSys_Excite( qCSys_t *sys, float u )
 {
     float y = 0.0f;
     if ( NULL != sys ) {
+        if( NULL != sys->tDelay.head ) {
+            qTDL_InsertSample( &sys->tDelay, u );
+            u = qTDL_GetOldest( &sys->tDelay );
+        }
+
         if ( 1u == sys->n ) {
             sys->x[ 0 ] += ( u - ( sys->x[ 0 ]*sys->a[ 0 ] ) )*sys->dt; 
             y = ( sys->b[ 0 ] - ( sys->a[ 0 ]*sys->b0 ) )*sys->x[ 0 ];
