@@ -5,7 +5,7 @@
  **/
 
 #include "qssmoother.h"
-#include "qdsys.h"
+#include "qltisys.h"
     
 static float qSSmoother_Filter_LPF1( _qSSmoother_t *f, float x );
 static float qSSmoother_Filter_LPF2( _qSSmoother_t *f, float x );
@@ -197,7 +197,7 @@ static float qSSmoother_Filter_MWM( _qSSmoother_t *f, float x )
         f->init = 0u;
     }        
     /*cstat -CERT-FLP36-C*/
-    return qDSys_FIRUpdate( s->w, NULL, s->wsize, x ) / (float)s->wsize; 
+    return qLTISys_DiscreteFIRUpdate( s->w, NULL, s->wsize, x ) / (float)s->wsize; 
     /*cstat +CERT-FLP36-C*/
 }
 /*============================================================================*/
@@ -213,7 +213,7 @@ static float qSSmoother_Filter_MWOR( _qSSmoother_t *f, float x )
         f->init = 0u;
     }        
 
-    m = qDSys_FIRUpdate( s->w, NULL, s->wsize, x ) - x; /*shift, sum and compensate*/
+    m = qLTISys_DiscreteFIRUpdate( s->w, NULL, s->wsize, x ) - x; /*shift, sum and compensate*/
     if ( qSSmoother_Abs( s->m - x )  > ( s->alpha*qSSmoother_Abs( s->m ) ) ) { /*is it an outlier?*/
         s->w[ 0 ] = s->m; /*replace the outlier with the dynamic median*/
     }
@@ -233,6 +233,6 @@ static float qSSmoother_Filter_GAUSSIAN( _qSSmoother_t *f, float x )
         qSSmoother_WindowSet( s->w, s->wsize, x );
         f->init = 0u;
     }   
-    return qDSys_FIRUpdate( s->w, s->k, s->wsize, x );
+    return qLTISys_DiscreteFIRUpdate( s->w, s->k, s->wsize, x );
 }
 /*============================================================================*/
