@@ -110,6 +110,9 @@ extern "C" {
 
     /**
     * @brief Computes the control action for given PID controller instance.
+    * @note The user must ensure that this function is executed in the time 
+    * specified in @a dt either by using a HW or SW timer, a real time task, 
+    * or a timing service.
     * @param[in] c A pointer to the PID controller instance.
     * @param[in] w The reference value aka SetPoint.
     * @param[in] y The controlled variable aka Process-variable.

@@ -120,9 +120,10 @@ float qPID_Control( qPID_controller_t *c, float w, float y )
         c->ie += ( ( 0.5f*(e + c->e1) ) + c->u1 )*( c->dt ); /*integral with anti-windup*/
         de = ( e - c->e1 )/c->dt;   /*compute the derivative component*/
         c->D = de + ( c->beta*( c->D - de ) ); /*derivative filtering*/
-        v  = ( c->kc*e ) + ( c->ki*c->ie ) + ( c->kd*c->D );
+        v  = ( c->kc*e ) + ( c->ki*c->ie ) + ( c->kd*c->D ); /*compute the PID action*/
         
         u = v;
+        /*saturate*/
         if ( u > c->max ) {
             u = c->max;
         }

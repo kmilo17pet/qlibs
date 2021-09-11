@@ -37,6 +37,9 @@ extern "C" {
 
     /**
     * @brief Drives the LTI system recursively using the input signal provided
+    * @note The user must ensure that this function is executed in the time 
+    * specified in @a dt either by using a HW or SW timer, a real time task, 
+    * or a timing service.
     * @param[in] sys A pointer to the LTI system instance
     * @param[in] u A sample of the input signal that excites the system
     * @return The system response.

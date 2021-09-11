@@ -27,7 +27,7 @@ float qRMS_Update( qRMS_t *q, float x )
         x *= x;     /* compute x^2 */
         q->m = x + ( q->alpha*(q->m - x) ) ; /*compute the recursive mean*/
         y = ( q->b1*qRMS_NewtonsFastSqrt( q->m ) ) - ( q->a1*q->f1 ) - ( q->a2*q->f2 ); /*compute the recursive filter to improve the output*/
-        q->f2 = q->f1;  /*update 2nd-stage filter*/
+        q->f2 = q->f1;  /*update the 2nd-stage filter*/
         q->f1 = y;
     }
     return y;

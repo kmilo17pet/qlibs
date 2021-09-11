@@ -20,22 +20,22 @@ static float qLTISys_ContinuosUpdate( qLTISys_t *sys, float u )
 {
     float y = 0.0f;
 
-    if ( 1u == sys->n ) {
+    if ( 1u == sys->n ) { 
         sys->x[ 0 ] += ( u - ( sys->x[ 0 ]*sys->a[ 0 ] ) )*sys->dt; 
         y = ( sys->b[ 0 ] - ( sys->a[ 0 ]*sys->b0 ) )*sys->x[ 0 ];
     }
     else {    
         size_t i;
         float dx0 = 0.0f;
-        
+        /*compute the states of the system by using the controlable canonical form*/
         for (  i = ( sys->n - 1u) ; i >= 1u ; --i ) {
-            dx0 += sys->a[ i ]*sys->x[ i ]; 
-            sys->x[ i ] += sys->x[ i - 1u ]*sys->dt;
-            y += ( sys->b[ i ] - ( sys->a[ i ]*sys->b0 ) )*sys->x[ i ];
+            dx0 += sys->a[ i ]*sys->x[ i ]; /*compute the first derivative*/
+            sys->x[ i ] += sys->x[ i - 1u ]*sys->dt; /*integrate to obtain the remaining states*/
+            y += ( sys->b[ i ] - ( sys->a[ i ]*sys->b0 ) )*sys->x[ i ]; /*compute the first part of the output*/
         }
-        dx0 = u - ( dx0 + ( sys->a[ 0 ]*sys->x[ 0 ] ) );
-        sys->x[ 0 ] += dx0*sys->dt;
-        y += ( sys->b[ 0 ] - ( sys->a[ 0 ]*sys->b0 ) )*sys->x[ 0 ];
+        dx0 = u - ( dx0 + ( sys->a[ 0 ]*sys->x[ 0 ] ) ); /*compute the remaining part of the output that depends of the first state*/
+        sys->x[ 0 ] += dx0*sys->dt; /*integrate to get the first state*/
+        y += ( sys->b[ 0 ] - ( sys->a[ 0 ]*sys->b0 ) )*sys->x[ 0 ]; /*compute the remaining part of the output*/
     }
 
     return y;
@@ -46,10 +46,11 @@ float qLTISys_Excite( qLTISys_t *sys, float u ){
 
     if ( 1 == qLTISys_IsInitialized( sys ) ) {
         if( NULL != sys->tDelay.head ) { /*check if has delay*/
-            qTDL_InsertSample( &sys->tDelay, u );
-            u = qTDL_GetOldest( &sys->tDelay );
+            qTDL_InsertSample( &sys->tDelay, u ); /*delay the output*/
+            u = qTDL_GetOldest( &sys->tDelay ); /*excite the system with the most delayed input*/
         }
-        y = sys->sysUpdate( sys, u );
+        y = sys->sysUpdate( sys, u ); /*evaluate the system*/
+        /*saturate*/
         if ( y < sys->min ) {
             y = sys->min;
         }
@@ -116,7 +117,7 @@ int qLTISys_Setup( qLTISys_t *sys, float *num, float *den, float *x, size_t nb, 
         sys->a = &den[ 1 ];
         sys->x = x;
         sys->dt = dt;
-        /*normalize*/
+        /*normalize the transfer function coefficients*/
         a0 = den[ 0 ];
         for ( i = 0; i < sys->nb ; ++i ) {
             num[ i ] /= a0;
