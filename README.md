@@ -17,8 +17,8 @@ A collection of tools for embedded systems including:
 - Q16.16 Fixed point math 
 - BitFields
 - Smooth filters
-- PID control
-- Recursive LTI systems evaluation.
+- PID control with derivative filter, antiwidup and tracking mode.
+- Recursive LTI systems evaluation by transfer function(continuos and discrete).
 - Recursive RMS calculation.
-- Tapped Delay Line in O(1). 
 - Cyclic Redundancy Check (CRC) calculator (8/16/32 bits)
+- Tapped Delay Line in O(1). 
