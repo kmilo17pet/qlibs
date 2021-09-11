@@ -14,11 +14,11 @@
 
 A collection of tools for embedded systems including:
 
-- Q16.16 Fixed point math 
-- BitFields
-- Smooth filters
-- PID control with derivative filter, antiwidup and tracking mode.
-- Recursive LTI systems evaluation by transfer function(continuos and discrete).
-- Recursive RMS calculation.
-- Cyclic Redundancy Check (CRC) calculator (8/16/32 bits)
-- Tapped Delay Line in O(1). 
+- qFP16 : Q16.16 Fixed point math 
+- qBitField: A bit-field maniputation library
+- qSmoother : Filters to smooth noisy signals
+- qPID : PID controller with derivative filter, anti-windup and tracking mode.
+- qLTISys : Recursive LTI systems evaluation by transfer functions(continuous and discrete).
+- qRMS : Recursive Root Mean Square(RMS) calculation of a signal.
+- qCRC : Cyclic Redundancy Check (CRC) calculator (8/16/32 bits)
+- qTDL : Tapped Delay Line in O(1). 
