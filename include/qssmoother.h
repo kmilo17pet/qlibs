@@ -75,6 +75,21 @@ extern "C" {
         /*! @endcond  */
     } qSSmoother_GAUSSIAN_t;    
 
+    typedef struct
+    {
+        /*! @cond  */
+        _qSSmoother_t f;
+        float *w, *k;
+        float x;  /* state */
+        float A;  /* x(n)=A*x(n-1)+u(n),u(n)~N(0,q) */
+        float H;  /* z(n)=H*x(n)+w(n),w(n)~N(0,r)   */
+        float q;  /* process(predict) noise convariance */
+        float r;  /* measure noise convariance */
+        float p;  /* estimated error convariance */
+        float gain;
+        /*! @endcond  */
+    } qSSmoother_KALMAN_t; 
+
     /**
     * @brief Check if the smoother filter is initialized.
     * @param[in] s A pointer to the signal smoother instance.
@@ -144,6 +159,16 @@ extern "C" {
     * @return 1 on success, otherwise return 0.
     */     
     int qSSmoother_Setup_GAUSSIAN( qSSmoother_GAUSSIAN_t *s, float *window, float *kernel, size_t wsize, float sigma, size_t c );
+
+    /**
+    * @brief Setup an initialize the Kalman filter for signal smoothing
+    * @param[in] s A pointer to the signal smoother instance.
+    * @param[in] p Initial estimated error convariance.
+    * @param[in] q Process(predict) noise convariance.
+    * @param[in] r Measure noise convariance 
+    * @return 1 on success, otherwise return 0.
+    */  
+    int qSSmoother_Setup_KALMAN( qSSmoother_KALMAN_t *s, float p, float q, float r );
 
 #ifdef __cplusplus
 }

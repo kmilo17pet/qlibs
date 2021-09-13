@@ -12,6 +12,7 @@ static float qSSmoother_Filter_LPF2( _qSSmoother_t *f, float x );
 static float qSSmoother_Filter_MWM( _qSSmoother_t *f, float x );
 static float qSSmoother_Filter_MWOR( _qSSmoother_t *f, float x );
 static float qSSmoother_Filter_GAUSSIAN( _qSSmoother_t *f, float x ) ;
+static float qSSmoother_Filter_KALMAN( _qSSmoother_t *f, float x );
 static void qSSmoother_WindowSet( float *w, size_t wsize, float x );
 
 /*============================================================================*/
@@ -149,6 +150,20 @@ int qSSmoother_Setup_GAUSSIAN( qSSmoother_GAUSSIAN_t *s, float *window, float *k
     return retVal;
 }
 /*============================================================================*/
+int qSSmoother_Setup_KALMAN( qSSmoother_KALMAN_t *s, float p, float q, float r )
+{
+    int retVal = 0;
+
+    if ( ( NULL != s ) && ( p > 0.0f ) ) {
+        s->f.filtFcn = &qSSmoother_Filter_KALMAN;
+        s->p = p; 
+        s->q = q;
+        s->r = r;
+        retVal = qSSmoother_Reset( s );
+    }
+    return retVal;
+}
+/*============================================================================*/
 static float qSSmoother_Filter_LPF1( _qSSmoother_t *f, float x ) 
 {
     float y;
@@ -234,5 +249,29 @@ static float qSSmoother_Filter_GAUSSIAN( _qSSmoother_t *f, float x )
         f->init = 0u;
     }   
     return qLTISys_DiscreteFIRUpdate( s->w, s->k, s->wsize, x );
+}
+/*============================================================================*/
+static float qSSmoother_Filter_KALMAN( _qSSmoother_t *f, float x )
+{
+    /*cstat -CERT-EXP36-C_a -MISRAC2012-Rule-11.3 -CERT-EXP39-C_d*/
+    qSSmoother_KALMAN_t *s = (qSSmoother_KALMAN_t*)f;
+    float pH;
+    /*cstat +CERT-EXP36-C_a +MISRAC2012-Rule-11.3 +CERT-EXP39-C_d*/    
+    if ( 1u == f->init ) {
+        s->x = x;
+        s->A = 1.0f;
+        s->H = 1.0f;
+        f->init = 0u;
+    }     
+    /* Predict */
+    s->x = s->A*s->x;
+    s->p = ( s->A*s->A*s->p ) + s->q;  /* p(n|n-1)=A^2*p(n-1|n-1)+q */
+    /* Measurement */
+    pH = s->p*s->H;
+    s->gain =  pH/( s->r + ( s->H*pH ) );
+    s->x += s->gain*( x - ( s->H*s->x ) );
+    s->p = ( 1.0f - ( s->gain*s->H ) )*s->p;
+
+    return s->x;      
 }
 /*============================================================================*/
