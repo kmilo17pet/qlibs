@@ -147,6 +147,7 @@ int qPID_BindAutoTunning( qPID_controller_t *c, qPID_AutoTunning_t *at )
 {
     int retVal = 0;
     if ( ( NULL != c ) && ( NULL != at ) && ( 0u != c->init ) ) {
+        float k,T;
         c->adapt = at;
         at->l = 0.9898f;
         at->il = 1.0f/at->l;
@@ -159,6 +160,12 @@ int qPID_BindAutoTunning( qPID_controller_t *c, qPID_AutoTunning_t *at )
         at->k = 0.0f;
         at->T = 0.0f;
         at->it = 100uL;
+        at->mu = 0.95f;
+        k = c->kc/0.9f;
+        T = ( 0.27f*k )/c->ki;
+        at->a1 = -expf( -c->dt/T );
+        at->b1 = k*( 1.0f + at->a1 );
+        at->speed = 0.25f;
         retVal = 1;
     }
     return retVal;
@@ -181,48 +188,46 @@ static void qPID_AdaptGains( qPID_controller_t *c,  float u, float y )
     qPID_AutoTunning_t *s = c->adapt; 
     float error , r, l0, l1;
     float lp00, lp01, lp10, lp11;
-    float l0uk1, l1yk1, k, T, a1;
-    float p00uk, p11yk;
-    p00uk = s->p00*s->uk;
-    p11yk = s->p11*s->yk;
-    r = s->l 
-        + ( s->uk*( p00uk - ( s->p10*s->yk ) ) ) 
-        - ( s->yk*( ( s->p01*s->uk ) - p11yk ) );
+    float k, T, tmp1, tmp2;
+
+    tmp1 = s->p00*s->uk;
+    tmp2 = s->p11*s->yk;
+    r = s->l + ( s->uk*( tmp1 - ( s->p10*s->yk ) ) ) - ( s->yk*( ( s->p01*s->uk ) - tmp2 ) );
     /*compute corrections*/    
-    l0 = ( p00uk - ( s->p01*s->yk ) )/r;
-    l1 = ( ( s->p10*s->uk ) - p11yk )/r;
+    l0 = ( tmp1 - ( s->p01*s->yk ) )/r;
+    l1 = ( ( s->p10*s->uk ) - tmp2 )/r;
     error = y - ( ( s->b1*s->uk ) - ( s->a1*s->yk ) );
     /*fix estimations*/
     s->b1 += l0*error;
     s->a1 += l1*error;
+    /*update covariances*/
     lp00 = s->il*s->p00;
     lp01 = s->il*s->p01;
     lp10 = s->il*s->p10;
     lp11 = s->il*s->p11;
-    l0uk1 = ( l0*s->uk ) - 1.0f;
-    l1yk1 = ( l1*s->yk ) + 1.0f;
-    /*update covariances*/
-    s->p00 = ( l0*lp10*s->yk ) - ( lp00*l0uk1 ) + 1e-10f;
-    s->p01 = ( l0*lp11*s->yk ) - ( lp01*l0uk1 );
-    s->p10 = ( lp10*l1yk1 ) - ( l1*lp00*s->uk );
-    s->p11 = ( lp11*l1yk1 ) - ( l1*lp01*s->uk ) + 1e-10f;
+    tmp1 = ( l0*s->uk ) - 1.0f;
+    tmp2 = ( l1*s->yk ) + 1.0f;
+    s->p00 = ( l0*lp10*s->yk ) - ( lp00*tmp1 ) + 1e-10f;
+    s->p01 = ( l0*lp11*s->yk ) - ( lp01*tmp1 );
+    s->p10 = ( lp10*tmp2 ) - ( l1*lp00*s->uk );
+    s->p11 = ( lp11*tmp2 ) - ( l1*lp01*s->uk ) + 1e-10f;
+    /*update I/O measurements*/
     s->yk = y;
     s->uk = u;
     k = s->b1/( 1.0f + s->a1 );
-    a1 = ( s->a1 < 0.0f )? -s->a1 : s->a1;
+    tmp1 = ( s->a1 < 0.0f )? -s->a1 : s->a1;
     /*cstat -MISRAC2012-Dir-4.11_a -MISRAC2012-Rule-13.5*/
-    T = -c->dt/logf( a1 ); /*ok, passing absolute value*/
+    T = -c->dt/logf( tmp1 ); /*ok, passing absolute value*/
     if ( ( 0 != qPID_ATCheck( T ) ) && ( 0 != qPID_ATCheck( k ) ) && ( s->it > 0uL ) ) {
     /*cstat +MISRAC2012-Dir-4.11_a +MISRAC2012-Rule-13.5*/
-        float a, t; 
-        s->k = k + ( 0.95f*( s->k - k ) );
-        s->T = T + ( 0.95f*( s->T - T ) );    
-        t = c->dt/s->T ;
-        a = ( 1.35f + ( 0.25f*t ) );
-        c->kc = 0.2f*a*( s->T/( s->k*c->dt ) );
-        c->ki = ( ( 0.2f*c->kc )*( 0.54f + ( 0.33f*t ) ) )/( a*c->dt );
-        c->kd = ( 0.1f*c->kc*c->dt )/a;
-        if ( s->it < QPID_AUTOTUNNING_UNDEFINED) {
+        s->k = k + ( s->mu*( s->k - k ) );
+        s->T = T + ( s->mu*( s->T - T ) );    
+        tmp1 = c->dt/s->T;
+        tmp2 = ( 1.35f + ( 0.25f*tmp1 ) );
+        c->kc = ( s->speed*tmp2*s->T )/( s->k*c->dt );
+        c->ki = ( ( s->speed*c->kc )*( 0.54f + ( 0.33f*tmp1 ) ) )/( tmp2*c->dt );
+        c->kd = ( 0.5f*s->speed*c->kc*c->dt )/tmp2;
+        if ( s->it < QPID_AUTOTUNNING_UNDEFINED ) {
             s->it--;
         }
     }
@@ -237,7 +242,7 @@ static float qPID_Sat( float x, float min, float max )
         x = min;
     }
     else {
-        x = x;
+        /*nothing to do*/
     }
     return x;
 }
@@ -248,3 +253,4 @@ static int qPID_ATCheck( float x )
     return ( 0 == (int)isnan( x ) ) && ( x > 0.0f ) && ( 0 == (int)isinf( x ) ); 
     /*cstat +MISRAC2012-Rule-13.5 +MISRAC2012-Rule-10.3*/
 }
+/*============================================================================*/
