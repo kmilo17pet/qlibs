@@ -8,6 +8,7 @@
 
 static float qPID_Sat( float x, float min, float max );
 static void qPID_AdaptGains( qPID_controller_t *c,  float e, float u );
+static int qPID_ATCheck( float x );
 
 /*============================================================================*/
 int qPID_Setup( qPID_controller_t *c, float kc, float ki, float kd, float dt )
@@ -209,21 +210,19 @@ static void qPID_AdaptGains( qPID_controller_t *c,  float u, float y )
     s->uk = u;
     k = s->b1/( 1.0f + s->a1 );
     a1 = ( s->a1 < 0.0f )? -s->a1 : s->a1;
-    /*cstat -MISRAC2012-Dir-4.11_a*/
+    /*cstat -MISRAC2012-Dir-4.11_a -MISRAC2012-Rule-13.5*/
     T = -c->dt/logf( a1 ); /*ok, passing absolute value*/
-    /*cstat +MISRAC2012-Dir-4.11_a*/
-    /*smooth data*/
-    s->k = k + ( 0.95f*( s->k - k ) );
-    s->T = T + ( 0.95f*( s->T - T ) );    
-    if( ( s->k > 0.0f ) && ( s->T > 0.0f ) && ( ( s->it > 0uL ) || ( QPID_AUTOTUNNING_UNDEFINED == s->it ) ) ) {
-        float t = c->dt/s->T ;
-        float a = ( 1.35f + ( 0.25f*t ) );
+    if ( ( 0 != qPID_ATCheck( T ) ) && ( 0 != qPID_ATCheck( k ) ) && ( s->it > 0uL ) ) {
+    /*cstat +MISRAC2012-Dir-4.11_a +MISRAC2012-Rule-13.5*/
+        float a, t; 
+        s->k = k + ( 0.95f*( s->k - k ) );
+        s->T = T + ( 0.95f*( s->T - T ) );    
+        t = c->dt/s->T ;
+        a = ( 1.35f + ( 0.25f*t ) );
         c->kc = 0.2f*a*( s->T/( s->k*c->dt ) );
         c->ki = ( ( 0.2f*c->kc )*( 0.54f + ( 0.33f*t ) ) )/( a*c->dt );
         c->kd = ( 0.1f*c->kc*c->dt )/a;
-    }
-    else{
-        if ( s->it < QPID_AUTOTUNNING_UNDEFINED ) { 
+        if ( s->it < QPID_AUTOTUNNING_UNDEFINED) {
             s->it--;
         }
     }
@@ -243,3 +242,9 @@ static float qPID_Sat( float x, float min, float max )
     return x;
 }
 /*============================================================================*/
+static int qPID_ATCheck( float x )
+{
+    /*cstat -MISRAC2012-Rule-13.5 -MISRAC2012-Rule-10.3*/
+    return ( 0 == (int)isnan( x ) ) && ( x > 0.0f ) && ( 0 == (int)isinf( x ) ); 
+    /*cstat +MISRAC2012-Rule-13.5 +MISRAC2012-Rule-10.3*/
+}
