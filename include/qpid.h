@@ -19,6 +19,19 @@ extern "C" {
     #include <stdint.h>
     #include <math.h>
 
+    typedef struct 
+    {
+        float p00, p01, p10, p11;
+        float b1, a1;
+        float uk, yk;
+        float l, il;
+        float k, T;
+        uint32_t it;
+    } qPID_AutoTunning_t;
+
+    #define QPID_AUTOTUNNING_UNDEFINED      ( 0xFFFFFFFEuL )
+
+
     /** 
     * @brief A PID controller object
     * @details The instance should be initialized using the qPID_Setup() API.
@@ -30,6 +43,7 @@ extern "C" {
         uint8_t init;    
         float kc, ki, kd, dt, min, max, epsilon, kw, kt, e1, ie, D, u1, beta;
         float *uEF; /*external feedback for tracking mode*/
+        qPID_AutoTunning_t *adapt; 
         /*! @endcond  */
     } qPID_controller_t;
 
@@ -120,7 +134,26 @@ extern "C" {
     */       
     float qPID_Control( qPID_controller_t *c, float w, float y ); 
 
- 
+    /**
+    * @brief Binds the specified instance to enable the PID controller auto 
+    * tuning algorithm
+    * @note To unbind the auto tunning algorithm, pass NULL as argument. 
+    * @param[in] c A pointer to the PID controller instance.
+    * @param[in] at A pointer to the PID auto tunning instance.
+    * @return 1 on success, otherwise return 0.
+    */   
+    int qPID_BindAutoTunning( qPID_controller_t *c, qPID_AutoTunning_t *at );
+
+    /**
+    * @brief Set the number of time steps where the auto tuner algorithm will
+    *  modify the controller gains.
+    * @param[in] c A pointer to the PID controller instance.
+    * @param[in] tEnable The number of time steps. To keep the auto tuner
+    * enabled indefinitely pass #QPID_AUTOTUNNING_UNDEFINED as argument.
+    * @return 1 on success, otherwise return 0.
+    */      
+    int qPID_EnableAutoTunning( qPID_controller_t *c, uint32_t tEnable );
+
 
 #ifdef __cplusplus
 }

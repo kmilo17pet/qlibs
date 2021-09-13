@@ -15,9 +15,9 @@
 A collection of tools for embedded systems including:
 
 - qFP16 : Q16.16 Fixed point math 
-- qBitField: A bit-field maniputation library
+- qBitField: A bit-field manipulation library
 - qSmoother : Filters to smooth noisy signals
-- qPID : PID controller with derivative filter, anti-windup and tracking mode.
+- qPID : PID controller with derivative filter, anti-windup, tracking-mode and auto-tunning.
 - qLTISys : Recursive LTI systems evaluation by transfer functions(continuous and discrete).
 - qRMS : Recursive Root Mean Square(RMS) calculation of a signal.
 - qCRC : Cyclic Redundancy Check (CRC) calculator (8/16/32 bits)
