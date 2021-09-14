@@ -159,6 +159,8 @@ int qSSmoother_Setup_KALMAN( qSSmoother_KALMAN_t *s, float p, float q, float r )
         s->p = p; 
         s->q = q;
         s->r = r;
+        s->A = 1.0f;
+        s->H = 1.0f;
         retVal = qSSmoother_Reset( s );
     }
     return retVal;
@@ -255,12 +257,10 @@ static float qSSmoother_Filter_KALMAN( _qSSmoother_t *f, float x )
 {
     /*cstat -CERT-EXP36-C_a -MISRAC2012-Rule-11.3 -CERT-EXP39-C_d*/
     qSSmoother_KALMAN_t *s = (qSSmoother_KALMAN_t*)f;
-    float pH;
     /*cstat +CERT-EXP36-C_a +MISRAC2012-Rule-11.3 +CERT-EXP39-C_d*/    
+    float pH;
     if ( 1u == f->init ) {
         s->x = x;
-        s->A = 1.0f;
-        s->H = 1.0f;
         f->init = 0u;
     }     
     /* Predict */
@@ -271,7 +271,6 @@ static float qSSmoother_Filter_KALMAN( _qSSmoother_t *f, float x )
     s->gain =  pH/( s->r + ( s->H*pH ) );
     s->x += s->gain*( x - ( s->H*s->x ) );
     s->p = ( 1.0f - ( s->gain*s->H ) )*s->p;
-
     return s->x;      
 }
 /*============================================================================*/
