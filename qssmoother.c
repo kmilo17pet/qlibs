@@ -10,6 +10,7 @@
 static float qSSmoother_Filter_LPF1( _qSSmoother_t *f, float x );
 static float qSSmoother_Filter_LPF2( _qSSmoother_t *f, float x );
 static float qSSmoother_Filter_MWM( _qSSmoother_t *f, float x );
+static float qSSmoother_Filter_MWM2( _qSSmoother_t *f, float x );
 static float qSSmoother_Filter_MWOR( _qSSmoother_t *f, float x );
 static float qSSmoother_Filter_GAUSSIAN( _qSSmoother_t *f, float x ) ;
 static float qSSmoother_Filter_KALMAN( _qSSmoother_t *f, float x );
@@ -77,10 +78,9 @@ int qSSmoother_Setup_LPF2( qSSmoother_LPF2_t *s, float alpha )
     int retVal = 0;
     if ( ( NULL != s ) && ( alpha > 0.0f ) && ( alpha < 1.0f ) ) {
         float aa, p1, r;
-        s->alpha = alpha;
-        aa = s->alpha*s->alpha;
+        aa = alpha*alpha;
         /*cstat -MISRAC2012-Dir-4.11_b*/
-        p1 = sqrtf( 2.0f*s->alpha ); /*arg always positive*/
+        p1 = sqrtf( 2.0f*alpha ); /*arg always positive*/
         /*cstat +MISRAC2012-Dir-4.11_b*/
         r = 1.0f + p1 + aa;
         s->k = aa/r;
@@ -100,6 +100,18 @@ int qSSmoother_Setup_MWM( qSSmoother_MWM_t *s, float *window, size_t wsize )
         s->w = window;
         s->wsize = wsize;
         s->f.filtFcn = &qSSmoother_Filter_MWM;
+        retVal = qSSmoother_Reset( s );
+    }
+    return retVal;
+}
+/*============================================================================*/
+int qSSmoother_Setup_MWM2( qSSmoother_MWM2_t *s, float *window, size_t wsize )
+{
+    int retVal = 0;
+    if ( ( NULL != s ) && ( NULL != window ) && ( wsize > 0u ) ) {
+        qTDL_Setup( &s->tdl, window, wsize, 0.0f );
+        s->f.filtFcn = &qSSmoother_Filter_MWM2;
+        s->sum  = 0.0f;
         retVal = qSSmoother_Reset( s );
     }
     return retVal;
@@ -216,6 +228,22 @@ static float qSSmoother_Filter_MWM( _qSSmoother_t *f, float x )
     /*cstat -CERT-FLP36-C*/
     return qLTISys_DiscreteFIRUpdate( s->w, NULL, s->wsize, x ) / (float)s->wsize; 
     /*cstat +CERT-FLP36-C*/
+}
+/*============================================================================*/
+static float qSSmoother_Filter_MWM2( _qSSmoother_t *f, float x ) 
+{
+    /*cstat -CERT-EXP36-C_a -MISRAC2012-Rule-11.3 -CERT-EXP39-C_d -CERT-FLP36-C*/
+    qSSmoother_MWM2_t *s = (qSSmoother_MWM2_t*)f;
+    float wsize = (float)s->tdl.itemcount;;
+    /*cstat +CERT-EXP36-C_a +MISRAC2012-Rule-11.3 +CERT-EXP39-C_d +CERT-FLP36-C*/
+    if ( 1u == f->init ) {
+        qTDL_Flush( &s->tdl, x );
+        s->sum = x*wsize;
+        f->init = 0u;
+    }     
+    s->sum += x - qTDL_GetOldest( &s->tdl );
+    qTDL_InsertSample( &s->tdl, x );
+    return s->sum/wsize;
 }
 /*============================================================================*/
 static float qSSmoother_Filter_MWOR( _qSSmoother_t *f, float x ) 
