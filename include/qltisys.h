@@ -92,7 +92,7 @@ extern "C" {
     * @param[in] na The order of polynomial @a den. (if system is discrete). For 
     * continuous system the number of elements of @a num and @a den.
     * example 1: a0 + a1*z^-1 + a2*z^-2 + a3*z^-3 , na = 3
-    * example 2: num = b0*s^2 + b1*s + b2 , den = a0*s^2 + a1*s + a2 , na = 2 
+    * example 2: num = b0*s^2 + b1*s + b2 , den = a0*s^2 + a1*s + a2 , na = 3 
     * @note For continuous systems, the size of @a num and @a den should be equal.
     * @param[in] dt The time-step of the continuos system. For discrete systems
     * pass #QLTISYS_DISCRETE as argument

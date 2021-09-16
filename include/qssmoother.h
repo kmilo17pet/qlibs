@@ -80,6 +80,15 @@ extern "C" {
     {
         /*! @cond  */
         _qSSmoother_t f;
+        qTDL_t tdl;
+        float sum, m, alpha;
+        /*! @endcond  */
+    } qSSmoother_MWOR2_t;  
+
+    typedef struct
+    {
+        /*! @cond  */
+        _qSSmoother_t f;
         float *w, *k;
         size_t wsize;
         /*! @endcond  */
@@ -167,6 +176,19 @@ extern "C" {
     * @return 1 on success, otherwise return 0.
     */          
     int qSSmoother_Setup_MWOR( qSSmoother_MWOR_t *s, float *window, size_t wsize, float alpha );
+
+    /**
+    * @brief Setup an initialize the outlier-removal filter by using a 
+    * moving-average filter. 
+    * @note This filter uses a specialized TDL structure to work efficient with
+    * a large sliding-window.
+    * @param[in] s A pointer to the signal smoother instance.
+    * @param[in] window An array of @a wsize elements to hold the moving window.
+    * @param[in] wsize The number of elements in @a window.
+    * @param[in] alpha The smoother tune value. [ 0 < alpha < 1 ] 
+    * @return 1 on success, otherwise return 0.
+    */     
+    int qSSmoother_Setup_MWOR2( qSSmoother_MWOR2_t *s, float *window, size_t wsize, float alpha );
     
     /**
     * @brief Setup an initialize the gaussian filter for signal smoothing
