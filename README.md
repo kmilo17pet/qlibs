@@ -15,7 +15,8 @@ A collection of tools for embedded systems including:
 
 ### A simple fixed-point calculationn
 
-$$x_{1,2} = {-b+\sqrt{b^2 - 4ac} \over 2a}.$$
+![ec1](https://latex.codecogs.com/svg.latex?\Large&space;x=\frac{-b+\sqrt{b^2-4ac}}{2a}) 
+
 
 ```c
 #include "stdio.h"
@@ -40,7 +41,8 @@ int main( int argc, char *argv[] )
 
 ### Simulating a 3rd-order continuous transfer function
 
-$$G_p(s) = {{2s^2 + 3s + 6} \over {s^3 + 6s^2+ 11s + 16} }$$
+![ec2](https://latex.codecogs.com/svg.latex?\Large&space;G_p(s)=\frac{2s^2+3s+6}{s^3+6s^2+11s+16}) 
+
 
 ```c
 #include "stdio.h"
@@ -70,7 +72,8 @@ void xTaskSystemSimulate( void *arg )
 
 ### Simulating a 2nd-order discrete transfer function
 
-$$G_p(z^{-1}) = {{0.1 + 0.2z^{-1} + 0.3z^{-2}} \over {1 -0.85z^{-1} + 0.02z^{-2}} }$$
+![ec2](https://latex.codecogs.com/svg.latex?\Large&space;G_p(z^{-1})=\frac{0.1+0.2z^{-1}+0.3z^{-2}}{1-0.85z^{-1}+0.02z^{-2}}) 
+
 
 ```c
 #include "stdio.h"
