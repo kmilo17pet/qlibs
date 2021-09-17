@@ -24,7 +24,7 @@ A collection of tools for embedded systems including:
 
 ## Draft examples
 
-### A simple fixed-point calculationn
+### A simple fixed-point calculation
 
 ![ec1](https://latex.codecogs.com/svg.latex?\Large&space;x=\frac{-b+\sqrt{b^2-4ac}}{2a}) 
 
@@ -32,7 +32,7 @@ A collection of tools for embedded systems including:
 ```c
 #include "stdio.h"
 #include "stdlib.h"
-#include "qfp16.h
+#include "qfp16.h"
 
 int main( int argc, char *argv[] ) 
 {
@@ -59,7 +59,7 @@ int main( int argc, char *argv[] )
 #include "stdio.h"
 #include "stdlib.h"
 #include "bsp.h"
-#include "qltisys.h
+#include "qltisys.h"
 
 #define SYS_ORDER   ( 3 )
 const TickType_t  dt = 50; /*50mS time-step*/
@@ -90,7 +90,7 @@ void xTaskSystemSimulate( void *arg )
 #include "stdio.h"
 #include "stdlib.h"
 #include "bsp.h"
-#include "qltisys.h
+#include "qltisys.h"
 
 #define NB  ( 3 )
 #define NA  ( 2 )
