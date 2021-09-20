@@ -1,28 +1,89 @@
-[![Built for](https://img.shields.io/badge/built%20for-microcontrollers-lightgrey)](https://github.com/kmilo17pet/QuarkTS)
+[![Built for](https://img.shields.io/badge/built%20for-microcontrollers-lightgrey?logo=WhiteSource)](https://github.com/kmilo17pet/QuarkTS)
 [![CodeFactor](https://www.codefactor.io/repository/github/kmilo17pet/qtools/badge/main)](https://www.codefactor.io/repository/github/kmilo17pet/qtools/overview/main)
 [![Codacy Badge](https://app.codacy.com/project/badge/Grade/14d566939d2e4d4181088cc1c6666fa3)](https://www.codacy.com/gh/kmilo17pet/qTools/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=kmilo17pet/qTools&amp;utm_campaign=Badge_Grade)
 [![CodeInspectorScore](https://www.code-inspector.com/project/27197/score/svg)](https://frontend.code-inspector.com/project/27197/dashboard)
 [![CodeInspectorGrade](https://www.code-inspector.com/project/27197/status/svg)](https://frontend.code-inspector.com/project/27197/dashboard)
-[![MISRAC2012](https://img.shields.io/badge/MISRAC2012-Compliant-blue.svg)](https://en.wikipedia.org/wiki/MISRA_C)
-[![CERT](https://img.shields.io/badge/CERT-Compliant-blue.svg)](https://wiki.sei.cmu.edu/confluence/display/seccode/SEI+CERT+Coding+Standards)
-[![C Standard](https://img.shields.io/badge/STD-C99-green.svg)](https://en.wikipedia.org/wiki/C99)
+[![MISRAC2012](https://img.shields.io/badge/MISRAC2012-Compliant-blue.svg?logo=c)](https://en.wikipedia.org/wiki/MISRA_C)
+[![CERT](https://img.shields.io/badge/CERT-Compliant-blue.svg?logo=c)](https://wiki.sei.cmu.edu/confluence/display/seccode/SEI+CERT+Coding+Standards)
+[![C Standard](https://img.shields.io/badge/STD-C99-green.svg?logo=c)](https://en.wikipedia.org/wiki/C99)
 [![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://github.com/kmilo17pet/qTools/graphs/commit-activity)
 [![License](https://img.shields.io/github/license/kmilo17pet/qTools)](https://github.com/kmilo17pet/qTools/blob/main/LICENSE) 
 
 # qtools
 
-A collection of tools for embedded systems including:
 
-- qFP16 : Q16.16 Fixed point math 
+<details><summary>qFP16 : Q16.16 Fixed-point math</summary>
+    
+  - Basic operations
+  - Trigonometric functions
+  - Exponential functions
+</details>
+
+<details><summary>qSSmoother : Filters to smooth noisy signals</summary>
+    
+  - `LPF1`: _Low Pass Filter Order 1_
+  - `LPF2`: _Low Pass Filter Order 2_
+  - `MWM`: _Moving Window Median_
+  - `MWM2`: _Moving Window Median : With TDL(works efficient for large windows)_
+  - `MWOR`: _Moving Window Outlier Removal_
+  - `MWOR2`: _Moving Window Outlier Removal : With TDL(works efficient for large windows)_
+  - `GAUSSIAN`: _Gaussian filter_  
+  - `KALMAN`: _Scalar Kalman filter_   
+</details>
+
+<details><summary>qPID : Closed Loop PID Controller</summary>
+    
+  - Derivative filter
+  - Anti-Windup
+  - Tracking Mode
+  - Auto-tunning  
+</details>
+
+<details><summary>qLTISys : Recursive LTI systems evaluation by transfer functions</summary>
+    
+  - Continuous
+  - Discrete
+</details>
+
+<details><summary>qCRC : Generic Cyclic Redundancy Check (CRC) calculator</summary>
+    
+  - CRC8
+  - CRC16
+  - CRC32
+</details>
+
 - qBitField: A bit-field manipulation library
-- qSmoother : Filters to smooth noisy signals
-- qPID : PID controller with derivative filter, anti-windup, tracking-mode and auto-tunning.
-- qLTISys : Recursive LTI systems evaluation by transfer functions(continuous and discrete).
-- qRMS : Recursive Root Mean Square(RMS) calculation of a signal.
-- qCRC : Cyclic Redundancy Check (CRC) calculator (8/16/32 bits)
 - qTDL : Tapped Delay Line in O(1). 
+- qRMS : Recursive Root Mean Square(RMS) calculation of a signal.
 
 ## Draft examples
+
+### Working with a bitfield
+```c
+#include <stdio.h>
+#include <stdlib.h>
+#include <stdint.h>
+#include "qbitfield.h"
+
+int main( int argc, char *argv[] ) 
+{
+    qBitField_t vPort; /*create the bitfield instance*/
+    uint8_t vPortArea[ QBITFIELD_SIZE(48) ] = { 0 }; /*Create the bitfield storage area to hold 48bits*/
+    uint16_t rWord; 
+    
+    qBitField_Setup( &vPort, vPortArea, sizeof(vPortArea) );
+    qBitField_ClearAll( &vPort);
+    /*we are going to write the following value in the bitfield = 0x8177AA55FF88*/
+    qBitField_WriteUINTn( &vPort, 0, 0xAA55FF88, 32 ); /*write the first 32 bits*/
+    qBitField_WriteUINTn( &vPort, 32, 0x77, 8 );    /*write one of the last two bytes*/
+    qBitField_WriteBit( &vPort, 47, 1 );           /*write the last bit of the last byte*/
+    qBitField_WriteBit( &vPort, 40, 1 );          /*write the first bit of the last byte*/
+    rWord = (uint16_t)qBitField_ReadUINTn( &vPort, 20, 16 );   /*read a word at offset 24*/
+    printf("%02X %02X %02X %02X %02X %02X\r\n", vPortArea[0], vPortArea[1], vPortArea[2], vPortArea[3], vPortArea[4], vPortArea[5]);
+    return EXIT_SUCCESS;
+}
+```
+
 
 ### A simple fixed-point calculation
 
@@ -30,8 +91,8 @@ A collection of tools for embedded systems including:
 
 
 ```c
-#include "stdio.h"
-#include "stdlib.h"
+#include <stdio.h>
+#include <stdlib.h>
 #include "qfp16.h"
 
 int main( int argc, char *argv[] ) 
@@ -56,8 +117,8 @@ int main( int argc, char *argv[] )
 
 
 ```c
-#include "stdio.h"
-#include "stdlib.h"
+#include <stdio.h>
+#include <stdlib.h>
 #include "bsp.h"
 #include "qltisys.h"
 
@@ -87,8 +148,8 @@ void xTaskSystemSimulate( void *arg )
 
 
 ```c
-#include "stdio.h"
-#include "stdlib.h"
+#include <stdio.h>
+#include <stdlib.h>
 #include "bsp.h"
 #include "qltisys.h"
 
@@ -116,6 +177,8 @@ void xTaskSystemSimulate( void *arg )
 ### A speed control usign the PID algorithm 
 
 ```c
+#include <stdio.h>
+#include <stdlib.h>
 #include "freertos/FreeRTOS.h"
 #include "freertos/task.h"
 #include "bsp.h"
@@ -158,6 +221,8 @@ int main( int argc, char *argv[] )
 
 ### Smoothing a noisy signal by using a gaussian filter
 ```c
+#include <stdio.h>
+#include <stdlib.h>
 #include "freertos/FreeRTOS.h"
 #include "freertos/task.h"
 #include "bsp.h"
