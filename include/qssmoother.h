@@ -19,18 +19,28 @@ extern "C" {
     #include <math.h>
     #include "qtdl.h"
 
-    /*! @cond  */
-    typedef void* qSSmootherPtr_t;
-    /*! @endcond */
-    
+    typedef enum{
+        QSSMOOTHER_TYPE_LPF1 = 0,
+        QSSMOOTHER_TYPE_LPF2,
+        QSSMOOTHER_TYPE_MWM,
+        QSSMOOTHER_TYPE_MWM2,
+        QSSMOOTHER_TYPE_MWOR,
+        QSSMOOTHER_TYPE_MWOR2,
+        QSSMOOTHER_TYPE_GAUSSIAN,
+        QSSMOOTHER_TYPE_KALMAN,
+    }qSSmoother_Type_t;
 
+    typedef void* qSSmootherPtr_t;
+
+    
+    /*! @cond  */
+    /*abstract class*/
     typedef struct _qSSmoother_s 
-    {
-        /*! @cond  */
-        float (*filtFcn)( struct _qSSmoother_s *f, float s ); 
+    {   
+        void *vt;
         uint8_t init;
-        /*! @endcond  */
     } _qSSmoother_t;
+    /*! @endcond  */
 
     typedef struct 
     {   
@@ -131,86 +141,75 @@ extern "C" {
     float qSSmoother_Perform( qSSmootherPtr_t s, float x );
 
     /**
-    * @brief Setup an initialize the order-1 Low-Pass filter for signal smoothing
+    * @brief Setup an initialize smoother filter.
     * @param[in] s A pointer to the signal smoother instance.
-    * @param[in] alpha The smoother tune value. [ 0 < alpha < 1 ] 
+    * @param[in] type The filter type. Use one of the following values:
+    * 
+    * - ::QSSMOOTHER_TYPE_LPF1.
+    * 
+    * - ::QSSMOOTHER_TYPE_LPF2.
+    * 
+    * - ::QSSMOOTHER_TYPE_MWM.
+    * 
+    * - ::QSSMOOTHER_TYPE_MWM2.
+    * 
+    * - ::QSSMOOTHER_TYPE_MWOR.
+    * 
+    * - ::QSSMOOTHER_TYPE_MWOR2.
+    * 
+    * - ::QSSMOOTHER_TYPE_GAUSSIAN.
+    * 
+    * - ::QSSMOOTHER_TYPE_KALMAN.
+    * 
+    * @param[in] param The smoother parameters. Depends of the type selected:
+    * 
+    * if ::QSSMOOTHER_TYPE_LPF1, a value between  [ 0 < alpha < 1 ] 
+    * 
+    * if ::QSSMOOTHER_TYPE_LPF2, a value between  [ 0 < alpha < 1 ]
+    * 
+    * if ::QSSMOOTHER_TYPE_MWM, can be ignored. Pass NULL as argument.
+    * 
+    * if ::QSSMOOTHER_TYPE_MWM2, can be ignored. Pass NULL as argument.
+    * 
+    * if ::QSSMOOTHER_TYPE_MWOR, a value between  [ 0 < alpha < 1 ]
+    * 
+    * if ::QSSMOOTHER_TYPE_MWOR2, a value between  [ 0 < alpha < 1 ]
+    * 
+    * if ::QSSMOOTHER_TYPE_GAUSSIAN, an array with two values. The first element
+    * with the Standard deviation [ sigma > 0 ]. The second element withthe 
+    * offset of the gaussian center. [ 0 < pos < (wsize-1) ].
+    * 
+    * if ::QSSMOOTHER_TYPE_KALMAN, an array with three values. The first element
+    * with the initial estimated error convariance. The second element with the 
+    * process(predict) noise convariance. The third element with the measure 
+    * noise convariance
+    * 
+    * @param[in] window The filter window and coefficients. Depends of the type 
+    * selected:
+    * 
+    * if ::QSSMOOTHER_TYPE_LPF1, can be ignored. Pass NULL as argument.
+    * 
+    * if ::QSSMOOTHER_TYPE_LPF2, can be ignored. Pass NULL as argument.
+    * 
+    * if ::QSSMOOTHER_TYPE_MWM, An array of @a wsize elements.
+    * 
+    * if ::QSSMOOTHER_TYPE_MWM2, An array of @a wsize elements.
+    * 
+    * if ::QSSMOOTHER_TYPE_MWOR, An array of @a wsize elements.
+    * 
+    * if ::QSSMOOTHER_TYPE_MWOR2, An array of @a wsize elements.
+    * 
+    * if ::QSSMOOTHER_TYPE_GAUSSIAN, An array of @a wsize to hold both, the 
+    * window and the gaussian kernel coefficients. 
+    * 
+    * if ::QSSMOOTHER_TYPE_KALMAN, can be ignored. Pass NULL as argument.
+    * 
+    * @param[in] wsize If used, the number of elements in @a window, otherwise
+    * pass 0uL as argument.
     * @return 1 on success, otherwise return 0.
     */  
-    int qSSmoother_Setup_LPF1( qSSmoother_LPF1_t *s, float alpha );
+    int qSSmoother_Setup( qSSmootherPtr_t s, qSSmoother_Type_t type, float *param, float *window, size_t wsize );
 
-    /**
-    * @brief Setup an initialize the order-2 Low-Pass filter for signal smoothing
-    * @param[in] s A pointer to the signal smoother instance.
-    * @param[in] alpha The smoother tune value. [ 0 < alpha < 1 ] 
-    * @return 1 on success, otherwise return 0.
-    */      
-    int qSSmoother_Setup_LPF2( qSSmoother_LPF2_t *s, float alpha );
-
-    /**
-    * @brief Setup an initialize the moving average filter for signal smoothing
-    * @param[in] s A pointer to the signal smoother instance.
-    * @param[in] window An array of @a wsize elements to hold the moving window.
-    * @param[in] wsize The number of elements in @a window.
-    * @return 1 on success, otherwise return 0.
-    */      
-    int qSSmoother_Setup_MWM( qSSmoother_MWM_t *s, float *window, size_t wsize );
-
-    /**
-    * @brief Setup an initialize the moving average filter for signal smoothing
-    * @note This filter uses a specialized TDL structure to work efficient with
-    * a large sliding-window.
-    * @param[in] s A pointer to the signal smoother instance.
-    * @param[in] window An array of @a wsize elements to hold the moving window.
-    * @param[in] wsize The number of elements in @a window.
-    * @return 1 on success, otherwise return 0.
-    */      
-    int qSSmoother_Setup_MWM2( qSSmoother_MWM2_t *s, float *window, size_t wsize );
-
-    /**
-    * @brief Setup an initialize the outlier-removal filter by using a 
-    * moving-average filter. 
-    * @param[in] s A pointer to the signal smoother instance.
-    * @param[in] window An array of @a wsize elements to hold the moving window.
-    * @param[in] wsize The number of elements in @a window.
-    * @param[in] alpha The smoother tune value. [ 0 < alpha < 1 ] 
-    * @return 1 on success, otherwise return 0.
-    */          
-    int qSSmoother_Setup_MWOR( qSSmoother_MWOR_t *s, float *window, size_t wsize, float alpha );
-
-    /**
-    * @brief Setup an initialize the outlier-removal filter by using a 
-    * moving-average filter. 
-    * @note This filter uses a specialized TDL structure to work efficient with
-    * a large sliding-window.
-    * @param[in] s A pointer to the signal smoother instance.
-    * @param[in] window An array of @a wsize elements to hold the moving window.
-    * @param[in] wsize The number of elements in @a window.
-    * @param[in] alpha The smoother tune value. [ 0 < alpha < 1 ] 
-    * @return 1 on success, otherwise return 0.
-    */     
-    int qSSmoother_Setup_MWOR2( qSSmoother_MWOR2_t *s, float *window, size_t wsize, float alpha );
-    
-    /**
-    * @brief Setup an initialize the gaussian filter for signal smoothing
-    * @param[in] s A pointer to the signal smoother instance.
-    * @param[in] window An array of @a wsize elements to hold the moving window.
-    * @param[in] kernel An array of @a wsize to hold the coefficients of the kernel.
-    * @param[in] wsize The number of elements in @a window.
-    * @param[in] sigma Standard deviation. The smoother tune value.  [ sigma > 0 ] 
-    * @param[in] c The offset of the gaussian center. [ 0 < pos < (wsize-1) ] 
-    * @return 1 on success, otherwise return 0.
-    */     
-    int qSSmoother_Setup_GAUSSIAN( qSSmoother_GAUSSIAN_t *s, float *window, float *kernel, size_t wsize, float sigma, size_t c );
-
-    /**
-    * @brief Setup an initialize the Kalman filter for signal smoothing
-    * @param[in] s A pointer to the signal smoother instance.
-    * @param[in] p Initial estimated error convariance.
-    * @param[in] q Process(predict) noise convariance.
-    * @param[in] r Measure noise convariance 
-    * @return 1 on success, otherwise return 0.
-    */  
-    int qSSmoother_Setup_KALMAN( qSSmoother_KALMAN_t *s, float p, float q, float r );
 
 #ifdef __cplusplus
 }
