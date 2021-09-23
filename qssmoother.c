@@ -176,13 +176,13 @@ static int qSSmoother_Setup_GAUSSIAN( _qSSmoother_t *f, float *param, float *win
         float *kernel = &window[ ws ];
         float r, sum = 0.0f;
         size_t i;
-        float L, center, d; 
+        float L, center; 
         /*cstat -CERT-FLP36-C -MISRAC2012-Rule-10.8*/
         L = (float)(wsize - 1u)/2.0f;
         center = (float)c - L;
         r =  2.0f*sigma*sigma ;
         for ( i = 0u ; i < ws ; ++i ) {
-            d = (float)i - L;  /*symetry*/     
+            float d = (float)i - L;  /*symmetry*/     
             d -= center;     
             kernel[ i ] =  expf( -(d*d)/r );            
             sum += kernel[ i ];

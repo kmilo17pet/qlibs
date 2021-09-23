@@ -827,9 +827,8 @@ static qFP16_t qFP16_log2i( qFP16_t x )
 /*============================================================================*/
 static char *qFP16_itoa( char *buf, uint32_t scale, uint32_t value, uint8_t skip )
 {
-    uint32_t digit;  
     while ( 0u != scale ) {
-        digit = ( value / scale );
+        uint32_t digit = ( value / scale );
         if ( ( 0u == skip ) || ( 0u != digit ) || ( 1u == scale ) ) {
             skip = 0u;
             /*cstat -MISRAC2012-Rule-10.2 -MISRAC2012-Rule-10.3*/
