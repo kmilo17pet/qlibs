@@ -29,6 +29,7 @@
   - `MWOR2`: _Moving Window Outlier Removal : With TDL(works efficient for large windows)_
   - `GAUSSIAN`: _Gaussian filter_  
   - `KALMAN`: _Scalar Kalman filter_   
+  - `EXP`: _Exponential weighting filter_   
 </details>
 
 <details><summary>qPID : Closed Loop PID Controller</summary>

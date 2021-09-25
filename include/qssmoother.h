@@ -28,6 +28,7 @@ extern "C" {
         QSSMOOTHER_TYPE_MWOR2,
         QSSMOOTHER_TYPE_GAUSSIAN,
         QSSMOOTHER_TYPE_KALMAN,
+        QSSMOOTHER_TYPE_EXPW,
     }qSSmoother_Type_t;
 
     typedef void* qSSmootherPtr_t;
@@ -108,6 +109,14 @@ extern "C" {
     {
         /*! @cond  */
         _qSSmoother_t f;
+        float lambda, m, w;
+        /*! @endcond  */
+    } qSSmoother_EXPW_t; 
+
+    typedef struct
+    {
+        /*! @cond  */
+        _qSSmoother_t f;
         float x;  /* state */
         float A;  /* x(n)=A*x(n-1)+u(n),u(n)~N(0,q) */
         float H;  /* z(n)=H*x(n)+w(n),w(n)~N(0,r)   */
@@ -161,6 +170,8 @@ extern "C" {
     * 
     * - ::QSSMOOTHER_TYPE_KALMAN.
     * 
+    * - ::QSSMOOTHER_TYPE_EXPW.
+    * 
     * @param[in] param The smoother parameters. Depends of the type selected:
     * 
     * if ::QSSMOOTHER_TYPE_LPF1, a value between  [ 0 < alpha < 1 ] 
@@ -184,6 +195,9 @@ extern "C" {
     * process(predict) noise convariance. The third element with the measure 
     * noise convariance
     * 
+    * if ::QSSMOOTHER_TYPE_EXPW, a value between  [ 0 < lambda < 1 ] that represents
+    * the forgetting factor. 
+    * 
     * @param[in] window The filter window and coefficients. Depends of the type 
     * selected:
     * 
@@ -203,6 +217,8 @@ extern "C" {
     * window and the gaussian kernel coefficients. 
     * 
     * if ::QSSMOOTHER_TYPE_KALMAN, can be ignored. Pass NULL as argument.
+    * 
+    * if ::QSSMOOTHER_TYPE_EXPW, can be ignored. Pass NULL as argument.
     * 
     * @param[in] wsize If used, the number of elements in @a window, otherwise
     * pass 0uL as argument.

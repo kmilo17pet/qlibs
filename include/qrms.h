@@ -17,35 +17,30 @@ extern "C" {
     #include <stdlib.h>
     #include <stdint.h>
     #include <string.h>
+    #include "qssmoother.h"
     
-    /*with this optimal parameters, estimator should converge at 50mS*/
-    #define QRMS_DEFAULT_ALPHA      ( 0.95f )
-    #define QRMS_DEFAULT_A1         ( -1.8f )   
-    #define QRMS_DEFAULT_A2         ( 0.8181f )   
-
     typedef struct 
     {
-        float m, alpha; 
-        float a1, a2, b1;
-        float f1, f2;
+        qSSmoother_EXPW_t f1;
+        qSSmoother_MWM2_t f2;
+        qSSmoother_LPF1_t f3;
     } qRMS_t;
 
-    #define QRMS_INITIALIZER        { 0.0f, QRMS_DEFAULT_ALPHA, QRMS_DEFAULT_A1, QRMS_DEFAULT_A2, ( 1.0f + QRMS_DEFAULT_A1 + QRMS_DEFAULT_A2 ), 0.0f, 0.0f }
-    
     /**
     * @brief Initialize the RMS instance by setting the default optimal parameters.
     * @param[in] q A pointer to the RMS instance.
     * @return 1 on success, otherwise returns 0.
     */  
-    int qRMS_Init( qRMS_t *q );
+    int qRMS_Setup( qRMS_t *q, float *window, size_t wsize ); 
 
     /**
-    * @brief Computes the RMS value of the signal @a x by using a recursive 
-    * 2-step average. 
-    * @warning This function should be called at a rate of Tm = 1mS to be optimal
-    * for the default parameters, the RMS value should converge to around 50mS.
-    * If you are planning to use a different rate, you should recompute
-    * the recursive parameters in order to fit the new sample time.
+    * @brief Computes the moving root mean square (RMS) of the input signal. 
+    * The object uses both the exponential weighting method and the sliding 
+    * window method to compute the moving RMS. 
+    * @note For a 50-60Hz sine waveform leave default parameters, use a window 
+    * of 8 samples and make sure you call the qRMS_Update() at a rate of 1mS. 
+    * In this configuration you will obtain an optimal estimate that converges 
+    * in a cycle of the wave
     * @param[in] q A pointer to the RMS  instance.
     * @param[in] x The raw signal.
     * @return A recursive estimation of the RMS for the incoming signal @a x.
@@ -53,25 +48,20 @@ extern "C" {
     float qRMS_Update( qRMS_t *q, float x );
 
     /**
-    * @brief Change the recursive parameters for the RMS estimator
+    * @brief Change the recursive parameters for the moving RMS estimator.
     * @param[in] q A pointer to the RMS instance.
-    * @param[in] alpha A parameter to tune the moving-mean window. Should be
+    * @param[in] lambda Exponential weighting factor, specified as a positive 
+    * real scalar in the range [0,1]. A forgetting factor of 0.9 gives more 
+    * weight to the older data than does a forgetting factor of 0.1. A forgetting 
+    * factor of 1.0 indicates infinite memory. All the past samples are given an
+    * equal weight.
+    * @param[in] alpha A parameter to tune the 2nd stage filter. Should be
     * a value between  [ 0 < alpha < 1 ]. A higher value will result in a 
     * smoother output but also increasing the convergence time.
-    * @param[in] a1 First coefficient of the 2nd-order polynomial with the poles
-    *  of the recurvise IIR filter
-    * @param[in] a2 Second coefficient of the 2nd-order polynomial with the poles
-    *  of the recurvise IIR filter
     * @return 1 on success, otherwise returns 0.
     */      
-    int qRMS_SetParams( qRMS_t *q, float alpha, float a1, float a2 );
+    int qRMS_SetParams( qRMS_t *q, float lambda, float alpha ); 
 
-    /**
-    * @brief Reset the internal RMS estimator calculations.
-    * @param[in] q A pointer to the RMS instance.
-    * @return 1 on success, otherwise returns 0.
-    */ 
-    int qRMS_Reset( qRMS_t *q );
 
 #ifdef __cplusplus
 }

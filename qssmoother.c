@@ -22,6 +22,7 @@ static int qSSmoother_Setup_MWOR( _qSSmoother_t *f, float *param, float *window,
 static int qSSmoother_Setup_MWOR2( _qSSmoother_t *f, float *param, float *window, size_t wsize );
 static int qSSmoother_Setup_GAUSSIAN( _qSSmoother_t *f, float *param, float *window, size_t wsize );
 static int qSSmoother_Setup_KALMAN( _qSSmoother_t *f, float *param, float *window, size_t wsize );
+static int qSSmoother_Setup_EXPW( _qSSmoother_t *f, float *param, float *window, size_t wsize );
 static float qSSmoother_Filter_LPF1( _qSSmoother_t *f, float x );
 static float qSSmoother_Filter_LPF2( _qSSmoother_t *f, float x );
 static float qSSmoother_Filter_MWM( _qSSmoother_t *f, float x );
@@ -30,11 +31,12 @@ static float qSSmoother_Filter_MWOR( _qSSmoother_t *f, float x );
 static float qSSmoother_Filter_MWOR2( _qSSmoother_t *f, float x );
 static float qSSmoother_Filter_GAUSSIAN( _qSSmoother_t *f, float x ) ;
 static float qSSmoother_Filter_KALMAN( _qSSmoother_t *f, float x );
+static float qSSmoother_Filter_EXPW( _qSSmoother_t *f, float x ) ;
 
 /*============================================================================*/
 int qSSmoother_Setup( qSSmootherPtr_t s, qSSmoother_Type_t type, float *param, float *window, size_t wsize )
 {
-    static struct qSmoother_Vtbl_s qSmoother_Vtbl[ 8 ] = {
+    static struct qSmoother_Vtbl_s qSmoother_Vtbl[ 9 ] = {
         { &qSSmoother_Filter_LPF1       ,&qSSmoother_Setup_LPF1 }, 
         { &qSSmoother_Filter_LPF2       ,&qSSmoother_Setup_LPF2 },
         { &qSSmoother_Filter_MWM        ,&qSSmoother_Setup_MWM },
@@ -43,6 +45,7 @@ int qSSmoother_Setup( qSSmootherPtr_t s, qSSmoother_Type_t type, float *param, f
         { &qSSmoother_Filter_MWOR2      ,&qSSmoother_Setup_MWOR2 },
         { &qSSmoother_Filter_GAUSSIAN   ,&qSSmoother_Setup_GAUSSIAN},
         { &qSSmoother_Filter_KALMAN     ,&qSSmoother_Setup_KALMAN},
+        { &qSSmoother_Filter_EXPW        ,&qSSmoother_Setup_EXPW},
     };    
     int retVal = 0;
     
@@ -215,6 +218,25 @@ static int qSSmoother_Setup_KALMAN( _qSSmoother_t *f, float *param, float *windo
         s->r = r;
         s->A = 1.0f;
         s->H = 1.0f;
+        retVal = qSSmoother_Reset( s );
+        (void)window;
+        (void)wsize;
+    }
+    return retVal;
+}
+/*============================================================================*/
+static int qSSmoother_Setup_EXPW( _qSSmoother_t *f, float *param, float *window, size_t wsize )
+{
+    int retVal = 0;
+    float lambda = param[ 0 ];
+    
+    if ( ( lambda > 0.0f ) && ( lambda < 1.0f ) ) {
+        /*cstat -MISRAC2012-Rule-11.3 -CERT-EXP39-C_d -CERT-EXP36-C_a*/
+        qSSmoother_EXPW_t *s = (qSSmoother_EXPW_t*)f;
+        /*cstat +MISRAC2012-Rule-11.3 +CERT-EXP39-C_d +CERT-EXP36-C_a*/
+        s->lambda = lambda;
+        s->m = 0.0f;
+        s->w = 1.0f;
         retVal = qSSmoother_Reset( s );
         (void)window;
         (void)wsize;
@@ -414,5 +436,23 @@ static float qSSmoother_Filter_KALMAN( _qSSmoother_t *f, float x )
     s->x += s->gain*( x - ( s->H*s->x ) );
     s->p = ( 1.0f - ( s->gain*s->H ) )*s->p;
     return s->x;      
+}
+/*============================================================================*/
+static float qSSmoother_Filter_EXPW( _qSSmoother_t *f, float x ) 
+{
+    /*cstat -CERT-EXP36-C_a -MISRAC2012-Rule-11.3 -CERT-EXP39-C_d*/
+    qSSmoother_EXPW_t *s = (qSSmoother_EXPW_t*)f;
+    /*cstat +CERT-EXP36-C_a +MISRAC2012-Rule-11.3 +CERT-EXP39-C_d*/
+    float iw;
+
+    if ( 1u == f->init ) {
+        s->m = x;
+        s->w = 1.0f;
+        f->init = 0u;
+    }
+    s->w = ( s->lambda*s->w ) + 1.0f;
+    iw = 1.0f/s->w;
+    s->m = ( s->m*( 1.0f - iw ) ) + ( iw*x );
+    return s->m;
 }
 /*============================================================================*/
