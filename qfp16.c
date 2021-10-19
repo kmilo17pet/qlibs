@@ -34,7 +34,7 @@ static qFP16_t qFP16_Saturate( qFP16_t nsInput, qFP16_t x, qFP16_t y );
 int qFP16_SettingsSet( qFP16_Settings_t *instance, qFP16_t min, qFP16_t max, uint8_t rounding, uint8_t saturate )
 {
     int retValue = 0;
-    if ( ( NULL != instance ) && ( max > min) && ( rounding <= 1u ) && ( saturate <= 1u ) ) {
+    if ( ( NULL != instance ) && ( max > min ) && ( rounding <= 1u ) && ( saturate <= 1u ) ) {
         instance->min = min;
         instance->max = max;
         instance->rounding = rounding;
@@ -342,7 +342,7 @@ qFP16_t qFP16_Exp( qFP16_t x )
             term = qFP16_Mul( term, qFP16_Div( x, qFP16_IntToFP( i ) ) );
             retValue += term;
 
-            if ( ( term < 500 ) && ( (i > 15) || ( term < 20 ) ) ) {
+            if ( ( term < 500 ) && ( ( i > 15 ) || ( term < 20 ) ) ) {
                 break;
             }	
         }
@@ -584,7 +584,7 @@ qFP16_t qFP16_Tanh( qFP16_t x )
 {
     qFP16_t retValue, epx, enx;
     
-    if( 0 == x ) {
+    if ( 0 == x ) {
         retValue = 0;
     }
     else if ( x >  QFP16_6_5 ) { /* tanh for any x>6.5 ~= 1*/
@@ -711,7 +711,7 @@ char* qFP16_FPToA( qFP16_t num, char *str, int decimals )
 
         if ( 1u != scale ) {
             *str++ = '.';
-            str = qFP16_itoa( str, scale / 10U, fPart, 0u );
+            str = qFP16_itoa( str, scale/10u, fPart, 0u );
         }
         *str = '\0';        
     }
