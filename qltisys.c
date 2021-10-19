@@ -10,7 +10,7 @@ static float qLTISys_DiscreteUpdate( qLTISys_t *sys, float u )
     size_t i;
         
     /*using direct-form 2*/   
-    for ( i = 0; i < sys->na ; ++i ) {
+    for ( i = 0 ; i < sys->na ; ++i ) {
         v -= sys->a[ i ]*sys->x[ i ];
     }
     return qLTISys_DiscreteFIRUpdate( sys->x, sys->b, sys->n, v );  
@@ -41,11 +41,12 @@ static float qLTISys_ContinuosUpdate( qLTISys_t *sys, float u )
     return y;
 }
 /*============================================================================*/
-float qLTISys_Excite( qLTISys_t *sys, float u ){
+float qLTISys_Excite( qLTISys_t *sys, float u )
+{
     float y = 0.0f;
 
     if ( 1 == qLTISys_IsInitialized( sys ) ) {
-        if( NULL != sys->tDelay.head ) { /*check if has delay*/
+        if ( NULL != sys->tDelay.head ) { /*check if has delay*/
             qTDL_InsertSample( &sys->tDelay, u ); /*delay the output*/
             u = qTDL_GetOldest( &sys->tDelay ); /*excite the system with the most delayed input*/
         }
@@ -66,49 +67,49 @@ float qLTISys_Excite( qLTISys_t *sys, float u ){
 /*============================================================================*/
 int qLTISys_SetDelay( qLTISys_t *sys, float *w, size_t n, float initval )
 {
-    int retVal = 0;
+    int retValue = 0;
     if ( 1 == qLTISys_IsInitialized( sys ) ) {
         qTDL_Setup( &sys->tDelay, w, n, initval );
-        retVal = 1;
+        retValue = 1;
     }
-    return retVal;
+    return retValue;
 }
 /*============================================================================*/
 int qLTISys_SetSaturation( qLTISys_t *sys, float min, float max )
 {
-    int retVal = 0;
-    if ( ( 1 == qLTISys_IsInitialized( sys ) ) && ( max > min )  ) {
+    int retValue = 0;
+    if ( ( 1 == qLTISys_IsInitialized( sys ) ) && ( max > min ) ) {
         sys->min = min;
         sys->max = max;
-        retVal = 1;
+        retValue = 1;
     }
-    return retVal;
+    return retValue;
 }
 /*============================================================================*/
 int qLTISys_IsInitialized( qLTISys_t *sys )
 {
-    int retVal = 0;
+    int retValue = 0;
     if ( NULL != sys ) {
-        retVal = (int)( ( NULL != sys->sysUpdate ) && ( NULL != sys->x ) );
+        retValue = (int)( ( NULL != sys->sysUpdate ) && ( NULL != sys->x ) );
     }
-    return retVal;
+    return retValue;
 }
 /*============================================================================*/
 int qLTISys_Setup( qLTISys_t *sys, float *num, float *den, float *x, size_t nb, size_t na, float dt )
 {
-    int retVal = 0;
-    if ( ( NULL != sys ) && ( NULL != num ) && ( NULL != den ) && ( NULL != x ) && ( na > 0u) ) {
+    int retValue = 0;
+    if ( ( NULL != sys ) && ( NULL != num ) && ( NULL != den ) && ( NULL != x ) && ( na > 0u ) ) {
         float a0;
         size_t i;
 
-        if ( dt < 0.0f ){ /*discrete system*/
+        if ( dt < 0.0f ) { /*discrete system*/
             sys->b = num;
             sys->na = na;
             sys->nb = nb;
             sys->n = ( na > nb ) ? na : nb;   
             sys->sysUpdate = &qLTISys_DiscreteUpdate;          
         }
-        else{   /*continuos system*/
+        else {   /*continuos system*/
             sys->b = &num[ 1 ];
             sys->n = na - 1u;
             sys->nb = sys->n;
@@ -119,7 +120,7 @@ int qLTISys_Setup( qLTISys_t *sys, float *num, float *den, float *x, size_t nb, 
         sys->dt = dt;
         /*normalize the transfer function coefficients*/
         a0 = den[ 0 ];
-        for ( i = 0; i < sys->nb ; ++i ) {
+        for ( i = 0 ; i < sys->nb ; ++i ) {
             num[ i ] /= a0;
         }
         for ( i = 0; i < sys->na ; ++i ) {
@@ -127,9 +128,9 @@ int qLTISys_Setup( qLTISys_t *sys, float *num, float *den, float *x, size_t nb, 
         }    
         sys->b0 = num[ 0 ];
         sys->tDelay.head = NULL;
-        retVal = qLTISys_SetSaturation( sys, -FLT_MAX, FLT_MAX );
+        retValue = qLTISys_SetSaturation( sys, -FLT_MAX, FLT_MAX );
     }
-    return retVal;
+    return retValue;
 }
 /*============================================================================*/
 float qLTISys_DiscreteFIRUpdate( float *w, float *c, size_t wsize, float x )
@@ -137,14 +138,14 @@ float qLTISys_DiscreteFIRUpdate( float *w, float *c, size_t wsize, float x )
     size_t i;
     float y = 0.0f;
     if ( NULL != c ) {
-        for ( i = ( wsize - 1u ); i >= 1u ; --i ) { 
+        for ( i = ( wsize - 1u ) ; i >= 1u ; --i ) { 
             w[ i ] = w[ i - 1u ];
             y += w[ i ]*c[ i ];
         }
         y += c[ 0 ]*x;
     }
     else {
-        for ( i = ( wsize - 1u ); i >= 1u ; --i ) { 
+        for ( i = ( wsize - 1u ) ; i >= 1u ; --i ) { 
             w[ i ] = w[ i - 1u ];
             y += w[ i ];
         }

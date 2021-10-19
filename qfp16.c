@@ -33,15 +33,15 @@ static qFP16_t qFP16_Saturate( qFP16_t nsInput, qFP16_t x, qFP16_t y );
 /*============================================================================*/
 int qFP16_SettingsSet( qFP16_Settings_t *instance, qFP16_t min, qFP16_t max, uint8_t rounding, uint8_t saturate )
 {
-    int retVal = 0;
+    int retValue = 0;
     if ( ( NULL != instance ) && ( max > min) && ( rounding <= 1u ) && ( saturate <= 1u ) ) {
         instance->min = min;
         instance->max = max;
         instance->rounding = rounding;
         instance->saturate = saturate;
-        retVal = 1;
+        retValue = 1;
     }
-    return retVal;
+    return retValue;
 }
 /*============================================================================*/
 void qFP16_SettingsSelect( qFP16_Settings_t *instance )
@@ -56,19 +56,19 @@ void qFP16_SettingsSelect( qFP16_Settings_t *instance )
 /*============================================================================*/
 int qFP16_FPToInt( qFP16_t x )
 {
-    int RetValue;
+    int retValue;
     if ( 1u == fp->rounding ) {
         if ( x >= 0 ) {
-            RetValue =  ( x + ( QFP16_1 >> 1 ) ) / QFP16_1;
+            retValue =  ( x + ( QFP16_1 >> 1 ) ) / QFP16_1;
         }
         else {
-            RetValue =  ( x - ( QFP16_1 >> 1 ) ) / QFP16_1;
+            retValue =  ( x - ( QFP16_1 >> 1 ) ) / QFP16_1;
         }	        
     }
     else {
-        RetValue = (int)( (uint32_t)x >> 16 );
+        retValue = (int)( (uint32_t)x >> 16 );
     }
-    return RetValue;
+    return retValue;
 }
 /*============================================================================*/
 qFP16_t qFP16_IntToFP( int x )
@@ -78,14 +78,14 @@ qFP16_t qFP16_IntToFP( int x )
 /*============================================================================*/
 qFP16_t qFP16_FloatToFP( float x )
 {
-    float RetValue;
+    float retValue;
     /*cstat -CERT-FLP36-C*/
-    RetValue = x * (float)QFP16_1;
+    retValue = x * (float)QFP16_1;
     /*cstat +CERT-FLP36-C*/
     if ( 1u == fp->rounding ) {
-        RetValue += (RetValue >= 0.0f) ? 0.5f : -0.5f;
+        retValue += ( retValue >= 0.0f) ? 0.5f : -0.5f;
     }    
-    return (qFP16_t)RetValue;
+    return (qFP16_t)retValue;
 }
 /*============================================================================*/
 float qFP16_FPToFloat( qFP16_t x )
@@ -97,14 +97,14 @@ float qFP16_FPToFloat( qFP16_t x )
 /*============================================================================*/
 qFP16_t qFP16_DoubleToFP( double x )
 {
-    double RetValue;
+    double retValue;
     /*cstat -CERT-FLP36-C*/
-    RetValue = x * (double)QFP16_1;
+    retValue = x * (double)QFP16_1;
     /*cstat +CERT-FLP36-C*/
-    if( 1u == fp->rounding ){
-        RetValue += ( RetValue >= 0.0 )? 0.5 : -0.5;
+    if ( 1u == fp->rounding ) {
+        retValue += ( retValue >= 0.0 )? 0.5 : -0.5;
     }    
-    return (qFP16_t)RetValue;
+    return (qFP16_t)retValue;
 }
 /*============================================================================*/
 double qFP16_FPToDouble( qFP16_t x )
@@ -116,14 +116,14 @@ double qFP16_FPToDouble( qFP16_t x )
 /*============================================================================*/
 qFP16_t qFP16_Abs( qFP16_t x )
 {   
-    qFP16_t RetValue;
+    qFP16_t retValue;
     if ( x == fp->min ) {
-        RetValue = QFP16_OVERFLOW;
+        retValue = QFP16_OVERFLOW;
     }
-    else{
-        RetValue = ( x >= 0 ) ? x : -x;
+    else {
+        retValue = ( x >= 0 ) ? x : -x;
     }
-    return RetValue;
+    return retValue;
 }
 /*============================================================================*/
 qFP16_t qFP16_Floor( qFP16_t x )
@@ -146,24 +146,24 @@ qFP16_t qFP16_Round( qFP16_t x )
 qFP16_t qFP16_Add( qFP16_t X, qFP16_t Y )
 {
     uint32_t x = (uint32_t)X, y = (uint32_t)Y;
-    uint32_t RetValue;
-    RetValue =  x + y;
-    RetValue = qFP16_OverflowCheck( RetValue, x, y );
-    return qFP16_Saturate( (qFP16_t)RetValue, X, X );    
+    uint32_t retValue;
+    retValue =  x + y;
+    retValue = qFP16_OverflowCheck( retValue, x, y );
+    return qFP16_Saturate( (qFP16_t)retValue, X, X );    
 }
 /*============================================================================*/
 qFP16_t qFP16_Sub( qFP16_t X, qFP16_t Y )
 {
     uint32_t x = (uint32_t)X, y = (uint32_t)Y; 
-    uint32_t RetValue;
-    RetValue =  x - y;
-    RetValue = qFP16_OverflowCheck( RetValue, x, y );
-    return qFP16_Saturate( (qFP16_t)RetValue, X, X ); 
+    uint32_t retValue;
+    retValue =  x - y;
+    retValue = qFP16_OverflowCheck( retValue, x, y );
+    return qFP16_Saturate( (qFP16_t)retValue, X, X ); 
 }
 /*============================================================================*/
 qFP16_t qFP16_Mul( qFP16_t x, qFP16_t y )
 {
-    qFP16_t RetValue = QFP16_OVERFLOW;
+    qFP16_t retValue = QFP16_OVERFLOW;
     int32_t a, c, ac, adcb, mulH;
     uint32_t b, d, bd, tmp, mulL;
     /*cstat -MISRAC2012-Rule-10.3*/
@@ -191,19 +191,19 @@ qFP16_t qFP16_Mul( qFP16_t x, qFP16_t y )
             if ( mulL > tmp2 ) {
                 mulH--;
             }
-            RetValue = (qFP16_t)( mulH << 16 ) | (qFP16_t)( mulL >> 16 );
-            RetValue += 1;  
+            retValue = (qFP16_t)( mulH << 16 ) | (qFP16_t)( mulL >> 16 );
+            retValue += 1;  
         }
-        else{
-            RetValue = (qFP16_t)( mulH << 16 ) | (qFP16_t)( mulL >> 16 );
+        else {
+            retValue = (qFP16_t)( mulH << 16 ) | (qFP16_t)( mulL >> 16 );
         }		
     }
-    return qFP16_Saturate( RetValue, x, y );
+    return qFP16_Saturate( retValue, x, y );
 }
 /*============================================================================*/
 qFP16_t qFP16_Div( qFP16_t x, qFP16_t y )
 {
-    qFP16_t RetValue = fp->min;
+    qFP16_t retValue = fp->min;
     if ( 0 != y ) {
         uint32_t xRem, xDiv, bit = 0x10000uL;
         xRem = (uint32_t)( ( x >= 0 ) ? x : -x );
@@ -213,7 +213,7 @@ qFP16_t qFP16_Div( qFP16_t x, qFP16_t y )
             xDiv <<= 1;
             bit <<= 1;
         }
-        RetValue = QFP16_OVERFLOW;
+        retValue = QFP16_OVERFLOW;
         /*cstat -MISRAC2012-Rule-14.3_a*/
         if ( 0uL != bit ) { /*MISRAC2012-Rule-14.3_a false positive*/
         /*cstat +MISRAC2012-Rule-14.3_a*/  
@@ -241,39 +241,39 @@ qFP16_t qFP16_Div( qFP16_t x, qFP16_t y )
                 }
             }
 
-            RetValue = (qFP16_t)quotient;
+            retValue = (qFP16_t)quotient;
 
             if ( 0uL != ( (uint32_t)( x ^ y ) & QFP16_OVERFLOW_MASK ) ) {
                 if ( quotient == (uint32_t)fp->min ) {
-                    RetValue = QFP16_OVERFLOW;
+                    retValue = QFP16_OVERFLOW;
                 }
-                else{
-                    RetValue = -RetValue;
+                else {
+                    retValue = -retValue;
                 }
             }
         }
     }
-    return qFP16_Saturate( RetValue, x, y );    
+    return qFP16_Saturate( retValue, x, y );    
 }
 /*============================================================================*/
 qFP16_t qFP16_Mod( qFP16_t x, qFP16_t y )
 {
-    qFP16_t RetValue = 0;
+    qFP16_t retValue = 0;
     if ( 0 != y ) {
-      RetValue = x % y;
+      retValue = x % y;
     }
-    return RetValue;
+    return retValue;
 }
 /*============================================================================*/
 qFP16_t qFP16_Sqrt( qFP16_t x )
 {
-    qFP16_t RetValue = QFP16_OVERFLOW;
+    qFP16_t retValue = QFP16_OVERFLOW;
    
     if( x > 0 ) {
         uint32_t bit;
         uint8_t  n;
 
-        RetValue = 0;
+        retValue = 0;
         bit = ( 0 != ( x & (qFP16_t)0xFFF00000uL ) )? (uint32_t)( 1 << 30 ) : (uint32_t)( 1 << 18 );
         while ( bit > (uint32_t)x ) {
             bit >>= 2;
@@ -281,53 +281,53 @@ qFP16_t qFP16_Sqrt( qFP16_t x )
             
        	for ( n = 0u ; n < 2u ; ++n ) {
             while ( 0u != bit ) {
-                if ( x >= (qFP16_t)( (uint32_t)RetValue + bit ) ) {
-                    x -= (qFP16_t)( (uint32_t)RetValue + bit );
-                    RetValue = (qFP16_t)( ( (uint32_t)RetValue >> 1uL ) + bit );
+                if ( x >= (qFP16_t)( (uint32_t)retValue + bit ) ) {
+                    x -= (qFP16_t)( (uint32_t)retValue + bit );
+                    retValue = (qFP16_t)( ( (uint32_t)retValue >> 1uL ) + bit );
                 }
                 else {
-                    RetValue = ( RetValue >> 1 );
+                    retValue = ( retValue >> 1 );
                 }
                 bit >>= 2;
             }
 		
             if ( 0u == n ) {
                 if ( x > 65535 ) {
-                    x -= RetValue;
+                    x -= retValue;
                     x = ( x << 16 ) - QFP16_1_DIV_2;
-                    RetValue = ( RetValue << 16 ) + QFP16_1_DIV_2;
+                    retValue = ( retValue << 16 ) + QFP16_1_DIV_2;
                 }
                 else {
                     x <<= 16;
-                    RetValue <<= 16;
+                    retValue <<= 16;
                 }
                 bit = 1 << 14;
             }
         }  
     }
-    if( ( 1u == fp->rounding ) && ( x > RetValue ) ) {
-        RetValue++;    
+    if ( ( 1u == fp->rounding ) && ( x > retValue ) ) {
+        retValue++;    
     }
-    return (qFP16_t)RetValue;
+    return (qFP16_t)retValue;
 }
 /*============================================================================*/
 qFP16_t qFP16_Exp( qFP16_t x )
 {
-    qFP16_t RetValue, term;
+    qFP16_t retValue, term;
     uint8_t isNegative;
     int i;
     
     if ( 0 == x ) {
-        RetValue = QFP16_1;
+        retValue = QFP16_1;
     }
     else if ( x == QFP16_1 ) {
-        RetValue = QFP16_E;
+        retValue = QFP16_E;
     }
     else if ( x >= QFP16_EXP_MAX ) {
-        RetValue =  fp->max;
+        retValue =  fp->max;
     }  
     else if ( x <= QFP16_EXP_MIN ) {
-        RetValue = 0;
+        retValue = 0;
     }
     else {
         isNegative = (uint8_t)( x < 0 );
@@ -335,34 +335,34 @@ qFP16_t qFP16_Exp( qFP16_t x )
             x = -x;
         }
         
-        RetValue = x + QFP16_1;
+        retValue = x + QFP16_1;
         term = x;
        
-        for ( i = 2; i < 30; ++i ) {
+        for ( i = 2 ; i < 30 ; ++i ) {
             term = qFP16_Mul( term, qFP16_Div( x, qFP16_IntToFP( i ) ) );
-            RetValue += term;
+            retValue += term;
 
             if ( ( term < 500 ) && ( (i > 15) || ( term < 20 ) ) ) {
                 break;
             }	
         }
 
-        if ( 1u == isNegative ){
-            RetValue = qFP16_Div( QFP16_1, RetValue );  
+        if ( 1u == isNegative ) {
+            retValue = qFP16_Div( QFP16_1, retValue );  
         }
     }
-    return RetValue; 
+    return retValue; 
 }
 /*============================================================================*/
 qFP16_t qFP16_Log( qFP16_t x )
 {
-    qFP16_t RetValue = (qFP16_t)QFP16_OVERFLOW;
+    qFP16_t retValue = (qFP16_t)QFP16_OVERFLOW;
     
     if ( x > 0 ) {
         qFP16_t guess = QFP16_2, delta, e;
         int scaling = 0, count = 0;
         
-        while ( x > QFP16_100 ){
+        while ( x > QFP16_100 ) {
             x = qFP16_Div( x, QFP16_E4 );
             scaling += 4;
         }
@@ -382,36 +382,36 @@ qFP16_t qFP16_Log( qFP16_t x )
             guess += delta;
         } while ( ( count++ < 10 ) && ( ( delta > 1 ) || ( delta < -1 ) ) );
 
-        RetValue = guess + qFP16_IntToFP( scaling );
+        retValue = guess + qFP16_IntToFP( scaling );
     } 
-    return RetValue;
+    return retValue;
 }
 /*============================================================================*/
 qFP16_t qFP16_Log2( qFP16_t x )
 {
-    qFP16_t RetValue = QFP16_OVERFLOW;
+    qFP16_t retValue = QFP16_OVERFLOW;
     qFP16_t inv;
     if ( x > 0 ) {
         if ( x < QFP16_1 ) {
             if ( 1 == x ) {
-                RetValue = QFP16_N16;
+                retValue = QFP16_N16;
             }
             else {
                 inv = qFP16_Div( QFP16_1, x );
-                RetValue = -qFP16_log2i( inv );   
+                retValue = -qFP16_log2i( inv );   
             }
         }        
         else {
-            RetValue = qFP16_log2i( x );
+            retValue = qFP16_log2i( x );
         }
     }
     if ( 1u == fp->saturate ) {
-        if ( QFP16_OVERFLOW == RetValue ) {
-            RetValue = fp->min;
+        if ( QFP16_OVERFLOW == retValue ) {
+            retValue = fp->min;
         }
     }
     
-    return RetValue;
+    return retValue;
 }
 /*============================================================================*/
 qFP16_t fp16_RadToDeg( qFP16_t x )
@@ -452,24 +452,24 @@ qFP16_t qFP16_WrapTo180( qFP16_t x )
 /*============================================================================*/
 qFP16_t qFP16_Sin( qFP16_t x )
 {
-    qFP16_t RetValue, x2;
+    qFP16_t retValue, x2;
     
     x = qFP16_WrapToPi( x );
     x2 = qFP16_Mul( x ,x );
 
-    RetValue = x;
+    retValue = x;
     x = qFP16_Mul( x, x2 );
-    RetValue -= ( x / 6 ); /*x^3/3!*/
+    retValue -= ( x / 6 ); /*x^3/3!*/
     x = qFP16_Mul( x, x2 );
-    RetValue += ( x / 120 ); /*x^5/5!*/
+    retValue += ( x / 120 ); /*x^5/5!*/
     x = qFP16_Mul( x, x2 );
-    RetValue -= ( x / 5040 ); /*x^7/7!*/
+    retValue -= ( x / 5040 ); /*x^7/7!*/
     x = qFP16_Mul( x, x2 );
-    RetValue += ( x / 362880 ); /*x^9/9!*/
+    retValue += ( x / 362880 ); /*x^9/9!*/
     x = qFP16_Mul( x, x2);
-    RetValue -= ( x / 39916800 ); /*x^11/11!*/
+    retValue -= ( x / 39916800 ); /*x^11/11!*/
 
-    return RetValue;
+    return retValue;
 }
 /*============================================================================*/
 qFP16_t qFP16_Cos( qFP16_t x )
@@ -518,13 +518,13 @@ qFP16_t qFP16_Atan( qFP16_t x )
 /*============================================================================*/
 qFP16_t qFP16_Asin( qFP16_t x )
 {
-    qFP16_t RetValue = 0;
+    qFP16_t retValue = 0;
     if ( ( x <= QFP16_1 ) && ( x >= -QFP16_1 ) ) {
-        RetValue = QFP16_1 - qFP16_Mul( x, x );
-        RetValue = qFP16_Div( x, qFP16_Sqrt( RetValue ) );
-        RetValue = qFP16_Atan( RetValue ); 
+        retValue = QFP16_1 - qFP16_Mul( x, x );
+        retValue = qFP16_Div( x, qFP16_Sqrt( retValue ) );
+        retValue = qFP16_Atan( retValue ); 
     }
-    return RetValue;
+    return retValue;
 }
 /*============================================================================*/
 qFP16_t qFP16_Acos( qFP16_t x )
@@ -534,74 +534,74 @@ qFP16_t qFP16_Acos( qFP16_t x )
 /*============================================================================*/
 qFP16_t qFP16_Cosh( qFP16_t x )
 {
-    qFP16_t RetValue = QFP16_OVERFLOW;
+    qFP16_t retValue = QFP16_OVERFLOW;
     qFP16_t epx, enx;
     
     if ( 0 == x ) {
-        RetValue = QFP16_1;
+        retValue = QFP16_1;
     }
     else if ( ( x >= QFP16_EXP_MAX ) || ( x <= QFP16_EXP_MIN ) ) {
-        RetValue = fp->max;
+        retValue = fp->max;
     }  
     else {
         epx = qFP16_Exp( x );
         enx = qFP16_Exp( -x );
-        if( ( QFP16_OVERFLOW != epx ) && ( QFP16_OVERFLOW != enx ) ) {
-            RetValue = epx + enx;
-            RetValue = ( RetValue >> 1 );
+        if ( ( QFP16_OVERFLOW != epx ) && ( QFP16_OVERFLOW != enx ) ) {
+            retValue = epx + enx;
+            retValue = ( retValue >> 1 );
         }        
     }
 
-    return RetValue;
+    return retValue;
 }
 /*============================================================================*/
 qFP16_t qFP16_Sinh( qFP16_t x )
 {
-    qFP16_t RetValue = QFP16_OVERFLOW;
+    qFP16_t retValue = QFP16_OVERFLOW;
     qFP16_t epx, enx;
     
     if ( 0 == x ) {
-        RetValue = QFP16_1;
+        retValue = QFP16_1;
     }
     else if ( x >= QFP16_EXP_MAX ) {
-        RetValue = fp->max;
+        retValue = fp->max;
     }  
     else if ( x <= QFP16_EXP_MIN ) {
-        RetValue = -fp->max;
+        retValue = -fp->max;
     }
     else {
         epx = qFP16_Exp( x );
         enx = qFP16_Exp( -x );
         if ( ( QFP16_OVERFLOW != epx ) && ( QFP16_OVERFLOW != enx ) ) {
-            RetValue = epx - enx;
-            RetValue = ( RetValue >> 1 );
+            retValue = epx - enx;
+            retValue = ( retValue >> 1 );
         }        
     }
-    return RetValue;
+    return retValue;
 }
 /*============================================================================*/
 qFP16_t qFP16_Tanh( qFP16_t x )
 {
-    qFP16_t RetValue, epx, enx;
+    qFP16_t retValue, epx, enx;
     
     if( 0 == x ) {
-        RetValue = 0;
+        retValue = 0;
     }
     else if ( x >  QFP16_6_5 ) { /* tanh for any x>6.5 ~= 1*/
-        RetValue = QFP16_1;
+        retValue = QFP16_1;
     }
     else if ( x < -QFP16_6_5 ) { /* tanh for any x<6.5 ~= -1*/
-        RetValue = -QFP16_1;
+        retValue = -QFP16_1;
     }
     else {
-        RetValue = qFP16_Abs( x );
-        epx = qFP16_Exp( RetValue ); 
-        enx = qFP16_Exp( -RetValue );    
-        RetValue = qFP16_Div( epx - enx, epx + enx );
-        RetValue = ( x > 0 ) ? RetValue : -RetValue;
+        retValue = qFP16_Abs( x );
+        epx = qFP16_Exp( retValue ); 
+        enx = qFP16_Exp( -retValue );    
+        retValue = qFP16_Div( epx - enx, epx + enx );
+        retValue = ( x > 0 ) ? retValue : -retValue;
     }
     
-    return RetValue;
+    return retValue;
 }
 /*============================================================================*/
 qFP16_t qFP16_Polyval( qFP16_t *p, size_t n, qFP16_t x )
@@ -623,53 +623,53 @@ qFP16_t qFP16_Polyval( qFP16_t *p, size_t n, qFP16_t x )
 /*============================================================================*/
 qFP16_t qFP16_IPow( qFP16_t x, qFP16_t y )
 {
-    qFP16_t RetValue;
+    qFP16_t retValue;
     qFP16_t n;
     int32_t i;
     
-    RetValue = QFP16_1;
+    retValue = QFP16_1;
     n = y >> 16;
     if ( 0 == n ) {
-        RetValue = QFP16_1;
+        retValue = QFP16_1;
     }
     else if ( QFP16_1 == n ) {
-        RetValue = x;
+        retValue = x;
     }
     else {
-        for ( i = 0; i < n; ++i ) {
-            RetValue = qFP16_Mul( x, RetValue );
-            if ( QFP16_OVERFLOW == RetValue ) {
+        for ( i = 0 ; i < n ; ++i ) {
+            retValue = qFP16_Mul( x, retValue );
+            if ( QFP16_OVERFLOW == retValue ) {
                 break;
             }
         }
     }
-    return RetValue;
+    return retValue;
 }
 /*============================================================================*/
 qFP16_t qFP16_Pow( qFP16_t x, qFP16_t y )
 {
-    qFP16_t RetValue = QFP16_OVERFLOW;
+    qFP16_t retValue = QFP16_OVERFLOW;
     qFP16_t tmp;
     
     if ( ( 0uL == ( (uint32_t)y & QFP16_FRACTION_MASK ) ) && ( y > 0 ) ) { /*handle integer exponent explicitly*/
-        RetValue = qFP16_IPow( x, y );
+        retValue = qFP16_IPow( x, y );
     }
-    else{
+    else {
         tmp = qFP16_Mul( y, qFP16_Log( qFP16_Abs( x ) ) );
         if ( QFP16_OVERFLOW != tmp ) {
-            RetValue = qFP16_Exp( tmp );
+            retValue = qFP16_Exp( tmp );
             if ( x < 0 ) {
-                RetValue = -RetValue;
+                retValue = -retValue;
             }
         }        
     }        
 
-    return RetValue;
+    return retValue;
 }
 /*============================================================================*/
 char* qFP16_FPToA( qFP16_t num, char *str, int decimals )
 {
-    char *RetValue = str;
+    char *retValue = str;
     
     if ( QFP16_OVERFLOW == num ) {
         str[ 0 ] = 'o';
@@ -715,7 +715,7 @@ char* qFP16_FPToA( qFP16_t num, char *str, int decimals )
         }
         *str = '\0';        
     }
-    return RetValue;
+    return retValue;
 }
 /*============================================================================*/
 qFP16_t qFP16_AToFP( char *s )
@@ -723,12 +723,12 @@ qFP16_t qFP16_AToFP( char *s )
     uint8_t negative;
     uint32_t iPart = 0uL, fPart = 0uL, scale = 1uL, digit;
     int32_t count = 0;
-    qFP16_t RetValue = QFP16_OVERFLOW;
+    qFP16_t retValue = QFP16_OVERFLOW;
     int point_seen = 0, overflow = 0;
     char c;
     
     /*cstat -MISRAC2012-Dir-4.11_h*/
-    while ( 0 != isspace( (int)*s) ) {
+    while ( 0 != isspace( (int)*s ) ) {
         s++; /*discard whitespaces*/
     }
     
@@ -764,12 +764,12 @@ qFP16_t qFP16_AToFP( char *s )
         s++;
     }
     if ( 0 == overflow ) {
-        RetValue = (qFP16_t)iPart << 16;
-        RetValue += qFP16_Div( (qFP16_t)fPart, (qFP16_t)scale );
-        RetValue = ( 1u == negative )? -RetValue : RetValue;
+        retValue = (qFP16_t)iPart << 16;
+        retValue += qFP16_Div( (qFP16_t)fPart, (qFP16_t)scale );
+        retValue = ( 1u == negative )? -retValue : retValue;
     }   
     /*cstat +MISRAC2012-Dir-4.11_h*/
-    return RetValue;
+    return retValue;
 }
 /*============================================================================*/
 static uint32_t qFP16_OverflowCheck( uint32_t res, uint32_t x, uint32_t y )
@@ -782,47 +782,47 @@ static uint32_t qFP16_OverflowCheck( uint32_t res, uint32_t x, uint32_t y )
 /*============================================================================*/
 static qFP16_t qFP16_rs( qFP16_t x )
 {
-    qFP16_t RetValue;
+    qFP16_t retValue;
     if ( 1u == fp->rounding ) {
-        RetValue = ( x >> 1u ) + ( x & 1 );
+        retValue = ( x >> 1u ) + ( x & 1 );
     }
     else {
-        RetValue = x >> 1;
+        retValue = x >> 1;
     }
-    return RetValue;
+    return retValue;
 }
 /*============================================================================*/
 static qFP16_t qFP16_log2i( qFP16_t x )
 {
-    qFP16_t RetValue = 0;
+    qFP16_t retValue = 0;
 
     while ( x >= QFP16_2 ) {
-        RetValue++;
+        retValue++;
         x = qFP16_rs( x );
     }
 
     if ( 0 == x ) {
-        RetValue = RetValue << 16;
+        retValue = retValue << 16;
     }
     else {
         int i;
         for ( i = 16 ; i > 0 ; --i ) {
             x = qFP16_Mul( x, x );
-            RetValue <<= 1;
+            retValue <<= 1;
             if ( x >= QFP16_2 ) {
-                RetValue |= 1;
+                retValue |= 1;
                 x = qFP16_rs( x );
             }
         }
         if ( 1u == fp->rounding ) {
             x = qFP16_Mul( x, x );
             if ( x >= QFP16_2 ) {
-                RetValue++;
+                retValue++;
             }
         }        
     }
 
-    return RetValue;   
+    return retValue;   
 }
 /*============================================================================*/
 static char *qFP16_itoa( char *buf, uint32_t scale, uint32_t value, uint8_t skip )
@@ -843,13 +843,13 @@ static char *qFP16_itoa( char *buf, uint32_t scale, uint32_t value, uint8_t skip
 /*============================================================================*/
 static qFP16_t qFP16_Saturate( qFP16_t nsInput, qFP16_t x, qFP16_t y )
 {
-    qFP16_t RetValue = nsInput;
+    qFP16_t retValue = nsInput;
     if ( 1u == fp->saturate ) {
         if ( QFP16_OVERFLOW == nsInput ) {
-            RetValue = ( ( x >= 0 ) == ( y >= 0 ) )? fp->max : fp->min;
+            retValue = ( ( x >= 0 ) == ( y >= 0 ) )? fp->max : fp->min;
         }
     }      
-    return RetValue;
+    return retValue;
 }
 /*============================================================================*/
 /*cstat +MISRAC2012-Rule-10.8 +CERT-FLP34-C +MISRAC2012-Rule-1.3_n +MISRAC2012-Rule-10.1_R6 +ATH-shift-neg +CERT-INT34-C_c*/

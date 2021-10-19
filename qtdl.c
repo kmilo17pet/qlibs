@@ -26,7 +26,7 @@ void qTDL_Flush( qTDL_t *q, float initval )
     /*cstat -CERT-INT30-C_a*/
     q->rd = &q->head[ q->itemcount - 1u ];    
     /*cstat +CERT-INT30-C_a*/
-    for ( i = 0u; i < q->itemcount; ++i ) { /*initialize the queue*/
+    for ( i = 0u ; i < q->itemcount ; ++i ) { /*initialize the queue*/
         qTDL_InsertNewest( q, initval ); /*the queue should be always full*/
     }
 }

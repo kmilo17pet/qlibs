@@ -185,7 +185,7 @@ void* qBitField_Dump( qBitField_t *instance, void* dst, size_t n )
 {
     void *retValue = NULL;
     if ( ( NULL != instance ) && ( NULL != dst ) ) {
-        if( n <= ( instance->size/8u ) ){
+        if ( n <= ( instance->size/8u ) ) {
             retValue = memcpy( dst, (void*)instance->field, n );
         }
     }

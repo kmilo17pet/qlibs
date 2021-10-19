@@ -17,7 +17,7 @@ static uint32_t qCRCx_Reflect( uint32_t data, uint8_t nBits )
     for ( xBit= 0u ; xBit < nBits ; ++xBit ) {
         if ( 0u != ( data & 0x01u ) ) { /*if the LSB bit is set, set the reflection of it*/
             /*cstat -MISRAC2012-Rule-10.8 -ATH-shift-bounds -MISRAC2012-Rule-12.2 -CERT-INT34-C_b*/
-            r |= (uint32_t)( 1u << ( ( nBits - 1u ) - xBit) );
+            r |= (uint32_t)( 1u << ( ( nBits - 1u ) - xBit ) );
             /*cstat +MISRAC2012-Rule-10.8 +ATH-shift-bounds +MISRAC2012-Rule-12.2 +CERT-INT34-C_b*/
         }
         data = ( data >> 1u );
@@ -29,7 +29,7 @@ uint32_t qCRCx( qCRC_Mode_t mode, void *data, size_t length, uint32_t poly, uint
 {
     uint32_t crc = 0uL;
     /*cstat -ATH-cmp-unsign-pos*/
-    if( ( NULL != data ) && ( length > 0u ) && ( mode >= QCRC8) && ( mode <= QCRC32 ) ) {
+    if ( ( NULL != data ) && ( length > 0u ) && ( mode >= QCRC8 ) && ( mode <= QCRC32 ) ) {
     /*cstat +ATH-cmp-unsign-pos*/  
         size_t i;
         uint8_t xBit;
@@ -49,11 +49,11 @@ uint32_t qCRCx( qCRC_Mode_t mode, void *data, size_t length, uint32_t poly, uint
             /*cstat -CERT-INT34-C_a*/
             crc ^= ( 0u != refIn )? ( qCRCx_Reflect( (uint32_t)msg[ i ], 8u ) <<  wd1 ) : ( (uint32_t)msg[ i ] << wd1 );
             /*cstat +CERT-INT34-C_a*/
-            for ( xBit = 8u; xBit > 0u; --xBit) {
+            for ( xBit = 8u ; xBit > 0u ; --xBit ) {
                 crc = ( 0u != ( crc & topbit ) )? ( ( crc << 1u ) ^ poly ) : ( crc << 1u ); /*try to divide the current data bit*/
             }
         }
-        crc = ( 0u != refOut )? ( qCRCx_Reflect(crc, (uint8_t)width )^xorOut ) : ( crc^xorOut );
+        crc = ( 0u != refOut )? ( qCRCx_Reflect( crc, (uint8_t)width )^xorOut ) : ( crc^xorOut );
         crc &= bitMask;
     }
     return crc;

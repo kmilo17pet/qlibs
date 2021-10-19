@@ -12,21 +12,21 @@ static float qRMS_NewtonsFastSqrt( float x );
 /*============================================================================*/
 int qRMS_Setup( qRMS_t *q, float *window, size_t wsize ) 
 {
-    int RetValue = 0;
-    if ( ( NULL != q ) && ( NULL != window) && ( wsize > 0u ) ) {
+    int retValue = 0;
+    if ( ( NULL != q ) && ( NULL != window ) && ( wsize > 0u ) ) {
         float defaults[ 2 ] = { 0.99f, 0.75f }; /*default parameters*/
         (void)qSSmoother_Setup( &q->f1, QSSMOOTHER_TYPE_EXPW, &defaults[0], NULL, 0uL );
         (void)qSSmoother_Setup( &q->f2, QSSMOOTHER_TYPE_MWM2, NULL , window, wsize );
         (void)qSSmoother_Setup( &q->f3, QSSMOOTHER_TYPE_LPF1, &defaults[1], NULL, 0uL );
-        RetValue = 1;
+        retValue = 1;
     }
-    return RetValue;
+    return retValue;
 }
 /*============================================================================*/
 float qRMS_Update( qRMS_t *q, float x )
 {
     float y = 0.0f;
-    if ( NULL != q ){
+    if ( NULL != q ) {
         y = qRMS_NewtonsFastSqrt( qSSmoother_Perform( &q->f1, x*x ) );
         y = qSSmoother_Perform( &q->f2, y ); /*2nd stage moving-window overlap*/
         y = qSSmoother_Perform( &q->f3, y ); /*3rd stage low-pass filter*/
@@ -36,13 +36,13 @@ float qRMS_Update( qRMS_t *q, float x )
 /*============================================================================*/
 int qRMS_SetParams( qRMS_t *q, float lambda, float alpha ) 
 {
-    int RetValue = 0;
+    int retValue = 0;
     if ( ( NULL != q ) && ( lambda > 0.0f ) && ( lambda <= 1.0f ) && ( alpha > 0.0f ) && ( alpha <= 1.0f ) ) {
         q->f1.lambda = lambda;
         q->f3.alpha = alpha;
-        RetValue = 1;
+        retValue = 1;
     }
-    return RetValue;
+    return retValue;
 }
 /*============================================================================*/
 static float qRMS_NewtonsFastSqrt( float x )
