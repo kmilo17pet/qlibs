@@ -45,7 +45,7 @@ uint32_t qCRCx( qCRC_Mode_t mode, void *data, size_t length, uint32_t poly, uint
         xorOut &= bitMask;
         crc = init;
         /*Perform modulo-2 division, a byte at a time. */
-        for ( i = 0u ; i < length; ++i ) {
+        for ( i = 0u ; i < length ; ++i ) {
             /*cstat -CERT-INT34-C_a*/
             crc ^= ( 0u != refIn )? ( qCRCx_Reflect( (uint32_t)msg[ i ], 8u ) <<  wd1 ) : ( (uint32_t)msg[ i ] << wd1 );
             /*cstat +CERT-INT34-C_a*/
