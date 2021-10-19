@@ -6,18 +6,18 @@
 #include "qbitfield.h"
 
 
-#define LONG_BIT                ( (size_t) (sizeof(uint32_t) * 8uL ) )
-#define BITMASK(b)              ( (uint32_t)1uL << ((b) % LONG_BIT) )
-#define BITSLOT(b)              ( (b) / LONG_BIT) /*((b) >> 6 )*/
-#define BITGET(a, b)            ( ((a)->field[BITSLOT(b)] >> ((b) % LONG_BIT)) & 1uL)
-#define BITSET(a, b)            ( (a)->field[BITSLOT(b)] |= BITMASK(b))
-#define BITCLEAR(a, b)          ( (a)->field[BITSLOT(b)] &= ~BITMASK(b))
-#define BITTEST(a, b)           ( (a)->field[BITSLOT(b)] & BITMASK(b))
-#define BITTOGGLE(a, b)         ( (a)->field[BITSLOT(b)] ^= BITMASK(b))
-#define BITNSLOTS(nb)           ( (nb + LONG_BIT - 1) / LONG_BIT)
-#define BITOFFSET(index)        ( (index) & (uint32_t)31u)
-#define BITMASKMERGE(a,b,abits) ( (b) ^ (((a) ^ (b)) & (abits)))
-#define BITMASK32(nbits)        ( ( 0u != ( nbits) )? ( ~(uint32_t)0 >> ( ( sizeof(uint32_t)*8uL ) - (nbits) ) ) : (uint32_t)0) 
+#define LONG_BIT                ( (size_t)(sizeof(uint32_t) * 8uL ) )
+#define BITMASK(b)              ( (uint32_t)1uL << ( (b) % LONG_BIT ) )
+#define BITSLOT(b)              ( (b) / LONG_BIT ) /*((b) >> 6 )*/
+#define BITGET(a, b)            ( ( (a)->field[ BITSLOT(b) ] >> ( (b) % LONG_BIT ) ) & 1uL )
+#define BITSET(a, b)            ( (a)->field[ BITSLOT(b) ] |= BITMASK(b) )
+#define BITCLEAR(a, b)          ( (a)->field[ BITSLOT(b) ] &= ~BITMASK(b) )
+#define BITTEST(a, b)           ( (a)->field[ BITSLOT(b) ] & BITMASK(b) )
+#define BITTOGGLE(a, b)         ( (a)->field[ BITSLOT(b) ] ^= BITMASK(b) )
+#define BITNSLOTS(nb)           ( ( nb + LONG_BIT - 1 ) / LONG_BIT )
+#define BITOFFSET(index)        ( (index) & (uint32_t)31u )
+#define BITMASKMERGE(a,b,abits) ( (b) ^ ( ( (a) ^ (b) ) & (abits) ) )
+#define BITMASK32(nbits)        ( ( 0u != ( nbits) )? ( ~(uint32_t)0 >> ( ( sizeof(uint32_t)*8uL ) - (nbits) ) ) : (uint32_t)0 ) 
 
 
 static uint32_t qBitField_Read_uint32( const qBitField_t *instance, size_t index );
@@ -137,10 +137,10 @@ int qBitField_WriteUINTn( qBitField_t *instance, size_t index, uint32_t value, s
     int retValue = 0;
     if ( ( NULL != instance ) && ( xBits <= 32u ) ) {
         uint32_t w, mask;
-        if( 1u == xBits ) {
+        if ( 1u == xBits ) {
             (void)qBitField_WriteBit( instance, index, (uint8_t)value );
         }
-        else if( 32u == xBits ) {
+        else if ( 32u == xBits ) {
             qBitField_Write_uint32( instance, index, value );
         }
         else {
@@ -223,9 +223,9 @@ static void qBitField_Write_uint32( qBitField_t *instance, size_t index, uint32_
     }
     else {
         mask = BITMASK32( of );
-        instance->field[ slot   ] = ( value << of ) | ( instance->field[slot] & mask )    ;
-        if( ( slot+1u ) < instance->nSlots ){
-            instance->field[ slot+1u ] = ( value >> (32u - of) ) | ( instance->field[ slot+1u ] & ( ~mask ) );  
+        instance->field[ slot   ] = ( value << of ) | ( instance->field[slot] & mask );
+        if ( ( slot+1u ) < instance->nSlots ) {
+            instance->field[ slot+1u ] = ( value >> ( 32u - of ) ) | ( instance->field[ slot+1u ] & ( ~mask ) );  
         }
      }
 }
