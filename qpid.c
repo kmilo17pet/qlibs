@@ -7,7 +7,7 @@
 #include "qpid.h"
 
 static float qPID_Sat( float x, float min, float max );
-static void qPID_AdaptGains( qPID_controller_t *c,  float e, float u );
+static void qPID_AdaptGains( qPID_controller_t *c,  float u, float y );
 static int qPID_ATCheck( float x );
 
 /*============================================================================*/
@@ -188,7 +188,7 @@ int qPID_EnableAutoTunning( qPID_controller_t *c, uint32_t tEnable )
     return retValue;
 }
 /*============================================================================*/
-static void qPID_AdaptGains( qPID_controller_t *c,  float u, float y )
+static void qPID_AdaptGains( qPID_controller_t *c, float u, float y )
 {
     qPID_AutoTunning_t *s = c->adapt; 
     float error , r, l0, l1;
