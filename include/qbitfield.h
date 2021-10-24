@@ -1,7 +1,7 @@
 /*!
  * @file qbitfield.h
  * @author J. Camilo Gomez C.
- * @version 1.06
+ * @version 1.07
  * @note This file is part of the qTools distribution.
  * @brief A bit-field manipulation library.
  **/
@@ -44,21 +44,21 @@ extern "C" {
     * @param[in] area_size The number of bytes in @a area.
     * @return 1 on success, otherwise return 0.
     */ 
-    int qBitField_Setup( qBitField_t *b, void *area, const size_t area_size );
+    int qBitField_Setup( qBitField_t * const b, void *area, const size_t area_size );
 
     /**
     * @brief Clear all the bits in the BitField.
     * @param[in] b A pointer to the BitField instance
     * @return 1 on success, otherwise return 0.
     */     
-    int qBitField_ClearAll( qBitField_t *b );
+    int qBitField_ClearAll( qBitField_t * const b );
 
     /**
     * @brief Set all the bits in the BitField.
     * @param[in] b A pointer to the BitField instance
     * @return 1 on success, otherwise return 0.
     */       
-    int qBitField_SetAll( qBitField_t *b );
+    int qBitField_SetAll( qBitField_t * const b );
 
     /**
     * @brief Sets one bit in a BitField
@@ -66,7 +66,7 @@ extern "C" {
     * @param[in] index The bit-index.
     * @return 1 on success, otherwise return 0.
     */       
-    int qBitField_SetBit( qBitField_t *b, const size_t index );
+    int qBitField_SetBit( qBitField_t * const b, const size_t index );
 
     /**
     * @brief Clears one bit in a BitField
@@ -74,7 +74,7 @@ extern "C" {
     * @param[in] index The bit-index.
     * @return 1 on success, otherwise return 0.
     */        
-    int qBitField_ClearBit( qBitField_t *b, const size_t index );
+    int qBitField_ClearBit( qBitField_t * const b, const size_t index );
 
     /**
     * @brief Toggles (i.e. reverses the state of) a bit in a BitField
@@ -82,7 +82,7 @@ extern "C" {
     * @param[in] index The bit-index.
     * @return 1 on success, otherwise return 0.
     */     
-    int qBitField_ToggleBit( qBitField_t *b, const size_t index );
+    int qBitField_ToggleBit( qBitField_t * const b, const size_t index );
 
     /**
     * @brief Retrieve the state of a bit in a bitfield
@@ -90,7 +90,7 @@ extern "C" {
     * @param[in] index The bit-index.
     * @return The value of the bit at @a index.
     */      
-    uint8_t qBitField_ReadBit( const qBitField_t *b, const size_t index );
+    uint8_t qBitField_ReadBit( const qBitField_t * const b, const size_t index );
 
     /**
     * @brief Writes one bit in a bitfield
@@ -99,7 +99,7 @@ extern "C" {
     * @param[in] value The boolean value to write.
     * @return 1 on success, otherwise return 0.
     */         
-    int qBitField_WriteBit( qBitField_t *b, const size_t index, uint8_t value );
+    int qBitField_WriteBit( qBitField_t * const b, const size_t index, uint8_t value );
 
     /**
     * @brief Reads an unsigned 32-bit value from the BitField
@@ -108,7 +108,7 @@ extern "C" {
     * @param[in] xBits The number of bits to read. ( max allowed : 32 bits )
     * @return The value from the bitfield from the desired index
     */     
-    uint32_t qBitField_ReadUINTn( const qBitField_t *b, const size_t index, size_t xBits );
+    uint32_t qBitField_ReadUINTn( const qBitField_t * const b, const size_t index, size_t xBits );
 
     /**
     * @brief Writes an unsigned n-bit value from the BitField
@@ -118,7 +118,7 @@ extern "C" {
     * @param[in] xBits The number of bits to read. ( max allowed : 32 bits )
     * @return 1 on success, otherwise return 0.
     */         
-    int qBitField_WriteUINTn( qBitField_t *b, const size_t index, uint32_t value, size_t xBits );
+    int qBitField_WriteUINTn( qBitField_t * const b, const size_t index, uint32_t value, size_t xBits );
 
     /**
     * @brief Reads a 32-bit floating point value from the BitField
@@ -126,7 +126,7 @@ extern "C" {
     * @param[in] index  The bit-index taken as offset.
     * @return The floating point value from the BitField at the desired index
     */       
-    float qBitField_ReadFloat( const qBitField_t *b, const size_t index );
+    float qBitField_ReadFloat( const qBitField_t * const b, const size_t index );
 
     /**
     * @brief Writes a 32-bit floating point value to the BitField
@@ -135,7 +135,7 @@ extern "C" {
     * @param[in] value The floating point value to write.
     * @return 1 on success, otherwise return 0.
     */       
-    int qBitField_WriteFloat( qBitField_t *b, const size_t index, float value );
+    int qBitField_WriteFloat( qBitField_t * const b, const size_t index, float value );
 
     /**
     * @brief Copies @a n bytes from the bit-field instance to a designed memory area.
@@ -145,7 +145,7 @@ extern "C" {
     * @param[in] n Number of bytes to copy.
     * @return Destination is returned on success, otherwise NULL.
     */       
-    void* qBitField_Dump( const qBitField_t *b, void* dst, size_t n );
+    void* qBitField_Dump( const qBitField_t * const b, void* dst, size_t n );
 
 #ifdef __cplusplus
 }

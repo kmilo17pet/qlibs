@@ -7,10 +7,10 @@
 #include "qrms.h"
 
 
-static float qRMS_NewtonsFastSqrt( float x );
+static float qRMS_NewtonsFastSqrt( const float x );
 
 /*============================================================================*/
-int qRMS_Setup( qRMS_t *q, float *window, size_t wsize ) 
+int qRMS_Setup( qRMS_t * const q, float *window, const size_t wsize ) 
 {
     int retValue = 0;
     if ( ( NULL != q ) && ( NULL != window ) && ( wsize > 0u ) ) {
@@ -23,18 +23,18 @@ int qRMS_Setup( qRMS_t *q, float *window, size_t wsize )
     return retValue;
 }
 /*============================================================================*/
-float qRMS_Update( qRMS_t *q, float x )
+float qRMS_Update( qRMS_t * const q, const float x )
 {
     float y = 0.0f;
     if ( NULL != q ) {
         y = qRMS_NewtonsFastSqrt( qSSmoother_Perform( &q->f1, x*x ) );
         y = qSSmoother_Perform( &q->f2, y ); /*2nd stage moving-window overlap*/
         y = qSSmoother_Perform( &q->f3, y ); /*3rd stage low-pass filter*/
-    }
+    } 
     return y;
 }
 /*============================================================================*/
-int qRMS_SetParams( qRMS_t *q, float lambda, float alpha ) 
+int qRMS_SetParams( qRMS_t * const q, const float lambda, const float alpha ) 
 {
     int retValue = 0;
     if ( ( NULL != q ) && ( lambda > 0.0f ) && ( lambda <= 1.0f ) && ( alpha > 0.0f ) && ( alpha <= 1.0f ) ) {
@@ -45,7 +45,7 @@ int qRMS_SetParams( qRMS_t *q, float lambda, float alpha )
     return retValue;
 }
 /*============================================================================*/
-static float qRMS_NewtonsFastSqrt( float x )
+static float qRMS_NewtonsFastSqrt( const float x )
 {
     uint32_t i = 0uL;
     float xHalf = 0.5f*x , y = x;

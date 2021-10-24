@@ -1,7 +1,7 @@
 /*!
  * @file qcrc.h
  * @author J. Camilo Gomez C.
- * @version 1.01
+ * @version 1.02
  * @note This file is part of the qTools distribution.
  * @brief CRC calculation library.
  **/
@@ -37,7 +37,7 @@ extern "C" {
     * @param[in] xorOut The final XOR value.
     * @return The CRC value for @a data.
     */      
-    uint32_t qCRCx( qCRC_Mode_t mode, void *data, size_t length, uint32_t poly, uint32_t init, uint8_t refIn, uint8_t refOut, uint32_t xorOut );
+    uint32_t qCRCx( const qCRC_Mode_t mode, void *data, const size_t length, uint32_t poly, const uint32_t init, const uint8_t refIn, const uint8_t refOut, uint32_t xorOut );
 
 #ifdef __cplusplus
 }

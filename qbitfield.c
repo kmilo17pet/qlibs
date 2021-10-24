@@ -8,10 +8,10 @@
 static const size_t qBitField_LBit = (size_t)( sizeof(uint32_t) * 8uL );
 static uint32_t qBitField_Mask( const size_t index );
 static size_t qBitField_BitSlot( const size_t index );
-static uint32_t qBitField_BitGet( const qBitField_t *b, const size_t index );
-static void qBitField_BitSet( qBitField_t *b, size_t index );
-static void qBitField_BitClear( qBitField_t *b, const size_t index );
-static void qBitField_BitToggle( qBitField_t *b, const size_t index );
+static uint32_t qBitField_BitGet( const qBitField_t * const b, const size_t index );
+static void qBitField_BitSet( qBitField_t * const b, size_t index );
+static void qBitField_BitClear( qBitField_t *const b, const size_t index );
+static void qBitField_BitToggle( qBitField_t *const b, const size_t index );
 static uint32_t qBitField_SafeMask( const uint32_t val, const size_t x, const size_t nbits );
 static size_t qBitField_Offset( const size_t index );
 
@@ -29,25 +29,25 @@ static size_t qBitField_BitSlot( const size_t index )
     return index/qBitField_LBit;
 }
 /*============================================================================*/
-static uint32_t qBitField_BitGet( const qBitField_t *b, const size_t index )
+static uint32_t qBitField_BitGet( const qBitField_t * const b, const size_t index )
 {
     const size_t slot = qBitField_BitSlot( index );
     return  ( b->field[ slot ] >> ( index % qBitField_LBit ) ) & 1uL;
 }
 /*============================================================================*/
-static void qBitField_BitSet( qBitField_t *b, size_t index )
+static void qBitField_BitSet( qBitField_t * const b, size_t index )
 {
     const size_t slot = qBitField_BitSlot( index );
     b->field[ slot ] |= qBitField_Mask( index );
 }
 /*============================================================================*/
-static void qBitField_BitClear( qBitField_t *b, const size_t index )
+static void qBitField_BitClear( qBitField_t * const b, const size_t index )
 {
     const size_t slot = qBitField_BitSlot( index );
     b->field[ slot ] &= ~qBitField_Mask( index );
 }
 /*============================================================================*/
-static void qBitField_BitToggle( qBitField_t *b, const size_t index )
+static void qBitField_BitToggle( qBitField_t * const b, const size_t index )
 {
     const size_t slot = qBitField_BitSlot( index );
     b->field[ slot ] ^= qBitField_Mask( index );
@@ -70,7 +70,7 @@ static uint32_t qBitField_MaskMerge( const uint32_t w, const uint32_t value, con
     return value ^ ( ( w ^ value ) & mask );
 }
 /*============================================================================*/
-int qBitField_Setup( qBitField_t *b, void *area, const size_t area_size )
+int qBitField_Setup( qBitField_t * const b, void *area, const size_t area_size )
 {
     int retValue = 0;
     if ( ( NULL != b ) && ( NULL != area ) && ( area_size > 0u ) ) {
@@ -84,7 +84,7 @@ int qBitField_Setup( qBitField_t *b, void *area, const size_t area_size )
     return retValue;
 }
 /*============================================================================*/
-int qBitField_ClearAll( qBitField_t *b )
+int qBitField_ClearAll( qBitField_t * const b )
 {
     int retValue = 0;
     if ( NULL != b ) {
@@ -94,7 +94,7 @@ int qBitField_ClearAll( qBitField_t *b )
     return retValue;
 }
 /*============================================================================*/
-int qBitField_SetAll( qBitField_t *b )
+int qBitField_SetAll( qBitField_t * const b )
 {
     int retValue = 0;
     if ( NULL != b ) {
@@ -104,7 +104,7 @@ int qBitField_SetAll( qBitField_t *b )
     return retValue;
 }
 /*============================================================================*/
-int qBitField_SetBit( qBitField_t *b, const size_t index )
+int qBitField_SetBit( qBitField_t * const b, const size_t index )
 {
     int retValue = 0;
     if ( NULL != b ) {
@@ -114,7 +114,7 @@ int qBitField_SetBit( qBitField_t *b, const size_t index )
     return retValue;
 }
 /*============================================================================*/
-int qBitField_ClearBit( qBitField_t *b, const size_t index )
+int qBitField_ClearBit( qBitField_t * const b, const size_t index )
 {
     int retValue = 0;
     if ( NULL != b ) {
@@ -124,7 +124,7 @@ int qBitField_ClearBit( qBitField_t *b, const size_t index )
     return retValue;
 }
 /*============================================================================*/
-int qBitField_ToggleBit( qBitField_t *b, const size_t index )
+int qBitField_ToggleBit( qBitField_t * const b, const size_t index )
 {
     int retValue = 0;
     if ( NULL != b ) {
@@ -143,7 +143,7 @@ uint8_t qBitField_ReadBit( const qBitField_t *b, const size_t index )
     return retValue;
 }
 /*============================================================================*/
-int qBitField_WriteBit( qBitField_t *b, const size_t index, uint8_t value )
+int qBitField_WriteBit( qBitField_t * const b, const size_t index, uint8_t value )
 {
     int retValue = 0;
     if ( NULL != b ) {
@@ -158,7 +158,7 @@ int qBitField_WriteBit( qBitField_t *b, const size_t index, uint8_t value )
     return retValue;
 }
 /*============================================================================*/
-uint32_t qBitField_ReadUINTn( const qBitField_t *b, const size_t index, size_t xBits )
+uint32_t qBitField_ReadUINTn( const qBitField_t * const b, const size_t index, size_t xBits )
 {
     uint32_t retValue = 0uL;
     if ( ( NULL != b ) && ( xBits <= 32u ) ) {
@@ -176,7 +176,7 @@ uint32_t qBitField_ReadUINTn( const qBitField_t *b, const size_t index, size_t x
     return retValue;
 }
 /*============================================================================*/
-int qBitField_WriteUINTn( qBitField_t *b, const size_t index, uint32_t value, size_t xBits )
+int qBitField_WriteUINTn( qBitField_t * const b, const size_t index, uint32_t value, size_t xBits )
 {
     int retValue = 0;
     if ( ( NULL != b ) && ( xBits <= 32u ) ) {
@@ -200,7 +200,7 @@ int qBitField_WriteUINTn( qBitField_t *b, const size_t index, uint32_t value, si
     return retValue;
 }
 /*============================================================================*/
-float qBitField_ReadFloat( const qBitField_t *b, const size_t index )
+float qBitField_ReadFloat( const qBitField_t * const b, const size_t index )
 {
     float retValue = 0.0f;
     if ( NULL != b ) {
@@ -211,7 +211,7 @@ float qBitField_ReadFloat( const qBitField_t *b, const size_t index )
     return retValue;
 }
 /*============================================================================*/
-int qBitField_WriteFloat( qBitField_t *b, size_t index, float value )
+int qBitField_WriteFloat( qBitField_t * const b, size_t index, float value )
 {
     int retValue = 0;
     if ( NULL != b ) {
@@ -223,7 +223,7 @@ int qBitField_WriteFloat( qBitField_t *b, size_t index, float value )
     return retValue;
 }
 /*============================================================================*/
-void* qBitField_Dump( const qBitField_t *b, void* dst, size_t n )
+void* qBitField_Dump( const qBitField_t * const b, void* dst, size_t n )
 {
     void *retValue = NULL;
     if ( ( NULL != b ) && ( NULL != dst ) ) {

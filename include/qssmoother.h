@@ -1,7 +1,7 @@
 /*!
  * @file qssmoother.h
  * @author J. Camilo Gomez C.
- * @version 1.02
+ * @version 1.03
  * @note This file is part of the qTools distribution.
  * @brief API to smooth noisy signals.
  **/
@@ -31,8 +31,7 @@ extern "C" {
         QSSMOOTHER_TYPE_EXPW,
     }qSSmoother_Type_t;
 
-    typedef void* qSSmootherPtr_t;
-
+    #define qSSmootherPtr_t  void
     
     /*! @cond  */
     /*abstract class*/
@@ -132,14 +131,14 @@ extern "C" {
     * @param[in] s A pointer to the signal smoother instance.
     * @return 1 if the smoother has been initialized, otherwise return 0.
     */        
-    int qSSmoother_IsInitialized( qSSmootherPtr_t s );
+    int qSSmoother_IsInitialized( const qSSmootherPtr_t * const s );
 
     /**
     * @brief Reset the the smoother filter.
     * @param[in] s A pointer to the signal smoother instance.
     * @return 1 on success, otherwise return 0.
     */     
-    int qSSmoother_Reset( qSSmootherPtr_t s );
+    int qSSmoother_Reset( qSSmootherPtr_t * const s );
 
     /**
     * @brief Perform the smooth operation recursively for the input signal @a x.
@@ -147,7 +146,7 @@ extern "C" {
     * @param[in] x A sample of the input signal.
     * @return The smoothed output.
     */    
-    float qSSmoother_Perform( qSSmootherPtr_t s, float x );
+    float qSSmoother_Perform( qSSmootherPtr_t * const s, const float x );
 
     /**
     * @brief Setup an initialize smoother filter.
@@ -224,7 +223,7 @@ extern "C" {
     * pass 0uL as argument.
     * @return 1 on success, otherwise return 0.
     */  
-    int qSSmoother_Setup( qSSmootherPtr_t s, qSSmoother_Type_t type, float *param, float *window, size_t wsize );
+    int qSSmoother_Setup( qSSmootherPtr_t * const s, const qSSmoother_Type_t type, float *param, float *window, const size_t wsize );
 
 
 #ifdef __cplusplus

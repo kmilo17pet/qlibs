@@ -1,7 +1,7 @@
 /*!
  * @file qfp16.h
  * @author J. Camilo Gomez C.
- * @version 1.04
+ * @version 1.05
  * @note This file is part of the qTools distribution.
  * @brief Fixed-Point math Q16.16 with rounding and saturated arithmetic .
  **/
@@ -81,7 +81,7 @@ extern "C" {
     * @param[in] saturate Enable saturation mode.
     * @return 1 on success, otherwise return 0.
     */  
-    int qFP16_SettingsSet( qFP16_Settings_t *instance, qFP16_t min, qFP16_t max, uint8_t rounding, uint8_t saturate );
+    int qFP16_SettingsSet( qFP16_Settings_t * const instance, qFP16_t min, qFP16_t max, uint8_t rounding, uint8_t saturate );
 
     /**
     * @brief Select the provided setting instance to perform fixed-point operations.
@@ -89,56 +89,56 @@ extern "C" {
     * to use the default settings.
     * @return none.
     */  
-    void qFP16_SettingsSelect( qFP16_Settings_t *instance );
+    void qFP16_SettingsSelect( qFP16_Settings_t * const instance );
 
     /**
     * @brief Returns the fixed-point value @a x converted to int.
     * @param[in] x The fixed-point(q16.16) value.
     * @return This function returns @a x converted to int.
     */     
-    int qFP16_FPToInt( qFP16_t x );
+    int qFP16_FPToInt( const qFP16_t x );
 
     /**
     * @brief Returns the int value @a x converted to fixed-point q16.16.
     * @param[in] x The integer value.
     * @return This function returns @a x converted to fixed-point q16.16.
     */        
-    qFP16_t qFP16_IntToFP( int x );
+    qFP16_t qFP16_IntToFP( const int x );
 
     /**
     * @brief Returns the float value @a x converted to fixed-point q16.16.
     * @param[in] x The floating-point value.
     * @return This function returns @a x converted to fixed-point q16.16.
     */       
-    qFP16_t qFP16_FloatToFP( float x );
+    qFP16_t qFP16_FloatToFP( const float x );
 
      /**
     * @brief Returns the fixed-point value @ x converted to float.
     * @param[in] x The fixed-point(q16.16) value.
     * @return This function returns @a x converted to float.
     */       
-    float qFP16_FPToFloat( qFP16_t x );
+    float qFP16_FPToFloat( const qFP16_t x );
     
     /**
     * @brief Returns the double value @a x converted to fixed-point q16.16.
     * @param[in] x The double prescision floating-point value.
     * @return This function returns @a x converted to fixed-point q16.16.
     */        
-    qFP16_t qFP16_DoubleToFP( double x );
+    qFP16_t qFP16_DoubleToFP( const double x );
 
     /**
     * @brief Returns the fixed-point value @ x converted to double.
     * @param[in] x The fixed-point(q16.16) value.
     * @return This function returns @a x converted to double.
     */         
-    double qFP16_FPToDouble( qFP16_t x );    
+    double qFP16_FPToDouble( const qFP16_t x );    
 
     /**
     * @brief Returns the absolute value of @a x.
     * @param[in] x The fixed-point(q16.16) value.
     * @return This function returns the absolute value of x.
     */         
-    qFP16_t qFP16_Abs( qFP16_t x );
+    qFP16_t qFP16_Abs( const qFP16_t x );
 
     /**
     * @brief Returns the largest integer value less than or equal to @a x.
@@ -146,21 +146,21 @@ extern "C" {
     * @return This function returns the largest integral value not greater 
     * than @x.
     */     
-    qFP16_t qFP16_Floor( qFP16_t x );
+    qFP16_t qFP16_Floor( const qFP16_t x );
 
     /**
     * @brief Returns the smallest integer value greater than or equal to @a x.
     * @param[in] x The fixed-point(q16.16) value.
     * @return This function returns the smallest integral value not less than @a x.
     */       
-    qFP16_t qFP16_Ceil( qFP16_t x );
+    qFP16_t qFP16_Ceil( const qFP16_t x );
 
     /**
     * @brief Returns the nearest integer value of the fixed-point argument @a x
     * @param[in] x The fixed-point(q16.16) value.
     * @return This function returns the nearest integral value of @a x.
     */    
-    qFP16_t qFP16_Round( qFP16_t x );
+    qFP16_t qFP16_Round( const qFP16_t x );
     
     /**
     * @brief Returns the fixed-point addition @a x + @a y.
@@ -169,7 +169,7 @@ extern "C" {
     * @return This function returns the addition operation x+y. QFP16_OVERFLOW
     * when an operation overflow is detected.
     */      
-    qFP16_t qFP16_Add( qFP16_t X, qFP16_t Y );
+    qFP16_t qFP16_Add( const qFP16_t X, qFP16_t Y );
 
     /**
     * @brief Returns the fixed-point subtraction  @a x - @a y.
@@ -178,7 +178,7 @@ extern "C" {
     * @return This function returns the subtraction operation x-y. QFP16_OVERFLOW
     * when an operation overflow is detected.
     */        
-    qFP16_t qFP16_Sub( qFP16_t X, qFP16_t Y );
+    qFP16_t qFP16_Sub( const qFP16_t X, qFP16_t Y );
 
     /**
     * @brief Returns the fixed-point product operation  @a x * @a y.
@@ -187,7 +187,7 @@ extern "C" {
     * @return This function returns the product  operation x*y. QFP16_OVERFLOW
     * when an operation overflow is detected.
     */      
-    qFP16_t qFP16_Mul( qFP16_t x, qFP16_t y );
+    qFP16_t qFP16_Mul( const qFP16_t x, const qFP16_t y );
 
     /**
     * @brief Returns the fixed-point division operation  @a x / @a y.
@@ -196,7 +196,7 @@ extern "C" {
     * @return This function returns the product operation x/y. QFP16_OVERFLOW
     * when an operation overflow is detected.
     */     
-    qFP16_t qFP16_Div( qFP16_t x, qFP16_t y );
+    qFP16_t qFP16_Div( const qFP16_t x, const qFP16_t y );
 
     /**
     * @brief Returns the fixed-point modulo operation  @a x % @a y.
@@ -204,7 +204,7 @@ extern "C" {
     * @param[in] y The fixed-point(q16.16) value.
     * @return This function returns the modulo operation x%y.
     */       
-    qFP16_t qFP16_Mod( qFP16_t x, qFP16_t y );
+    qFP16_t qFP16_Mod( const qFP16_t x, const qFP16_t y );
     
     /**
     * @brief Returns the fixed-point square root of @a x.
@@ -236,7 +236,7 @@ extern "C" {
     * @return This function returns log base 2 of @a x. For negative values 
     * returns QFP16_OVERFLOW
     */       
-    qFP16_t qFP16_Log2( qFP16_t x );
+    qFP16_t qFP16_Log2( const qFP16_t x );
 
     /**
     * @brief Converts angle units from radians to degrees.
@@ -244,7 +244,7 @@ extern "C" {
     * in radians. 
     * @return This function returns the angle converted in degrees.
     */           
-    qFP16_t fp16_RadToDeg( qFP16_t x );
+    qFP16_t fp16_RadToDeg( const qFP16_t x );
 
     /**
     * @brief Converts angle units from degrees to radians.
@@ -252,7 +252,7 @@ extern "C" {
     * in degrees. 
     * @return This function returns the angle converted in radians.
     */     
-    qFP16_t fp16_DegToRad( qFP16_t x );
+    qFP16_t fp16_DegToRad( const qFP16_t x );
 
     /**
     * @brief Wrap the fixed-point angle in radians to [−pi pi]
@@ -304,7 +304,7 @@ extern "C" {
     * @return This function returns the principal arc tangent of y/x, in the 
     * interval [-pi,+pi] radians.
     */       
-    qFP16_t qFP16_Atan2( qFP16_t y , qFP16_t x );
+    qFP16_t qFP16_Atan2( const qFP16_t y , const qFP16_t x );
 
     /**
     * @brief Computes the fixed-point arc tangent of @a x in radians. 
@@ -368,7 +368,7 @@ extern "C" {
     * @return This function returns the polynomial evaluation p(x). If overflow
     * detected returns QFP16_OVERFLOW.  
     */    
-    qFP16_t qFP16_Polyval( qFP16_t *p, size_t n, qFP16_t x );
+    qFP16_t qFP16_Polyval( const qFP16_t * const p, const size_t n, const qFP16_t x );
 
     /**
     * @brief Returns @a x raised to the power of the integer part of @a y. (x^y) . 
@@ -378,7 +378,7 @@ extern "C" {
     * @return This function returns the result of raising @a x to the power @a y. 
     * QFP16_OVERFLOW when an operation overflow is detected. 
     */       
-    qFP16_t qFP16_IPow( qFP16_t x, qFP16_t y );
+    qFP16_t qFP16_IPow( const qFP16_t x, const qFP16_t y );
 
     /**
     * @brief Returns @a x raised to the power of @a y. (x^y) . 
@@ -387,7 +387,7 @@ extern "C" {
     * @return This function returns the result of raising @a x to the power @a y. 
     * QFP16_OVERFLOW when an operation overflow is detected. 
     */           
-    qFP16_t qFP16_Pow( qFP16_t x, qFP16_t y );
+    qFP16_t qFP16_Pow( const qFP16_t x, const qFP16_t y );
 
     /**
     * @brief Converts the fixed-point value to a formatted string.
@@ -399,7 +399,7 @@ extern "C" {
     * @return A pointer to the resulting null-terminated string, same as 
     * parameter @a str 
     */ 
-    char* qFP16_FPToA( qFP16_t num, char *str, int decimals );
+    char* qFP16_FPToA( const qFP16_t num, char *str, int decimals );
 
     /**
     * @brief Parses the C string @a s, interpreting its content as a fixed-point
@@ -418,7 +418,7 @@ extern "C" {
     * would be out of the range of representable values by a fixed-point Q16.16,
     * the function returns QFP16_OVERFLOW.
     */       
-    qFP16_t qFP16_AToFP( char *s );
+    qFP16_t qFP16_AToFP( const char *s );
 
 #ifdef __cplusplus
 }
