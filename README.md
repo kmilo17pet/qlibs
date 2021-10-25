@@ -248,13 +248,13 @@ void xTaskSignalProcessing( void *arg )
 
 int main( int argc, char *argv[] ) 
 {
-    qSSmoother_GAUSSIAN_t smoother;
+    qSSmoother_GMWF_t smoother;
     float win_kernel[ 2*SMOOTHER_WINDOW_SIZE ]; /*storage for the window and the kernel*/
     float params[ 2 ] = { 0.5f, SMOOTHER_WINDOW_SIZE/2.0f }; /*sigma and offset*/
     int ret;
     
     BSP_SystemInit( );
-    ret = qSSmoother_Setup( &smoother, QSSMOOTHER_TYPE_GAUSSIAN, params, win_kernel, sizeof(win_kernel)/sizeof(win_kernel[0]) );
+    ret = qSSmoother_Setup( &smoother, QSSMOOTHER_TYPE_GMWF, params, win_kernel, sizeof(win_kernel)/sizeof(win_kernel[0]) );
     if ( 0 == ret ) {
         puts( "ERROR: Cant configure the smoother filter" );
     }
