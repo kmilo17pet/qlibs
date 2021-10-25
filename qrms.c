@@ -10,7 +10,7 @@
 static float qRMS_NewtonsFastSqrt( const float x );
 
 /*============================================================================*/
-int qRMS_Setup( qRMS_t * const q, float *window, const size_t wsize ) 
+int qRMS_Setup( qRMS_t * const q, float * const window, const size_t wsize ) 
 {
     int retValue = 0;
     if ( ( NULL != q ) && ( NULL != window ) && ( wsize > 0u ) ) {

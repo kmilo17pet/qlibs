@@ -28,7 +28,7 @@ extern "C" {
     * the @a length.
     * @param[in] mode To select the CRC calculation mode. Only the following
     * values are supported: QCRC8, QCRC16 and QCRC32.
-    * @param[in] data A pointer to the block of data.
+    * @param[in] pData A pointer to the block of data.
     * @param[in] length The number of bytes in @a data.
     * @param[in] poly CRC polynomial value.
     * @param[in] init CRC initial value.
@@ -37,7 +37,7 @@ extern "C" {
     * @param[in] xorOut The final XOR value.
     * @return The CRC value for @a data.
     */      
-    uint32_t qCRCx( const qCRC_Mode_t mode, void *data, const size_t length, uint32_t poly, const uint32_t init, const uint8_t refIn, const uint8_t refOut, uint32_t xorOut );
+    uint32_t qCRCx( const qCRC_Mode_t mode, const void * const pData, const size_t length, uint32_t poly, const uint32_t init, const uint8_t refIn, const uint8_t refOut, uint32_t xorOut );
 
 #ifdef __cplusplus
 }

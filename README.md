@@ -23,13 +23,13 @@
     
   - `LPF1`: _Low Pass Filter Order 1_
   - `LPF2`: _Low Pass Filter Order 2_
-  - `MWM`: _Moving Window Median_
-  - `MWM2`: _Moving Window Median : With TDL(works efficient for large windows)_
-  - `MWOR`: _Moving Window Outlier Removal_
-  - `MWOR2`: _Moving Window Outlier Removal : With TDL(works efficient for large windows)_
-  - `GAUSSIAN`: _Gaussian filter_  
-  - `KALMAN`: _Scalar Kalman filter_   
-  - `EXP`: _Exponential weighting filter_   
+  - `MWM1`: _Moving Window Median O(n)_
+  - `MWM2`: _Moving Window Median O(1): With TDL(works efficient for large windows)_
+  - `MOR1`: _Moving Outlier Removal O(n)_
+  - `MOR2`: _Moving Outlier Removal O(1): With TDL(works efficient for large windows)_
+  - `GMWF`: _Gaussian filter_  
+  - `KLMN`: _Scalar Kalman filter_   
+  - `EXPW`: _Exponential weighting filter_   
 </details>
 
 <details><summary>qPID : Closed Loop PID Controller</summary>
@@ -175,7 +175,7 @@ void xTaskSystemSimulate( void *arg )
 }
 ```
 
-### A speed control usign the PID algorithm 
+### A speed control using the PID algorithm 
 
 ```c
 #include <stdio.h>

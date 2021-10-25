@@ -44,7 +44,7 @@ extern "C" {
     * @param[in] area_size The number of bytes in @a area.
     * @return 1 on success, otherwise return 0.
     */ 
-    int qBitField_Setup( qBitField_t * const b, void *area, const size_t area_size );
+    int qBitField_Setup( qBitField_t * const b, void * const area, const size_t area_size );
 
     /**
     * @brief Clear all the bits in the BitField.
@@ -145,7 +145,7 @@ extern "C" {
     * @param[in] n Number of bytes to copy.
     * @return Destination is returned on success, otherwise NULL.
     */       
-    void* qBitField_Dump( const qBitField_t * const b, void* dst, size_t n );
+    void* qBitField_Dump( const qBitField_t * const b, void * const dst, size_t n );
 
 #ifdef __cplusplus
 }

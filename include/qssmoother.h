@@ -1,7 +1,7 @@
 /*!
  * @file qssmoother.h
  * @author J. Camilo Gomez C.
- * @version 1.03
+ * @version 1.04
  * @note This file is part of the qTools distribution.
  * @brief API to smooth noisy signals.
  **/
@@ -20,15 +20,15 @@ extern "C" {
     #include "qtdl.h"
 
     typedef enum{
-        QSSMOOTHER_TYPE_LPF1 = 0,
-        QSSMOOTHER_TYPE_LPF2,
-        QSSMOOTHER_TYPE_MWM,
-        QSSMOOTHER_TYPE_MWM2,
-        QSSMOOTHER_TYPE_MWOR,
-        QSSMOOTHER_TYPE_MWOR2,
-        QSSMOOTHER_TYPE_GAUSSIAN,
-        QSSMOOTHER_TYPE_KALMAN,
-        QSSMOOTHER_TYPE_EXPW,
+        QSSMOOTHER_TYPE_LPF1 = 0,   /*< Low-Pass filter 1st Order*/
+        QSSMOOTHER_TYPE_LPF2,       /*< Low-Pass filter 2nd Order*/
+        QSSMOOTHER_TYPE_MWM1,       /*< Moving Window Median filter ( O(n) time )*/
+        QSSMOOTHER_TYPE_MWM2,       /*< Moving Window Median filter ( O(1) time by using a TDL )*/
+        QSSMOOTHER_TYPE_MOR1,       /*< Moving Outliers Removal ( O(n) time )*/
+        QSSMOOTHER_TYPE_MOR2,       /*< Moving Outliers Removal ( O(1) time by using a TDL )*/
+        QSSMOOTHER_TYPE_GMWF,       /*< Gaussian Filter*/
+        QSSMOOTHER_TYPE_KLMN,       /*< Kalman Filter*/
+        QSSMOOTHER_TYPE_EXPW,       /*< Exponential weighting filter*/
     }qSSmoother_Type_t;
 
     #define qSSmootherPtr_t  void
@@ -66,7 +66,7 @@ extern "C" {
         float *w;
         size_t wsize;
         /*! @endcond  */
-    } qSSmoother_MWM_t;
+    } qSSmoother_MWM1_t;
 
     typedef struct
     {
@@ -84,7 +84,7 @@ extern "C" {
         float *w, m, alpha;
         size_t wsize;
         /*! @endcond  */
-    } qSSmoother_MWOR_t;    
+    } qSSmoother_MOR1_t;    
  
     typedef struct
     {
@@ -93,7 +93,7 @@ extern "C" {
         qTDL_t tdl;
         float sum, m, alpha;
         /*! @endcond  */
-    } qSSmoother_MWOR2_t;  
+    } qSSmoother_MOR2_t;  
 
     typedef struct
     {
@@ -102,7 +102,7 @@ extern "C" {
         float *w, *k;
         size_t wsize;
         /*! @endcond  */
-    } qSSmoother_GAUSSIAN_t;    
+    } qSSmoother_GMWF_t;    
 
     typedef struct
     {
@@ -124,7 +124,7 @@ extern "C" {
         float p;  /* estimated error convariance */
         float gain;
         /*! @endcond  */
-    } qSSmoother_KALMAN_t; 
+    } qSSmoother_KLMN_t; 
 
     /**
     * @brief Check if the smoother filter is initialized.
@@ -157,17 +157,17 @@ extern "C" {
     * 
     * - ::QSSMOOTHER_TYPE_LPF2.
     * 
-    * - ::QSSMOOTHER_TYPE_MWM.
+    * - ::QSSMOOTHER_TYPE_MWM1.
     * 
     * - ::QSSMOOTHER_TYPE_MWM2.
     * 
-    * - ::QSSMOOTHER_TYPE_MWOR.
+    * - ::QSSMOOTHER_TYPE_MOR1.
     * 
-    * - ::QSSMOOTHER_TYPE_MWOR2.
+    * - ::QSSMOOTHER_TYPE_MOR2.
     * 
-    * - ::QSSMOOTHER_TYPE_GAUSSIAN.
+    * - ::QSSMOOTHER_TYPE_GMWF.
     * 
-    * - ::QSSMOOTHER_TYPE_KALMAN.
+    * - ::QSSMOOTHER_TYPE_KLMN.
     * 
     * - ::QSSMOOTHER_TYPE_EXPW.
     * 
@@ -177,19 +177,19 @@ extern "C" {
     * 
     * if ::QSSMOOTHER_TYPE_LPF2, a value between  [ 0 < alpha < 1 ]
     * 
-    * if ::QSSMOOTHER_TYPE_MWM, can be ignored. Pass NULL as argument.
+    * if ::QSSMOOTHER_TYPE_MWM1, can be ignored. Pass NULL as argument.
     * 
     * if ::QSSMOOTHER_TYPE_MWM2, can be ignored. Pass NULL as argument.
     * 
-    * if ::QSSMOOTHER_TYPE_MWOR, a value between  [ 0 < alpha < 1 ]
+    * if ::QSSMOOTHER_TYPE_MOR1, a value between  [ 0 < alpha < 1 ]
     * 
-    * if ::QSSMOOTHER_TYPE_MWOR2, a value between  [ 0 < alpha < 1 ]
+    * if ::QSSMOOTHER_TYPE_MOR2, a value between  [ 0 < alpha < 1 ]
     * 
-    * if ::QSSMOOTHER_TYPE_GAUSSIAN, an array with two values. The first element
+    * if ::QSSMOOTHER_TYPE_GMWF, an array with two values. The first element
     * with the Standard deviation [ sigma > 0 ]. The second element withthe 
     * offset of the gaussian center. [ 0 < pos < (wsize-1) ].
     * 
-    * if ::QSSMOOTHER_TYPE_KALMAN, an array with three values. The first element
+    * if ::QSSMOOTHER_TYPE_KLMN, an array with three values. The first element
     * with the initial estimated error convariance. The second element with the 
     * process(predict) noise convariance. The third element with the measure 
     * noise convariance
@@ -204,18 +204,18 @@ extern "C" {
     * 
     * if ::QSSMOOTHER_TYPE_LPF2, can be ignored. Pass NULL as argument.
     * 
-    * if ::QSSMOOTHER_TYPE_MWM, An array of @a wsize elements.
+    * if ::QSSMOOTHER_TYPE_MWM1, An array of @a wsize elements.
     * 
     * if ::QSSMOOTHER_TYPE_MWM2, An array of @a wsize elements.
     * 
-    * if ::QSSMOOTHER_TYPE_MWOR, An array of @a wsize elements.
+    * if ::QSSMOOTHER_TYPE_MOR1, An array of @a wsize elements.
     * 
-    * if ::QSSMOOTHER_TYPE_MWOR2, An array of @a wsize elements.
+    * if ::QSSMOOTHER_TYPE_MOR2, An array of @a wsize elements.
     * 
-    * if ::QSSMOOTHER_TYPE_GAUSSIAN, An array of @a wsize to hold both, the 
+    * if ::QSSMOOTHER_TYPE_GMWF, An array of @a wsize to hold both, the 
     * window and the gaussian kernel coefficients. 
     * 
-    * if ::QSSMOOTHER_TYPE_KALMAN, can be ignored. Pass NULL as argument.
+    * if ::QSSMOOTHER_TYPE_KLMN, can be ignored. Pass NULL as argument.
     * 
     * if ::QSSMOOTHER_TYPE_EXPW, can be ignored. Pass NULL as argument.
     * 

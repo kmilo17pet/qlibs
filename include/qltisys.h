@@ -55,7 +55,7 @@ extern "C" {
     * @param[in] initval The initial value of the input channel. 
     * @return 1 if the system has been initialized, otherwise return 0.
     */     
-    int qLTISys_SetDelay( qLTISys_t * const sys, float *w, const size_t n, const float initval );
+    int qLTISys_SetDelay( qLTISys_t * const sys, float * const w, const size_t n, const float initval );
 
     /**
     * @brief Setup the output saturation for the LTI system.

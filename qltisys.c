@@ -28,7 +28,7 @@ static float qLTISys_ContinuosUpdate( qLTISys_t * const sys, const float u )
         size_t i;
         float dx0 = 0.0f;
         /*compute the states of the system by using the controlable canonical form*/
-        for (  i = ( sys->n - 1u) ; i >= 1u ; --i ) {
+        for (  i = ( sys->n - 1u ) ; i >= 1u ; --i ) {
             dx0 += sys->a[ i ]*sys->x[ i ]; /*compute the first derivative*/
             sys->x[ i ] += sys->x[ i - 1u ]*sys->dt; /*integrate to obtain the remaining states*/
             y += ( sys->b[ i ] - ( sys->a[ i ]*sys->b0 ) )*sys->x[ i ]; /*compute the first part of the output*/
@@ -65,7 +65,7 @@ float qLTISys_Excite( qLTISys_t * const sys, float u )
     return y;
 }
 /*============================================================================*/
-int qLTISys_SetDelay( qLTISys_t * const sys, float *w, const size_t n, const float initval )
+int qLTISys_SetDelay( qLTISys_t * const sys, float * const w, const size_t n, const float initval )
 {
     int retValue = 0;
     if ( 1 == qLTISys_IsInitialized( sys ) ) {

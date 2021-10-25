@@ -31,7 +31,7 @@ extern "C" {
     * @param[in] q A pointer to the RMS instance.
     * @return 1 on success, otherwise returns 0.
     */  
-    int qRMS_Setup( qRMS_t * const q, float *window, const size_t wsize ); 
+    int qRMS_Setup( qRMS_t * const q, float * const window, const size_t wsize ); 
 
     /**
     * @brief Computes the moving root mean square (RMS) of the input signal. 

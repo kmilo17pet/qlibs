@@ -10,7 +10,7 @@ static void qTDL_InsertNewest( qTDL_t * const q, float sample );
 static void qTDL_RemoveOldest( qTDL_t * const q );
 
 /*============================================================================*/
-void qTDL_Setup( qTDL_t * const q, float *area, const size_t n, const float initval )
+void qTDL_Setup( qTDL_t * const q, float * const area, const size_t n, const float initval )
 {   
     q->itemcount = n;
     q->head = area;

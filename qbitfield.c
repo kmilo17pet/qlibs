@@ -70,7 +70,7 @@ static uint32_t qBitField_MaskMerge( const uint32_t w, const uint32_t value, con
     return value ^ ( ( w ^ value ) & mask );
 }
 /*============================================================================*/
-int qBitField_Setup( qBitField_t * const b, void *area, const size_t area_size )
+int qBitField_Setup( qBitField_t * const b, void * const area, const size_t area_size )
 {
     int retValue = 0;
     if ( ( NULL != b ) && ( NULL != area ) && ( area_size > 0u ) ) {
@@ -223,7 +223,7 @@ int qBitField_WriteFloat( qBitField_t * const b, size_t index, float value )
     return retValue;
 }
 /*============================================================================*/
-void* qBitField_Dump( const qBitField_t * const b, void* dst, size_t n )
+void* qBitField_Dump( const qBitField_t * const b, void * const dst, size_t n )
 {
     void *retValue = NULL;
     if ( ( NULL != b ) && ( NULL != dst ) ) {
