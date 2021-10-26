@@ -13,28 +13,69 @@ struct qSmoother_Vtbl_s {
 };
 
 static float qSSmoother_Abs( float x );
-static void qSSmoother_WindowSet( float *w, size_t wsize, float x );
-static int qSSmoother_Setup_LPF1( _qSSmoother_t * const f, float *param, float *window, const size_t wsize );
-static int qSSmoother_Setup_LPF2( _qSSmoother_t * const f, float *param, float *window, const size_t wsize );
-static int qSSmoother_Setup_MWM1( _qSSmoother_t * const f, float *param, float *window, const size_t wsize );
-static int qSSmoother_Setup_MWM2( _qSSmoother_t * const f, float *param, float *window, const size_t wsize );
-static int qSSmoother_Setup_MOR1( _qSSmoother_t * const f, float *param, float *window, const size_t wsize );
-static int qSSmoother_Setup_MOR2( _qSSmoother_t * const f, float *param, float *window, const size_t wsize );
-static int qSSmoother_Setup_GMWF( _qSSmoother_t * const f, float *param, float *window, const size_t wsize );
-static int qSSmoother_Setup_KLMN( _qSSmoother_t * const f, float *param, float *window, const size_t wsize );
-static int qSSmoother_Setup_EXPW( _qSSmoother_t * const f, float *param, float *window, const size_t wsize );
-static float qSSmoother_Filter_LPF1( _qSSmoother_t * const f, const float x );
-static float qSSmoother_Filter_LPF2( _qSSmoother_t * const f, const float x );
-static float qSSmoother_Filter_MWM1( _qSSmoother_t * const f, const float x );
-static float qSSmoother_Filter_MWM2( _qSSmoother_t * const f, const float x );
-static float qSSmoother_Filter_MOR1( _qSSmoother_t * const f, const float x );
-static float qSSmoother_Filter_MOR2( _qSSmoother_t * const f, const float x );
-static float qSSmoother_Filter_GMWF( _qSSmoother_t * const f, const float x );
-static float qSSmoother_Filter_KLMN( _qSSmoother_t * const f, const float x );
-static float qSSmoother_Filter_EXPW( _qSSmoother_t * const f, const float x );
+static void qSSmoother_WindowSet( float *w, 
+                                  size_t wsize, float x );
+static int qSSmoother_Setup_LPF1( _qSSmoother_t * const f, 
+                                  float *param, 
+                                  float *window, 
+                                  const size_t wsize );
+static int qSSmoother_Setup_LPF2( _qSSmoother_t * const f, 
+                                  float *param, 
+                                  float *window, 
+                                  const size_t wsize );
+static int qSSmoother_Setup_MWM1( _qSSmoother_t * const f, 
+                                  float *param, 
+                                  float *window, 
+                                  const size_t wsize );
+static int qSSmoother_Setup_MWM2( _qSSmoother_t * const f, 
+                                  float *param, 
+                                  float *window, 
+                                  const size_t wsize );
+static int qSSmoother_Setup_MOR1( _qSSmoother_t * const f, 
+                                  float *param, 
+                                  float *window, 
+                                  const size_t wsize );
+static int qSSmoother_Setup_MOR2( _qSSmoother_t * const f, 
+                                  float *param, 
+                                  float *window, 
+                                  const size_t wsize );
+static int qSSmoother_Setup_GMWF( _qSSmoother_t * const f, 
+                                  float *param, 
+                                  float *window, 
+                                  const size_t wsize );
+static int qSSmoother_Setup_KLMN( _qSSmoother_t * const f, 
+                                  float *param, 
+                                  float *window, 
+                                  const size_t wsize );
+static int qSSmoother_Setup_EXPW( _qSSmoother_t * const f, 
+                                  float *param, 
+                                  float *window, 
+                                  const size_t wsize );
+static float qSSmoother_Filter_LPF1( _qSSmoother_t * const f, 
+                                     const float x );
+static float qSSmoother_Filter_LPF2( _qSSmoother_t * const f, 
+                                     const float x );
+static float qSSmoother_Filter_MWM1( _qSSmoother_t * const f, 
+                                     const float x );
+static float qSSmoother_Filter_MWM2( _qSSmoother_t * const f, 
+                                     const float x );
+static float qSSmoother_Filter_MOR1( _qSSmoother_t * const f, 
+                                     const float x );
+static float qSSmoother_Filter_MOR2( _qSSmoother_t * const f, 
+                                     const float x );
+static float qSSmoother_Filter_GMWF( _qSSmoother_t * const f, 
+                                     const float x );
+static float qSSmoother_Filter_KLMN( _qSSmoother_t * const f, 
+                                     const float x );
+static float qSSmoother_Filter_EXPW( _qSSmoother_t * const f, 
+                                     const float x );
 
 /*============================================================================*/
-int qSSmoother_Setup( qSSmootherPtr_t * const s, const qSSmoother_Type_t type, float *param, float *window, const size_t wsize )
+int qSSmoother_Setup( qSSmootherPtr_t * const s, 
+                      const qSSmoother_Type_t type, 
+                      float *param, 
+                      float *window, 
+                      const size_t wsize )
 {
     static struct qSmoother_Vtbl_s qSmoother_Vtbl[ 9 ] = {
         { &qSSmoother_Filter_LPF1, &qSSmoother_Setup_LPF1 }, 
@@ -59,7 +100,10 @@ int qSSmoother_Setup( qSSmootherPtr_t * const s, const qSSmoother_Type_t type, f
     return retValue;
 }
 /*============================================================================*/
-static int qSSmoother_Setup_LPF1( _qSSmoother_t * const f, float *param, float *window, const size_t wsize )
+static int qSSmoother_Setup_LPF1( _qSSmoother_t * const f, 
+                                  float *param, 
+                                  float *window, 
+                                  const size_t wsize )
 {
     int retValue = 0;
     float alpha = param[ 0 ];
@@ -76,7 +120,10 @@ static int qSSmoother_Setup_LPF1( _qSSmoother_t * const f, float *param, float *
     return retValue;
 }
 /*============================================================================*/
-static int qSSmoother_Setup_LPF2( _qSSmoother_t * const f, float *param, float *window, const size_t wsize )
+static int qSSmoother_Setup_LPF2( _qSSmoother_t * const f, 
+                                  float *param, 
+                                  float *window, 
+                                  const size_t wsize )
 {
     int retValue = 0;
     float alpha = param[ 0 ];
@@ -102,7 +149,10 @@ static int qSSmoother_Setup_LPF2( _qSSmoother_t * const f, float *param, float *
     return retValue;
 }
 /*============================================================================*/
-static int qSSmoother_Setup_MWM1( _qSSmoother_t * const f, float *param, float *window, const size_t wsize )
+static int qSSmoother_Setup_MWM1( _qSSmoother_t * const f, 
+                                  float *param, 
+                                  float *window, 
+                                  const size_t wsize )
 {
     int retValue = 0;
     if ( ( NULL != window ) && ( wsize > 0u ) ) {
@@ -117,7 +167,10 @@ static int qSSmoother_Setup_MWM1( _qSSmoother_t * const f, float *param, float *
     return retValue;
 }
 /*============================================================================*/
-static int qSSmoother_Setup_MWM2( _qSSmoother_t * const f, float *param, float *window, const size_t wsize )
+static int qSSmoother_Setup_MWM2( _qSSmoother_t * const f, 
+                                  float *param, 
+                                  float *window, 
+                                  const size_t wsize )
 {
     int retValue = 0;
     if ( ( NULL != window ) && ( wsize > 0u ) ) {
@@ -132,7 +185,10 @@ static int qSSmoother_Setup_MWM2( _qSSmoother_t * const f, float *param, float *
     return retValue;
 }
 /*============================================================================*/
-static int qSSmoother_Setup_MOR1( _qSSmoother_t * const f, float *param, float *window, const size_t wsize )
+static int qSSmoother_Setup_MOR1( _qSSmoother_t * const f, 
+                                  float *param, 
+                                  float *window, 
+                                  const size_t wsize )
 {
     int retValue = 0;
     float alpha = param[ 0 ];
@@ -148,7 +204,10 @@ static int qSSmoother_Setup_MOR1( _qSSmoother_t * const f, float *param, float *
     return retValue;
 }
 /*============================================================================*/
-static int qSSmoother_Setup_MOR2( _qSSmoother_t * const f, float *param, float *window, const size_t wsize )
+static int qSSmoother_Setup_MOR2( _qSSmoother_t * const f, 
+                                  float *param, 
+                                  float *window, 
+                                  const size_t wsize )
 {
     int retValue = 0;
     float alpha = param[ 0 ];
@@ -165,7 +224,10 @@ static int qSSmoother_Setup_MOR2( _qSSmoother_t * const f, float *param, float *
     return retValue;
 }
 /*============================================================================*/
-static int qSSmoother_Setup_GMWF( _qSSmoother_t * const f, float *param, float *window, const size_t wsize )
+static int qSSmoother_Setup_GMWF( _qSSmoother_t * const f, 
+                                  float *param, 
+                                  float *window, 
+                                  const size_t wsize )
 {
     int retValue = 0;
     float sigma = param[ 0 ];
@@ -205,7 +267,10 @@ static int qSSmoother_Setup_GMWF( _qSSmoother_t * const f, float *param, float *
     return retValue;
 }
 /*============================================================================*/
-static int qSSmoother_Setup_KLMN( _qSSmoother_t * const f, float *param, float *window, const size_t wsize )
+static int qSSmoother_Setup_KLMN( _qSSmoother_t * const f, 
+                                  float *param, 
+                                  float *window, 
+                                  const size_t wsize )
 {
     int retValue = 0;
     float p = param[ 0 ];
@@ -227,7 +292,10 @@ static int qSSmoother_Setup_KLMN( _qSSmoother_t * const f, float *param, float *
     return retValue;
 }
 /*============================================================================*/
-static int qSSmoother_Setup_EXPW( _qSSmoother_t * const f, float *param, float *window, const size_t wsize )
+static int qSSmoother_Setup_EXPW( _qSSmoother_t * const f, 
+                                  float *param, 
+                                  float *window, 
+                                  const size_t wsize )
 {
     int retValue = 0;
     float lambda = param[ 0 ];
@@ -251,7 +319,9 @@ static float qSSmoother_Abs( const float x )
     return ( x < 0.0f )? -x : x; 
 }
 /*============================================================================*/
-static void qSSmoother_WindowSet( float *w, const size_t wsize, const float x )
+static void qSSmoother_WindowSet( float *w, 
+                                  const size_t wsize, 
+                                  const float x )
 {
     size_t i;
     for ( i = 0 ; i < wsize ; ++i ) {
@@ -284,7 +354,8 @@ int qSSmoother_Reset( qSSmootherPtr_t * const s )
     return retValue;
 }
 /*============================================================================*/
-float qSSmoother_Perform( qSSmootherPtr_t * const s, const float x )
+float qSSmoother_Perform( qSSmootherPtr_t * const s, 
+                          const float x )
 {
     float retValue = x;
     if ( NULL != s ) {
@@ -299,7 +370,8 @@ float qSSmoother_Perform( qSSmootherPtr_t * const s, const float x )
     return retValue;
 }
 /*============================================================================*/
-static float qSSmoother_Filter_LPF1( _qSSmoother_t *f, const float x ) 
+static float qSSmoother_Filter_LPF1( _qSSmoother_t *f, 
+                                     const float x ) 
 {
     float y;
     /*cstat -CERT-EXP36-C_a -MISRAC2012-Rule-11.3 -CERT-EXP39-C_d*/
@@ -315,7 +387,8 @@ static float qSSmoother_Filter_LPF1( _qSSmoother_t *f, const float x )
     return y;
 }
 /*============================================================================*/
-static float qSSmoother_Filter_LPF2( _qSSmoother_t * const f, const float x ) 
+static float qSSmoother_Filter_LPF2( _qSSmoother_t *f, 
+                                     const float x ) 
 {
     float y;
     /*cstat -CERT-EXP36-C_a -MISRAC2012-Rule-11.3 -CERT-EXP39-C_d*/
@@ -337,7 +410,8 @@ static float qSSmoother_Filter_LPF2( _qSSmoother_t * const f, const float x )
     return y;
 }
 /*============================================================================*/
-static float qSSmoother_Filter_MWM1( _qSSmoother_t * const f, const float x ) 
+static float qSSmoother_Filter_MWM1( _qSSmoother_t *f, 
+                                     const float x ) 
 {
     /*cstat -CERT-EXP36-C_a -MISRAC2012-Rule-11.3 -CERT-EXP39-C_d*/
     qSSmoother_MWM1_t * const s = (qSSmoother_MWM1_t* const)f;
@@ -351,7 +425,8 @@ static float qSSmoother_Filter_MWM1( _qSSmoother_t * const f, const float x )
     /*cstat +CERT-FLP36-C*/
 }
 /*============================================================================*/
-static float qSSmoother_Filter_MWM2( _qSSmoother_t * const f, const float x ) 
+static float qSSmoother_Filter_MWM2( _qSSmoother_t *f, 
+                                     const float x ) 
 {
     /*cstat -CERT-EXP36-C_a -MISRAC2012-Rule-11.3 -CERT-EXP39-C_d -CERT-FLP36-C*/
     qSSmoother_MWM2_t * const s = (qSSmoother_MWM2_t* const)f;
@@ -367,7 +442,8 @@ static float qSSmoother_Filter_MWM2( _qSSmoother_t * const f, const float x )
     return s->sum/wsize;
 }
 /*============================================================================*/
-static float qSSmoother_Filter_MOR1( _qSSmoother_t * const f, const float x ) 
+static float qSSmoother_Filter_MOR1( _qSSmoother_t *f, 
+                                     const float x ) 
 {
     float m;
     /*cstat -CERT-EXP36-C_a -MISRAC2012-Rule-11.3 -CERT-EXP39-C_d*/
@@ -389,7 +465,8 @@ static float qSSmoother_Filter_MOR1( _qSSmoother_t * const f, const float x )
     return s->w[ 0 ];
 }
 /*============================================================================*/
-static float qSSmoother_Filter_MOR2( _qSSmoother_t * const f, const float x )
+static float qSSmoother_Filter_MOR2( _qSSmoother_t *f, 
+                                     const float x ) 
 {
     /*cstat -CERT-EXP36-C_a -MISRAC2012-Rule-11.3 -CERT-EXP39-C_d -CERT-FLP36-C*/
     qSSmoother_MOR2_t * const s = (qSSmoother_MOR2_t* const)f;  
@@ -411,7 +488,8 @@ static float qSSmoother_Filter_MOR2( _qSSmoother_t * const f, const float x )
     return x;
 }
 /*============================================================================*/
-static float qSSmoother_Filter_GMWF( _qSSmoother_t * const f, const float x ) 
+static float qSSmoother_Filter_GMWF( _qSSmoother_t *f, 
+                                     const float x ) 
 {
     /*cstat -CERT-EXP36-C_a -MISRAC2012-Rule-11.3 -CERT-EXP39-C_d*/
     qSSmoother_GMWF_t * const s = (qSSmoother_GMWF_t* const)f;
@@ -424,7 +502,8 @@ static float qSSmoother_Filter_GMWF( _qSSmoother_t * const f, const float x )
     return qLTISys_DiscreteFIRUpdate( s->w, s->k, s->wsize, x );
 }
 /*============================================================================*/
-static float qSSmoother_Filter_KLMN( _qSSmoother_t * const f, const float x )
+static float qSSmoother_Filter_KLMN( _qSSmoother_t *f, 
+                                     const float x ) 
 {
     /*cstat -CERT-EXP36-C_a -MISRAC2012-Rule-11.3 -CERT-EXP39-C_d*/
     qSSmoother_KLMN_t * const s = (qSSmoother_KLMN_t* const)f;
@@ -445,7 +524,8 @@ static float qSSmoother_Filter_KLMN( _qSSmoother_t * const f, const float x )
     return s->x;      
 }
 /*============================================================================*/
-static float qSSmoother_Filter_EXPW( _qSSmoother_t * const f, const float x ) 
+static float qSSmoother_Filter_EXPW( _qSSmoother_t *f, 
+                                     const float x ) 
 {
     /*cstat -CERT-EXP36-C_a -MISRAC2012-Rule-11.3 -CERT-EXP39-C_d*/
     qSSmoother_EXPW_t * const s = (qSSmoother_EXPW_t* const)f;

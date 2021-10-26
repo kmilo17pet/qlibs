@@ -25,12 +25,18 @@ extern "C" {
         size_t itemcount;
     } qTDL_t;
 
-    void qTDL_Setup( qTDL_t * const q, float * const area, const size_t n, const float initval );
-    void qTDL_Flush( qTDL_t * const q, const float initval );
+    void qTDL_Setup( qTDL_t * const q, 
+                     float * const area, 
+                     const size_t n, 
+                     const float initval );
+    void qTDL_Flush( qTDL_t * const q, 
+                     const float initval );
     float qTDL_GetOldest( const qTDL_t * const q );
-    float qTDL_GetAtIndex( const qTDL_t * const q, const size_t i );
+    float qTDL_GetAtIndex( const qTDL_t * const q, 
+                           const size_t i );
     float qTDL_GetRecent( const qTDL_t * const q );
-    void qTDL_InsertSample( qTDL_t * const q, const float sample );
+    void qTDL_InsertSample( qTDL_t * const q, 
+                            const float sample );
     
     /*! @endcond  */
 

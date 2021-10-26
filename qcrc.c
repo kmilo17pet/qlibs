@@ -6,10 +6,12 @@
 
 #include "qcrc.h"
 
-static uint32_t qCRCx_Reflect( uint32_t data, const uint8_t nBits );
+static uint32_t qCRCx_Reflect( uint32_t data, 
+                               const uint8_t nBits );
  
 /*============================================================================*/
-static uint32_t qCRCx_Reflect( uint32_t xData, const uint8_t nBits )
+static uint32_t qCRCx_Reflect( uint32_t xData, 
+                               const uint8_t nBits )
 {
     uint32_t  r = 0;
     uint8_t xBit;
@@ -25,7 +27,14 @@ static uint32_t qCRCx_Reflect( uint32_t xData, const uint8_t nBits )
     return r;
 }
 /*============================================================================*/
-uint32_t qCRCx( const qCRC_Mode_t mode, const void * const pData, const size_t length, uint32_t poly, const uint32_t init, const uint8_t refIn, const uint8_t refOut, uint32_t xorOut )
+uint32_t qCRCx( const qCRC_Mode_t mode, 
+                const void * const pData, 
+                const size_t length, 
+                uint32_t poly, 
+                const uint32_t init, 
+                const uint8_t refIn, 
+                const uint8_t refOut, 
+                uint32_t xorOut )
 {
     uint32_t crc = 0uL;
     /*cstat -ATH-cmp-unsign-pos*/

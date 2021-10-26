@@ -57,7 +57,7 @@ extern "C" {
     * @param[in] x A literal value
     * @return The literal argument @a x converted to fixed-point(qFP16_t).
     */
-    #define qFP16_Constant(x)      ( (qFP16_t)(((x) >= 0) ? ((x) * 65536.0 + 0.5) : ((x) * 65536.0 - 0.5)) )
+    #define qFP16_Constant(x)      ( (qFP16_t)( ( (x) >= 0 ) ? ( (x) * 65536.0 + 0.5 ) : ( (x) * 65536.0 - 0.5 ) ) )
 
     /** 
     * @brief A Q16.16 fixed-point settings object
@@ -81,7 +81,11 @@ extern "C" {
     * @param[in] saturate Enable saturation mode.
     * @return 1 on success, otherwise return 0.
     */  
-    int qFP16_SettingsSet( qFP16_Settings_t * const instance, qFP16_t min, qFP16_t max, uint8_t rounding, uint8_t saturate );
+    int qFP16_SettingsSet( qFP16_Settings_t * const instance, 
+                           qFP16_t min, 
+                           qFP16_t max, 
+                           uint8_t rounding, 
+                           uint8_t saturate );
 
     /**
     * @brief Select the provided setting instance to perform fixed-point operations.
@@ -169,7 +173,8 @@ extern "C" {
     * @return This function returns the addition operation x+y. QFP16_OVERFLOW
     * when an operation overflow is detected.
     */      
-    qFP16_t qFP16_Add( const qFP16_t X, qFP16_t Y );
+    qFP16_t qFP16_Add( const qFP16_t X, 
+                       const qFP16_t Y );
 
     /**
     * @brief Returns the fixed-point subtraction  @a x - @a y.
@@ -178,7 +183,8 @@ extern "C" {
     * @return This function returns the subtraction operation x-y. QFP16_OVERFLOW
     * when an operation overflow is detected.
     */        
-    qFP16_t qFP16_Sub( const qFP16_t X, qFP16_t Y );
+    qFP16_t qFP16_Sub( const qFP16_t X, 
+                       const qFP16_t Y );
 
     /**
     * @brief Returns the fixed-point product operation  @a x * @a y.
@@ -187,7 +193,8 @@ extern "C" {
     * @return This function returns the product  operation x*y. QFP16_OVERFLOW
     * when an operation overflow is detected.
     */      
-    qFP16_t qFP16_Mul( const qFP16_t x, const qFP16_t y );
+    qFP16_t qFP16_Mul( const qFP16_t x, 
+                       const qFP16_t y );
 
     /**
     * @brief Returns the fixed-point division operation  @a x / @a y.
@@ -196,7 +203,8 @@ extern "C" {
     * @return This function returns the product operation x/y. QFP16_OVERFLOW
     * when an operation overflow is detected.
     */     
-    qFP16_t qFP16_Div( const qFP16_t x, const qFP16_t y );
+    qFP16_t qFP16_Div( const qFP16_t x, 
+                       const qFP16_t y );
 
     /**
     * @brief Returns the fixed-point modulo operation  @a x % @a y.
@@ -204,7 +212,8 @@ extern "C" {
     * @param[in] y The fixed-point(q16.16) value.
     * @return This function returns the modulo operation x%y.
     */       
-    qFP16_t qFP16_Mod( const qFP16_t x, const qFP16_t y );
+    qFP16_t qFP16_Mod( const qFP16_t x, 
+                       const qFP16_t y );
     
     /**
     * @brief Returns the fixed-point square root of @a x.
@@ -304,7 +313,8 @@ extern "C" {
     * @return This function returns the principal arc tangent of y/x, in the 
     * interval [-pi,+pi] radians.
     */       
-    qFP16_t qFP16_Atan2( const qFP16_t y , const qFP16_t x );
+    qFP16_t qFP16_Atan2( const qFP16_t y, 
+                         const qFP16_t x );
 
     /**
     * @brief Computes the fixed-point arc tangent of @a x in radians. 
@@ -368,7 +378,9 @@ extern "C" {
     * @return This function returns the polynomial evaluation p(x). If overflow
     * detected returns QFP16_OVERFLOW.  
     */    
-    qFP16_t qFP16_Polyval( const qFP16_t * const p, const size_t n, const qFP16_t x );
+    qFP16_t qFP16_Polyval( const qFP16_t * const p, 
+                           const size_t n, 
+                           const qFP16_t x );
 
     /**
     * @brief Returns @a x raised to the power of the integer part of @a y. (x^y) . 
@@ -378,7 +390,8 @@ extern "C" {
     * @return This function returns the result of raising @a x to the power @a y. 
     * QFP16_OVERFLOW when an operation overflow is detected. 
     */       
-    qFP16_t qFP16_IPow( const qFP16_t x, const qFP16_t y );
+    qFP16_t qFP16_IPow( const qFP16_t x, 
+                        const qFP16_t y );
 
     /**
     * @brief Returns @a x raised to the power of @a y. (x^y) . 
@@ -387,7 +400,8 @@ extern "C" {
     * @return This function returns the result of raising @a x to the power @a y. 
     * QFP16_OVERFLOW when an operation overflow is detected. 
     */           
-    qFP16_t qFP16_Pow( const qFP16_t x, const qFP16_t y );
+    qFP16_t qFP16_Pow( const qFP16_t x, 
+                       const qFP16_t y );
 
     /**
     * @brief Converts the fixed-point value to a formatted string.
@@ -399,7 +413,9 @@ extern "C" {
     * @return A pointer to the resulting null-terminated string, same as 
     * parameter @a str 
     */ 
-    char* qFP16_FPToA( const qFP16_t num, char *str, int decimals );
+    char* qFP16_FPToA( const qFP16_t num, 
+                       char *str, 
+                       int decimals );
 
     /**
     * @brief Parses the C string @a s, interpreting its content as a fixed-point

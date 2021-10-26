@@ -1,10 +1,13 @@
 #include "qltisys.h"
 
-static float qLTISys_DiscreteUpdate( qLTISys_t * const sys, const float u );
-static float qLTISys_ContinuosUpdate( qLTISys_t * const sys, const float u );
+static float qLTISys_DiscreteUpdate( qLTISys_t * const sys, 
+                                     const float u );
+static float qLTISys_ContinuosUpdate( qLTISys_t * const sys, 
+                                      const float u );
 
 /*============================================================================*/
-static float qLTISys_DiscreteUpdate( qLTISys_t * const sys, const float u )
+static float qLTISys_DiscreteUpdate( qLTISys_t * const sys, 
+                                     const float u )
 {
     float v = u;
     size_t i;
@@ -16,7 +19,8 @@ static float qLTISys_DiscreteUpdate( qLTISys_t * const sys, const float u )
     return qLTISys_DiscreteFIRUpdate( sys->x, sys->b, sys->n, v );  
 }
 /*============================================================================*/
-static float qLTISys_ContinuosUpdate( qLTISys_t * const sys, const float u )
+static float qLTISys_ContinuosUpdate( qLTISys_t * const sys, 
+                                      const float u )
 {
     float y = 0.0f;
 
@@ -41,7 +45,8 @@ static float qLTISys_ContinuosUpdate( qLTISys_t * const sys, const float u )
     return y;
 }
 /*============================================================================*/
-float qLTISys_Excite( qLTISys_t * const sys, float u )
+float qLTISys_Excite( qLTISys_t * const sys, 
+                      float u )
 {
     float y = 0.0f;
 
@@ -65,7 +70,10 @@ float qLTISys_Excite( qLTISys_t * const sys, float u )
     return y;
 }
 /*============================================================================*/
-int qLTISys_SetDelay( qLTISys_t * const sys, float * const w, const size_t n, const float initval )
+int qLTISys_SetDelay( qLTISys_t * const sys, 
+                      float * const w, 
+                      const size_t n, 
+                      const float initval )
 {
     int retValue = 0;
     if ( 1 == qLTISys_IsInitialized( sys ) ) {
@@ -75,7 +83,9 @@ int qLTISys_SetDelay( qLTISys_t * const sys, float * const w, const size_t n, co
     return retValue;
 }
 /*============================================================================*/
-int qLTISys_SetSaturation( qLTISys_t * const sys, const float min, const float max )
+int qLTISys_SetSaturation( qLTISys_t * const sys, 
+                           const float min, 
+                           const float max )
 {
     int retValue = 0;
     if ( ( 1 == qLTISys_IsInitialized( sys ) ) && ( max > min ) ) {
@@ -95,7 +105,13 @@ int qLTISys_IsInitialized( const qLTISys_t * const sys )
     return retValue;
 }
 /*============================================================================*/
-int qLTISys_Setup( qLTISys_t * const sys, float *num, float *den, float *x, const size_t nb, const size_t na, const float dt )
+int qLTISys_Setup( qLTISys_t * const sys, 
+                   float *num, 
+                   float *den, 
+                   float *x, 
+                   const size_t nb, 
+                   const size_t na, 
+                   const float dt )
 {
     int retValue = 0;
     if ( ( NULL != sys ) && ( NULL != num ) && ( NULL != den ) && ( NULL != x ) && ( na > 0u ) ) {
@@ -133,7 +149,10 @@ int qLTISys_Setup( qLTISys_t * const sys, float *num, float *den, float *x, cons
     return retValue;
 }
 /*============================================================================*/
-float qLTISys_DiscreteFIRUpdate( float *w, float *c, const size_t wsize, const float x )
+float qLTISys_DiscreteFIRUpdate( float *w, 
+                                 float *c, 
+                                 const size_t wsize, 
+                                 const float x )
 {
     size_t i;
     float y = 0.0f;

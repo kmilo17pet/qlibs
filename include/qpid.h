@@ -57,7 +57,11 @@ extern "C" {
     * @param[in] dt Time step in seconds.
     * @return 1 on success, otherwise return 0.
     */  
-    int qPID_Setup( qPID_controller_t * const c, const float kc, const float ki, const float kd, const float dt );
+    int qPID_Setup( qPID_controller_t * const c, 
+                    const float kc, 
+                    const float ki, 
+                    const float kd, 
+                    const float dt );
 
     /**
     * @brief Set/Change the PID controller gains.
@@ -67,7 +71,10 @@ extern "C" {
     * @param[in] kd Derivative Gain
     * @return 1 on success, otherwise return 0.
     */  
-    int qPID_SetGains( qPID_controller_t * const c, const float kc, const float ki, const float kd );
+    int qPID_SetGains( qPID_controller_t * const c, 
+                       const float kc, 
+                       const float ki, 
+                       const float kd );
 
     /**
     * @brief Reset the internal PID controller calculations.
@@ -85,7 +92,10 @@ extern "C" {
     * anti-windup feature.
     * @return 1 on success, otherwise return 0.
     */     
-    int qPID_SetSaturation( qPID_controller_t * const c, const float min, const float max, const float kw );
+    int qPID_SetSaturation( qPID_controller_t * const c, 
+                            const float min, 
+                            const float max, 
+                            const float kw );
 
     /**
     * @brief Convert the controller gains to conform the series or interacting
@@ -101,7 +111,8 @@ extern "C" {
     * @param[in] eps The minimal error value.
     * @return 1 on success, otherwise return 0.
     */      
-    int qPID_SetEpsilon( qPID_controller_t * const c, const float eps );
+    int qPID_SetEpsilon( qPID_controller_t * const c, 
+                         const float eps );
 
     /**
     * @brief Set the tunning parameter for the derivative filter.
@@ -109,7 +120,8 @@ extern "C" {
     * @param[in] beta The tunning parameter. [ 0 < beta < 1 ]
     * @return 1 on success, otherwise return 0.
     */  
-    int qPID_SetDerivativeFilter( qPID_controller_t * const c, const float beta );
+    int qPID_SetDerivativeFilter( qPID_controller_t * const c, 
+                                  const float beta );
 
     /**
     * @brief Set the PID tracking mode. This allows the PID controller to adjust
@@ -121,7 +133,9 @@ extern "C" {
     * @param[in] kt Tracking gain.
     * @return 1 on success, otherwise return 0.
     */     
-    int qPID_SetTrackingMode( qPID_controller_t * const c, float *var, const float kt ); 
+    int qPID_SetTrackingMode( qPID_controller_t * const c, 
+                              float *var, 
+                              const float kt ); 
 
     /**
     * @brief Computes the control action for given PID controller instance.
@@ -133,7 +147,9 @@ extern "C" {
     * @param[in] y The controlled variable aka Process-variable.
     * @return The control action.
     */       
-    float qPID_Control( qPID_controller_t * const c, float w, const float y ); 
+    float qPID_Control( qPID_controller_t * const c, 
+                        const float w, 
+                        const float y ); 
 
     /**
     * @brief Binds the specified instance to enable the PID controller auto 
@@ -143,7 +159,8 @@ extern "C" {
     * @param[in] at A pointer to the PID auto tunning instance.
     * @return 1 on success, otherwise return 0.
     */   
-    int qPID_BindAutoTunning( qPID_controller_t * const c, qPID_AutoTunning_t * const at );
+    int qPID_BindAutoTunning( qPID_controller_t * const c, 
+                              qPID_AutoTunning_t * const at );
 
     /**
     * @brief Set the number of time steps where the auto tuner algorithm will
@@ -153,7 +170,8 @@ extern "C" {
     * enabled indefinitely pass #QPID_AUTOTUNNING_UNDEFINED as argument.
     * @return 1 on success, otherwise return 0.
     */      
-    int qPID_EnableAutoTunning( qPID_controller_t * const c, const uint32_t tEnable );
+    int qPID_EnableAutoTunning( qPID_controller_t * const c, 
+                                const uint32_t tEnable );
 
 
 #ifdef __cplusplus

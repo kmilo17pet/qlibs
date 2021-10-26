@@ -44,7 +44,8 @@ extern "C" {
     * @param[in] u A sample of the input signal that excites the system
     * @return The system response.
     */   
-    float qLTISys_Excite( qLTISys_t * const sys, float u );
+    float qLTISys_Excite( qLTISys_t * const sys, 
+                          float u );
 
     /**
     * @brief Set the input delay for LTI system.
@@ -55,7 +56,10 @@ extern "C" {
     * @param[in] initval The initial value of the input channel. 
     * @return 1 if the system has been initialized, otherwise return 0.
     */     
-    int qLTISys_SetDelay( qLTISys_t * const sys, float * const w, const size_t n, const float initval );
+    int qLTISys_SetDelay( qLTISys_t * const sys, 
+                          float * const w, 
+                          const size_t n, 
+                          const float initval );
 
     /**
     * @brief Setup the output saturation for the LTI system.
@@ -64,7 +68,9 @@ extern "C" {
     * @param[in] max The maximal value allowed for the output.
     * @return 1 on success, otherwise return 0.
     */    
-    int qLTISys_SetSaturation( qLTISys_t * const sys, const float min, const float max );
+    int qLTISys_SetSaturation( qLTISys_t * const sys, 
+                               const float min, 
+                               const float max );
 
     /**
     * @brief Check if the LTI system is initialized.
@@ -98,7 +104,13 @@ extern "C" {
     * pass #QLTISYS_DISCRETE as argument
     * @return 1 on success, otherwise return 0.
     */   
-    int qLTISys_Setup( qLTISys_t * const sys, float *num, float *den, float *x, const size_t nb, const size_t na, const float dt );
+    int qLTISys_Setup( qLTISys_t * const sys, 
+                       float *num, 
+                       float *den, 
+                       float *x, 
+                       const size_t nb, 
+                       const size_t na, 
+                       const float dt );
 
     /**
     * @brief Evaluate the discrete FIR filter by updating the delay lines of 
@@ -114,7 +126,10 @@ extern "C" {
     * @return If @a c is provided, returns the evaluation of the FIR filter. 
     * otherwise return the sum of the updated window @a w.
     */  
-    float qLTISys_DiscreteFIRUpdate( float *w, float *c, const size_t wsize, const float x );
+    float qLTISys_DiscreteFIRUpdate( float *w, 
+                                     float *c, 
+                                     const size_t wsize, 
+                                     const float x );
 
 #ifdef __cplusplus
 }

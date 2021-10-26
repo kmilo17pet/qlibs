@@ -10,7 +10,9 @@
 static float qRMS_NewtonsFastSqrt( const float x );
 
 /*============================================================================*/
-int qRMS_Setup( qRMS_t * const q, float * const window, const size_t wsize ) 
+int qRMS_Setup( qRMS_t * const q, 
+                float * const window, 
+                const size_t wsize ) 
 {
     int retValue = 0;
     if ( ( NULL != q ) && ( NULL != window ) && ( wsize > 0u ) ) {
@@ -23,7 +25,8 @@ int qRMS_Setup( qRMS_t * const q, float * const window, const size_t wsize )
     return retValue;
 }
 /*============================================================================*/
-float qRMS_Update( qRMS_t * const q, const float x )
+float qRMS_Update( qRMS_t * const q, 
+                   const float x )
 {
     float y = 0.0f;
     if ( NULL != q ) {
@@ -34,7 +37,9 @@ float qRMS_Update( qRMS_t * const q, const float x )
     return y;
 }
 /*============================================================================*/
-int qRMS_SetParams( qRMS_t * const q, const float lambda, const float alpha ) 
+int qRMS_SetParams( qRMS_t * const q, 
+                    const float lambda, 
+                    const float alpha ) 
 {
     int retValue = 0;
     if ( ( NULL != q ) && ( lambda > 0.0f ) && ( lambda <= 1.0f ) && ( alpha > 0.0f ) && ( alpha <= 1.0f ) ) {

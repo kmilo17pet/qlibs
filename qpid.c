@@ -6,12 +6,20 @@
 
 #include "qpid.h"
 
-static float qPID_Sat( float x, const float min, const float max );
-static void qPID_AdaptGains( qPID_controller_t * const c,  const float u, const float y );
+static float qPID_Sat( float x, 
+                       const float min, 
+                       const float max );
+static void qPID_AdaptGains( qPID_controller_t * const c,  
+                             const float u, 
+                             const float y );
 static int qPID_ATCheck( const float x );
 
 /*============================================================================*/
-int qPID_Setup( qPID_controller_t * const c, const float kc, const float ki, const float kd, const float dt )
+int qPID_Setup( qPID_controller_t * const c, 
+                const float kc, 
+                const float ki, 
+                const float kd, 
+                const float dt )
 {
     int retValue = 0;
     if ( ( NULL != c ) && ( dt > 0.0f ) ) {
@@ -29,7 +37,10 @@ int qPID_Setup( qPID_controller_t * const c, const float kc, const float ki, con
     return retValue;
 }
 /*============================================================================*/
-int qPID_SetGains( qPID_controller_t * const c, const float kc, const float ki, const float kd )
+int qPID_SetGains( qPID_controller_t * const c, 
+                   const float kc, 
+                   const float ki, 
+                   const float kd )
 {
     int retValue = 0;
     if ( ( NULL != c ) && ( 0u != c->init ) ) {
@@ -57,7 +68,10 @@ int qPID_Reset( qPID_controller_t * const c )
     return retValue;
 }
 /*============================================================================*/
-int qPID_SetSaturation( qPID_controller_t * const c, const float min, const float max, const float kw )
+int qPID_SetSaturation( qPID_controller_t * const c, 
+                        const float min, 
+                        const float max, 
+                        const float kw )
 {
     int retValue = 0;
     if ( ( NULL != c ) && ( max > min ) && ( 0u != c->init ) && ( kw >= 0.0f ) ) {
@@ -85,7 +99,8 @@ int qPID_SetSeries( qPID_controller_t * const c )
     return retValue;
 }
 /*============================================================================*/
-int qPID_SetEpsilon( qPID_controller_t * const c, const float eps )
+int qPID_SetEpsilon( qPID_controller_t * const c, 
+                     const float eps )
 {
     int retValue = 0;
     if ( ( NULL != c ) && ( 0u != c->init) && ( eps > 0.0f ) ) {
@@ -95,7 +110,8 @@ int qPID_SetEpsilon( qPID_controller_t * const c, const float eps )
     return retValue;
 }
 /*============================================================================*/
-int qPID_SetDerivativeFilter( qPID_controller_t * const c, const float beta )
+int qPID_SetDerivativeFilter( qPID_controller_t * const c, 
+                              const float beta )
 {
     int retValue = 0;
     if ( ( NULL != c ) && ( 0u != c->init ) && ( beta > 0.0f ) && ( beta < 1.0f ) ) {
@@ -105,7 +121,9 @@ int qPID_SetDerivativeFilter( qPID_controller_t * const c, const float beta )
     return retValue;
 }
 /*============================================================================*/
-int qPID_SetTrackingMode( qPID_controller_t * const c, float *var, const float kt )
+int qPID_SetTrackingMode( qPID_controller_t * const c, 
+                          float *var, 
+                          const float kt )
 {
     int retValue = 0;
     if ( ( NULL != c ) && ( kt > 0.0f ) && ( 0u != c->init ) ) {
@@ -116,7 +134,9 @@ int qPID_SetTrackingMode( qPID_controller_t * const c, float *var, const float k
     return retValue;    
 }
 /*============================================================================*/
-float qPID_Control( qPID_controller_t * const c, const float w, const float y )
+float qPID_Control( qPID_controller_t * const c, 
+                    const float w, 
+                    const float y )
 {
     float u = w;
     if ( ( NULL != c ) && ( 0u != c->init ) ) {
@@ -143,7 +163,8 @@ float qPID_Control( qPID_controller_t * const c, const float w, const float y )
     return u;
 }
 /*============================================================================*/
-int qPID_BindAutoTunning( qPID_controller_t * const c, qPID_AutoTunning_t * const at )
+int qPID_BindAutoTunning( qPID_controller_t * const c, 
+                          qPID_AutoTunning_t * const at )
 {
     int retValue = 0;
     if ( ( NULL != c ) && ( 0u != c->init ) ) {
@@ -176,7 +197,8 @@ int qPID_BindAutoTunning( qPID_controller_t * const c, qPID_AutoTunning_t * cons
     return retValue;
 }
 /*============================================================================*/
-int qPID_EnableAutoTunning( qPID_controller_t * const c, const uint32_t tEnable )
+int qPID_EnableAutoTunning( qPID_controller_t * const c, 
+                            const uint32_t tEnable )
 {
     int retValue = 0;
     if ( NULL != c ) {
@@ -188,7 +210,9 @@ int qPID_EnableAutoTunning( qPID_controller_t * const c, const uint32_t tEnable 
     return retValue;
 }
 /*============================================================================*/
-static void qPID_AdaptGains( qPID_controller_t *c, const float u, const float y )
+static void qPID_AdaptGains( qPID_controller_t *c, 
+                             const float u, 
+                             const float y )
 {
     qPID_AutoTunning_t *s = c->adapt; 
     float error , r, l0, l1;
@@ -238,7 +262,9 @@ static void qPID_AdaptGains( qPID_controller_t *c, const float u, const float y 
     }
 }
 /*============================================================================*/
-static float qPID_Sat( float x, const float min, const float max )
+static float qPID_Sat( float x, 
+                       const float min, 
+                       const float max )
 {
     if ( x > max ) {
         x = max;

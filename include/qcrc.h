@@ -37,7 +37,14 @@ extern "C" {
     * @param[in] xorOut The final XOR value.
     * @return The CRC value for @a data.
     */      
-    uint32_t qCRCx( const qCRC_Mode_t mode, const void * const pData, const size_t length, uint32_t poly, const uint32_t init, const uint8_t refIn, const uint8_t refOut, uint32_t xorOut );
+    uint32_t qCRCx( const qCRC_Mode_t mode, 
+                    const void * const pData, 
+                    const size_t length, 
+                    uint32_t poly, 
+                    const uint32_t init, 
+                    const uint8_t refIn, 
+                    const uint8_t refOut, 
+                    uint32_t xorOut );
 
 #ifdef __cplusplus
 }

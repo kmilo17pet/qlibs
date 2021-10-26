@@ -22,16 +22,27 @@
 static qFP16_Settings_t fp_default = { QFP16_MIN, QFP16_MAX, 1u, 0u };
 static qFP16_Settings_t *fp = &fp_default;
 
-static uint32_t qFP16_OverflowCheck( uint32_t res, const uint32_t x, const uint32_t y );
+static uint32_t qFP16_OverflowCheck( uint32_t res, 
+                                     const uint32_t x, 
+                                     const uint32_t y );
 static qFP16_t qFP16_rs( const qFP16_t x );
 static qFP16_t qFP16_log2i( qFP16_t x );
-static char *qFP16_itoa( char *buf, uint32_t scale, uint32_t value, uint8_t skip );
-static qFP16_t qFP16_Saturate( const qFP16_t nsInput, const qFP16_t x, const qFP16_t y );
+static char *qFP16_itoa( char *buf, 
+                         uint32_t scale, 
+                         uint32_t value, 
+                         uint8_t skip );
+static qFP16_t qFP16_Saturate( const qFP16_t nsInput, 
+                               const qFP16_t x, 
+                               const qFP16_t y );
 
 /*cstat -MISRAC2012-Rule-10.8 -CERT-FLP34-C -MISRAC2012-Rule-1.3_n -MISRAC2012-Rule-10.1_R6 -ATH-shift-neg -CERT-INT34-C_c*/
 
 /*============================================================================*/
-int qFP16_SettingsSet( qFP16_Settings_t * const instance, qFP16_t min, qFP16_t max, uint8_t rounding, uint8_t saturate )
+int qFP16_SettingsSet( qFP16_Settings_t * const instance, 
+                       qFP16_t min, 
+                       qFP16_t max, 
+                       uint8_t rounding, 
+                       uint8_t saturate )
 {
     int retValue = 0;
     if ( ( NULL != instance ) && ( max > min ) && ( rounding <= 1u ) && ( saturate <= 1u ) ) {
@@ -143,7 +154,8 @@ qFP16_t qFP16_Round( const qFP16_t x )
     return qFP16_Floor( x + QFP16_1_DIV_2 );
 }
 /*============================================================================*/
-qFP16_t qFP16_Add( const qFP16_t X, qFP16_t Y )
+qFP16_t qFP16_Add( const qFP16_t X, 
+                   const qFP16_t Y )
 {
     uint32_t x = (uint32_t)X, y = (uint32_t)Y;
     uint32_t retValue;
@@ -152,7 +164,8 @@ qFP16_t qFP16_Add( const qFP16_t X, qFP16_t Y )
     return qFP16_Saturate( (qFP16_t)retValue, X, X );    
 }
 /*============================================================================*/
-qFP16_t qFP16_Sub( const qFP16_t X, qFP16_t Y )
+qFP16_t qFP16_Sub( const qFP16_t X, 
+                   const qFP16_t Y )
 {
     uint32_t x = (uint32_t)X, y = (uint32_t)Y; 
     uint32_t retValue;
@@ -161,7 +174,8 @@ qFP16_t qFP16_Sub( const qFP16_t X, qFP16_t Y )
     return qFP16_Saturate( (qFP16_t)retValue, X, X ); 
 }
 /*============================================================================*/
-qFP16_t qFP16_Mul( const qFP16_t x, const qFP16_t y )
+qFP16_t qFP16_Mul( const qFP16_t x, 
+                   const qFP16_t y )
 {
     qFP16_t retValue = QFP16_OVERFLOW;
     int32_t a, c, ac, adcb, mulH;
@@ -201,7 +215,8 @@ qFP16_t qFP16_Mul( const qFP16_t x, const qFP16_t y )
     return qFP16_Saturate( retValue, x, y );
 }
 /*============================================================================*/
-qFP16_t qFP16_Div( const qFP16_t x, const qFP16_t y )
+qFP16_t qFP16_Div( const qFP16_t x, 
+                   const qFP16_t y )
 {
     qFP16_t retValue = fp->min;
     if ( 0 != y ) {
@@ -256,7 +271,8 @@ qFP16_t qFP16_Div( const qFP16_t x, const qFP16_t y )
     return qFP16_Saturate( retValue, x, y );    
 }
 /*============================================================================*/
-qFP16_t qFP16_Mod( const qFP16_t x, const qFP16_t y )
+qFP16_t qFP16_Mod( const qFP16_t x, 
+                   const qFP16_t y )
 {
     qFP16_t retValue = 0;
     if ( 0 != y ) {
@@ -485,7 +501,8 @@ qFP16_t qFP16_Tan( qFP16_t x )
     return qFP16_Div( a, b );
 }
 /*============================================================================*/
-qFP16_t qFP16_Atan2( const qFP16_t y , const qFP16_t x )
+qFP16_t qFP16_Atan2( const qFP16_t y, 
+                     const qFP16_t x )
 {
     qFP16_t absY, mask, angle, r, r_3;
     const qFP16_t QFP16_0_981689 = 0x0000FB50;
@@ -604,7 +621,9 @@ qFP16_t qFP16_Tanh( qFP16_t x )
     return retValue;
 }
 /*============================================================================*/
-qFP16_t qFP16_Polyval( const qFP16_t * const p, const size_t n, const qFP16_t x )
+qFP16_t qFP16_Polyval( const qFP16_t * const p, 
+                       const size_t n, 
+                       const qFP16_t x )
 {
     qFP16_t fx, tmp;
     size_t i;
@@ -621,7 +640,8 @@ qFP16_t qFP16_Polyval( const qFP16_t * const p, const size_t n, const qFP16_t x 
     return fx;  
 }
 /*============================================================================*/
-qFP16_t qFP16_IPow( const qFP16_t x, const qFP16_t y )
+qFP16_t qFP16_IPow( const qFP16_t x, 
+                    const qFP16_t y )
 {
     qFP16_t retValue;
     qFP16_t n;
@@ -646,7 +666,8 @@ qFP16_t qFP16_IPow( const qFP16_t x, const qFP16_t y )
     return retValue;
 }
 /*============================================================================*/
-qFP16_t qFP16_Pow( const qFP16_t x, const qFP16_t y )
+qFP16_t qFP16_Pow( const qFP16_t x, 
+                   const qFP16_t y )
 {
     qFP16_t retValue = QFP16_OVERFLOW;
     qFP16_t tmp;
@@ -667,7 +688,9 @@ qFP16_t qFP16_Pow( const qFP16_t x, const qFP16_t y )
     return retValue;
 }
 /*============================================================================*/
-char* qFP16_FPToA( const qFP16_t num, char *str, int decimals )
+char* qFP16_FPToA( const qFP16_t num, 
+                   char *str, 
+                   int decimals )
 {
     char *retValue = str;
     
@@ -772,7 +795,9 @@ qFP16_t qFP16_AToFP( const char *s )
     return retValue;
 }
 /*============================================================================*/
-static uint32_t qFP16_OverflowCheck( uint32_t res, const uint32_t x, const uint32_t y )
+static uint32_t qFP16_OverflowCheck( uint32_t res, 
+                                     const uint32_t x, 
+                                     const uint32_t y )
 {
     if ( ( 0uL == ( ( x ^ y ) & QFP16_OVERFLOW_MASK ) ) && ( 0uL != ( ( x ^ res ) & QFP16_OVERFLOW_MASK ) ) ) {
         res =  (uint32_t)QFP16_OVERFLOW;
@@ -825,7 +850,10 @@ static qFP16_t qFP16_log2i( qFP16_t x )
     return retValue;   
 }
 /*============================================================================*/
-static char *qFP16_itoa( char *buf, uint32_t scale, uint32_t value, uint8_t skip )
+static char *qFP16_itoa( char *buf, 
+                         uint32_t scale, 
+                         uint32_t value, 
+                         uint8_t skip )
 {
     while ( 0u != scale ) {
         uint32_t digit = ( value / scale );
@@ -841,7 +869,9 @@ static char *qFP16_itoa( char *buf, uint32_t scale, uint32_t value, uint8_t skip
     return buf;
 }
 /*============================================================================*/
-static qFP16_t qFP16_Saturate( const qFP16_t nsInput, const qFP16_t x, const qFP16_t y )
+static qFP16_t qFP16_Saturate( const qFP16_t nsInput, 
+                               const qFP16_t x, 
+                               const qFP16_t y )
 {
     qFP16_t retValue = nsInput;
     if ( 1u == fp->saturate ) {

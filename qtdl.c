@@ -10,14 +10,18 @@ static void qTDL_InsertNewest( qTDL_t * const q, float sample );
 static void qTDL_RemoveOldest( qTDL_t * const q );
 
 /*============================================================================*/
-void qTDL_Setup( qTDL_t * const q, float * const area, const size_t n, const float initval )
+void qTDL_Setup( qTDL_t * const q, 
+                 float * const area, 
+                 const size_t n, 
+                 const float initval )
 {   
     q->itemcount = n;
     q->head = area;
     qTDL_Flush( q, initval );
 }
 /*============================================================================*/
-void qTDL_Flush( qTDL_t * const q, const float initval )
+void qTDL_Flush( qTDL_t * const q, 
+                 const float initval )
 {
     size_t i;
 
@@ -31,7 +35,8 @@ void qTDL_Flush( qTDL_t * const q, const float initval )
     }
 }
 /*============================================================================*/
-static void qTDL_InsertNewest( qTDL_t * const q, const float sample )
+static void qTDL_InsertNewest( qTDL_t * const q, 
+                               const float sample )
 {
     q->wr[ 0 ] = sample;
     q->wr++;
@@ -52,7 +57,8 @@ float qTDL_GetOldest( const qTDL_t * const q )
     return  ( ( q->rd + 1u ) >= q->tail )? q->head[ 0 ] : q->rd[ 1 ]; 
 }
 /*============================================================================*/
-float qTDL_GetAtIndex( const qTDL_t * const q, const size_t i )
+float qTDL_GetAtIndex( const qTDL_t * const q, 
+                       const size_t i )
 {
     return ( ( q->wr >= q->rd ) && ( ( q->head + i ) >= q->wr ) ) ? q->rd[ q->itemcount - i ] :  *( q->rd - i );   
 }
@@ -62,7 +68,8 @@ float qTDL_GetRecent( const qTDL_t * const q )
     return q->rd[ 0 ];
 }
 /*============================================================================*/
-void qTDL_InsertSample( qTDL_t * const q, const float sample )
+void qTDL_InsertSample( qTDL_t * const q, 
+                        const float sample )
 {
     qTDL_RemoveOldest( q );
     qTDL_InsertNewest( q, sample );

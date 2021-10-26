@@ -146,7 +146,8 @@ extern "C" {
     * @param[in] x A sample of the input signal.
     * @return The smoothed output.
     */    
-    float qSSmoother_Perform( qSSmootherPtr_t * const s, const float x );
+    float qSSmoother_Perform( qSSmootherPtr_t * const s, 
+                              const float x );
 
     /**
     * @brief Setup an initialize smoother filter.
@@ -223,7 +224,11 @@ extern "C" {
     * pass 0uL as argument.
     * @return 1 on success, otherwise return 0.
     */  
-    int qSSmoother_Setup( qSSmootherPtr_t * const s, const qSSmoother_Type_t type, float *param, float *window, const size_t wsize );
+    int qSSmoother_Setup( qSSmootherPtr_t * const s, 
+                          const qSSmoother_Type_t type, 
+                          float *param, 
+                          float *window, 
+                          const size_t wsize );
 
 
 #ifdef __cplusplus

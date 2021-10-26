@@ -31,7 +31,9 @@ extern "C" {
     * @param[in] q A pointer to the RMS instance.
     * @return 1 on success, otherwise returns 0.
     */  
-    int qRMS_Setup( qRMS_t * const q, float * const window, const size_t wsize ); 
+    int qRMS_Setup( qRMS_t * const q, 
+                    float * const window, 
+                    const size_t wsize ); 
 
     /**
     * @brief Computes the moving root mean square (RMS) of the input signal. 
@@ -45,7 +47,8 @@ extern "C" {
     * @param[in] x The raw signal.
     * @return A recursive estimation of the RMS for the incoming signal @a x.
     */      
-    float qRMS_Update( qRMS_t * const q, const float x );
+    float qRMS_Update( qRMS_t * const q, 
+                       const float x );
 
     /**
     * @brief Change the recursive parameters for the moving RMS estimator.
@@ -60,7 +63,9 @@ extern "C" {
     * smoother output but also increasing the convergence time.
     * @return 1 on success, otherwise returns 0.
     */      
-    int qRMS_SetParams( qRMS_t * const q, const float lambda, const float alpha ); 
+    int qRMS_SetParams( qRMS_t * const q, 
+                        const float lambda, 
+                        const float alpha ); 
 
 
 #ifdef __cplusplus
