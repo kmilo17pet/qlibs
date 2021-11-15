@@ -20,12 +20,12 @@ extern "C" {
         QCRC8 = 0,
         QCRC16,
         QCRC32,
-    } qCRC_Mode_t;  
+    } qCRC_Mode_t;
 
     /**
-    * @brief Calculates in one pass the common @a width bit CRC value for a block
-    * of data that is passed to the function together with a parameter indicating 
-    * the @a length.
+    * @brief Calculates in one pass the common @a width bit CRC value for a
+    * block of data that is passed to the function together with a parameter
+    * indicating the @a length.
     * @param[in] mode To select the CRC calculation mode. Only the following
     * values are supported: QCRC8, QCRC16 and QCRC32.
     * @param[in] pData A pointer to the block of data.
@@ -36,14 +36,14 @@ extern "C" {
     * @param[in] refOut If true, the CRC result is reflected before output.
     * @param[in] xorOut The final XOR value.
     * @return The CRC value for @a data.
-    */      
-    uint32_t qCRCx( const qCRC_Mode_t mode, 
-                    const void * const pData, 
-                    const size_t length, 
-                    uint32_t poly, 
-                    const uint32_t init, 
-                    const uint8_t refIn, 
-                    const uint8_t refOut, 
+    */
+    uint32_t qCRCx( const qCRC_Mode_t mode,
+                    const void * const pData,
+                    const size_t length,
+                    uint32_t poly,
+                    const uint32_t init,
+                    const uint8_t refIn,
+                    const uint8_t refOut,
                     uint32_t xorOut );
 
 #ifdef __cplusplus

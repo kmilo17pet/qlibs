@@ -213,9 +213,9 @@ int main( int argc, char *argv[] )
     }
     qPID_SetSaturation( &speedControl, 0.0f, 100.0f );
     /* Create the tast that handles the speed control. */
-    xTaskCreate( xTaskPIDspeedControl, "speedControl",  1024, &speedControl,   configMAX_PRIORITIES - 1 ,NULL );
+    xTaskCreate( xTaskPIDspeedControl, "speedControl", 1024, &speedControl, configMAX_PRIORITIES - 1 ,NULL );
     vTaskStartScheduler();
-    for( ;; );    
+    for( ;; );
     return EXIT_SUCCESS;
 }
 ```
@@ -258,9 +258,9 @@ int main( int argc, char *argv[] )
     if ( 0 == ret ) {
         puts( "ERROR: Cant configure the smoother filter" );
     }
-    xTaskCreate( xTaskSignalProcessing, "signalProcessing",  512, &smoother,  2, NULL );
+    xTaskCreate( xTaskSignalProcessing, "signalProcessing", 512, &smoother, 2, NULL );
     vTaskStartScheduler();
-    for( ;; );    
+    for( ;; );
     return EXIT_SUCCESS;
 }
 ```

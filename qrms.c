@@ -1,5 +1,5 @@
 /*!
- * @file qrms.c   
+ * @file qrms.c
  * @author J. Camilo Gomez C.
  * @note This file is part of the qTools distribution.
  **/
@@ -10,9 +10,9 @@
 static float qRMS_NewtonsFastSqrt( const float x );
 
 /*============================================================================*/
-int qRMS_Setup( qRMS_t * const q, 
-                float * const window, 
-                const size_t wsize ) 
+int qRMS_Setup( qRMS_t * const q,
+                float * const window,
+                const size_t wsize )
 {
     int retValue = 0;
     if ( ( NULL != q ) && ( NULL != window ) && ( wsize > 0u ) ) {
@@ -25,7 +25,7 @@ int qRMS_Setup( qRMS_t * const q,
     return retValue;
 }
 /*============================================================================*/
-float qRMS_Update( qRMS_t * const q, 
+float qRMS_Update( qRMS_t * const q,
                    const float x )
 {
     float y = 0.0f;
@@ -33,13 +33,13 @@ float qRMS_Update( qRMS_t * const q,
         y = qRMS_NewtonsFastSqrt( qSSmoother_Perform( &q->f1, x*x ) );
         y = qSSmoother_Perform( &q->f2, y ); /*2nd stage moving-window overlap*/
         y = qSSmoother_Perform( &q->f3, y ); /*3rd stage low-pass filter*/
-    } 
+    }
     return y;
 }
 /*============================================================================*/
-int qRMS_SetParams( qRMS_t * const q, 
-                    const float lambda, 
-                    const float alpha ) 
+int qRMS_SetParams( qRMS_t * const q,
+                    const float lambda,
+                    const float alpha )
 {
     int retValue = 0;
     if ( ( NULL != q ) && ( lambda > 0.0f ) && ( lambda <= 1.0f ) && ( alpha > 0.0f ) && ( alpha <= 1.0f ) ) {
@@ -53,13 +53,14 @@ int qRMS_SetParams( qRMS_t * const q,
 static float qRMS_NewtonsFastSqrt( const float x )
 {
     uint32_t i = 0uL;
-    float xHalf = 0.5f*x , y = x;
+    float xHalf = 0.5f*x ,y = x;
     const uint32_t SQRT_2_RAISED_127 = 0x5F3759DFuL; /* sqrt(2^127) */
 
     (void)memcpy( &i, &y, sizeof(uint32_t) );   /* allowed type-punning*/
-    i  = SQRT_2_RAISED_127 - ( i >> 1 );        /* Quake3 hack to get the best initial guess*/
+    i  = SQRT_2_RAISED_127 - ( i >> 1 );        /* get the best initial guess*/
     (void)memcpy( &y, &i, sizeof(uint32_t) );   /* allowed type-punning*/
     y  = y * ( 1.5f - ( xHalf * y * y ) );      /* 1st iteration*/
-    return y*x;                                 /* multiply the result by x to get sqrt(x)*/
+    /* multiply the result by x to get sqrt(x)*/
+    return y*x;
 }
 /*============================================================================*/
