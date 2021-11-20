@@ -168,7 +168,7 @@ float qPID_Control( qPID_controller_t * const c,
         de = ( e - c->e1 )/c->dt; /*compute the derivative component*/
         c->D = de + ( c->beta*( c->D - de ) ); /*derivative filtering*/
         v  = ( c->kc*e ) + ( c->ki*c->ie ) + ( c->kd*c->D ); /*compute PID action*/
-        
+
         u = qPID_Sat( v, c->min, c->max );
         c->u1 = c->kw*( u - v ); /*anti-windup feedback*/
         if ( NULL != c->uEF ) { /*tracking mode*/
@@ -306,7 +306,7 @@ static float qPID_Sat( float x,
 static int qPID_ATCheck( const float x )
 {
     /*cstat -MISRAC2012-Rule-13.5 -MISRAC2012-Rule-10.3*/
-    return ( 0 == (int)isnan( x ) ) && ( x > 0.0f ) && ( 0 == (int)isinf( x ) ); 
+    return ( 0 == (int)isnan( x ) ) && ( x > 0.0f ) && ( 0 == (int)isinf( x ) );
     /*cstat +MISRAC2012-Rule-13.5 +MISRAC2012-Rule-10.3*/
 }
 /*============================================================================*/

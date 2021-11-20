@@ -109,7 +109,7 @@ static int qSSmoother_Setup_LPF1( _qSSmoother_t * const f,
 {
     int retValue = 0;
     float alpha = param[ 0 ];
-    
+
     if ( ( alpha > 0.0f ) && ( alpha < 1.0f ) ) {
         /*cstat -MISRAC2012-Rule-11.3 -CERT-EXP39-C_d -CERT-EXP36-C_a*/
         qSSmoother_LPF1_t * const s = (qSSmoother_LPF1_t* const)f;
@@ -359,7 +359,7 @@ int qSSmoother_IsInitialized( const qSSmootherPtr_t * const s )
     return retValue;
 }
 /*============================================================================*/
-int qSSmoother_Reset( qSSmootherPtr_t * const s ) 
+int qSSmoother_Reset( qSSmootherPtr_t * const s )
 {
     int retValue = 0;
 

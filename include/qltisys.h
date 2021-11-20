@@ -1,7 +1,7 @@
 /*!
  * @file qltisys.h
  * @author J. Camilo Gomez C.
- * @version 1.04
+ * @version 1.05
  * @note This file is part of the qTools distribution.
  * @brief API to simulate continuous and discrete LTI systems.
  **/
@@ -20,7 +20,7 @@ extern "C" {
 
     #define QLTISYS_DISCRETE        ( -1.0f )
 
-    /** 
+    /**
     * @brief A LTI system object
     * @details The instance should be initialized using the qLTISys_Setup() API.
     * @note Do not access any member of this structure directly.

@@ -1,7 +1,7 @@
 /*!
  * @file qfp16.h
  * @author J. Camilo Gomez C.
- * @version 1.05
+ * @version 1.06
  * @note This file is part of the qTools distribution.
  * @brief Fixed-Point math Q16.16 with rounding and saturated arithmetic.
  **/
@@ -25,7 +25,7 @@ extern "C" {
     #define QFP16_MIN           ( -2147483647 ) /* -32767.99998 */
     #define QFP16_MAX           (  2147483647 ) /* +32767.99998 */
     #define QFP16_OVERFLOW      ( (qFP16_t)-2147483648 ) /* overflow( 0x80000000 ) */
-    
+
     #define QFP16_PI            (  205887  )    /* pi */
     #define QFP16_2PI           (  411775 )     /* 2*pi */
     #define QFP16_NPI           ( -205887 )     /* -pi */
@@ -50,7 +50,7 @@ extern "C" {
     #define QFP16_1             (  65536 )      /* 1 */
     /*! @endcond  */
 
-    /** 
+    /**
     * @brief A macro for defining a fixed-point constant value.
     * @note You should only use this for constant values. For runtime-conversions
     * use qFP16_IntToFP(), qFP16_FloatToFP() or qFP16_DoubleToFP() instead.
@@ -61,7 +61,7 @@ extern "C" {
     ( (qFP16_t)( ( (x) >= 0 ) ? ( (x) * 65536.0 + 0.5 )                     \
                               : ( (x) * 65536.0 - 0.5 ) ) )                 \
 
-    /** 
+    /**
     * @brief A Q16.16 fixed-point settings object
     * @details The instance should be accessed using the qFP16_SettingsSet() API.
     * @note Do not access any member of this structure directly.
@@ -125,7 +125,7 @@ extern "C" {
     * @return This function returns @a x converted to float.
     */
     float qFP16_FPToFloat( const qFP16_t x );
-    
+
     /**
     * @brief Returns the double value @a x converted to fixed-point q16.16.
     * @param[in] x The double prescision floating-point value.
@@ -150,7 +150,7 @@ extern "C" {
     /**
     * @brief Returns the largest integer value less than or equal to @a x.
     * @param[in] x The fixed-point(q16.16) value.
-    * @return This function returns the largest integral value not greater 
+    * @return This function returns the largest integral value not greater
     * than @x.
     */
     qFP16_t qFP16_Floor( const qFP16_t x );
@@ -168,7 +168,7 @@ extern "C" {
     * @return This function returns the nearest integral value of @a x.
     */
     qFP16_t qFP16_Round( const qFP16_t x );
-    
+
     /**
     * @brief Returns the fixed-point addition @a x + @a y.
     * @param[in] x The fixed-point(q16.16) value.
@@ -217,12 +217,12 @@ extern "C" {
     */
     qFP16_t qFP16_Mod( const qFP16_t x,
                        const qFP16_t y );
-    
+
     /**
     * @brief Returns the fixed-point square root of @a x.
     * @param[in] x The fixed-point(q16.16) value.
     * @return This function returns the square root of @a x. For negative
-    * numbers, returns QFP16_OVERFLOW. 
+    * numbers, returns QFP16_OVERFLOW.
     */
     qFP16_t qFP16_Sqrt( qFP16_t x );
 
@@ -414,7 +414,7 @@ extern "C" {
     * @param[in] decimals Number of decimals to show in the string representation.
     * @note: Max decimal allowed = 5
     * @return A pointer to the resulting null-terminated string, same as
-    * parameter @a str 
+    * parameter @a str
     */
     char* qFP16_FPToA( const qFP16_t num,
                        char *str,

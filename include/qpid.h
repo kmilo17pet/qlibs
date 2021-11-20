@@ -1,7 +1,7 @@
 /*!
  * @file qpid.h
  * @author J. Camilo Gomez C.
- * @version 1.04
+ * @version 1.05
  * @note This file is part of the qTools distribution.
  * @brief API to control systems using the PID algorithm. This controller
  * features anti-windup, tracking mode, and derivative filter.
@@ -33,12 +33,12 @@ extern "C" {
     #define QPID_AUTOTUNNING_UNDEFINED      ( 0xFFFFFFFEuL )
 
 
-    /** 
+    /**
     * @brief A PID controller object
     * @details The instance should be initialized using the qPID_Setup() API.
     * @note Do not access any member of this structure directly.
     */
-    typedef struct 
+    typedef struct
     {
         /*! @cond  */
         uint8_t init;

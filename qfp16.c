@@ -127,7 +127,7 @@ qFP16_t qFP16_DoubleToFP( const double x )
 double qFP16_FPToDouble( const qFP16_t x )
 {
     /*cstat -CERT-FLP36-C*/
-    return (double)x * QFP16_1DIVUNITY_DOUBLE; 
+    return (double)x * QFP16_1DIVUNITY_DOUBLE;
     /*cstat +CERT-FLP36-C*/
 }
 /*============================================================================*/
@@ -398,7 +398,7 @@ qFP16_t qFP16_Log( qFP16_t x )
     if ( x > 0 ) {
         qFP16_t guess = QFP16_2, delta, e;
         int scaling = 0, count = 0;
-        
+
         while ( x > QFP16_100 ) {
             x = qFP16_Div( x, QFP16_E4 );
             scaling += 4;
@@ -567,7 +567,7 @@ qFP16_t qFP16_Asin( qFP16_t x )
     if ( ( x <= QFP16_1 ) && ( x >= -QFP16_1 ) ) {
         retValue = QFP16_1 - qFP16_Mul( x, x );
         retValue = qFP16_Div( x, qFP16_Sqrt( retValue ) );
-        retValue = qFP16_Atan( retValue ); 
+        retValue = qFP16_Atan( retValue );
     }
 
     return retValue;

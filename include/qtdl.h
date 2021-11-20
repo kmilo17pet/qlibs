@@ -1,7 +1,7 @@
 /*!
  * @file qtdl.h
  * @author J. Camilo Gomez C.
- * @version 1.02
+ * @version 1.03
  * @note This file is part of the qTools distribution.
  * @brief Helper class that implements a Tapped Delay Line (TDL). This class
  * runs in constant time O(1), so it becomes useful when you need to a moving

@@ -1,7 +1,7 @@
 /*!
  * @file qbitfield.h
  * @author J. Camilo Gomez C.
- * @version 1.07
+ * @version 1.08
  * @note This file is part of the qTools distribution.
  * @brief A bit-field manipulation library.
  **/
@@ -16,10 +16,10 @@ extern "C" {
     #include <stdint.h>
     #include <string.h>
 
-    /** 
+    /**
     * @brief A BitField object
     * @details The instance should be initialized using the qBitField_Setup() API.
-    * @note Do not access any member of this structure directly. 
+    * @note Do not access any member of this structure directly.
     */
     typedef struct
     {
@@ -30,7 +30,7 @@ extern "C" {
         /*! @endcond  */
     } qBitField_t;
 
-    /** 
+    /**
     * @brief Use to determine the uint8_t array-size for a BitField.
     */
     #define QBITFIELD_SIZE( NBITS )     ( 4* ( ( ( NBITS-1 ) / 32 ) + 1 ) )

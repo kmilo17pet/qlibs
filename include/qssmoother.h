@@ -1,7 +1,7 @@
 /*!
  * @file qssmoother.h
  * @author J. Camilo Gomez C.
- * @version 1.04
+ * @version 1.05
  * @note This file is part of the qTools distribution.
  * @brief API to smooth noisy signals.
  **/
@@ -32,7 +32,7 @@ extern "C" {
     }qSSmoother_Type_t;
 
     #define qSSmootherPtr_t  void
-    
+
     /*! @cond  */
     /*abstract class*/
     typedef struct _qSSmoother_s
@@ -50,7 +50,7 @@ extern "C" {
         /*! @endcond  */
     } qSSmoother_LPF1_t;
 
-    typedef struct 
+    typedef struct
     {
         /*! @cond  */
         _qSSmoother_t f;
@@ -85,7 +85,7 @@ extern "C" {
         size_t wsize;
         /*! @endcond  */
     } qSSmoother_MOR1_t;
- 
+
     typedef struct
     {
         /*! @cond  */
@@ -196,7 +196,7 @@ extern "C" {
     * noise convariance
     *
     * if ::QSSMOOTHER_TYPE_EXPW, a value between [ 0 < lambda < 1 ] that
-    * represents the forgetting factor. 
+    * represents the forgetting factor.
     *
     * @param[in] window The filter window and coefficients. Depends of the type
     * selected:
