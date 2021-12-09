@@ -1,5 +1,5 @@
 [![Built for](https://img.shields.io/badge/built%20for-microcontrollers-lightgrey?logo=WhiteSource)](https://github.com/kmilo17pet/qTools)
-[![CodeFactor](https://www.codefactor.io/repository/github/kmilo17pet/qtools/badge/main)](https://www.codefactor.io/repository/github/kmilo17pet/qtools/overview/main)
+[![CodeFactor](https://www.codefactor.io/repository/github/kmilo17pet/qlibs/badge)](https://www.codefactor.io/repository/github/kmilo17pet/qlibs)
 [![Codacy Badge](https://app.codacy.com/project/badge/Grade/14d566939d2e4d4181088cc1c6666fa3)](https://www.codacy.com/gh/kmilo17pet/qTools/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=kmilo17pet/qTools&amp;utm_campaign=Badge_Grade)
 [![CodeInspectorScore](https://www.code-inspector.com/project/27197/score/svg)](https://frontend.code-inspector.com/project/27197/dashboard)
 [![CodeInspectorGrade](https://www.code-inspector.com/project/27197/status/svg)](https://frontend.code-inspector.com/project/27197/dashboard)
