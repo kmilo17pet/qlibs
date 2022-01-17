@@ -212,7 +212,7 @@ int main( int argc, char *argv[] )
         puts( "ERROR: Cant configure PID controller" );
     }
     qPID_SetSaturation( &speedControl, 0.0f, 100.0f );
-    /* Create the tast that handles the speed control. */
+    /* Create the task that handles the speed control. */
     xTaskCreate( xTaskPIDspeedControl, "speedControl", 1024, &speedControl, configMAX_PRIORITIES - 1 ,NULL );
     vTaskStartScheduler();
     for( ;; );
