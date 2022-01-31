@@ -10,7 +10,7 @@
 [![License](https://img.shields.io/github/license/kmilo17pet/qTools)](https://github.com/kmilo17pet/qTools/blob/main/LICENSE) 
 
 # qlibs
-
+A collection of useful libraries for embedded systems,
 
 <details><summary>qFP16 : Q16.16 Fixed-point math</summary>
     
