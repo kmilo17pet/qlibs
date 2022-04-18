@@ -234,7 +234,7 @@ int main( int argc, char *argv[] )
 
 void xTaskSignalProcessing( void *arg )
 {
-    qSSmoother_GMWF_t *smoother = (qSSmoother_GAUSSIAN_t *)arg;
+    qSSmoother_GMWF_t *smoother = (qSSmoother_GMWF_t *)arg;
     float noisySignal;
     float smoothedSignal;
     for ( ;; ) {
