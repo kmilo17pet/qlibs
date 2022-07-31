@@ -3,6 +3,8 @@
 [![Codacy Badge](https://app.codacy.com/project/badge/Grade/14d566939d2e4d4181088cc1c6666fa3)](https://www.codacy.com/gh/kmilo17pet/qTools/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=kmilo17pet/qTools&amp;utm_campaign=Badge_Grade)
 [![CodeInspectorScore](https://api.codiga.io/project/27197/score/svg)](https://app.codiga.io/project/27197/dashboard)
 [![CodeInspectorGrade](https://api.codiga.io/project/27197/status/svg)](https://app.codiga.io/project/27197/dashboard)
+[![Softacheck](https://softacheck.com/app/repository/kmilo17pet/qlibs/badge)](https://softacheck.com/app/repository/kmilo17pet/qlibs/issues)
+[![Documentation](https://softacheck.com/app/repository/kmilo17pet/qlibs/documentation/badge)](https://softacheck.com/app/docs/kmilo17pet/qlibs/)
 [![MISRAC2012](https://img.shields.io/badge/MISRAC2012-Compliant-blue.svg?logo=c)](https://en.wikipedia.org/wiki/MISRA_C)
 [![CERT](https://img.shields.io/badge/CERT-Compliant-blue.svg?logo=c)](https://wiki.sei.cmu.edu/confluence/display/seccode/SEI+CERT+Coding+Standards)
 [![C Standard](https://img.shields.io/badge/STD-C99-green.svg?logo=c)](https://en.wikipedia.org/wiki/C99)
