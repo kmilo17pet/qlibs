@@ -226,7 +226,7 @@ extern "C" {
     */
     int qSSmoother_Setup( qSSmootherPtr_t * const s,
                           const qSSmoother_Type_t type,
-                          float *param,
+                          const float * const param,
                           float *window,
                           const size_t wsize );
 

@@ -171,7 +171,7 @@ int qLTISys_Setup( qLTISys_t * const sys,
 }
 /*============================================================================*/
 float qLTISys_DiscreteFIRUpdate( float *w,
-                                 float *c,
+                                 const float * const c,
                                  const size_t wsize,
                                  const float x )
 {

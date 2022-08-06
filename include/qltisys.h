@@ -127,7 +127,7 @@ extern "C" {
     * otherwise return the sum of the updated window @a w.
     */
     float qLTISys_DiscreteFIRUpdate( float *w,
-                                     float *c,
+                                     const float * const c,
                                      const size_t wsize,
                                      const float x );
 

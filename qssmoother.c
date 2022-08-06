@@ -9,46 +9,46 @@
 
 struct qSmoother_Vtbl_s {
     float (*perform)( _qSSmoother_t * const f, const float x );
-    int (*setup)( _qSSmoother_t * const f, float *param, float *window, const size_t wsize );
+    int (*setup)( _qSSmoother_t * const f, const float * const param, float *window, const size_t wsize );
 };
 
 static float qSSmoother_Abs( float x );
 static void qSSmoother_WindowSet( float *w,
                                   size_t wsize, float x );
 static int qSSmoother_Setup_LPF1( _qSSmoother_t * const f,
-                                  float *param,
+                                  const float * const param,
                                   float *window,
                                   const size_t wsize );
 static int qSSmoother_Setup_LPF2( _qSSmoother_t * const f,
-                                  float *param,
+                                  const float * const param,
                                   float *window,
                                   const size_t wsize );
 static int qSSmoother_Setup_MWM1( _qSSmoother_t * const f,
-                                  float *param,
+                                  const float * const param,
                                   float *window,
                                   const size_t wsize );
 static int qSSmoother_Setup_MWM2( _qSSmoother_t * const f,
-                                  float *param,
+                                  const float * const param,
                                   float *window,
                                   const size_t wsize );
 static int qSSmoother_Setup_MOR1( _qSSmoother_t * const f,
-                                  float *param,
+                                  const float * const param,
                                   float *window,
                                   const size_t wsize );
 static int qSSmoother_Setup_MOR2( _qSSmoother_t * const f,
-                                  float *param,
+                                  const float * const param,
                                   float *window,
                                   const size_t wsize );
 static int qSSmoother_Setup_GMWF( _qSSmoother_t * const f,
-                                  float *param,
+                                  const float * const param,
                                   float *window,
                                   const size_t wsize );
 static int qSSmoother_Setup_KLMN( _qSSmoother_t * const f,
-                                  float *param,
+                                  const float * const param,
                                   float *window,
                                   const size_t wsize );
 static int qSSmoother_Setup_EXPW( _qSSmoother_t * const f,
-                                  float *param,
+                                  const float * const param,
                                   float *window,
                                   const size_t wsize );
 static float qSSmoother_Filter_LPF1( _qSSmoother_t * const f,
@@ -73,7 +73,7 @@ static float qSSmoother_Filter_EXPW( _qSSmoother_t * const f,
 /*============================================================================*/
 int qSSmoother_Setup( qSSmootherPtr_t * const s,
                       const qSSmoother_Type_t type,
-                      float *param,
+                      const float * const param,
                       float *window,
                       const size_t wsize )
 {
@@ -103,7 +103,7 @@ int qSSmoother_Setup( qSSmootherPtr_t * const s,
 }
 /*============================================================================*/
 static int qSSmoother_Setup_LPF1( _qSSmoother_t * const f,
-                                  float *param,
+                                  const float * const param,
                                   float *window,
                                   const size_t wsize )
 {
@@ -124,7 +124,7 @@ static int qSSmoother_Setup_LPF1( _qSSmoother_t * const f,
 }
 /*============================================================================*/
 static int qSSmoother_Setup_LPF2( _qSSmoother_t * const f,
-                                  float *param,
+                                  const float * const param,
                                   float *window,
                                   const size_t wsize )
 {
@@ -154,7 +154,7 @@ static int qSSmoother_Setup_LPF2( _qSSmoother_t * const f,
 }
 /*============================================================================*/
 static int qSSmoother_Setup_MWM1( _qSSmoother_t * const f,
-                                  float *param,
+                                  const float * const param,
                                   float *window,
                                   const size_t wsize )
 {
@@ -174,7 +174,7 @@ static int qSSmoother_Setup_MWM1( _qSSmoother_t * const f,
 }
 /*============================================================================*/
 static int qSSmoother_Setup_MWM2( _qSSmoother_t * const f,
-                                  float *param,
+                                  const float * const param,
                                   float *window,
                                   const size_t wsize )
 {
@@ -194,7 +194,7 @@ static int qSSmoother_Setup_MWM2( _qSSmoother_t * const f,
 }
 /*============================================================================*/
 static int qSSmoother_Setup_MOR1( _qSSmoother_t * const f,
-                                  float *param,
+                                  const float * const param,
                                   float *window,
                                   const size_t wsize )
 {
@@ -215,7 +215,7 @@ static int qSSmoother_Setup_MOR1( _qSSmoother_t * const f,
 }
 /*============================================================================*/
 static int qSSmoother_Setup_MOR2( _qSSmoother_t * const f,
-                                  float *param,
+                                  const float * const param,
                                   float *window,
                                   const size_t wsize )
 {
@@ -237,7 +237,7 @@ static int qSSmoother_Setup_MOR2( _qSSmoother_t * const f,
 }
 /*============================================================================*/
 static int qSSmoother_Setup_GMWF( _qSSmoother_t * const f,
-                                  float *param,
+                                  const float * const param,
                                   float *window,
                                   const size_t wsize )
 {
@@ -280,7 +280,7 @@ static int qSSmoother_Setup_GMWF( _qSSmoother_t * const f,
 }
 /*============================================================================*/
 static int qSSmoother_Setup_KLMN( _qSSmoother_t * const f,
-                                  float *param,
+                                  const float * const param,
                                   float *window,
                                   const size_t wsize )
 {
@@ -307,7 +307,7 @@ static int qSSmoother_Setup_KLMN( _qSSmoother_t * const f,
 }
 /*============================================================================*/
 static int qSSmoother_Setup_EXPW( _qSSmoother_t * const f,
-                                  float *param,
+                                  const float * const param,
                                   float *window,
                                   const size_t wsize )
 {
