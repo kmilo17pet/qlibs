@@ -2,7 +2,7 @@
  * @file qpid.h
  * @author J. Camilo Gomez C.
  * @version 1.05
- * @note This file is part of the qTools distribution.
+ * @note This file is part of the qLibs distribution.
  * @brief API to control systems using the PID algorithm. This controller
  * features anti-windup, tracking mode, and derivative filter.
  **/

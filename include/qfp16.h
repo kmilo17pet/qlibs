@@ -2,7 +2,7 @@
  * @file qfp16.h
  * @author J. Camilo Gomez C.
  * @version 1.06
- * @note This file is part of the qTools distribution.
+ * @note This file is part of the qLibs distribution.
  * @brief Fixed-Point math Q16.16 with rounding and saturated arithmetic.
  **/
 

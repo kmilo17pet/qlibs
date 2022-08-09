@@ -1,8 +1,8 @@
 /*!
  * @file qbitfield.h
  * @author J. Camilo Gomez C.
- * @version 1.08
- * @note This file is part of the qTools distribution.
+ * @version 1.09
+ * @note This file is part of the qLibs distribution.
  * @brief A bit-field manipulation library.
  **/
 

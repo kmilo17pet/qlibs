@@ -2,7 +2,7 @@
  * @file qrms.h
  * @author J. Camilo Gomez C.
  * @version 1.03
- * @note This file is part of the qTools distribution.
+ * @note This file is part of the qLibs distribution.
  * @brief Computes the RMS (Root Mean Square) of a signal using a 2-step
  * recursive average specially designed for microcontrollers with FPU.
  **/

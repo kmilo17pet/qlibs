@@ -21,7 +21,7 @@ static uint32_t qBitField_SafeMask( const uint32_t val,
                                     const size_t x,
                                     const size_t nbits );
 static size_t qBitField_Offset( const size_t index );
-static uint32_t qBitField_Read_uint32( const qBitField_t *instance,
+static uint32_t qBitField_Read_uint32( const qBitField_t * const instance,
                                        const size_t index );
 static void qBitField_Write_uint32( qBitField_t *instance,
                                     const size_t index,
@@ -168,7 +168,7 @@ int qBitField_ToggleBit( qBitField_t * const b,
     return retValue;
 }
 /*============================================================================*/
-uint8_t qBitField_ReadBit( const qBitField_t *b,
+uint8_t qBitField_ReadBit( const qBitField_t * const b,
                            const size_t index )
 {
     uint8_t retValue = 0u;
@@ -296,7 +296,7 @@ void* qBitField_Dump( const qBitField_t * const b,
     return retValue;
 }
 /*============================================================================*/
-static uint32_t qBitField_Read_uint32( const qBitField_t *b,
+static uint32_t qBitField_Read_uint32( const qBitField_t * const b,
                                        const size_t index )
 {
     size_t slot, of, bits_taken;

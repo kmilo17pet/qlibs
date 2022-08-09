@@ -2,7 +2,7 @@
  * @file qcrc.h
  * @author J. Camilo Gomez C.
  * @version 1.03
- * @note This file is part of the qTools distribution.
+ * @note This file is part of the qLibs distribution.
  * @brief CRC calculation library.
  **/
 
