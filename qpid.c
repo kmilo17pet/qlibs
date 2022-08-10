@@ -32,6 +32,7 @@ int qPID_Setup( qPID_controller_t * const c,
         (void)qPID_SetGains( c, kc, ki, kd );
         (void)qPID_SetSaturation( c , 0.0f, 100.0f, 1.0f );
         (void)qPID_SetTrackingMode( c, NULL, 1.0f );
+        (void)qPID_SetMRAC( c, NULL, 0.5f );
         retValue = qPID_Reset( c );
     }
 
@@ -150,6 +151,23 @@ int qPID_SetTrackingMode( qPID_controller_t * const c,
     return retValue;
 }
 /*============================================================================*/
+int qPID_SetMRAC( qPID_controller_t * const c,
+                  const float *modelref,
+                  const float gamma )
+{
+    int retValue = 0;
+
+    if ( ( NULL != c ) && ( gamma > 0.0f ) ) {
+        c->theta = 0.0f;
+        c->alfa = 0.01f;
+        c->gamma = gamma;
+        c->yr = modelref;
+        retValue = 1;
+    }
+
+    return retValue;
+}
+/*============================================================================*/
 float qPID_Control( qPID_controller_t * const c,
                     const float w,
                     const float y )
@@ -168,6 +186,17 @@ float qPID_Control( qPID_controller_t * const c,
         de = ( e - c->e1 )/c->dt; /*compute the derivative component*/
         c->D = de + ( c->beta*( c->D - de ) ); /*derivative filtering*/
         v  = ( c->kc*e ) + ( c->ki*c->ie ) + ( c->kd*c->D ); /*compute PID action*/
+
+        if ( NULL != c->yr ) {
+            /*MRAC additive controller using the modified MIT rule*/
+            if ( ( c->u1*c->u1 ) <= c->epsilon ) {
+                const float em = y - c->yr[ 0 ];
+                const float delta = -c->gamma*em*c->yr[ 0 ]/
+                                    ( c->alfa + ( c->yr[ 0 ]*c->yr[ 0 ] ) );
+                c->theta += delta*c->dt;
+            }
+            v += w*c->theta;
+        }
 
         u = qPID_Sat( v, c->min, c->max );
         c->u1 = c->kw*( u - v ); /*anti-windup feedback*/

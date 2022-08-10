@@ -1,7 +1,7 @@
 /*!
  * @file qpid.h
  * @author J. Camilo Gomez C.
- * @version 1.05
+ * @version 1.06
  * @note This file is part of the qLibs distribution.
  * @brief API to control systems using the PID algorithm. This controller
  * features anti-windup, tracking mode, and derivative filter.
@@ -44,6 +44,8 @@ extern "C" {
         uint8_t init;
         float kc, ki, kd, dt, min, max, epsilon, kw, kt, e1, ie, D, u1, beta;
         float *uEF; /*external feedback for tracking mode*/
+        const float *yr;
+        float theta, alfa, gamma;
         qPID_AutoTunning_t *adapt;
         /*! @endcond  */
     } qPID_controller_t;
@@ -136,6 +138,17 @@ extern "C" {
     int qPID_SetTrackingMode( qPID_controller_t * const c,
                               float *var,
                               const float kt );
+
+    /**
+    * @brief Enable the additive MRAC(Model Reference Adaptive Control) feature.
+    * @param[in] c A pointer to the PID controller instance.
+    * @param[in] modelref A pointer to the output of the model reference.
+    * @param[in] gamma Adjustable parameter to indicate the adaptation speed.
+    * @return 1 on success, otherwise return 0.
+    */
+    int qPID_SetMRAC( qPID_controller_t * const c,
+                    const float *modelref,
+                    const float gamma );
 
     /**
     * @brief Computes the control action for given PID controller instance.
