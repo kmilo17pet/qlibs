@@ -38,7 +38,8 @@
   - Derivative filter
   - Anti-Windup
   - Tracking Mode
-  - Auto-tunning  
+  - Auto-tunning 
+  - Additive MRAC
 </details>
 
 <details><summary>qLTISys : Recursive LTI systems evaluation by transfer functions</summary>
