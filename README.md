@@ -130,7 +130,7 @@ const TickType_t  dt = 50; /*50mS time-step*/
 qLTISys_t system;
 float num[ SYS_ORDER+1 ] = { 0.0f, 2.0f, 3.0f, 6.0f };
 float den[ SYS_ORDER+1 ] = { 1.0f, 6.0f, 11.0f, 16.0f };    
-qNumA_state_t x[ SYS_ORDER ] = { { { 0.0f } } };
+qNumA_state_t x[ SYS_ORDER ] = { { { 0.0f } }, { { 0.0f } },{ { 0.0f } } };
 
 void xTaskSystemSimulate( void *arg )
 {

@@ -1,7 +1,7 @@
 /*!
  * @file qnuma.h
  * @author J. Camilo Gomez C.
- * @version 1.01
+ * @version 1.02
  * @note This file is part of the qLibs distribution.
  * @brief Numerical approximations for real-time signals.
  **/
@@ -13,9 +13,14 @@
 extern "C" {
 #endif
 
-    typedef float qNumA_state_t[ 3 ];
+    typedef struct _qNumA_state_s {
+        float x[ 3 ];
+    } qNumA_state_t;
 
-    void qNumA_StateInit( qNumA_state_t x, const float x0, const float sn_1, const float sn_2 );
+    void qNumA_StateInit( qNumA_state_t *x,
+                          const float x0,
+                          const float sn_1,
+                          const float sn_2 );
 
     /**
     * @brief Perform a numerical integration step by using the rectangular rule.
@@ -24,7 +29,9 @@ extern "C" {
     * @param[in] dt The time-step given in seconds.
     * @return The current value of the integration step.
     */
-    float qNumA_IntegralRe( qNumA_state_t x, const float s, const float dt );
+    float qNumA_IntegralRe( qNumA_state_t *x,
+                            const float s,
+                            const float dt );
 
      /**
     * @brief Perform a numerical integration step by using the trapezoidal rule.
@@ -33,7 +40,9 @@ extern "C" {
     * @param[in] dt The time-step given in seconds.
     * @return The current value of the integration step.
     */
-    float qNumA_IntegralTr( qNumA_state_t x, const float s, const float dt );
+    float qNumA_IntegralTr( qNumA_state_t *x,
+                            const float s,
+                            const float dt );
 
      /**
     * @brief Perform a numerical integration step by using the Simpson's rule.
@@ -42,7 +51,9 @@ extern "C" {
     * @param[in] dt The time-step given in seconds.
     * @return The current value of the integration step.
     */
-    float qNumA_IntegralSi( qNumA_state_t x, const float s, const float dt );
+    float qNumA_IntegralSi( qNumA_state_t *x,
+                            const float s,
+                            const float dt );
 
      /**
     * @brief Perform a numerical derivation step by using the delta rule.
@@ -51,7 +62,9 @@ extern "C" {
     * @param[in] dt The time-step given in seconds.
     * @return The current value of the derivation step.
     */
-    float qNumA_Derivative( qNumA_state_t x, const float s, const float dt );
+    float qNumA_Derivative( qNumA_state_t *x,
+                            const float s,
+                            const float dt );
 
 
 #ifdef __cplusplus

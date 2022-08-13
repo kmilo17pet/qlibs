@@ -65,7 +65,7 @@ int qPID_Reset( qPID_controller_t * const c )
     int retValue = 0;
 
     if ( ( NULL != c ) && ( 0u != c->init ) ) {
-        qNumA_StateInit( c->c_state, 0.0f, 0.0f, 0.0f );
+        qNumA_StateInit( &c->c_state, 0.0f, 0.0f, 0.0f );
         c->D = 0.0f;
         c->u1 = 0.0f;
         retValue = 1;
@@ -158,7 +158,7 @@ int qPID_SetMRAC( qPID_controller_t * const c,
     int retValue = 0;
 
     if ( ( NULL != c ) && ( gamma > 0.0f ) ) {
-        qNumA_StateInit( c->m_state, 0.0f, 0.0f, 0.0f );
+        qNumA_StateInit( &c->m_state, 0.0f, 0.0f, 0.0f );
         c->alfa = 0.01f;
         c->gamma = gamma;
         c->yr = modelref;
@@ -182,8 +182,8 @@ float qPID_Control( qPID_controller_t * const c,
             e = 0.0f;
         }
         /*integral with anti-windup*/
-        ie = c->integrate( c->c_state,  e + c->u1, c->dt );
-        de = qNumA_Derivative( c->c_state, e, c->dt  );
+        ie = c->integrate( &c->c_state,  e + c->u1, c->dt );
+        de = qNumA_Derivative( &c->c_state, e, c->dt  );
         c->D = de + ( c->beta*( c->D - de ) ); /*derivative filtering*/
         v  = ( c->kc*e ) + ( c->ki*ie ) + ( c->kd*c->D ); /*compute PID action*/
 
@@ -194,7 +194,7 @@ float qPID_Control( qPID_controller_t * const c,
                 const float em = y - c->yr[ 0 ];
                 const float delta = -c->gamma*em*c->yr[ 0 ]/
                                     ( c->alfa + ( c->yr[ 0 ]*c->yr[ 0 ] ) );
-                theta = c->integrate( c->m_state, delta, c->dt );
+                theta = c->integrate( &c->m_state, delta, c->dt );
             }
             v += w*theta;
         }

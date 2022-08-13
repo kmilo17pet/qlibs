@@ -33,25 +33,25 @@ static float qLTISys_ContinuosUpdate( qLTISys_t * const sys,
     float dx0 = 0.0f;
 
     if ( 1u == sys->n ) {
-        dx0 = ( u - ( sys->xc[ 0 ][ 0 ]*sys->a[ 0 ] ) );
-        (void)sys->integrate( sys->xc[ 0 ], dx0 , sys->dt );
-        y = ( sys->b[ 0 ] - ( sys->a[ 0 ]*sys->b0 ) )*sys->xc[ 0 ][ 0 ];
+        dx0 = ( u - ( sys->xc[ 0 ].x[ 0 ]*sys->a[ 0 ] ) );
+        (void)sys->integrate( &sys->xc[ 0 ], dx0 , sys->dt );
+        y = ( sys->b[ 0 ] - ( sys->a[ 0 ]*sys->b0 ) )*sys->xc[ 0 ].x[ 0 ];
     }
     else {
         size_t i;
         /*compute states of the system by using the controllable canonical form*/
         for (  i = ( sys->n - 1u ) ; i >= 1u ; --i ) {
-            dx0 += sys->a[ i ]*sys->xc[ i ][ 0 ]; /*compute the first derivative*/
+            dx0 += sys->a[ i ]*sys->xc[ i ].x[ 0 ]; /*compute the first derivative*/
             /*integrate to obtain the remaining states*/
-            (void)sys->integrate( sys->xc[ i ], sys->xc[ i - 1u ][ 0 ], sys->dt );
+            (void)sys->integrate( &sys->xc[ i ], sys->xc[ i - 1u ].x[ 0 ], sys->dt );
             /*compute the first part of the output*/
-            y += ( sys->b[ i ] - ( sys->a[ i ]*sys->b0 ) )*sys->xc[ i ][ 0 ];
+            y += ( sys->b[ i ] - ( sys->a[ i ]*sys->b0 ) )*sys->xc[ i ].x[ 0 ];
         }
         /*compute remaining part of the output that depends of the first state*/
-        dx0 = u - ( dx0 + ( sys->a[ 0 ]*sys->xc[ 0 ][ 0 ] ) );
-        (void)sys->integrate( sys->xc[ 0 ], dx0, sys->dt ); /*integrate to get the first state*/
+        dx0 = u - ( dx0 + ( sys->a[ 0 ]*sys->xc[ 0 ].x[ 0 ] ) );
+        (void)sys->integrate( &sys->xc[ 0 ], dx0, sys->dt ); /*integrate to get the first state*/
         /*compute the remaining part of the output*/
-        y += ( sys->b[ 0 ] - ( sys->a[ 0 ]*sys->b0 ) )*sys->xc[ 0 ][ 0 ];
+        y += ( sys->b[ 0 ] - ( sys->a[ 0 ]*sys->b0 ) )*sys->xc[ 0 ].x[ 0 ];
     }
 
     return y;

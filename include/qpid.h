@@ -49,7 +49,7 @@ extern "C" {
         qNumA_state_t c_state; /*controller integral & derivative state*/
         qNumA_state_t m_state; /*mrac additive controller state*/
         qPID_AutoTunning_t *adapt;
-        float (*integrate)( qNumA_state_t x, const float s, const float dt );
+        float (*integrate)( qNumA_state_t *x, const float s, const float dt );
         uint8_t init;
         /*! @endcond  */
     } qPID_controller_t;

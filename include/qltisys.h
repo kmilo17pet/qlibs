@@ -35,7 +35,7 @@ extern "C" {
         qTDL_t tDelay;
         float dt, b0, min, max;
         size_t n, na, nb;
-        float (*integrate)( qNumA_state_t x, const float s, const float dt );
+        float (*integrate)( qNumA_state_t *x, const float s, const float dt );
         /*! @endcond  */
     } qLTISys_t;
 
@@ -93,9 +93,11 @@ extern "C" {
     * elements with the denominator coefficients of the transfer function.
     * Coefficients should be given in descending powers of the n or nb-degree
     * polynomial. Coefficients will be normalized internally.
-    * @param[in,out] x An array of size n(if continuos) or max(na,nb)(if discrete)
-    * elements with the initial conditions of the system. This array will be
-    * updated with the current states of the system.
+    * @param[in,out] x Initial conditions of the system. For a continuos system,
+    * an array of type qNumA_state_t with n elements.
+    * For a discrete system, an array of type float with max(na,nb) elements
+    * For both cases, the supplied array will be updated on every invocation of
+    * qLTISys_Excite().
     * @param[in] nb The order of polynomial @a num + 1 (Only for discrete systems).
     * example: b0 + b1*z^-1 + b2*z^-2 + b3*z^-3 , nb = 4
     * @note If the system is continuous, pass 0 as argument.
