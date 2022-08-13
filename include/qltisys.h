@@ -1,7 +1,7 @@
 /*!
  * @file qltisys.h
  * @author J. Camilo Gomez C.
- * @version 1.06
+ * @version 1.07
  * @note This file is part of the qTools distribution.
  * @brief API to simulate continuous and discrete LTI systems.
  **/
@@ -17,6 +17,7 @@ extern "C" {
     #include <stdint.h>
     #include <float.h>
     #include "qtdl.h"
+    #include "qnuma.h"
 
     #define QLTISYS_DISCRETE        ( -1.0f )
 
@@ -28,10 +29,13 @@ extern "C" {
     typedef struct _qLTISys_s {
         /*! @cond  */
         float (*sysUpdate)( struct _qLTISys_s *sys, float u );
-        float *x, *b, *a;
+        float *b, *a;
+        float *xd;
+        qNumA_state_t *xc;
         qTDL_t tDelay;
         float dt, b0, min, max;
         size_t n, na, nb;
+        float (*integrate)( qNumA_state_t x, const float s, const float dt );
         /*! @endcond  */
     } qLTISys_t;
 
@@ -101,13 +105,13 @@ extern "C" {
     * example 2: num = b0*s^2 + b1*s + b2 , den = a0*s^2 + a1*s + a2 , na = 3
     * @note For continuous systems, size of @a num and @a den should be equal.
     * @param[in] dt The time-step of the continuos system. For discrete systems
-    * pass #QLTISYS_DISCRETE as argument
+    * pass #QLTISYS_DISCRETE or 0f as argument
     * @return 1 on success, otherwise return 0.
     */
     int qLTISys_Setup( qLTISys_t * const sys,
                        float *num,
                        float *den,
-                       float *x,
+                       void *x,
                        const size_t nb,
                        const size_t na,
                        const float dt );

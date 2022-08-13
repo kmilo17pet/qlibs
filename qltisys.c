@@ -20,37 +20,38 @@ static float qLTISys_DiscreteUpdate( qLTISys_t * const sys,
 
     /*using direct-form 2*/
     for ( i = 0 ; i < sys->na ; ++i ) {
-        v -= sys->a[ i ]*sys->x[ i ];
+        v -= sys->a[ i ]*sys->xd[ i ];
     }
 
-    return qLTISys_DiscreteFIRUpdate( sys->x, sys->b, sys->n, v );
+    return qLTISys_DiscreteFIRUpdate( sys->xd, sys->b, sys->n, v );
 }
 /*============================================================================*/
 static float qLTISys_ContinuosUpdate( qLTISys_t * const sys,
                                       const float u )
 {
     float y = 0.0f;
+    float dx0 = 0.0f;
 
     if ( 1u == sys->n ) {
-        sys->x[ 0 ] += ( u - ( sys->x[ 0 ]*sys->a[ 0 ] ) )*sys->dt;
-        y = ( sys->b[ 0 ] - ( sys->a[ 0 ]*sys->b0 ) )*sys->x[ 0 ];
+        dx0 = ( u - ( sys->xc[ 0 ][ 0 ]*sys->a[ 0 ] ) );
+        (void)sys->integrate( sys->xc[ 0 ], dx0 , sys->dt );
+        y = ( sys->b[ 0 ] - ( sys->a[ 0 ]*sys->b0 ) )*sys->xc[ 0 ][ 0 ];
     }
     else {
         size_t i;
-        float dx0 = 0.0f;
-        /*compute states of the system by using the controlable canonical form*/
+        /*compute states of the system by using the controllable canonical form*/
         for (  i = ( sys->n - 1u ) ; i >= 1u ; --i ) {
-            dx0 += sys->a[ i ]*sys->x[ i ]; /*compute the first derivative*/
+            dx0 += sys->a[ i ]*sys->xc[ i ][ 0 ]; /*compute the first derivative*/
             /*integrate to obtain the remaining states*/
-            sys->x[ i ] += sys->x[ i - 1u ]*sys->dt;
+            (void)sys->integrate( sys->xc[ i ], sys->xc[ i - 1u ][ 0 ], sys->dt );
             /*compute the first part of the output*/
-            y += ( sys->b[ i ] - ( sys->a[ i ]*sys->b0 ) )*sys->x[ i ];
+            y += ( sys->b[ i ] - ( sys->a[ i ]*sys->b0 ) )*sys->xc[ i ][ 0 ];
         }
         /*compute remaining part of the output that depends of the first state*/
-        dx0 = u - ( dx0 + ( sys->a[ 0 ]*sys->x[ 0 ] ) );
-        sys->x[ 0 ] += dx0*sys->dt; /*integrate to get the first state*/
+        dx0 = u - ( dx0 + ( sys->a[ 0 ]*sys->xc[ 0 ][ 0 ] ) );
+        (void)sys->integrate( sys->xc[ 0 ], dx0, sys->dt ); /*integrate to get the first state*/
         /*compute the remaining part of the output*/
-        y += ( sys->b[ 0 ] - ( sys->a[ 0 ]*sys->b0 ) )*sys->x[ 0 ];
+        y += ( sys->b[ 0 ] - ( sys->a[ 0 ]*sys->b0 ) )*sys->xc[ 0 ][ 0 ];
     }
 
     return y;
@@ -118,7 +119,7 @@ int qLTISys_IsInitialized( const qLTISys_t * const sys )
     int retValue = 0;
 
     if ( NULL != sys ) {
-        retValue = (int)( ( NULL != sys->sysUpdate ) && ( NULL != sys->x ) );
+        retValue = (int)( ( NULL != sys->sysUpdate ) && ( ( NULL != sys->xc ) || ( NULL != sys->xd  ) ) );
     }
 
     return retValue;
@@ -127,7 +128,7 @@ int qLTISys_IsInitialized( const qLTISys_t * const sys )
 int qLTISys_Setup( qLTISys_t * const sys,
                    float *num,
                    float *den,
-                   float *x,
+                   void *x,
                    const size_t nb,
                    const size_t na,
                    const float dt )
@@ -138,21 +139,29 @@ int qLTISys_Setup( qLTISys_t * const sys,
         float a0;
         size_t i;
 
-        if ( dt < 0.0f ) { /*discrete system*/
+        if ( dt <= 0.0f ) { /*discrete system*/
             sys->b = num;
             sys->na = na;
             sys->nb = nb;
             sys->n = ( na > nb ) ? na : nb;
             sys->sysUpdate = &qLTISys_DiscreteUpdate;
+            /*cstat -MISRAC2012-Rule-11.5 -CERT-EXP36-C_b*/
+            sys->xd = (float*)x;
+            /*cstat +MISRAC2012-Rule-11.5 +CERT-EXP36-C_b*/
+            sys->xc = NULL;
         }
         else { /*continuos system*/
             sys->b = &num[ 1 ];
             sys->n = na - 1u;
             sys->nb = sys->n;
             sys->sysUpdate = &qLTISys_ContinuosUpdate;
+            /*cstat -MISRAC2012-Rule-11.5 -CERT-EXP36-C_b*/
+            sys->xc = (qNumA_state_t*)x;
+            /*cstat +MISRAC2012-Rule-11.5 +CERT-EXP36-C_b*/
+            sys->xd = NULL;
         }
+        sys->integrate = &qNumA_IntegralTr; /*default integration method*/
         sys->a = &den[ 1 ];
-        sys->x = x;
         sys->dt = dt;
         /*normalize the transfer function coefficients*/
         a0 = den[ 0 ];

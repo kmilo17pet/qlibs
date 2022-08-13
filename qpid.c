@@ -27,6 +27,7 @@ int qPID_Setup( qPID_controller_t * const c,
         c->dt = dt;
         c->init = 1u;
         c->adapt = NULL;
+        c->integrate = &qNumA_IntegralTr; /*default integration method*/
         (void)qPID_SetDerivativeFilter( c, 0.98f );
         (void)qPID_SetEpsilon( c, FLT_MIN );
         (void)qPID_SetGains( c, kc, ki, kd );
@@ -64,8 +65,7 @@ int qPID_Reset( qPID_controller_t * const c )
     int retValue = 0;
 
     if ( ( NULL != c ) && ( 0u != c->init ) ) {
-        c->e1 = 0.0f;
-        c->ie = 0.0f;
+        qNumA_StateInit( c->c_state, 0.0f, 0.0f, 0.0f );
         c->D = 0.0f;
         c->u1 = 0.0f;
         retValue = 1;
@@ -158,7 +158,7 @@ int qPID_SetMRAC( qPID_controller_t * const c,
     int retValue = 0;
 
     if ( ( NULL != c ) && ( gamma > 0.0f ) ) {
-        c->theta = 0.0f;
+        qNumA_StateInit( c->m_state, 0.0f, 0.0f, 0.0f );
         c->alfa = 0.01f;
         c->gamma = gamma;
         c->yr = modelref;
@@ -175,27 +175,28 @@ float qPID_Control( qPID_controller_t * const c,
     float u = w;
 
     if ( ( NULL != c ) && ( 0u != c->init ) ) {
-        float e, v, de;
+        float e, v, de, ie;
 
         e = w - y;
         if ( fabs( e ) <= ( c->epsilon ) ) {
             e = 0.0f;
         }
         /*integral with anti-windup*/
-        c->ie += ( ( 0.5f*( e + c->e1 ) ) + c->u1 )*( c->dt );
-        de = ( e - c->e1 )/c->dt; /*compute the derivative component*/
+        ie = c->integrate( c->c_state,  e + c->u1, c->dt );
+        de = qNumA_Derivative( c->c_state, e, c->dt  );
         c->D = de + ( c->beta*( c->D - de ) ); /*derivative filtering*/
-        v  = ( c->kc*e ) + ( c->ki*c->ie ) + ( c->kd*c->D ); /*compute PID action*/
+        v  = ( c->kc*e ) + ( c->ki*ie ) + ( c->kd*c->D ); /*compute PID action*/
 
         if ( NULL != c->yr ) {
             /*MRAC additive controller using the modified MIT rule*/
-            if ( ( c->u1*c->u1 ) <= c->epsilon ) {
+            float theta = 0.0f;
+            if ( ( c->u1*c->u1 ) <= c->epsilon ) { /*additive anti-windup*/
                 const float em = y - c->yr[ 0 ];
                 const float delta = -c->gamma*em*c->yr[ 0 ]/
                                     ( c->alfa + ( c->yr[ 0 ]*c->yr[ 0 ] ) );
-                c->theta += delta*c->dt;
+                theta = c->integrate( c->m_state, delta, c->dt );
             }
-            v += w*c->theta;
+            v += w*theta;
         }
 
         u = qPID_Sat( v, c->min, c->max );
@@ -203,7 +204,7 @@ float qPID_Control( qPID_controller_t * const c,
         if ( NULL != c->uEF ) { /*tracking mode*/
             c->u1 += c->kt*( c->uEF[ 0 ] - u );
         }
-        c->e1 = e;
+
         if ( NULL != c->adapt ) {
             qPID_AdaptGains( c, u, y );
         }

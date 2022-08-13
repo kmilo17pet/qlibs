@@ -1,7 +1,7 @@
 /*!
  * @file qpid.h
  * @author J. Camilo Gomez C.
- * @version 1.06
+ * @version 1.07
  * @note This file is part of the qLibs distribution.
  * @brief API to control systems using the PID algorithm. This controller
  * features anti-windup, tracking mode, and derivative filter.
@@ -18,6 +18,7 @@ extern "C" {
     #include <float.h>
     #include <stdint.h>
     #include <math.h>
+    #include "qnuma.h"
 
     typedef struct
     {
@@ -41,12 +42,15 @@ extern "C" {
     typedef struct
     {
         /*! @cond  */
-        uint8_t init;
-        float kc, ki, kd, dt, min, max, epsilon, kw, kt, e1, ie, D, u1, beta;
+        float kc, ki, kd, dt, min, max, epsilon, kw, kt, D, u1, beta;
         float *uEF; /*external feedback for tracking mode*/
         const float *yr;
-        float theta, alfa, gamma;
+        float alfa, gamma; /*mrac additive controller parameters*/
+        qNumA_state_t c_state; /*controller integral & derivative state*/
+        qNumA_state_t m_state; /*mrac additive controller state*/
         qPID_AutoTunning_t *adapt;
+        float (*integrate)( qNumA_state_t x, const float s, const float dt );
+        uint8_t init;
         /*! @endcond  */
     } qPID_controller_t;
 
