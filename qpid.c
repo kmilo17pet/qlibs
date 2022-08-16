@@ -152,7 +152,7 @@ int qPID_SetTrackingMode( qPID_controller_t * const c,
 }
 /*============================================================================*/
 int qPID_SetMRAC( qPID_controller_t * const c,
-                  const float *modelref,
+                  const float *modelRef,
                   const float gamma )
 {
     int retValue = 0;
@@ -161,7 +161,7 @@ int qPID_SetMRAC( qPID_controller_t * const c,
         qNumA_StateInit( &c->m_state, 0.0f, 0.0f, 0.0f );
         c->alfa = 0.01f;
         c->gamma = gamma;
-        c->yr = modelref;
+        c->yr = modelRef;
         retValue = 1;
     }
 
@@ -338,5 +338,20 @@ static int qPID_ATCheck( const float x )
     /*cstat -MISRAC2012-Rule-13.5 -MISRAC2012-Rule-10.3*/
     return ( 0 == (int)isnan( x ) ) && ( x > 0.0f ) && ( 0 == (int)isinf( x ) );
     /*cstat +MISRAC2012-Rule-13.5 +MISRAC2012-Rule-10.3*/
+}
+/*============================================================================*/
+int qPID_SetIntegrationMethod( qPID_controller_t * const c,
+                               qNumA_IntegrationMethod_t im )
+{
+    int retValue = 0;
+
+    if ( ( NULL != c ) && ( NULL != im ) ) {
+        if ( ( im == &qNumA_IntegralRe ) || ( im == &qNumA_IntegralTr ) || ( im == &qNumA_IntegralSi ) ) {
+            c->integrate = im;
+            retValue = 1;
+        }
+    }
+
+    return retValue;
 }
 /*============================================================================*/

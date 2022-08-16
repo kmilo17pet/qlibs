@@ -50,7 +50,7 @@ uint32_t qCRCx( const qCRC_Mode_t mode,
         uint8_t const * const msg = pData;
         /*cstat +MISRAC2012-Rule-11.5 +CERT-EXP36-C_b*/
         const uint32_t wd1 = (uint32_t)width - 8u;
-        const uint32_t topbit = 1uL << ( width - 1uL );
+        const uint32_t topBit = 1uL << ( width - 1uL );
         const uint32_t bitMask = ( 0xFFFFFFFFuL >> ( 32uL - width ) );
         poly &= bitMask;
         xorOut &= bitMask;
@@ -64,7 +64,7 @@ uint32_t qCRCx( const qCRC_Mode_t mode,
             /*cstat +CERT-INT34-C_a*/
             for ( xBit = 8u ; xBit > 0u ; --xBit ) {
                 /*try to divide the current data bit*/
-                crc = ( 0u != ( crc & topbit ) )? ( ( crc << 1u ) ^ poly )
+                crc = ( 0u != ( crc & topBit ) )? ( ( crc << 1u ) ^ poly )
                                                 : ( crc << 1u );
             }
         }

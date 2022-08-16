@@ -13,25 +13,25 @@ static void qTDL_RemoveOldest( qTDL_t * const q );
 void qTDL_Setup( qTDL_t * const q,
                  float * const area,
                  const size_t n,
-                 const float initval )
+                 const float initVal )
 {
-    q->itemcount = n;
+    q->itemCount = n;
     q->head = area;
-    qTDL_Flush( q, initval );
+    qTDL_Flush( q, initVal );
 }
 /*============================================================================*/
 void qTDL_Flush( qTDL_t * const q,
-                 const float initval )
+                 const float initVal )
 {
     size_t i;
 
-    q->tail = &q->head[ q->itemcount ];
+    q->tail = &q->head[ q->itemCount ];
     q->wr = q->head;
     /*cstat -CERT-INT30-C_a*/
-    q->rd = &q->head[ q->itemcount - 1u ];
+    q->rd = &q->head[ q->itemCount - 1u ];
     /*cstat +CERT-INT30-C_a*/
-    for ( i = 0u ; i < q->itemcount ; ++i ) { /*initialize the queue*/
-        qTDL_InsertNewest( q, initval ); /*the queue should be always full*/
+    for ( i = 0u ; i < q->itemCount ; ++i ) { /*initialize the queue*/
+        qTDL_InsertNewest( q, initVal ); /*the queue should be always full*/
     }
 }
 /*============================================================================*/
@@ -61,7 +61,7 @@ float qTDL_GetAtIndex( const qTDL_t * const q,
                        const size_t i )
 {
     return ( ( q->wr >= q->rd ) && ( ( q->head + i ) >= q->wr ) ) ?
-           q->rd[ q->itemcount - i ] :
+           q->rd[ q->itemCount - i ] :
            *( q->rd - i );
 }
 /*============================================================================*/

@@ -31,7 +31,7 @@ extern "C" {
     {
         float *head, *tail;
         float *rd, *wr;
-        size_t itemcount;
+        size_t itemCount;
     } qTDL_t;
 
     /**
@@ -40,25 +40,25 @@ extern "C" {
     * @param[in] q A pointer to the TDL instance.
     * @param[in] area An array of size @ n where delays will be stored
     * @param[in] n The number of elements on @a area.
-    * @param[in] initval The value with which all TDL delays will be initialized
+    * @param[in] initVal The value with which all TDL delays will be initialized
     * @return none
     */
     void qTDL_Setup( qTDL_t * const q,
                      float * const area,
                      const size_t n,
-                     const float initval );
+                     const float initVal );
 
     /**
     * @brief Clears all delays from the TDL and sets them to the specified value
     * @param[in] q A pointer to the TDL instance.
-    * @param[in] initval The value with which all TDL delays will be initialized
+    * @param[in] initVal The value with which all TDL delays will be initialized
     * @return none
     */
     void qTDL_Flush( qTDL_t * const q,
-                     const float initval );
+                     const float initVal );
 
     /**
-    * @brief Get the oldest sample from the TDL x(k-n) witho
+    * @brief Get the oldest sample from the TDL x(k-n)
     * @param[in] q A pointer to the TDL instance.
     * @return The requested value from the TDL
     */

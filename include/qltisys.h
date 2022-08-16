@@ -21,6 +21,9 @@ extern "C" {
 
     #define QLTISYS_DISCRETE        ( -1.0f )
 
+    typedef qNumA_state_t qLTISys_ContinuosX_t;
+    typedef float qLTISys_DiscreteX_t;
+
     /**
     * @brief A LTI system object
     * @details The instance should be initialized using the qLTISys_Setup() API.
@@ -35,7 +38,7 @@ extern "C" {
         qTDL_t tDelay;
         float dt, b0, min, max;
         size_t n, na, nb;
-        float (*integrate)( qNumA_state_t *x, const float s, const float dt );
+        qNumA_IntegrationMethod_t integrate;
         /*! @endcond  */
     } qLTISys_t;
 
@@ -56,14 +59,14 @@ extern "C" {
     * @param[in] sys A pointer to the LTI system instance
     * @param[in] w A array of n elements with the delay window for the
     *  input channel.
-    * @param[in] n The number of elements of @delaywindow.
-    * @param[in] initval The initial value of the input channel.
+    * @param[in] n The number of elements of @a w.
+    * @param[in] initVal The initial value of the input channel.
     * @return 1 if the system has been initialized, otherwise return 0.
     */
     int qLTISys_SetDelay( qLTISys_t * const sys,
                           float * const w,
                           const size_t n,
-                          const float initval );
+                          const float initVal );
 
     /**
     * @brief Setup the output saturation for the LTI system.
@@ -136,6 +139,23 @@ extern "C" {
                                      const float * const c,
                                      const size_t wsize,
                                      const float x );
+
+    /**
+    * @brief Set integration method for continuos systems.
+    * @param[in] sys A pointer to the continuous LTI system instance
+    * @param[in] im The desired integration method. Use one of the following:
+    *
+    * qNumA_IntegralRe : Integrate using the Rectangular rule.
+    * 
+    * qNumA_IntegralTr : (default) Integrate using the Trapezoidal rule.
+    * 
+    * qNumA_IntegralSi : Integrate using the Simpson's 1/3 rule.
+    * 
+    * @return 1 on success, otherwise return 0.
+    */
+    int qLTISys_SetIntegrationMethod( qLTISys_t * const sys,
+                                     qNumA_IntegrationMethod_t im );
+
 
 #ifdef __cplusplus
 }

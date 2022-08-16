@@ -45,11 +45,11 @@ extern "C" {
         float kc, ki, kd, dt, min, max, epsilon, kw, kt, D, u1, beta;
         float *uEF; /*external feedback for tracking mode*/
         const float *yr;
-        float alfa, gamma; /*mrac additive controller parameters*/
+        float alfa, gamma; /*MRAC additive controller parameters*/
         qNumA_state_t c_state; /*controller integral & derivative state*/
-        qNumA_state_t m_state; /*mrac additive controller state*/
+        qNumA_state_t m_state; /*MRAC additive controller state*/
         qPID_AutoTunning_t *adapt;
-        float (*integrate)( qNumA_state_t *x, const float s, const float dt );
+        qNumA_IntegrationMethod_t integrate;
         uint8_t init;
         /*! @endcond  */
     } qPID_controller_t;
@@ -146,12 +146,12 @@ extern "C" {
     /**
     * @brief Enable the additive MRAC(Model Reference Adaptive Control) feature.
     * @param[in] c A pointer to the PID controller instance.
-    * @param[in] modelref A pointer to the output of the model reference.
+    * @param[in] modelRef A pointer to the output of the model reference.
     * @param[in] gamma Adjustable parameter to indicate the adaptation speed.
     * @return 1 on success, otherwise return 0.
     */
     int qPID_SetMRAC( qPID_controller_t * const c,
-                    const float *modelref,
+                    const float *modelRef,
                     const float gamma );
 
     /**
@@ -189,6 +189,22 @@ extern "C" {
     */
     int qPID_EnableAutoTunning( qPID_controller_t * const c,
                                 const uint32_t tEnable );
+
+    /**
+    * @brief Set integration method for the PID controller.
+    * @param[in] c A pointer to the PID controller instance.
+    * @param[in] im The desired integration method. Use one of the following:
+    *
+    * qNumA_IntegralRe : Integrate using the Rectangular rule.
+    * 
+    * qNumA_IntegralTr : (default) Integrate using the Trapezoidal rule.
+    * 
+    * qNumA_IntegralSi : Integrate using the Simpson's 1/3 rule.
+    * 
+    * @return 1 on success, otherwise return 0.
+    */
+    int qPID_SetIntegrationMethod( qPID_controller_t * const c,
+                                   qNumA_IntegrationMethod_t im );
 
 
 #ifdef __cplusplus
