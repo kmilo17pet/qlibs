@@ -453,7 +453,7 @@ static float qSSmoother_Filter_MWM2( _qSSmoother_t *f,
 {
     /*cstat -CERT-EXP36-C_a -MISRAC2012-Rule-11.3 -CERT-EXP39-C_d -CERT-FLP36-C*/
     qSSmoother_MWM2_t * const s = (qSSmoother_MWM2_t* const)f;
-    float wsize = (float)s->tdl.itemcount;
+    float wsize = (float)s->tdl.itemCount;
     /*cstat +CERT-EXP36-C_a +MISRAC2012-Rule-11.3 +CERT-EXP39-C_d +CERT-FLP36-C*/
     if ( 1u == f->init ) {
         qTDL_Flush( &s->tdl, x );
@@ -496,7 +496,7 @@ static float qSSmoother_Filter_MOR2( _qSSmoother_t *f,
 {
     /*cstat -CERT-EXP36-C_a -MISRAC2012-Rule-11.3 -CERT-EXP39-C_d -CERT-FLP36-C*/
     qSSmoother_MOR2_t * const s = (qSSmoother_MOR2_t* const)f;
-    float wsize = (float)s->tdl.itemcount;
+    float wsize = (float)s->tdl.itemCount;
     float xx = x;
     /*cstat +CERT-EXP36-C_a +MISRAC2012-Rule-11.3 +CERT-EXP39-C_d +CERT-FLP36-C*/
     if ( 1u == f->init ) {

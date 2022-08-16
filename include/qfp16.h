@@ -128,7 +128,7 @@ extern "C" {
 
     /**
     * @brief Returns the double value @a x converted to fixed-point q16.16.
-    * @param[in] x The double prescision floating-point value.
+    * @param[in] x The double precision floating-point value.
     * @return This function returns @a x converted to fixed-point q16.16.
     */
     qFP16_t qFP16_DoubleToFP( const double x );

@@ -17,6 +17,11 @@ extern "C" {
         float x[ 3 ];
     } qNumA_state_t;
 
+
+    typedef float (*qNumA_IntegrationMethod_t)( qNumA_state_t *x,
+                                          const float s,
+                                          const float dt );
+
     void qNumA_StateInit( qNumA_state_t *x,
                           const float x0,
                           const float sn_1,

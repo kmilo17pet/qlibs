@@ -129,8 +129,8 @@ int main( int argc, char *argv[] )
 const TickType_t  dt = 50; /*50mS time-step*/
 qLTISys_t system;
 float num[ SYS_ORDER+1 ] = { 0.0f, 2.0f, 3.0f, 6.0f };
-float den[ SYS_ORDER+1 ] = { 1.0f, 6.0f, 11.0f, 16.0f };    
-qNumA_state_t x[ SYS_ORDER ] = { { { 0.0f } }, { { 0.0f } },{ { 0.0f } } };
+float den[ SYS_ORDER+1 ] = { 1.0f, 6.0f, 11.0f, 16.0f };
+qLTISys_ContinuosX_t x[ SYS_ORDER ] = { { { 0.0f } }, { { 0.0f } },{ { 0.0f } } };
 
 void xTaskSystemSimulate( void *arg )
 {
@@ -161,8 +161,8 @@ void xTaskSystemSimulate( void *arg )
 const TickType_t  Ts = 100; /*100mS sample time*/
 qLTISys_t system;
 float num[ NB ] = { 0.1f, 0.2f, 0.3f };
-float den[ NA+1 ] = { 1.0f, -0.85f, 0.02};    
-float xk[ NB ] = { 0.0f };
+float den[ NA+1 ] = { 1.0f, -0.85f, 0.02};
+qLTISys_DiscreteX_t xk[ NB ] = { 0.0f, 0.0f, 0.0f };
 
 void xTaskSystemSimulate( void *arg )
 {

@@ -40,7 +40,7 @@ static float qLTISys_ContinuosUpdate( qLTISys_t * const sys,
     else {
         size_t i;
         /*compute states of the system by using the controllable canonical form*/
-        for (  i = ( sys->n - 1u ) ; i >= 1u ; --i ) {
+        for ( i = ( sys->n - 1u ) ; i >= 1u ; --i ) {
             dx0 += sys->a[ i ]*sys->xc[ i ].x[ 0 ]; /*compute the first derivative*/
             /*integrate to obtain the remaining states*/
             (void)sys->integrate( &sys->xc[ i ], sys->xc[ i - 1u ].x[ 0 ], sys->dt );
@@ -87,12 +87,12 @@ float qLTISys_Excite( qLTISys_t * const sys,
 int qLTISys_SetDelay( qLTISys_t * const sys,
                       float * const w,
                       const size_t n,
-                      const float initval )
+                      const float initVal )
 {
     int retValue = 0;
 
     if ( 1 == qLTISys_IsInitialized( sys ) ) {
-        qTDL_Setup( &sys->tDelay, w, n, initval );
+        qTDL_Setup( &sys->tDelay, w, n, initVal );
         retValue = 1;
     }
 
@@ -204,5 +204,20 @@ float qLTISys_DiscreteFIRUpdate( float *w,
     w[ 0 ] = x;
 
     return y;
+}
+/*============================================================================*/
+int qLTISys_SetIntegrationMethod( qLTISys_t * const sys,
+                                  qNumA_IntegrationMethod_t im )
+{
+    int retValue = 0;
+
+    if ( ( NULL != sys ) && ( NULL != im ) ) {
+        if ( ( im == &qNumA_IntegralRe ) || ( im == &qNumA_IntegralTr ) || ( im == &qNumA_IntegralSi ) ) {
+            sys->integrate = im;
+            retValue = 1;
+        }
+    }
+
+    return retValue;
 }
 /*============================================================================*/
