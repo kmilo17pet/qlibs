@@ -21,9 +21,9 @@ static uint32_t qBitField_SafeMask( const uint32_t val,
                                     const size_t x,
                                     const size_t nbits );
 static size_t qBitField_Offset( const size_t index );
-static uint32_t qBitField_Read_uint32( const qBitField_t * const instance,
+static uint32_t qBitField_Read_uint32( const qBitField_t * const b,
                                        const size_t index );
-static void qBitField_Write_uint32( qBitField_t *instance,
+static void qBitField_Write_uint32( qBitField_t *b,
                                     const size_t index,
                                     const uint32_t value );
 

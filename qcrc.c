@@ -6,7 +6,7 @@
 
 #include "qcrc.h"
 
-static uint32_t qCRCx_Reflect( uint32_t data,
+static uint32_t qCRCx_Reflect( uint32_t xData,
                                const uint8_t nBits );
 
 /*============================================================================*/
