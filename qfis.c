@@ -39,8 +39,6 @@ static float qFIS_Prod( const float a,
 static float qFIS_ProbOR( const float a,
                           const float b );
 static float qFIS_Sat( float y );
-
-
 static void qFIS_EvalInputMFs( qFIS_t *f );
 static void qFIS_TruncateInputs( qFIS_t *f );
 static float qFIS_ParseFuzzValue( qFIS_MF_t *mfIO, qFIS_Rules_t index );
@@ -63,9 +61,9 @@ int qFIS_Setup( qFIS_t *f,
     int retVal = 0;
   
     if ( NULL != f ) {
-        static const float (*method[ 4 ])( const float a, const float b ) = 
-        { &qFIS_Min, &qFIS_Max, &qFIS_Prod, &qFIS_ProbOR };
-        
+        typedef float (*methods_fcn)( const float a, const float b );
+        static const methods_fcn method[ 4 ] = { &qFIS_Min, &qFIS_Max, 
+                                                 &qFIS_Prod, &qFIS_ProbOR };
         f->type = t;
         f->evalPoints = ep;
         f->nInputs = ni/sizeof(qFIS_IO_t);
@@ -110,12 +108,14 @@ int qFIS_SetMF( qFIS_MF_t *m,
     int retVal = 0;
 
     if ( ( NULL != m ) && ( io_tag >= 0 ) && ( mf_tag >= 0 ) ) {
-        static const float (*fshape[ 12 ])( const float x, const float * const points ) = 
-        { &qFIS_TriMF, &qFIS_TrapMF, &qFIS_GBellMF, &qFIS_GaussMF, &qFIS_Gauss2MF,
-          &qFIS_SigMF, &qFIS_DSigMF, &qFIS_PSigMF, &qFIS_PiMF, &qFIS_SMF,
-          &qFIS_ZMF, &qFIS_SingletonMF};
-        
-        m[ mf_tag ].shape = fshape[ shape ];
+        typedef float (* shapes_fcn )( const float x, const float * const points );
+        static const shapes_fcn fShape[ 12 ] = { &qFIS_TriMF, &qFIS_TrapMF,
+                                                 &qFIS_GBellMF, &qFIS_GaussMF,
+                                                 &qFIS_Gauss2MF, &qFIS_SigMF,
+                                                 &qFIS_DSigMF, &qFIS_PSigMF,
+                                                 &qFIS_PiMF, &qFIS_SMF,
+                                                 &qFIS_ZMF, &qFIS_SingletonMF };
+        m[ mf_tag ].shape = fShape[ shape ];
         m[ mf_tag ].index = (size_t)io_tag;
         m[ mf_tag ].points[ 0 ] = a;
         m[ mf_tag ].points[ 1 ] = b;
@@ -215,7 +215,8 @@ int qFIS_Inference( qFIS_t *f,
                     i += 2u;
                     switch ( f->type ) {
                         case Mamdani:
-                            f->outMF[ MFOutputIndex ].fuzzVal = qFIS_Max( f->outMF[ MFOutputIndex ].fuzzVal, ruleStrength ); /*aggregation using max*/
+                            /*aggregation using max*/
+                            f->outMF[ MFOutputIndex ].fuzzVal = qFIS_Max( f->outMF[ MFOutputIndex ].fuzzVal, ruleStrength );
                             break;
                         default:
                             break;

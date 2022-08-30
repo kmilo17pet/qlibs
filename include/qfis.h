@@ -61,7 +61,8 @@ extern "C" {
     * @details The instance should be initialized using the qFIS_SetIO() API.
     * @note Do not access any member of this structure directly.
     */
-    typedef struct {
+    typedef struct
+    {
         float min, max, value;
     } qFIS_IO_t;
 
@@ -70,7 +71,8 @@ extern "C" {
     * @details The instance should be initialized using the qFIS_SetMF() API.
     * @note Do not access any member of this structure directly.
     */
-    typedef struct {
+    typedef struct
+    {
         size_t index;
         float (*shape)( const float x, const float * const points );
         float points[ 4 ];
@@ -82,7 +84,8 @@ extern "C" {
     * @details The instance should be initialized using the qFIS_Setup() API.
     * @note Do not access any member of this structure directly.
     */
-    typedef struct {
+    typedef struct
+    {
         qFIS_IO_t *input, *output;
         qFIS_MF_t *inMF, *outMF;
         size_t rule_cols;
