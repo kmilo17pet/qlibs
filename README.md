@@ -314,33 +314,33 @@ int main( int argc, char *argv[] )
         QFIS_RULES_END
     };
 
-	/* Add inputs */
-	qFIS_SetIO( flexnav_inputs, wt, 0.0f, 0.5f );
-	qFIS_SetIO( flexnav_inputs, dax, 0.0f, 5.0f );
-	qFIS_SetIO( flexnav_inputs, day, 0.0f, 5.0f );
-	qFIS_SetIO( flexnav_inputs, ae, 0.0f, 20.0f );
-	qFIS_SetIO( flexnav_outputs, phit, 0.0f, 1.0f );
-	qFIS_SetIO( flexnav_outputs, thetat, 0.0f, 1.0f );
-	/* Add membership functions to the inputs */
-	qFIS_SetMF( MFin, wt, wtSLOW, trimf, -0.2f ,0.0f ,0.2f ,QFIS_IGNORE );
-	qFIS_SetMF( MFin, wt, wtMED, trimf, 0.1f ,0.25f ,0.4f ,QFIS_IGNORE );
-	qFIS_SetMF( MFin, wt, wtFAST, trimf, 0.3f ,0.5f ,0.7f ,QFIS_IGNORE );
-	qFIS_SetMF( MFin, dax, daxLOW, trimf, -1.0f ,0.0f ,2.0f ,QFIS_IGNORE );
-	qFIS_SetMF( MFin, dax, daxMED, trimf, 1.0f ,2.5f ,4.0f ,QFIS_IGNORE );
-	qFIS_SetMF( MFin, dax, daxHIGH, trimf, 3.0f ,5.0f ,7.0f ,QFIS_IGNORE );
-	qFIS_SetMF( MFin, day, dayLOW, trimf, -2.0f ,0.0f ,2.0f ,QFIS_IGNORE );
-	qFIS_SetMF( MFin, day, dayMED, trimf, 1.0f ,2.5f ,4.0f ,QFIS_IGNORE );
-	qFIS_SetMF( MFin, day, dayHIGH, trimf, 3.0f ,5.0f ,7.0f ,QFIS_IGNORE );
-	qFIS_SetMF( MFin, ae, aeLOW, trimf, -8.0f ,0.0 ,8.0f ,QFIS_IGNORE );
-	qFIS_SetMF( MFin, ae, aeMED, trimf, 5.0f ,10.0f ,15.0f ,QFIS_IGNORE );
-	qFIS_SetMF( MFin, ae, aeHIGH, trimf, 12.0f ,20.0f ,28.0 ,QFIS_IGNORE );
-	/* Add membership functions to the outputs */
-	qFIS_SetMF( MFout, phit, phitGYRO, trimf, -0.4f ,0.0f ,0.4f ,QFIS_IGNORE );
-	qFIS_SetMF( MFout, phit, phitBOTH, trimf, 0.2f ,0.5f ,0.8f ,QFIS_IGNORE );
-	qFIS_SetMF( MFout, phit, phitACCEL, trimf, 0.6f ,1.0f ,1.4f ,QFIS_IGNORE );
-	qFIS_SetMF( MFout, thetat, thetatGYRO, trimf, -0.4f ,0.0f ,0.4f ,QFIS_IGNORE );
-	qFIS_SetMF( MFout, thetat, thetatBOTH, trimf, 0.2f ,0.5f ,0.8f ,QFIS_IGNORE );
-	qFIS_SetMF( MFout, thetat, thetatACCEL, trimf, 0.6f ,1.0f ,1.4f ,QFIS_IGNORE );
+    /* Add inputs */
+    qFIS_SetIO( flexnav_inputs, wt, 0.0f, 0.5f );
+    qFIS_SetIO( flexnav_inputs, dax, 0.0f, 5.0f );
+    qFIS_SetIO( flexnav_inputs, day, 0.0f, 5.0f );
+    qFIS_SetIO( flexnav_inputs, ae, 0.0f, 20.0f );
+    qFIS_SetIO( flexnav_outputs, phit, 0.0f, 1.0f );
+    qFIS_SetIO( flexnav_outputs, thetat, 0.0f, 1.0f );
+    /* Add membership functions to the inputs */
+    qFIS_SetMF( MFin, wt, wtSLOW, trimf, -0.2f ,0.0f ,0.2f ,QFIS_IGNORE );
+    qFIS_SetMF( MFin, wt, wtMED, trimf, 0.1f ,0.25f ,0.4f ,QFIS_IGNORE );
+    qFIS_SetMF( MFin, wt, wtFAST, trimf, 0.3f ,0.5f ,0.7f ,QFIS_IGNORE );
+    qFIS_SetMF( MFin, dax, daxLOW, trimf, -1.0f ,0.0f ,2.0f ,QFIS_IGNORE );
+    qFIS_SetMF( MFin, dax, daxMED, trimf, 1.0f ,2.5f ,4.0f ,QFIS_IGNORE );
+    qFIS_SetMF( MFin, dax, daxHIGH, trimf, 3.0f ,5.0f ,7.0f ,QFIS_IGNORE );
+    qFIS_SetMF( MFin, day, dayLOW, trimf, -2.0f ,0.0f ,2.0f ,QFIS_IGNORE );
+    qFIS_SetMF( MFin, day, dayMED, trimf, 1.0f ,2.5f ,4.0f ,QFIS_IGNORE );
+    qFIS_SetMF( MFin, day, dayHIGH, trimf, 3.0f ,5.0f ,7.0f ,QFIS_IGNORE );
+    qFIS_SetMF( MFin, ae, aeLOW, trimf, -8.0f ,0.0 ,8.0f ,QFIS_IGNORE );
+    qFIS_SetMF( MFin, ae, aeMED, trimf, 5.0f ,10.0f ,15.0f ,QFIS_IGNORE );
+    qFIS_SetMF( MFin, ae, aeHIGH, trimf, 12.0f ,20.0f ,28.0 ,QFIS_IGNORE );
+    /* Add membership functions to the outputs */
+    qFIS_SetMF( MFout, phit, phitGYRO, trimf, -0.4f ,0.0f ,0.4f ,QFIS_IGNORE );
+    qFIS_SetMF( MFout, phit, phitBOTH, trimf, 0.2f ,0.5f ,0.8f ,QFIS_IGNORE );
+    qFIS_SetMF( MFout, phit, phitACCEL, trimf, 0.6f ,1.0f ,1.4f ,QFIS_IGNORE );
+    qFIS_SetMF( MFout, thetat, thetatGYRO, trimf, -0.4f ,0.0f ,0.4f ,QFIS_IGNORE );
+    qFIS_SetMF( MFout, thetat, thetatBOTH, trimf, 0.2f ,0.5f ,0.8f ,QFIS_IGNORE );
+    qFIS_SetMF( MFout, thetat, thetatACCEL, trimf, 0.6f ,1.0f ,1.4f ,QFIS_IGNORE );
 
     qFIS_Setup( &flexnav, Mamdani, 100, qFIS_MIN, qFIS_MAX,
                 flexnav_inputs, sizeof(flexnav_inputs),
@@ -348,21 +348,21 @@ int main( int argc, char *argv[] )
                 MFin, sizeof(MFin),
                 MFout, sizeof(MFout) );
 
-	/* Set the crisp inputs */
-	flexnav_inputs[ wt ].value = 0.0;
-	flexnav_inputs[ dax ].value = 3.0;
-	flexnav_inputs[ day ].value = 0.0;
-	flexnav_inputs[ ae ].value = 0.0;
+    /* Set the crisp inputs */
+    flexnav_inputs[ wt ].value = 0.0;
+    flexnav_inputs[ dax ].value = 3.0;
+    flexnav_inputs[ day ].value = 0.0;
+    flexnav_inputs[ ae ].value = 0.0;
 
     qFIS_Fuzzify( &flexnav ); 
     qFIS_Inference( &flexnav, rules );
     qFIS_Defuzzify( &flexnav );
-	/* Get the crisp outputs */
-	printf( "- flexnav_outputs[phit].value=%g\r\n"
+    /* Get the crisp outputs */
+    printf( "- flexnav_outputs[phit].value=%g\r\n"
             "- flexnav_outputs[thetat].value=%g\r\n", 
             flexnav_outputs[phit].value, 
             flexnav_outputs[thetat].value );
-            
+
     return EXIT_SUCCESS;
 }
 
