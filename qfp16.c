@@ -428,7 +428,6 @@ qFP16_t qFP16_Log( qFP16_t x )
 qFP16_t qFP16_Log2( const qFP16_t x )
 {
     qFP16_t retValue = QFP16_OVERFLOW;
-    qFP16_t inv;
 
     if ( x > 0 ) {
         if ( x < QFP16_1 ) {
@@ -436,6 +435,7 @@ qFP16_t qFP16_Log2( const qFP16_t x )
                 retValue = QFP16_N16;
             }
             else {
+                qFP16_t inv;
                 inv = qFP16_Div( QFP16_1, x );
                 retValue = -qFP16_log2i( inv );
             }
@@ -702,13 +702,13 @@ qFP16_t qFP16_Pow( const qFP16_t x,
                    const qFP16_t y )
 {
     qFP16_t retValue = QFP16_OVERFLOW;
-    qFP16_t tmp;
 
     if ( ( 0uL == ( (uint32_t)y & QFP16_FRACTION_MASK ) ) && ( y > 0 ) ) {
         /*handle integer exponent explicitly*/
         retValue = qFP16_IPow( x, y );
     }
     else {
+        qFP16_t tmp;
         tmp = qFP16_Mul( y, qFP16_Log( qFP16_Abs( x ) ) );
         if ( QFP16_OVERFLOW != tmp ) {
             retValue = qFP16_Exp( tmp );
