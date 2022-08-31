@@ -38,17 +38,76 @@ static float qFIS_Prod( const float a,
                         const float b );
 static float qFIS_ProbOR( const float a,
                           const float b );
+static float qFIS_Sum( const float a,
+                       const float b );
 static float qFIS_Sat( float y );
 static void qFIS_EvalInputMFs( qFIS_t *f );
 static void qFIS_TruncateInputs( qFIS_t *f );
 static float qFIS_ParseFuzzValue( qFIS_MF_t *mfIO, qFIS_Rules_t index );
 
+typedef float (*methods_fcn)( const float a, const float b );
+static const methods_fcn method[ 5 ] = { &qFIS_Min, &qFIS_Prod, &qFIS_Max, 
+                                         &qFIS_ProbOR, &qFIS_Sum };
+
+/*============================================================================*/
+int qFIS_SetParameter( qFIS_t *f,
+                       qFIS_Parameter_t param,
+                       int value )
+{
+    int retVal = 0;
+    
+    if ( NULL != f ) {
+        switch( param ) {
+            case qFIS_Implication:
+                if ( value <= qFIS_PROD ) {
+                    f->implication = method[ value ];
+                    retVal = 1;
+                }
+                break;
+            case qFIS_Aggregation:
+                if ( ( value >= qFIS_MAX ) && ( value <= qFIS_SUM ) ) {
+                    f->aggregation = method[ value ];
+                    retVal = 1;
+                }
+                break;
+            case qFIS_AND:
+                if ( value <= qFIS_PROD ) {
+                    f->andMethod = method[ value ];
+                    retVal = 1;
+                }
+                break;
+            case qFIS_OR:
+                if ( ( value >= qFIS_MAX ) && ( value <= qFIS_PROBOR ) ) {
+                    f->orMethod = method[ value ];
+                    retVal = 1;
+                }
+                break;
+            case qFIS_EvalPoints:
+                if ( value >= 0 ) {
+                    f->evalPoints = (size_t)value;
+                    retVal = 1;
+                }
+                break;
+            default:
+                break;
+        }
+    }
+    return retVal;
+}
+/*============================================================================*/
+int qFIS_AggregationMethod( qFIS_t *f, qFIS_Operator_t op )
+{
+    int retVal = 0;
+    
+    if ( ( NULL != f ) && ( op >= qFIS_MAX ) && ( op <= qFIS_SUM ) ) {
+        f->aggregation = method[ op ];
+        retVal = 1;
+    }
+    return retVal;
+}
 /*============================================================================*/
 int qFIS_Setup( qFIS_t *f,
                 qFIS_Type_t t, 
-                size_t ep, 
-                qFIS_FuzzMethod_t and_m,
-                qFIS_FuzzMethod_t or_m,
                 qFIS_IO_t * const inputs,
                 size_t ni,
                 qFIS_IO_t * const outputs,
@@ -61,17 +120,16 @@ int qFIS_Setup( qFIS_t *f,
     int retVal = 0;
   
     if ( NULL != f ) {
-        typedef float (*methods_fcn)( const float a, const float b );
-        static const methods_fcn method[ 4 ] = { &qFIS_Min, &qFIS_Max, 
-                                                 &qFIS_Prod, &qFIS_ProbOR };
         f->type = t;
-        f->evalPoints = ep;
+        f->evalPoints = 100u;
         f->nInputs = ni/sizeof(qFIS_IO_t);
         f->nOutputs = no/sizeof(qFIS_IO_t);
         f->nMFInputs = nmfins/sizeof(qFIS_MF_t);
         f->nMFOutputs = nmfouts/sizeof(qFIS_MF_t);
-        f->andMethod = method[ and_m ];
-        f->orMethod = method[ or_m ];
+        f->andMethod = &qFIS_Min;
+        f->orMethod = &qFIS_Max;
+        f->implication = &qFIS_Min;
+        f->aggregation = &qFIS_Max;
         f->input = inputs;
         f->output = outputs;
         f->inMF = mfinputs;
@@ -468,6 +526,12 @@ static float qFIS_ProbOR( const float a,
                           const float b )
 {
     return qFIS_Sat( a + b - ( a*b ) );
+}
+/*============================================================================*/
+static float qFIS_Sum( const float a,
+                       const float b )
+{
+    return qFIS_Sat( a + b );
 }
 /*============================================================================*/
 static float qFIS_Sat( float y )

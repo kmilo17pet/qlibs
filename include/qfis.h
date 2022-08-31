@@ -39,14 +39,26 @@ extern "C" {
     } qFIS_MF_Name_t;
 
     /**
-    * @brief An enum with all the possible values to fuzzy AND/OR methods.
+    * @brief An enum with all the allowed supported operators
     */
     typedef enum {
         qFIS_MIN = 0,   /*!< Minimal value*/
-        qFIS_MAX,       /*!< Maximum value*/
         qFIS_PROD,      /*!< Product*/
-        qFIS_PROBOR     /*!< Probabilistic OR*/
-    } qFIS_FuzzMethod_t;
+        qFIS_MAX,       /*!< Maximum value*/
+        qFIS_PROBOR,    /*!< Probabilistic OR*/
+        qFIS_SUM        /*!< Sum*/
+    } qFIS_Operator_t;
+
+    /**
+    * @brief An enum with all the allowed parameters that can be set on a FIS instance
+    */
+    typedef enum {
+        qFIS_Implication,   /*!< Only ::qFIS_MIN and qFIS_PROD supported*/
+        qFIS_Aggregation,   /*!< Only ::qFIS_MAX, qFIS_PROBOR and qFIS_SUM supported*/
+        qFIS_AND,           /*!< Only ::qFIS_MIN and qFIS_PROD supported*/
+        qFIS_OR,            /*!< Only ::qFIS_MAX and qFIS_PROBOR supported*/
+        qFIS_EvalPoints     /*!< The number of points for de-fuzzification*/
+    } qFIS_Parameter_t;
 
     /**
     * @brief An enum with all FIS types supported by qFIS.
@@ -94,6 +106,8 @@ extern "C" {
         size_t evalPoints;
         float (*andMethod)( const float a, const float b );
         float (*orMethod)( const float a, const float b );
+        float (*implication)( const float a, const float b );
+        float (*aggregation)( const float a, const float b );
         qFIS_Type_t type;
     } qFIS_t;
 
@@ -120,13 +134,24 @@ extern "C" {
 
     #define QFIS_IGNORE             (0.0f) 
 
+
+    /**
+    * @brief Set parameters of the FIS instance.
+    * @param[in] f A pointer to the Fuzzy Inference System instance.
+    * @param[in] param The requested parameter to change/set.
+    * @param[in] value The value of the parameter to set.
+    * @return 1 on success, otherwise return 0.
+    */
+    int qFIS_SetParameter( qFIS_t *f,
+                           qFIS_Parameter_t param,
+                           int value );
+
     /**
     * @brief Setup and initialize the FIS instance.
+    * @note Default configuration : AND = Min, OR = Max, Implication = Min
+    * Aggregation = Max, EvalPoints = 100
     * @param[in] f A pointer to the Fuzzy Inference System instance.
     * @param[in] t Type of inference.
-    * @param[in] ep Number of evaluation points.
-    * @param[in] and_m Method used fot the AND operation.
-    * @param[in] or_m Method used fot the OR operation.
     * @param[in] inputs An array with all the system inputs as IO objects.
     * @param[in] ni The number of bytes used by @a inputs. Use the sizeof operator.
     * @param[in] outputs An array with all the system outputs as IO objects.
@@ -143,9 +168,6 @@ extern "C" {
     */
     int qFIS_Setup( qFIS_t *f,
                     qFIS_Type_t t, 
-                    size_t ep, 
-                    qFIS_FuzzMethod_t and_m,
-                    qFIS_FuzzMethod_t or_m,
                     qFIS_IO_t * const inputs,
                     size_t ni,
                     qFIS_IO_t * const outputs,

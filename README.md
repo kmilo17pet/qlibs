@@ -342,7 +342,7 @@ int main( int argc, char *argv[] )
     qFIS_SetMF( MFout, thetat, thetatBOTH, trimf, 0.2f ,0.5f ,0.8f ,QFIS_IGNORE );
     qFIS_SetMF( MFout, thetat, thetatACCEL, trimf, 0.6f ,1.0f ,1.4f ,QFIS_IGNORE );
 
-    qFIS_Setup( &flexnav, Mamdani, 100, qFIS_MIN, qFIS_MAX,
+    qFIS_Setup( &flexnav, Mamdani,
                 flexnav_inputs, sizeof(flexnav_inputs),
                 flexnav_outputs, sizeof(flexnav_outputs),
                 MFin, sizeof(MFin),
