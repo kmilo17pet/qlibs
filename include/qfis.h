@@ -108,6 +108,7 @@ extern "C" {
         float (*orMethod)( const float a, const float b );
         float (*implication)( const float a, const float b );
         float (*aggregation)( const float a, const float b );
+        float (*mUnion)( const float a, const float b );
         qFIS_Type_t type;
     } qFIS_t;
 

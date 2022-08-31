@@ -118,6 +118,7 @@ int qFIS_Setup( qFIS_t *f,
         f->orMethod = &qFIS_Max;
         f->implication = &qFIS_Min;
         f->aggregation = &qFIS_Max;
+        f->mUnion = &qFIS_Max;
         f->input = inputs;
         f->output = outputs;
         f->inMF = mfinputs;
@@ -262,7 +263,7 @@ int qFIS_Inference( qFIS_t *f,
                     switch ( f->type ) {
                         case Mamdani:
                             /*aggregation using max*/
-                            f->outMF[ MFOutputIndex ].fuzzVal = qFIS_Max( f->outMF[ MFOutputIndex ].fuzzVal, ruleStrength );
+                            f->outMF[ MFOutputIndex ].fuzzVal = f->aggregation( f->outMF[ MFOutputIndex ].fuzzVal, ruleStrength );
                             break;
                         default:
                             break;
@@ -312,7 +313,7 @@ int qFIS_Defuzzify( qFIS_t *f )
                 for ( j = 0 ; j < f->nMFOutputs ; ++j ) {
                     if ( f->outMF[ j ].index == (size_t)tag ) {
                         z = f->outMF[ j ].shape( x , f->outMF[ j ].points );
-                        fx = qFIS_Max( fx, ( z > f->outMF[ j ].fuzzVal )? f->outMF[ j ].fuzzVal : z );
+                        fx = f->mUnion( fx, f->implication( z, f->outMF[ j ].fuzzVal ) );
                     }
                 }
                 int_xFx += x*fx;
