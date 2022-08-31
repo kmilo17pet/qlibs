@@ -45,39 +45,38 @@ static void qFIS_EvalInputMFs( qFIS_t *f );
 static void qFIS_TruncateInputs( qFIS_t *f );
 static float qFIS_ParseFuzzValue( qFIS_MF_t *mfIO, qFIS_Rules_t index );
 
-typedef float (*methods_fcn)( const float a, const float b );
-static const methods_fcn method[ 5 ] = { &qFIS_Min, &qFIS_Prod, &qFIS_Max, 
-                                         &qFIS_ProbOR, &qFIS_Sum };
-
 /*============================================================================*/
 int qFIS_SetParameter( qFIS_t *f,
                        qFIS_Parameter_t param,
                        int value )
 {
     int retVal = 0;
-    
+    typedef float (*methods_fcn)( const float a, const float b );
+    static const methods_fcn method[ 5 ] = { &qFIS_Min, &qFIS_Prod, &qFIS_Max, 
+                                            &qFIS_ProbOR, &qFIS_Sum };
+
     if ( NULL != f ) {
         switch( param ) {
             case qFIS_Implication:
-                if ( value <= qFIS_PROD ) {
+                if ( value <= (int)qFIS_PROD ) {
                     f->implication = method[ value ];
                     retVal = 1;
                 }
                 break;
             case qFIS_Aggregation:
-                if ( ( value >= qFIS_MAX ) && ( value <= qFIS_SUM ) ) {
+                if ( ( value >= (int)qFIS_MAX ) && ( value <= (int)qFIS_SUM ) ) {
                     f->aggregation = method[ value ];
                     retVal = 1;
                 }
                 break;
             case qFIS_AND:
-                if ( value <= qFIS_PROD ) {
+                if ( value <= (int)qFIS_PROD ) {
                     f->andMethod = method[ value ];
                     retVal = 1;
                 }
                 break;
             case qFIS_OR:
-                if ( ( value >= qFIS_MAX ) && ( value <= qFIS_PROBOR ) ) {
+                if ( ( value >= (int)qFIS_MAX ) && ( value <= (int)qFIS_PROBOR ) ) {
                     f->orMethod = method[ value ];
                     retVal = 1;
                 }
@@ -91,17 +90,6 @@ int qFIS_SetParameter( qFIS_t *f,
             default:
                 break;
         }
-    }
-    return retVal;
-}
-/*============================================================================*/
-int qFIS_AggregationMethod( qFIS_t *f, qFIS_Operator_t op )
-{
-    int retVal = 0;
-    
-    if ( ( NULL != f ) && ( op >= qFIS_MAX ) && ( op <= qFIS_SUM ) ) {
-        f->aggregation = method[ op ];
-        retVal = 1;
     }
     return retVal;
 }
