@@ -30,6 +30,10 @@ static float qFIS_PiMF( const float x,
                         const float * const points );
 static float qFIS_SingletonMF( const float x,
                                const float * const points );
+static float qFIS_Constant( const float x,
+                        const float * const points );
+static float qFIS_Linear( const float x,
+                        const float * const points );
 static float qFIS_Min( const float a,
                        const float b );
 static float qFIS_Max( const float a,
@@ -41,14 +45,18 @@ static float qFIS_ProbOR( const float a,
 static float qFIS_Sum( const float a,
                        const float b );
 static float qFIS_Sat( float y );
+static float qFIS_SugenoMF( qFIS_IO_t *x, const float *a, size_t ni );
 static void qFIS_EvalInputMFs( qFIS_t *f );
 static void qFIS_TruncateInputs( qFIS_t *f );
 static float qFIS_ParseFuzzValue( qFIS_MF_t *mfIO, qFIS_Rules_t index );
 
+static int qFIS_MamdaniDefuzz( qFIS_t *f );
+static int qFIS_SugenoDefuzz( qFIS_t *f );
+
 /*============================================================================*/
 int qFIS_SetParameter( qFIS_t *f,
-                       qFIS_Parameter_t param,
-                       int value )
+                       qFIS_Parameter_t p,
+                       int x )
 {
     int retVal = 0;
     typedef float (*methods_fcn)( const float a, const float b );
@@ -56,34 +64,34 @@ int qFIS_SetParameter( qFIS_t *f,
                                             &qFIS_ProbOR, &qFIS_Sum };
 
     if ( NULL != f ) {
-        switch( param ) {
+        switch( p ) {
             case qFIS_Implication:
-                if ( value <= (int)qFIS_PROD ) {
-                    f->implication = method[ value ];
+                if ( x <= (int)qFIS_PROD ) {
+                    f->implication = method[ x ];
                     retVal = 1;
                 }
                 break;
             case qFIS_Aggregation:
-                if ( ( value >= (int)qFIS_MAX ) && ( value <= (int)qFIS_SUM ) ) {
-                    f->aggregation = method[ value ];
+                if ( ( x >= (int)qFIS_MAX ) && ( x <= (int)qFIS_SUM ) ) {
+                    f->aggregation = method[ x ];
                     retVal = 1;
                 }
                 break;
             case qFIS_AND:
-                if ( value <= (int)qFIS_PROD ) {
-                    f->andMethod = method[ value ];
+                if ( x <= (int)qFIS_PROD ) {
+                    f->andMethod = method[ x ];
                     retVal = 1;
                 }
                 break;
             case qFIS_OR:
-                if ( ( value >= (int)qFIS_MAX ) && ( value <= (int)qFIS_PROBOR ) ) {
-                    f->orMethod = method[ value ];
+                if ( ( x >= (int)qFIS_MAX ) && ( x <= (int)qFIS_PROBOR ) ) {
+                    f->orMethod = method[ x ];
                     retVal = 1;
                 }
                 break;
             case qFIS_EvalPoints:
-                if ( value >= 0 ) {
-                    f->evalPoints = (size_t)value;
+                if ( x >= 0 ) {
+                    f->evalPoints = (size_t)x;
                     retVal = 1;
                 }
                 break;
@@ -100,10 +108,10 @@ int qFIS_Setup( qFIS_t *f,
                 size_t ni,
                 qFIS_IO_t * const outputs,
                 size_t no,
-                qFIS_MF_t *mfinputs,
-                size_t nmfins,
-                qFIS_MF_t *mfoutputs,
-                size_t nmfouts )
+                qFIS_MF_t *mf_inputs,
+                size_t nmi,
+                qFIS_MF_t *mf_outputs,
+                size_t nmo )
 {
     int retVal = 0;
   
@@ -112,8 +120,8 @@ int qFIS_Setup( qFIS_t *f,
         f->evalPoints = 100u;
         f->nInputs = ni/sizeof(qFIS_IO_t);
         f->nOutputs = no/sizeof(qFIS_IO_t);
-        f->nMFInputs = nmfins/sizeof(qFIS_MF_t);
-        f->nMFOutputs = nmfouts/sizeof(qFIS_MF_t);
+        f->nMFInputs = nmi/sizeof(qFIS_MF_t);
+        f->nMFOutputs = nmo/sizeof(qFIS_MF_t);
         f->andMethod = &qFIS_Min;
         f->orMethod = &qFIS_Max;
         f->implication = &qFIS_Min;
@@ -121,8 +129,8 @@ int qFIS_Setup( qFIS_t *f,
         f->mUnion = &qFIS_Max;
         f->input = inputs;
         f->output = outputs;
-        f->inMF = mfinputs;
-        f->outMF = mfoutputs;
+        f->inMF = mf_inputs;
+        f->outMF = mf_outputs;
         retVal = 1;
     }
     return retVal;
@@ -136,8 +144,8 @@ int qFIS_SetIO( qFIS_IO_t *v,
     int retVal = 0;
 
     if ( ( NULL != v ) && ( tag >= 0 ) ) {
-        v[ tag ].min = min;
-        v[ tag ].max = max;
+        v[ tag ].lo = min;
+        v[ tag ].up = max;
         retVal = 1;
     }
     return retVal;
@@ -147,27 +155,22 @@ int qFIS_SetMF( qFIS_MF_t *m,
                 qFIS_Tag_t io_tag,
                 qFIS_Tag_t mf_tag,
                 qFIS_MF_Name_t shape,
-                float a,
-                float b,
-                float c,
-                float d )
+                const float *cp )
 {
     int retVal = 0;
+    typedef float (* shapes_fcn )( const float x, const float * const points );
+    static const shapes_fcn fShape[ 14 ] = { &qFIS_TriMF, &qFIS_TrapMF,
+                                             &qFIS_GBellMF, &qFIS_GaussMF,
+                                             &qFIS_Gauss2MF, &qFIS_SigMF,
+                                             &qFIS_DSigMF, &qFIS_PSigMF,
+                                             &qFIS_PiMF, &qFIS_SMF,
+                                             &qFIS_ZMF, &qFIS_SingletonMF,
+                                             &qFIS_Constant, &qFIS_Linear };
 
-    if ( ( NULL != m ) && ( io_tag >= 0 ) && ( mf_tag >= 0 ) ) {
-        typedef float (* shapes_fcn )( const float x, const float * const points );
-        static const shapes_fcn fShape[ 12 ] = { &qFIS_TriMF, &qFIS_TrapMF,
-                                                 &qFIS_GBellMF, &qFIS_GaussMF,
-                                                 &qFIS_Gauss2MF, &qFIS_SigMF,
-                                                 &qFIS_DSigMF, &qFIS_PSigMF,
-                                                 &qFIS_PiMF, &qFIS_SMF,
-                                                 &qFIS_ZMF, &qFIS_SingletonMF };
+    if ( ( NULL != m ) && ( io_tag >= 0 ) && ( mf_tag >= 0 ) && ( shape <= linear ) ) {
         m[ mf_tag ].shape = fShape[ shape ];
         m[ mf_tag ].index = (size_t)io_tag;
-        m[ mf_tag ].points[ 0 ] = a;
-        m[ mf_tag ].points[ 1 ] = b;
-        m[ mf_tag ].points[ 2 ] = c;
-        m[ mf_tag ].points[ 3 ] = d;
+        m[ mf_tag ].points = cp;
         m[ mf_tag ].fuzzVal = 0.0f;
         retVal = 1;
     }
@@ -206,7 +209,7 @@ int qFIS_Inference( qFIS_t *f,
     size_t i = 1u;
     qFIS_Rules_t lastConnector = -1;
     float ruleStrength = 0.0f;
-    int16_t inputIndex, MFInputIndex, MFOutputIndex, connector;
+    int16_t inputIndex, outputIndex, MFInputIndex, MFOutputIndex, connector;
     int retVal = 0;
     int rule_count = 0;
     enum rState_Def { 
@@ -215,6 +218,15 @@ int qFIS_Inference( qFIS_t *f,
     } ruleState = ANTECEDENT_IN;
 
     if ( ( NULL != f ) && ( NULL != r ) ) {
+
+        if ( Sugeno == f->type ) {
+            size_t j;
+            for( j = 0 ; j < f->nOutputs ; ++j ) {
+                f->output[ j ].lo = 0.0f;
+                f->output[ j ].up = 0.0f;
+            }
+        }
+
         if ( QFIS_RULES_BEGIN == r[ 0 ] ) {
             /*cstat -MISRAC2012-Rule-14.2*/
             for ( i = 1u ; _QFIS_RULES_END != r[ i ] ; ++i ) {
@@ -256,14 +268,21 @@ int qFIS_Inference( qFIS_t *f,
                     }
                 }
                 else if ( CONSEQUENT_OUT == ruleState ) {
-                    /*outputIndex = r[ i ];*/
+                    size_t ni; 
+                    float zi;
+                    outputIndex = r[ i ];
                     MFOutputIndex = r[ i + 1u ] - 1;
                     connector = ( f->nOutputs > 1u )? r[ i + 2u ] : -1;
                     i += 2u;
                     switch ( f->type ) {
                         case Mamdani:
-                            /*aggregation using max*/
                             f->outMF[ MFOutputIndex ].fuzzVal = f->aggregation( f->outMF[ MFOutputIndex ].fuzzVal, ruleStrength );
+                            break;
+                        case Sugeno:
+                            ni = ( &qFIS_Constant == f->outMF[ MFOutputIndex ].shape )? 0u : f->nInputs;
+                            zi = qFIS_SugenoMF( f->input, f->outMF[ MFOutputIndex ].points, ni );
+                            f->output[ outputIndex ].up += zi*ruleStrength;
+                            f->output[ outputIndex ].lo += ruleStrength; 
                             break;
                         default:
                             break;
@@ -287,44 +306,59 @@ int qFIS_Inference( qFIS_t *f,
     return retVal;
 }
 /*============================================================================*/
+static int qFIS_MamdaniDefuzz( qFIS_t *f )
+{
+    size_t i, j;
+    float x, z, fx, int_Fx, int_xFx, res;
+    int tag;
+    
+    for ( tag = 0 ; (size_t)tag < f->nOutputs ; ++tag ) {
+        int_Fx = 0.0f;
+        int_xFx = 0.0f; 
+        /*cstat -CERT-FLP36-C*/
+        res = ( ( f->output[ tag ].up - f->output[ tag ].lo )/(float)f->evalPoints );
+        /*cstat +CERT-FLP36-C*/
+        for ( i = 0 ; i < ( f->evalPoints + 1u ) ; ++i ) {
+            /*cstat -CERT-FLP36-C*/
+            x = f->output[ tag ].lo + ( (float)i*res );
+            /*cstat +CERT-FLP36-C*/
+            if ( x > f->output[tag].up ) {
+                x = f->output[tag].up;
+            }
+            fx = 0.0f;
+            for ( j = 0 ; j < f->nMFOutputs ; ++j ) {
+                if ( f->outMF[ j ].index == (size_t)tag ) {
+                    z = f->outMF[ j ].shape( x , f->outMF[ j ].points );
+                    fx = f->mUnion( fx, f->implication( z, f->outMF[ j ].fuzzVal ) );
+                }
+            }
+            int_xFx += x*fx;
+            int_Fx += fx;
+            if ( x >= f->output[ tag ].up ) {
+                break;
+            }
+        }
+        f->output[ tag ].value = ( int_xFx/int_Fx );
+    }
+    return 1;
+}
+/*============================================================================*/
+static int qFIS_SugenoDefuzz( qFIS_t *f )
+{
+    size_t j;
+    for( j = 0 ; j < f->nOutputs ; ++j ) {
+        f->output[ j ].value = f->output[ j ].up/f->output[ j ].lo;
+    }
+    return 1;
+}
+/*============================================================================*/
 int qFIS_Defuzzify( qFIS_t *f )
 {
     int retValue = 0;
 
     if ( NULL != f ) {
-        size_t i, j;
-        float x, z, fx, int_Fx, int_xFx, res;
-        int tag;
-        
-        for ( tag = 0 ; (size_t)tag < f->nOutputs ; ++tag ) {
-            int_Fx = 0.0f;
-            int_xFx = 0.0f; 
-            /*cstat -CERT-FLP36-C*/
-            res = ( ( f->output[ tag ].max - f->output[ tag ].min )/(float)f->evalPoints );
-            /*cstat +CERT-FLP36-C*/
-            for ( i = 0 ; i < ( f->evalPoints + 1u ) ; ++i ) {
-                /*cstat -CERT-FLP36-C*/
-                x = f->output[ tag ].min + ( (float)i*res );
-                /*cstat +CERT-FLP36-C*/
-                if ( x > f->output[tag].max ) {
-                    x = f->output[tag].max;
-                }
-                fx = 0.0f;
-                for ( j = 0 ; j < f->nMFOutputs ; ++j ) {
-                    if ( f->outMF[ j ].index == (size_t)tag ) {
-                        z = f->outMF[ j ].shape( x , f->outMF[ j ].points );
-                        fx = f->mUnion( fx, f->implication( z, f->outMF[ j ].fuzzVal ) );
-                    }
-                }
-                int_xFx += x*fx;
-                int_Fx += fx;
-                if ( x >= f->output[ tag ].max ) {
-                    break;
-                }
-            }
-            f->output[ tag ].value = ( int_xFx/int_Fx );
-        }
-        retValue = 1;
+        retValue = ( Mamdani == f->type )? qFIS_MamdaniDefuzz( f ) : 
+                                           qFIS_SugenoDefuzz( f );
     }
     return retValue;
 }
@@ -344,11 +378,11 @@ static void qFIS_TruncateInputs( qFIS_t *f )
 {
     size_t i;
     for( i = 0 ; i < f->nInputs ; i++ ) { 
-        if ( f->input[ i ].value > f->input[ i ].max ) {
-            f->input[ i ].value = f->input[ i ].max;
+        if ( f->input[ i ].value > f->input[ i ].up ) {
+            f->input[ i ].value = f->input[ i ].up;
         }
-        if ( f->input[ i ].value < f->input[ i ].min ) {
-            f->input[ i ].value = f->input[ i ].min;
+        if ( f->input[ i ].value < f->input[ i ].lo ) {
+            f->input[ i ].value = f->input[ i ].lo;
         }
     }
 }
@@ -480,6 +514,7 @@ static float qFIS_ZMF( const float x,
     }
     return y;
 }
+
 /*============================================================================*/
 static float qFIS_PiMF( const float x,
                         const float * const points )
@@ -491,6 +526,22 @@ static float qFIS_SingletonMF( const float x,
                                const float * const points )
 {
     return ( ( fabsf( x - points[ 0 ] ) <= FLT_MIN )? 1.0f : 0.0f );
+}
+/*============================================================================*/
+static float qFIS_Constant( const float x,
+                        const float * const points )
+{
+    (void)x;
+    (void)points;
+    return 0.0f;
+}
+/*============================================================================*/
+static float qFIS_Linear( const float x,
+                        const float * const points )
+{
+    (void)x;
+    (void)points;
+    return 0.0f;
 }
 /*============================================================================*/
 static float qFIS_Min( const float a,
@@ -532,5 +583,21 @@ static float qFIS_Sat( float y )
         y = 1.0f;
     }
     return y;
+}
+/*============================================================================*/
+static float qFIS_SugenoMF( qFIS_IO_t *x, const float *a, size_t ni )
+{
+    float px = 0.0f;
+    if ( ni > 0u ) {
+        size_t i;
+        for( i = 0u ; i < ni ; ++i ) {
+            px += x[ i ].value*a[ i ];
+        }
+        px += a[ i ];
+    }
+    else { /*constant membership function*/
+        px = a[ 0 ];
+    }
+    return px;
 }
 /*============================================================================*/

@@ -35,7 +35,9 @@ extern "C" {
         pimf,           /*!< Pi-shaped membership function f(a,b,c,d)*/
         smf,            /*!< S-shaped membership function f(a,b)*/
         zmf,            /*!< Z-shaped membership function f(a,b)*/
-        singletonmf     /*!< Singleton Membership Function f(a)*/
+        singletonmf,    /*!< Singleton Membership Function f(a)*/
+        constant,       /*!< Constant membership function f(a) [Only for Sugeno FIS]*/
+        linear          /*!< Linear membership function f(...) [Only for Sugeno FIS]*/
     } qFIS_MF_Name_t;
 
     /**
@@ -61,7 +63,7 @@ extern "C" {
     } qFIS_Parameter_t;
 
     /**
-    * @brief An enum with all FIS types supported by qFIS.
+    * @brief An enum with the types of inference systems supported by qFIS.
     */
     typedef enum {
         Mamdani = 0,
@@ -75,7 +77,7 @@ extern "C" {
     */
     typedef struct
     {
-        float min, max, value;
+        float lo, up, value;
     } qFIS_IO_t;
 
     /**
@@ -87,7 +89,7 @@ extern "C" {
     {
         size_t index;
         float (*shape)( const float x, const float * const points );
-        float points[ 4 ];
+        const float *points;
         float fuzzVal;
     } qFIS_MF_t;
 
@@ -133,19 +135,16 @@ extern "C" {
     #define IS_NOT                  ,-(
     #define END                     +1)
 
-    #define QFIS_IGNORE             (0.0f) 
-
-
     /**
     * @brief Set parameters of the FIS instance.
     * @param[in] f A pointer to the Fuzzy Inference System instance.
-    * @param[in] param The requested parameter to change/set.
-    * @param[in] value The value of the parameter to set.
+    * @param[in] p The requested parameter to change/set.
+    * @param[in] x The value of the parameter to set.
     * @return 1 on success, otherwise return 0.
     */
     int qFIS_SetParameter( qFIS_t *f,
-                           qFIS_Parameter_t param,
-                           int value );
+                           qFIS_Parameter_t p,
+                           int x );
 
     /**
     * @brief Setup and initialize the FIS instance.
@@ -157,13 +156,13 @@ extern "C" {
     * @param[in] ni The number of bytes used by @a inputs. Use the sizeof operator.
     * @param[in] outputs An array with all the system outputs as IO objects.
     * @param[in] no The number of bytes used by @a inputs. Use the sizeof operator.
-    * @param[in] mfinputs An array with all the membership functions related to
+    * @param[in] mf_inputs An array with all the membership functions related to
     * the inputs. This should be an array of MF objects.
-    * @param[in] nmfins The number of bytes used by @a mfinputs. Use the sizeof 
+    * @param[in] nmi The number of bytes used by @a mf_inputs. Use the sizeof 
     * operator.
-    * @param[in] mfoutputs An array with all the membership functions related to
+    * @param[in] mf_outputs An array with all the membership functions related to
     * the outputs. This should be an array of MF objects.
-    * @param[in] nmfouts The number of bytes used by @a mfoutputs. Use the sizeof 
+    * @param[in] nmo The number of bytes used by @a mf_outputs. Use the sizeof 
     * operator.
     * @return 1 on success, otherwise return 0.
     */
@@ -173,13 +172,14 @@ extern "C" {
                     size_t ni,
                     qFIS_IO_t * const outputs,
                     size_t no,
-                    qFIS_MF_t *mfinputs,
-                    size_t nmfins,
-                    qFIS_MF_t *mfoutputs,
-                    size_t nmfouts );
+                    qFIS_MF_t *mf_inputs,
+                    size_t nmi,
+                    qFIS_MF_t *mf_outputs,
+                    size_t nmo );
 
     /**
     * @brief Set the tag and limits for the specified FIS IO
+    * @note limits do not apply in Sugeno outputs
     * @param[in] c An array with the required inputs or outputs as IO objects.
     * @param[in] tag The used-defined tag
     * @param[in] min Minimum allowed value for this IO
@@ -197,20 +197,14 @@ extern "C" {
     * @param[in] io_tag The I/O tag related with this membership function
     * @param[in] mf_tag The user-defined tag for this membership function
     * @param[in] shape The wanted shape for this membership function
-    * @param[in] a Point of the membership function
-    * @param[in] b Point of the membership function
-    * @param[in] c Point of the membership function
-    * @param[in] d Point of the membership function
+    * @param[in] cp Points of the membership function.
     * @return 1 on success, otherwise return 0.
     */
     int qFIS_SetMF( qFIS_MF_t *m,
                     qFIS_Tag_t io_tag,
                     qFIS_Tag_t mf_tag,
                     qFIS_MF_Name_t shape,
-                    float a,
-                    float b,
-                    float c,
-                    float d );
+                    const float *cp );
 
     /**
     * @brief Perform the fuzzification operation over the crisp inputs on the 
