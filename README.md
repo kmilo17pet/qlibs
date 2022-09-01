@@ -55,7 +55,7 @@
   - CRC32
 </details>
 
-- qFIS : Fuzzy Inference System ( Mamdani supported only )
+- qFIS : Fuzzy Inference System ( Mamdani & Sugeno supported )
 - qBitField: A bit-field manipulation library
 - qTDL : Tapped Delay Line in O(1). 
 - qRMS : Recursive Root Mean Square(RMS) calculation of a signal.
