@@ -72,7 +72,7 @@ extern "C" {
         qFP16_t min, max;
         uint8_t rounding, saturate;
         /*! @endcond  */
-    }qFP16_Settings_t;
+    } qFP16_Settings_t;
 
     /**
     * @brief Set settings for the fixed-point API

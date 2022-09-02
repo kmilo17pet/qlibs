@@ -7,7 +7,8 @@
 #include "qssmoother.h"
 #include "qltisys.h"
 
-struct qSmoother_Vtbl_s {
+struct qSmoother_Vtbl_s 
+{
     float (*perform)( _qSSmoother_t * const f, const float x );
     int (*setup)( _qSSmoother_t * const f, const float * const param, float *window, const size_t wsize );
 };

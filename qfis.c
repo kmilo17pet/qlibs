@@ -220,20 +220,20 @@ static float qFIS_ParseFuzzValue( qFIS_MF_t *mfIO,
 /*============================================================================*/
 static qFIS_FuzzyOperator_t qFIS_GetFuzzOperator( qFIS_t *f )
 {
-    qFIS_FuzzyOperator_t operator;
+    qFIS_FuzzyOperator_t oper;
 
     switch ( f->lastConnector ) {
         case _QFIS_AND:
-            operator = f->and;
+            oper = f->and;
             break;
         case _QFIS_OR:
-            operator = f->or;
+            oper = f->or;
             break;
         default: 
-            operator = &qFIS_Sum;
+            oper = &qFIS_Sum;
             break;
     }
-    return operator;
+    return oper;
 }
 /*============================================================================*/
 static size_t qFIS_InferenceAntecedent( struct _qFIS_s *f,
@@ -241,14 +241,14 @@ static size_t qFIS_InferenceAntecedent( struct _qFIS_s *f,
                                      size_t i )
 {
     int16_t inIndex, MFInIndex, connector;
-    qFIS_FuzzyOperator_t operator;
+    qFIS_FuzzyOperator_t oper;
     /*cstat -CERT-INT30-C_a*/
     inIndex = r[ i ];
     MFInIndex = r[ i + 1u ];
     connector = r[ i + 2u ];
     /*cstat -CERT-INT30-C_a*/
-    operator = qFIS_GetFuzzOperator( f );
-    f->rStrength = operator( f->rStrength, 
+    oper = qFIS_GetFuzzOperator( f );
+    f->rStrength = oper( f->rStrength, 
                              qFIS_ParseFuzzValue( f->inMF, MFInIndex ) );
 
     if ( ( inIndex < 0 ) || ( (size_t)inIndex > f->nInputs ) ) {
