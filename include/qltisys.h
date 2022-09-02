@@ -29,7 +29,8 @@ extern "C" {
     * @details The instance should be initialized using the qLTISys_Setup() API.
     * @note Do not access any member of this structure directly.
     */
-    typedef struct _qLTISys_s {
+    typedef struct _qLTISys_s 
+    {
         /*! @cond  */
         float (*sysUpdate)( struct _qLTISys_s *sys, float u );
         float *b, *a;
