@@ -16,7 +16,7 @@ extern "C" {
     #include <stdlib.h>
     #include <stdint.h>
 
-    typedef enum{
+    typedef enum {
         QCRC8 = 0,
         QCRC16,
         QCRC32,
