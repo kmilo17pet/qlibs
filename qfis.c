@@ -6,6 +6,8 @@
 
 #include "qfis.h"
 
+typedef float (*qFIS_FuzzyOperator_t)( const float a, const float b );
+
 static float qFIS_TriMF( const float x,
                          const float * const points );
 static float qFIS_TrapMF( const float x,
@@ -45,13 +47,26 @@ static float qFIS_ProbOR( const float a,
 static float qFIS_Sum( const float a,
                        const float b );
 static float qFIS_Sat( float y );
-static float qFIS_SugenoMF( qFIS_IO_t *x, const float *a, size_t ni );
+static float qFIS_SugenoMF( qFIS_IO_t *x,
+                            const float *a,
+                            size_t ni );
 static void qFIS_EvalInputMFs( qFIS_t *f );
 static void qFIS_TruncateInputs( qFIS_t *f );
-static float qFIS_ParseFuzzValue( qFIS_MF_t *mfIO, qFIS_Rules_t index );
+static float qFIS_ParseFuzzValue( qFIS_MF_t *mfIO,
+                                  qFIS_Rules_t index );
+static qFIS_FuzzyOperator_t qFIS_GetFuzzOperator( qFIS_t *f );
+static int qFIS_MamdaniDeFuzz( qFIS_t *f );
+static int qFIS_SugenoDeFuzz( qFIS_t *f );
 
-static int qFIS_MamdaniDefuzz( qFIS_t *f );
-static int qFIS_SugenoDefuzz( qFIS_t *f );
+static size_t qFIS_InferenceAntecedent( struct _qFIS_s *f,
+                                        const qFIS_Rules_t * const r,
+                                        size_t i );
+static size_t qFIS_InferenceConsequent( struct _qFIS_s *f,
+                                        const qFIS_Rules_t * const r,
+                                        size_t i );
+static void qFIS_InferenceInit( qFIS_t *f );
+
+#define QFIS_INFERENCE_ERROR         ( 0u )
 
 /*============================================================================*/
 int qFIS_SetParameter( qFIS_t *f,
@@ -67,30 +82,30 @@ int qFIS_SetParameter( qFIS_t *f,
         switch( p ) {
             case qFIS_Implication:
                 if ( x <= (int)qFIS_PROD ) {
-                    f->implication = method[ x ];
+                    f->implicate = method[ x ];
                     retVal = 1;
                 }
                 break;
             case qFIS_Aggregation:
                 if ( ( x >= (int)qFIS_MAX ) && ( x <= (int)qFIS_SUM ) ) {
-                    f->aggregation = method[ x ];
+                    f->aggregate = method[ x ];
                     retVal = 1;
                 }
                 break;
             case qFIS_AND:
                 if ( x <= (int)qFIS_PROD ) {
-                    f->andMethod = method[ x ];
+                    f->and = method[ x ];
                     retVal = 1;
                 }
                 break;
             case qFIS_OR:
                 if ( ( x >= (int)qFIS_MAX ) && ( x <= (int)qFIS_PROBOR ) ) {
-                    f->orMethod = method[ x ];
+                    f->or = method[ x ];
                     retVal = 1;
                 }
                 break;
             case qFIS_EvalPoints:
-                if ( x >= 0 ) {
+                if ( x >= 20 ) { /*at least 20 point or more are required*/
                     f->evalPoints = (size_t)x;
                     retVal = 1;
                 }
@@ -122,10 +137,10 @@ int qFIS_Setup( qFIS_t *f,
         f->nOutputs = no/sizeof(qFIS_IO_t);
         f->nMFInputs = nmi/sizeof(qFIS_MF_t);
         f->nMFOutputs = nmo/sizeof(qFIS_MF_t);
-        f->andMethod = &qFIS_Min;
-        f->orMethod = &qFIS_Max;
-        f->implication = &qFIS_Min;
-        f->aggregation = &qFIS_Max;
+        f->and = &qFIS_Min;
+        f->or = &qFIS_Max;
+        f->implicate = &qFIS_Min;
+        f->aggregate = &qFIS_Max;
         f->mUnion = &qFIS_Max;
         f->input = inputs;
         f->output = outputs;
@@ -171,7 +186,7 @@ int qFIS_SetMF( qFIS_MF_t *m,
         m[ mf_tag ].shape = fShape[ shape ];
         m[ mf_tag ].index = (size_t)io_tag;
         m[ mf_tag ].points = cp;
-        m[ mf_tag ].fuzzVal = 0.0f;
+        m[ mf_tag ].fx = 0.0f;
         retVal = 1;
     }
     return retVal;
@@ -197,116 +212,147 @@ static float qFIS_ParseFuzzValue( qFIS_MF_t *mfIO,
         index = -index;
     }
     /*cstat -CERT-INT32-C_a*/
-    y = qFIS_Sat( mfIO[ index - 1 ].fuzzVal );
+    y = qFIS_Sat( mfIO[ index - 1 ].fx );
     /*cstat +CERT-INT32-C_a*/
     y = ( 0u != neg )? ( 1.0f - y ) : y ;
     return y;
 }
 /*============================================================================*/
+static qFIS_FuzzyOperator_t qFIS_GetFuzzOperator( qFIS_t *f )
+{
+    qFIS_FuzzyOperator_t operator;
+
+    switch ( f->lastConnector ) {
+        case _QFIS_AND:
+            operator = f->and;
+            break;
+        case _QFIS_OR:
+            operator = f->or;
+            break;
+        default: 
+            operator = &qFIS_Sum;
+            break;
+    }
+    return operator;
+}
+/*============================================================================*/
+static size_t qFIS_InferenceAntecedent( struct _qFIS_s *f,
+                                     const qFIS_Rules_t * const r,
+                                     size_t i )
+{
+    int16_t inIndex, MFInIndex, connector;
+    qFIS_FuzzyOperator_t operator;
+    /*cstat -CERT-INT30-C_a*/
+    inIndex = r[ i ];
+    MFInIndex = r[ i + 1u ];
+    connector = r[ i + 2u ];
+    /*cstat -CERT-INT30-C_a*/
+    operator = qFIS_GetFuzzOperator( f );
+    f->rStrength = operator( f->rStrength, qFIS_ParseFuzzValue( f->inMF, MFInIndex ) );
+
+    if ( ( inIndex < 0 ) || ( (size_t)inIndex > f->nInputs ) ) {
+        i = QFIS_INFERENCE_ERROR;
+    }
+    else {
+        if ( ( _QFIS_AND == connector ) || ( _QFIS_OR == connector ) ) {
+            f->lastConnector = connector;
+            f->inferenceState = &qFIS_InferenceAntecedent;
+            i += 2u;
+        }
+        else if ( _QFIS_THEN == connector ) {
+            f->inferenceState = &qFIS_InferenceConsequent;
+            i += 2u;
+        }
+        else {
+            i = QFIS_INFERENCE_ERROR;
+        }
+    }
+    
+    return i;
+}
+/*============================================================================*/
+static size_t qFIS_InferenceConsequent( struct _qFIS_s *f,
+                                        const qFIS_Rules_t * const r,
+                                        size_t i )
+{
+    int16_t outIndex, MFOutIndex, connector;
+    size_t ni; 
+    float zi;
+
+    outIndex = r[ i ];
+    MFOutIndex = r[ i + 1u ] - 1;
+    connector = ( f->nOutputs > 1u )? r[ i + 2u ] : -1;
+    i += 2u;
+
+    switch ( f->type ) {
+        case Mamdani:
+            f->outMF[ MFOutIndex ].fx = f->aggregate( f->outMF[ MFOutIndex ].fx, f->rStrength );
+            break;
+        case Sugeno:
+            ni = ( &qFIS_Constant == f->outMF[ MFOutIndex ].shape )? 0u : f->nInputs;
+            zi = qFIS_SugenoMF( f->input, f->outMF[ MFOutIndex ].points, ni );
+            f->output[ outIndex ].up += zi*f->rStrength;
+            f->output[ outIndex ].lo += f->rStrength; 
+            break;
+        default:
+            break;
+    }
+    
+    if ( _QFIS_AND != connector ) {
+        f->inferenceState = &qFIS_InferenceAntecedent;
+        f->lastConnector = -1;
+        f->rStrength = 0.0f;
+        f->ruleCount++;
+        i--;
+    }
+
+    return i;
+}
+/*============================================================================*/
+static void qFIS_InferenceInit( qFIS_t *f )
+{
+    f->inferenceState = &qFIS_InferenceAntecedent;
+    f->rStrength = 0.0f;
+    f->lastConnector = -1;
+    f->ruleCount = 0;
+
+    if ( Sugeno == f->type ) {
+        size_t j;
+        for( j = 0 ; j < f->nOutputs ; ++j ) {
+            f->output[ j ].lo = 0.0f;
+            f->output[ j ].up = 0.0f;
+        }
+    }
+}
+/*============================================================================*/
 int qFIS_Inference( qFIS_t *f,
                     const qFIS_Rules_t * const r )
 {
-    size_t i = 1u;
-    qFIS_Rules_t lastConnector = -1;
-    float ruleStrength = 0.0f;
-    int16_t inputIndex, outputIndex, MFInputIndex, MFOutputIndex, connector;
     int retVal = 0;
-    int rule_count = 0;
-    enum rState_Def { 
-        ANTECEDENT_IN = 0,
-        CONSEQUENT_OUT = 2
-    } ruleState = ANTECEDENT_IN;
-
+    
     if ( ( NULL != f ) && ( NULL != r ) ) {
-
-        if ( Sugeno == f->type ) {
-            size_t j;
-            for( j = 0 ; j < f->nOutputs ; ++j ) {
-                f->output[ j ].lo = 0.0f;
-                f->output[ j ].up = 0.0f;
-            }
-        }
+        size_t i = 0u;
 
         if ( QFIS_RULES_BEGIN == r[ 0 ] ) {
-            /*cstat -MISRAC2012-Rule-14.2*/
-            for ( i = 1u ; _QFIS_RULES_END != r[ i ] ; ++i ) {
-                if ( ANTECEDENT_IN == ruleState) {
-                    inputIndex = r[ i ];
-                    MFInputIndex = r[ i + 1u ];
-                    connector = r[ i + 2u ];
-                    switch ( lastConnector ) {
-                        case _QFIS_AND:
-                            ruleStrength = f->andMethod( ruleStrength, qFIS_ParseFuzzValue( f->inMF, MFInputIndex ) );
-                            break;
-                        case _QFIS_OR:
-                            ruleStrength = f->orMethod( ruleStrength, qFIS_ParseFuzzValue( f->inMF, MFInputIndex ) );
-                            break;
-                        case -1: 
-                            ruleStrength = qFIS_ParseFuzzValue( f->inMF, MFInputIndex );
-                            break;
-                        default:
-                            break;
-                    }
+            qFIS_InferenceInit( f );
+            i = 1u;
 
-                    if ( ( inputIndex < 0 ) || ( (size_t)inputIndex > f->nInputs ) ) {
-                        break;
-                    }
-
-                    if ( ( _QFIS_AND == connector ) || ( _QFIS_OR == connector ) ) {
-                        lastConnector = connector;
-                        ruleState = ANTECEDENT_IN;
-                        i += 2u;
-                        continue;
-                    }
-                    else if ( _QFIS_THEN == connector ) {
-                        ruleState = CONSEQUENT_OUT;
-                        i += 2u;
-                        continue;
-                    }
-                    else {
-                        break;
-                    }
-                }
-                else if ( CONSEQUENT_OUT == ruleState ) {
-                    size_t ni; 
-                    float zi;
-                    outputIndex = r[ i ];
-                    MFOutputIndex = r[ i + 1u ] - 1;
-                    connector = ( f->nOutputs > 1u )? r[ i + 2u ] : -1;
-                    i += 2u;
-                    switch ( f->type ) {
-                        case Mamdani:
-                            f->outMF[ MFOutputIndex ].fuzzVal = f->aggregation( f->outMF[ MFOutputIndex ].fuzzVal, ruleStrength );
-                            break;
-                        case Sugeno:
-                            ni = ( &qFIS_Constant == f->outMF[ MFOutputIndex ].shape )? 0u : f->nInputs;
-                            zi = qFIS_SugenoMF( f->input, f->outMF[ MFOutputIndex ].points, ni );
-                            f->output[ outputIndex ].up += zi*ruleStrength;
-                            f->output[ outputIndex ].lo += ruleStrength; 
-                            break;
-                        default:
-                            break;
-                    }
-                    if ( _QFIS_AND != connector ) {
-                        ruleState = ANTECEDENT_IN;
-                        lastConnector = -1;
-                        ruleStrength = 0.0f;
-                        rule_count++;
-                        i--;
-                    }
-                }
-                else {
+            while( _QFIS_RULES_END != r[ i ] ) {
+                i = f->inferenceState( f, r, i );
+                if ( QFIS_INFERENCE_ERROR == i ) {
                     break;
                 }
+                ++i;
             }
-            /*cstat +MISRAC2012-Rule-14.2*/
         }
-        retVal = ( _QFIS_RULES_END == r[ i ] )? rule_count : 0;
+
+        retVal = ( _QFIS_RULES_END == r[ i ] )? f->ruleCount : 0;
     }
+
     return retVal;
 }
 /*============================================================================*/
-static int qFIS_MamdaniDefuzz( qFIS_t *f )
+static int qFIS_MamdaniDeFuzz( qFIS_t *f )
 {
     size_t i, j;
     float x, z, fx, int_Fx, int_xFx, res;
@@ -329,7 +375,7 @@ static int qFIS_MamdaniDefuzz( qFIS_t *f )
             for ( j = 0 ; j < f->nMFOutputs ; ++j ) {
                 if ( f->outMF[ j ].index == (size_t)tag ) {
                     z = f->outMF[ j ].shape( x , f->outMF[ j ].points );
-                    fx = f->mUnion( fx, f->implication( z, f->outMF[ j ].fuzzVal ) );
+                    fx = f->mUnion( fx, f->implicate( z, f->outMF[ j ].fx ) );
                 }
             }
             int_xFx += x*fx;
@@ -343,7 +389,7 @@ static int qFIS_MamdaniDefuzz( qFIS_t *f )
     return 1;
 }
 /*============================================================================*/
-static int qFIS_SugenoDefuzz( qFIS_t *f )
+static int qFIS_SugenoDeFuzz( qFIS_t *f )
 {
     size_t j;
     for( j = 0 ; j < f->nOutputs ; ++j ) {
@@ -352,13 +398,13 @@ static int qFIS_SugenoDefuzz( qFIS_t *f )
     return 1;
 }
 /*============================================================================*/
-int qFIS_Defuzzify( qFIS_t *f )
+int qFIS_DeFuzzify( qFIS_t *f )
 {
     int retValue = 0;
 
     if ( NULL != f ) {
-        retValue = ( Mamdani == f->type )? qFIS_MamdaniDefuzz( f ) : 
-                                           qFIS_SugenoDefuzz( f );
+        retValue = ( Mamdani == f->type )? qFIS_MamdaniDeFuzz( f ) : 
+                                           qFIS_SugenoDeFuzz( f );
     }
     return retValue;
 }
@@ -370,7 +416,7 @@ static void qFIS_EvalInputMFs( qFIS_t *f )
 
     for ( i = 0 ; i < f->nMFInputs ; i++ ) {
         mf = &f->inMF[ i ];
-        mf->fuzzVal = mf->shape( f->input[ mf->index ].value, mf->points );
+        mf->fx = mf->shape( f->input[ mf->index ].value, mf->points );
     }
 }
 /*============================================================================*/

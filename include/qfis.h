@@ -41,7 +41,7 @@ extern "C" {
     } qFIS_MF_Name_t;
 
     /**
-    * @brief An enum with all the allowed supported operators
+    * @brief An enum with the supported fuzzy operators
     */
     typedef enum {
         qFIS_MIN = 0,   /*!< Minimal value*/
@@ -87,18 +87,22 @@ extern "C" {
     */
     typedef struct
     {
-        size_t index;
         float (*shape)( const float x, const float * const points );
         const float *points;
-        float fuzzVal;
+        float fx;
+        size_t index;
     } qFIS_MF_t;
+
+
+    typedef int16_t qFIS_Rules_t;
+    typedef int qFIS_Tag_t;
 
     /**
     * @brief A FIS(Fuzzy Inference System) object
     * @details The instance should be initialized using the qFIS_Setup() API.
     * @note Do not access any member of this structure directly.
     */
-    typedef struct
+    typedef struct _qFIS_s
     {
         qFIS_IO_t *input, *output;
         qFIS_MF_t *inMF, *outMF;
@@ -106,25 +110,25 @@ extern "C" {
         size_t nInputs, nOutputs;
         size_t nMFInputs, nMFOutputs;
         size_t evalPoints;
-        float (*andMethod)( const float a, const float b );
-        float (*orMethod)( const float a, const float b );
-        float (*implication)( const float a, const float b );
-        float (*aggregation)( const float a, const float b );
+        float (*and)( const float a, const float b );
+        float (*or)( const float a, const float b );
+        float (*implicate)( const float a, const float b );
+        float (*aggregate)( const float a, const float b );
         float (*mUnion)( const float a, const float b );
         qFIS_Type_t type;
+        float rStrength;
+        qFIS_Rules_t lastConnector;
+        size_t (*inferenceState)( struct _qFIS_s *f, const qFIS_Rules_t * const r, size_t i );
+        int ruleCount;
     } qFIS_t;
 
-    typedef int16_t qFIS_Rules_t;
-    typedef int qFIS_Tag_t;
-
-    
     #define _QFIS_RULES_END         ( INT16_MIN + 1 )
     #define _QFIS_AND               ( INT16_MIN + 2 )
     #define _QFIS_OR                ( INT16_MIN + 3 )
     #define _QFIS_THEN              ( INT16_MIN + 4 )
     #define _QFIS_RULE_END          ( INT16_MIN + 5 )
 
-    /*Rules constructs*/
+    /*Rules build keywords*/
     #define QFIS_RULES_BEGIN        ( INT16_MIN )
     #define QFIS_RULES_END          ,_QFIS_RULES_END
     #define IF                      ,
@@ -196,8 +200,8 @@ extern "C" {
     * @param[in] m An array with the required membership functions as MF objects.
     * @param[in] io_tag The I/O tag related with this membership function
     * @param[in] mf_tag The user-defined tag for this membership function
-    * @param[in] shape The wanted shape for this membership function
-    * @param[in] cp Points of the membership function.
+    * @param[in] shape The wanted shape/form for this membership function
+    * @param[in] cp Points of coefficients of the membership function.
     * @return 1 on success, otherwise return 0.
     */
     int qFIS_SetMF( qFIS_MF_t *m,
@@ -224,12 +228,13 @@ extern "C" {
                         const qFIS_Rules_t * const r );
 
     /**
-    * @brief Perform the de-fuzzification operation to compute the crisp outputs.
-    * @note This API uses the Centroid method.
+    * @brief Perform the de-Fuzzification operation to compute the crisp outputs.
+    * @note This API uses the Centroid method on Mamdani-type FIS and 
+    * weight-average on Sugeno-type FIS.
     * @param[in] f A pointer to the Fuzzy Inference System instance.
     * @return 1 on success, otherwise return 0.
     */
-    int qFIS_Defuzzify( qFIS_t *f );
+    int qFIS_DeFuzzify( qFIS_t *f );
 
 #ifdef __cplusplus
 }
