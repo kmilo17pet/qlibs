@@ -48,6 +48,12 @@
   - Discrete
 </details>
 
+<details><summary>qFIS : Fuzzy Inference System</summary>
+    
+  - Mamdani
+  - Sugeno
+</details>
+
 <details><summary>qCRC : Generic Cyclic Redundancy Check (CRC) calculator</summary>
     
   - CRC8
@@ -55,7 +61,6 @@
   - CRC32
 </details>
 
-- qFIS : Fuzzy Inference System ( Mamdani & Sugeno supported )
 - qBitField: A bit-field manipulation library
 - qTDL : Tapped Delay Line in O(1). 
 - qRMS : Recursive Root Mean Square(RMS) calculation of a signal.

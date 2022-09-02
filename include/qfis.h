@@ -1,7 +1,7 @@
 /*!
  * @file qfis.h
  * @author J. Camilo Gomez C.
- * @version 1.01
+ * @version 1.03
  * @note This file is part of the qLibs distribution.
  * @brief Fuzzy Inference System: only Mamdani supported (for now)
  **/

@@ -248,7 +248,8 @@ static size_t qFIS_InferenceAntecedent( struct _qFIS_s *f,
     connector = r[ i + 2u ];
     /*cstat -CERT-INT30-C_a*/
     operator = qFIS_GetFuzzOperator( f );
-    f->rStrength = operator( f->rStrength, qFIS_ParseFuzzValue( f->inMF, MFInIndex ) );
+    f->rStrength = operator( f->rStrength, 
+                             qFIS_ParseFuzzValue( f->inMF, MFInIndex ) );
 
     if ( ( inIndex < 0 ) || ( (size_t)inIndex > f->nInputs ) ) {
         i = QFIS_INFERENCE_ERROR;
