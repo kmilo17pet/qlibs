@@ -75,8 +75,8 @@ int qFIS_SetParameter( qFIS_t *f,
 {
     int retVal = 0;
     typedef float (*methods_fcn)( const float a, const float b );
-    static const methods_fcn method[ 5 ] = { &qFIS_Min, &qFIS_Prod, &qFIS_Max, 
-                                            &qFIS_ProbOR, &qFIS_Sum };
+    static const methods_fcn method[ 5 ] = { &qFIS_Min, &qFIS_Prod, &qFIS_Max,
+                                             &qFIS_ProbOR, &qFIS_Sum };
 
     if ( NULL != f ) {
         switch( p ) {
@@ -94,18 +94,18 @@ int qFIS_SetParameter( qFIS_t *f,
                 break;
             case qFIS_AND:
                 if ( x <= (int)qFIS_PROD ) {
-                    f->and = method[ x ];
+                    f->andOp = method[ x ];
                     retVal = 1;
                 }
                 break;
             case qFIS_OR:
                 if ( ( x >= (int)qFIS_MAX ) && ( x <= (int)qFIS_PROBOR ) ) {
-                    f->or = method[ x ];
+                    f->orOp = method[ x ];
                     retVal = 1;
                 }
                 break;
             case qFIS_EvalPoints:
-                if ( x >= 20 ) { /*at least 20 point or more are required*/
+                if ( x >= 20 ) {
                     f->evalPoints = (size_t)x;
                     retVal = 1;
                 }
@@ -118,7 +118,7 @@ int qFIS_SetParameter( qFIS_t *f,
 }
 /*============================================================================*/
 int qFIS_Setup( qFIS_t *f,
-                qFIS_Type_t t, 
+                qFIS_Type_t t,
                 qFIS_IO_t * const inputs,
                 size_t ni,
                 qFIS_IO_t * const outputs,
@@ -137,8 +137,8 @@ int qFIS_Setup( qFIS_t *f,
         f->nOutputs = no/sizeof(qFIS_IO_t);
         f->nMFInputs = nmi/sizeof(qFIS_MF_t);
         f->nMFOutputs = nmo/sizeof(qFIS_MF_t);
-        f->and = &qFIS_Min;
-        f->or = &qFIS_Max;
+        f->andOp = &qFIS_Min;
+        f->orOp = &qFIS_Max;
         f->implicate = &qFIS_Min;
         f->aggregate = &qFIS_Max;
         f->mUnion = &qFIS_Max;
@@ -203,7 +203,7 @@ int qFIS_Fuzzify( qFIS_t *f )
     return retVal;
 }
 /*============================================================================*/
-static float qFIS_ParseFuzzValue( qFIS_MF_t *mfIO, 
+static float qFIS_ParseFuzzValue( qFIS_MF_t *mfIO,
                                   qFIS_Rules_t index )
 {
     uint8_t neg = (uint8_t)( index < 0 );
@@ -224,10 +224,10 @@ static qFIS_FuzzyOperator_t qFIS_GetFuzzOperator( qFIS_t *f )
 
     switch ( f->lastConnector ) {
         case _QFIS_AND:
-            oper = f->and;
+            oper = f->andOp;
             break;
         case _QFIS_OR:
-            oper = f->or;
+            oper = f->orOp;
             break;
         default: 
             oper = &qFIS_Sum;
@@ -248,8 +248,8 @@ static size_t qFIS_InferenceAntecedent( struct _qFIS_s *f,
     connector = r[ i + 2u ];
     /*cstat -CERT-INT30-C_a*/
     oper = qFIS_GetFuzzOperator( f );
-    f->rStrength = oper( f->rStrength, 
-                             qFIS_ParseFuzzValue( f->inMF, MFInIndex ) );
+    f->rStrength = oper( f->rStrength,
+                         qFIS_ParseFuzzValue( f->inMF, MFInIndex ) );
 
     if ( ( inIndex < 0 ) || ( (size_t)inIndex > f->nInputs ) ) {
         i = QFIS_INFERENCE_ERROR;
@@ -277,7 +277,7 @@ static size_t qFIS_InferenceConsequent( struct _qFIS_s *f,
                                         size_t i )
 {
     int16_t outIndex, MFOutIndex, connector;
-    size_t ni; 
+    size_t ni;
     float zi;
 
     outIndex = r[ i ];
@@ -293,7 +293,7 @@ static size_t qFIS_InferenceConsequent( struct _qFIS_s *f,
             ni = ( &qFIS_Constant == f->outMF[ MFOutIndex ].shape )? 0u : f->nInputs;
             zi = qFIS_SugenoMF( f->input, f->outMF[ MFOutIndex ].points, ni );
             f->output[ outIndex ].up += zi*f->rStrength;
-            f->output[ outIndex ].lo += f->rStrength; 
+            f->output[ outIndex ].lo += f->rStrength;
             break;
         default:
             break;
@@ -330,7 +330,7 @@ int qFIS_Inference( qFIS_t *f,
                     const qFIS_Rules_t * const r )
 {
     int retVal = 0;
-    
+
     if ( ( NULL != f ) && ( NULL != r ) ) {
         size_t i = 0u;
 
@@ -358,14 +358,14 @@ static int qFIS_MamdaniDeFuzz( qFIS_t *f )
     size_t i, j;
     float x, z, fx, int_Fx, int_xFx, res;
     int tag;
-    
+
     for ( tag = 0 ; (size_t)tag < f->nOutputs ; ++tag ) {
         int_Fx = 0.0f;
-        int_xFx = 0.0f; 
+        int_xFx = 0.0f;
         /*cstat -CERT-FLP36-C*/
         res = ( ( f->output[ tag ].up - f->output[ tag ].lo )/(float)f->evalPoints );
         /*cstat +CERT-FLP36-C*/
-        for ( i = 0 ; i < ( f->evalPoints + 1u ) ; ++i ) {
+        for ( i = 0u ; i < ( f->evalPoints + 1u ) ; ++i ) {
             /*cstat -CERT-FLP36-C*/
             x = f->output[ tag ].lo + ( (float)i*res );
             /*cstat +CERT-FLP36-C*/
@@ -373,7 +373,7 @@ static int qFIS_MamdaniDeFuzz( qFIS_t *f )
                 x = f->output[tag].up;
             }
             fx = 0.0f;
-            for ( j = 0 ; j < f->nMFOutputs ; ++j ) {
+            for ( j = 0u ; j < f->nMFOutputs ; ++j ) {
                 if ( f->outMF[ j ].index == (size_t)tag ) {
                     z = f->outMF[ j ].shape( x , f->outMF[ j ].points );
                     fx = f->mUnion( fx, f->implicate( z, f->outMF[ j ].fx ) );
@@ -404,7 +404,7 @@ int qFIS_DeFuzzify( qFIS_t *f )
     int retValue = 0;
 
     if ( NULL != f ) {
-        retValue = ( Mamdani == f->type )? qFIS_MamdaniDeFuzz( f ) : 
+        retValue = ( Mamdani == f->type )? qFIS_MamdaniDeFuzz( f ) :
                                            qFIS_SugenoDeFuzz( f );
     }
     return retValue;
@@ -424,7 +424,7 @@ static void qFIS_EvalInputMFs( qFIS_t *f )
 static void qFIS_TruncateInputs( qFIS_t *f )
 {
     size_t i;
-    for( i = 0 ; i < f->nInputs ; i++ ) { 
+    for( i = 0 ; i < f->nInputs ; i++ ) {
         if ( f->input[ i ].value > f->input[ i ].up ) {
             f->input[ i ].value = f->input[ i ].up;
         }
@@ -539,7 +539,7 @@ static float qFIS_SMF( const float x,
 static float qFIS_ZMF( const float x,
                        const float * const points )
 {
-    float a, b, y;
+    float a, b, tmp, y;
     a = points[ 0 ];
     b = points[ 1 ];
     if ( x <= a ) {
@@ -549,11 +549,11 @@ static float qFIS_ZMF( const float x,
         y = 0.0f;
     }
     else if ( ( x >= a ) && ( x <= ( ( a + b )*0.5f ) ) ) {
-        float tmp = ( x - a )/( b - a );
+        tmp = ( x - a )/( b - a );
         y = 1.0f - ( 2.0f*tmp*tmp );
     }
     else if ( ( x <= b ) && ( x >= ( ( a + b )*0.5f ) ) ) {
-        float tmp = ( x - b )/( b - a );
+        tmp = ( x - b )/( b - a );
         y = 2.0f*tmp*tmp;
     }
     else {
@@ -632,7 +632,9 @@ static float qFIS_Sat( float y )
     return y;
 }
 /*============================================================================*/
-static float qFIS_SugenoMF( qFIS_IO_t *x, const float *a, size_t ni )
+static float qFIS_SugenoMF( qFIS_IO_t *x,
+                            const float *a,
+                            size_t ni )
 {
     float px = 0.0f;
     if ( ni > 0u ) {

@@ -221,13 +221,13 @@ static int qSSmoother_Setup_MOR2( _qSSmoother_t * const f,
                                   const size_t wsize )
 {
     int retValue = 0;
-    float a = param[ 0 ];
+    float q = param[ 0 ];
 
-    if ( ( NULL != window ) && ( wsize > 0u ) && ( a > 0.0f ) && ( a < 1.0f ) ) {
+    if ( ( NULL != window ) && ( wsize > 0u ) && ( q > 0.0f ) && ( q < 1.0f ) ) {
         /*cstat -MISRAC2012-Rule-11.3 -CERT-EXP39-C_d -CERT-EXP36-C_a*/
         qSSmoother_MOR2_t * const s = (qSSmoother_MOR2_t* const)f;
         /*cstat +MISRAC2012-Rule-11.3 +CERT-EXP39-C_d +CERT-EXP36-C_a*/
-        s->alpha  = a;
+        s->alpha  = q;
         qTDL_Setup( &s->tdl, window, wsize, 0.0f );
         s->sum = 0.0f;
         s->m = 0.0f;

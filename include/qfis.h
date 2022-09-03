@@ -1,9 +1,9 @@
 /*!
  * @file qfis.h
  * @author J. Camilo Gomez C.
- * @version 1.03
+ * @version 1.04
  * @note This file is part of the qLibs distribution.
- * @brief Fuzzy Inference System: only Mamdani supported (for now)
+ * @brief Fuzzy Inference System
  **/
 
 #ifndef QFIS_H
@@ -52,7 +52,7 @@ extern "C" {
     } qFIS_Operator_t;
 
     /**
-    * @brief An enum with all the allowed parameters that can be set on a FIS instance
+    * @brief An enum with the allowed parameters that can be set on a FIS instance
     */
     typedef enum {
         qFIS_Implication,   /*!< Only ::qFIS_MIN and qFIS_PROD supported*/
@@ -110,8 +110,8 @@ extern "C" {
         size_t nInputs, nOutputs;
         size_t nMFInputs, nMFOutputs;
         size_t evalPoints;
-        float (*and)( const float a, const float b );
-        float (*or)( const float a, const float b );
+        float (*andOp)( const float a, const float b );
+        float (*orOp)( const float a, const float b );
         float (*implicate)( const float a, const float b );
         float (*aggregate)( const float a, const float b );
         float (*mUnion)( const float a, const float b );
