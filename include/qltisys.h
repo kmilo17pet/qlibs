@@ -155,7 +155,7 @@ extern "C" {
     * @return 1 on success, otherwise return 0.
     */
     int qLTISys_SetIntegrationMethod( qLTISys_t * const sys,
-                                     qNumA_IntegrationMethod_t im );
+                                      qNumA_IntegrationMethod_t im );
 
 
 #ifdef __cplusplus
