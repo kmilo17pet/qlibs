@@ -237,8 +237,8 @@ static qFIS_FuzzyOperator_t qFIS_GetFuzzOperator( qFIS_t *f )
 }
 /*============================================================================*/
 static size_t qFIS_InferenceAntecedent( struct _qFIS_s *f,
-                                     const qFIS_Rules_t * const r,
-                                     size_t i )
+                                        const qFIS_Rules_t * const r,
+                                        size_t i )
 {
     int16_t inIndex, MFInIndex, connector;
     qFIS_FuzzyOperator_t oper;
@@ -319,7 +319,7 @@ static void qFIS_InferenceInit( qFIS_t *f )
 
     if ( Sugeno == f->type ) {
         size_t j;
-        for( j = 0 ; j < f->nOutputs ; ++j ) {
+        for ( j = 0 ; j < f->nOutputs ; ++j ) {
             f->output[ j ].lo = 0.0f;
             f->output[ j ].up = 0.0f;
         }
@@ -338,7 +338,7 @@ int qFIS_Inference( qFIS_t *f,
             qFIS_InferenceInit( f );
             i = 1u;
 
-            while( _QFIS_RULES_END != r[ i ] ) {
+            while ( _QFIS_RULES_END != r[ i ] ) {
                 i = f->inferenceState( f, r, i );
                 if ( QFIS_INFERENCE_ERROR == i ) {
                     break;
@@ -393,7 +393,7 @@ static int qFIS_MamdaniDeFuzz( qFIS_t *f )
 static int qFIS_SugenoDeFuzz( qFIS_t *f )
 {
     size_t j;
-    for( j = 0 ; j < f->nOutputs ; ++j ) {
+    for ( j = 0 ; j < f->nOutputs ; ++j ) {
         f->output[ j ].value = f->output[ j ].up/f->output[ j ].lo;
     }
     return 1;
@@ -424,7 +424,7 @@ static void qFIS_EvalInputMFs( qFIS_t *f )
 static void qFIS_TruncateInputs( qFIS_t *f )
 {
     size_t i;
-    for( i = 0 ; i < f->nInputs ; i++ ) {
+    for ( i = 0 ; i < f->nInputs ; i++ ) {
         if ( f->input[ i ].value > f->input[ i ].up ) {
             f->input[ i ].value = f->input[ i ].up;
         }
@@ -639,7 +639,7 @@ static float qFIS_SugenoMF( qFIS_IO_t *x,
     float px = 0.0f;
     if ( ni > 0u ) {
         size_t i;
-        for( i = 0u ; i < ni ; ++i ) {
+        for ( i = 0u ; i < ni ; ++i ) {
             px += x[ i ].value*a[ i ];
         }
         px += a[ i ];
