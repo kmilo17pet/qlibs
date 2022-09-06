@@ -294,9 +294,11 @@ qFP16_t qFP16_Mod( const qFP16_t x,
                    const qFP16_t y )
 {
     qFP16_t retValue = 0;
+
     if ( 0 != y ) {
       retValue = x % y;
     }
+
     return retValue;
 }
 /*============================================================================*/
@@ -304,7 +306,7 @@ qFP16_t qFP16_Sqrt( qFP16_t x )
 {
     qFP16_t retValue = QFP16_OVERFLOW;
 
-    if( x > 0 ) {
+    if ( x > 0 ) {
         uint32_t bit;
         uint8_t n;
 
@@ -388,6 +390,7 @@ qFP16_t qFP16_Exp( qFP16_t x )
             retValue = qFP16_Div( QFP16_1, retValue );
         }
     }
+
     return retValue;
 }
 /*============================================================================*/

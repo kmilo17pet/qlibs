@@ -209,6 +209,7 @@ float qPID_Control( qPID_controller_t * const c,
             qPID_AdaptGains( c, u, y );
         }
     }
+
     return u;
 }
 /*============================================================================*/

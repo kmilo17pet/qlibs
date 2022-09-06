@@ -17,7 +17,6 @@ extern "C" {
     #include <float.h>
     #include <stdint.h>
     #include <limits.h>
-    #include <math.h>
 
     /**
     * @brief An enum with all the possible values to specify a membership 
@@ -146,9 +145,9 @@ extern "C" {
     * @param[in] x The value of the parameter to set.
     * @return 1 on success, otherwise return 0.
     */
-    int qFIS_SetParameter( qFIS_t *f,
-                           qFIS_Parameter_t p,
-                           int x );
+    int qFIS_SetParameter( qFIS_t * const f,
+                           const qFIS_Parameter_t p,
+                           const int x );
 
     /**
     * @brief Setup and initialize the FIS instance.
@@ -170,16 +169,16 @@ extern "C" {
     * operator.
     * @return 1 on success, otherwise return 0.
     */
-    int qFIS_Setup( qFIS_t *f,
-                    qFIS_Type_t t, 
+    int qFIS_Setup( qFIS_t * const f,
+                    const qFIS_Type_t t, 
                     qFIS_IO_t * const inputs,
-                    size_t ni,
+                    const size_t ni,
                     qFIS_IO_t * const outputs,
-                    size_t no,
-                    qFIS_MF_t *mf_inputs,
-                    size_t nmi,
-                    qFIS_MF_t *mf_outputs,
-                    size_t nmo );
+                    const size_t no,
+                    qFIS_MF_t * const mf_inputs,
+                    const size_t nmi,
+                    qFIS_MF_t * const mf_outputs,
+                    const size_t nmo );
 
     /**
     * @brief Set the tag and limits for the specified FIS IO
@@ -190,10 +189,10 @@ extern "C" {
     * @param[in] min Max allowed value for this IO
     * @return 1 on success, otherwise return 0.
     */
-    int qFIS_SetIO( qFIS_IO_t *v,
-                    qFIS_Tag_t tag,
-                    float min,
-                    float max );
+    int qFIS_SetIO( qFIS_IO_t * const v,
+                    const qFIS_Tag_t tag,
+                    const float min,
+                    const float max );
 
     /**
     * @brief Set the IO tag and points for the specified Membership function
@@ -204,10 +203,10 @@ extern "C" {
     * @param[in] cp Points of coefficients of the membership function.
     * @return 1 on success, otherwise return 0.
     */
-    int qFIS_SetMF( qFIS_MF_t *m,
-                    qFIS_Tag_t io_tag,
-                    qFIS_Tag_t mf_tag,
-                    qFIS_MF_Name_t shape,
+    int qFIS_SetMF( qFIS_MF_t * const m,
+                    const qFIS_Tag_t io_tag,
+                    const qFIS_Tag_t mf_tag,
+                    const qFIS_MF_Name_t shape,
                     const float *cp );
 
     /**
@@ -216,7 +215,7 @@ extern "C" {
     * @param[in] f A pointer to the Fuzzy Inference System instance.
     * @return 1 on success, otherwise return 0.
     */
-    int qFIS_Fuzzify( qFIS_t *f );
+    int qFIS_Fuzzify( qFIS_t * const f );
 
     /**
     * @brief Perform the inference process on the requested FIS object
@@ -224,7 +223,7 @@ extern "C" {
     * @param[in] r The rules set.
     * @return 1 on success, otherwise return 0.
     */
-    int qFIS_Inference( qFIS_t *f,
+    int qFIS_Inference( qFIS_t * const f,
                         const qFIS_Rules_t * const r );
 
     /**
@@ -234,7 +233,7 @@ extern "C" {
     * @param[in] f A pointer to the Fuzzy Inference System instance.
     * @return 1 on success, otherwise return 0.
     */
-    int qFIS_DeFuzzify( qFIS_t *f );
+    int qFIS_DeFuzzify( qFIS_t * const f );
 
 #ifdef __cplusplus
 }
