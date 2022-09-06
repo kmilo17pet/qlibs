@@ -438,7 +438,6 @@ static void qFIS_EvalInputMFs( qFIS_t * const f )
 static void qFIS_TruncateInputs( qFIS_t *f )
 {
     size_t i;
-
     for ( i = 0 ; i < f->nInputs ; ++i ) {
         if ( f->input[ i ].value > f->input[ i ].up ) {
             f->input[ i ].value = f->input[ i ].up;
