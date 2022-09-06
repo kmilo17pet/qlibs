@@ -26,6 +26,7 @@ float qNumA_IntegralRe( qNumA_state_t *x,
 {
     x->x[ 0 ] += s*dt;
     qNumA_Update( x );
+
     return x->x[ 0 ];
 }
 /*============================================================================*/
@@ -35,6 +36,7 @@ float qNumA_IntegralTr( qNumA_state_t *x,
 {
     x->x[ 0 ] += 0.5f*( s + x->x[ 1 ] )*dt;
     qNumA_Update( x );
+
     return x->x[ 0 ];
 }
 /*============================================================================*/
@@ -44,6 +46,7 @@ float qNumA_IntegralSi( qNumA_state_t *x,
 {
     x->x[ 0 ] += ( 1.0f/6.0f )*( s + ( 4.0f*x->x[ 1 ] ) + x->x[ 2 ] )*dt;
     qNumA_Update( x );
+
     return x->x[ 0 ];
 }
 /*============================================================================*/
@@ -53,6 +56,7 @@ float qNumA_Derivative( qNumA_state_t *x,
 {
     x->x[ 0 ]= ( s - x->x[ 1 ] )/dt;
     qNumA_Update( x );
+
     return x->x[ 0 ];
 }
 /*============================================================================*/
