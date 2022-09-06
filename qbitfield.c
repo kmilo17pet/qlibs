@@ -42,6 +42,7 @@ static uint32_t qBitField_BitGet( const qBitField_t * const b,
                                   const size_t index )
 {
     const size_t slot = qBitField_BitSlot( index );
+
     return  ( b->field[ slot ] >> ( index % qBitField_LBit ) ) & 1uL;
 }
 /*============================================================================*/
@@ -49,6 +50,7 @@ static void qBitField_BitSet( qBitField_t * const b,
                               size_t index )
 {
     const size_t slot = qBitField_BitSlot( index );
+
     b->field[ slot ] |= qBitField_Mask( index );
 }
 /*============================================================================*/
@@ -56,6 +58,7 @@ static void qBitField_BitClear( qBitField_t * const b,
                                 const size_t index )
 {
     const size_t slot = qBitField_BitSlot( index );
+
     b->field[ slot ] &= ~qBitField_Mask( index );
 }
 /*============================================================================*/
@@ -63,6 +66,7 @@ static void qBitField_BitToggle( qBitField_t * const b,
                                  const size_t index )
 {
     const size_t slot = qBitField_BitSlot( index );
+
     b->field[ slot ] ^= qBitField_Mask( index );
 }
 /*============================================================================*/

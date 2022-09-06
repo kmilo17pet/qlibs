@@ -528,6 +528,7 @@ static float qSSmoother_Filter_GMWF( _qSSmoother_t *f,
         qSSmoother_WindowSet( s->w, s->wsize, x );
         f->init = 0u;
     }
+
     return qLTISys_DiscreteFIRUpdate( s->w, s->k, s->wsize, x );
 }
 /*============================================================================*/

@@ -168,7 +168,7 @@ int qLTISys_Setup( qLTISys_t * const sys,
         for ( i = 0 ; i < sys->nb ; ++i ) {
             num[ i ] /= a0;
         }
-        for ( i = 0; i < sys->na ; ++i ) {
+        for ( i = 0 ; i < sys->na ; ++i ) {
             den[ i ] /= a0;
         }
         sys->b0 = num[ 0 ];
