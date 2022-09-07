@@ -206,7 +206,7 @@ qFP16_t qFP16_Mul( const qFP16_t x,
     tmp = (uint32_t)adcb << 16;
     mulL = bd + tmp;
     if ( mulL < bd ) {
-        mulH++;
+        ++mulH;
     }
     a = ( mulH < 0 )? -1 : 0;
     if ( a == ( mulH >> 15 ) ) {
@@ -217,7 +217,7 @@ qFP16_t qFP16_Mul( const qFP16_t x,
             mulL -= (uint32_t)QFP16_1_DIV_2;
             mulL -= (uint32_t)mulH >> 31;
             if ( mulL > tmp2 ) {
-                mulH--;
+                --mulH;
             }
             retValue = (qFP16_t)( mulH << 16 ) | (qFP16_t)( mulL >> 16 );
             retValue += 1;
@@ -270,7 +270,7 @@ qFP16_t qFP16_Div( const qFP16_t x,
             }
             if ( 1u == fp->rounding ) {
                 if ( xRem >= xDiv ) {
-                    quotient++;
+                    ++quotient;
                 }
             }
 
@@ -344,7 +344,7 @@ qFP16_t qFP16_Sqrt( qFP16_t x )
         }
     }
     if ( ( 1u == fp->rounding ) && ( x > retValue ) ) {
-        retValue++;
+        ++retValue;
     }
 
     return (qFP16_t)retValue;
@@ -811,7 +811,7 @@ qFP16_t qFP16_AToFP( const char *s )
             else { /* Decode the decimal part */
                 iPart *= 10u;
                 iPart += digit;
-                count++;
+                ++count;
                 overflow = (int)( ( 0 == count ) || ( count > 5 ) ||
                                   ( iPart > 32768uL ) ||
                                   ( ( 0u == neg ) && ( iPart > 32767uL ) ) );

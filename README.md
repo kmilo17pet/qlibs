@@ -106,9 +106,9 @@ int main( int argc, char *argv[] )
 
 int main( int argc, char *argv[] ) 
 {
-    qFP16_t a = qFP16_Constant( 1.5 );
-    qFP16_t b = qFP16_Constant( 5.2 );
-    qFP16_t c = qFP16_Constant( 4.0 );
+    qFP16_t a = qFP16_Constant( 1.5f );
+    qFP16_t b = qFP16_Constant( 5.2f );
+    qFP16_t c = qFP16_Constant( 4.0f );
     qFP16_t tmp;
     char ans[ 10 ];
     
@@ -167,7 +167,7 @@ void xTaskSystemSimulate( void *arg )
 const TickType_t  Ts = 100; /*100mS sample time*/
 qLTISys_t system;
 float num[ NB ] = { 0.1f, 0.2f, 0.3f };
-float den[ NA+1 ] = { 1.0f, -0.85f, 0.02};
+float den[ NA+1 ] = { 1.0f, -0.85f, 0.02f };
 qLTISys_DiscreteX_t xk[ NB ] = { 0.0f, 0.0f, 0.0f };
 
 void xTaskSystemSimulate( void *arg )
@@ -274,7 +274,7 @@ int main( int argc, char *argv[] )
 ```
 
 
-### An Mamdani Fuzzy Inference System example 
+### A Mamdani Fuzzy Inference System example 
 FlexNav system taken from here: https://www.researchgate.net/publication/3955309_FLEXnav_fuzzy_logic_expert_rule-based_position_estimation_for_mobile_robots_on_rugged_terrain
 
 
@@ -319,19 +319,26 @@ int main( int argc, char *argv[] )
         QFIS_RULES_END
     };
 
+    /* Add inputs and outputs*/
+    qFIS_SetIO( flexnav_inputs, wt, 0.0f, 0.5f );
+    qFIS_SetIO( flexnav_inputs, dax, 0.0f, 5.0f );
+    qFIS_SetIO( flexnav_inputs, day, 0.0f, 5.0f );
+    qFIS_SetIO( flexnav_inputs, ae, 0.0f, 20.0f );
+    qFIS_SetIO( flexnav_outputs, phit, 0.0f, 1.0f );
+    qFIS_SetIO( flexnav_outputs, thetat, 0.0f, 1.0f );
     /* Add membership functions to the inputs */
-    const float wtSLOW_p[] = {-0.2f ,0.0f ,0.2f};
-    const float wtMED_p[] = {0.1f ,0.25f ,0.4f};
-    const float wtFAST_p[] = {0.3f ,0.5f ,0.7f};
-    const float daxLOW_p[] = {-1.0f ,0.0f ,2.0f};
-    const float daxMED_p[] = { 1.0f ,2.5f ,4.0f};
-    const float daxHIGH_p[] = {3.0f ,5.0f ,7.0f};
-    const float dayLOW_p[] = {-2.0f ,0.0f ,2.0f};
-    const float dayMED_p[] = { 1.0f ,2.5f ,4.0f};
-    const float dayHIGH_s[] = { 3.0f ,5.0f ,7.0f};
-    const float aeLOW_p[] = {-8.0f ,0.0 ,8.0f};
-    const float aeMED_p[] = { 5.0f ,10.0f ,15.0f};
-    const float aeHIGH_s[] = { 12.0f ,20.0f ,28.0};
+    const float wtSLOW_p[] = {-0.2f ,0.0f ,0.2f };
+    const float wtMED_p[] = { 0.1f ,0.25f ,0.4f };
+    const float wtFAST_p[] = { 0.3f ,0.5f ,0.7f };
+    const float daxLOW_p[] = {-1.0f ,0.0f ,2.0f };
+    const float daxMED_p[] = { 1.0f ,2.5f ,4.0f };
+    const float daxHIGH_p[] = { 3.0f ,5.0f ,7.0f };
+    const float dayLOW_p[] = {-2.0f ,0.0f ,2.0f };
+    const float dayMED_p[] = { 1.0f ,2.5f ,4.0f };
+    const float dayHIGH_s[] = { 3.0f ,5.0f ,7.0f };
+    const float aeLOW_p[] = {-8.0f ,0.0 ,8.0f };
+    const float aeMED_p[] = { 5.0f ,10.0f ,15.0f };
+    const float aeHIGH_s[] = { 12.0f ,20.0f ,28.0f };
     qFIS_SetMF( MFin, wt, wtSLOW, trimf, wtSLOW_p );
     qFIS_SetMF( MFin, wt, wtMED, trimf, wtMED_p );
     qFIS_SetMF( MFin, wt, wtFAST, trimf, wtFAST_p );
@@ -365,14 +372,14 @@ int main( int argc, char *argv[] )
                 MFout, sizeof(MFout) );
 
     /* Set the crisp inputs */
-    flexnav_inputs[ wt ].value = 0.0;
-    flexnav_inputs[ dax ].value = 3.0;
-    flexnav_inputs[ day ].value = 0.0;
-    flexnav_inputs[ ae ].value = 0.0;
+    flexnav_inputs[ wt ].value = 0.0f;
+    flexnav_inputs[ dax ].value = 3.0f;
+    flexnav_inputs[ day ].value = 0.0f;
+    flexnav_inputs[ ae ].value = 0.0f;
 
     qFIS_Fuzzify( &flexnav ); 
     qFIS_Inference( &flexnav, rules );
-    qFIS_Defuzzify( &flexnav );
+    qFIS_DeFuzzify( &flexnav );
     /* Get the crisp outputs */
     printf( "- flexnav_outputs[phit].value=%g\r\n"
             "- flexnav_outputs[thetat].value=%g\r\n", 

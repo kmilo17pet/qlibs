@@ -72,7 +72,7 @@ static void qFIS_InferenceInit( qFIS_t * const f );
 /*============================================================================*/
 int qFIS_SetParameter( qFIS_t * const f,
                        const qFIS_Parameter_t p,
-                       const int x )
+                       const qFIS_Operator_t x )
 {
     int retVal = 0;
     typedef float (*methods_fcn)( const float a, const float b );
@@ -82,32 +82,32 @@ int qFIS_SetParameter( qFIS_t * const f,
     if ( NULL != f ) {
         switch( p ) {
             case qFIS_Implication:
-                if ( x <= (int)qFIS_PROD ) {
+                if ( x <= qFIS_PROD ) {
                     f->implicate = method[ x ];
                     retVal = 1;
                 }
                 break;
             case qFIS_Aggregation:
-                if ( ( x >= (int)qFIS_MAX ) && ( x <= (int)qFIS_SUM ) ) {
+                if ( ( x >= qFIS_MAX ) && ( x <= qFIS_SUM ) ) {
                     f->aggregate = method[ x ];
                     retVal = 1;
                 }
                 break;
             case qFIS_AND:
-                if ( x <= (int)qFIS_PROD ) {
+                if ( x <= qFIS_PROD ) {
                     f->andOp = method[ x ];
                     retVal = 1;
                 }
                 break;
             case qFIS_OR:
-                if ( ( x >= (int)qFIS_MAX ) && ( x <= (int)qFIS_PROBOR ) ) {
+                if ( ( x >= qFIS_MAX ) && ( x <= qFIS_PROBOR ) ) {
                     f->orOp = method[ x ];
                     retVal = 1;
                 }
                 break;
             case qFIS_EvalPoints:
-                if ( x >= 20 ) {
-                    f->evalPoints = (size_t)x;
+                if ( (int)x >= 20 ) {
+                    f->nPoints = (size_t)x;
                     retVal = 1;
                 }
                 break;
@@ -132,23 +132,23 @@ int qFIS_Setup( qFIS_t * const f,
 {
     int retVal = 0;
   
-    if ( NULL != f ) {
+    if ( ( NULL != f ) && ( t <= Sugeno ) ) {
         f->type = t;
-        f->evalPoints = 100u;
         f->nInputs = ni/sizeof(qFIS_IO_t);
         f->nOutputs = no/sizeof(qFIS_IO_t);
         f->nMFInputs = nmi/sizeof(qFIS_MF_t);
         f->nMFOutputs = nmo/sizeof(qFIS_MF_t);
-        f->andOp = &qFIS_Min;
-        f->orOp = &qFIS_Max;
-        f->implicate = &qFIS_Min;
-        f->aggregate = &qFIS_Max;
-        f->mUnion = &qFIS_Max;
         f->input = inputs;
         f->output = outputs;
         f->inMF = mf_inputs;
         f->outMF = mf_outputs;
-        retVal = 1;
+        f->mUnion = &qFIS_Max;
+        retVal += qFIS_SetParameter( f, qFIS_EvalPoints, (qFIS_Operator_t)100 );
+        retVal += qFIS_SetParameter( f, qFIS_AND, qFIS_MIN );
+        retVal += qFIS_SetParameter( f, qFIS_OR, qFIS_MAX );
+        retVal += qFIS_SetParameter( f, qFIS_Implication, qFIS_MIN );
+        retVal += qFIS_SetParameter( f, qFIS_Aggregation, qFIS_MAX );
+        retVal = ( retVal == 5 )? 1 : 0;
     }
 
     return retVal;
@@ -297,10 +297,12 @@ static size_t qFIS_InferenceConsequent( struct _qFIS_s *f,
 
     switch ( f->type ) {
         case Mamdani:
-            f->outMF[ MFOutIndex ].fx = f->aggregate( f->outMF[ MFOutIndex ].fx, f->rStrength );
+            f->outMF[ MFOutIndex ].fx = f->aggregate( f->outMF[ MFOutIndex ].fx,
+                                                      f->rStrength );
             break;
         case Sugeno:
-            ni = ( &qFIS_Constant == f->outMF[ MFOutIndex ].shape )? 0u : f->nInputs;
+            ni = ( &qFIS_Constant == f->outMF[ MFOutIndex ].shape )? 0u :
+                                                                     f->nInputs;
             zi = qFIS_SugenoMF( f->input, f->outMF[ MFOutIndex ].points, ni );
             f->output[ outIndex ].up += zi*f->rStrength;
             f->output[ outIndex ].lo += f->rStrength;
@@ -308,12 +310,12 @@ static size_t qFIS_InferenceConsequent( struct _qFIS_s *f,
         default:
             break;
     }
-    
+
     if ( _QFIS_AND != connector ) {
         f->inferenceState = &qFIS_InferenceAntecedent;
         f->lastConnector = -1;
         f->rStrength = 0.0f;
-        f->ruleCount++;
+        ++f->ruleCount;
         i--;
     }
 
@@ -329,6 +331,7 @@ static void qFIS_InferenceInit( qFIS_t * const f )
 
     if ( Sugeno == f->type ) {
         size_t j;
+
         for ( j = 0 ; j < f->nOutputs ; ++j ) {
             f->output[ j ].lo = 0.0f;
             f->output[ j ].up = 0.0f;
@@ -373,9 +376,9 @@ static int qFIS_MamdaniDeFuzz( qFIS_t * const f )
         int_Fx = 0.0f;
         int_xFx = 0.0f;
         /*cstat -CERT-FLP36-C*/
-        res = ( ( f->output[ tag ].up - f->output[ tag ].lo )/(float)f->evalPoints );
+        res = ( ( f->output[ tag ].up - f->output[ tag ].lo )/(float)f->nPoints );
         /*cstat +CERT-FLP36-C*/
-        for ( i = 0u ; i < ( f->evalPoints + 1u ) ; ++i ) {
+        for ( i = 0u ; i < ( f->nPoints + 1u ) ; ++i ) {
             /*cstat -CERT-FLP36-C*/
             x = f->output[ tag ].lo + ( (float)i*res );
             /*cstat +CERT-FLP36-C*/
@@ -533,7 +536,7 @@ static float qFIS_DSigMF( const float x,
 static float qFIS_PSigMF( const float x,
                        const float * const points )
 {
-    return fabsf( qFIS_SigMF( x , points ) * qFIS_SigMF( x , &points[ 2 ] ) );
+    return fabsf( qFIS_SigMF( x , points )*qFIS_SigMF( x , &points[ 2 ] ) );
 }
 /*============================================================================*/
 static float qFIS_SMF( const float x,

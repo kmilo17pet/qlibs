@@ -58,8 +58,8 @@ extern "C" {
     * @return The literal argument @a x converted to fixed-point(qFP16_t).
     */
     #define qFP16_Constant(x)                                               \
-    ( (qFP16_t)( ( (x) >= 0 ) ? ( (x) * 65536.0 + 0.5 )                     \
-                              : ( (x) * 65536.0 - 0.5 ) ) )                 \
+    ( (qFP16_t)( ( (x) >= 0 ) ? ( (x) * 65536.0f + 0.5f )                   \
+                              : ( (x) * 65536.0f - 0.5f ) ) )               \
 
     /**
     * @brief A Q16.16 fixed-point settings object

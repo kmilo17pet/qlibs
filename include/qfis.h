@@ -108,7 +108,7 @@ extern "C" {
         size_t rule_cols;
         size_t nInputs, nOutputs;
         size_t nMFInputs, nMFOutputs;
-        size_t evalPoints;
+        size_t nPoints;
         float (*andOp)( const float a, const float b );
         float (*orOp)( const float a, const float b );
         float (*implicate)( const float a, const float b );
@@ -147,7 +147,7 @@ extern "C" {
     */
     int qFIS_SetParameter( qFIS_t * const f,
                            const qFIS_Parameter_t p,
-                           const int x );
+                           const qFIS_Operator_t x );
 
     /**
     * @brief Setup and initialize the FIS instance.
