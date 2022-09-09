@@ -1,7 +1,7 @@
 /*!
  * @file qfis.h
  * @author J. Camilo Gomez C.
- * @version 1.05
+ * @version 1.06
  * @note This file is part of the qLibs distribution.
  * @brief Fuzzy Inference System
  **/
@@ -23,7 +23,8 @@ extern "C" {
     * function.
     */
     typedef enum {
-        trimf = 0,      /*!< Triangular Membership function f(a,b,c)*/
+        custommf = 0,   /*!< Custom user-defined Membership function*/
+        trimf,          /*!< Triangular Membership function f(a,b,c)*/
         trapmf,         /*!< Trapezoidal Membership function f(a,b,c,d)*/
         gbellmf,        /*!< Generalized bell-shaped Membership function f(a,b,c)*/
         gaussmf,        /*!< Gaussian  Membership function f(a,b)*/
@@ -35,8 +36,8 @@ extern "C" {
         smf,            /*!< S-shaped membership function f(a,b)*/
         zmf,            /*!< Z-shaped membership function f(a,b)*/
         singletonmf,    /*!< Singleton Membership Function f(a)*/
-        constantmf,     /*!< Constant membership function f(a) [Only for Sugeno FIS]*/
-        linearmf        /*!< Linear membership function f(...) [Only for Sugeno FIS]*/
+        constantmf,     /*!< Constant membership function f(a) [Only for ::Sugeno FIS]*/
+        linearmf        /*!< Linear membership function f(...) [Only for ::Sugeno FIS]*/
     } qFIS_MF_Name_t;
 
     /**
@@ -156,7 +157,7 @@ extern "C" {
     * @note Default configuration : AND = Min, OR = Max, Implication = Min
     * Aggregation = Max, EvalPoints = 100
     * @param[in] f A pointer to the Fuzzy Inference System instance.
-    * @param[in] t Type of inference.
+    * @param[in] t Type of inference ::Mamdani or ::Sugeno.
     * @param[in] inputs An array with all the system inputs as IO objects.
     * @param[in] ni The number of bytes used by @a inputs. Use the sizeof operator.
     * @param[in] outputs An array with all the system outputs as IO objects.
@@ -184,8 +185,9 @@ extern "C" {
 
     /**
     * @brief Set the tag and limits for the specified FIS IO
-    * @note limits do not apply in Sugeno outputs
-    * @param[in] c An array with the required inputs or outputs as IO objects.
+    * @note limits do not apply in ::Sugeno outputs
+    * @param[in] c An array with the required inputs or outputs as qFIS_IO_t
+    * objects.
     * @param[in] tag The used-defined tag
     * @param[in] min Minimum allowed value for this IO
     * @param[in] min Max allowed value for this IO
@@ -198,10 +200,21 @@ extern "C" {
 
     /**
     * @brief Set the IO tag and points for the specified membership function
-    * @param[in] m An array with the required membership functions as MF objects.
+    * @param[in] m An array with the required membership functions as qFIS_MF_t
+    * objects.
     * @param[in] io_tag The I/O tag related with this membership function
     * @param[in] mf_tag The user-defined tag for this membership function
-    * @param[in] shape The wanted shape/form for this membership function
+    * @param[in] shape The wanted shape/form for this membership function, cam
+    * be one of the following: ::trimf, ::trapmf, ::gbellmf, ::gaussmf, 
+    * ::gauss2mf, ::sigmf, ::dsigmf, ::psigmf, ::pimf, ::smf, ::zmf, 
+    * ::singletonmf.
+    * @note For ::Sugeno FIS, an output membership function should be one of the
+    * following: ::constantmf, ::linearmf.
+    * @note To set a custom user-defined membership function, set this argument
+    * as ::custommf and pass a pointer to the desired function on the 
+    * @a custom_mf argument.
+    * @param[in] custom_mf Custom user-defined membership function. To ignore
+    * pass NULL as argument.
     * @param[in] cp Points or coefficients of the membership function.
     * @return 1 on success, otherwise return 0.
     */
@@ -209,23 +222,8 @@ extern "C" {
                     const qFIS_Tag_t io_tag,
                     const qFIS_Tag_t mf_tag,
                     const qFIS_MF_Name_t shape,
+                    qFIS_MF_Fcn_t custom_mf,
                     const float *cp );
-
-    /**
-    * @brief Set the IO tag and points for the specified custom user-defined
-    * membership function
-    * @param[in] m An array with the required membership functions as MF objects.
-    * @param[in] io_tag The I/O tag related with this membership function
-    * @param[in] mf_tag The user-defined tag for this membership function
-    * @param[in] mf A pointer to the custom user-defined membership function
-    * @param[in] cp Points or coefficients of the membership function.
-    * @return 1 on success, otherwise return 0.
-    */
-    int qFIS_SetMF_Custom( qFIS_MF_t * const m,
-                           const qFIS_Tag_t io_tag,
-                           const qFIS_Tag_t mf_tag,
-                           qFIS_MF_Fcn_t mf,
-                           const float *cp );
 
     /**
     * @brief Perform the fuzzification operation over the crisp inputs on the 
@@ -246,8 +244,8 @@ extern "C" {
 
     /**
     * @brief Perform the de-Fuzzification operation to compute the crisp outputs.
-    * @note This API uses the Centroid method on Mamdani-type FIS and
-    * weight-average on Sugeno-type FIS.
+    * @note This API uses the Centroid method on ::Mamdani type FIS and
+    * weight-average on ::Sugeno type FIS.
     * @param[in] f A pointer to the Fuzzy Inference System instance.
     * @return 1 on success, otherwise return 0.
     */

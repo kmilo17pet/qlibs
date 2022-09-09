@@ -186,10 +186,12 @@ int qFIS_SetMF( qFIS_MF_t * const m,
                 const qFIS_Tag_t io_tag,
                 const qFIS_Tag_t mf_tag,
                 const qFIS_MF_Name_t shape,
+                qFIS_MF_Fcn_t custom_mf,
                 const float *cp )
 {
     int retVal = 0;
-    static const qFIS_MF_Fcn_t fShape[ 14 ] = { &qFIS_TriMF, &qFIS_TrapMF,
+    static const qFIS_MF_Fcn_t fShape[ 15 ] = { &qFIS_ConstantMF,
+                                                &qFIS_TriMF, &qFIS_TrapMF,
                                                 &qFIS_GBellMF, &qFIS_GaussMF,
                                                 &qFIS_Gauss2MF, &qFIS_SigMF,
                                                 &qFIS_DSigMF, &qFIS_PSigMF,
@@ -198,26 +200,12 @@ int qFIS_SetMF( qFIS_MF_t * const m,
                                                 &qFIS_ConstantMF, &qFIS_LinearMF };
 
     if ( ( NULL != m ) && ( io_tag >= 0 ) && ( mf_tag >= 0 ) && ( shape <= linearmf ) ) {
-        m[ mf_tag ].shape = fShape[ shape ];
-        m[ mf_tag ].index = (size_t)io_tag;
-        m[ mf_tag ].points = cp;
-        m[ mf_tag ].fx = 0.0f;
-        retVal = 1;
-    }
-
-    return retVal;
-}
-/*============================================================================*/
-int qFIS_SetMF_Custom( qFIS_MF_t * const m,
-                       const qFIS_Tag_t io_tag,
-                       const qFIS_Tag_t mf_tag,
-                       qFIS_MF_Fcn_t mf,
-                       const float *cp )
-{
-    int retVal = 0;
-
-    if ( ( NULL != m ) && ( io_tag >= 0 ) && ( mf_tag >= 0 ) && ( NULL != mf ) ) {
-        m[ mf_tag ].shape = mf;
+        if ( NULL != custom_mf ) {
+            m[ mf_tag ].shape = custom_mf; /*user-defined membership function*/
+        }
+        else {
+            m[ mf_tag ].shape = fShape[ shape ];
+        }
         m[ mf_tag ].index = (size_t)io_tag;
         m[ mf_tag ].points = cp;
         m[ mf_tag ].fx = 0.0f;

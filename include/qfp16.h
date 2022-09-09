@@ -39,7 +39,6 @@ extern "C" {
         f_sqrt2,        /* [sqrt(2)] The square root of 2*/
         f_sqrt1_2,      /* [1/sqrt(2)] The inverse of the square root of 2*/
         epsilon,
-        min,
         max,
         overflow,
         one,            /* [ 1 ] */
