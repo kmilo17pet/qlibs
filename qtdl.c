@@ -60,9 +60,8 @@ float qTDL_GetOldest( const qTDL_t * const q )
 float qTDL_GetAtIndex( const qTDL_t * const q,
                        const size_t i )
 {
-    return ( ( q->wr >= q->rd ) && ( ( q->head + i ) >= q->wr ) ) ?
-           q->rd[ q->itemCount - i ] :
-           *( q->rd - i );
+    return ( ( q->wr >= q->rd ) && ( ( q->head + i ) >= q->wr ) ) ? q->rd[ q->itemCount - i ] 
+                                                                  : *( q->rd - i );
 }
 /*============================================================================*/
 float qTDL_GetRecent( const qTDL_t * const q )

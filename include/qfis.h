@@ -1,7 +1,7 @@
 /*!
  * @file qfis.h
  * @author J. Camilo Gomez C.
- * @version 1.04
+ * @version 1.05
  * @note This file is part of the qLibs distribution.
  * @brief Fuzzy Inference System
  **/
@@ -35,12 +35,12 @@ extern "C" {
         smf,            /*!< S-shaped membership function f(a,b)*/
         zmf,            /*!< Z-shaped membership function f(a,b)*/
         singletonmf,    /*!< Singleton Membership Function f(a)*/
-        constant,       /*!< Constant membership function f(a) [Only for Sugeno FIS]*/
-        linear          /*!< Linear membership function f(...) [Only for Sugeno FIS]*/
+        constantmf,     /*!< Constant membership function f(a) [Only for Sugeno FIS]*/
+        linearmf        /*!< Linear membership function f(...) [Only for Sugeno FIS]*/
     } qFIS_MF_Name_t;
 
     /**
-    * @brief An enum with the supported fuzzy operators
+    * @brief An enum with the supported parameter values
     */
     typedef enum {
         qFIS_MIN = 0,   /*!< Minimal value*/
@@ -48,7 +48,7 @@ extern "C" {
         qFIS_MAX,       /*!< Maximum value*/
         qFIS_PROBOR,    /*!< Probabilistic OR*/
         qFIS_SUM        /*!< Sum*/
-    } qFIS_Operator_t;
+    } qFIS_ParamValue_t;
 
     /**
     * @brief An enum with the allowed parameters that can be set on a FIS instance
@@ -62,7 +62,7 @@ extern "C" {
     } qFIS_Parameter_t;
 
     /**
-    * @brief An enum with the types of inference systems supported by qFIS.
+    * @brief An enum with the inference system types supported by qFIS
     */
     typedef enum {
         Mamdani = 0,
@@ -79,6 +79,8 @@ extern "C" {
         float lo, up, value;
     } qFIS_IO_t;
 
+    typedef float (*qFIS_MF_Fcn_t)( const qFIS_IO_t * const in, const float *p, const size_t n );
+
     /**
     * @brief A FIS Membership Function
     * @details The instance should be initialized using the qFIS_SetMF() API.
@@ -86,7 +88,7 @@ extern "C" {
     */
     typedef struct
     {
-        float (*shape)( const float x, const float * const points );
+        qFIS_MF_Fcn_t shape;
         const float *points;
         float fx;
         size_t index;
@@ -147,7 +149,7 @@ extern "C" {
     */
     int qFIS_SetParameter( qFIS_t * const f,
                            const qFIS_Parameter_t p,
-                           const qFIS_Operator_t x );
+                           const qFIS_ParamValue_t x );
 
     /**
     * @brief Setup and initialize the FIS instance.
@@ -195,12 +197,12 @@ extern "C" {
                     const float max );
 
     /**
-    * @brief Set the IO tag and points for the specified Membership function
+    * @brief Set the IO tag and points for the specified membership function
     * @param[in] m An array with the required membership functions as MF objects.
     * @param[in] io_tag The I/O tag related with this membership function
     * @param[in] mf_tag The user-defined tag for this membership function
     * @param[in] shape The wanted shape/form for this membership function
-    * @param[in] cp Points of coefficients of the membership function.
+    * @param[in] cp Points or coefficients of the membership function.
     * @return 1 on success, otherwise return 0.
     */
     int qFIS_SetMF( qFIS_MF_t * const m,
@@ -208,6 +210,22 @@ extern "C" {
                     const qFIS_Tag_t mf_tag,
                     const qFIS_MF_Name_t shape,
                     const float *cp );
+
+    /**
+    * @brief Set the IO tag and points for the specified custom user-defined
+    * membership function
+    * @param[in] m An array with the required membership functions as MF objects.
+    * @param[in] io_tag The I/O tag related with this membership function
+    * @param[in] mf_tag The user-defined tag for this membership function
+    * @param[in] mf A pointer to the custom user-defined membership function
+    * @param[in] cp Points or coefficients of the membership function.
+    * @return 1 on success, otherwise return 0.
+    */
+    int qFIS_SetMF_Custom( qFIS_MF_t * const m,
+                           const qFIS_Tag_t io_tag,
+                           const qFIS_Tag_t mf_tag,
+                           qFIS_MF_Fcn_t mf,
+                           const float *cp );
 
     /**
     * @brief Perform the fuzzification operation over the crisp inputs on the 
@@ -228,7 +246,7 @@ extern "C" {
 
     /**
     * @brief Perform the de-Fuzzification operation to compute the crisp outputs.
-    * @note This API uses the Centroid method on Mamdani-type FIS and 
+    * @note This API uses the Centroid method on Mamdani-type FIS and
     * weight-average on Sugeno-type FIS.
     * @param[in] f A pointer to the Fuzzy Inference System instance.
     * @return 1 on success, otherwise return 0.

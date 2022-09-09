@@ -299,7 +299,7 @@ static void qPID_AdaptGains( qPID_controller_t *c,
     s->yk = y;
     s->uk = u;
     k = s->b1/( 1.0f + s->a1 );
-    tmp1 = ( s->a1 < 0.0f )? -s->a1 : s->a1;
+    tmp1 = ( s->a1 < 0.0f ) ? -s->a1 : s->a1;
     /*cstat -MISRAC2012-Dir-4.11_a -MISRAC2012-Rule-13.5*/
     tao = -c->dt/logf( tmp1 ); /*ok, passing absolute value*/
     if ( ( 0 != qPID_ATCheck( tao ) ) && ( 0 != qPID_ATCheck( k ) ) && ( s->it > 0uL ) ) {

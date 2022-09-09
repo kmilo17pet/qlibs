@@ -332,7 +332,7 @@ static int qSSmoother_Setup_EXPW( _qSSmoother_t * const f,
 /*============================================================================*/
 static float qSSmoother_Abs( const float x )
 {
-    return ( x < 0.0f )? -x : x;
+    return ( x < 0.0f ) ? -x : x;
 }
 /*============================================================================*/
 static void qSSmoother_WindowSet( float *w,

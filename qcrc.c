@@ -64,12 +64,12 @@ uint32_t qCRCx( const qCRC_Mode_t mode,
             /*cstat +CERT-INT34-C_a*/
             for ( xBit = 8u ; xBit > 0u ; --xBit ) {
                 /*try to divide the current data bit*/
-                crc = ( 0u != ( crc & topBit ) )? ( ( crc << 1u ) ^ poly )
-                                                : ( crc << 1u );
+                crc = ( 0u != ( crc & topBit ) ) ? ( ( crc << 1u ) ^ poly )
+                                                 : ( crc << 1u );
             }
         }
-        crc = ( 0u != refOut )? ( qCRCx_Reflect( crc, (uint8_t)width )^xorOut )
-                              : ( crc^xorOut );
+        crc = ( 0u != refOut ) ? ( qCRCx_Reflect( crc, (uint8_t)width )^xorOut )
+                               : ( crc^xorOut );
         crc &= bitMask;
     }
 

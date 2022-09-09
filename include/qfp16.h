@@ -1,7 +1,7 @@
 /*!
  * @file qfp16.h
  * @author J. Camilo Gomez C.
- * @version 1.06
+ * @version 1.07
  * @note This file is part of the qLibs distribution.
  * @brief Fixed-Point math Q16.16 with rounding and saturated arithmetic.
  **/
@@ -21,34 +21,40 @@ extern "C" {
     typedef int32_t qFP16_t;
 
     /*! @cond  */
-    #define QFP16_EPSILON       (  1 )
-    #define QFP16_MIN           ( -2147483647 ) /* -32767.99998 */
-    #define QFP16_MAX           (  2147483647 ) /* +32767.99998 */
-    #define QFP16_OVERFLOW      ( (qFP16_t)-2147483648 ) /* overflow( 0x80000000 ) */
-
-    #define QFP16_PI            (  205887  )    /* pi */
-    #define QFP16_2PI           (  411775 )     /* 2*pi */
-    #define QFP16_NPI           ( -205887 )     /* -pi */
-    #define QFP16_1_DIV_PI      (  20861 )      /* 1/pi */
-    #define QFP16_E             (  178145 )     /* e */
-    #define QFP16_E4            (  3578144 )    /* e^4 */
-    #define QFP16_P4_DIV_PI     (  83443 )      /* 4/pi */
-    #define QFP16_N4_DIV_PI     ( -83443 )      /* -4/pi */
-    #define QFP16_PI_DIV_2      (  102944 )     /* pi/2 */
-    #define QFP16_PI_DIV_4      (  51471 )      /* pi/4 */
-    #define QFP16_3PI_DIV_4     (  154415 )     /* 3*pi/4 */
-    #define QFP16_1_DIV_2       (  32768 )      /* 1/2 */
-    #define QFP16_LN2           (  45426 )      /* log(2) */
-    #define QFP16_LN10          (  150902 )     /* log(10) */
-    #define QFP16_SQRT2         (  92682 )      /* sqrt(2) */
-    #define QFP16_180_DIV_PI    (  3754936 )    /* 180/pi */
-    #define QFP16_PI_DIV_180    (  1144 )       /* pi/180 */
-    #define QFP16_180           (  11796480 )   /* 180 */
-    #define QFP16_360           (  23592960 )   /* 360 */
-    #define QFP16_EXP_MAX       (  681391 )     /* max value for qFP16_Exp()*/
-    #define QFP16_EXP_MIN       ( -681391 )     /* min value for qFP16_Exp()*/
-    #define QFP16_1             (  65536 )      /* 1 */
+    struct _qFP16_const_s
+    {
+        const qFP16_t
+        f_e,            /* [ e ] The base of natural logarithms, e.*/
+        f_log2e,        /* [log2(e)] The base 2 logarithm of e.*/
+        f_log10e,       /* [log10(e)] The base 10 logarithm of e*/
+        f_ln2,          /* [ln(2)] The natural logarithm of 2*/
+        f_ln10,         /* [ln(10)] The natural logarithm of 10*/
+        f_pi,           /* [pi] The circumference of a circle with diameter 1*/
+        f_pi_2,         /* [pi/2] Half of pi */
+        f_2pi,          /* [ 2*pi ] Twice pì*/
+        f_pi_4,         /* [pi/4] A quarter of pi */
+        f_1_pi,         /* [1/pi] The inverse of pi.*/
+        f_2_pi,         /* [2/pi] Twice the inverse of pi*/
+        f_2_sqrtpi,     /* [2/sqrt(pi)] The inverse of the square root of π.*/
+        f_sqrt2,        /* [sqrt(2)] The square root of 2*/
+        f_sqrt1_2,      /* [1/sqrt(2)] The inverse of the square root of 2*/
+        epsilon,
+        min,
+        max,
+        overflow,
+        one,            /* [ 1 ] */
+        one_half,       /* [ 1/2 ] */
+        f_180_pi,       /* [ 180/pi ] */
+        f_pi_180,       /* [ pi/180 ] */
+        f_180,          /* [ 180 ] */
+        f_360;          /* [ 360 ] */
+    };
     /*! @endcond  */
+      
+    /** 
+    * @brief Fixed-point Q16.16 constants
+    */
+    extern const struct _qFP16_const_s qFP16;
 
     /**
     * @brief A macro for defining a fixed-point constant value.
