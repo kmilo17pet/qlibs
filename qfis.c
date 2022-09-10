@@ -27,6 +27,9 @@ static float qFIS_Gauss2MF( const qFIS_IO_t * const in,
 static float qFIS_SigMF( const qFIS_IO_t * const in,
                          const float *p,
                          const size_t n );
+static float qFIS_TSigMF( const qFIS_IO_t * const in,
+                          const float *p,
+                          const size_t n );
 static float qFIS_DSigMF( const qFIS_IO_t * const in,
                           const float *p,
                           const size_t n );
@@ -36,13 +39,37 @@ static float qFIS_PSigMF( const qFIS_IO_t * const in,
 static float qFIS_SMF( const qFIS_IO_t * const in,
                        const float *p,
                        const size_t n );
+static float qFIS_TSMF( const qFIS_IO_t * const in,
+                        const float *p,
+                        const size_t n );
 static float qFIS_ZMF( const qFIS_IO_t * const in,
                        const float *p,
                        const size_t n );
+static float qFIS_TZMF( const qFIS_IO_t * const in,
+                        const float *p,
+                        const size_t n );
 static float qFIS_PiMF( const qFIS_IO_t * const in,
                         const float *p,
                         const size_t n );
 static float qFIS_SingletonMF( const qFIS_IO_t * const in,
+                               const float *p,
+                               const size_t n );
+static float qFIS_ConcaveMF( const qFIS_IO_t * const in,
+                             const float *p,
+                             const size_t n );
+static float qFIS_TConcaveMF( const qFIS_IO_t * const in,
+                              const float *p,
+                              const size_t n );
+static float qFIS_SpikeMF( const qFIS_IO_t * const in,
+                           const float *p,
+                           const size_t n );
+static float qFIS_RampMF( const qFIS_IO_t * const in,
+                          const float *p,
+                          const size_t n );
+static float qFIS_TRampMF( const qFIS_IO_t * const in,
+                           const float *p,
+                           const size_t n );
+static float qFIS_RectangleMF( const qFIS_IO_t * const in,
                                const float *p,
                                const size_t n );
 static float qFIS_ConstantMF( const qFIS_IO_t * const in,
@@ -68,8 +95,8 @@ static void qFIS_TruncateInputs( qFIS_t * const f );
 static float qFIS_ParseFuzzValue( qFIS_MF_t * const mfIO,
                                   qFIS_Rules_t index );
 static qFIS_FuzzyOperator_t qFIS_GetFuzzOperator( qFIS_t * const f );
-static int qFIS_MamdaniDeFuzz( qFIS_t * const f );
-static int qFIS_SugenoDeFuzz( qFIS_t * const f );
+static int qFIS_DeFuzzCentroid( qFIS_t * const f );
+static int qFIS_DeFuzzWtAverage( qFIS_t * const f );
 
 static size_t qFIS_InferenceAntecedent( struct _qFIS_s *f,
                                         const qFIS_Rules_t * const r,
@@ -144,7 +171,7 @@ int qFIS_Setup( qFIS_t * const f,
 {
     int retVal = 0;
   
-    if ( ( NULL != f ) && ( t <= Sugeno ) ) {
+    if ( ( NULL != f ) && ( t <= Tsukamoto ) ) {
         f->type = t;
         f->nInputs = ni/sizeof(qFIS_IO_t);
         f->nOutputs = no/sizeof(qFIS_IO_t);
@@ -161,6 +188,7 @@ int qFIS_Setup( qFIS_t * const f,
         retVal += qFIS_SetParameter( f, qFIS_Implication, qFIS_MIN );
         retVal += qFIS_SetParameter( f, qFIS_Aggregation, qFIS_MAX );
         retVal = ( retVal == 5 ) ? 1 : 0;
+        f->deFuzz = ( Mamdani == t ) ? &qFIS_DeFuzzCentroid : &qFIS_DeFuzzWtAverage;
     }
 
     return retVal;
@@ -187,28 +215,41 @@ int qFIS_SetMF( qFIS_MF_t * const m,
                 const qFIS_Tag_t mf_tag,
                 const qFIS_MF_Name_t shape,
                 qFIS_MF_Fcn_t custom_mf,
-                const float *cp )
+                const float *cp,
+                float h )
 {
     int retVal = 0;
-    static const qFIS_MF_Fcn_t fShape[ 15 ] = { &qFIS_ConstantMF,
+    static const qFIS_MF_Fcn_t fShape[ 24 ] = { &qFIS_ConstantMF,
                                                 &qFIS_TriMF, &qFIS_TrapMF,
                                                 &qFIS_GBellMF, &qFIS_GaussMF,
                                                 &qFIS_Gauss2MF, &qFIS_SigMF,
                                                 &qFIS_DSigMF, &qFIS_PSigMF,
                                                 &qFIS_PiMF, &qFIS_SMF,
                                                 &qFIS_ZMF, &qFIS_SingletonMF,
-                                                &qFIS_ConstantMF, &qFIS_LinearMF };
+                                                &qFIS_ConcaveMF, &qFIS_SpikeMF,
+                                                &qFIS_RampMF, &qFIS_RectangleMF,
+                                                &qFIS_ConstantMF, &qFIS_LinearMF,
+                                                &qFIS_TRampMF, &qFIS_TConcaveMF,
+                                                &qFIS_TSigMF, &qFIS_TSMF,
+                                                &qFIS_TZMF };
 
-    if ( ( NULL != m ) && ( io_tag >= 0 ) && ( mf_tag >= 0 ) && ( shape <= linearmf ) ) {
+    if ( ( NULL != m ) && ( io_tag >= 0 ) && ( mf_tag >= 0 ) && ( shape <= tzmf ) ) {
         if ( NULL != custom_mf ) {
             m[ mf_tag ].shape = custom_mf; /*user-defined membership function*/
         }
         else {
             m[ mf_tag ].shape = fShape[ shape ];
         }
+        if ( h > 1.0f ) {
+            h = 1.0f;
+        }
+        if ( h < 0.0f ) {
+            h = 0.0f;
+        }
         m[ mf_tag ].index = (size_t)io_tag;
         m[ mf_tag ].points = cp;
         m[ mf_tag ].fx = 0.0f;
+        m[ mf_tag ].h = h;
         retVal = 1;
     }
 
@@ -222,7 +263,7 @@ static void qFIS_EvalInputMFs( qFIS_t * const f )
 
     for ( i = 0 ; i < f->nMFInputs ; ++i ) {
         mf = &f->inMF[ i ];
-        mf->fx = mf->shape( &f->input[ mf->index ], mf->points, 1u );
+        mf->fx = mf->h*mf->shape( &f->input[ mf->index ], mf->points, 1u );
     }
 }
 /*============================================================================*/
@@ -342,12 +383,12 @@ static size_t qFIS_InferenceConsequent( struct _qFIS_s *f,
             f->outMF[ MFOutIndex ].fx = f->aggregate( f->outMF[ MFOutIndex ].fx,
                                                       f->rStrength );
             break;
-        case Sugeno:
+        case Sugeno: case Tsukamoto:
             zi = f->outMF[ MFOutIndex ].shape( f->input,
                                                f->outMF[ MFOutIndex ].points,
                                                f->nInputs );
-            f->output[ outIndex ].up += zi*f->rStrength;
-            f->output[ outIndex ].lo += f->rStrength;
+            f->output[ outIndex ].zi_wi += zi*f->rStrength;
+            f->output[ outIndex ].wi += f->rStrength;
             break;
         default:
             break;
@@ -366,19 +407,18 @@ static size_t qFIS_InferenceConsequent( struct _qFIS_s *f,
 /*============================================================================*/
 static void qFIS_InferenceInit( qFIS_t * const f )
 {
+    size_t i;
+
     f->inferenceState = &qFIS_InferenceAntecedent;
     f->rStrength = 0.0f;
     f->lastConnector = -1;
     f->ruleCount = 0;
 
-    if ( Sugeno == f->type ) {
-        size_t j;
-
-        for ( j = 0 ; j < f->nOutputs ; ++j ) {
-            f->output[ j ].lo = 0.0f;
-            f->output[ j ].up = 0.0f;
-        }
+    for ( i = 0 ; i < f->nOutputs ; ++i ) {
+        f->output[ i ].zi_wi = 0.0f;
+        f->output[ i ].wi = 0.0f;
     }
+    
 }
 /*============================================================================*/
 int qFIS_Inference( qFIS_t * const f,
@@ -408,7 +448,7 @@ int qFIS_Inference( qFIS_t * const f,
     return retVal;
 }
 /*============================================================================*/
-static int qFIS_MamdaniDeFuzz( qFIS_t * const f )
+static int qFIS_DeFuzzCentroid( qFIS_t * const f )
 {
     size_t i, j;
     float x, z, fx, int_Fx, int_xFx, res;
@@ -433,6 +473,7 @@ static int qFIS_MamdaniDeFuzz( qFIS_t * const f )
             for ( j = 0u ; j < f->nMFOutputs ; ++j ) {
                 if ( f->outMF[ j ].index == (size_t)tag ) {
                     z = f->outMF[ j ].shape( &xx , f->outMF[ j ].points, 1u );
+                    z *= f->outMF[ j ].h;
                     fx = f->mUnion( fx, f->implicate( z, f->outMF[ j ].fx ) );
                 }
             }
@@ -448,12 +489,12 @@ static int qFIS_MamdaniDeFuzz( qFIS_t * const f )
     return 1;
 }
 /*============================================================================*/
-static int qFIS_SugenoDeFuzz( qFIS_t * const f )
+static int qFIS_DeFuzzWtAverage( qFIS_t * const f )
 {
     size_t j;
 
     for ( j = 0 ; j < f->nOutputs ; ++j ) {
-        f->output[ j ].value = f->output[ j ].up/f->output[ j ].lo;
+        f->output[ j ].value = f->output[ j ].zi_wi/f->output[ j ].wi;
     }
 
     return 1;
@@ -464,8 +505,7 @@ int qFIS_DeFuzzify( qFIS_t * const f )
     int retValue = 0;
 
     if ( NULL != f ) {
-        retValue = ( Mamdani == f->type ) ? qFIS_MamdaniDeFuzz( f )
-                                          : qFIS_SugenoDeFuzz( f );
+        retValue = f->deFuzz( f );
     }
 
     return retValue;
@@ -564,6 +604,45 @@ static float qFIS_SigMF( const qFIS_IO_t * const in,
     return 1.0f/( 1.0f + expf( -a*( x - b ) ) );
 }
 /*============================================================================*/
+static float qFIS_TSigMF( const qFIS_IO_t * const in,
+                          const float *p,
+                          const size_t n )
+{
+    float a, b, y;
+    float x = in[ 0 ].value;
+    float min = in[ 0 ].lo;
+    float max = in[ 0 ].up;
+    (void)n;
+
+    a = p[ 0 ]; /*slope*/
+    b = p[ 1 ]; /*inflection*/
+
+
+    if ( fabsf( x - 1.0f ) <= FLT_MIN ) { /* x == 1 ? */
+        if ( a >= 0.0f ){
+            y = max;
+        }
+        else{
+            y = min;
+        }
+    }
+    else if ( fabsf( x ) <= FLT_MIN ) { /* x == 0 ? */
+        if ( a >= 0.0f ){
+            y = min;
+        }
+        else{
+            y = max;
+        }
+    }
+    else {
+        /*cstat -MISRAC2012-Dir-4.11_a*/
+        y = b - ( logf( ( 1.0f/x ) - 1.0f )/a );
+        /*cstat +MISRAC2012-Dir-4.11_a*/
+    }
+
+    return y;
+}
+/*============================================================================*/
 static float qFIS_DSigMF( const qFIS_IO_t * const in,
                           const float *p,
                           const size_t n )
@@ -609,6 +688,31 @@ static float qFIS_SMF( const qFIS_IO_t * const in,
     return y;
 }
 /*============================================================================*/
+static float qFIS_TSMF( const qFIS_IO_t * const in,
+                        const float *p,
+                        const size_t n )
+{
+    float diff, a, b, ta, tb, ma, mb;
+    float x = in[ 0 ].value;
+    (void)n;
+    qFIS_IO_t tmp;
+
+
+    a = p[ 0 ]; /*start*/
+    b = p[ 1 ]; /*end*/
+    diff = b - a;
+    diff = 0.5f*diff*diff;
+    /*cstat -MISRAC2012-Dir-4.11_a -MISRAC2012-Dir-4.11_b*/
+    ta = a + sqrtf( x*diff );
+    tmp.value = ta;
+    ma = qFIS_SMF( &tmp, p, n );
+    tb = b + sqrtf( -( x - 1.0f )*diff );
+    tmp.value = tb;
+    mb = qFIS_SMF( &tmp, p, n );
+    /*cstat +MISRAC2012-Dir-4.11_a +MISRAC2012-Dir-4.11_b*/
+    return  ( fabsf( x - ma ) < fabsf( x - mb ) ) ? ta : tb;
+}
+/*============================================================================*/
 static float qFIS_ZMF( const qFIS_IO_t * const in,
                        const float *p,
                        const size_t n )
@@ -639,7 +743,31 @@ static float qFIS_ZMF( const qFIS_IO_t * const in,
 
     return y;
 }
+/*============================================================================*/
+static float qFIS_TZMF( const qFIS_IO_t * const in,
+                        const float *p,
+                        const size_t n )
+{
+    float diff, a, b, ta, tb, ma, mb;
+    float x = in[ 0 ].value;
+    (void)n;
+    qFIS_IO_t tmp;
 
+
+    a = p[ 0 ]; /*start*/
+    b = p[ 1 ]; /*end*/
+    diff = b - a;
+    diff = 0.5f*diff*diff;
+    /*cstat -MISRAC2012-Dir-4.11_a -MISRAC2012-Dir-4.11_b*/
+    ta = a + sqrtf( -( x - 1.0f )*diff );
+    tmp.value = ta;
+    ma = qFIS_SMF( &tmp, p, n );
+    tb = b + sqrtf( x*diff );
+    tmp.value = tb;
+    mb = qFIS_SMF( &tmp, p, n );
+    /*cstat +MISRAC2012-Dir-4.11_a +MISRAC2012-Dir-4.11_b*/
+    return  ( fabsf( x - ma ) < fabsf( x - mb ) ) ? ta : tb;
+}
 /*============================================================================*/
 static float qFIS_PiMF( const qFIS_IO_t * const in,
                         const float *p,
@@ -656,6 +784,126 @@ static float qFIS_SingletonMF( const qFIS_IO_t * const in,
     (void)n;
 
     return ( ( fabsf( x - p[ 0 ] ) <= FLT_MIN ) ? 1.0f : 0.0f );
+}
+/*============================================================================*/
+static float qFIS_ConcaveMF( const qFIS_IO_t * const in,
+                             const float *p,
+                             const size_t n )
+{
+    float x = in[ 0 ].value;
+    float i, e, y;
+    (void)n;
+
+    i = p[ 0 ];
+    e = p[ 1 ];
+
+    if ( ( i <= e ) && ( x < e ) ) {
+        y = ( e - i )/( ( 2.0f*e ) - i -x );
+    }
+    else if ( ( i > e ) && ( x > e ) ) {
+        y = ( i - e )/( -( 2.0f*e ) + i +x );
+    }
+    else {
+        y = 1.0f;
+    }
+
+    return y;
+}
+/*============================================================================*/
+static float qFIS_TConcaveMF( const qFIS_IO_t * const in,
+                              const float *p,
+                              const size_t n )
+{
+    float i, e;
+    
+    i = p[ 0 ];
+    e = p[ 1 ];
+    
+    return ( ( i - e )/qFIS_ConcaveMF( in, p, n ) ) + ( 2.0f*e ) - i;
+}
+/*============================================================================*/
+static float qFIS_SpikeMF( const qFIS_IO_t * const in,
+                           const float *p,
+                           const size_t n )
+{
+    float x = in[ 0 ].value;
+    float w, c;
+    (void)n;
+
+    w = p[ 0 ];
+    c = p[ 1 ];
+
+    return expf( -fabsf( 10.0f*( x - c )/w ) );
+}
+/*============================================================================*/
+static float qFIS_RampMF( const qFIS_IO_t * const in,
+                          const float *p,
+                          const size_t n )
+{
+    float x = in[ 0 ].value;
+    float s, e, y;
+    (void)n;
+
+    s = p[ 0 ];
+    e = p[ 1 ];
+
+    if ( fabsf( x - e ) <= FLT_MIN ) {
+        y = 1.0f;
+    }
+    else {
+        if ( s < e ) {
+            if ( x <= s ) {
+                y = 0.0f;
+            }
+            else if ( x >= e ) {
+                y = 1.0f;
+            }
+            else {
+                y = ( x - s )/( e - s );
+            }
+        }
+        else {
+            if ( x >= s ) {
+                y = 0.0f;
+            }
+            else if ( x <= e ) {
+                y = 1.0f;
+            }
+            else {
+                y = ( s - x )/( s - e );
+            }
+        }
+    }
+
+    return y;
+}
+/*============================================================================*/
+static float qFIS_TRampMF( const qFIS_IO_t * const in,
+                           const float *p,
+                           const size_t n )
+{
+    float x = in[ 0 ].value;
+    float s, e;
+    (void)n;
+
+    s = p[ 0 ];
+    e = p[ 1 ];
+
+    return ( ( e - s )*x ) + s;
+}
+/*============================================================================*/
+static float qFIS_RectangleMF( const qFIS_IO_t * const in,
+                               const float *p,
+                               const size_t n )
+{
+    float x = in[ 0 ].value;
+    float s, e;
+    (void)n;
+
+    s = p[ 0 ];
+    e = p[ 1 ];
+
+    return ( ( x >= s ) && ( x <= e ) ) ? 1.0f : 0.0f;
 }
 /*============================================================================*/
 static float qFIS_LinearMF( const qFIS_IO_t * const in,
