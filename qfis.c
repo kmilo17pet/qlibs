@@ -72,6 +72,9 @@ static float qFIS_TRampMF( const qFIS_IO_t * const in,
 static float qFIS_RectangleMF( const qFIS_IO_t * const in,
                                const float *p,
                                const size_t n );
+static float qFIS_CosineMF( const qFIS_IO_t * const in,
+                            const float *p,
+                            const size_t n );
 static float qFIS_ConstantMF( const qFIS_IO_t * const in,
                               const float *p,
                               const size_t n );
@@ -219,7 +222,7 @@ int qFIS_SetMF( qFIS_MF_t * const m,
                 float h )
 {
     int retVal = 0;
-    static const qFIS_MF_Fcn_t fShape[ 24 ] = { &qFIS_ConstantMF,
+    static const qFIS_MF_Fcn_t fShape[ 25 ] = { &qFIS_ConstantMF,
                                                 &qFIS_TriMF, &qFIS_TrapMF,
                                                 &qFIS_GBellMF, &qFIS_GaussMF,
                                                 &qFIS_Gauss2MF, &qFIS_SigMF,
@@ -228,6 +231,7 @@ int qFIS_SetMF( qFIS_MF_t * const m,
                                                 &qFIS_ZMF, &qFIS_SingletonMF,
                                                 &qFIS_ConcaveMF, &qFIS_SpikeMF,
                                                 &qFIS_RampMF, &qFIS_RectangleMF,
+                                                &qFIS_CosineMF,
                                                 &qFIS_ConstantMF, &qFIS_LinearMF,
                                                 &qFIS_TRampMF, &qFIS_TConcaveMF,
                                                 &qFIS_TSigMF, &qFIS_TSMF,
@@ -906,6 +910,38 @@ static float qFIS_RectangleMF( const qFIS_IO_t * const in,
     return ( ( x >= s ) && ( x <= e ) ) ? 1.0f : 0.0f;
 }
 /*============================================================================*/
+static float qFIS_CosineMF( const qFIS_IO_t * const in,
+                            const float *p,
+                            const size_t n )
+{
+    float x = in[ 0 ].value;
+    float c, w, y;
+    const float pi = 3.14159265358979323846f;
+    (void)n;
+
+    c = p[ 0 ];
+    w = p[ 1 ];
+
+    if ( ( x < ( c - ( 0.5*w ) ) ) || ( x > ( c + ( 0.5f*w ) ) ) ) {
+        y = 0.0f;
+    }
+    else {
+        y = 0.5f*( 1.0f + cosf( 2.0f/w*pi*( x - c) ) );
+    }
+
+    return y;
+
+}
+/*============================================================================*/
+static float qFIS_ConstantMF( const qFIS_IO_t * const in,
+                              const float *p,
+                              const size_t n )
+{
+    (void)in;
+    (void)n;
+    return p[ 0 ];
+}
+/*============================================================================*/
 static float qFIS_LinearMF( const qFIS_IO_t * const in,
                             const float *p,
                             const size_t n )
@@ -919,15 +955,6 @@ static float qFIS_LinearMF( const qFIS_IO_t * const in,
     px += p[ i ];
 
     return px;
-}
-/*============================================================================*/
-static float qFIS_ConstantMF( const qFIS_IO_t * const in,
-                              const float *p,
-                              const size_t n )
-{
-    (void)in;
-    (void)n;
-    return p[ 0 ];
 }
 /*============================================================================*/
 static float qFIS_Min( const float a,

@@ -40,6 +40,7 @@ extern "C" {
         spikemf,        /*!< Spike Membership Function f(w,c)*/
         rampmf,         /*!< Ramp Membership Function f(s,e) */
         rectmf,         /*!< Rectangle Membership Function f(s,e)*/
+        cosmf,          /*!< Cosine Membership Function f(c,w)*/
         constantmf,     /*!< Constant membership function f(a) [Only for ::Sugeno FIS]*/
         linearmf,       /*!< Linear membership function f(...) [Only for ::Sugeno FIS]*/
         trampmf,        /*!< Tsukamoto Ramp membership function f(h,s,e) [Only for ::Tsukamoto FIS]*/
