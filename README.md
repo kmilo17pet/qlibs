@@ -339,18 +339,18 @@ int main( int argc, char *argv[] )
     const float aeLOW_p[] = {-8.0f ,0.0 ,8.0f };
     const float aeMED_p[] = { 5.0f ,10.0f ,15.0f };
     const float aeHIGH_s[] = { 12.0f ,20.0f ,28.0f };
-    qFIS_SetMF( MFin, wt, wtSLOW, trimf, NULL, wtSLOW_p );
-    qFIS_SetMF( MFin, wt, wtMED, trimf, NULL, wtMED_p );
-    qFIS_SetMF( MFin, wt, wtFAST, trimf, NULL, wtFAST_p );
-    qFIS_SetMF( MFin, dax, daxLOW, trimf, NULL, daxLOW_p );
-    qFIS_SetMF( MFin, dax, daxMED, trimf, NULL, daxMED_p );
-    qFIS_SetMF( MFin, dax, daxHIGH, trimf, NULL, daxHIGH_p );
-    qFIS_SetMF( MFin, day, dayLOW, trimf, NULL, dayLOW_p );
-    qFIS_SetMF( MFin, day, dayMED, trimf, NULL, dayMED_p );
-    qFIS_SetMF( MFin, day, dayHIGH, trimf, NULL, dayHIGH_s );
-    qFIS_SetMF( MFin, ae, aeLOW, trimf, NULL, aeLOW_p );
-    qFIS_SetMF( MFin, ae, aeMED, trimf, NULL, aeMED_p );
-    qFIS_SetMF( MFin, ae, aeHIGH, trimf, NULL, aeHIGH_s );
+    qFIS_SetMF( MFin, wt, wtSLOW, trimf, NULL, wtSLOW_p, 1.0f );
+    qFIS_SetMF( MFin, wt, wtMED, trimf, NULL, wtMED_p, 1.0f );
+    qFIS_SetMF( MFin, wt, wtFAST, trimf, NULL, wtFAST_p, 1.0f );
+    qFIS_SetMF( MFin, dax, daxLOW, trimf, NULL, daxLOW_p, 1.0f );
+    qFIS_SetMF( MFin, dax, daxMED, trimf, NULL, daxMED_p, 1.0f );
+    qFIS_SetMF( MFin, dax, daxHIGH, trimf, NULL, daxHIGH_p, 1.0f );
+    qFIS_SetMF( MFin, day, dayLOW, trimf, NULL, dayLOW_p, 1.0f );
+    qFIS_SetMF( MFin, day, dayMED, trimf, NULL, dayMED_p, 1.0f );
+    qFIS_SetMF( MFin, day, dayHIGH, trimf, NULL, dayHIGH_s, 1.0f );
+    qFIS_SetMF( MFin, ae, aeLOW, trimf, NULL, aeLOW_p, 1.0f );
+    qFIS_SetMF( MFin, ae, aeMED, trimf, NULL, aeMED_p, 1.0f );
+    qFIS_SetMF( MFin, ae, aeHIGH, trimf, NULL, aeHIGH_s, 1.0f );
     /* Add membership functions to the outputs */
     const float phitGYRO_p[] ={ -0.4f ,0.0f ,0.4f };
     const float phitBOTH_p[] ={ 0.2f ,0.5f ,0.8f };
@@ -358,12 +358,12 @@ int main( int argc, char *argv[] )
     const float thetatGYRO_p[] ={ -0.4f ,0.0f ,0.4f };
     const float thetatBOTH_p[] ={ 0.2f ,0.5f ,0.8f };
     const float thetatACCEL_p[] ={ 0.6f ,1.0f ,1.4f };
-    qFIS_SetMF( MFout, phit, phitGYRO, trimf, NULL, phitGYRO_p );
-    qFIS_SetMF( MFout, phit, phitBOTH, trimf, NULL, phitBOTH_p );
-    qFIS_SetMF( MFout, phit, phitACCEL, trimf, NULL, phitACCEL_p );
-    qFIS_SetMF( MFout, thetat, thetatGYRO, trimf, NULL, thetatGYRO_p );
-    qFIS_SetMF( MFout, thetat, thetatBOTH, trimf, NULL, thetatBOTH_p );
-    qFIS_SetMF( MFout, thetat, thetatACCEL, trimf, NULL, thetatACCEL_p );
+    qFIS_SetMF( MFout, phit, phitGYRO, trimf, NULL, phitGYRO_p, 1.0f );
+    qFIS_SetMF( MFout, phit, phitBOTH, trimf, NULL, phitBOTH_p, 1.0f );
+    qFIS_SetMF( MFout, phit, phitACCEL, trimf, NULL, phitACCEL_p, 1.0f );
+    qFIS_SetMF( MFout, thetat, thetatGYRO, trimf, NULL, thetatGYRO_p, 1.0f );
+    qFIS_SetMF( MFout, thetat, thetatBOTH, trimf, NULL, thetatBOTH_p, 1.0f );
+    qFIS_SetMF( MFout, thetat, thetatACCEL, trimf, NULL, thetatACCEL_p, 1.0f );
 
     qFIS_Setup( &flexnav, Mamdani,
                 flexnav_inputs, sizeof(flexnav_inputs),

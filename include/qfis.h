@@ -1,7 +1,7 @@
 /*!
  * @file qfis.h
  * @author J. Camilo Gomez C.
- * @version 1.06
+ * @version 1.2
  * @note This file is part of the qLibs distribution.
  * @brief Fuzzy Inference System
  **/
@@ -27,18 +27,41 @@ extern "C" {
         trimf,          /*!< Triangular Membership function f(a,b,c)*/
         trapmf,         /*!< Trapezoidal Membership function f(a,b,c,d)*/
         gbellmf,        /*!< Generalized bell-shaped Membership function f(a,b,c)*/
-        gaussmf,        /*!< Gaussian  Membership function f(a,b)*/
-        gauss2mf,       /*!< Gaussian combination Membership function f(a,b,c,d)*/
-        sigmf,          /*!< Sigmoidal  Membership function f(a,b)*/
-        dsigmf,         /*!< Difference between two sigmoidal Membership functions f(a,b,c,d)*/
-        psigmf,         /*!< Product of two sigmoidal membership functions f(a,b,c,d)*/
+        gaussmf,        /*!< Gaussian  Membership function f(s,c)*/
+        gauss2mf,       /*!< Gaussian combination Membership function f(s1,c1,s2,c2)*/
+        sigmf,          /*!< Sigmoidal  Membership function f(a,c)*/
+        dsigmf,         /*!< Difference between two sigmoidal Membership functions f(a1,c1,a2,c2)*/
+        psigmf,         /*!< Product of two sigmoidal membership functions f(a1,c1,a2,c2)*/
         pimf,           /*!< Pi-shaped membership function f(a,b,c,d)*/
         smf,            /*!< S-shaped membership function f(a,b)*/
         zmf,            /*!< Z-shaped membership function f(a,b)*/
         singletonmf,    /*!< Singleton Membership Function f(a)*/
+        concavemf,      /*!< Concave Membership Function f(i,e)*/
+        spikemf,        /*!< Spike Membership Function f(w,c)*/
+        rampmf,         /*!< Ramp Membership Function f(s,e) */
+        rectmf,         /*!< Rectangle Membership Function f(s,e)*/
+        cosmf,          /*!< Cosine Membership Function f(c,w)*/
         constantmf,     /*!< Constant membership function f(a) [Only for ::Sugeno FIS]*/
-        linearmf        /*!< Linear membership function f(...) [Only for ::Sugeno FIS]*/
+        linearmf,       /*!< Linear membership function f(...) [Only for ::Sugeno FIS]*/
+        trampmf,        /*!< Tsukamoto Ramp membership function f(h,s,e) [Only for ::Tsukamoto FIS]*/
+        tconcavemf,     /*!< Tsukamoto Concave membership function f(i,e) [Only for ::Tsukamoto FIS]*/
+        tsigmf,         /*!< Tsukamoto Sigmoid membership function f(a,c) [Only for ::Tsukamoto FIS]*/
+        tsmf,           /*!< Tsukamoto S-Shape membership function f(a,b) [Only for ::Tsukamoto FIS]*/
+        tzmf            /*!< Tsukamoto Z-Shape membership function f(a,b) [Only for ::Tsukamoto FIS]*/
     } qFIS_MF_Name_t;
+
+    /**
+    * @brief An enum with all the possible de-Fuzzyfication methods.
+    */
+    typedef enum {
+        centroid = 0,   /*!< Center of gravity of the fuzzy set along the x-axis [ Only for ::Mandani FIS]*/
+        bisector,       /*!< Vertical line that divides the fuzzy set into two sub-regions of equal area [ Only for ::Mandani FIS]**/
+        MOM,            /*!< Middle of Maximum [ Only for ::Mandani FIS]**/
+        LOM,            /*!< Largest of Maximum [ Only for ::Mandani FIS]**/
+        SOM,            /*!< Smallest of Maximum [ Only for ::Mandani FIS]**/
+        wtaver,         /*!< Weighted average of all rule outputs [ Only for ::Sugeno and ::Tsukamoto FIS]*/
+        wtsum,          /*!< Weighted sum of all rule outputs [ Only for ::Sugeno FIS]*/
+    } qFIS_DeFuzz_Method_t;
 
     /**
     * @brief An enum with the supported parameter values
@@ -67,7 +90,8 @@ extern "C" {
     */
     typedef enum {
         Mamdani = 0,
-        Sugeno
+        Sugeno,
+        Tsukamoto
     } qFIS_Type_t;
 
     /**
@@ -77,7 +101,7 @@ extern "C" {
     */
     typedef struct
     {
-        float lo, up, value;
+        float min, max, value, zi_wi, wi;
     } qFIS_IO_t;
 
     typedef float (*qFIS_MF_Fcn_t)( const qFIS_IO_t * const in, const float *p, const size_t n );
@@ -91,7 +115,7 @@ extern "C" {
     {
         qFIS_MF_Fcn_t shape;
         const float *points;
-        float fx;
+        float fx, h;
         size_t index;
     } qFIS_MF_t;
 
@@ -120,7 +144,8 @@ extern "C" {
         qFIS_Type_t type;
         float rStrength;
         qFIS_Rules_t lastConnector;
-        size_t (*inferenceState)( struct _qFIS_s *f, const qFIS_Rules_t * const r, size_t i );
+        size_t (*inferenceState)( struct _qFIS_s * const f, const qFIS_Rules_t * const r, size_t i );
+        int (*deFuzz)( struct _qFIS_s * const f );
         int ruleCount;
     } qFIS_t;
 
@@ -153,11 +178,25 @@ extern "C" {
                            const qFIS_ParamValue_t x );
 
     /**
+    * @brief Change the default deFuzzification method of the FIS instance.
+    * @param[in] f A pointer to the Fuzzy Inference System instance.
+    * @param[in] m The de-fuzzification method: use one of the following :
+    * ::centroid, ::bisector, ::MOM, ::LOM, ::SOM, ::wtaver, ::wtsum
+    * @note :centroid, ::bisector, ::MOM, ::LOM and ::SOM only apply for a
+    * Mandani FIS
+    * @note :wtaver and ::wtsum only apply for a Sugeno FIS.
+    * @note :wtaver only apply for a ::Tsukamoto FIS
+    * @return 1 on success, otherwise return 0.
+    */
+    int qFIS_SetDeFuzzMethod( qFIS_t * const f,
+                              qFIS_DeFuzz_Method_t m );
+
+    /**
     * @brief Setup and initialize the FIS instance.
     * @note Default configuration : AND = Min, OR = Max, Implication = Min
     * Aggregation = Max, EvalPoints = 100
     * @param[in] f A pointer to the Fuzzy Inference System instance.
-    * @param[in] t Type of inference ::Mamdani or ::Sugeno.
+    * @param[in] t Type of inference ::Mamdani, ::Sugeno or ::Tsukamoto.
     * @param[in] inputs An array with all the system inputs as IO objects.
     * @param[in] ni The number of bytes used by @a inputs. Use the sizeof operator.
     * @param[in] outputs An array with all the system outputs as IO objects.
@@ -207,15 +246,20 @@ extern "C" {
     * @param[in] shape The wanted shape/form for this membership function, cam
     * be one of the following: ::trimf, ::trapmf, ::gbellmf, ::gaussmf, 
     * ::gauss2mf, ::sigmf, ::dsigmf, ::psigmf, ::pimf, ::smf, ::zmf, 
-    * ::singletonmf.
+    * ::singletonmf, ::concavemf, ::spikemf, ::rampmf, ::rectmf.
     * @note For ::Sugeno FIS, an output membership function should be one of the
     * following: ::constantmf, ::linearmf.
+    * @note For ::Tsukamoto FIS, an output membership function should be one the
+    * following monotonic functions : trampmf, tsigmf, tsmf, tzmf, tconcavemf
     * @note To set a custom user-defined membership function, set this argument
     * as ::custommf and pass a pointer to the desired function on the 
     * @a custom_mf argument.
     * @param[in] custom_mf Custom user-defined membership function. To ignore
     * pass NULL as argument.
     * @param[in] cp Points or coefficients of the membership function.
+    * @param[in] h Height of the membership function.
+    * @note Heigth parameter does not apply for output membership functions on
+    * ::Sugeno and ::Tsukamoto inference systems. [ 0 <= h <= 1]
     * @return 1 on success, otherwise return 0.
     */
     int qFIS_SetMF( qFIS_MF_t * const m,
@@ -223,7 +267,8 @@ extern "C" {
                     const qFIS_Tag_t mf_tag,
                     const qFIS_MF_Name_t shape,
                     qFIS_MF_Fcn_t custom_mf,
-                    const float *cp );
+                    const float *cp,
+                    const float h );
 
     /**
     * @brief Perform the fuzzification operation over the crisp inputs on the 
@@ -244,8 +289,9 @@ extern "C" {
 
     /**
     * @brief Perform the de-Fuzzification operation to compute the crisp outputs.
-    * @note This API uses the Centroid method on ::Mamdani type FIS and
-    * weight-average on ::Sugeno type FIS.
+    * @note By default, this function, this API uses the Centroid method on
+    * ::Mamdani type FIS and weight-average on ::Sugeno type FIS. To change
+    * the default settings use the qFIS_SetDeFuzzMethod() function.
     * @param[in] f A pointer to the Fuzzy Inference System instance.
     * @return 1 on success, otherwise return 0.
     */
