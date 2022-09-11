@@ -1,7 +1,7 @@
 /*!
  * @file qfis.h
  * @author J. Camilo Gomez C.
- * @version 1.11
+ * @version 1.2
  * @note This file is part of the qLibs distribution.
  * @brief Fuzzy Inference System
  **/
@@ -49,6 +49,19 @@ extern "C" {
         tsmf,           /*!< Tsukamoto S-Shape membership function f(a,b) [Only for ::Tsukamoto FIS]*/
         tzmf            /*!< Tsukamoto Z-Shape membership function f(a,b) [Only for ::Tsukamoto FIS]*/
     } qFIS_MF_Name_t;
+
+    /**
+    * @brief An enum with all the possible de-Fuzzyfication methods.
+    */
+    typedef enum {
+        centroid = 0,   /*!< Center of gravity of the fuzzy set along the x-axis [ Only for ::Mandani FIS]*/
+        bisector,       /*!< Vertical line that divides the fuzzy set into two sub-regions of equal area [ Only for ::Mandani FIS]**/
+        MOM,            /*!< Middle of Maximum [ Only for ::Mandani FIS]**/
+        LOM,            /*!< Largest of Maximum [ Only for ::Mandani FIS]**/
+        SOM,            /*!< Smallest of Maximum [ Only for ::Mandani FIS]**/
+        wtaver,         /*!< Weighted average of all rule outputs [ Only for ::Sugeno and ::Tsukamoto FIS]*/
+        wtsum,          /*!< Weighted sum of all rule outputs [ Only for ::Sugeno FIS]*/
+    } qFIS_DeFuzz_Method_t;
 
     /**
     * @brief An enum with the supported parameter values
@@ -165,11 +178,25 @@ extern "C" {
                            const qFIS_ParamValue_t x );
 
     /**
+    * @brief Change the default deFuzzification method of the FIS instance.
+    * @param[in] f A pointer to the Fuzzy Inference System instance.
+    * @param[in] m The de-fuzzification method: use one of the following :
+    * ::centroid, ::bisector, ::MOM, ::LOM, ::SOM, ::wtaver, ::wtsum
+    * @note :centroid, ::bisector, ::MOM, ::LOM and ::SOM only apply for a
+    * Mandani FIS
+    * @note :wtaver and ::wtsum only apply for a Sugeno FIS.
+    * @note :wtaver only apply for a ::Tsukamoto FIS
+    * @return 1 on success, otherwise return 0.
+    */
+    int qFIS_SetDeFuzzMethod( qFIS_t * const f,
+                              qFIS_DeFuzz_Method_t m );
+
+    /**
     * @brief Setup and initialize the FIS instance.
     * @note Default configuration : AND = Min, OR = Max, Implication = Min
     * Aggregation = Max, EvalPoints = 100
     * @param[in] f A pointer to the Fuzzy Inference System instance.
-    * @param[in] t Type of inference ::Mamdani or ::Sugeno.
+    * @param[in] t Type of inference ::Mamdani, ::Sugeno or ::Tsukamoto.
     * @param[in] inputs An array with all the system inputs as IO objects.
     * @param[in] ni The number of bytes used by @a inputs. Use the sizeof operator.
     * @param[in] outputs An array with all the system outputs as IO objects.
@@ -262,8 +289,9 @@ extern "C" {
 
     /**
     * @brief Perform the de-Fuzzification operation to compute the crisp outputs.
-    * @note This API uses the Centroid method on ::Mamdani type FIS and
-    * weight-average on ::Sugeno type FIS.
+    * @note By default, this function, this API uses the Centroid method on
+    * ::Mamdani type FIS and weight-average on ::Sugeno type FIS. To change
+    * the default settings use the qFIS_SetDeFuzzMethod() function.
     * @param[in] f A pointer to the Fuzzy Inference System instance.
     * @return 1 on success, otherwise return 0.
     */
