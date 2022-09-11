@@ -259,7 +259,7 @@ extern "C" {
     * @param[in] cp Points or coefficients of the membership function.
     * @param[in] h Height of the membership function.
     * @note Heigth parameter does not apply for output membership functions on
-    * ::Sugeno and ::Tsukamoto inference systems.
+    * ::Sugeno and ::Tsukamoto inference systems. [ 0 <= h <= 1]
     * @return 1 on success, otherwise return 0.
     */
     int qFIS_SetMF( qFIS_MF_t * const m,
@@ -268,7 +268,7 @@ extern "C" {
                     const qFIS_MF_Name_t shape,
                     qFIS_MF_Fcn_t custom_mf,
                     const float *cp,
-                    float h );
+                    const float h );
 
     /**
     * @brief Perform the fuzzification operation over the crisp inputs on the 
