@@ -101,7 +101,7 @@ extern "C" {
     */
     typedef struct
     {
-        float lo, up, value, zi_wi, wi;
+        float min, max, value, zi_wi, wi;
     } qFIS_IO_t;
 
     typedef float (*qFIS_MF_Fcn_t)( const qFIS_IO_t * const in, const float *p, const size_t n );

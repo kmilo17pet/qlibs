@@ -98,6 +98,15 @@ static void qFIS_TruncateInputs( qFIS_t * const f );
 static float qFIS_ParseFuzzValue( qFIS_MF_t * const mfIO,
                                   qFIS_Rules_t index );
 static qFIS_FuzzyOperator_t qFIS_GetFuzzOperator( qFIS_t * const f );
+
+static float qFIS_OutputAggregate( qFIS_t * const f,
+                                   const int tag,
+                                   const float xi );
+static float qFIS_GetResolution( const qFIS_t * const f,
+                                 const int tag );
+static float qFIS_GetNextX( const float init,
+                            const float res,
+                            const size_t i );
 static int qFIS_DeFuzzCentroid( qFIS_t * const f );
 static int qFIS_DeFuzzBisector( qFIS_t * const f );
 static int qFIS_DeFuzzLOM( qFIS_t * const f );
@@ -172,11 +181,11 @@ int qFIS_SetDeFuzzMethod( qFIS_t * const f,
     int retVal = 0;
     typedef int (*deFuzz_fcn_t)( qFIS_t * const f );
     static const deFuzz_fcn_t method[ 7 ] = { &qFIS_DeFuzzCentroid,
-                                               &qFIS_DeFuzzBisector, 
-                                               &qFIS_DeFuzzMOM, &qFIS_DeFuzzLOM,
-                                               &qFIS_DeFuzzSOM, 
-                                               &qFIS_DeFuzzWtAverage,
-                                               &qFIS_DeFuzzWtSum
+                                              &qFIS_DeFuzzBisector, 
+                                              &qFIS_DeFuzzMOM, &qFIS_DeFuzzLOM,
+                                              &qFIS_DeFuzzSOM, 
+                                              &qFIS_DeFuzzWtAverage,
+                                              &qFIS_DeFuzzWtSum
                                              };
 
     if ( ( NULL != f ) || ( m < wtsum ) ) {
@@ -236,8 +245,8 @@ int qFIS_SetIO( qFIS_IO_t * const v,
     int retVal = 0;
 
     if ( ( NULL != v ) && ( tag >= 0 ) ) {
-        v[ tag ].lo = min;
-        v[ tag ].up = max;
+        v[ tag ].min = min;
+        v[ tag ].max = max;
         retVal = 1;
     }
 
@@ -307,11 +316,11 @@ static void qFIS_TruncateInputs( qFIS_t *f )
     size_t i;
 
     for ( i = 0 ; i < f->nInputs ; ++i ) {
-        if ( f->input[ i ].value > f->input[ i ].up ) {
-            f->input[ i ].value = f->input[ i ].up;
+        if ( f->input[ i ].value > f->input[ i ].max ) {
+            f->input[ i ].value = f->input[ i ].max;
         }
-        if ( f->input[ i ].value < f->input[ i ].lo ) {
-            f->input[ i ].value = f->input[ i ].lo;
+        if ( f->input[ i ].value < f->input[ i ].min ) {
+            f->input[ i ].value = f->input[ i ].min;
         }
     }
 }
@@ -483,40 +492,58 @@ int qFIS_Inference( qFIS_t * const f,
     return retVal;
 }
 /*============================================================================*/
+static float qFIS_OutputAggregate( qFIS_t * const f,
+                                   const int tag,
+                                   const float xi )
+{
+    float z, fx = 0.0f;
+    size_t j;
+    qFIS_IO_t x;
+    
+    x.value = xi;
+    for ( j = 0u ; j < f->nMFOutputs ; ++j ) {
+        if ( f->outMF[ j ].index == (size_t)tag ) {
+            z = f->outMF[ j ].shape( &x, f->outMF[ j ].points, 1u );
+            z *= f->outMF[ j ].h;
+            fx = f->mUnion( fx, f->implicate( z, f->outMF[ j ].fx ) );
+        }
+    }
+
+    return fx;
+}
+/*============================================================================*/
+static float qFIS_GetResolution( const qFIS_t * const f,
+                                 const int tag )
+{
+    /*cstat -CERT-FLP36-C*/
+    return ( ( f->output[ tag ].max - f->output[ tag ].min )/(float)f->nPoints );
+    /*cstat +CERT-FLP36-C*/
+}
+/*============================================================================*/
+static float qFIS_GetNextX( const float init,
+                            const float res,
+                            const size_t i )
+{
+    /*cstat -CERT-FLP36-C*/
+    return init + ( (float)i*res );
+    /*cstat +CERT-FLP36-C*/
+}
+/*============================================================================*/
 static int qFIS_DeFuzzCentroid( qFIS_t * const f )
 {
-    size_t i, j;
-    float x, z, fx, int_Fx, int_xFx, res;
+    size_t i;
+    float x, fx, int_Fx, int_xFx, res;
     int tag;
 
     for ( tag = 0 ; (size_t)tag < f->nOutputs ; ++tag ) {
         int_Fx = 0.0f;
         int_xFx = 0.0f;
-        /*cstat -CERT-FLP36-C*/
-        res = ( ( f->output[ tag ].up - f->output[ tag ].lo )/(float)f->nPoints );
-        /*cstat +CERT-FLP36-C*/
+        res = qFIS_GetResolution( f, tag );
         for ( i = 0u ; i < ( f->nPoints + 1u ) ; ++i ) {
-            qFIS_IO_t xx;
-            /*cstat -CERT-FLP36-C*/
-            x = f->output[ tag ].lo + ( (float)i*res );
-            /*cstat +CERT-FLP36-C*/
-            if ( x > f->output[tag].up ) {
-                x = f->output[tag].up;
-            }
-            xx.value = x;
-            fx = 0.0f;
-            for ( j = 0u ; j < f->nMFOutputs ; ++j ) {
-                if ( f->outMF[ j ].index == (size_t)tag ) {
-                    z = f->outMF[ j ].shape( &xx , f->outMF[ j ].points, 1u );
-                    z *= f->outMF[ j ].h;
-                    fx = f->mUnion( fx, f->implicate( z, f->outMF[ j ].fx ) );
-                }
-            }
+            x = qFIS_GetNextX( f->output[ tag ].min, res, i );
+            fx = qFIS_OutputAggregate( f, tag, x );
             int_xFx += x*fx;
             int_Fx += fx;
-            if ( x >= f->output[ tag ].up ) {
-                break;
-            }
         }
         f->output[ tag ].value = ( int_xFx/int_Fx );
     }
@@ -526,44 +553,31 @@ static int qFIS_DeFuzzCentroid( qFIS_t * const f )
 /*============================================================================*/
 static int qFIS_DeFuzzBisector( qFIS_t * const f )
 {
-    size_t i, j;
-    float z, fx, res;
+    size_t i;
+    float fx, res;
     int tag;
     struct bisector_s 
     {
         float init, x, area, sign;
-        int i;
+        size_t i;
     } left = { 0.0f, 0.0f, 0.0f, 1.0f, 0 }, right = { 0.0f, 0.0f, 0.0f, -1.0f, 0 };
 
     for ( tag = 0 ; (size_t)tag < f->nOutputs ; ++tag ) {
         left.area = 0.0f;
-        left.x = f->output[ tag ].lo;
-        left.init = f->output[ tag ].lo;
-        left.i = 0;
+        left.x = f->output[ tag ].min;
+        left.init = f->output[ tag ].min;
+        left.i = 0u;
         right.area = 0.0f;
-        right.x = f->output[ tag ].up;
-        right.init = f->output[ tag ].up;
-        right.i = 0;
+        right.x = f->output[ tag ].max;
+        right.init = f->output[ tag ].max;
+        right.i = 0u;
         i = f->nPoints;
-        /*cstat -CERT-FLP36-C*/
-        res = ( ( f->output[ tag ].up - f->output[ tag ].lo )/(float)f->nPoints );
-        /*cstat +CERT-FLP36-C*/
+        res = qFIS_GetResolution( f, tag );
         while ( i-- > 0u ) {
-            qFIS_IO_t xx;
             struct bisector_s *b;
             b = ( left.area <= right.area ) ? &left : &right;
-            /*cstat -CERT-FLP36-C*/
-            b->x = b->init + ( (float)b->i*res*b->sign );
-            /*cstat +CERT-FLP36-C*/
-            xx.value = b->x;
-            fx = 0.0f;
-            for ( j = 0u ; j < f->nMFOutputs ; ++j ) {
-                if ( f->outMF[ j ].index == (size_t)tag ) {
-                    z = f->outMF[ j ].shape( &xx , f->outMF[ j ].points, 1u );
-                    z *= f->outMF[ j ].h;
-                    fx = f->mUnion( fx, f->implicate( z, f->outMF[ j ].fx ) );
-                }
-            }
+            b->x = qFIS_GetNextX( b->init, b->sign*res, b->i );
+            fx = qFIS_OutputAggregate( f, tag, b->x );
             b->area += fx;
             ++b->i;
         }
@@ -575,39 +589,20 @@ static int qFIS_DeFuzzBisector( qFIS_t * const f )
 /*============================================================================*/
 static int qFIS_DeFuzzLOM( qFIS_t * const f )
 {
-    size_t i, j;
-    float x, z, fx, yMax, xLargest, res;
+    size_t i;
+    float x, fx, yMax, xLargest, res;
     int tag;
 
     for ( tag = 0 ; (size_t)tag < f->nOutputs ; ++tag ) {
         yMax = -1.0f;
-        xLargest = f->output[ tag ].up;
-        /*cstat -CERT-FLP36-C*/
-        res = ( ( f->output[ tag ].up - f->output[ tag ].lo )/(float)f->nPoints );
-        /*cstat +CERT-FLP36-C*/
+        xLargest = f->output[ tag ].max;
+        res = qFIS_GetResolution( f, tag );
         for ( i = 0u ; i < ( f->nPoints + 1u ) ; ++i ) {
-            qFIS_IO_t xx;
-            /*cstat -CERT-FLP36-C*/
-            x = f->output[ tag ].lo + ( (float)i*res );
-            /*cstat +CERT-FLP36-C*/
-            if ( x > f->output[tag].up ) {
-                x = f->output[tag].up;
-            }
-            xx.value = x;
-            fx = 0.0f;
-            for ( j = 0u ; j < f->nMFOutputs ; ++j ) {
-                if ( f->outMF[ j ].index == (size_t)tag ) {
-                    z = f->outMF[ j ].shape( &xx , f->outMF[ j ].points, 1u );
-                    z *= f->outMF[ j ].h;
-                    fx = f->mUnion( fx, f->implicate( z, f->outMF[ j ].fx ) );
-                }
-            }
+            x = qFIS_GetNextX( f->output[ tag ].min, res, i );
+            fx = qFIS_OutputAggregate( f, tag, x );
             if ( fx >= yMax ) {
                 yMax = fx;
                 xLargest = x;
-            }
-            if ( x >= f->output[ tag ].up ) {
-                break;
             }
         }
         f->output[ tag ].value = xLargest;
@@ -618,39 +613,20 @@ static int qFIS_DeFuzzLOM( qFIS_t * const f )
 /*============================================================================*/
 static int qFIS_DeFuzzSOM( qFIS_t * const f )
 {
-    size_t i, j;
-    float x, z, fx, yMax, xSmallest, res;
+    size_t i;
+    float x, fx, yMax, xSmallest, res;
     int tag;
 
     for ( tag = 0 ; (size_t)tag < f->nOutputs ; ++tag ) {
         yMax = -1.0f;
-        xSmallest = f->output[ tag ].lo;
-        /*cstat -CERT-FLP36-C*/
-        res = ( ( f->output[ tag ].up - f->output[ tag ].lo )/(float)f->nPoints );
-        /*cstat +CERT-FLP36-C*/
+        xSmallest = f->output[ tag ].min;
+        res = qFIS_GetResolution( f, tag );
         for ( i = 0u ; i < ( f->nPoints + 1u ) ; ++i ) {
-            qFIS_IO_t xx;
-            /*cstat -CERT-FLP36-C*/
-            x = f->output[ tag ].lo + ( (float)i*res );
-            /*cstat +CERT-FLP36-C*/
-            if ( x > f->output[tag].up ) {
-                x = f->output[tag].up;
-            }
-            xx.value = x;
-            fx = 0.0f;
-            for ( j = 0u ; j < f->nMFOutputs ; ++j ) {
-                if ( f->outMF[ j ].index == (size_t)tag ) {
-                    z = f->outMF[ j ].shape( &xx , f->outMF[ j ].points, 1u );
-                    z *= f->outMF[ j ].h;
-                    fx = f->mUnion( fx, f->implicate( z, f->outMF[ j ].fx ) );
-                }
-            }
+            x = qFIS_GetNextX( f->output[ tag ].min, res, i );
+            fx = qFIS_OutputAggregate( f, tag, x );
             if ( fx > yMax ) {
                 yMax = fx;
                 xSmallest = x;
-            }
-            if ( x >= f->output[ tag ].up ) {
-                break;
             }
         }
         f->output[ tag ].value = xSmallest;
@@ -661,36 +637,20 @@ static int qFIS_DeFuzzSOM( qFIS_t * const f )
 /*============================================================================*/
 static int qFIS_DeFuzzMOM( qFIS_t * const f )
 {
-    size_t i, j;
-    float x, z, fx, yMax, xLargest, xSmallest, res;
+    size_t i;
+    float x, fx, yMax, xLargest, xSmallest, res;
     int tag;
     uint8_t sp;
 
     for ( tag = 0 ; (size_t)tag < f->nOutputs ; ++tag ) {
         yMax = -1.0f;
-        xSmallest = f->output[ tag ].lo;
-        xLargest = f->output[ tag ].up;
+        xSmallest = f->output[ tag ].min;
+        xLargest = f->output[ tag ].max;
         sp = 0u;
-        /*cstat -CERT-FLP36-C*/
-        res = ( ( f->output[ tag ].up - f->output[ tag ].lo )/(float)f->nPoints );
-        /*cstat +CERT-FLP36-C*/
+        res = qFIS_GetResolution( f, tag );
         for ( i = 0u ; i < ( f->nPoints + 1u ) ; ++i ) {
-            qFIS_IO_t xx;
-            /*cstat -CERT-FLP36-C*/
-            x = f->output[ tag ].lo + ( (float)i*res );
-            /*cstat +CERT-FLP36-C*/
-            if ( x > f->output[tag].up ) {
-                x = f->output[tag].up;
-            }
-            xx.value = x;
-            fx = 0.0f;
-            for ( j = 0u ; j < f->nMFOutputs ; ++j ) {
-                if ( f->outMF[ j ].index == (size_t)tag ) {
-                    z = f->outMF[ j ].shape( &xx , f->outMF[ j ].points, 1u );
-                    z *= f->outMF[ j ].h;
-                    fx = f->mUnion( fx, f->implicate( z, f->outMF[ j ].fx ) );
-                }
-            }
+            x = qFIS_GetNextX( f->output[ tag ].min, res, i );
+            fx = qFIS_OutputAggregate( f, tag, x );
             if ( fx > yMax ) {
                 yMax = fx;
                 xSmallest = x;
@@ -705,10 +665,6 @@ static int qFIS_DeFuzzMOM( qFIS_t * const f )
             }
             else {
               /*nothing to do*/
-            }
-
-            if ( x >= f->output[ tag ].up ) {
-                break;
             }
         }
         f->output[ tag ].value = 0.5f*( xSmallest + xLargest );
@@ -849,14 +805,12 @@ static float qFIS_TSigMF( const qFIS_IO_t * const in,
 {
     float a, b, y;
     float x = in[ 0 ].value;
-    float min = in[ 0 ].lo;
-    float max = in[ 0 ].up;
+    float min = in[ 0 ].min;
+    float max = in[ 0 ].max;
     (void)n;
 
     a = p[ 0 ]; /*slope*/
     b = p[ 1 ]; /*inflection*/
-
-
     if ( fabsf( x - 1.0f ) <= FLT_MIN ) { /* x == 1 ? */
         if ( a >= 0.0f ){
             y = max;
@@ -991,7 +945,6 @@ static float qFIS_TZMF( const qFIS_IO_t * const in,
     float x = in[ 0 ].value;
     (void)n;
     qFIS_IO_t tmp;
-
 
     a = p[ 0 ]; /*start*/
     b = p[ 1 ]; /*end*/
