@@ -556,32 +556,25 @@ static int qFIS_DeFuzzBisector( qFIS_t * const f )
     size_t i;
     float fx, res;
     int tag;
-    struct bisector_s 
-    {
-        float init, x, area, sign;
+    struct bisector_s {
+        float init, x, a, sign;
         size_t i;
-    } left = { 0.0f, 0.0f, 0.0f, 1.0f, 0 }, right = { 0.0f, 0.0f, 0.0f, -1.0f, 0 };
+    };
 
     for ( tag = 0 ; (size_t)tag < f->nOutputs ; ++tag ) {
-        left.area = 0.0f;
-        left.x = f->output[ tag ].min;
-        left.init = f->output[ tag ].min;
-        left.i = 0u;
-        right.area = 0.0f;
-        right.x = f->output[ tag ].max;
-        right.init = f->output[ tag ].max;
-        right.i = 0u;
-        i = f->nPoints;
+        struct bisector_s /* l = left, r = right */
+        l = { f->output[ tag].min , f->output[ tag].min , 0.0f, 1.0f, 0 },
+        r = { f->output[ tag].max , f->output[ tag].max , 0.0f, -1.0f, 0 };
         res = qFIS_GetResolution( f, tag );
-        while ( i-- > 0u ) {
+        for( i = f->nPoints ; i > 0u ; --i ) {
             struct bisector_s *b;
-            b = ( left.area <= right.area ) ? &left : &right;
+            b = ( l.a <= r.a ) ? &l : &r;
             b->x = qFIS_GetNextX( b->init, b->sign*res, b->i );
             fx = qFIS_OutputAggregate( f, tag, b->x );
-            b->area += fx;
+            b->a += fx; /*update area*/
             ++b->i;
         }
-        f->output[ tag ].value = ( ( left.area*right.x ) + ( right.area*left.x ) )/( left.area + right.area );
+        f->output[ tag ].value = ( ( l.a*r.x ) + ( r.a*l.x ) )/( l.a + r.a );
     }
 
     return 1;
