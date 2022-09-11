@@ -112,10 +112,10 @@ static int qFIS_DeFuzzSOM( qFIS_t * const f );
 static int qFIS_DeFuzzMOM( qFIS_t * const f );
 static int qFIS_DeFuzzWtAverage( qFIS_t * const f );
 static int qFIS_DeFuzzWtSum( qFIS_t * const f );
-static size_t qFIS_InferenceAntecedent( struct _qFIS_s *f,
+static size_t qFIS_InferenceAntecedent( struct _qFIS_s * const f,
                                         const qFIS_Rules_t * const r,
                                         size_t i );
-static size_t qFIS_InferenceConsequent( struct _qFIS_s *f,
+static size_t qFIS_InferenceConsequent( struct _qFIS_s * const f,
                                         const qFIS_Rules_t * const r,
                                         size_t i );
 static void qFIS_InferenceInit( qFIS_t * const f );
@@ -364,7 +364,7 @@ static qFIS_FuzzyOperator_t qFIS_GetFuzzOperator( qFIS_t * const f )
     return oper;
 }
 /*============================================================================*/
-static size_t qFIS_InferenceAntecedent( struct _qFIS_s *f,
+static size_t qFIS_InferenceAntecedent( struct _qFIS_s * const f,
                                         const qFIS_Rules_t * const r,
                                         size_t i )
 {
@@ -399,7 +399,7 @@ static size_t qFIS_InferenceAntecedent( struct _qFIS_s *f,
     return i;
 }
 /*============================================================================*/
-static size_t qFIS_InferenceConsequent( struct _qFIS_s *f,
+static size_t qFIS_InferenceConsequent( struct _qFIS_s * const f,
                                         const qFIS_Rules_t * const r,
                                         size_t i )
 {

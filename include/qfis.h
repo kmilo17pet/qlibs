@@ -144,8 +144,8 @@ extern "C" {
         qFIS_Type_t type;
         float rStrength;
         qFIS_Rules_t lastConnector;
-        size_t (*inferenceState)( struct _qFIS_s *f, const qFIS_Rules_t * const r, size_t i );
-        int (*deFuzz)( struct _qFIS_s *f );
+        size_t (*inferenceState)( struct _qFIS_s * const f, const qFIS_Rules_t * const r, size_t i );
+        int (*deFuzz)( struct _qFIS_s * const f );
         int ruleCount;
     } qFIS_t;
 
