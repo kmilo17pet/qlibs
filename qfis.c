@@ -518,14 +518,16 @@ static float qFIS_GetNextX( const float init,
 /*============================================================================*/
 static int qFIS_DeFuzzCentroid( qFIS_t * const f )
 {
-    size_t i , tag;
-    float x, fx, int_Fx, int_xFx, res;
+    size_t tag;
 
     for ( tag = 0u ; tag < f->nOutputs ; ++tag ) {
-        int_Fx = 0.0f;
-        int_xFx = 0.0f;
+        float res, int_Fx = 0.0f, int_xFx = 0.0f;
+        size_t i;
+
         res = qFIS_GetResolution( f, tag );
         for ( i = 0u ; i < ( f->nPoints + 1u ) ; ++i ) {
+            float x, fx;
+
             x = qFIS_GetNextX( f->output[ tag ].min, res, i );
             fx = qFIS_OutputAggregate( f, tag, x );
             int_xFx += x*fx;
@@ -539,8 +541,7 @@ static int qFIS_DeFuzzCentroid( qFIS_t * const f )
 /*============================================================================*/
 static int qFIS_DeFuzzBisector( qFIS_t * const f )
 {
-    size_t i, tag;
-    float fx, res;
+    size_t tag;
     struct bisector_s {
         float init, x, a, sign;
         size_t i;
@@ -550,12 +551,15 @@ static int qFIS_DeFuzzBisector( qFIS_t * const f )
         struct bisector_s /* l = left, r = right */
         l = { f->output[ tag].min , f->output[ tag].min , 0.0f, 1.0f, 0 },
         r = { f->output[ tag].max , f->output[ tag].max , 0.0f, -1.0f, 0 };
+        float res;
+        size_t i;
+
         res = qFIS_GetResolution( f, tag );
         for( i = f->nPoints ; i > 0u ; --i ) {
             struct bisector_s *b = ( l.a <= r.a ) ? &l : &r;
+
             b->x = qFIS_GetNextX( b->init, b->sign*res, b->i );
-            fx = qFIS_OutputAggregate( f, tag, b->x );
-            b->a += fx; /*update area*/
+            b->a += qFIS_OutputAggregate( f, tag, b->x ); /*update area*/
             ++b->i;
         }
         f->output[ tag ].value = ( ( l.a*r.x ) + ( r.a*l.x ) )/( l.a + r.a );
@@ -566,14 +570,16 @@ static int qFIS_DeFuzzBisector( qFIS_t * const f )
 /*============================================================================*/
 static int qFIS_DeFuzzLOM( qFIS_t * const f )
 {
-    size_t i, tag;
-    float x, fx, yMax, xLargest, res;
+    size_t tag;
 
     for ( tag = 0u ; tag < f->nOutputs ; ++tag ) {
-        yMax = -1.0f;
-        xLargest = f->output[ tag ].max;
+        float res, yMax = -1.0f, xLargest = f->output[ tag ].max;
+        size_t i;
+
         res = qFIS_GetResolution( f, tag );
         for ( i = 0u ; i < ( f->nPoints + 1u ) ; ++i ) {
+            float x, fx;
+
             x = qFIS_GetNextX( f->output[ tag ].min, res, i );
             fx = qFIS_OutputAggregate( f, tag, x );
             if ( fx >= yMax ) {
@@ -589,14 +595,16 @@ static int qFIS_DeFuzzLOM( qFIS_t * const f )
 /*============================================================================*/
 static int qFIS_DeFuzzSOM( qFIS_t * const f )
 {
-    size_t i, tag;
-    float x, fx, yMax, xSmallest, res;
+    size_t tag;
 
     for ( tag = 0 ; tag < f->nOutputs ; ++tag ) {
-        yMax = -1.0f;
-        xSmallest = f->output[ tag ].min;
+        float res, yMax = -1.0f, xSmallest = f->output[ tag ].min;
+        size_t i;
+
         res = qFIS_GetResolution( f, tag );
         for ( i = 0u ; i < ( f->nPoints + 1u ) ; ++i ) {
+            float x, fx;
+
             x = qFIS_GetNextX( f->output[ tag ].min, res, i );
             fx = qFIS_OutputAggregate( f, tag, x );
             if ( fx > yMax ) {
@@ -612,17 +620,19 @@ static int qFIS_DeFuzzSOM( qFIS_t * const f )
 /*============================================================================*/
 static int qFIS_DeFuzzMOM( qFIS_t * const f )
 {
-    size_t i, tag;
-    float x, fx, yMax, xLargest, xSmallest, res;
-    uint8_t sp;
+    size_t tag;
 
     for ( tag = 0 ; tag < f->nOutputs ; ++tag ) {
-        yMax = -1.0f;
-        xSmallest = f->output[ tag ].min;
-        xLargest = f->output[ tag ].max;
-        sp = 0u;
+        float res, yMax = -1.0f;
+        float xSmallest = f->output[ tag ].min; 
+        float xLargest = f->output[ tag ].max;
+        uint8_t sp = 0u;
+        size_t i;
+
         res = qFIS_GetResolution( f, tag );
         for ( i = 0u ; i < ( f->nPoints + 1u ) ; ++i ) {
+            float x, fx;
+
             x = qFIS_GetNextX( f->output[ tag ].min, res, i );
             fx = qFIS_OutputAggregate( f, tag, x );
             if ( fx > yMax ) {
