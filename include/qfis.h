@@ -1,7 +1,7 @@
 /*!
  * @file qfis.h
  * @author J. Camilo Gomez C.
- * @version 1.2
+ * @version 1.3
  * @note This file is part of the qLibs distribution.
  * @brief Fuzzy Inference System
  **/
@@ -56,9 +56,9 @@ extern "C" {
     typedef enum {
         centroid = 0,   /*!< Center of gravity of the fuzzy set along the x-axis [ Only for ::Mandani FIS]*/
         bisector,       /*!< Vertical line that divides the fuzzy set into two sub-regions of equal area [ Only for ::Mandani FIS]**/
-        MOM,            /*!< Middle of Maximum [ Only for ::Mandani FIS]**/
-        LOM,            /*!< Largest of Maximum [ Only for ::Mandani FIS]**/
-        SOM,            /*!< Smallest of Maximum [ Only for ::Mandani FIS]**/
+        mom,            /*!< Middle of Maximum [ Only for ::Mandani FIS]**/
+        lom,            /*!< Largest of Maximum [ Only for ::Mandani FIS]**/
+        som,            /*!< Smallest of Maximum [ Only for ::Mandani FIS]**/
         wtaver,         /*!< Weighted average of all rule outputs [ Only for ::Sugeno and ::Tsukamoto FIS]*/
         wtsum,          /*!< Weighted sum of all rule outputs [ Only for ::Sugeno FIS]*/
     } qFIS_DeFuzz_Method_t;
@@ -147,6 +147,7 @@ extern "C" {
         size_t (*inferenceState)( struct _qFIS_s * const f, const qFIS_Rules_t * const r, size_t i );
         int (*deFuzz)( struct _qFIS_s * const f );
         int ruleCount;
+        float *ruleWeight;
     } qFIS_t;
 
     #define _QFIS_RULES_END         ( INT16_MIN + 1 )
@@ -296,6 +297,15 @@ extern "C" {
     * @return 1 on success, otherwise return 0.
     */
     int qFIS_DeFuzzify( qFIS_t * const f );
+
+    /**
+    * @brief Set weights to the rules of the inference system.
+    * @param[in] f A pointer to the Fuzzy Inference System instance.
+    * @param[in] rWeights An array with the values of every rule weight;
+    * @return 1 on success, otherwise return 0.
+    */
+    int qFIS_SetRuleWeights( qFIS_t * const f,
+                             float *rWeights );
 
 #ifdef __cplusplus
 }
