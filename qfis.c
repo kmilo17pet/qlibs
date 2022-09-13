@@ -186,7 +186,7 @@ int qFIS_SetDeFuzzMethod( qFIS_t * const f,
                                              };
 
     if ( ( NULL != f ) || ( m < wtsum ) ) {
-        if ( ( ( Mamdani == f->type ) && ( m < SOM ) ) ||
+        if ( ( ( Mamdani == f->type ) && ( m < som ) ) ||
              ( ( Sugeno == f->type ) && ( m >= wtaver ) && ( m <= wtsum ) ) ||
              ( ( Tsukamoto == f->type ) && ( wtaver == m ) )) {
             f->deFuzz = method[ m ];
@@ -228,6 +228,7 @@ int qFIS_Setup( qFIS_t * const f,
         retVal += qFIS_SetParameter( f, qFIS_Aggregation, qFIS_MAX );
         retVal = ( 5 == retVal ) ? 1 : 0;
         f->deFuzz = ( Mamdani == t ) ? &qFIS_DeFuzzCentroid : &qFIS_DeFuzzWtAverage;
+        f->ruleWeight = NULL;
     }
 
     return retVal;
@@ -410,6 +411,9 @@ static size_t qFIS_InferenceConsequent( struct _qFIS_s * const f,
     MFOutIndex = r[ i + 1u ] - 1;
     connector = ( f->nOutputs > 1u )? r[ i + 2u ] : -1;
     i += 2u;
+    if ( NULL != f->ruleWeight ) {
+        f->rStrength  = qFIS_Sat( f->ruleWeight[ f->ruleCount ] );
+    }
     switch ( f->type ) {
         case Mamdani:
             f->outMF[ MFOutIndex ].fx = f->aggregate( f->outMF[ MFOutIndex ].fx,
@@ -425,7 +429,6 @@ static size_t qFIS_InferenceConsequent( struct _qFIS_s * const f,
         default:
             break;
     }
-
     if ( _QFIS_AND != connector ) {
         f->inferenceState = &qFIS_InferenceAntecedent;
         f->lastConnector = -1;
@@ -435,6 +438,19 @@ static size_t qFIS_InferenceConsequent( struct _qFIS_s * const f,
     }
 
     return i;
+}
+/*============================================================================*/
+int qFIS_SetRuleWeights( qFIS_t * const f,
+                         float *rWeights )
+{
+    int retVal = 0;
+
+    if ( NULL != f ) {
+        f->ruleWeight = rWeights;
+        retVal = 1;
+    }
+
+    return retVal;
 }
 /*============================================================================*/
 static void qFIS_InferenceInit( qFIS_t * const f )
