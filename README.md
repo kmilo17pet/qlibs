@@ -390,3 +390,6 @@ int main( int argc, char *argv[] )
 }
 
 ```
+
+### Generate C code from the MATLAB Fuzzy Logic Toolbox 
+Use the qfiscgen tool from matlab : https://la.mathworks.com/matlabcentral/fileexchange/117465-qfiscgen-fuzzy-c-code-generator-for-embedded-systems
