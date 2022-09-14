@@ -38,13 +38,15 @@ extern "C" {
         singletonmf,    /*!< Singleton Membership Function f(a)*/
         concavemf,      /*!< Concave Membership Function f(i,e)*/
         spikemf,        /*!< Spike Membership Function f(w,c)*/
-        rampmf,         /*!< Ramp Membership Function f(s,e) */
+        linsmf,         /*!< Linear s-shaped saturation membership function f(a,b)*/
+        linzmf,         /*!< Linear z-shaped saturation membership function f(a,b)*/
         rectmf,         /*!< Rectangle Membership Function f(s,e)*/
         cosmf,          /*!< Cosine Membership Function f(c,w)*/
         constantmf,     /*!< Constant membership function f(a) [Only for ::Sugeno FIS]*/
         linearmf,       /*!< Linear membership function f(...) [Only for ::Sugeno FIS]*/
-        trampmf,        /*!< Tsukamoto Ramp membership function f(h,s,e) [Only for ::Tsukamoto FIS]*/
-        tconcavemf,     /*!< Tsukamoto Concave membership function f(i,e) [Only for ::Tsukamoto FIS]*/
+        tlinsmf,        /*!< Tsukamoto s-shaped saturation membership function f(a,b) [Only for ::Tsukamoto FIS]*/
+        tlinzmf,        /*!< Tsukamoto linzmf membership function f(a,b) [Only for ::Tsukamoto FIS]*/
+        tconcavemf,     /*!< Tsukamoto z-shaped saturation membership function f(i,e) [Only for ::Tsukamoto FIS]*/
         tsigmf,         /*!< Tsukamoto Sigmoid membership function f(a,c) [Only for ::Tsukamoto FIS]*/
         tsmf,           /*!< Tsukamoto S-Shape membership function f(a,b) [Only for ::Tsukamoto FIS]*/
         tzmf            /*!< Tsukamoto Z-Shape membership function f(a,b) [Only for ::Tsukamoto FIS]*/
