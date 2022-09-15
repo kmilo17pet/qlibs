@@ -91,9 +91,9 @@ extern "C" {
     * @brief An enum with the inference system types supported by qFIS
     */
     typedef enum {
-        Mamdani = 0,
-        Sugeno,
-        Tsukamoto
+        Mamdani = 0,        /*!< Mamdani inference system. The output of each rule its a fuzzy logic set.*/
+        Sugeno,             /*!< Takagi-Sugeno inference system. The output of each rule its a function either linear or constant.*/
+        Tsukamoto           /*!< Mamdani inference system. The output of each rule its a fuzzy logic set represented with a monotonic membership function.*/
     } qFIS_Type_t;
 
     /**
@@ -152,11 +152,13 @@ extern "C" {
         float *ruleWeight;
     } qFIS_t;
 
+    /*! @cond  */
     #define _QFIS_RULES_END         ( INT16_MIN + 1 )
     #define _QFIS_AND               ( INT16_MIN + 2 )
     #define _QFIS_OR                ( INT16_MIN + 3 )
     #define _QFIS_THEN              ( INT16_MIN + 4 )
     #define _QFIS_RULE_END          ( INT16_MIN + 5 )
+    /*! @endcond  */
 
     /*Rules build keywords*/
     #define QFIS_RULES_BEGIN        ( INT16_MIN )
