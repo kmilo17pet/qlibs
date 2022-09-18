@@ -29,9 +29,11 @@ extern "C" {
     */
     typedef struct
     {
+        /*! @cond  */
         float *head, *tail;
         float *rd, *wr;
         size_t itemCount;
+        /*! @endcond  */
     } qTDL_t;
 
     /**

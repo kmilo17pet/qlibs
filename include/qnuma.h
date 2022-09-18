@@ -15,13 +15,15 @@ extern "C" {
 
     typedef struct _qNumA_state_s 
     {
+        /*! @cond  */
         float x[ 3 ];
+        /*! @endcond  */
     } qNumA_state_t;
 
 
     typedef float (*qNumA_IntegrationMethod_t)( qNumA_state_t *x,
-                                          const float s,
-                                          const float dt );
+                                                const float s,
+                                                const float dt );
 
     void qNumA_StateInit( qNumA_state_t *x,
                           const float x0,
