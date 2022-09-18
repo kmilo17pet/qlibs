@@ -54,13 +54,13 @@ static void qTDL_RemoveOldest( qTDL_t * const q )
 /*============================================================================*/
 float qTDL_GetOldest( const qTDL_t * const q )
 {
-    return  ( ( q->rd + 1u ) >= q->tail )? q->head[ 0 ] : q->rd[ 1 ];
+    return  ( ( q->rd + 1u ) >= q->tail ) ? q->head[ 0 ] : q->rd[ 1 ];
 }
 /*============================================================================*/
 float qTDL_GetAtIndex( const qTDL_t * const q,
                        const size_t i )
 {
-    return ( ( q->wr >= q->rd ) && ( ( q->head + i ) >= q->wr ) ) ? q->rd[ q->itemCount - i ] 
+    return ( ( q->wr >= q->rd ) && ( ( q->head + i ) >= q->wr ) ) ? q->rd[ q->itemCount - i ]
                                                                   : *( q->rd - i );
 }
 /*============================================================================*/

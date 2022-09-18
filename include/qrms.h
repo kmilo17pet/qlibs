@@ -21,9 +21,11 @@ extern "C" {
 
     typedef struct
     {
+        /*! @cond  */
         qSSmoother_EXPW_t f1;
         qSSmoother_MWM2_t f2;
         qSSmoother_LPF1_t f3;
+        /*! @endcond  */
     } qRMS_t;
 
     /**

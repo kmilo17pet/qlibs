@@ -1,7 +1,7 @@
 /*!
  * @file qfis.h
  * @author J. Camilo Gomez C.
- * @version 1.3
+ * @version 1.3.1
  * @note This file is part of the qLibs distribution.
  * @brief Fuzzy Inference System
  **/
@@ -49,7 +49,10 @@ extern "C" {
         tconcavemf,     /*!< Tsukamoto z-shaped saturation membership function f(i,e) [Only for ::Tsukamoto FIS]*/
         tsigmf,         /*!< Tsukamoto Sigmoid membership function f(a,c) [Only for ::Tsukamoto FIS]*/
         tsmf,           /*!< Tsukamoto S-Shape membership function f(a,b) [Only for ::Tsukamoto FIS]*/
-        tzmf            /*!< Tsukamoto Z-Shape membership function f(a,b) [Only for ::Tsukamoto FIS]*/
+        tzmf,           /*!< Tsukamoto Z-Shape membership function f(a,b) [Only for ::Tsukamoto FIS]*/
+        /*! @cond  */
+        _NUM_MFS        /*!< Number of supported membership functions*/
+        /*! @endcond  */
     } qFIS_MF_Name_t;
 
     /**
@@ -63,6 +66,9 @@ extern "C" {
         som,            /*!< Smallest of Maximum [ Only for ::Mandani FIS]**/
         wtaver,         /*!< Weighted average of all rule outputs [ Only for ::Sugeno and ::Tsukamoto FIS]*/
         wtsum,          /*!< Weighted sum of all rule outputs [ Only for ::Sugeno FIS]*/
+        /*! @cond  */
+        _NUM_DFUZZ      /*!< Number of supported defuzzification methods*/
+        /*! @endcond  */
     } qFIS_DeFuzz_Method_t;
 
     /**
@@ -103,7 +109,9 @@ extern "C" {
     */
     typedef struct
     {
+        /*! @cond  */
         float min, max, value, zi_wi, wi;
+        /*! @endcond  */
     } qFIS_IO_t;
 
     typedef float (*qFIS_MF_Fcn_t)( const qFIS_IO_t * const in, const float *p, const size_t n );
@@ -115,12 +123,13 @@ extern "C" {
     */
     typedef struct
     {
+        /*! @cond  */
         qFIS_MF_Fcn_t shape;
         const float *points;
         float fx, h;
         size_t index;
+        /*! @endcond  */
     } qFIS_MF_t;
-
 
     typedef int16_t qFIS_Rules_t;
     typedef int qFIS_Tag_t;
@@ -132,6 +141,7 @@ extern "C" {
     */
     typedef struct _qFIS_s
     {
+        /*! @cond  */
         qFIS_IO_t *input, *output;
         qFIS_MF_t *inMF, *outMF;
         size_t rule_cols;
@@ -150,6 +160,7 @@ extern "C" {
         int (*deFuzz)( struct _qFIS_s * const f );
         int ruleCount;
         float *ruleWeight;
+        /*! @endcond  */
     } qFIS_t;
 
     /*! @cond  */
@@ -232,13 +243,13 @@ extern "C" {
     * @note limits do not apply in ::Sugeno outputs
     * @param[in] c An array with the required inputs or outputs as qFIS_IO_t
     * objects.
-    * @param[in] tag The used-defined tag
+    * @param[in] io The used-defined tag
     * @param[in] min Minimum allowed value for this IO
     * @param[in] min Max allowed value for this IO
     * @return 1 on success, otherwise return 0.
     */
     int qFIS_SetIO( qFIS_IO_t * const v,
-                    const qFIS_Tag_t tag,
+                    const qFIS_Tag_t io,
                     const float min,
                     const float max );
 
@@ -246,9 +257,9 @@ extern "C" {
     * @brief Set the IO tag and points for the specified membership function
     * @param[in] m An array with the required membership functions as qFIS_MF_t
     * objects.
-    * @param[in] io_tag The I/O tag related with this membership function
-    * @param[in] mf_tag The user-defined tag for this membership function
-    * @param[in] shape The wanted shape/form for this membership function, cam
+    * @param[in] io The I/O tag related with this membership function
+    * @param[in] mf The user-defined tag for this membership function
+    * @param[in] s The wanted shape/form for this membership function, cam
     * be one of the following: ::trimf, ::trapmf, ::gbellmf, ::gaussmf, 
     * ::gauss2mf, ::sigmf, ::dsigmf, ::psigmf, ::pimf, ::smf, ::zmf, 
     * ::singletonmf, ::concavemf, ::spikemf, ::rampmf, ::rectmf.
@@ -268,9 +279,9 @@ extern "C" {
     * @return 1 on success, otherwise return 0.
     */
     int qFIS_SetMF( qFIS_MF_t * const m,
-                    const qFIS_Tag_t io_tag,
-                    const qFIS_Tag_t mf_tag,
-                    const qFIS_MF_Name_t shape,
+                    const qFIS_Tag_t io,
+                    const qFIS_Tag_t mf,
+                    const qFIS_MF_Name_t s,
                     qFIS_MF_Fcn_t custom_mf,
                     const float *cp,
                     const float h );

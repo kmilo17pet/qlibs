@@ -22,6 +22,7 @@ extern "C" {
 
     typedef struct
     {
+        /*! @cond  */
         float p00, p01, p10, p11;   /*covariance values*/
         float b1, a1;               /*estimation  values*/
         float uk, yk;               /*process I/O measurements*/
@@ -29,6 +30,7 @@ extern "C" {
         float k, tao;               /*process metrics*/
         float mu, speed;            /*fine adjustments  [ 0 < mu < speed ] [ 0 < speed < 1 ]*/
         uint32_t it;                /*enable time*/
+        /*! @endcond  */
     } qPID_AutoTunning_t;
 
     #define QPID_AUTOTUNNING_UNDEFINED      ( 0xFFFFFFFEuL )
