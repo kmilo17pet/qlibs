@@ -1,7 +1,7 @@
 /*!
  * @file qfis.h
  * @author J. Camilo Gomez C.
- * @version 1.3.1
+ * @version 1.4.1
  * @note This file is part of the qLibs distribution.
  * @brief Fuzzy Inference System
  **/
@@ -102,19 +102,30 @@ extern "C" {
         Tsukamoto           /*!< Mamdani inference system. The output of each rule its a fuzzy logic set represented with a monotonic membership function.*/
     } qFIS_Type_t;
 
-    /**
-    * @brief A FIS I/O object
-    * @details The instance should be initialized using the qFIS_SetIO() API.
-    * @note Do not access any member of this structure directly.
-    */
+    typedef enum {
+        DeFuzz_Init,
+        DeFuzz_Compute,
+        DeFuzz_End,
+    } qFIS_DeFuzzState_t;
+
     typedef struct
     {
-        /*! @cond  */
-        float min, max, value, zi_wi, wi;
-        /*! @endcond  */
-    } qFIS_IO_t;
+        float min, max, value;
+    } qFIS_IO_Base_t;
 
-    typedef float (*qFIS_MF_Fcn_t)( const qFIS_IO_t * const in, const float *p, const size_t n );
+    typedef struct
+    {
+        qFIS_IO_Base_t b;
+    } qFIS_Input_t;
+
+    typedef struct
+    {
+        qFIS_IO_Base_t b;
+        float res, x, y, data[ 4 ];
+        void *owner;
+    } qFIS_Output_t;
+
+    typedef float (*qFIS_MF_Fcn_t)( const qFIS_IO_Base_t * const in, const float *p, const size_t n );
 
     /**
     * @brief A FIS Membership Function
@@ -133,6 +144,7 @@ extern "C" {
 
     typedef int16_t qFIS_Rules_t;
     typedef int qFIS_Tag_t;
+    typedef float (*qFIS_DeFuzz_Fcn_t)( qFIS_Output_t * const o, const qFIS_DeFuzzState_t stage );
 
     /**
     * @brief A FIS(Fuzzy Inference System) object
@@ -142,24 +154,28 @@ extern "C" {
     typedef struct _qFIS_s
     {
         /*! @cond  */
-        qFIS_IO_t *input, *output;
+        qFIS_Input_t *input;
+        qFIS_Output_t *output;
         qFIS_MF_t *inMF, *outMF;
-        size_t rule_cols;
-        size_t nInputs, nOutputs;
-        size_t nMFInputs, nMFOutputs;
-        size_t nPoints;
         float (*andOp)( const float a, const float b );
         float (*orOp)( const float a, const float b );
         float (*implicate)( const float a, const float b );
         float (*aggregate)( const float a, const float b );
-        float (*mUnion)( const float a, const float b );
-        qFIS_Type_t type;
+        size_t (*inferenceState)( struct _qFIS_s * const f, size_t i );
+        size_t (*aggregationState)( struct _qFIS_s * const f, size_t i );
+        //void (*typeDeFuzz)( struct _qFIS_s * const f );
+        qFIS_DeFuzz_Fcn_t deFuzz;
+        float *ruleWeight;
+        float *wi;
+        const qFIS_Rules_t *rules;
+        size_t rule_cols;
+        size_t nInputs, nOutputs;
+        size_t nMFInputs, nMFOutputs;
+        size_t nPoints;
+        size_t nRules, ruleCount;
         float rStrength;
         qFIS_Rules_t lastConnector;
-        size_t (*inferenceState)( struct _qFIS_s * const f, const qFIS_Rules_t * const r, size_t i );
-        int (*deFuzz)( struct _qFIS_s * const f );
-        int ruleCount;
-        float *ruleWeight;
+        qFIS_Type_t type;
         /*! @endcond  */
     } qFIS_t;
 
@@ -225,33 +241,73 @@ extern "C" {
     * the outputs. This should be an array of MF objects.
     * @param[in] nmo The number of bytes used by @a mf_outputs. Use the sizeof 
     * operator.
+    * @param[in] r The rules set.
+    * @param[in] wi An array of size @a n were the rule strengths will be stored.
+    * @param[in] n Number of rules
     * @return 1 on success, otherwise return 0.
     */
     int qFIS_Setup( qFIS_t * const f,
                     const qFIS_Type_t t, 
-                    qFIS_IO_t * const inputs,
+                    qFIS_Input_t * const inputs,
                     const size_t ni,
-                    qFIS_IO_t * const outputs,
+                    qFIS_Output_t * const outputs,
                     const size_t no,
                     qFIS_MF_t * const mf_inputs,
                     const size_t nmi,
                     qFIS_MF_t * const mf_outputs,
-                    const size_t nmo );
+                    const size_t nmo,
+                    const qFIS_Rules_t * const r,
+                    float *wi,
+                    const size_t n
+                    );
 
     /**
-    * @brief Set the tag and limits for the specified FIS IO
-    * @note limits do not apply in ::Sugeno outputs
-    * @param[in] c An array with the required inputs or outputs as qFIS_IO_t
-    * objects.
-    * @param[in] io The used-defined tag
+    * @brief Setup the input with the specified tag and set limits for it
+    * @param[in] c An array with the FIS inputs as a qFIS_Input_t array.
+    * @param[in] t The input tag
     * @param[in] min Minimum allowed value for this IO
     * @param[in] min Max allowed value for this IO
     * @return 1 on success, otherwise return 0.
     */
-    int qFIS_SetIO( qFIS_IO_t * const v,
-                    const qFIS_Tag_t io,
-                    const float min,
-                    const float max );
+    int qFIS_InputSetup( qFIS_Input_t * const v,
+                         const qFIS_Tag_t t,
+                         const float min,
+                         const float max );
+
+    /**
+    * @brief Setup the output with the specified tag and set limits for it
+    * @note limits do not apply in ::Sugeno outputs
+    * @param[in] c An array with the FIS outputs inputs as a qFIS_Output_t array.
+    * @param[in] t The output tag
+    * @param[in] min Minimum allowed value for this IO
+    * @param[in] min Max allowed value for this IO
+    * @return 1 on success, otherwise return 0.
+    */
+    int qFIS_OutputSetup( qFIS_Output_t * const v,
+                          const qFIS_Tag_t t,
+                          const float min,
+                          const float max );
+
+    /**
+    * @brief Set a crisp value of the input with the specified tag.
+    * @param[in] c An array with the FIS inputs as a qFIS_Input_t array.
+    * @param[in] t The input tag
+    * @param[in] value The crisp value to set
+    * @return 1 on success, otherwise return 0.
+    */
+    int qFIS_SetInput( qFIS_Input_t * const v,
+                       const qFIS_Tag_t t,
+                       const float value );
+
+    /**
+    * @brief Get the de-fuzzified crisp value from the the output  with the 
+    * specified tag.
+    * @param[in] c An array with the FIS inputs as a qFIS_Output_t array.
+    * @param[in] t The output tag
+    * @return The requested de-fuzzified crips value.
+    */
+    float qFIS_GetOutput( const qFIS_Output_t * const v,
+                          const qFIS_Tag_t t );
 
     /**
     * @brief Set the IO tag and points for the specified membership function
@@ -297,11 +353,9 @@ extern "C" {
     /**
     * @brief Perform the inference process on the requested FIS object
     * @param[in] f A pointer to the Fuzzy Inference System instance.
-    * @param[in] r The rules set.
     * @return 1 on success, otherwise return 0.
     */
-    int qFIS_Inference( qFIS_t * const f,
-                        const qFIS_Rules_t * const r );
+    int qFIS_Inference( qFIS_t * const f );
 
     /**
     * @brief Perform the de-Fuzzification operation to compute the crisp outputs.
@@ -321,6 +375,7 @@ extern "C" {
     */
     int qFIS_SetRuleWeights( qFIS_t * const f,
                              float *rWeights );
+
 
 #ifdef __cplusplus
 }
