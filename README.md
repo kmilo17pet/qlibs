@@ -422,3 +422,7 @@ flexnav_fix.c
 #endif
 
 ```
+
+### Generate C code from the MATLAB Fuzzy Logic Toolbox 
+Download the `qfiscgen` tool from 
+[![View qfiscgen ( Fuzzy C-code generator for embedded systems) on File Exchange](https://www.mathworks.com/matlabcentral/images/matlab-file-exchange.svg)](https://la.mathworks.com/matlabcentral/fileexchange/117465-qfiscgen-fuzzy-c-code-generator-for-embedded-systems)
