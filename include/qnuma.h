@@ -13,7 +13,7 @@
 extern "C" {
 #endif
 
-    typedef struct _qNumA_state_s 
+    typedef struct _qNumA_state_s
     {
         /*! @cond  */
         float x[ 3 ];

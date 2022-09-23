@@ -49,8 +49,8 @@ extern "C" {
         f_360;          /* [ 360 ] */
     };
     /*! @endcond  */
-      
-    /** 
+
+    /**
     * @brief Fixed-point Q16.16 constants
     */
     extern const struct _qFP16_const_s qFP16;
