@@ -29,7 +29,7 @@ extern "C" {
     * @details The instance should be initialized using the qLTISys_Setup() API.
     * @note Do not access any member of this structure directly.
     */
-    typedef struct _qLTISys_s 
+    typedef struct _qLTISys_s
     {
         /*! @cond  */
         float (*sysUpdate)( struct _qLTISys_s *sys, float u );
@@ -147,11 +147,11 @@ extern "C" {
     * @param[in] im The desired integration method. Use one of the following:
     *
     * qNumA_IntegralRe : Integrate using the Rectangular rule.
-    * 
+    *
     * qNumA_IntegralTr : (default) Integrate using the Trapezoidal rule.
-    * 
+    *
     * qNumA_IntegralSi : Integrate using the Simpson's 1/3 rule.
-    * 
+    *
     * @return 1 on success, otherwise return 0.
     */
     int qLTISys_SetIntegrationMethod( qLTISys_t * const sys,
