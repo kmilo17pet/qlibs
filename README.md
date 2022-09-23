@@ -52,6 +52,7 @@
     
   - Mamdani
   - Sugeno
+  - Tsukamoto
 </details>
 
 <details><summary>qCRC : Generic Cyclic Redundancy Check (CRC) calculator</summary>
