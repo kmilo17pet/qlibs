@@ -1,9 +1,9 @@
 /*!
  * @file qfis.h
  * @author J. Camilo Gomez C.
- * @version 1.4.1
+ * @version 1.4.2
  * @note This file is part of the qLibs distribution.
- * @brief Fuzzy Inference System
+ * @brief Fuzzy Inference System (FIS) Engine
  **/
 
 #ifndef QFIS_H
@@ -19,7 +19,7 @@ extern "C" {
     #include <limits.h>
 
     /**
-    * @brief An enum with all the possible values to specify a membership 
+    * @brief An enum with all the possible values to specify a membership
     * function.
     */
     typedef enum {
@@ -108,24 +108,42 @@ extern "C" {
         DeFuzz_End,
     } qFIS_DeFuzzState_t;
 
+    /*! @cond  */
     typedef struct
     {
         float min, max, value;
     } qFIS_IO_Base_t;
+    /*! @endcond  */
 
+    /**
+    * @brief A FIS Input object
+    * @details The instance should be initialized using the qFIS_InputSetup() API.
+    * @note Do not access any member of this structure directly.
+    */
     typedef struct
     {
+        /*! @cond  */
         qFIS_IO_Base_t b;
+        /*! @endcond  */
     } qFIS_Input_t;
 
+    /**
+    * @brief A FIS Output object
+    * @details The instance should be initialized using the qFIS_OutputSetup() API.
+    * @note Do not access any member of this structure directly.
+    */
     typedef struct
     {
+        /*! @cond  */
         qFIS_IO_Base_t b;
         float res, x, y, data[ 4 ];
         void *owner;
+        /*! @endcond  */
     } qFIS_Output_t;
 
+    /*! @cond  */
     typedef float (*qFIS_MF_Fcn_t)( const qFIS_IO_Base_t * const in, const float *p, const size_t n );
+    /*! @endcond  */
 
     /**
     * @brief A FIS Membership Function
@@ -235,11 +253,11 @@ extern "C" {
     * @param[in] no The number of bytes used by @a inputs. Use the sizeof operator.
     * @param[in] mf_inputs An array with all the membership functions related to
     * the inputs. This should be an array of MF objects.
-    * @param[in] nmi The number of bytes used by @a mf_inputs. Use the sizeof 
+    * @param[in] nmi The number of bytes used by @a mf_inputs. Use the sizeof
     * operator.
     * @param[in] mf_outputs An array with all the membership functions related to
     * the outputs. This should be an array of MF objects.
-    * @param[in] nmo The number of bytes used by @a mf_outputs. Use the sizeof 
+    * @param[in] nmo The number of bytes used by @a mf_outputs. Use the sizeof
     * operator.
     * @param[in] r The rules set.
     * @param[in] wi An array of size @a n were the rule strengths will be stored.
@@ -247,7 +265,7 @@ extern "C" {
     * @return 1 on success, otherwise return 0.
     */
     int qFIS_Setup( qFIS_t * const f,
-                    const qFIS_Type_t t, 
+                    const qFIS_Type_t t,
                     qFIS_Input_t * const inputs,
                     const size_t ni,
                     qFIS_Output_t * const outputs,
@@ -300,7 +318,7 @@ extern "C" {
                        const float value );
 
     /**
-    * @brief Get the de-fuzzified crisp value from the the output  with the 
+    * @brief Get the de-fuzzified crisp value from the the output  with the
     * specified tag.
     * @param[in] c An array with the FIS inputs as a qFIS_Output_t array.
     * @param[in] t The output tag
@@ -316,15 +334,15 @@ extern "C" {
     * @param[in] io The I/O tag related with this membership function
     * @param[in] mf The user-defined tag for this membership function
     * @param[in] s The wanted shape/form for this membership function, cam
-    * be one of the following: ::trimf, ::trapmf, ::gbellmf, ::gaussmf, 
-    * ::gauss2mf, ::sigmf, ::dsigmf, ::psigmf, ::pimf, ::smf, ::zmf, 
+    * be one of the following: ::trimf, ::trapmf, ::gbellmf, ::gaussmf,
+    * ::gauss2mf, ::sigmf, ::dsigmf, ::psigmf, ::pimf, ::smf, ::zmf,
     * ::singletonmf, ::concavemf, ::spikemf, ::rampmf, ::rectmf.
     * @note For ::Sugeno FIS, an output membership function should be one of the
     * following: ::constantmf, ::linearmf.
     * @note For ::Tsukamoto FIS, an output membership function should be one the
     * following monotonic functions : trampmf, tsigmf, tsmf, tzmf, tconcavemf
     * @note To set a custom user-defined membership function, set this argument
-    * as ::custommf and pass a pointer to the desired function on the 
+    * as ::custommf and pass a pointer to the desired function on the
     * @a custom_mf argument.
     * @param[in] custom_mf Custom user-defined membership function. To ignore
     * pass NULL as argument.
@@ -343,7 +361,7 @@ extern "C" {
                     const float h );
 
     /**
-    * @brief Perform the fuzzification operation over the crisp inputs on the 
+    * @brief Perform the fuzzification operation over the crisp inputs on the
     * requested FIS object
     * @param[in] f A pointer to the Fuzzy Inference System instance.
     * @return 1 on success, otherwise return 0.

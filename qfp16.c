@@ -19,7 +19,7 @@ struct _qFP16_intern_s
     f_4_pi;                 /* [ 4/pi ] */
     const float one_fp16_f; /* [ 1/65536 ] */
     const double one_fp16_d;/* [ 1/65536 ] */
-    const uint32_t 
+    const uint32_t
     overflow_mask,
     fraction_mask,
     integer_mask;
