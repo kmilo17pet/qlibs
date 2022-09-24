@@ -16,10 +16,18 @@ extern "C" {
     #include <stdlib.h>
     #include <stdint.h>
 
+    /** @addtogroup  qcrc Generic Cyclic Redundancy Check (CRC) calculator
+    * @brief API for the qCRC Generic Cyclic Redundancy Check (CRC) calculator
+    *  @{
+    */
+
+    /**
+    * @brief Enumeration with all the supported cyclic redundancy checks
+    */ 
     typedef enum {
-        QCRC8 = 0,
-        QCRC16,
-        QCRC32,
+        QCRC8 = 0,      /*!< 8-Bit Cyclic Redundancy Check*/
+        QCRC16,         /*!< 16-Bit Cyclic Redundancy Check*/
+        QCRC32,         /*!< 32-Bit Cyclic Redundancy Check*/
     } qCRC_Mode_t;
 
     /**
@@ -45,6 +53,8 @@ extern "C" {
                     const uint8_t refIn,
                     const uint8_t refOut,
                     uint32_t xorOut );
+
+    /** @}*/
 
 #ifdef __cplusplus
 }
