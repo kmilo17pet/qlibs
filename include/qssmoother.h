@@ -19,21 +19,28 @@ extern "C" {
     #include <math.h>
     #include "qtdl.h"
 
-    typedef enum {
-        QSSMOOTHER_TYPE_LPF1 = 0,   /*< Low-Pass filter 1st Order*/
-        QSSMOOTHER_TYPE_LPF2,       /*< Low-Pass filter 2nd Order*/
-        QSSMOOTHER_TYPE_MWM1,       /*< Moving Window Median filter ( O(n) time )*/
-        QSSMOOTHER_TYPE_MWM2,       /*< Moving Window Median filter ( O(1) time by using a TDL )*/
-        QSSMOOTHER_TYPE_MOR1,       /*< Moving Outliers Removal ( O(n) time )*/
-        QSSMOOTHER_TYPE_MOR2,       /*< Moving Outliers Removal ( O(1) time by using a TDL )*/
-        QSSMOOTHER_TYPE_GMWF,       /*< Gaussian Filter*/
-        QSSMOOTHER_TYPE_KLMN,       /*< Kalman Filter*/
-        QSSMOOTHER_TYPE_EXPW,       /*< Exponential weighting filter*/
-    }qSSmoother_Type_t;
+    /** @addtogroup qssmoother Filters to smooth noisy signals
+    * @brief API for the qSSmoother library
+    *  @{
+    */
 
-    #define qSSmootherPtr_t  void
+    /**
+    * @brief Supported Filters by the qSSmoother library
+    */
+    typedef enum {
+        QSSMOOTHER_TYPE_LPF1 = 0,   /*!< Low-Pass filter 1st Order*/
+        QSSMOOTHER_TYPE_LPF2,       /*!< Low-Pass filter 2nd Order*/
+        QSSMOOTHER_TYPE_MWM1,       /*!< Moving Window Median filter ( O(n) time )*/
+        QSSMOOTHER_TYPE_MWM2,       /*!< Moving Window Median filter ( O(1) time by using a TDL )*/
+        QSSMOOTHER_TYPE_MOR1,       /*!< Moving Outliers Removal ( O(n) time )*/
+        QSSMOOTHER_TYPE_MOR2,       /*!< Moving Outliers Removal ( O(1) time by using a TDL )*/
+        QSSMOOTHER_TYPE_GMWF,       /*!< Gaussian Filter*/
+        QSSMOOTHER_TYPE_KLMN,       /*!< Kalman Filter*/
+        QSSMOOTHER_TYPE_EXPW,       /*!< Exponential weighting filter*/
+    } qSSmoother_Type_t;
 
     /*! @cond  */
+    #define qSSmootherPtr_t  void
     /*abstract class*/
     typedef struct _qSSmoother_s
     {
@@ -42,6 +49,9 @@ extern "C" {
     } _qSSmoother_t;
     /*! @endcond  */
 
+    /**
+    * @brief A 1st order Low-Pass Filter
+    */
     typedef struct
     {
         /*! @cond  */
@@ -50,6 +60,9 @@ extern "C" {
         /*! @endcond  */
     } qSSmoother_LPF1_t;
 
+    /**
+    * @brief A 2nd order Low-Pass Filter
+    */
     typedef struct
     {
         /*! @cond  */
@@ -59,6 +72,10 @@ extern "C" {
         /*! @endcond  */
     } qSSmoother_LPF2_t;
 
+    /**
+    * @brief A Moving Window Median filter
+    * @note Time complexity is O(n)
+    */
     typedef struct
     {
         /*! @cond  */
@@ -68,6 +85,10 @@ extern "C" {
         /*! @endcond  */
     } qSSmoother_MWM1_t;
 
+    /**
+    * @brief A Moving Window Median filter
+    * @note Time complexity is O(1)
+    */
     typedef struct
     {
         /*! @cond  */
@@ -77,6 +98,10 @@ extern "C" {
         /*! @endcond  */
     } qSSmoother_MWM2_t;
 
+    /**
+    * @brief A Moving Outlier Removal filter
+    * @note Time complexity is O(n)
+    */
     typedef struct
     {
         /*! @cond  */
@@ -86,6 +111,10 @@ extern "C" {
         /*! @endcond  */
     } qSSmoother_MOR1_t;
 
+    /**
+    * @brief A Moving Outlier Removal filter
+    * @note Time complexity is O(1)
+    */
     typedef struct
     {
         /*! @cond  */
@@ -95,6 +124,9 @@ extern "C" {
         /*! @endcond  */
     } qSSmoother_MOR2_t;
 
+    /**
+    * @brief A Gaussian filter
+    */
     typedef struct
     {
         /*! @cond  */
@@ -104,6 +136,9 @@ extern "C" {
         /*! @endcond  */
     } qSSmoother_GMWF_t;
 
+    /**
+    * @brief An Exponential weighting filter
+    */
     typedef struct
     {
         /*! @cond  */
@@ -112,6 +147,9 @@ extern "C" {
         /*! @endcond  */
     } qSSmoother_EXPW_t;
 
+    /**
+    * @brief A scalar Kalman filter
+    */
     typedef struct
     {
         /*! @cond  */
@@ -154,37 +192,37 @@ extern "C" {
     * @param[in] s A pointer to the signal smoother instance.
     * @param[in] type The filter type. Use one of the following values:
     *
-    * - ::QSSMOOTHER_TYPE_LPF1.
+    * - ::QSSMOOTHER_TYPE_LPF1
     *
-    * - ::QSSMOOTHER_TYPE_LPF2.
+    * - ::QSSMOOTHER_TYPE_LPF2
     *
-    * - ::QSSMOOTHER_TYPE_MWM1.
+    * - ::QSSMOOTHER_TYPE_MWM1
     *
-    * - ::QSSMOOTHER_TYPE_MWM2.
+    * - ::QSSMOOTHER_TYPE_MWM2
     *
-    * - ::QSSMOOTHER_TYPE_MOR1.
+    * - ::QSSMOOTHER_TYPE_MOR1
     *
-    * - ::QSSMOOTHER_TYPE_MOR2.
+    * - ::QSSMOOTHER_TYPE_MOR2
     *
-    * - ::QSSMOOTHER_TYPE_GMWF.
+    * - ::QSSMOOTHER_TYPE_GMWF
     *
-    * - ::QSSMOOTHER_TYPE_KLMN.
+    * - ::QSSMOOTHER_TYPE_KLMN
     *
-    * - ::QSSMOOTHER_TYPE_EXPW.
+    * - ::QSSMOOTHER_TYPE_EXPW
     *
     * @param[in] param The smoother parameters. Depends of the type selected:
     *
-    * if ::QSSMOOTHER_TYPE_LPF1, a pointer to a value between  [ 0 < alpha < 1 ]
+    * if ::QSSMOOTHER_TYPE_LPF1 a pointer to a value between  [ 0 < alpha < 1 ]
     *
-    * if ::QSSMOOTHER_TYPE_LPF2, a pointer to a value between  [ 0 < alpha < 1 ]
+    * if ::QSSMOOTHER_TYPE_LPF2 a pointer to a value between  [ 0 < alpha < 1 ]
     *
-    * if ::QSSMOOTHER_TYPE_MWM1, can be ignored. Pass NULL as argument.
+    * if ::QSSMOOTHER_TYPE_MWM1 can be ignored. Pass NULL as argument.
     *
-    * if ::QSSMOOTHER_TYPE_MWM2, can be ignored. Pass NULL as argument.
+    * if ::QSSMOOTHER_TYPE_MWM2 can be ignored. Pass NULL as argument.
     *
-    * if ::QSSMOOTHER_TYPE_MOR1, a pointer to a value between  [ 0 < alpha < 1 ]
+    * if ::QSSMOOTHER_TYPE_MOR1 a pointer to a value between  [ 0 < alpha < 1 ]
     *
-    * if ::QSSMOOTHER_TYPE_MOR2, a pointer to a value between  [ 0 < alpha < 1 ]
+    * if ::QSSMOOTHER_TYPE_MOR2 a pointer to a value between  [ 0 < alpha < 1 ]
     *
     * if ::QSSMOOTHER_TYPE_GMWF, an array with two values. The first element
     * with the Standard deviation [ sigma > 0 ]. The second element with the
@@ -230,6 +268,7 @@ extern "C" {
                           float *window,
                           const size_t wsize );
 
+    /** @}*/
 
 #ifdef __cplusplus
 }

@@ -14,11 +14,19 @@
 extern "C" {
 #endif
 
+    /** @addtogroup qrms Recursive Root Mean Square(RMS) calculation of a signal.
+    * @brief API for the qRMS Recursive Root Mean Square calculator
+    *  @{
+    */
+
     #include <stdlib.h>
     #include <stdint.h>
     #include <string.h>
     #include "qssmoother.h"
 
+    /**
+    * @brief RMS calculator instance
+    */
     typedef struct
     {
         /*! @cond  */
@@ -31,6 +39,9 @@ extern "C" {
     /**
     * @brief Initialize the RMS instance by setting the default optimal parameters.
     * @param[in] q A pointer to the RMS instance.
+    * @param[in] window A pointer to the window storage, an array of @a wsize
+    * elements.
+    * @param[in] wsize The window size.
     * @return 1 on success, otherwise returns 0.
     */
     int qRMS_Setup( qRMS_t * const q,
@@ -69,6 +80,7 @@ extern "C" {
                         const float lambda,
                         const float alpha );
 
+    /** @}*/
 
 #ifdef __cplusplus
 }

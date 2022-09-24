@@ -7,6 +7,7 @@
 #include "qfp16.h"
 
 /*used only for internal operations*/
+/*! @cond  */
 struct _qFP16_intern_s
 {
     const qFP16_t
@@ -68,6 +69,8 @@ const struct _qFP16_const_s qFP16 = {
 
 static qFP16_Settings_t fp_default = { -2147483647, 2147483647, 1u, 0u };
 static qFP16_Settings_t *fp = &fp_default;
+
+/*! @endcond  */
 
 static uint32_t qFP16_OverflowCheck( uint32_t res,
                                      const uint32_t x,

@@ -18,6 +18,11 @@ extern "C" {
     #include <stdint.h>
     #include <limits.h>
 
+    /** @addtogroup  qfis Fuzzy Inference System Engine
+    * @brief API for the qFIS Fuzzy Inference System Engine
+    *  @{
+    */
+
     /**
     * @brief An enum with all the possible values to specify a membership
     * function.
@@ -59,11 +64,11 @@ extern "C" {
     * @brief An enum with all the possible de-Fuzzyfication methods.
     */
     typedef enum {
-        centroid = 0,   /*!< Center of gravity of the fuzzy set along the x-axis [ Only for ::Mandani FIS]*/
-        bisector,       /*!< Vertical line that divides the fuzzy set into two sub-regions of equal area [ Only for ::Mandani FIS]**/
-        mom,            /*!< Middle of Maximum [ Only for ::Mandani FIS]**/
-        lom,            /*!< Largest of Maximum [ Only for ::Mandani FIS]**/
-        som,            /*!< Smallest of Maximum [ Only for ::Mandani FIS]**/
+        centroid = 0,   /*!< Center of gravity of the fuzzy set along the x-axis [ Only for ::Mamdani FIS]*/
+        bisector,       /*!< Vertical line that divides the fuzzy set into two sub-regions of equal area [ Only for ::Mamdani FIS]**/
+        mom,            /*!< Middle of Maximum [ Only for ::Mamdani FIS]**/
+        lom,            /*!< Largest of Maximum [ Only for ::Mamdani FIS]**/
+        som,            /*!< Smallest of Maximum [ Only for ::Mamdani FIS]**/
         wtaver,         /*!< Weighted average of all rule outputs [ Only for ::Sugeno and ::Tsukamoto FIS]*/
         wtsum,          /*!< Weighted sum of all rule outputs [ Only for ::Sugeno FIS]*/
         /*! @cond  */
@@ -102,11 +107,13 @@ extern "C" {
         Tsukamoto           /*!< Mamdani inference system. The output of each rule its a fuzzy logic set represented with a monotonic membership function.*/
     } qFIS_Type_t;
 
+        /*! @cond  */
     typedef enum {
         DeFuzz_Init,
         DeFuzz_Compute,
         DeFuzz_End,
     } qFIS_DeFuzzState_t;
+        /*! @endcond  */
 
     /*! @cond  */
     typedef struct
@@ -160,9 +167,31 @@ extern "C" {
         /*! @endcond  */
     } qFIS_MF_t;
 
+    /**
+    * @brief Type definition to instantiate a set of fuzzy rules
+    * @details Rules are defined by combining I/O and membership function tags
+    * with the following statements:
+    * 
+    * #QFIS_RULES_BEGIN   #IF, #IS, #IS_NOT, #AND, #OR, #THEN, #END and
+    * #QFIS_RULES_END
+    * 
+    * Example:
+    * @code{.c}
+    * static const qFIS_Rules_t rules[] = { 
+    *     QFIS_RULES_BEGIN
+    *         IF service IS service_poor OR food IS food_rancid THEN tip IS tip_cheap END
+    *         IF service IS service_good THEN tip IS tip_average END
+    *         IF service IS service_excellent OR food IS food_delicious THEN tip IS tip_generous END
+    *     QFIS_RULES_END
+    * };
+    * @endcode
+    */
     typedef int16_t qFIS_Rules_t;
+
+    /*! @cond  */
     typedef int qFIS_Tag_t;
     typedef float (*qFIS_DeFuzz_Fcn_t)( qFIS_Output_t * const o, const qFIS_DeFuzzState_t stage );
+    /*! @endcond  */
 
     /**
     * @brief A FIS(Fuzzy Inference System) object
@@ -206,14 +235,60 @@ extern "C" {
     /*! @endcond  */
 
     /*Rules build keywords*/
+
+    /**
+    * @brief Start a Fuzzy rule set.
+    * The #QFIS_RULES_BEGIN statement is used to declare the starting point of
+    * a FIS rule set. It should be placed at the start of the rules enumeration.
+    * #QFIS_RULES_END declare the end of the FIS rule set.
+    * @see #QFIS_RULES_END
+    * @warning Only one segment is allowed inside a fuzzy rule set.
+    * @note It must always be used together with a matching #QFIS_RULES_END 
+    * statement.
+    * Example:
+    * @code{.c}
+    * static const qFIS_Rules_t rules[] = { 
+    *     QFIS_RULES_BEGIN
+    *       
+    *     QFIS_RULES_END
+    * };
+    * @endcode
+    */
     #define QFIS_RULES_BEGIN        ( INT16_MIN )
+
+    /**
+    * @brief Ends a Fuzzy rule set.
+    * The #QFIS_RULES_END statement is used to finalize the declaration of a 
+    * FIS rule set. It should be placed at the end of the rules enumeration.
+    * #QFIS_RULES_BEGIN declare the start point of the FIS rule set.
+    * @see #QFIS_RULES_BEGIN
+    * @warning Only one segment is allowed inside a fuzzy rule set.
+    * @note It must always be used together with a matching #QFIS_RULES_BEGIN 
+    * statement.
+    * Example:
+    * @code{.c}
+    * static const qFIS_Rules_t rules[] = { 
+    *     QFIS_RULES_BEGIN
+    *       
+    *     QFIS_RULES_END
+    * };
+    * @endcode
+    */
     #define QFIS_RULES_END          ,_QFIS_RULES_END
+
+    /** @brief Rule statement to begin a rule sentence */
     #define IF                      ,
+    /** @brief Rule statement to represent the AND connector */
     #define AND                     +1),_QFIS_AND,
+    /** @brief Rule statement to represent the OR connector */
     #define OR                      +1),_QFIS_OR,
+    /** @brief Rule statement to represent the implication */
     #define THEN                    +1),_QFIS_THEN,
+    /** @brief Rule statement to represent a premise*/
     #define IS                      ,(
+    /** @brief Rule statement to represent a negated premise */
     #define IS_NOT                  ,-(
+    /** @brief Rule statement to end a rule sentence */
     #define END                     +1)
 
     /**
@@ -231,11 +306,11 @@ extern "C" {
     * @brief Change the default deFuzzification method of the FIS instance.
     * @param[in] f A pointer to the Fuzzy Inference System instance.
     * @param[in] m The de-fuzzification method: use one of the following :
-    * ::centroid, ::bisector, ::MOM, ::LOM, ::SOM, ::wtaver, ::wtsum
-    * @note :centroid, ::bisector, ::MOM, ::LOM and ::SOM only apply for a
-    * Mandani FIS
-    * @note :wtaver and ::wtsum only apply for a Sugeno FIS.
-    * @note :wtaver only apply for a ::Tsukamoto FIS
+    *  ::centroid, ::bisector, ::mom, ::lom, ::som, ::wtaver, ::wtsum
+    * @note ::centroid, ::bisector, ::mom, ::lom and ::som only apply for a
+    * ::Mamdani FIS
+    * @note ::wtaver and ::wtsum only apply for a ::Sugeno FIS.
+    * @note ::wtaver only apply for a ::Tsukamoto FIS
     * @return 1 on success, otherwise return 0.
     */
     int qFIS_SetDeFuzzMethod( qFIS_t * const f,
@@ -247,16 +322,18 @@ extern "C" {
     * Aggregation = Max, EvalPoints = 100
     * @param[in] f A pointer to the Fuzzy Inference System instance.
     * @param[in] t Type of inference ::Mamdani, ::Sugeno or ::Tsukamoto.
-    * @param[in] inputs An array with all the system inputs as IO objects.
+    * @param[in] inputs An array with all the system inputs as qFIS_Input_t
+    * objects.
     * @param[in] ni The number of bytes used by @a inputs. Use the sizeof operator.
-    * @param[in] outputs An array with all the system outputs as IO objects.
+    * @param[in] outputs An array with all the system outputs as qFIS_Output_t
+    * objects.
     * @param[in] no The number of bytes used by @a inputs. Use the sizeof operator.
     * @param[in] mf_inputs An array with all the membership functions related to
-    * the inputs. This should be an array of MF objects.
+    * the inputs. This should be an array of qFIS_MF_t objects.
     * @param[in] nmi The number of bytes used by @a mf_inputs. Use the sizeof
     * operator.
     * @param[in] mf_outputs An array with all the membership functions related to
-    * the outputs. This should be an array of MF objects.
+    * the outputs. This should be an array of qFIS_MF_t objects.
     * @param[in] nmo The number of bytes used by @a mf_outputs. Use the sizeof
     * operator.
     * @param[in] r The rules set.
@@ -281,10 +358,10 @@ extern "C" {
 
     /**
     * @brief Setup the input with the specified tag and set limits for it
-    * @param[in] c An array with the FIS inputs as a qFIS_Input_t array.
+    * @param[in] v An array with the FIS inputs as a qFIS_Input_t array.
     * @param[in] t The input tag
-    * @param[in] min Minimum allowed value for this IO
-    * @param[in] min Max allowed value for this IO
+    * @param[in] min Minimum allowed value for this input
+    * @param[in] max Max allowed value for this input
     * @return 1 on success, otherwise return 0.
     */
     int qFIS_InputSetup( qFIS_Input_t * const v,
@@ -295,10 +372,10 @@ extern "C" {
     /**
     * @brief Setup the output with the specified tag and set limits for it
     * @note limits do not apply in ::Sugeno outputs
-    * @param[in] c An array with the FIS outputs inputs as a qFIS_Output_t array.
+    * @param[in] v An array with the FIS outputs inputs as a qFIS_Output_t array.
     * @param[in] t The output tag
-    * @param[in] min Minimum allowed value for this IO
-    * @param[in] min Max allowed value for this IO
+    * @param[in] min Minimum allowed value for this output
+    * @param[in] max Max allowed value for this output
     * @return 1 on success, otherwise return 0.
     */
     int qFIS_OutputSetup( qFIS_Output_t * const v,
@@ -308,7 +385,7 @@ extern "C" {
 
     /**
     * @brief Set a crisp value of the input with the specified tag.
-    * @param[in] c An array with the FIS inputs as a qFIS_Input_t array.
+    * @param[in] v An array with the FIS inputs as a qFIS_Input_t array.
     * @param[in] t The input tag
     * @param[in] value The crisp value to set
     * @return 1 on success, otherwise return 0.
@@ -320,7 +397,7 @@ extern "C" {
     /**
     * @brief Get the de-fuzzified crisp value from the the output  with the
     * specified tag.
-    * @param[in] c An array with the FIS inputs as a qFIS_Output_t array.
+    * @param[in] v An array with the FIS inputs as a qFIS_Output_t array.
     * @param[in] t The output tag
     * @return The requested de-fuzzified crips value.
     */
@@ -336,11 +413,13 @@ extern "C" {
     * @param[in] s The wanted shape/form for this membership function, cam
     * be one of the following: ::trimf, ::trapmf, ::gbellmf, ::gaussmf,
     * ::gauss2mf, ::sigmf, ::dsigmf, ::psigmf, ::pimf, ::smf, ::zmf,
-    * ::singletonmf, ::concavemf, ::spikemf, ::rampmf, ::rectmf.
+    * ::singletonmf, ::concavemf, ::spikemf, ::linsmf, ::linzmf, ::rectmf,
+    * ::cosmf.
     * @note For ::Sugeno FIS, an output membership function should be one of the
     * following: ::constantmf, ::linearmf.
     * @note For ::Tsukamoto FIS, an output membership function should be one the
-    * following monotonic functions : trampmf, tsigmf, tsmf, tzmf, tconcavemf
+    * following monotonic functions : ::tlinsmf, ::tlinzmf, ::tsmf, ::tzmf, 
+    * ::tconcavemf
     * @note To set a custom user-defined membership function, set this argument
     * as ::custommf and pass a pointer to the desired function on the
     * @a custom_mf argument.
@@ -348,8 +427,8 @@ extern "C" {
     * pass NULL as argument.
     * @param[in] cp Points or coefficients of the membership function.
     * @param[in] h Height of the membership function.
-    * @note Heigth parameter does not apply for output membership functions on
-    * ::Sugeno and ::Tsukamoto inference systems. [ 0 <= h <= 1]
+    * @note Heigth parameter @a h does not apply for output membership functions
+    * on ::Sugeno and ::Tsukamoto inference systems. [ 0 <= h <= 1]
     * @return 1 on success, otherwise return 0.
     */
     int qFIS_SetMF( qFIS_MF_t * const m,
@@ -394,6 +473,7 @@ extern "C" {
     int qFIS_SetRuleWeights( qFIS_t * const f,
                              float *rWeights );
 
+    /** @}*/
 
 #ifdef __cplusplus
 }

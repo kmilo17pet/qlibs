@@ -20,11 +20,19 @@ extern "C" {
         /*! @endcond  */
     } qNumA_state_t;
 
-
+    /*! @cond  */
     typedef float (*qNumA_IntegrationMethod_t)( qNumA_state_t *x,
                                                 const float s,
                                                 const float dt );
+     /*! @endcond  */
 
+    /**
+    * @brief Setup the state object
+    * @param[in] x A pointer to the state instance
+    * @param[in] sn_1 initial condition at time (t-1)
+    * @param[in] sn_2 initial condition at time (t-2)
+    * @return none
+    */
     void qNumA_StateInit( qNumA_state_t *x,
                           const float x0,
                           const float sn_1,

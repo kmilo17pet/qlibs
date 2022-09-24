@@ -16,6 +16,11 @@ extern "C" {
     #include <stdint.h>
     #include <string.h>
 
+    /** @addtogroup  qbitfield A Bit-Field manipulation library
+    * @brief API for the Bit-Field manipulation libraryr
+    *  @{
+    */
+
     /**
     * @brief A BitField object
     * @details The instance should be initialized using the qBitField_Setup() API.
@@ -39,7 +44,7 @@ extern "C" {
     * @brief Setup a initialize a BitField instance.
     * @param[in] b A pointer to the BitField instance
     * @param[in] area A pointer to the memory block to hold the BitField.
-    * Should be an uint8_t array of size #BITFIELD_SIZE(n), where n, is the
+    * Should be an uint8_t array of size #QBITFIELD_SIZE(n), where n, is the
     * number of bits inside the BitField.
     * @param[in] area_size The number of bytes in @a area.
     * @return 1 on success, otherwise return 0.
@@ -165,6 +170,8 @@ extern "C" {
     void* qBitField_Dump( const qBitField_t * const b,
                           void * const dst,
                           size_t n );
+
+    /** @}*/
 
 #ifdef __cplusplus
 }

@@ -17,6 +17,11 @@ extern "C" {
     #include <stdlib.h>
     #include <ctype.h>
 
+    /** @addtogroup qfp16 Q16.16 Fixed-point math
+    * @brief API for the qFP16 Fixed-point math library
+    *  @{
+    */
+
     /**  @brief Fixed-point Q16.16 type with width of exactly 32 bits.*/
     typedef int32_t qFP16_t;
 
@@ -81,7 +86,7 @@ extern "C" {
 
     /**
     * @brief Set settings for the fixed-point API
-    * @param[in] sys A pointer to the fixed-point settings instance
+    * @param[in] instance A pointer to the fixed-point settings instance
     * @param[in] min The minimal value allowed for the output.
     * @param[in] max The maximal value allowed for the output.
     * @param[in] rounding Enable rounding mode.
@@ -97,7 +102,7 @@ extern "C" {
     /**
     * @brief Select the provided setting instance to perform fixed-point
     * operations.
-    * @param[in] sys A pointer to the fixed-point settings instance. Pass NULL
+    * @param[in] instance A pointer to the fixed-point settings instance. Pass NULL
     * to use the default settings.
     * @return none.
     */
@@ -156,7 +161,7 @@ extern "C" {
     * @brief Returns the largest integer value less than or equal to @a x.
     * @param[in] x The fixed-point(q16.16) value.
     * @return This function returns the largest integral value not greater
-    * than @x.
+    * than @a x.
     */
     qFP16_t qFP16_Floor( const qFP16_t x );
 
@@ -176,8 +181,8 @@ extern "C" {
 
     /**
     * @brief Returns the fixed-point addition @a x + @a y.
-    * @param[in] x The fixed-point(q16.16) value.
-    * @param[in] y The fixed-point(q16.16) value.
+    * @param[in] X The fixed-point(q16.16) value.
+    * @param[in] Y The fixed-point(q16.16) value.
     * @return This function returns the addition operation x+y. QFP16_OVERFLOW
     * when an operation overflow is detected.
     */
@@ -196,8 +201,8 @@ extern "C" {
 
     /**
     * @brief Returns the fixed-point product operation  @a x * @a y.
-    * @param[in] X The fixed-point(q16.16) value.
-    * @param[in] Y The fixed-point(q16.16) value.
+    * @param[in] x The fixed-point(q16.16) value.
+    * @param[in] y The fixed-point(q16.16) value.
     * @return This function returns the product  operation x*y. QFP16_OVERFLOW
     * when an operation overflow is detected.
     */
@@ -316,7 +321,7 @@ extern "C" {
     /**
     * @brief Computes the fixed-point arc tangent in radians of @a y / @a x
     * based on the signs of both values to determine the correct quadrant.
-    * @param[in] x The fixed-point(q16.16) value representing an x-coordinate.
+    * @param[in] y The fixed-point(q16.16) value representing an x-coordinate.
     * @param[in] x The fixed-point(q16.16) value representing an y-coordinate.
     * @return This function returns the principal arc tangent of y/x, in the
     * interval [-pi,+pi] radians.
@@ -443,6 +448,8 @@ extern "C" {
     * the function returns QFP16_OVERFLOW.
     */
     qFP16_t qFP16_AToFP( const char *s );
+
+    /** @}*/
 
 #ifdef __cplusplus
 }
