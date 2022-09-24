@@ -1,5 +1,5 @@
 /*!
- * @file qssmother.c
+ * @file qssmoother.c
  * @author J. Camilo Gomez C.
  * @note This file is part of the qTools distribution.
  **/
@@ -7,11 +7,13 @@
 #include "qssmoother.h"
 #include "qltisys.h"
 
+/*! @cond  */
 struct qSmoother_Vtbl_s
 {
     float (*perform)( _qSSmoother_t * const f, const float x );
     int (*setup)( _qSSmoother_t * const f, const float * const param, float *window, const size_t wsize );
 };
+/*! @endcond  */
 
 static float qSSmoother_Abs( float x );
 static void qSSmoother_WindowSet( float *w,

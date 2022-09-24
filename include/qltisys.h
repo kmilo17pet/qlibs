@@ -19,9 +19,25 @@ extern "C" {
     #include "qtdl.h"
     #include "qnuma.h"
 
+    /** @addtogroup  qltisys Recursive LTI systems evaluation by transfer functions
+    * @brief API for the qLTISys library for recursive evaluation of LTI systems
+    * defined by transfer functions
+    *  @{
+    */
+
+    /**
+    * @brief Macro to specify that the system is time-discrete
+    */
     #define QLTISYS_DISCRETE        ( -1.0f )
 
+    /**
+    * @brief Type to specify continuos states 
+    */
     typedef qNumA_state_t qLTISys_ContinuosX_t;
+
+    /**
+    * @brief Type to specify continuos states 
+    */
     typedef float qLTISys_DiscreteX_t;
 
     /**
@@ -107,11 +123,13 @@ extern "C" {
     * @note If the system is continuous, pass 0 as argument.
     * @param[in] na The order of polynomial @a den. (if system is discrete). For
     * continuous system the number of elements of @a num and @a den.
+    * 
     * example 1: a0 + a1*z^-1 + a2*z^-2 + a3*z^-3 , na = 3
+    * 
     * example 2: num = b0*s^2 + b1*s + b2 , den = a0*s^2 + a1*s + a2 , na = 3
     * @note For continuous systems, size of @a num and @a den should be equal.
     * @param[in] dt The time-step of the continuos system. For discrete systems
-    * pass #QLTISYS_DISCRETE or 0f as argument
+    * pass #QLTISYS_DISCRETE as argument
     * @return 1 on success, otherwise return 0.
     */
     int qLTISys_Setup( qLTISys_t * const sys,
@@ -133,6 +151,7 @@ extern "C" {
     * FIR filter. Coefficients should be given in descending powers of the
     * nth-degree polynomial. To ignore pass NULL.
     * @param[in] wsize The number of elements of @a w.
+    * @param[in] x A sample of the input signal.
     * @return If @a c is provided, returns the evaluation of the FIR filter.
     * otherwise return the sum of the updated window @a w.
     */
@@ -157,6 +176,7 @@ extern "C" {
     int qLTISys_SetIntegrationMethod( qLTISys_t * const sys,
                                       qNumA_IntegrationMethod_t im );
 
+    /** @}*/
 
 #ifdef __cplusplus
 }

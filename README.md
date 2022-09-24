@@ -11,6 +11,8 @@
 [![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://github.com/kmilo17pet/qTools/graphs/commit-activity)
 [![License](https://img.shields.io/github/license/kmilo17pet/qTools)](https://github.com/kmilo17pet/qTools/blob/main/LICENSE) 
 
+
+![qlibs_logo_small](https://user-images.githubusercontent.com/11412210/192115666-a5e3b615-b635-47bb-a30a-fb9107a53b48.png)
 # qlibs : A collection of useful libraries for embedded systems
 
 <details><summary>qFP16 : Q16.16 Fixed-point math</summary>

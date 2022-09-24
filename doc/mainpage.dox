@@ -1,0 +1,43 @@
+/** @mainpage qLibs
+* A collection of useful libraries for embedded systems
+*/
+
+/**
+*  @defgroup qfp16 Q16.16 Fixed-point math
+*  This is the second group
+*/
+
+/**
+*  @defgroup qssmoother Filters to smooth noisy signals
+*  This is the second group
+*/
+
+/**
+*  @defgroup qpid Closed Loop PID Controller
+*  This is the second group
+*/
+
+/**
+*  @defgroup qltisys Recursive LTI systems evaluation by transfer functions
+*  This is the second group
+*/
+
+/**
+*  @defgroup qfis Fuzzy Inference System Engine
+*  This is the second group
+*/
+
+/**
+*  @defgroup qbitfield A Bit-Field manipulation library
+*  This is the second group
+*/
+
+/**
+*  @defgroup qrms Recursive Root Mean Square(RMS) calculation of a signal.
+*  This is the second group
+*/
+
+/**
+*  @defgroup qcrc Generic Cyclic Redundancy Check (CRC) calculator
+*  This is the second group
+*/

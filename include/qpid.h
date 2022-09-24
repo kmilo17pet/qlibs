@@ -20,6 +20,16 @@ extern "C" {
     #include <math.h>
     #include "qnuma.h"
 
+    /** @addtogroup  qpid Closed Loop PID Controller library
+    * @brief API for the qPID Controller library
+    *  @{
+    */
+
+    /**
+    * @brief A PID Auto-tunning object
+    * @details The instance should be binded to configured PID controller by
+    * using the qPID_BindAutoTunning() API
+    */
     typedef struct
     {
         /*! @cond  */
@@ -33,8 +43,10 @@ extern "C" {
         /*! @endcond  */
     } qPID_AutoTunning_t;
 
+    /**
+    * @brief Macro to keep the auto-tuner enabled indefinitely
+    */
     #define QPID_AUTOTUNNING_UNDEFINED      ( 0xFFFFFFFEuL )
-
 
     /**
     * @brief A PID controller object
@@ -208,6 +220,8 @@ extern "C" {
     int qPID_SetIntegrationMethod( qPID_controller_t * const c,
                                    qNumA_IntegrationMethod_t im );
 
+
+     /** @}*/
 
 #ifdef __cplusplus
 }
