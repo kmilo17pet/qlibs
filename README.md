@@ -15,6 +15,8 @@
 ![qlibs_logo_small](https://user-images.githubusercontent.com/11412210/192115666-a5e3b615-b635-47bb-a30a-fb9107a53b48.png)
 # qlibs : A collection of useful libraries for embedded systems
 
+* Read the API Reference [here](https://kmilo17pet.github.io/qlibs/)
+
 <details><summary>qFP16 : Q16.16 Fixed-point math</summary>
     
   - Basic operations
