@@ -117,7 +117,8 @@
 *  The circular queue approach prevents the shift of all the \f$N - 1\f$ samples
 *  stored in the sliding-window.
 *
-*  The implementation comes with a huge benefit in terms of performance because 
+*  @remarks
+*  This implementation comes with a huge benefit in terms of performance because 
 *  the time complexity is constant \f$O(1)\f$ , compared to the previous filter, 
 *  where the time complexity grows in direct proportion to the size of the window.
 *  Use this kind of filter when you need to consider large sliding windows.

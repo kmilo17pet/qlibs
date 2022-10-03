@@ -1,6 +1,7 @@
 /** @mainpage qLibs
 * A collection of useful libraries written in C for embedded systems. 
 *
+* @remarks
 * qLibs is developed using a formal and rigorous process framed in compliance with 
 * the MISRA C 2012 and CERT coding standard guidelines and complemented with 
 * multiple static-analysis checks targeted to safe critical applications.

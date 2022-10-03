@@ -177,7 +177,10 @@
 *  enum { tip_cheap, tip_average, tip_generous};
 *  @endcode
 *
-* Please note that all tag names are unique. Then, we will define the rules of 
+* @attention
+* Please note that all tag names are unique. 
+*
+* Then, we will define the rules of 
 * the fuzzy system using the previously defined tags. Rules should be defined through
 * an array of type \ref qFIS_Rules_t and the contents should be rules constructed
 * with the provided statements: 
@@ -235,7 +238,8 @@
 *  static const float tip_generous_p[] = { 20.0f, 25.0f, 30.0f }
 *  @endcode
 *
-* Note: The number of parameters may vary depending on the shape of the membership function.
+* @note
+* The number of parameters may vary depending on the shape of the membership function.
 *
 * Then, let's proceed to configure the membership functions by relating I/O, 
 * tags, shape and parameters one by one by using the \ref qFIS_SetMF() API as follows:

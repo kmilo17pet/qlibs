@@ -23,7 +23,10 @@
 * \ref qLTISys_ContinuosX_t with the N initial states of the system.
 * Then, you can call \ref qLTISys_Setup() to construct the system and set initial 
 * conditions. Subsequently,  you can evaluate the system with a given input-signal
-* by just calling \ref qLTISys_Excite(). The user must ensure that the 
+* by just calling \ref qLTISys_Excite(). 
+*
+* @attention
+* The user must ensure that the 
 * evaluation of the system is executed periodically at the required time-step.
 *  
 *
@@ -63,7 +66,7 @@
 * The z-transform is used in discrete-time systems to deal with the relationship 
 * between an input signal \f$ u(t) \f$ and an output signal \f$ y(t) \f$ , so the 
 * transfer function is similarly written as \f$ G(z^{-1}) \f$  and is often 
-* referred to as the pulse-transfer function. 
+* referred to as the pulse-transfer function.
 *
 *  \f$ G(z^{-1}) = \frac{N(z^{-1})}{D(z^{-1})} = \frac{ b_{0} + b_{1}z^{-1} + b_{2}z^{-2} + ... +  b_{m}z^{-m} }{ 1 + a_{1}z^{-1} + a_{2}z^{-2} + ... +  a_{n}z^{-n} } \f$ 
 

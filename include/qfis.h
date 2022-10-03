@@ -327,7 +327,7 @@ extern "C" {
     * @param[in] ni The number of bytes used by @a inputs. Use the sizeof operator.
     * @param[in] outputs An array with all the system outputs as qFIS_Output_t
     * objects.
-    * @param[in] no The number of bytes used by @a inputs. Use the sizeof operator.
+    * @param[in] no The number of bytes used by @a outputs. Use the sizeof operator.
     * @param[in] mf_inputs An array with all the membership functions related to
     * the inputs. This should be an array of qFIS_MF_t objects.
     * @param[in] nmi The number of bytes used by @a mf_inputs. Use the sizeof
