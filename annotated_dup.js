@@ -1,9 +1,5 @@
 var annotated_dup =
 [
-    [ "MyLibrary", null, [
-      [ "Example", "class_my_library_1_1_example.html", "class_my_library_1_1_example" ],
-      [ "SubclassExample", "class_my_library_1_1_subclass_example.html", "class_my_library_1_1_subclass_example" ]
-    ] ],
     [ "qBitField_t", "structq_bit_field__t.html", null ],
     [ "qFIS_Input_t", "structq_f_i_s___input__t.html", null ],
     [ "qFIS_MF_t", "structq_f_i_s___m_f__t.html", null ],

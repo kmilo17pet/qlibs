@@ -130,7 +130,7 @@ $(document).ready(function(){initNavTree('md__r_e_a_d_m_e.html',''); initResizab
 <div class="textblock"><p >qFP16 : Q16.16 Fixed-point math</p>
 <p ><a href="https://github.com/kmilo17pet/qTools"><img src="https://img.shields.io/badge/built%20for-microcontrollers-lightgrey?logo=WhiteSource" alt="Built for" class="inline"/></a> <a href="https://www.codefactor.io/repository/github/kmilo17pet/qlibs"><img src="https://www.codefactor.io/repository/github/kmilo17pet/qlibs/badge" alt="CodeFactor" class="inline"/></a> <a href="https://www.codacy.com/gh/kmilo17pet/qTools/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=kmilo17pet/qTools&amp;utm_campaign=Badge_Grade"><img src="https://app.codacy.com/project/badge/Grade/14d566939d2e4d4181088cc1c6666fa3" alt="Codacy Badge" class="inline"/></a> <a href="https://app.codiga.io/project/27197/dashboard"><img src="https://api.codiga.io/project/27197/score/svg" alt="CodeInspectorScore" class="inline"/></a> <a href="https://app.codiga.io/project/27197/dashboard"><img src="https://api.codiga.io/project/27197/status/svg" alt="CodeInspectorGrade" class="inline"/></a> <a href="https://softacheck.com/app/repository/kmilo17pet/qlibs/issues"><img src="https://softacheck.com/app/repository/kmilo17pet/qlibs/badge" alt="Softacheck" class="inline"/></a> <a href="https://softacheck.com/app/docs/kmilo17pet/qlibs/"><img src="https://softacheck.com/app/repository/kmilo17pet/qlibs/documentation/badge" alt="Documentation" class="inline"/></a> <a href="https://en.wikipedia.org/wiki/MISRA_C"><img src="https://img.shields.io/badge/MISRAC2012-Compliant-blue.svg?logo=c" alt="MISRAC2012" style="pointer-events: none;" class="inline"/></a> <a href="https://wiki.sei.cmu.edu/confluence/display/seccode/SEI+CERT+Coding+Standards"><img src="https://img.shields.io/badge/CERT-Compliant-blue.svg?logo=c" alt="CERT" style="pointer-events: none;" class="inline"/></a> <a href="https://en.wikipedia.org/wiki/C99"><img src="https://img.shields.io/badge/STD-C99-green.svg?logo=c" alt="C Standard" style="pointer-events: none;" class="inline"/></a> <a href="https://github.com/kmilo17pet/qTools/graphs/commit-activity"><img src="https://img.shields.io/badge/Maintained%3F-yes-green.svg" alt="Maintenance" style="pointer-events: none;" class="inline"/></a> <a href="https://github.com/kmilo17pet/qTools/blob/main/LICENSE"><img src="https://img.shields.io/github/license/kmilo17pet/qTools" alt="License" class="inline"/></a></p>
 <p ><img src="https://user-images.githubusercontent.com/11412210/192115666-a5e3b615-b635-47bb-a30a-fb9107a53b48.png" alt="qlibs_logo_small" class="inline"/> </p>
-<h1><a class="anchor" id="autotoc_md34"></a>
+<h1><a class="anchor" id="autotoc_md0"></a>
 qlibs : A collection of useful libraries for embedded systems</h1>
 <ul>
 <li>Read the API Reference <a href="https://kmilo17pet.github.io/qlibs/">here</a></li>
@@ -187,9 +187,9 @@ qlibs : A collection of useful libraries for embedded systems</h1>
 <li>qTDL : Tapped Delay Line in O(1).</li>
 <li>qRMS : Recursive Root Mean Square(RMS) calculation of a signal.</li>
 </ul>
-<h2><a class="anchor" id="autotoc_md35"></a>
+<h2><a class="anchor" id="autotoc_md1"></a>
 Draft examples</h2>
-<h3><a class="anchor" id="autotoc_md36"></a>
+<h3><a class="anchor" id="autotoc_md2"></a>
 Working with a bitfield</h3>
 <div class="fragment"><div class="line"><span class="preprocessor">#include &lt;stdio.h&gt;</span></div>
 <div class="line"><span class="preprocessor">#include &lt;stdlib.h&gt;</span></div>
@@ -220,7 +220,7 @@ Working with a bitfield</h3>
 <div class="ttc" id="agroup__qbitfield_html_gad44d5e2d7e20c3222d35dadfd4a0db40"><div class="ttname"><a href="group__qbitfield.html#gad44d5e2d7e20c3222d35dadfd4a0db40">qBitField_Setup</a></div><div class="ttdeci">int qBitField_Setup(qBitField_t *const b, void *const area, const size_t area_size)</div><div class="ttdoc">Setup a initialize a BitField instance.</div><div class="ttdef"><b>Definition:</b> qbitfield.c:94</div></div>
 <div class="ttc" id="agroup__qbitfield_html_gada09ad4cd6cdf81e60bc7f377bc2e2fc"><div class="ttname"><a href="group__qbitfield.html#gada09ad4cd6cdf81e60bc7f377bc2e2fc">qBitField_ReadUINTn</a></div><div class="ttdeci">uint32_t qBitField_ReadUINTn(const qBitField_t *const b, const size_t index, size_t xBits)</div><div class="ttdoc">Reads an unsigned 32-bit value from the BitField.</div><div class="ttdef"><b>Definition:</b> qbitfield.c:206</div></div>
 <div class="ttc" id="astructq_bit_field__t_html"><div class="ttname"><a href="structq_bit_field__t.html">qBitField_t</a></div><div class="ttdoc">A BitField object.</div><div class="ttdef"><b>Definition:</b> qbitfield.h:30</div></div>
-</div><!-- fragment --><h3><a class="anchor" id="autotoc_md37"></a>
+</div><!-- fragment --><h3><a class="anchor" id="autotoc_md3"></a>
 A simple fixed-point calculation</h3>
 <p ><img src="https://latex.codecogs.com/svg.latex?\Large&space;x=\frac{-b+\sqrt{b^2-4ac}}{2a}" alt="ec1" class="inline"/></p>
 <div class="fragment"><div class="line"><span class="preprocessor">#include &lt;stdio.h&gt;</span></div>
@@ -250,7 +250,7 @@ A simple fixed-point calculation</h3>
 <div class="ttc" id="agroup__qfp16_html_ga8fa3922fde6d48e1bcd3c8719a30c4e6"><div class="ttname"><a href="group__qfp16.html#ga8fa3922fde6d48e1bcd3c8719a30c4e6">qFP16_IntToFP</a></div><div class="ttdeci">qFP16_t qFP16_IntToFP(const int x)</div><div class="ttdoc">Returns the int value x converted to fixed-point q16.16.</div><div class="ttdef"><b>Definition:</b> qfp16.c:139</div></div>
 <div class="ttc" id="agroup__qfp16_html_gaca9307b9e27758648ccf96f3d355a1aa"><div class="ttname"><a href="group__qfp16.html#gaca9307b9e27758648ccf96f3d355a1aa">qFP16_Sub</a></div><div class="ttdeci">qFP16_t qFP16_Sub(const qFP16_t X, const qFP16_t Y)</div><div class="ttdoc">Returns the fixed-point subtraction x - y.</div><div class="ttdef"><b>Definition:</b> qfp16.c:228</div></div>
 <div class="ttc" id="agroup__qfp16_html_gae73aa884099b8f8b1a8ee04ffcf7c25e"><div class="ttname"><a href="group__qfp16.html#gae73aa884099b8f8b1a8ee04ffcf7c25e">qFP16_Mul</a></div><div class="ttdeci">qFP16_t qFP16_Mul(const qFP16_t x, const qFP16_t y)</div><div class="ttdoc">Returns the fixed-point product operation x * y.</div><div class="ttdef"><b>Definition:</b> qfp16.c:240</div></div>
-</div><!-- fragment --><h3><a class="anchor" id="autotoc_md38"></a>
+</div><!-- fragment --><h3><a class="anchor" id="autotoc_md4"></a>
 Simulating a 3rd-order continuous transfer function</h3>
 <p ><img src="https://latex.codecogs.com/svg.latex?\Large&space;G_p(s)=\frac{2s^2+3s+6}{s^3+6s^2+11s+16}" alt="ec2" class="inline"/></p>
 <div class="fragment"><div class="line"><span class="preprocessor">#include &lt;stdio.h&gt;</span></div>
@@ -280,7 +280,7 @@ Simulating a 3rd-order continuous transfer function</h3>
 <div class="ttc" id="agroup__qltisys_html_ga62e08fd5775f0d1b9f0347ee69e5833e"><div class="ttname"><a href="group__qltisys.html#ga62e08fd5775f0d1b9f0347ee69e5833e">qLTISys_Setup</a></div><div class="ttdeci">int qLTISys_Setup(qLTISys_t *const sys, float *num, float *den, void *x, const size_t nb, const size_t na, const float dt)</div><div class="ttdoc">Setup and initialize an instance of a LTI system.</div><div class="ttdef"><b>Definition:</b> qltisys.c:128</div></div>
 <div class="ttc" id="astructq_l_t_i_sys__t_html"><div class="ttname"><a href="structq_l_t_i_sys__t.html">qLTISys_t</a></div><div class="ttdoc">A LTI system object.</div><div class="ttdef"><b>Definition:</b> qltisys.h:49</div></div>
 <div class="ttc" id="astructq_num_a__state__t_html"><div class="ttname"><a href="structq_num_a__state__t.html">qNumA_state_t</a></div><div class="ttdef"><b>Definition:</b> qnuma.h:17</div></div>
-</div><!-- fragment --><h3><a class="anchor" id="autotoc_md39"></a>
+</div><!-- fragment --><h3><a class="anchor" id="autotoc_md5"></a>
 Simulating a 2nd-order discrete transfer function</h3>
 <p ><img src="https://latex.codecogs.com/svg.latex?\Large&space;G_p(z^{-1})=\frac{0.1+0.2z^{-1}+0.3z^{-2}}{1-0.85z^{-1}+0.02z^{-2}}" alt="ec2" class="inline"/></p>
 <div class="fragment"><div class="line"><span class="preprocessor">#include &lt;stdio.h&gt;</span></div>
@@ -309,7 +309,7 @@ Simulating a 2nd-order discrete transfer function</h3>
 <div class="line">}</div>
 <div class="ttc" id="agroup__qltisys_html_ga588d08b5773a218be7efeca9e87ffb8c"><div class="ttname"><a href="group__qltisys.html#ga588d08b5773a218be7efeca9e87ffb8c">QLTISYS_DISCRETE</a></div><div class="ttdeci">#define QLTISYS_DISCRETE</div><div class="ttdoc">Macro to specify that the system is time-discrete.</div><div class="ttdef"><b>Definition:</b> qltisys.h:31</div></div>
 <div class="ttc" id="agroup__qltisys_html_gaafd7e1046bb766454450a7ff3fe0aaaa"><div class="ttname"><a href="group__qltisys.html#gaafd7e1046bb766454450a7ff3fe0aaaa">qLTISys_DiscreteX_t</a></div><div class="ttdeci">float qLTISys_DiscreteX_t</div><div class="ttdoc">Type to specify continuos states.</div><div class="ttdef"><b>Definition:</b> qltisys.h:41</div></div>
-</div><!-- fragment --><h3><a class="anchor" id="autotoc_md40"></a>
+</div><!-- fragment --><h3><a class="anchor" id="autotoc_md6"></a>
 A speed control using the PID algorithm</h3>
 <div class="fragment"><div class="line"><span class="preprocessor">#include &lt;stdio.h&gt;</span></div>
 <div class="line"><span class="preprocessor">#include &lt;stdlib.h&gt;</span></div>
@@ -357,7 +357,7 @@ A speed control using the PID algorithm</h3>
 <div class="ttc" id="agroup__qpid_html_ga544fd18e2912b8d14083337e434d59a3"><div class="ttname"><a href="group__qpid.html#ga544fd18e2912b8d14083337e434d59a3">qPID_SetSaturation</a></div><div class="ttdeci">int qPID_SetSaturation(qPID_controller_t *const c, const float min, const float max, const float kw)</div><div class="ttdoc">Setup the output saturation for the PID controller.</div><div class="ttdef"><b>Definition:</b> qpid.c:77</div></div>
 <div class="ttc" id="agroup__qpid_html_gaec33f4b01047504ebeea758bc7ce6798"><div class="ttname"><a href="group__qpid.html#gaec33f4b01047504ebeea758bc7ce6798">qPID_Setup</a></div><div class="ttdeci">int qPID_Setup(qPID_controller_t *const c, const float kc, const float ki, const float kd, const float dt)</div><div class="ttdoc">Setup and initialize the PID controller instance.</div><div class="ttdef"><b>Definition:</b> qpid.c:18</div></div>
 <div class="ttc" id="astructq_p_i_d__controller__t_html"><div class="ttname"><a href="structq_p_i_d__controller__t.html">qPID_controller_t</a></div><div class="ttdoc">A PID controller object.</div><div class="ttdef"><b>Definition:</b> qpid.h:57</div></div>
-</div><!-- fragment --><h3><a class="anchor" id="autotoc_md41"></a>
+</div><!-- fragment --><h3><a class="anchor" id="autotoc_md7"></a>
 Smoothing a noisy signal by using a gaussian filter</h3>
 <div class="fragment"><div class="line"><span class="preprocessor">#include &lt;stdio.h&gt;</span></div>
 <div class="line"><span class="preprocessor">#include &lt;stdlib.h&gt;</span></div>
@@ -404,7 +404,7 @@ Smoothing a noisy signal by using a gaussian filter</h3>
 <div class="ttc" id="agroup__qssmoother_html_gae494958fd1353a8cd956e35abd6641f7"><div class="ttname"><a href="group__qssmoother.html#gae494958fd1353a8cd956e35abd6641f7">qSSmoother_Setup</a></div><div class="ttdeci">int qSSmoother_Setup(qSSmootherPtr_t *const s, const qSSmoother_Type_t type, const float *const param, float *window, const size_t wsize)</div><div class="ttdoc">Setup an initialize smoother filter.</div><div class="ttdef"><b>Definition:</b> qssmoother.c:77</div></div>
 <div class="ttc" id="agroup__qssmoother_html_gga8953f71916f57517edbe8cab4d7ee639a0f072f41aec7b912c7e49bf897a0d87b"><div class="ttname"><a href="group__qssmoother.html#gga8953f71916f57517edbe8cab4d7ee639a0f072f41aec7b912c7e49bf897a0d87b">QSSMOOTHER_TYPE_GMWF</a></div><div class="ttdeci">@ QSSMOOTHER_TYPE_GMWF</div><div class="ttdef"><b>Definition:</b> qssmoother.h:37</div></div>
 <div class="ttc" id="astructq_s_smoother___g_m_w_f__t_html"><div class="ttname"><a href="structq_s_smoother___g_m_w_f__t.html">qSSmoother_GMWF_t</a></div><div class="ttdoc">A Gaussian filter.</div><div class="ttdef"><b>Definition:</b> qssmoother.h:131</div></div>
-</div><!-- fragment --><h3><a class="anchor" id="autotoc_md42"></a>
+</div><!-- fragment --><h3><a class="anchor" id="autotoc_md8"></a>
 A Mamdani Fuzzy Inference System example</h3>
 <p >FlexNav system taken from here: <a href="https://www.researchgate.net/publication/3955309_FLEXnav_fuzzy_logic_expert_rule-based_position_estimation_for_mobile_robots_on_rugged_terrain">https://www.researchgate.net/publication/3955309_FLEXnav_fuzzy_logic_expert_rule-based_position_estimation_for_mobile_robots_on_rugged_terrain</a></p>
 <p >flexnav_fis.c</p>
@@ -567,7 +567,7 @@ A Mamdani Fuzzy Inference System example</h3>
 <div class="line"><span class="preprocessor">#ifdef __cplusplus</span></div>
 <div class="line">    }</div>
 <div class="line"><span class="preprocessor">#endif</span></div>
-</div><!-- fragment --><h3><a class="anchor" id="autotoc_md43"></a>
+</div><!-- fragment --><h3><a class="anchor" id="autotoc_md9"></a>
 Generate C code from the MATLAB Fuzzy Logic Toolbox</h3>
 <p >Download the <code>qfiscgen</code> tool from <a href="https://la.mathworks.com/matlabcentral/fileexchange/117465-qfiscgen-fuzzy-c-code-generator-for-embedded-systems"><img src="https://www.mathworks.com/matlabcentral/images/matlab-file-exchange.svg" alt="View qfiscgen ( Fuzzy C-code generator for embedded systems) on File Exchange" style="pointer-events: none;" class="inline"/></a> </p>
 </div></div><!-- contents -->
