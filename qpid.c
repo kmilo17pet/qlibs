@@ -240,6 +240,7 @@ int qPID_BindAutoTunning( qPID_controller_t * const c,
             at->a1 = -expf( -c->dt/T );
             at->b1 = k*( 1.0f + at->a1 );
             at->speed = 0.25f;
+            at->it = QPID_AUTOTUNNING_UNDEFINED;
         }
         else {
             c->adapt = NULL;
@@ -306,15 +307,50 @@ static void qPID_AdaptGains( qPID_controller_t *c,
     /*cstat +MISRAC2012-Dir-4.11_a +MISRAC2012-Rule-13.5*/
         s->k = k + ( s->mu*( s->k - k ) );
         s->tao = tao + ( s->mu*( s->tao - tao ) );
-        tmp1 = c->dt/s->tao;
-        tmp2 = ( 1.35f + ( 0.25f*tmp1 ) );
-        c->kc = ( s->speed*tmp2*s->tao )/( s->k*c->dt );
-        c->ki = ( ( s->speed*c->kc )*( 0.54f + ( 0.33f*tmp1 ) ) )/( tmp2*c->dt );
-        c->kd = ( 0.5f*s->speed*c->kc*c->dt )/tmp2;
-        if ( s->it < QPID_AUTOTUNNING_UNDEFINED ) {
-            s->it--;
+        if ( ( 0uL == --s->it ) && ( s->it != QPID_AUTOTUNNING_UNDEFINED ) ) {
+            tmp1 = c->dt/s->tao;
+            tmp2 = ( 1.35f + ( 0.25f*tmp1 ) );
+            c->kc = ( s->speed*tmp2*s->tao )/( s->k*c->dt );
+            c->ki = ( ( s->speed*c->kc )*( 0.54f + ( 0.33f*tmp1 ) ) )/( tmp2*c->dt );
+            c->kd = ( 0.5f*s->speed*c->kc*c->dt )/tmp2;
         }
     }
+}
+/*============================================================================*/
+int qPID_AutoTunningComplete( const qPID_controller_t * const c )
+{
+    int retVal = 0;
+
+    if ( NULL != c ) {
+        if ( NULL != c->adapt ) {
+            retVal = ( ( 0uL == c->adapt->it ) && 
+                       ( c->adapt->it != QPID_AUTOTUNNING_UNDEFINED )
+                     ) ? 1 : 0;
+        }
+    }
+
+    return retVal;
+}
+/*============================================================================*/
+int qPID_AutoTunningSetParameters( qPID_controller_t * const c,
+                                   const float mu,
+                                   const float alfa,
+                                   const float lambda )
+{
+    int retVal = 0;
+
+    if ( ( NULL != c ) && ( mu > 0.0f ) && ( mu <= 1.0f ) &&
+         ( alfa > 0.0f ) && ( alfa <= 1.0f ) &&
+         ( lambda >= 0.8f ) && ( lambda <= 1.0f ) ) {
+        if ( NULL != c->adapt ) {
+            c->adapt->l = lambda;
+            c->adapt->mu = mu;
+            c->adapt->speed = alfa;
+            retVal = 1;
+        }
+    }
+
+    return retVal;
 }
 /*============================================================================*/
 static float qPID_Sat( float x,

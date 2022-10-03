@@ -1,7 +1,7 @@
 /*!
  * @file qpid.h
  * @author J. Camilo Gomez C.
- * @version 1.07
+ * @version 1.08
  * @note This file is part of the qLibs distribution.
  * @brief API to control systems using the PID algorithm. This controller
  * features anti-windup, tracking mode, and derivative filter.
@@ -27,7 +27,7 @@ extern "C" {
 
     /**
     * @brief A PID Auto-tunning object
-    * @details The instance should be binded to configured PID controller by
+    * @details The instance should be bound to a configured PID controller by
     * using the qPID_BindAutoTunning() API
     */
     typedef struct
@@ -204,6 +204,26 @@ extern "C" {
     int qPID_EnableAutoTunning( qPID_controller_t * const c,
                                 const uint32_t tEnable );
 
+    /**
+    * @brief Verifies that the auto tuning process has finished with new gains 
+    * set on the controller
+    * @param[in] c A pointer to the PID controller instance.
+    * @return 1 if auto-tunning its complete, otherwise return 0.
+    */
+    int qPID_AutoTunningComplete( const qPID_controller_t * const c );
+
+    /**
+    * @brief Change parameters of the auto-tunning algorithm.
+    * @param[in] c A pointer to the PID controller instance.
+    * @param[in] mu Algorithm momentum. [ 0 <= alfa <= 1 ].
+    * @param[in] alfa Final controller speed adjustment. [ 0 < alfa <= 1 ].
+    * @param[in] lambda Algorithm forgetting factor [ 0.8 <= lambda <= 1 ].
+    * @return 1 on success, 0 on failure.
+    */
+    int qPID_AutoTunningSetParameters( qPID_controller_t * const c,
+                                       const float mu,
+                                       const float alfa,
+                                       const float lambda );
     /**
     * @brief Set integration method for the PID controller.
     * @param[in] c A pointer to the PID controller instance.

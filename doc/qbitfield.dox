@@ -1,0 +1,38 @@
+/*! @page qbitfield_desc Bit-Field manipulation library
+* \ref qbitfield bitfield is a library of functions for creating and manipulate
+* bit fields (or bit arrays), i.e. series of zeroes and ones spread across an 
+* array of storage units (unsigned long integers).
+*
+* <b> Structure </b>
+* 
+* Bit arrays are stored in data structures of type \ref qBitField_t. This structure
+* has two elements: an array of unsigned long integers 'field' for storing the 
+* bits and an integer 'size' for storing the number of bits in the array. 
+*
+* <b> Working with bitfields </b>
+*
+*  @code{.c}
+*  #include <stdio.h>
+*  #include <stdlib.h>
+*  #include <stdint.h>
+*  #include "qbitfield.h"
+*  
+*  int main( int argc, char *argv[] ) 
+*  {
+*      qBitField_t vPort; // create the bitfield instance
+*      uint8_t vPortArea[ QBITFIELD_SIZE(48) ] = { 0 }; // Create the bitfield storage area to hold 48bits
+*      uint16_t rWord; 
+*      
+*      qBitField_Setup( &vPort, vPortArea, sizeof(vPortArea) );
+*      qBitField_ClearAll( &vPort);
+*      //we are going to write the following value in the bitfield = 0x8177AA55FF88
+*      qBitField_WriteUINTn( &vPort, 0, 0xAA55FF88, 32 ); // write the first 32 bits
+*      qBitField_WriteUINTn( &vPort, 32, 0x77, 8 ); // write one of the last two bytes
+*      qBitField_WriteBit( &vPort, 47, 1 );         // write the last bit of the last byte
+*      qBitField_WriteBit( &vPort, 40, 1 );         // write the first bit of the last byte
+*      rWord = (uint16_t)qBitField_ReadUINTn( &vPort, 20, 16 ); // read a word at offset 24
+*      printf("%02X %02X %02X %02X %02X %02X\r\n", vPortArea[0], vPortArea[1], vPortArea[2], vPortArea[3], vPortArea[4], vPortArea[5]);
+*      return EXIT_SUCCESS;
+*  }
+*  @endcode
+*/

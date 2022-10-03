@@ -1,0 +1,266 @@
+/*! @page qpid_desc Closed-loop PID Controller
+* A PID controller seeks to keep some input variable close to a desired setpoint
+* by adjusting an output. The way in which it does this can be 'tuned' by 
+* adjusting three parameters (Proportinal,Integral,Derivative).
+*
+* qLibs provides the \ref qpid implementation, which, apart from the simplified 
+* overview representation of the PID controller, also addresses some practical
+* issues and includes the additional features:
+* 
+* - Noisy Derivative Contributions (Derivative filter)
+* - Automatic Anti-windup control
+* - Tracking mode (bumpless transfer)
+* - Auto-tunning
+* - Additive MRAC
+*
+*
+* <b> PID Controller approach </b>
+*
+* The mathematical model and practical loop above both use a direct control 
+* action for all the PID terms, which means an increasing positive error 
+* results in an increasing positive control output correction.
+*
+* The overall control function is given by:
+*
+* \f$ v(t)= \psi(t)r(t) + [ K_{c}e(t) + K_{i}\int [ e(t) + c(t-1) ]dt + K_{d}f_{d}(t) ] \f$ 
+*
+* \f$ u(t) = \text{Sat}[ v(t), u_{min}, u_{max} ]\f$ 
+*
+* where \f$r(t)\f$ the set-point, \f$ e(t) = r(t) - y(t) \f$ its the error
+* \f$y(t)\f$ the process output, \f$K_{c},K_{i},K_{d}\f$ the PID gain respectively 
+*  and \f$u(t)\f$ the control action.
+*
+* \f$\psi(t)\f$ the adaptive gain from the additive MRAC (later explained)
+*
+* As shown above, the derivative term \f$ f_{d}(t)\f$ is the output of a 
+* low-pass filter of the error derivative.
+*
+* \f$ f_{d}(t) = \text{LPF}[ \frac{de(t)}{dt} ]\f$ 
+*
+* and \f$ c(t)\f$, the Anti-Windup and tracking mode feedback, with \f$K_{w}\f$
+* and \f$K_{T}\f$ as the ajustment parameters respectively.
+*
+* \f$ c(t) = K_{w}[ u(t) - v(t) ] + K_{T}[ r_{t}(t) - u(t) ]\f$
+*
+* \image html https://user-images.githubusercontent.com/11412210/193475586-80d41932-d7f3-4567-8820-2ab423261354.png
+*
+* <b> Controller instantiation </b>
+*
+* Before you start using a controller, it must first be instantiated first
+* via the \ref qPID_controller_t type and then configured using the \ref qPID_Setup() API, 
+* where you can define the PID gains and time step.
+*
+*  Example: Instantiating an configuring a PID controller:
+*  @code{.c}
+*  qPID_controller_t control;
+*  const float kc = 1.0f, ki = 0.1f, kd = 0.0f;
+*  const float dt = 0.01f; // time-step of 10mS
+*  int ret;
+*
+*  ret = qPID_Setup( &control, kc, ki, kd, dt );
+*  if ( 0 == ret ) {
+*      // error, pid controller cant be configured
+*  }
+*  @endcode
+*
+*
+*  <b> Usign the controller </b>
+*
+*  The following example illustrates how a PID controller can be used to regulate
+*  the speed of a DC motor. PID control operates on a separate task running  
+*  periodically  at a rate of 50mS. The speed measurement is being read through
+*  an analog input and then scaled to the appropriate units (RPM). The \ref qPID_Control() 
+*  function will be in charge of computing the control action and  updating the internal
+*  states of the controller. Then, the control output gets scaled-back in order to
+*  send the control command by using the PWM(Pulse Width Modulation) module. 
+*
+*  Example: Speed control using a PID controller:
+*  @code{.c}
+*  #include <stdio.h>
+*  #include <stdlib.h>
+*  #include "freertos/FreeRTOS.h"
+*  #include "freertos/task.h"
+*  #include "bsp.h"
+*  #include "qpid.h"
+*  
+*  const TickType_t  dt = 50; //50mS time-step
+*  void xTaskPIDspeedControl( void *arg );
+*  float SetPoint = 300.0f; // desired motor speed 300rpm
+*  
+*  void xTaskPIDspeedControl( void *arg )
+*  {
+*      qPID_controller_t *controller = (qPID_controller_t *)arg;
+*      float processMeasurement;
+*      float controlOutput;
+*      for ( ;; ) {
+*          processMeasurement = BSP_ScaletoSpeed ( BSP_AnalogRead( BSP_AI_SPEED_CHANNEL ) );
+*          controlOutput = qPID_Control( controller, SetPoint, processMeasurement );
+*          BSP_PWMSet( BSP_AO_SPEED_PWM_CHANNEL, BSP_ScaletoPWM( controlOutput ) ); 
+*          vTaskDelay( dt / portTICK_RATE_MS) ;
+*      }
+*  }
+*  
+*  int main( int argc, char *argv[] ) 
+*  {
+*      qPID_controller_t speedControl;
+*      int ret;
+*      
+*      BSP_SystemInit( );
+*      ret = qPID_Setup( &speedControl, 1, 0.1, 0, (float)dt/1000.0f );
+*      if ( 0 == ret ) {
+*          puts( "ERROR: Cant configure PID controller" );
+*      }
+*      qPID_SetSaturation( &speedControl, 0.0f, 100.0f );
+*      // Create the task that handles the speed control at the defined rate
+*      xTaskCreate( xTaskPIDspeedControl, "speedControl", 1024, &speedControl, configMAX_PRIORITIES - 1 ,NULL );
+*      vTaskStartScheduler();
+*      for( ;; );
+*      return EXIT_SUCCESS;
+*  }
+*  @endcode
+*
+*
+* <b> Additive MRAC (Model Reference Adaptive Control) </b>
+*
+* Model Reference Adaptive Control (MRAC) is a strategy where the controller 
+* of the closed-loop is adapted by an adjustment mechanism, which takes \f$ y_{m}(t) \f$ 
+* from a reference model as input and tries to adjust the controller output \f$v(t)\f$. 
+* The adjustment mechanism used by qPID is the enhanced MIT-rule approach,
+* which adapts a feed-forward gain by the error between the system \f$ y(t) \f$  
+* and the model \f$ y_{m}(t) \f$ and therefore is the so-called Gradient approach.
+*
+*
+* \f$ e_{m}(t) = y(t) - y_{m}(t)\f$ 
+*
+* \f$ \delta(t) = -\gamma  \frac{ e_{m}(t) y_{m}(t) }{ \beta + y_{m}^{2}(t)  }  \f$ 
+*
+* where \f$\gamma(t)\f$ is the adaptation gain and \f$\beta(t)\f$ is introduced 
+* to remove the problem of the possible division by zero if \f$y_{m}^{2}(t) \f$
+* gets too small. 
+*
+* The MRAC adaptation is then computed by integrating the \f$\delta(t)\f$ term 
+* as follows:
+*
+*  \f$ \psi(t) = \int \delta(t) dt \f$ 
+*
+* This method can be used to adapt to slower changes but can become unstable for
+* abrupt changes to the system. Therefore, this implementation uses a so called 
+* modified MRAC (M-MRAC) where the adaptation is later added to a PID controller, 
+* being the MRAC the additive loop.
+* 
+* Abrupt changes to the system are absorbed by the  PID controller, while the 
+* change of the dynamics will still be handled by the MIT gain \f$\psi(t)\f$. 
+* This results in the equation of the control function presented at the 
+* beginning of this section.
+*
+* To use the additive MRAC, you should first instantiate a reference model and 
+* then, enable the MRAC by using the \ref qPID_SetMRAC() API. Here, you must provide
+* a pointer to the output of the reference model and the adaptation gain \f$\gamma(t)\f$
+*
+*  Example: Speed control with PID controller with an additive MRAC:
+*  @code{.c}
+*  #include <stdio.h>
+*  #include <stdlib.h>
+*  #include "freertos/FreeRTOS.h"
+*  #include "freertos/task.h"
+*  #include "bsp.h"
+*  #include "qpid.h"
+*  #include "qltisys.h" //to create the reference model
+*  
+*  #define REF_MODEL_ORDER   ( 1 )
+*
+*  const TickType_t dt = 50; //50mS time-step
+*  void xTaskPIDspeedControl( void *arg );
+*  
+*  void xTaskPIDspeedControl( void *arg )
+*  {
+*      qPID_controller_t *controller = (qPID_controller_t *)arg;
+*      qLTISys_t ref_model;
+*      float num[ REF_MODEL_ORDER+1 ] = { 0.0f, 1.0f, };
+*      float den[ REF_MODEL_ORDER+1 ] = { 3.0f, 1.0f, };
+*      float processMeasurement;
+*      float SetPoint = 300.0f; // desired motor speed 300rpm
+*      float refmodel_output = 0.0f;
+*      float controlOutput = 0.0f;
+*
+*      qLTISys_Setup( &ref_model, num, den, x, 0, REF_MODEL_ORDER+1, (float)dt/1000.0f ) );
+*      qPID_SetMRAC( controller, &refmodel_output, 0.01f );
+*      for ( ;; ) {
+           refmodel_output = qLTISys_Excite( &ref_model, controlOutput );
+*          processMeasurement = BSP_ScaletoSpeed ( BSP_AnalogRead( BSP_AI_SPEED_CHANNEL ) );
+*          controlOutput = qPID_Control( controller, SetPoint, processMeasurement );
+*          BSP_PWMSet( BSP_AO_SPEED_PWM_CHANNEL, BSP_ScaletoPWM( controlOutput ) ); 
+*          vTaskDelay( dt / portTICK_RATE_MS) ;
+*      }
+*  }
+*  
+*  int main( int argc, char *argv[] ) 
+*  {
+*      qPID_controller_t speedControl;
+*      int ret;
+*      
+*      BSP_SystemInit( );
+*      ret = qPID_Setup( &speedControl, 1, 0.1, 0, (float)dt/1000.0f );
+*      if ( 0 == ret ) {
+*          puts( "ERROR: Cant configure PID controller" );
+*      }
+*      qPID_SetSaturation( &speedControl, 0.0f, 100.0f );
+*      // Create the task that handles the speed control at the defined rate
+*      xTaskCreate( xTaskPIDspeedControl, "speedControl", 1024, &speedControl, configMAX_PRIORITIES - 1 ,NULL );
+*      vTaskStartScheduler();
+*      for( ;; );
+*      return EXIT_SUCCESS;
+*  }
+*  @endcode
+*
+* <b> Autotunning </b>
+*
+* Autotuning can eliminate much of the trial and error of a manual tuning 
+* approach, especially if you do not have a lot of loop tuning experience. 
+* Performing the autotuning procedure will get the tuning parameters close to 
+* their optimal values, but additional manual tuning may be required to get 
+* the tuning parameters to their optimal values.
+*
+* The Autotune feature for the controller will only run for a limited amount of time
+* each time it is enabled. In other words, autotuning does not run continuously 
+* during operation. Whenever there is a substantial change in the process 
+* dynamics, the tuning process will need to be repeated in order to derive new 
+* gains required for optimal control.
+*
+* Autotunning is performed by using the following recursive algorithm:
+*
+* \f$ L(t) =  \frac{ P(t-1)\phi }{ \lambda + \phi^{T}P(t-1)\phi  } \f$
+*
+* \f$\theta(t) = \theta(t-1) + L[ y(t) - \phi^{T}\theta(t)  ] \f$
+*
+* \f$ P(t) = \lambda^{-1}[ I - L(t)+\phi^{T}]P(t-1) \f$
+*
+* \f$ \theta(t) = \begin{bmatrix} \theta_{1}(t) & \theta_{2}(t) \end{bmatrix}^T  \f$ 
+* and \f$ \phi(t) = \begin{bmatrix} -y(t-1) & u(t-1) \end{bmatrix}^T  \f$ 
+*
+* \f$ g(t) = \frac{ (1 - \mu)\theta_{2}(t) }{ 1 + \theta_{1} } + \mu g(t-1)  \f$
+*
+* \f$ \tau(t) = \frac{ ( \mu - 1 )dt }{ ln( |\theta_{1}| ) } + \mu \tau(t-1)  \f$
+*
+* \f$ K_{c}(t) = \alpha \frac{ r_{2} \tau(t) }{ g(t)dt } \f$
+*
+* \f$ K_{i}(t) = \alpha \frac{ g(t)[ 0.54 + 0.33r_{1} ] }{ r_{2}dt } \f$
+*
+* \f$ K_{c}(t) = \alpha \frac{ K_{c}(t)dt }{ r_{2} } \f$
+*
+* where  \f$ r_{1} = dt/\tau(t) \f$  and \f$ r_{2} = 1.35 + 0.25r_{1} \f$ 
+*
+* and the remaining parameters \f$\mu\f$, \f$\alpha\f$, \f$\lambda\f$ are internally
+* computed for best performance.
+*
+* <b> Autotunning Usage </b>
+*
+* In order to use the autotuner, you must first instantiate the \ref qPID_AutoTunning_t
+* object and bind it to a previously configured PID controller by using the 
+* \ref qPID_BindAutoTunning().
+*
+* After this, you can enable auto tuning via \ref qPID_EnableAutoTunning() 
+* for a defined number of intervals. When the autotune ends, the resulting PID
+* gains will be applied to the binded controller
+* 
+*/

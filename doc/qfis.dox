@@ -1,0 +1,374 @@
+/*! @page qfis_desc Fuzzy Inference System Engine
+* The \ref qfis Fuzzy Inference System engine provides an API for building and 
+* evaluation of type-1 fuzzy logic systems. You can tune membership functions 
+* and rules easily.
+* 
+* The types of inferences supported by qFIS are listed in the \ref qFIS_Type_t and
+* are detailed below:
+*
+* - <b> Mamdani Fuzzy Inference Systems </b>
+*
+* In a Mamdani system, the output of each rule is a fuzzy set. Since Mamdani 
+* systems have more intuitive and easier to understand rule bases, they are 
+* well-suited to expert system applications where the rules are created
+* from human expert knowledge.
+*
+* The output of each rule is a fuzzy set derived from the output membership
+* function and the implication method of the FIS. These output fuzzy sets are
+* combined into a single fuzzy set using the aggregation method of the FIS. 
+* Then, to compute a final crisp output value, the combined output fuzzy set is
+* defuzzified using one of the methods described in Defuzzification Methods.
+*
+* - <b> Sugeno Fuzzy Inference Systems </b>
+*
+* Sugeno fuzzy inference, also referred to as Takagi-Sugeno-Kang fuzzy inference,
+* uses singleton output membership functions that are either constant or a linear
+* function of the input values. The defuzzification process for a Sugeno system 
+* is more computationally efficient compared to that of a Mamdani system, since 
+* it uses a weighted average or weighted sum of a few data points rather than 
+* computing the centroid of a two-dimensional area.
+*
+* Each rule generates two values:
+*
+* \f$z_i\f$ Rule output level, which is either a constant value or a linear 
+* function of the input values.
+*
+* and \f$w_i\f$, the rule firing strength, is determined by the rule antecedent
+* 
+* The output of each rule is the weighted output level, which is the product of 
+* \f$w_i\f$ and \f$z_i\f$.
+* 
+* The final output of the system is the weighted average/sum over all rule outputs:
+*
+* \f$out= \frac{ \sum_{i=1}^{N}w_{i}z_{i} }{ \sum_{i=1}^{N}w_{i}} \f$ 
+* 
+* where \f$N\f$  is the number of rules.
+*
+* Because of the linear dependence of each rule on the input variables, the Sugeno 
+* method is ideal for acting as an interpolating supervisor of multiple linear 
+* controllers that are to be applied, respectively, to different operating 
+* conditions of a dynamic nonlinear system.
+*
+*
+* - <b> Tsukamoto Fuzzy Inference Systems </b>
+*
+* In the Tsukamoto inference system, the consequent of each fuzzy if-then rule 
+* is represented by a fuzzy set with a monotonical membership function, As a result, 
+* the inferred output of each rule is defined as a crisp value induced by the 
+* rule's firing strength. 
+*
+* The overall output is taken as the weighted average of each rule's output.
+* Since each rule infers a crisp output, the Tsukamoto fuzzy model aggregates 
+* each rule's output by the method of weighted average and thus avoids the 
+* time-consuming process of defuzzification.
+*
+*
+* <b> Comparision among supported Inference Systems</b>
+*
+* \image html https://user-images.githubusercontent.com/11412210/192664066-ab40cb04-a36f-4b49-9c14-cc34a4683f43.jpg width=50%
+*
+*
+* <b> Defuzzification Methods </b>
+* 
+*  qFIS supports five different methods, as listed in the \ref qFIS_DeFuzz_Method_t type
+* for computing a single crisp output value for such a fuzzy set.
+*
+*  -# Centroid : this method applies only to Mamdani systems and returns the 
+* center of gravity of the fuzzy set along the x-axis. If you think of the area 
+* as a plate with uniform thickness and density, the centroid is the point along 
+* the x-axis about which the fuzzy set would balance. The centroid is computed 
+* using the following formula, where \f$\mu(x)\f$ is the membership value for 
+* point \f$x_i\f$ in the universe of discourse.
+*
+*
+* \f$\text{centroid}= \frac{ \sum_{i=1}\mu(x_{i})x_{i} }{ \sum_{i=1}\mu(x_{i})} \f$ 
+*
+*  -# Bisector : this method applies only for Mamdani systems and finds the 
+* vertical line that divides the fuzzy set into two sub-regions of equal area. 
+* It is sometimes, but not always, coincident with the centroid line.
+*
+*  -# MOM : Middle of Maximum. Only for Mamdani systems.
+*
+*  -# SOM : Smallest of Maximum. Only for Mamdani systems.
+*
+*  -# LOM : Largest of Maximum. Only for Mamdani systems.
+*
+*  -# WtAver: Weighted average of all rule outputs. this method applies only 
+* for Sugeno and Tsukamoto systems.
+*
+*  -# WtSum:  Weighted sum of all rule outputs. This method applies only for 
+* Sugeno and Tsukamoto systems.
+*
+*
+* <b> Building a Mamdani FIS </b>
+*
+* To carry the FIS building process in a more friendly way, we are going to explain 
+* it with a particular example. 
+*
+* This example goal is to solve the tipping problem, and its described as follows:
+*
+* Given a number from 0 through 10 that represents the quality of service at a 
+* restaurant, where 10 is excellent, and another number from 0 through 10 that 
+* represents the quality of the food, where 10 is delicious, what should the tip be?
+*
+* Tipping behavior varies depending on local traditions and personal preferences. 
+* In this example, the problem is based on tipping as it is typically practiced 
+* in the United States. An average tip for a meal in the US is 15%. A generous 
+* tip could be as high as 25% and a cheap tip could be 5%.
+*
+* The actual amount of the tip can vary depending on the quality of the service
+* and food. 
+*
+* To solve this problem using fuzzy logic, first capture the essentials of the 
+* desired tipping behavior, leaving aside all the factors that could be arbitrary. 
+*
+* After  analyzing this problem, the tipping behavior is defined using the following
+* three rules.
+*
+* -# If the service is poor or the food is rancid, then the tip is cheap.
+* -# If the service is good, then the tip is average.
+* -# If the service is excellent or the food is delicious, then the tip is generous.
+*
+* This leads to a system with 2 inputs
+*
+* -# service
+* -# food
+*
+* and 1 output: tip
+*
+* 
+* \image html https://www.mathworks.com/help/examples/fuzzy/win64/BuildMamdaniSystemsAtTheCommandLineExample_01.png
+*
+* 5 membership functions for the inputs
+*
+* -# (service)poor : A gaussian membership function with spread of 1.5 and center on 0
+* -# (service)good : A gaussian membership function with spread of 1.5 and center on 5
+* -# (service)excelent  : A gaussian membership function with spread of 1.5 and center on 10
+* -# (food)rancid : A trapezoidal membership function with points located on [0 0 1 3]
+* -# (food)delicious : A trapezoidal membership function with points located on [7 9 10 10]
+*
+* \image html https://www.mathworks.com/help/examples/fuzzy/win64/BuildMamdaniSystemsAtTheCommandLineExample_02.png
+*
+* and 3 membership functions for the output 
+*
+* -# (tip)cheap : A triangular membership function with points located on [0 5 10]
+* -# (tip)average : A triangular membership function with points located on [10 15 20]
+* -# (tip)generous : A triangular membership function with points located on [20 25 30]
+*
+* \image html https://www.mathworks.com/help/examples/fuzzy/win64/BuildMamdaniSystemsAtTheCommandLineExample_03.png
+*
+* To build a fuzzy system, you must first instantiate an abstract object of
+* type \ref qFIS_t that represents the fuzzy inference system, then the input and 
+* output vectors, fuzzy set vectors for inputs and outputs, and enumerations with 
+* the tags for all of them. Let's take a look :
+*
+*  @code{.c}
+*  // FIS Object
+*  static qFIS_t tipper;
+*  // I/O Fuzzy Objects
+*  static qFIS_IO_t tipper_inputs[2], tipper_outputs[1];
+*  // I/O Membership Objects
+*  static qFIS_MF_t MFin[5], MFout[3];
+*  // I/O Names
+*  enum { service, food};
+*  enum { tip};
+*  // I/O Membership functions tags
+*  enum { service_poor, service_good, service_excellent, food_rancid, food_delicious};
+*  enum { tip_cheap, tip_average, tip_generous};
+*  @endcode
+*
+* Please note that all tag names are unique. Then we will define the rules of 
+* the fuzzy system using the previously defined tags. Rules should be defined through
+* an array of type \ref qFIS_Rules_t and the contents should be rules constructed
+* with the provided statements: 
+* 
+* - \ref QFIS_RULES_BEGIN to start the rules set
+* - \ref QFIS_RULES_END to end the rules set
+* - \ref IF to start a rule sentence
+* - \ref END to end a rule sentence
+* - \ref AND and \ref OR fuzzy connectors
+* - \ref IS and \ref IS_NOT to represent a premise and a negated premise respectively.
+* - \ref THEN to represent the implication
+*
+* Let's apply some of these statements to build the rule set.
+*
+*  @code{.c}
+*  static const qFIS_Rules_t rules[] = { 
+*      QFIS_RULES_BEGIN
+*         IF service IS service_poor OR food IS food_rancid THEN tip IS tip_cheap END
+*         IF service IS service_good THEN tip IS tip_average END
+*         IF service IS service_excellent OR food IS food_delicious THEN tip IS tip_generous END
+*      QFIS_RULES_END
+*  };
+*  @endcode
+*
+* Additionally, we also need to define a vector where the firing strength of each
+* rule will be stored. The size of the vector will be the number of rules. In 
+* this particular case, there will be only three.
+*
+*  @code{.c}
+*  static float rulesStrength[ 3 ];
+*  @endcode
+*
+* Once all the necessary elements have been defined, we can proceed to the 
+* construction of the system. First we must configure the inputs and outputs by
+* setting the ranges of each. For this, we will use the \ref qFIS_InputSetup() 
+* and qFIS_OutputSetup() functions as follows:
+*
+*  @code{.c}
+*  qFIS_InputSetup( tipper_inputs, service, 0.0f, 10.0f );
+*  qFIS_InputSetup( tipper_inputs, food, 0.0f, 10.0f );
+*  qFIS_OutputSetup( tipper_outputs, tip, 0.0f, 30.0f );
+*  @endcode
+*
+* Then, let's define the parameters of all the membership functions:
+*
+*  @code{.c}
+*  /*Parameters of the membership functions*/
+*  static const float service_poor_p[] = { 1.5f, 0.0f };
+*  static const float service_good_p[] = { 1.5f, 5.0f };
+*  static const float service_excellent_p[] = { 1.5f, 10.0f };
+*  static const float food_rancid_p[] = { 0.0f, 0.0f, 1.0f, 3.0f };
+*  static const float food_delicious_p[] = { 7.0f, 9.0f, 10.0f, 10.0f };
+*  static const float tip_cheap_p[] = { 0.0f, 5.0f, 10.0f };
+*  static const float tip_average_p[] = { 10.0f, 15.0f, 20.0f };
+*  static const float tip_generous_p[] = { 20.0f, 25.0f, 30.0f }
+*  @endcode
+*
+* Note: The number of parameters may vary depending on the shape of the membership function.
+*
+* Then, let's proceed to configure the membership functions by relating I/O, 
+* tags, shape and parameters one by one by using the \ref qFIS_SetMF() API as follows:
+*
+*  @code{.c}
+*  /* setup membership functions for the inputs */
+*  qFIS_SetMF( MFin, service, service_poor, gaussmf, NULL, service_poor_p, 1.0f );
+*  qFIS_SetMF( MFin, service, service_good, gaussmf, NULL, service_good_p, 1.0f );
+*  qFIS_SetMF( MFin, service, service_excellent, gaussmf, NULL, service_excellent_p, 1.0f );
+*  qFIS_SetMF( MFin, food, food_rancid, trapmf, NULL, food_rancid_p, 1.0f );
+*  qFIS_SetMF( MFin, food, food_delicious, trapmf, NULL, food_delicious_p, 1.0f );
+*  /* setup membership functions for the outputs */
+*  qFIS_SetMF( MFout, tip, tip_cheap, trimf, NULL, tip_cheap_p, 1.0f );
+*  qFIS_SetMF( MFout, tip, tip_average, trimf, NULL, tip_average_p, 1.0f );
+*  qFIS_SetMF( MFout, tip, tip_generous, trimf, NULL, tip_generous_p, 1.0f );
+*  @endcode
+*
+* Finally, we only have to configure the instance that represents the fuzzy 
+* system using the \ref qFIS_Setup() API:
+*
+*  @code{.c}
+*  /*Parameters of the membership functions*/
+*  qFIS_Setup( &tipper, Mamdani,
+*              tipper_inputs, sizeof(tipper_inputs),
+*              tipper_outputs, sizeof(tipper_outputs),
+*              MFin, sizeof(MFin), MFout, sizeof(MFout),
+*              rules, rStrength, 3u );
+*  @endcode
+*
+* <b> Evaluating the Fuzzy Inference System</b>
+*
+* If we already have a fuzzy system configured with \ref qFIS_Setup(), we can 
+* evaluate it by using \ref qFIS_Fuzzify(), \ref qFIS_Inference() and 
+* \ref qFIS_DeFuzzify(). 
+* Input values can be set with \ref qFIS_SetInput() and output values can be 
+* obtained with \ref qFIS_GetOutput()
+*
+* To show its use, first we are going to put everything together in a single 
+* code snippet, and we are going to create a function tipper_run() that will be in
+* charge of evaluating the fuzzy system by invoking the previously mentioned functions.
+*
+*  @code{.c}
+*  #include "tipper_fis.h"
+*  #include "qfis.h"
+*  
+*  // FIS Object
+*  static qFIS_t tipper;
+*  // I/O Fuzzy Objects 
+*  static qFIS_Input_t tipper_inputs[ 2 ];
+*  static qFIS_Output_t tipper_outputs[ 1 ];
+*  // I/O Membership Objects 
+*  static qFIS_MF_t MFin[ 5 ], MFout[ 3 ];
+*  // I/O Names 
+*  enum { service, food };
+*  enum { tip };
+*  // I/O Membership functions tags 
+*  enum { service_poor, service_good, service_excellent, food_rancid, food_delicious };
+*  enum { tip_cheap, tip_average, tip_generous };
+*  // Rules of the inference system
+*  static const qFIS_Rules_t rules[] = { 
+*      QFIS_RULES_BEGIN
+*         IF service IS service_poor OR food IS food_rancid THEN tip IS tip_cheap END
+*         IF service IS service_good THEN tip IS tip_average END
+*         IF service IS service_excellent OR food IS food_delicious THEN tip IS tip_generous END
+*      QFIS_RULES_END
+*  };
+*  //Rule strengths
+*  float rStrength[ 3 ] = { 0.0f };
+*  
+*  // Parameters of the membership functions
+*  static const float service_poor_p[] = { 1.5f, 0.0f };
+*  static const float service_good_p[] = { 1.5f, 5.0f };
+*  static const float service_excellent_p[] = { 1.5f, 10.0f };
+*  static const float food_rancid_p[] = { 0.0f, 0.0f, 1.0f, 3.0f };
+*  static const float food_delicious_p[] = { 7.0f, 9.0f, 10.0f, 10.0f };
+*  static const float tip_cheap_p[] = { 0.0f, 5.0f, 10.0f };
+*  static const float tip_average_p[] = { 10.0f, 15.0f, 20.0f };
+*  static const float tip_generous_p[] = { 20.0f, 25.0f, 30.0f };
+*  
+*  void tipper_init( void ){
+*      // Set inputs 
+*      qFIS_InputSetup( tipper_inputs, service, 0.0f, 10.0f );
+*      qFIS_InputSetup( tipper_inputs, food, 0.0f, 10.0f );
+*      qFIS_OutputSetup( tipper_outputs, tip, 0.0f, 30.0f );
+*      // Set membership functions for the inputs
+*      qFIS_SetMF( MFin, service, service_poor, gaussmf, NULL, service_poor_p, 1.0f );
+*      qFIS_SetMF( MFin, service, service_good, gaussmf, NULL, service_good_p, 1.0f );
+*      qFIS_SetMF( MFin, service, service_excellent, gaussmf, NULL, service_excellent_p, 1.0f );
+*      qFIS_SetMF( MFin, food, food_rancid, trapmf, NULL, food_rancid_p, 1.0f );
+*      qFIS_SetMF( MFin, food, food_delicious, trapmf, NULL, food_delicious_p, 1.0f );
+*      // Set membership functions for the outputs
+*      qFIS_SetMF( MFout, tip, tip_cheap, trimf, NULL, tip_cheap_p, 1.0f );
+*      qFIS_SetMF( MFout, tip, tip_average, trimf, NULL, tip_average_p, 1.0f );
+*      qFIS_SetMF( MFout, tip, tip_generous, trimf, NULL, tip_generous_p, 1.0f );
+*  
+*      // Configure the Inference System
+*      qFIS_Setup( &tipper, Mamdani,
+*                  tipper_inputs, sizeof(tipper_inputs),
+*                  tipper_outputs, sizeof(tipper_outputs),
+*                  MFin, sizeof(MFin), MFout, sizeof(MFout),
+*                  rules, rStrength, 3u );
+*  }
+*  
+*  void tipper_run( float *inputs, float *outputs ) {
+*      // Set the crips inputs
+*      qFIS_SetInput( tipper_inputs, service, inputs[ service ] );
+*      qFIS_SetInput( tipper_inputs, food, inputs[ food ] );
+*  
+*      qFIS_Fuzzify( &tipper );
+*      if ( qFIS_Inference( &tipper ) > 0 ) {
+*          qFIS_DeFuzzify( &tipper );
+*      }
+*      else {
+*          // Error!
+*      }
+*  
+*      // Get the crips outputs
+*      outputs[ tip ] = qFIS_GetOutput( tipper_outputs, tip );
+*  }
+*  @endcode
+*
+* Building a fuzzy system in code can become tedious, especially when you want 
+* to tune membership function parameters, where it would be appropriate to have 
+* a graphical tool that reflects the changes made by each tweak.
+*
+* Although the qFIS engine does not provide such a tool, a well-known tool can
+* be used to build the fuzzy system and generate qFIS-compatible C code. The 
+* tool we are talking about is MATLAB's Fuzzy Logic Toolbox and qLibs provides
+* a MATLAB command that can be used to take a fis object generated from MATLAB
+* and generate C code based on the qFIS engine.
+*
+* Download the C-Code generator here: 
+*
+* <a href="https://la.mathworks.com/matlabcentral/fileexchange/117465-qfiscgen-fuzzy-c-code-generator-for-embedded-systems"><img src="https://www.mathworks.com/matlabcentral/images/matlab-file-exchange.svg"></a>
+*
+*/
