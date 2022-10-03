@@ -226,7 +226,8 @@ Building a Mamdani FIS</h1>
 <div class="line"><span class="keyword">enum</span> { tip_cheap, tip_average, tip_generous};</div>
 <div class="ttc" id="astructq_f_i_s___m_f__t_html"><div class="ttname"><a href="structq_f_i_s___m_f__t.html">qFIS_MF_t</a></div><div class="ttdoc">A FIS Membership Function.</div><div class="ttdef"><b>Definition:</b> qfis.h:161</div></div>
 <div class="ttc" id="astructq_f_i_s__t_html"><div class="ttname"><a href="structq_f_i_s__t.html">qFIS_t</a></div><div class="ttdoc">A FIS(Fuzzy Inference System) object.</div><div class="ttdef"><b>Definition:</b> qfis.h:202</div></div>
-</div><!-- fragment --><p >Please note that all tag names are unique. Then, we will define the rules of the fuzzy system using the previously defined tags. Rules should be defined through an array of type <a class="el" href="group__qfis.html#ga07efc356794273b23e2d469e8e4d882e">qFIS_Rules_t</a> and the contents should be rules constructed with the provided statements:</p>
+</div><!-- fragment --><dl class="section attention"><dt>Attention</dt><dd>Please note that all tag names are unique.</dd></dl>
+<p>Then, we will define the rules of the fuzzy system using the previously defined tags. Rules should be defined through an array of type <a class="el" href="group__qfis.html#ga07efc356794273b23e2d469e8e4d882e">qFIS_Rules_t</a> and the contents should be rules constructed with the provided statements:</p>
 <ul>
 <li><a class="el" href="group__qfis.html#gadd5af13b8fd13530a1a481cec2ef0637">QFIS_RULES_BEGIN</a> to start the rules set</li>
 <li><a class="el" href="group__qfis.html#ga80454033f67a79247305ba0a18d98247">QFIS_RULES_END</a> to end the rules set</li>
@@ -270,8 +271,8 @@ Building a Mamdani FIS</h1>
 <div class="line"><span class="keyword">static</span> <span class="keyword">const</span> <span class="keywordtype">float</span> tip_cheap_p[] = { 0.0f, 5.0f, 10.0f };</div>
 <div class="line"><span class="keyword">static</span> <span class="keyword">const</span> <span class="keywordtype">float</span> tip_average_p[] = { 10.0f, 15.0f, 20.0f };</div>
 <div class="line"><span class="keyword">static</span> <span class="keyword">const</span> <span class="keywordtype">float</span> tip_generous_p[] = { 20.0f, 25.0f, 30.0f }</div>
-</div><!-- fragment --><p >Note: The number of parameters may vary depending on the shape of the membership function.</p>
-<p >Then, let's proceed to configure the membership functions by relating I/O, tags, shape and parameters one by one by using the <a class="el" href="group__qfis.html#gad187010550dc9d983c589f6dd9fa971c">qFIS_SetMF()</a> API as follows:</p>
+</div><!-- fragment --><dl class="section note"><dt>Note</dt><dd>The number of parameters may vary depending on the shape of the membership function.</dd></dl>
+<p>Then, let's proceed to configure the membership functions by relating I/O, tags, shape and parameters one by one by using the <a class="el" href="group__qfis.html#gad187010550dc9d983c589f6dd9fa971c">qFIS_SetMF()</a> API as follows:</p>
 <div class="fragment"><div class="line"><span class="comment">/* setup membership functions for the inputs */</span></div>
 <div class="line"><a class="code hl_function" href="group__qfis.html#gad187010550dc9d983c589f6dd9fa971c">qFIS_SetMF</a>( MFin, service, service_poor, <a class="code hl_enumvalue" href="group__qfis.html#gga57d388104d07dbb852d11d277d439302af622ac933207179e7864deb02eb3aa29">gaussmf</a>, NULL, service_poor_p, 1.0f );</div>
 <div class="line"><a class="code hl_function" href="group__qfis.html#gad187010550dc9d983c589f6dd9fa971c">qFIS_SetMF</a>( MFin, service, service_good, <a class="code hl_enumvalue" href="group__qfis.html#gga57d388104d07dbb852d11d277d439302af622ac933207179e7864deb02eb3aa29">gaussmf</a>, NULL, service_good_p, 1.0f );</div>

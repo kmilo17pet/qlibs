@@ -196,7 +196,7 @@ Example: setting up a moving window median filter:</h2>
 Moving Window Median Filter O(1)</h1>
 <p >This filter has the same principle as described in the previous filter. The big difference here is the way the sliding window is treated. The window is considered as a TDL (Tapped Delay Line) based on a circular queue. This type of structure has a line of delays with \(N - 1\) taps, and each tap extracts the signal at some fixed integer delay relative to the input.</p>
 <p >The circular queue approach prevents the shift of all the \(N - 1\) samples stored in the sliding-window.</p>
-<p >The implementation comes with a huge benefit in terms of performance because the time complexity is constant \(O(1)\) , compared to the previous filter, where the time complexity grows in direct proportion to the size of the window. Use this kind of filter when you need to consider large sliding windows.</p>
+<dl class="section remark"><dt>Remarks</dt><dd>This implementation comes with a huge benefit in terms of performance because the time complexity is constant \(O(1)\) , compared to the previous filter, where the time complexity grows in direct proportion to the size of the window. Use this kind of filter when you need to consider large sliding windows.</dd></dl>
 <h2><a class="anchor" id="qssmoother_ex4"></a>
 Example: Setting up a moving window median filter:</h2>
 <div class="fragment"><div class="line"><span class="preprocessor">#define N_MWM     ( 150u )</span></div>
