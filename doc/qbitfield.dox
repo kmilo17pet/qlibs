@@ -3,13 +3,13 @@
 * bit fields (or bit arrays), i.e. series of zeroes and ones spread across an 
 * array of storage units (unsigned long integers).
 *
-* <b> Structure </b>
+* @section qbitfield_structure Structure
 * 
 * Bit arrays are stored in data structures of type \ref qBitField_t. This structure
 * has two elements: an array of unsigned long integers 'field' for storing the 
 * bits and an integer 'size' for storing the number of bits in the array. 
 *
-* <b> Working with bitfields </b>
+* @section qbitfield_workingwith Working with bitfields
 *
 *  @code{.c}
 *  #include <stdio.h>

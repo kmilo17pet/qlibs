@@ -5,7 +5,7 @@
 *
 * qLibs provides the \ref qpid implementation, which, apart from the simplified 
 * overview representation of the PID controller, also addresses some practical
-* issues and includes the additional features:
+* issues and includes additional features as listed below:
 * 
 * - Noisy Derivative Contributions (Derivative filter)
 * - Automatic Anti-windup control
@@ -14,13 +14,13 @@
 * - Additive MRAC
 *
 *
-* <b> PID Controller approach </b>
+* @section qpid_approach PID Controller approach
 *
-* The mathematical model and practical loop above both use a direct control 
+* The mathematical model and practical loop uses a direct control 
 * action for all the PID terms, which means an increasing positive error 
 * results in an increasing positive control output correction.
 *
-* The overall control function is given by:
+* The overall control function implemented by \ref qpid is given by:
 *
 * \f$ v(t)= \psi(t)r(t) + [ K_{c}e(t) + K_{i}\int [ e(t) + c(t-1) ]dt + K_{d}f_{d}(t) ] \f$ 
 *
@@ -33,7 +33,7 @@
 * \f$\psi(t)\f$ the adaptive gain from the additive MRAC (later explained)
 *
 * As shown above, the derivative term \f$ f_{d}(t)\f$ is the output of a 
-* low-pass filter of the error derivative.
+* low-pass filter who take the error derivative as input.
 *
 * \f$ f_{d}(t) = \text{LPF}[ \frac{de(t)}{dt} ]\f$ 
 *
@@ -44,9 +44,9 @@
 *
 * \image html https://user-images.githubusercontent.com/11412210/193475586-80d41932-d7f3-4567-8820-2ab423261354.png
 *
-* <b> Controller instantiation </b>
+* @section qpid_create Creating a PID Controller
 *
-* Before you start using a controller, it must first be instantiated first
+* Before you start using a controller, it must be instantiated first
 * via the \ref qPID_controller_t type and then configured using the \ref qPID_Setup() API, 
 * where you can define the PID gains and time step.
 *
@@ -64,7 +64,7 @@
 *  @endcode
 *
 *
-*  <b> Usign the controller </b>
+*  @section qfpid_usage Usign the controller
 *
 *  The following example illustrates how a PID controller can be used to regulate
 *  the speed of a DC motor. PID control operates on a separate task running  
@@ -74,7 +74,7 @@
 *  states of the controller. Then, the control output gets scaled-back in order to
 *  send the control command by using the PWM(Pulse Width Modulation) module. 
 *
-*  Example: Speed control using a PID controller:
+*  @subsection qpid_ex1 Example: Speed control using a PID controller:
 *  @code{.c}
 *  #include <stdio.h>
 *  #include <stdlib.h>
@@ -120,14 +120,14 @@
 *  @endcode
 *
 *
-* <b> Additive MRAC (Model Reference Adaptive Control) </b>
+* @section qpid_mrac Additive MRAC (Model Reference Adaptive Control)
 *
 * Model Reference Adaptive Control (MRAC) is a strategy where the controller 
 * of the closed-loop is adapted by an adjustment mechanism, which takes \f$ y_{m}(t) \f$ 
 * from a reference model as input and tries to adjust the controller output \f$v(t)\f$. 
-* The adjustment mechanism used by qPID is the enhanced MIT-rule approach,
-* which adapts a feed-forward gain by the error between the system \f$ y(t) \f$  
-* and the model \f$ y_{m}(t) \f$ and therefore is the so-called Gradient approach.
+* The adjustment mechanism used by \ref qpid is the enhanced MIT-rule approach,
+* which adapts a feed-forward gain by the error between the system \f$ y(t) \f$
+* and a reference model \f$ y_{m}(t) \f$, therefore is the so-called Gradient approach.
 *
 *
 * \f$ e_{m}(t) = y(t) - y_{m}(t)\f$ 
@@ -157,7 +157,7 @@
 * then, enable the MRAC by using the \ref qPID_SetMRAC() API. Here, you must provide
 * a pointer to the output of the reference model and the adaptation gain \f$\gamma(t)\f$
 *
-*  Example: Speed control with PID controller with an additive MRAC:
+*  @subsection qpid_ex2 Example: Speed control with PID controller with an additive MRAC:
 *  @code{.c}
 *  #include <stdio.h>
 *  #include <stdlib.h>
@@ -213,7 +213,7 @@
 *  }
 *  @endcode
 *
-* <b> Autotunning </b>
+* @section qpid_autotune Autotunning
 *
 * Autotuning can eliminate much of the trial and error of a manual tuning 
 * approach, especially if you do not have a lot of loop tuning experience. 
@@ -222,7 +222,7 @@
 * the tuning parameters to their optimal values.
 *
 * The Autotune feature for the controller will only run for a limited amount of time
-* each time it is enabled. In other words, autotuning does not run continuously 
+* after it gets enabled. In other words, autotuning does not run continuously 
 * during operation. Whenever there is a substantial change in the process 
 * dynamics, the tuning process will need to be repeated in order to derive new 
 * gains required for optimal control.
@@ -253,7 +253,7 @@
 * and the remaining parameters \f$\mu\f$, \f$\alpha\f$, \f$\lambda\f$ are internally
 * computed for best performance.
 *
-* <b> Autotunning Usage </b>
+* @subsection qpid_autotune_usage Autotunning Usage
 *
 * In order to use the autotuner, you must first instantiate the \ref qPID_AutoTunning_t
 * object and bind it to a previously configured PID controller by using the 
@@ -261,6 +261,6 @@
 *
 * After this, you can enable auto tuning via \ref qPID_EnableAutoTunning() 
 * for a defined number of intervals. When the autotune ends, the resulting PID
-* gains will be applied to the binded controller
+* gains will be applied to the bounded controller
 * 
 */

@@ -23,7 +23,7 @@
 * Given the applications of this structure, the \ref qtdl class is used as the
 * base component of some aspects of \ref qssmoother and \ref qltisys.
 *
-* Example : Code snipped to instantiate a TDL to hold up to 256 delays.
+* @section qtdl_ex1 Example : Code snipped to instantiate a TDL to hold up to 256 delays.
 * 
 *  @code{.c}
 *  #define MAX_DELAYS   ( 256 )

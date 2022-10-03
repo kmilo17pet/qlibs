@@ -25,8 +25,9 @@
 * be accomplished in software by shifting the data or shifting the polynomial
 * key, then performing the computations. Supported CRCs includes 8, 16 and 32-bit
 * in a generic way, this means that you can specify the polynomial key, the CRC
-* initial value, I/O reflection and XOR the final output value. in this way, 
-* the user can implement any variant of CRC only by adjusting these parameters.
+* initial value, I/O reflection and XOR the final output value. This generic  
+* approach allows the user to implement any variant of CRC(8,16,32) only by adjusting 
+* these parameters.
 *
 * Example: A code snippet to compute the CRC-16/KERMIT. 
 *

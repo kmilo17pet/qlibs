@@ -6,7 +6,7 @@
 * The types of inferences supported by qFIS are listed in the \ref qFIS_Type_t and
 * are detailed below:
 *
-* - <b> Mamdani Fuzzy Inference Systems </b>
+* @section qfis_mamdani Mamdani Fuzzy Inference Systems
 *
 * In a Mamdani system, the output of each rule is a fuzzy set. Since Mamdani 
 * systems have more intuitive and easier to understand rule bases, they are 
@@ -19,7 +19,7 @@
 * Then, to compute a final crisp output value, the combined output fuzzy set is
 * defuzzified using one of the methods described in Defuzzification Methods.
 *
-* - <b> Sugeno Fuzzy Inference Systems </b>
+* @section qfis_sugeno Sugeno Fuzzy Inference Systems
 *
 * Sugeno fuzzy inference, also referred to as Takagi-Sugeno-Kang fuzzy inference,
 * uses singleton output membership functions that are either constant or a linear
@@ -50,7 +50,7 @@
 * conditions of a dynamic nonlinear system.
 *
 *
-* - <b> Tsukamoto Fuzzy Inference Systems </b>
+* @section qfis_tsukamoto Tsukamoto Fuzzy Inference Systems
 *
 * In the Tsukamoto inference system, the consequent of each fuzzy if-then rule 
 * is represented by a fuzzy set with a monotonical membership function, As a result, 
@@ -63,12 +63,12 @@
 * time-consuming process of defuzzification.
 *
 *
-* <b> Comparision among supported Inference Systems</b>
+* @section qfis_comp Comparision among supported Inference Systems
 *
 * \image html https://user-images.githubusercontent.com/11412210/192664066-ab40cb04-a36f-4b49-9c14-cc34a4683f43.jpg width=50%
 *
 *
-* <b> Defuzzification Methods </b>
+* @section qfis_defuzz Defuzzification Methods
 * 
 *  qFIS supports five different methods, as listed in the \ref qFIS_DeFuzz_Method_t type
 * for computing a single crisp output value for such a fuzzy set.
@@ -100,7 +100,7 @@
 * Sugeno and Tsukamoto systems.
 *
 *
-* <b> Building a Mamdani FIS </b>
+* @section qfis_buildfis Building a Mamdani FIS
 *
 * To carry the FIS building process in a more friendly way, we are going to explain 
 * it with a particular example. 
@@ -177,7 +177,7 @@
 *  enum { tip_cheap, tip_average, tip_generous};
 *  @endcode
 *
-* Please note that all tag names are unique. Then we will define the rules of 
+* Please note that all tag names are unique. Then, we will define the rules of 
 * the fuzzy system using the previously defined tags. Rules should be defined through
 * an array of type \ref qFIS_Rules_t and the contents should be rules constructed
 * with the provided statements: 
@@ -211,7 +211,7 @@
 *  @endcode
 *
 * Once all the necessary elements have been defined, we can proceed to the 
-* construction of the system. First we must configure the inputs and outputs by
+* construction of the fuzzy system. Firstm we must configure the inputs and outputs by
 * setting the ranges of each. For this, we will use the \ref qFIS_InputSetup() 
 * and qFIS_OutputSetup() functions as follows:
 *
@@ -265,7 +265,7 @@
 *              rules, rStrength, 3u );
 *  @endcode
 *
-* <b> Evaluating the Fuzzy Inference System</b>
+* @section qfis_eval Evaluating a Fuzzy Inference System
 *
 * If we already have a fuzzy system configured with \ref qFIS_Setup(), we can 
 * evaluate it by using \ref qFIS_Fuzzify(), \ref qFIS_Inference() and 
@@ -357,6 +357,9 @@
 *  }
 *  @endcode
 *
+*
+* @section qfis_codegen Code generation
+*
 * Building a fuzzy system in code can become tedious, especially when you want 
 * to tune membership function parameters, where it would be appropriate to have 
 * a graphical tool that reflects the changes made by each tweak.
@@ -364,7 +367,7 @@
 * Although the qFIS engine does not provide such a tool, a well-known tool can
 * be used to build the fuzzy system and generate qFIS-compatible C code. The 
 * tool we are talking about is MATLAB's Fuzzy Logic Toolbox and qLibs provides
-* a MATLAB command that can be used to take a fis object generated from MATLAB
+* a MATLAB command that can be used to take a fis object generated that tool
 * and generate C code based on the qFIS engine.
 *
 * Download the C-Code generator here: 

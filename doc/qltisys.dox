@@ -5,11 +5,12 @@
 * or discrete-time. This means that you can use qLTISys both to simulate dynamic
 * systems and to easily implement filters, compensators, or controllers.
 *
-* <b> Continous-time transfer functions</b>
+* @section qltisys_cont Continous-time transfer functions
 *
 * Here, the transfer function \f$ G(s) \f$ is the linear mapping of the Laplace
 * transform of the input, \f$ U(s)= \mathcal{L}[u(t)]\f$, to the Laplace transform
 * of the output  \f$ Y(s)= \mathcal{L}[y(t)]\f$.
+*
 *
 * \f$ G(s) = \frac{N(s)}{D(s)} = \frac{ b_{0}s^{n} + b_{1}s^{n-1} + b_{2}s^{n-2} + ... +  b_{n} }{ s^{n} + a_{1}s^{n-1} + a_{2}s^{n-2} + ... +  a_{n} } \f$
 *
@@ -20,13 +21,13 @@
 * of type \ref qLTISys_t, two arrays of N+1 elements with the coefficients of the 
 * polynomials for both, numerator and denominator, and finally, an array of type
 * \ref qLTISys_ContinuosX_t with the N initial states of the system.
-* Then you can call \ref qLTISys_Setup() to construct the system and initial 
-* conditions. Subsequently, now you can evaluate the system with a given input 
-* signal by just calling \ref qLTISys_Excite(). The user must ensure that the 
-* evaluation of the system is executed periodically at the defined time step.
+* Then, you can call \ref qLTISys_Setup() to construct the system and set initial 
+* conditions. Subsequently,  you can evaluate the system with a given input-signal
+* by just calling \ref qLTISys_Excite(). The user must ensure that the 
+* evaluation of the system is executed periodically at the required time-step.
 *  
 *
-*  Example: Evaluate the given continous transfer function
+* @subsection qltisys_ex1 Example: Evaluate the given continous transfer function
 *
 *  \f$ G(s) = \frac{ 2s^{2} + 3s + 6 }{ s^{3} + 6s^{2} + 11s + 16 } \f$
 *
@@ -57,7 +58,7 @@
 *  }
 *  @endcode
 *
-* <b> Discrete-time transfer functions</b>
+* @section qltisys_disc Discrete-time transfer functions
 *
 * The z-transform is used in discrete-time systems to deal with the relationship 
 * between an input signal \f$ u(t) \f$ and an output signal \f$ y(t) \f$ , so the 
@@ -68,12 +69,12 @@
 
 * Discrete systems are instantiated in a similar way to continuous systems,
 * but there are some differences. Initial states are defined by using the
-* \ref qLTISys_DiscreteX_t. The size of polynomials can vary according to 
+* \ref qLTISys_DiscreteX_t type. The size of polynomials can vary according to 
 * their order, and you should pass the \ref #QLTISYS_DISCRETE directive on \ref
 * qLTISys_Setup() in order to differentiate the system when it is being evaluated. 
 * Please take a look at the following example:
 * 
-*  Example: Evaluate the given discrete transfer function
+* @subsection qltisys_ex2 Example: Evaluate the given discrete transfer function
 *
 *  \f$ G(z^{-1}) = \frac{ 0.1 + 0.2z^{-1} + 0.3z^{-2} }{ 1 - 0.85z^{-1} + 0.02z^{-2} } \f$ 
 *

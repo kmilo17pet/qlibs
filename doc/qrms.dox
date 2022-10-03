@@ -12,12 +12,12 @@
 * \ref qrms provides a super-efficient method to compute the Recursive Root
 * Mean Square (RMS). The implementation uses 3-stage filtering and Newton's 
 * method to obtain the square root. The filter parameters are perfectly tuned 
-* and optimized to converge in around 16 cycles operating at a sampling rate 
+* and optimized to converge in around 16 cycles, operating at a sampling rate 
 * of 1mS. This means that you must configure your embedded system to meet those 
 * specifications, either by configuring a timer interrupt or by delegating 
 * responsibility to a real-time task.
 *
-* Example :  By using a timer interrupt
+* @section qrms_ex1 Example :  By using a timer interrupt
 *
 *  rms_compute.c
 *  @code{.c}

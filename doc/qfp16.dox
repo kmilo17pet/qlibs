@@ -6,7 +6,7 @@
 *
 * The format is a signed Q16.16, which is good enough for most purposes.
 *
-* <b> Datatype limits </b>
+* @section qfp16_datatype_limits Datatype limits
 *
 * The maximum representable value is 32767.999 985. The minimum value is -32768.0.
 *
@@ -16,12 +16,12 @@
 *
 * The smallest unit (machine precision) of the datatype is 1/65536 = 0.000 015.
 *
-* <b> Fixed-point functions </b>
+* @section qfp16_functions Fixed-point functions
 *
 * All the provided functions operate on 32-bit numbers, \ref qFP16_t, which have 16 
 * bit integer part and 16-bit fractional part.
 *
-* <b> Conversion functions </b>
+* @subsection  qfp16_conv_functions Conversion functions
 *
 * Conversion from integers and floating-point values. These conversions retain 
 * the numeric value and perform rounding where necessary.
@@ -37,7 +37,7 @@
 * - \ref qFP16_FPToA()  Converts from \ref qFP16_t to string.
 * - \ref qFP16_AToFP()  Converts from string to \ref qFP16_t.
 *
-* <b> Basic arithmetic </b>
+* @subsection  qfp16_basic_arithmetic Basic arithmetic
 *
 * These functions perform rounding and detect overflows. When overflow is 
 * detected, they return qfp16.overflow as a marker value.
@@ -48,7 +48,7 @@
 * - \ref qFP16_Div()  Division
 * - \ref qFP16_Mod()  Modulo
 *
-* <b> Exponential and transcendental functions </b>
+* @subsection qfp16_exp_functions Exponential and transcendental functions
 *
 * Roots, exponents & similar.
 *
@@ -63,7 +63,7 @@
 * - \ref qFP16_Pow()  Modulo
 *
 *
-* <b> Trigonometric functions and helpers </b>
+* @subsection qfp16_trig_functions Trigonometric functions and helpers
 *
 * - \ref qFP16_Sin()  Sine for angle in radians
 * - \ref qFP16_Cos()  Cosine for angle in radians
@@ -75,13 +75,13 @@
 * - \ref qFP16_Sinh()  Hyperbolic sine
 * - \ref qFP16_Cosh()  Hyperbolic cosine
 * - \ref qFP16_Tanh()  Hyperbolic tangent
-* - \ref fp16_RadToDeg()  Converts angle units from radians to degrees.
-* - \ref fp16_DegToRad()  Converts angle units from degrees to radians
+* - \ref qFP16_RadToDeg()  Converts angle units from radians to degrees.
+* - \ref qFP16_DegToRad()  Converts angle units from degrees to radians
 * - \ref qFP16_WrapToPi()  Wrap the fixed-point angle in radians to [−pi pi]
 * - \ref qFP16_WrapTo180()  Wrap the fixed-point angle in degrees  to [−180 180]
 *
 *
-* <b> Example: Solution of the quadratic equation </b>
+* @section qfp16_example Example: Solution of the quadratic equation
 * 
 * This draft example computes one solution of the quadratic equation
 * by using the fixed point format. Equation is given by:

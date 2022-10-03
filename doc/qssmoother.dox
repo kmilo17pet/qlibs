@@ -8,7 +8,7 @@
 *
 *  Below is the list of filters supported by @ref qssmoother :
 *  
-*  - <b> First Order Low Pass Filter </b>
+*  @section qssmoother_lpf1 First Order Low Pass Filter
 *  
 *  A first order low-pass filter is a filter that passes signals with a frequency
 *  lower than a selected cutoff frequency and attenuates signals with frequencies 
@@ -28,7 +28,7 @@
 *     \f$ 0 < \alpha < 1\f$
 *
 *
-*  Example: setting up a 1st order low-pass filter:
+*  @subsection qssmoother_ex1 Example: setting up a 1st order low-pass filter:
 *  @code{.c}
 *  qSSmoother_LPF1_t smoother;
 *  float alpha = 0.85f;
@@ -40,7 +40,7 @@
 *  }
 *  @endcode
 *
-*  - <b> Second Order Low Pass Filter </b>
+*  @section qssmoother_lpf2 Second Order Low Pass Filter
 *  
 *  This filter has similar properties to the 1st order low pass filter. The main
 *  difference between a 1st and 2nd order low pass filter is that the stop 
@@ -60,7 +60,7 @@
 *  \f$a_1=\frac{ 2(\alpha^{2}-1)}{r}\f$, \f$a_2=\frac{ 1-p+\alpha^{2} }{r}\f$, \f$b_1=2k\f$
 *
 *
-*  Example: setting up a 2nd order low-pass filter:
+*  @subsection qssmoother_ex2 Example: setting up a 2nd order low-pass filter:
 *  @code{.c}
 *  qSSmoother_LPF2_t smoother;
 *  float alpha = 0.85f;
@@ -73,9 +73,9 @@
 *  @endcode
 *  
 *
-*  - <b> Moving Window Median Filter </b> \f$O(n)\f$ 
+*  @section qssmoother_mwm1 Moving Window Median Filter O(n) 
 *  
-*  This is a form of low-pass that computes the moving median of the input signal
+*  This is a form of low-pass filter that computes the moving median of the input signal
 *  over time. The object uses the sliding window method to compute the moving 
 *  median. In this method, a window of a specified length is moved, sample by 
 *  sample, and the object computes the median of the data in the window.
@@ -91,7 +91,7 @@
 *
 *  This filter has a time complexity of \f$O(n)\f$ 
 *
-*  Example: setting up a moving window median filter:
+*  @subsection qssmoother_ex3 Example: setting up a moving window median filter:
 *  @code{.c}
 *  #define N_MWM     ( 20u )
 *
@@ -106,7 +106,7 @@
 *  @endcode
 *
 *
-*  - <b> Moving Window Median Filter </b> \f$O(1)\f$ 
+*  @section qssmoother_mwm2 Moving Window Median Filter O(1) 
 *  
 *  This filter has the same principle as described in the previous filter. The 
 *  big difference here is the way the sliding window is treated. The window is 
@@ -122,7 +122,7 @@
 *  where the time complexity grows in direct proportion to the size of the window.
 *  Use this kind of filter when you need to consider large sliding windows.
 *
-*  Example: Setting up a moving window median filter:
+*  @subsection qssmoother_ex4 Example: Setting up a moving window median filter:
 *  @code{.c}
 *  #define N_MWM     ( 150u )
 *
@@ -137,7 +137,7 @@
 *  @endcode
 *
 *
-*  - <b> Moving Outliar Removal Filter </b> \f$O(n)\f$ 
+*  @section qssmoother_mor1 Moving Outliar Removal Filter O(n) 
 *  
 *  This filter is used to detect and remove outliers in the input signal. For 
 *  each sample of input signal, the filter computes the median of the moving 
@@ -152,27 +152,28 @@
 *
 *  This filter has a time complexity of \f$O(n)\f$ 
 *
-*  Example: setting up an outlier removal filter:
+*  @subsection qssmoother_ex5 Example: setting up an outlier removal filter:
 *  @code{.c}
-*  #define N_MWM     ( 10u )
+*  #define N_MOR     ( 10u )
 *
 *  qSSmoother_MOR1_t smoother; 
 *  float alpha = 0.8f;
-*  float m_window[ N_MWM ] = { 0.0f };
+*  float m_window[ N_MOR ] = { 0.0f };
 *  int ret;
 *
-*  ret = qSSmoother_Setup( &smoother, QSSMOOTHER_TYPE_MOR1, &alpha, m_window, N_MWM );
+*  ret = qSSmoother_Setup( &smoother, QSSMOOTHER_TYPE_MOR1, &alpha, m_window, N_MOR );
 *  if ( 0 == ret ) {
 *      // error, smooth filter cant be configured
 *  }
 *  @endcode
 *
 *
-*  - <b> Moving Outliar Removal Filter </b> \f$O(1)\f$ 
+*  @section qssmoother_mor2 Moving Outliar Removal Filter O(1) 
 *  
 *  Similar to the previous filter, but with a constant time complexity of  \f$O(1)\f$ 
+*  by using a \ref qtdl data structure.
 *
-*  Example: setting up an outlier removal filter:
+*  @subsection qssmoother_ex6 Example: setting up an outlier removal filter:
 *  @code{.c}
 *  #define N_MWM     ( 10u )
 *
@@ -188,11 +189,11 @@
 *  @endcode
 *
 *
-*  - <b> Gaussian Filter </b> 
+*  @section qssmoother_gmwf Gaussian Filter
 *
 *  This filter uses a kernel for smoothing,  which defines the shape of the function
 *  that is used to take the average of the neighboring points. A Gaussian kernel
-*  is a kernel with the shape of a Gaussian curve with a normal distribution. 
+*  has the shape of a Gaussian curve with a normal distribution. 
 *
 *  The coefficients of the kernel are computed from the following equation:
 *
@@ -205,7 +206,7 @@
 *
 *  This filter has a time complexity of \f$O(n)\f$ 
 *
-*  Example: setting up a gaussian filter:
+*  @subsection qssmoother_ex7 Example: setting up a gaussian filter:
 *  @code{.c}
 *  #define SMOOTHER_WINDOW_SIZE    ( 10 )
 *  #define SMOOTHER_SAMPLE_TIME    ( 100 )
@@ -223,7 +224,7 @@
 *  @endcode
 *
 *
-*  - <b> Exponential Weighting filter </b> 
+*  @section qssmoother_expw Exponential Weighting filter 
 *
 *  The algorithm of this filter computes a weighting factor and  applies it to the input 
 *  signal recursively. As the age of the data increases, the magnitude of the 
@@ -248,7 +249,7 @@
 *
 *     \f$ y(t) = ( 1-\frac{1}{w(t)} )y(t-1) + \frac{1}{w(t)}x(t)\f$
 *
-*  Example: setting up an exponential weighting filter:
+*  @subsection qssmoother_ex8 Example: setting up an exponential weighting filter:
 *  @code{.c}
 *  qSSmoother_EXPW_t  smoother; 
 *  float lambda = 0.8f;
@@ -261,12 +262,12 @@
 *  @endcode
 *
 *
-*  - <b> Scalar Kalman filter </b> 
+*  @section qssmoother_klmn Scalar Kalman filter 
 *
 *  The Kalman Filter is an efficient optimal estimator that provides a recursive
-*  computational methodology for estimating the state of a data from measurements
+*  computational methodology for get the state of a signal from measurements
 *  that are typically noisy, while providing an estimate of the uncertainty of 
-*  the estimate. Here, the scalar version (one-dimensional) is provided 
+*  the estimate. Here, the scalar or one-dimensional version is provided 
 *  and only three design parameters are required, the initial covariance \f$P(0)\f$,
 *  the signal noise covariance \f$Q\f$ and the measurement uncertainty \f$r\f$.
 * 
@@ -294,7 +295,7 @@
 *  the filter output (state estimation), \f$P(k)\f$ the covariance of the predicted 
 *  state, \f$u(k)\f$ the signal measurement and \f$K(k)\f$ the kalman gain. 
 *  
-*  Example: setting up a scalar kalman filter:
+*  @subsection qssmoother_ex9 Example: setting up a scalar kalman filter:
 *  @code{.c}
 *  qSSmoother_KLMN_t  smoother; 
 *  float param[] = { 100.0f, 100.0f, 9.0f }; // [initial covariance, noise covariance, measurement uncertainty]
@@ -307,13 +308,13 @@
 *  @endcode
 *
 *
-*  * <b> Example of signal smoothing </b>
+*  @section qssmoother_ex10 Example of signal smoothing
 *
 *  The example below is a rough draft of how a smoothing filter might be used. 
 *  The example consists of smoothing a speed sensor signal using a Gaussian 
 *  filter to improve quality and remove noise from it. The filter is initially 
-*  configured by defining the instance and design parameters, then the filter is
-*  configured. To execute the filter, a task is launched at a sampling rate of 
+*  configured by defining the instance and design parameters before  being 
+*  evaluated. To execute the filter, a task is launched at a sampling rate of 
 *  100mS. In this routine, the signal is sampled and the filter is executed. 
 *  The enhanced signal is then properly processed without having to worry about 
 *  noise and disturbances.
