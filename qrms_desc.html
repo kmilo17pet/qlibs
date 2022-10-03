@@ -16,7 +16,7 @@
 <meta name="twitter:title" content="Doxygen Awesome" />
 <meta name="twitter:description" content="Custom CSS theme for doxygen html-documentation with lots of customization parameters." />
 <!-- END twitter metadata -->
-<title>API Reference: qLibs</title>
+<title>API Reference: Recursive Root Mean Square estimator</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <link rel="icon" type="image/svg+xml" href="logo.drawio.svg"/>
 <script type="text/javascript" src="jquery.js"></script>
@@ -105,7 +105,7 @@ $(function() {
 </div>
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
-$(document).ready(function(){initNavTree('index.html',''); initResizable(); });
+$(document).ready(function(){initNavTree('qrms_desc.html',''); initResizable(); });
 /* @license-end */
 </script>
 <div id="doc-content">
@@ -124,57 +124,63 @@ $(document).ready(function(){initNavTree('index.html',''); initResizable(); });
 </div>
 
 <div><div class="header">
-  <div class="headertitle"><div class="title">qLibs </div></div>
+  <div class="headertitle"><div class="title">Recursive Root Mean Square estimator </div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p >A collection of useful libraries written in C for embedded systems. qLibs is developed using a formal and rigorous process framed in compliance with the MISRA C 2012 and CERT coding standard guidelines and complemented with multiple static-analysis checks targeted to safe critical applications.</p>
-<p >qLibs includes the following modules:</p>
-<ul>
-<li><a class="el" href="qssmoother_desc.html">qSSMoother : Filters for signal smoothing</a><ol type="1">
-<li>1st and 2nd order Low-Pass filters</li>
-<li>Moving Average filters</li>
-<li>Outlier Removal filters</li>
-<li>Gaussian filter</li>
-<li>Exponential weighting filter</li>
-<li>Scalar Kalman filter</li>
-</ol>
-</li>
-<li><a class="el" href="qfp16_desc.html">qFP16 : Fixed-Point Q16.16 math library</a><ol type="1">
-<li>Basic operations</li>
-<li>Trigonometric functions</li>
-<li>Exponential functions</li>
-</ol>
-</li>
-<li><a class="el" href="qfis_desc.html">qFIS : Fuzzy Inference System Engine</a><ol type="1">
-<li>Mamdani</li>
-<li>Sugeno</li>
-<li>Tsukamoto</li>
-</ol>
-</li>
-<li><a class="el" href="qpid_desc.html">qPID : Close-Loop PID Controller</a><ol type="1">
-<li>Derivative filter</li>
-<li>Anti-windup</li>
-<li>Tracking mode</li>
-<li>Auto-tunning</li>
-<li>Additive MRAC</li>
-</ol>
-</li>
-<li><a class="el" href="qlitisys_desc.html">qLTISys : Recursive LTI systems evaluation by transfer functions</a><ol type="1">
-<li>Continuos</li>
-<li>Discrete</li>
-</ol>
-</li>
-<li><a class="el" href="qbitfield_desc.html">qBitField : Bit-Field manipulation library</a></li>
-<li><a class="el" href="qrms_desc.html">qRMS : Recursive Root Mean Square (RMS) calculation</a></li>
-<li><a class="el" href="qcrc_desc.html">qCRC : Generic Cyclic Redundancy Check (CRC) calculator</a></li>
-<li><a class="el" href="qtdl_desc.html">qTDL : Tapped Delay Line in O(1)</a> </li>
-</ul>
-</div></div><!-- PageDoc -->
-</div><!-- contents -->
+<div class="textblock"><p >Real-time digital systems often require the calculation of a root-mean, such as a root-mean square (RMS) level or average magnitude of a complex signal. While averaging can be efficiently implemented by most microprocessors, obtaining an efficient and rapidly converging algorithm is surely a time-consuming task between adjustments and optimizations that need to be performed. By the other hand, the square root may not be–especially with low-cost hardware. If the processor doesn't implement a fast square root function, it must be implemented in software; although this yields accurate results, it may not be efficient.</p>
+<p ><a class="el" href="group__qrms.html">qRMS</a> provides a super-efficient method to compute the Recursive Root Mean Square (RMS). The implementation uses 3-stage filtering and Newton's method to obtain the square root. The filter parameters are perfectly tuned and optimized to converge in around 16 cycles operating at a sampling rate of 1mS. This means that you must configure your embedded system to meet those specifications, either by configuring a timer interrupt or by delegating responsibility to a real-time task.</p>
+<p >Example : By using a timer interrupt</p>
+<p >rms_compute.c </p><div class="fragment"><div class="line"><span class="preprocessor">#include &quot;bsp.h&quot;</span></div>
+<div class="line"><span class="preprocessor">#include &quot;hal_timer.h&quot;</span></div>
+<div class="line"><span class="preprocessor">#include &quot;qrms.h&quot;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="preprocessor">#define RMS_WIN_SIZE ( 8 )</span></div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">static</span> <a class="code hl_struct" href="structq_r_m_s__t.html">qRMS_t</a> rms_instance;</div>
+<div class="line"><span class="keyword">static</span> <span class="keyword">volatile</span> <span class="keywordtype">float</span> rms_value = 0.0f;</div>
+<div class="line"><span class="keyword">static</span> <span class="keywordtype">float</span> window[ RMS_WIN_SIZE ] = { 0.0f };</div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">void</span> TimerA0_Int_Handler( <span class="keywordtype">void</span> ) { <span class="comment">//interrupt tick at 1mS</span></div>
+<div class="line">    rms_value = <a class="code hl_function" href="group__qrms.html#ga9bfeb8d905357aec3741ad2bcf795ecd">qRMS_Update</a>( &amp;rms_instance, get_sample() );</div>
+<div class="line">    HAL_TimerA0_ClearStatusFlag();</div>
+<div class="line">}</div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">void</span> rms_setup( <span class="keywordtype">void</span> ) {</div>
+<div class="line">    <a class="code hl_function" href="group__qrms.html#ga80e0418be06004723a434361846a57c5">qRMS_Setup</a>( &amp;rms_instance, window, RMS_WIN_SIZE );</div>
+<div class="line">    HAL_TimerA0_Init();</div>
+<div class="line">    HAL_TimerA0_SetPeriod_mS( 1 );</div>
+<div class="line">    HAL_TimerA0_EnableInterrupts();</div>
+<div class="line">    HAL_TimerA0_Enable();</div>
+<div class="line">}</div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">float</span> rms_getvalue( <span class="keywordtype">void</span> ) { </div>
+<div class="line">    <span class="keywordflow">return</span> rms_value;</div>
+<div class="line">}</div>
+<div class="ttc" id="agroup__qrms_html_ga80e0418be06004723a434361846a57c5"><div class="ttname"><a href="group__qrms.html#ga80e0418be06004723a434361846a57c5">qRMS_Setup</a></div><div class="ttdeci">int qRMS_Setup(qRMS_t *const q, float *const window, const size_t wsize)</div><div class="ttdoc">Initialize the RMS instance by setting the default optimal parameters.</div><div class="ttdef"><b>Definition:</b> qrms.c:13</div></div>
+<div class="ttc" id="agroup__qrms_html_ga9bfeb8d905357aec3741ad2bcf795ecd"><div class="ttname"><a href="group__qrms.html#ga9bfeb8d905357aec3741ad2bcf795ecd">qRMS_Update</a></div><div class="ttdeci">float qRMS_Update(qRMS_t *const q, const float x)</div><div class="ttdoc">Computes the moving root mean square (RMS) of the input signal. The object uses both the exponential ...</div><div class="ttdef"><b>Definition:</b> qrms.c:30</div></div>
+<div class="ttc" id="astructq_r_m_s__t_html"><div class="ttname"><a href="structq_r_m_s__t.html">qRMS_t</a></div><div class="ttdoc">RMS calculator instance.</div><div class="ttdef"><b>Definition:</b> qrms.h:31</div></div>
+</div><!-- fragment --><p> rms_compute.h </p><div class="fragment"><div class="line"><span class="preprocessor">#ifndef RMS_COMPUTE_H</span></div>
+<div class="line"><span class="preprocessor">#define RMS_COMPUTE_H</span></div>
+<div class="line"> </div>
+<div class="line"><span class="preprocessor">#ifdef __cplusplus</span></div>
+<div class="line"><span class="keyword">extern</span> <span class="stringliteral">&quot;C&quot;</span> {</div>
+<div class="line"><span class="preprocessor">#endif</span></div>
+<div class="line"> </div>
+<div class="line">    <span class="keywordtype">void</span> rms_setup( <span class="keywordtype">void</span> );</div>
+<div class="line">    <span class="keywordtype">float</span> rms_getvalue( <span class="keywordtype">void</span> );</div>
+<div class="line"> </div>
+<div class="line"><span class="preprocessor">#ifdef __cplusplus</span></div>
+<div class="line">}</div>
+<div class="line"><span class="preprocessor">#endif</span></div>
+<div class="line"> </div>
+<div class="line"><span class="preprocessor">#endif</span></div>
+</div><!-- fragment --> </div></div><!-- contents -->
+</div><!-- PageDoc -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
+    <li class="navelem"><a class="el" href="index.html">qLibs</a></li>
     <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.2 </li>
   </ul>
 </div>

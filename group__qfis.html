@@ -1,0 +1,1196 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.2"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<!-- BEGIN opengraph metadata -->
+<meta property="og:title" content="Doxygen Awesome" />
+<meta property="og:image" content="https://repository-images.githubusercontent.com/348492097/4f16df80-88fb-11eb-9d31-4015ff22c452" />
+<meta property="og:description" content="Custom CSS theme for doxygen html-documentation with lots of customization parameters." />
+<meta property="og:url" content="https://jothepro.github.io/doxygen-awesome-css/" />
+<!-- END opengraph metadata -->
+<!-- BEGIN twitter metadata -->
+<meta name="twitter:image:src" content="https://repository-images.githubusercontent.com/348492097/4f16df80-88fb-11eb-9d31-4015ff22c452" />
+<meta name="twitter:title" content="Doxygen Awesome" />
+<meta name="twitter:description" content="Custom CSS theme for doxygen html-documentation with lots of customization parameters." />
+<!-- END twitter metadata -->
+<title>API Reference: qFIS</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link rel="icon" type="image/svg+xml" href="logo.drawio.svg"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="doxygen-awesome-darkmode-toggle.js"></script>
+<script type="text/javascript" src="doxygen-awesome-fragment-copy-button.js"></script>
+<script type="text/javascript" src="doxygen-awesome-paragraph-link.js"></script>
+<script type="text/javascript" src="doxygen-awesome-interactive-toc.js"></script>
+<script type="text/javascript" src="toggle-alternative-theme.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeFragmentCopyButton.init()
+    DoxygenAwesomeDarkModeToggle.init()
+    DoxygenAwesomeParagraphLink.init()
+    DoxygenAwesomeInteractiveToc.init()
+</script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  extensions: ["tex2jax.js"],
+  jax: ["input/TeX","output/HTML-CSS"],
+});
+</script>
+<script type="text/javascript" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
+<link href="custom.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only-darkmode-toggle.css" rel="stylesheet" type="text/css"/>
+<link href="custom-alternative.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<!-- https://tholman.com/github-corners/ -->
+<a href="https://github.com/jothepro/doxygen-awesome-css" class="github-corner" title="View source on GitHub" target="_blank">
+    <svg viewBox="0 0 250 250" width="40" height="40" style="position: absolute; top: 0; border: 0; right: 0; z-index: 99;" aria-hidden="true">
+    <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="qlibs_logo.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">API Reference
+   &#160;<span id="projectnumber">v1.2</span>
+   </div>
+   <div id="projectbrief">A collection of useful libraries for embedded systems</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generated by Doxygen 1.9.2 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search",'Search','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Search');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('group__qfis.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="summary">
+<a href="#nested-classes">Data Structures</a> &#124;
+<a href="#define-members">Macros</a> &#124;
+<a href="#typedef-members">Typedefs</a> &#124;
+<a href="#enum-members">Enumerations</a> &#124;
+<a href="#func-members">Functions</a>  </div>
+  <div class="headertitle"><div class="title">qFIS</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>API for the qFIS Fuzzy Inference System Engine.  
+<a href="#details">More...</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
+Data Structures</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structq_f_i_s___input__t.html">qFIS_Input_t</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A FIS Input object.  <a href="structq_f_i_s___input__t.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structq_f_i_s___output__t.html">qFIS_Output_t</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A FIS Output object.  <a href="structq_f_i_s___output__t.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structq_f_i_s___m_f__t.html">qFIS_MF_t</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A FIS Membership Function.  <a href="structq_f_i_s___m_f__t.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structq_f_i_s__t.html">qFIS_t</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A FIS(Fuzzy Inference System) object.  <a href="structq_f_i_s__t.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
+Macros</h2></td></tr>
+<tr class="memitem:gadd5af13b8fd13530a1a481cec2ef0637"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qfis.html#gadd5af13b8fd13530a1a481cec2ef0637">QFIS_RULES_BEGIN</a></td></tr>
+<tr class="memdesc:gadd5af13b8fd13530a1a481cec2ef0637"><td class="mdescLeft">&#160;</td><td class="mdescRight">Start a Fuzzy rule set. The <a class="el" href="group__qfis.html#gadd5af13b8fd13530a1a481cec2ef0637" title="Start a Fuzzy rule set. The QFIS_RULES_BEGIN statement is used to declare the starting point of a FIS...">QFIS_RULES_BEGIN</a> statement is used to declare the starting point of a FIS rule set. It should be placed at the start of the rules enumeration. <a class="el" href="group__qfis.html#ga80454033f67a79247305ba0a18d98247" title="Ends a Fuzzy rule set. The QFIS_RULES_END statement is used to finalize the declaration of a FIS rule...">QFIS_RULES_END</a> declare the end of the FIS rule set.  <a href="group__qfis.html#gadd5af13b8fd13530a1a481cec2ef0637">More...</a><br /></td></tr>
+<tr class="separator:gadd5af13b8fd13530a1a481cec2ef0637"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga80454033f67a79247305ba0a18d98247"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qfis.html#ga80454033f67a79247305ba0a18d98247">QFIS_RULES_END</a></td></tr>
+<tr class="memdesc:ga80454033f67a79247305ba0a18d98247"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ends a Fuzzy rule set. The <a class="el" href="group__qfis.html#ga80454033f67a79247305ba0a18d98247" title="Ends a Fuzzy rule set. The QFIS_RULES_END statement is used to finalize the declaration of a FIS rule...">QFIS_RULES_END</a> statement is used to finalize the declaration of a FIS rule set. It should be placed at the end of the rules enumeration. <a class="el" href="group__qfis.html#gadd5af13b8fd13530a1a481cec2ef0637" title="Start a Fuzzy rule set. The QFIS_RULES_BEGIN statement is used to declare the starting point of a FIS...">QFIS_RULES_BEGIN</a> declare the start point of the FIS rule set.  <a href="group__qfis.html#ga80454033f67a79247305ba0a18d98247">More...</a><br /></td></tr>
+<tr class="separator:ga80454033f67a79247305ba0a18d98247"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gac138c68a0709c57bc5f7567abc1558eb"><td class="memItemLeft" align="right" valign="top"><a id="gac138c68a0709c57bc5f7567abc1558eb" name="gac138c68a0709c57bc5f7567abc1558eb"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>IF</b></td></tr>
+<tr class="memdesc:gac138c68a0709c57bc5f7567abc1558eb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Rule statement to begin a rule sentence. <br /></td></tr>
+<tr class="separator:gac138c68a0709c57bc5f7567abc1558eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gacd1b97556dfbbac61063a63031d2f91d"><td class="memItemLeft" align="right" valign="top"><a id="gacd1b97556dfbbac61063a63031d2f91d" name="gacd1b97556dfbbac61063a63031d2f91d"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>AND</b></td></tr>
+<tr class="memdesc:gacd1b97556dfbbac61063a63031d2f91d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Rule statement to represent the AND connector. <br /></td></tr>
+<tr class="separator:gacd1b97556dfbbac61063a63031d2f91d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga3363ca4d6d3cc0230b2804280591c991"><td class="memItemLeft" align="right" valign="top"><a id="ga3363ca4d6d3cc0230b2804280591c991" name="ga3363ca4d6d3cc0230b2804280591c991"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>OR</b></td></tr>
+<tr class="memdesc:ga3363ca4d6d3cc0230b2804280591c991"><td class="mdescLeft">&#160;</td><td class="mdescRight">Rule statement to represent the OR connector. <br /></td></tr>
+<tr class="separator:ga3363ca4d6d3cc0230b2804280591c991"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gad9884c43f4f50a5852711a614f2343ac"><td class="memItemLeft" align="right" valign="top"><a id="gad9884c43f4f50a5852711a614f2343ac" name="gad9884c43f4f50a5852711a614f2343ac"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>THEN</b></td></tr>
+<tr class="memdesc:gad9884c43f4f50a5852711a614f2343ac"><td class="mdescLeft">&#160;</td><td class="mdescRight">Rule statement to represent the implication. <br /></td></tr>
+<tr class="separator:gad9884c43f4f50a5852711a614f2343ac"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gad28e1b10e158ae134bb6fa3bb2f34a06"><td class="memItemLeft" align="right" valign="top"><a id="gad28e1b10e158ae134bb6fa3bb2f34a06" name="gad28e1b10e158ae134bb6fa3bb2f34a06"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>IS</b></td></tr>
+<tr class="memdesc:gad28e1b10e158ae134bb6fa3bb2f34a06"><td class="mdescLeft">&#160;</td><td class="mdescRight">Rule statement to represent a premise. <br /></td></tr>
+<tr class="separator:gad28e1b10e158ae134bb6fa3bb2f34a06"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gab3262baea101d64a3d11969b9dd2e78d"><td class="memItemLeft" align="right" valign="top"><a id="gab3262baea101d64a3d11969b9dd2e78d" name="gab3262baea101d64a3d11969b9dd2e78d"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>IS_NOT</b></td></tr>
+<tr class="memdesc:gab3262baea101d64a3d11969b9dd2e78d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Rule statement to represent a negated premise. <br /></td></tr>
+<tr class="separator:gab3262baea101d64a3d11969b9dd2e78d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga29fd18bed01c4d836c7ebfe73a125c3f"><td class="memItemLeft" align="right" valign="top"><a id="ga29fd18bed01c4d836c7ebfe73a125c3f" name="ga29fd18bed01c4d836c7ebfe73a125c3f"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>END</b></td></tr>
+<tr class="memdesc:ga29fd18bed01c4d836c7ebfe73a125c3f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Rule statement to end a rule sentence. <br /></td></tr>
+<tr class="separator:ga29fd18bed01c4d836c7ebfe73a125c3f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="typedef-members" name="typedef-members"></a>
+Typedefs</h2></td></tr>
+<tr class="memitem:ga07efc356794273b23e2d469e8e4d882e"><td class="memItemLeft" align="right" valign="top">typedef int16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qfis.html#ga07efc356794273b23e2d469e8e4d882e">qFIS_Rules_t</a></td></tr>
+<tr class="memdesc:ga07efc356794273b23e2d469e8e4d882e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Type definition to instantiate a set of fuzzy rules.  <a href="group__qfis.html#ga07efc356794273b23e2d469e8e4d882e">More...</a><br /></td></tr>
+<tr class="separator:ga07efc356794273b23e2d469e8e4d882e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="enum-members" name="enum-members"></a>
+Enumerations</h2></td></tr>
+<tr class="memitem:ga57d388104d07dbb852d11d277d439302"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qfis.html#ga57d388104d07dbb852d11d277d439302">qFIS_MF_Name_t</a> { <br />
+&#160;&#160;<a class="el" href="group__qfis.html#gga57d388104d07dbb852d11d277d439302a59077554a504ca1e69784f650fbd8952">custommf</a>
+, <a class="el" href="group__qfis.html#gga57d388104d07dbb852d11d277d439302a8f91868e5f151b88a97174ac79cbc6b9">trimf</a>
+, <a class="el" href="group__qfis.html#gga57d388104d07dbb852d11d277d439302a7676242f70c14c24cddeb8ee5bedf094">trapmf</a>
+, <a class="el" href="group__qfis.html#gga57d388104d07dbb852d11d277d439302ab211a8a8f9c9933e4ee7f2738684e8d3">gbellmf</a>
+, <br />
+&#160;&#160;<a class="el" href="group__qfis.html#gga57d388104d07dbb852d11d277d439302af622ac933207179e7864deb02eb3aa29">gaussmf</a>
+, <a class="el" href="group__qfis.html#gga57d388104d07dbb852d11d277d439302a4d57e0dc8df50e01b5912fcf06ac9af7">gauss2mf</a>
+, <a class="el" href="group__qfis.html#gga57d388104d07dbb852d11d277d439302a26b5b0fec349f4dd75ea138509c7f9bc">sigmf</a>
+, <a class="el" href="group__qfis.html#gga57d388104d07dbb852d11d277d439302aff5a8ec6d6ec62d577ca656cfe4fc85a">dsigmf</a>
+, <br />
+&#160;&#160;<a class="el" href="group__qfis.html#gga57d388104d07dbb852d11d277d439302ab0662075b7e1fe69127012a8963f3ae1">psigmf</a>
+, <a class="el" href="group__qfis.html#gga57d388104d07dbb852d11d277d439302a2ebaaf5da9f4f9658a77cbb7b955fde4">pimf</a>
+, <a class="el" href="group__qfis.html#gga57d388104d07dbb852d11d277d439302a1b9910ce8deaabf94e74eb0228f165fc">smf</a>
+, <a class="el" href="group__qfis.html#gga57d388104d07dbb852d11d277d439302a18ef4cfb7704044a8fae2f7edea657dd">zmf</a>
+, <br />
+&#160;&#160;<a class="el" href="group__qfis.html#gga57d388104d07dbb852d11d277d439302a517ec5d7ed4ba84016d6d5d5963584b7">singletonmf</a>
+, <a class="el" href="group__qfis.html#gga57d388104d07dbb852d11d277d439302aa8c90d32cef75c377abaacb0aeaacab7">concavemf</a>
+, <a class="el" href="group__qfis.html#gga57d388104d07dbb852d11d277d439302ab52e90d79ad862c0608aa3c228300e09">spikemf</a>
+, <a class="el" href="group__qfis.html#gga57d388104d07dbb852d11d277d439302a1b7f254eb17ba94e97a9fe60fb7bf09b">linsmf</a>
+, <br />
+&#160;&#160;<a class="el" href="group__qfis.html#gga57d388104d07dbb852d11d277d439302a50279291d8a418eb06941a1f5208d1aa">linzmf</a>
+, <a class="el" href="group__qfis.html#gga57d388104d07dbb852d11d277d439302a72d1cca9c64d5a0ff1ef5f931713d74e">rectmf</a>
+, <a class="el" href="group__qfis.html#gga57d388104d07dbb852d11d277d439302af419a1c2ca368381483a582cd2527eff">cosmf</a>
+, <a class="el" href="group__qfis.html#gga57d388104d07dbb852d11d277d439302a2c8b9058af45167c4cef2e4f7f0e0c42">constantmf</a>
+, <br />
+&#160;&#160;<a class="el" href="group__qfis.html#gga57d388104d07dbb852d11d277d439302a3e187547bd00b7f8ef46fd105d170914">linearmf</a>
+, <a class="el" href="group__qfis.html#gga57d388104d07dbb852d11d277d439302ad23bd69a0c39f41ec183701ea88fca62">tlinsmf</a>
+, <a class="el" href="group__qfis.html#gga57d388104d07dbb852d11d277d439302a7e69801214edbd12464450ec32caa952">tlinzmf</a>
+, <a class="el" href="group__qfis.html#gga57d388104d07dbb852d11d277d439302a43b3471fcf257414fd73960961f71f8c">tconcavemf</a>
+, <br />
+&#160;&#160;<a class="el" href="group__qfis.html#gga57d388104d07dbb852d11d277d439302a15d4fd087b99bfae1ad35c04a4196be4">tsigmf</a>
+, <a class="el" href="group__qfis.html#gga57d388104d07dbb852d11d277d439302a5ac08b226723d99e82d613115b2fef6a">tsmf</a>
+, <a class="el" href="group__qfis.html#gga57d388104d07dbb852d11d277d439302af737be9cb431f74baa61fca9f29688c3">tzmf</a>
+<br />
+ }</td></tr>
+<tr class="memdesc:ga57d388104d07dbb852d11d277d439302"><td class="mdescLeft">&#160;</td><td class="mdescRight">An enum with all the possible values to specify a membership function.  <a href="group__qfis.html#ga57d388104d07dbb852d11d277d439302">More...</a><br /></td></tr>
+<tr class="separator:ga57d388104d07dbb852d11d277d439302"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaedbcaf3cb5c4b57eb1f44f4dea0f1a72"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qfis.html#gaedbcaf3cb5c4b57eb1f44f4dea0f1a72">qFIS_DeFuzz_Method_t</a> { <br />
+&#160;&#160;<a class="el" href="group__qfis.html#ggaedbcaf3cb5c4b57eb1f44f4dea0f1a72a6fb78ba59773ac48c2709d20df1ebefd">centroid</a>
+, <a class="el" href="group__qfis.html#ggaedbcaf3cb5c4b57eb1f44f4dea0f1a72a5f0b55cf3261a197a8d0212f90669e35">bisector</a>
+, <a class="el" href="group__qfis.html#ggaedbcaf3cb5c4b57eb1f44f4dea0f1a72a91e435ff054716e32ac834ddfdf8ece9">mom</a>
+, <a class="el" href="group__qfis.html#ggaedbcaf3cb5c4b57eb1f44f4dea0f1a72a58713f014a11fca36091e803ff431b04">lom</a>
+, <br />
+&#160;&#160;<a class="el" href="group__qfis.html#ggaedbcaf3cb5c4b57eb1f44f4dea0f1a72ab1088c07d3cf9e75c6e7fbd84bd759c4">som</a>
+, <a class="el" href="group__qfis.html#ggaedbcaf3cb5c4b57eb1f44f4dea0f1a72a8d62125ef3bf552069d621be0af68f5e">wtaver</a>
+, <a class="el" href="group__qfis.html#ggaedbcaf3cb5c4b57eb1f44f4dea0f1a72a442dbe21e1b302813ac2a42e552a72a0">wtsum</a>
+<br />
+ }</td></tr>
+<tr class="memdesc:gaedbcaf3cb5c4b57eb1f44f4dea0f1a72"><td class="mdescLeft">&#160;</td><td class="mdescRight">An enum with all the possible de-Fuzzyfication methods.  <a href="group__qfis.html#gaedbcaf3cb5c4b57eb1f44f4dea0f1a72">More...</a><br /></td></tr>
+<tr class="separator:gaedbcaf3cb5c4b57eb1f44f4dea0f1a72"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga4a36da9d08e666f99234ad63ad8edea8"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qfis.html#ga4a36da9d08e666f99234ad63ad8edea8">qFIS_ParamValue_t</a> { <br />
+&#160;&#160;<a class="el" href="group__qfis.html#gga4a36da9d08e666f99234ad63ad8edea8a180a4073ca83341220b737f6ea72ab34">qFIS_MIN</a>
+, <a class="el" href="group__qfis.html#gga4a36da9d08e666f99234ad63ad8edea8a17b9fce953a0105ea84a5d3ea24382ce">qFIS_PROD</a>
+, <a class="el" href="group__qfis.html#gga4a36da9d08e666f99234ad63ad8edea8a87c9e76c7baa678420ecc602d3aeae14">qFIS_MAX</a>
+, <a class="el" href="group__qfis.html#gga4a36da9d08e666f99234ad63ad8edea8acba3768c95dfdc791cc01eea64a58deb">qFIS_PROBOR</a>
+, <br />
+&#160;&#160;<a class="el" href="group__qfis.html#gga4a36da9d08e666f99234ad63ad8edea8a02129fa1b1988846ddcaa24763ca4759">qFIS_SUM</a>
+<br />
+ }</td></tr>
+<tr class="memdesc:ga4a36da9d08e666f99234ad63ad8edea8"><td class="mdescLeft">&#160;</td><td class="mdescRight">An enum with the supported parameter values.  <a href="group__qfis.html#ga4a36da9d08e666f99234ad63ad8edea8">More...</a><br /></td></tr>
+<tr class="separator:ga4a36da9d08e666f99234ad63ad8edea8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga933f1f7eb2e8a0ae89258ead19a61199"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qfis.html#ga933f1f7eb2e8a0ae89258ead19a61199">qFIS_Parameter_t</a> { <br />
+&#160;&#160;<a class="el" href="group__qfis.html#gga933f1f7eb2e8a0ae89258ead19a61199ad5608b2374924491ea4af9b47ab5440f">qFIS_Implication</a>
+, <a class="el" href="group__qfis.html#gga933f1f7eb2e8a0ae89258ead19a61199af182b91aa583adf923b766bf0998be59">qFIS_Aggregation</a>
+, <a class="el" href="group__qfis.html#gga933f1f7eb2e8a0ae89258ead19a61199aff88525fdbf6058636aea383fbc82ea9">qFIS_AND</a>
+, <a class="el" href="group__qfis.html#gga933f1f7eb2e8a0ae89258ead19a61199ad1befb564bfac8c54233c51eac3b5122">qFIS_OR</a>
+, <br />
+&#160;&#160;<a class="el" href="group__qfis.html#gga933f1f7eb2e8a0ae89258ead19a61199a5f9c9f3a169153cc6c09f4b2ebaa23a8">qFIS_EvalPoints</a>
+<br />
+ }</td></tr>
+<tr class="memdesc:ga933f1f7eb2e8a0ae89258ead19a61199"><td class="mdescLeft">&#160;</td><td class="mdescRight">An enum with the allowed parameters that can be set on a FIS instance.  <a href="group__qfis.html#ga933f1f7eb2e8a0ae89258ead19a61199">More...</a><br /></td></tr>
+<tr class="separator:ga933f1f7eb2e8a0ae89258ead19a61199"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga2f3f0184eca9e38c98afca2275fbe13d"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qfis.html#ga2f3f0184eca9e38c98afca2275fbe13d">qFIS_Type_t</a> { <a class="el" href="group__qfis.html#gga2f3f0184eca9e38c98afca2275fbe13daaaafece1969d49f7a63d07fd66937799">Mamdani</a>
+, <a class="el" href="group__qfis.html#gga2f3f0184eca9e38c98afca2275fbe13da6be5a07806b4e50dc6aa3ce912692ad6">Sugeno</a>
+, <a class="el" href="group__qfis.html#gga2f3f0184eca9e38c98afca2275fbe13da7b5af38242e88e34875821666e361935">Tsukamoto</a>
+ }</td></tr>
+<tr class="memdesc:ga2f3f0184eca9e38c98afca2275fbe13d"><td class="mdescLeft">&#160;</td><td class="mdescRight">An enum with the inference system types supported by qFIS.  <a href="group__qfis.html#ga2f3f0184eca9e38c98afca2275fbe13d">More...</a><br /></td></tr>
+<tr class="separator:ga2f3f0184eca9e38c98afca2275fbe13d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
+Functions</h2></td></tr>
+<tr class="memitem:gafd1779c21247298e6ea9a2b5934a8e52"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qfis.html#gafd1779c21247298e6ea9a2b5934a8e52">qFIS_SetParameter</a> (<a class="el" href="structq_f_i_s__t.html">qFIS_t</a> *const f, const <a class="el" href="group__qfis.html#ga933f1f7eb2e8a0ae89258ead19a61199">qFIS_Parameter_t</a> p, const <a class="el" href="group__qfis.html#ga4a36da9d08e666f99234ad63ad8edea8">qFIS_ParamValue_t</a> x)</td></tr>
+<tr class="memdesc:gafd1779c21247298e6ea9a2b5934a8e52"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set parameters of the FIS instance.  <a href="group__qfis.html#gafd1779c21247298e6ea9a2b5934a8e52">More...</a><br /></td></tr>
+<tr class="separator:gafd1779c21247298e6ea9a2b5934a8e52"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga77c1447bb727d37d75a20d8d8f9f85fb"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qfis.html#ga77c1447bb727d37d75a20d8d8f9f85fb">qFIS_SetDeFuzzMethod</a> (<a class="el" href="structq_f_i_s__t.html">qFIS_t</a> *const f, <a class="el" href="group__qfis.html#gaedbcaf3cb5c4b57eb1f44f4dea0f1a72">qFIS_DeFuzz_Method_t</a> m)</td></tr>
+<tr class="memdesc:ga77c1447bb727d37d75a20d8d8f9f85fb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Change the default deFuzzification method of the FIS instance.  <a href="group__qfis.html#ga77c1447bb727d37d75a20d8d8f9f85fb">More...</a><br /></td></tr>
+<tr class="separator:ga77c1447bb727d37d75a20d8d8f9f85fb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaae3433474a516fbf41e0e406fe41410b"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qfis.html#gaae3433474a516fbf41e0e406fe41410b">qFIS_Setup</a> (<a class="el" href="structq_f_i_s__t.html">qFIS_t</a> *const f, const <a class="el" href="group__qfis.html#ga2f3f0184eca9e38c98afca2275fbe13d">qFIS_Type_t</a> t, <a class="el" href="structq_f_i_s___input__t.html">qFIS_Input_t</a> *const inputs, const size_t ni, <a class="el" href="structq_f_i_s___output__t.html">qFIS_Output_t</a> *const outputs, const size_t no, <a class="el" href="structq_f_i_s___m_f__t.html">qFIS_MF_t</a> *const mf_inputs, const size_t nmi, <a class="el" href="structq_f_i_s___m_f__t.html">qFIS_MF_t</a> *const mf_outputs, const size_t nmo, const <a class="el" href="group__qfis.html#ga07efc356794273b23e2d469e8e4d882e">qFIS_Rules_t</a> *const r, float *wi, const size_t n)</td></tr>
+<tr class="memdesc:gaae3433474a516fbf41e0e406fe41410b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Setup and initialize the FIS instance.  <a href="group__qfis.html#gaae3433474a516fbf41e0e406fe41410b">More...</a><br /></td></tr>
+<tr class="separator:gaae3433474a516fbf41e0e406fe41410b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga9157fd772255f73e6b5aca365986068a"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qfis.html#ga9157fd772255f73e6b5aca365986068a">qFIS_InputSetup</a> (<a class="el" href="structq_f_i_s___input__t.html">qFIS_Input_t</a> *const v, const qFIS_Tag_t t, const float min, const float max)</td></tr>
+<tr class="memdesc:ga9157fd772255f73e6b5aca365986068a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Setup the input with the specified tag and set limits for it.  <a href="group__qfis.html#ga9157fd772255f73e6b5aca365986068a">More...</a><br /></td></tr>
+<tr class="separator:ga9157fd772255f73e6b5aca365986068a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gae2f10a746a4e19752a985e6892132a80"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qfis.html#gae2f10a746a4e19752a985e6892132a80">qFIS_OutputSetup</a> (<a class="el" href="structq_f_i_s___output__t.html">qFIS_Output_t</a> *const v, const qFIS_Tag_t t, const float min, const float max)</td></tr>
+<tr class="memdesc:gae2f10a746a4e19752a985e6892132a80"><td class="mdescLeft">&#160;</td><td class="mdescRight">Setup the output with the specified tag and set limits for it.  <a href="group__qfis.html#gae2f10a746a4e19752a985e6892132a80">More...</a><br /></td></tr>
+<tr class="separator:gae2f10a746a4e19752a985e6892132a80"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gadc51ab655860a45c7ecb535c7a6c0b52"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qfis.html#gadc51ab655860a45c7ecb535c7a6c0b52">qFIS_SetInput</a> (<a class="el" href="structq_f_i_s___input__t.html">qFIS_Input_t</a> *const v, const qFIS_Tag_t t, const float value)</td></tr>
+<tr class="memdesc:gadc51ab655860a45c7ecb535c7a6c0b52"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set a crisp value of the input with the specified tag.  <a href="group__qfis.html#gadc51ab655860a45c7ecb535c7a6c0b52">More...</a><br /></td></tr>
+<tr class="separator:gadc51ab655860a45c7ecb535c7a6c0b52"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga3c84df9b59cb1e2a66db3f57946fac94"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qfis.html#ga3c84df9b59cb1e2a66db3f57946fac94">qFIS_GetOutput</a> (const <a class="el" href="structq_f_i_s___output__t.html">qFIS_Output_t</a> *const v, const qFIS_Tag_t t)</td></tr>
+<tr class="memdesc:ga3c84df9b59cb1e2a66db3f57946fac94"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the de-fuzzified crisp value from the the output with the specified tag.  <a href="group__qfis.html#ga3c84df9b59cb1e2a66db3f57946fac94">More...</a><br /></td></tr>
+<tr class="separator:ga3c84df9b59cb1e2a66db3f57946fac94"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gad187010550dc9d983c589f6dd9fa971c"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qfis.html#gad187010550dc9d983c589f6dd9fa971c">qFIS_SetMF</a> (<a class="el" href="structq_f_i_s___m_f__t.html">qFIS_MF_t</a> *const m, const qFIS_Tag_t io, const qFIS_Tag_t mf, const <a class="el" href="group__qfis.html#ga57d388104d07dbb852d11d277d439302">qFIS_MF_Name_t</a> s, qFIS_MF_Fcn_t custom_mf, const float *cp, const float h)</td></tr>
+<tr class="memdesc:gad187010550dc9d983c589f6dd9fa971c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the IO tag and points for the specified membership function.  <a href="group__qfis.html#gad187010550dc9d983c589f6dd9fa971c">More...</a><br /></td></tr>
+<tr class="separator:gad187010550dc9d983c589f6dd9fa971c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gafeb90b7b41ef3c5b25d12bf6a2adb6e5"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qfis.html#gafeb90b7b41ef3c5b25d12bf6a2adb6e5">qFIS_Fuzzify</a> (<a class="el" href="structq_f_i_s__t.html">qFIS_t</a> *const f)</td></tr>
+<tr class="memdesc:gafeb90b7b41ef3c5b25d12bf6a2adb6e5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Perform the fuzzification operation over the crisp inputs on the requested FIS object.  <a href="group__qfis.html#gafeb90b7b41ef3c5b25d12bf6a2adb6e5">More...</a><br /></td></tr>
+<tr class="separator:gafeb90b7b41ef3c5b25d12bf6a2adb6e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga471e4559534e3fe726a895bc4466e05e"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qfis.html#ga471e4559534e3fe726a895bc4466e05e">qFIS_Inference</a> (<a class="el" href="structq_f_i_s__t.html">qFIS_t</a> *const f)</td></tr>
+<tr class="memdesc:ga471e4559534e3fe726a895bc4466e05e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Perform the inference process on the requested FIS object.  <a href="group__qfis.html#ga471e4559534e3fe726a895bc4466e05e">More...</a><br /></td></tr>
+<tr class="separator:ga471e4559534e3fe726a895bc4466e05e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga74cf29a2008f1169fab3b56635a4c620"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qfis.html#ga74cf29a2008f1169fab3b56635a4c620">qFIS_DeFuzzify</a> (<a class="el" href="structq_f_i_s__t.html">qFIS_t</a> *const f)</td></tr>
+<tr class="memdesc:ga74cf29a2008f1169fab3b56635a4c620"><td class="mdescLeft">&#160;</td><td class="mdescRight">Perform the de-Fuzzification operation to compute the crisp outputs.  <a href="group__qfis.html#ga74cf29a2008f1169fab3b56635a4c620">More...</a><br /></td></tr>
+<tr class="separator:ga74cf29a2008f1169fab3b56635a4c620"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gad48fca6d1233a283d167012b5fe84c9b"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qfis.html#gad48fca6d1233a283d167012b5fe84c9b">qFIS_SetRuleWeights</a> (<a class="el" href="structq_f_i_s__t.html">qFIS_t</a> *const f, float *rWeights)</td></tr>
+<tr class="memdesc:gad48fca6d1233a283d167012b5fe84c9b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set weights to the rules of the inference system.  <a href="group__qfis.html#gad48fca6d1233a283d167012b5fe84c9b">More...</a><br /></td></tr>
+<tr class="separator:gad48fca6d1233a283d167012b5fe84c9b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<p >API for the qFIS Fuzzy Inference System Engine. </p>
+<p >For a brief description of this module, please read <a class="el" href="qfis_desc.html">Fuzzy Inference System Engine</a> </p>
+<h2 class="groupheader">Macro Definition Documentation</h2>
+<a id="gadd5af13b8fd13530a1a481cec2ef0637" name="gadd5af13b8fd13530a1a481cec2ef0637"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gadd5af13b8fd13530a1a481cec2ef0637">&#9670;&nbsp;</a></span>QFIS_RULES_BEGIN</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define QFIS_RULES_BEGIN</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Start a Fuzzy rule set. The <a class="el" href="group__qfis.html#gadd5af13b8fd13530a1a481cec2ef0637" title="Start a Fuzzy rule set. The QFIS_RULES_BEGIN statement is used to declare the starting point of a FIS...">QFIS_RULES_BEGIN</a> statement is used to declare the starting point of a FIS rule set. It should be placed at the start of the rules enumeration. <a class="el" href="group__qfis.html#ga80454033f67a79247305ba0a18d98247" title="Ends a Fuzzy rule set. The QFIS_RULES_END statement is used to finalize the declaration of a FIS rule...">QFIS_RULES_END</a> declare the end of the FIS rule set. </p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="group__qfis.html#ga80454033f67a79247305ba0a18d98247" title="Ends a Fuzzy rule set. The QFIS_RULES_END statement is used to finalize the declaration of a FIS rule...">QFIS_RULES_END</a> </dd></dl>
+<dl class="section warning"><dt>Warning</dt><dd>Only one segment is allowed inside a fuzzy rule set. </dd></dl>
+<dl class="section note"><dt>Note</dt><dd>It must always be used together with a matching <a class="el" href="group__qfis.html#ga80454033f67a79247305ba0a18d98247" title="Ends a Fuzzy rule set. The QFIS_RULES_END statement is used to finalize the declaration of a FIS rule...">QFIS_RULES_END</a> statement. Example: <div class="fragment"><div class="line"><span class="keyword">static</span> <span class="keyword">const</span> <a class="code hl_typedef" href="group__qfis.html#ga07efc356794273b23e2d469e8e4d882e">qFIS_Rules_t</a> rules[] = { </div>
+<div class="line">    <a class="code hl_define" href="group__qfis.html#gadd5af13b8fd13530a1a481cec2ef0637">QFIS_RULES_BEGIN</a></div>
+<div class="line">      </div>
+<div class="line">    <a class="code hl_define" href="group__qfis.html#ga80454033f67a79247305ba0a18d98247">QFIS_RULES_END</a></div>
+<div class="line">};</div>
+<div class="ttc" id="agroup__qfis_html_ga07efc356794273b23e2d469e8e4d882e"><div class="ttname"><a href="group__qfis.html#ga07efc356794273b23e2d469e8e4d882e">qFIS_Rules_t</a></div><div class="ttdeci">int16_t qFIS_Rules_t</div><div class="ttdoc">Type definition to instantiate a set of fuzzy rules.</div><div class="ttdef"><b>Definition:</b> qfis.h:189</div></div>
+<div class="ttc" id="agroup__qfis_html_ga80454033f67a79247305ba0a18d98247"><div class="ttname"><a href="group__qfis.html#ga80454033f67a79247305ba0a18d98247">QFIS_RULES_END</a></div><div class="ttdeci">#define QFIS_RULES_END</div><div class="ttdoc">Ends a Fuzzy rule set. The QFIS_RULES_END statement is used to finalize the declaration of a FIS rule...</div><div class="ttdef"><b>Definition:</b> qfis.h:277</div></div>
+<div class="ttc" id="agroup__qfis_html_gadd5af13b8fd13530a1a481cec2ef0637"><div class="ttname"><a href="group__qfis.html#gadd5af13b8fd13530a1a481cec2ef0637">QFIS_RULES_BEGIN</a></div><div class="ttdeci">#define QFIS_RULES_BEGIN</div><div class="ttdoc">Start a Fuzzy rule set. The QFIS_RULES_BEGIN statement is used to declare the starting point of a FIS...</div><div class="ttdef"><b>Definition:</b> qfis.h:257</div></div>
+</div><!-- fragment --> </dd></dl>
+
+</div>
+</div>
+<a id="ga80454033f67a79247305ba0a18d98247" name="ga80454033f67a79247305ba0a18d98247"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga80454033f67a79247305ba0a18d98247">&#9670;&nbsp;</a></span>QFIS_RULES_END</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define QFIS_RULES_END</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Ends a Fuzzy rule set. The <a class="el" href="group__qfis.html#ga80454033f67a79247305ba0a18d98247" title="Ends a Fuzzy rule set. The QFIS_RULES_END statement is used to finalize the declaration of a FIS rule...">QFIS_RULES_END</a> statement is used to finalize the declaration of a FIS rule set. It should be placed at the end of the rules enumeration. <a class="el" href="group__qfis.html#gadd5af13b8fd13530a1a481cec2ef0637" title="Start a Fuzzy rule set. The QFIS_RULES_BEGIN statement is used to declare the starting point of a FIS...">QFIS_RULES_BEGIN</a> declare the start point of the FIS rule set. </p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="group__qfis.html#gadd5af13b8fd13530a1a481cec2ef0637" title="Start a Fuzzy rule set. The QFIS_RULES_BEGIN statement is used to declare the starting point of a FIS...">QFIS_RULES_BEGIN</a> </dd></dl>
+<dl class="section warning"><dt>Warning</dt><dd>Only one segment is allowed inside a fuzzy rule set. </dd></dl>
+<dl class="section note"><dt>Note</dt><dd>It must always be used together with a matching <a class="el" href="group__qfis.html#gadd5af13b8fd13530a1a481cec2ef0637" title="Start a Fuzzy rule set. The QFIS_RULES_BEGIN statement is used to declare the starting point of a FIS...">QFIS_RULES_BEGIN</a> statement. Example: <div class="fragment"><div class="line"><span class="keyword">static</span> <span class="keyword">const</span> <a class="code hl_typedef" href="group__qfis.html#ga07efc356794273b23e2d469e8e4d882e">qFIS_Rules_t</a> rules[] = { </div>
+<div class="line">    <a class="code hl_define" href="group__qfis.html#gadd5af13b8fd13530a1a481cec2ef0637">QFIS_RULES_BEGIN</a></div>
+<div class="line">      </div>
+<div class="line">    <a class="code hl_define" href="group__qfis.html#ga80454033f67a79247305ba0a18d98247">QFIS_RULES_END</a></div>
+<div class="line">};</div>
+</div><!-- fragment --> </dd></dl>
+
+</div>
+</div>
+<h2 class="groupheader">Typedef Documentation</h2>
+<a id="ga07efc356794273b23e2d469e8e4d882e" name="ga07efc356794273b23e2d469e8e4d882e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga07efc356794273b23e2d469e8e4d882e">&#9670;&nbsp;</a></span>qFIS_Rules_t</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef int16_t <a class="el" href="group__qfis.html#ga07efc356794273b23e2d469e8e4d882e">qFIS_Rules_t</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Type definition to instantiate a set of fuzzy rules. </p>
+<p >Rules are defined by combining I/O and membership function tags with the following statements:</p>
+<p ><a class="el" href="group__qfis.html#gadd5af13b8fd13530a1a481cec2ef0637" title="Start a Fuzzy rule set. The QFIS_RULES_BEGIN statement is used to declare the starting point of a FIS...">QFIS_RULES_BEGIN</a> <a class="el" href="group__qfis.html#gac138c68a0709c57bc5f7567abc1558eb" title="Rule statement to begin a rule sentence.">IF</a>, <a class="el" href="group__qfis.html#gad28e1b10e158ae134bb6fa3bb2f34a06" title="Rule statement to represent a premise.">IS</a>, <a class="el" href="group__qfis.html#gab3262baea101d64a3d11969b9dd2e78d" title="Rule statement to represent a negated premise.">IS_NOT</a>, <a class="el" href="group__qfis.html#gacd1b97556dfbbac61063a63031d2f91d" title="Rule statement to represent the AND connector.">AND</a>, <a class="el" href="group__qfis.html#ga3363ca4d6d3cc0230b2804280591c991" title="Rule statement to represent the OR connector.">OR</a>, <a class="el" href="group__qfis.html#gad9884c43f4f50a5852711a614f2343ac" title="Rule statement to represent the implication.">THEN</a>, <a class="el" href="group__qfis.html#ga29fd18bed01c4d836c7ebfe73a125c3f" title="Rule statement to end a rule sentence.">END</a> and <a class="el" href="group__qfis.html#ga80454033f67a79247305ba0a18d98247" title="Ends a Fuzzy rule set. The QFIS_RULES_END statement is used to finalize the declaration of a FIS rule...">QFIS_RULES_END</a></p>
+<p >Example: </p><div class="fragment"><div class="line"><span class="keyword">static</span> <span class="keyword">const</span> <a class="code hl_typedef" href="group__qfis.html#ga07efc356794273b23e2d469e8e4d882e">qFIS_Rules_t</a> rules[] = { </div>
+<div class="line">    <a class="code hl_define" href="group__qfis.html#gadd5af13b8fd13530a1a481cec2ef0637">QFIS_RULES_BEGIN</a></div>
+<div class="line">        <a class="code hl_define" href="group__qfis.html#gac138c68a0709c57bc5f7567abc1558eb">IF</a> service <a class="code hl_define" href="group__qfis.html#gad28e1b10e158ae134bb6fa3bb2f34a06">IS</a> service_poor <a class="code hl_define" href="group__qfis.html#ga3363ca4d6d3cc0230b2804280591c991">OR</a> food <a class="code hl_define" href="group__qfis.html#gad28e1b10e158ae134bb6fa3bb2f34a06">IS</a> food_rancid <a class="code hl_define" href="group__qfis.html#gad9884c43f4f50a5852711a614f2343ac">THEN</a> tip <a class="code hl_define" href="group__qfis.html#gad28e1b10e158ae134bb6fa3bb2f34a06">IS</a> tip_cheap <a class="code hl_define" href="group__qfis.html#ga29fd18bed01c4d836c7ebfe73a125c3f">END</a></div>
+<div class="line">        <a class="code hl_define" href="group__qfis.html#gac138c68a0709c57bc5f7567abc1558eb">IF</a> service <a class="code hl_define" href="group__qfis.html#gad28e1b10e158ae134bb6fa3bb2f34a06">IS</a> service_good <a class="code hl_define" href="group__qfis.html#gad9884c43f4f50a5852711a614f2343ac">THEN</a> tip <a class="code hl_define" href="group__qfis.html#gad28e1b10e158ae134bb6fa3bb2f34a06">IS</a> tip_average <a class="code hl_define" href="group__qfis.html#ga29fd18bed01c4d836c7ebfe73a125c3f">END</a></div>
+<div class="line">        <a class="code hl_define" href="group__qfis.html#gac138c68a0709c57bc5f7567abc1558eb">IF</a> service <a class="code hl_define" href="group__qfis.html#gad28e1b10e158ae134bb6fa3bb2f34a06">IS</a> service_excellent <a class="code hl_define" href="group__qfis.html#ga3363ca4d6d3cc0230b2804280591c991">OR</a> food <a class="code hl_define" href="group__qfis.html#gad28e1b10e158ae134bb6fa3bb2f34a06">IS</a> food_delicious <a class="code hl_define" href="group__qfis.html#gad9884c43f4f50a5852711a614f2343ac">THEN</a> tip <a class="code hl_define" href="group__qfis.html#gad28e1b10e158ae134bb6fa3bb2f34a06">IS</a> tip_generous <a class="code hl_define" href="group__qfis.html#ga29fd18bed01c4d836c7ebfe73a125c3f">END</a></div>
+<div class="line">    <a class="code hl_define" href="group__qfis.html#ga80454033f67a79247305ba0a18d98247">QFIS_RULES_END</a></div>
+<div class="line">};</div>
+<div class="ttc" id="agroup__qfis_html_ga29fd18bed01c4d836c7ebfe73a125c3f"><div class="ttname"><a href="group__qfis.html#ga29fd18bed01c4d836c7ebfe73a125c3f">END</a></div><div class="ttdeci">#define END</div><div class="ttdoc">Rule statement to end a rule sentence.</div><div class="ttdef"><b>Definition:</b> qfis.h:292</div></div>
+<div class="ttc" id="agroup__qfis_html_ga3363ca4d6d3cc0230b2804280591c991"><div class="ttname"><a href="group__qfis.html#ga3363ca4d6d3cc0230b2804280591c991">OR</a></div><div class="ttdeci">#define OR</div><div class="ttdoc">Rule statement to represent the OR connector.</div><div class="ttdef"><b>Definition:</b> qfis.h:284</div></div>
+<div class="ttc" id="agroup__qfis_html_gac138c68a0709c57bc5f7567abc1558eb"><div class="ttname"><a href="group__qfis.html#gac138c68a0709c57bc5f7567abc1558eb">IF</a></div><div class="ttdeci">#define IF</div><div class="ttdoc">Rule statement to begin a rule sentence.</div><div class="ttdef"><b>Definition:</b> qfis.h:280</div></div>
+<div class="ttc" id="agroup__qfis_html_gad28e1b10e158ae134bb6fa3bb2f34a06"><div class="ttname"><a href="group__qfis.html#gad28e1b10e158ae134bb6fa3bb2f34a06">IS</a></div><div class="ttdeci">#define IS</div><div class="ttdoc">Rule statement to represent a premise.</div><div class="ttdef"><b>Definition:</b> qfis.h:288</div></div>
+<div class="ttc" id="agroup__qfis_html_gad9884c43f4f50a5852711a614f2343ac"><div class="ttname"><a href="group__qfis.html#gad9884c43f4f50a5852711a614f2343ac">THEN</a></div><div class="ttdeci">#define THEN</div><div class="ttdoc">Rule statement to represent the implication.</div><div class="ttdef"><b>Definition:</b> qfis.h:286</div></div>
+</div><!-- fragment --> 
+</div>
+</div>
+<h2 class="groupheader">Enumeration Type Documentation</h2>
+<a id="gaedbcaf3cb5c4b57eb1f44f4dea0f1a72" name="gaedbcaf3cb5c4b57eb1f44f4dea0f1a72"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gaedbcaf3cb5c4b57eb1f44f4dea0f1a72">&#9670;&nbsp;</a></span>qFIS_DeFuzz_Method_t</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="group__qfis.html#gaedbcaf3cb5c4b57eb1f44f4dea0f1a72">qFIS_DeFuzz_Method_t</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>An enum with all the possible de-Fuzzyfication methods. </p>
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="ggaedbcaf3cb5c4b57eb1f44f4dea0f1a72a6fb78ba59773ac48c2709d20df1ebefd" name="ggaedbcaf3cb5c4b57eb1f44f4dea0f1a72a6fb78ba59773ac48c2709d20df1ebefd"></a>centroid&#160;</td><td class="fielddoc"><p >Center of gravity of the fuzzy set along the x-axis [ Only for <a class="el" href="group__qfis.html#gga2f3f0184eca9e38c98afca2275fbe13daaaafece1969d49f7a63d07fd66937799">Mamdani</a> FIS] </p>
+</td></tr>
+<tr><td class="fieldname"><a id="ggaedbcaf3cb5c4b57eb1f44f4dea0f1a72a5f0b55cf3261a197a8d0212f90669e35" name="ggaedbcaf3cb5c4b57eb1f44f4dea0f1a72a5f0b55cf3261a197a8d0212f90669e35"></a>bisector&#160;</td><td class="fielddoc"><p >Vertical line that divides the fuzzy set into two sub-regions of equal area [ Only for <a class="el" href="group__qfis.html#gga2f3f0184eca9e38c98afca2275fbe13daaaafece1969d49f7a63d07fd66937799">Mamdani</a> FIS] </p>
+</td></tr>
+<tr><td class="fieldname"><a id="ggaedbcaf3cb5c4b57eb1f44f4dea0f1a72a91e435ff054716e32ac834ddfdf8ece9" name="ggaedbcaf3cb5c4b57eb1f44f4dea0f1a72a91e435ff054716e32ac834ddfdf8ece9"></a>mom&#160;</td><td class="fielddoc"><p >Middle of Maximum [ Only for <a class="el" href="group__qfis.html#gga2f3f0184eca9e38c98afca2275fbe13daaaafece1969d49f7a63d07fd66937799">Mamdani</a> FIS] </p>
+</td></tr>
+<tr><td class="fieldname"><a id="ggaedbcaf3cb5c4b57eb1f44f4dea0f1a72a58713f014a11fca36091e803ff431b04" name="ggaedbcaf3cb5c4b57eb1f44f4dea0f1a72a58713f014a11fca36091e803ff431b04"></a>lom&#160;</td><td class="fielddoc"><p >Largest of Maximum [ Only for <a class="el" href="group__qfis.html#gga2f3f0184eca9e38c98afca2275fbe13daaaafece1969d49f7a63d07fd66937799">Mamdani</a> FIS] </p>
+</td></tr>
+<tr><td class="fieldname"><a id="ggaedbcaf3cb5c4b57eb1f44f4dea0f1a72ab1088c07d3cf9e75c6e7fbd84bd759c4" name="ggaedbcaf3cb5c4b57eb1f44f4dea0f1a72ab1088c07d3cf9e75c6e7fbd84bd759c4"></a>som&#160;</td><td class="fielddoc"><p >Smallest of Maximum [ Only for <a class="el" href="group__qfis.html#gga2f3f0184eca9e38c98afca2275fbe13daaaafece1969d49f7a63d07fd66937799">Mamdani</a> FIS] </p>
+</td></tr>
+<tr><td class="fieldname"><a id="ggaedbcaf3cb5c4b57eb1f44f4dea0f1a72a8d62125ef3bf552069d621be0af68f5e" name="ggaedbcaf3cb5c4b57eb1f44f4dea0f1a72a8d62125ef3bf552069d621be0af68f5e"></a>wtaver&#160;</td><td class="fielddoc"><p >Weighted average of all rule outputs [ Only for <a class="el" href="group__qfis.html#gga2f3f0184eca9e38c98afca2275fbe13da6be5a07806b4e50dc6aa3ce912692ad6">Sugeno</a> and <a class="el" href="group__qfis.html#gga2f3f0184eca9e38c98afca2275fbe13da7b5af38242e88e34875821666e361935">Tsukamoto</a> FIS] </p>
+</td></tr>
+<tr><td class="fieldname"><a id="ggaedbcaf3cb5c4b57eb1f44f4dea0f1a72a442dbe21e1b302813ac2a42e552a72a0" name="ggaedbcaf3cb5c4b57eb1f44f4dea0f1a72a442dbe21e1b302813ac2a42e552a72a0"></a>wtsum&#160;</td><td class="fielddoc"><p >Weighted sum of all rule outputs [ Only for <a class="el" href="group__qfis.html#gga2f3f0184eca9e38c98afca2275fbe13da6be5a07806b4e50dc6aa3ce912692ad6">Sugeno</a> FIS] </p>
+</td></tr>
+</table>
+
+</div>
+</div>
+<a id="ga57d388104d07dbb852d11d277d439302" name="ga57d388104d07dbb852d11d277d439302"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga57d388104d07dbb852d11d277d439302">&#9670;&nbsp;</a></span>qFIS_MF_Name_t</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="group__qfis.html#ga57d388104d07dbb852d11d277d439302">qFIS_MF_Name_t</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>An enum with all the possible values to specify a membership function. </p>
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="gga57d388104d07dbb852d11d277d439302a59077554a504ca1e69784f650fbd8952" name="gga57d388104d07dbb852d11d277d439302a59077554a504ca1e69784f650fbd8952"></a>custommf&#160;</td><td class="fielddoc"><p >Custom user-defined Membership function </p>
+</td></tr>
+<tr><td class="fieldname"><a id="gga57d388104d07dbb852d11d277d439302a8f91868e5f151b88a97174ac79cbc6b9" name="gga57d388104d07dbb852d11d277d439302a8f91868e5f151b88a97174ac79cbc6b9"></a>trimf&#160;</td><td class="fielddoc"><p >Triangular Membership function f(a,b,c) </p>
+</td></tr>
+<tr><td class="fieldname"><a id="gga57d388104d07dbb852d11d277d439302a7676242f70c14c24cddeb8ee5bedf094" name="gga57d388104d07dbb852d11d277d439302a7676242f70c14c24cddeb8ee5bedf094"></a>trapmf&#160;</td><td class="fielddoc"><p >Trapezoidal Membership function f(a,b,c,d) </p>
+</td></tr>
+<tr><td class="fieldname"><a id="gga57d388104d07dbb852d11d277d439302ab211a8a8f9c9933e4ee7f2738684e8d3" name="gga57d388104d07dbb852d11d277d439302ab211a8a8f9c9933e4ee7f2738684e8d3"></a>gbellmf&#160;</td><td class="fielddoc"><p >Generalized bell-shaped Membership function f(a,b,c) </p>
+</td></tr>
+<tr><td class="fieldname"><a id="gga57d388104d07dbb852d11d277d439302af622ac933207179e7864deb02eb3aa29" name="gga57d388104d07dbb852d11d277d439302af622ac933207179e7864deb02eb3aa29"></a>gaussmf&#160;</td><td class="fielddoc"><p >Gaussian Membership function f(s,c) </p>
+</td></tr>
+<tr><td class="fieldname"><a id="gga57d388104d07dbb852d11d277d439302a4d57e0dc8df50e01b5912fcf06ac9af7" name="gga57d388104d07dbb852d11d277d439302a4d57e0dc8df50e01b5912fcf06ac9af7"></a>gauss2mf&#160;</td><td class="fielddoc"><p >Gaussian combination Membership function f(s1,c1,s2,c2) </p>
+</td></tr>
+<tr><td class="fieldname"><a id="gga57d388104d07dbb852d11d277d439302a26b5b0fec349f4dd75ea138509c7f9bc" name="gga57d388104d07dbb852d11d277d439302a26b5b0fec349f4dd75ea138509c7f9bc"></a>sigmf&#160;</td><td class="fielddoc"><p >Sigmoidal Membership function f(a,c) </p>
+</td></tr>
+<tr><td class="fieldname"><a id="gga57d388104d07dbb852d11d277d439302aff5a8ec6d6ec62d577ca656cfe4fc85a" name="gga57d388104d07dbb852d11d277d439302aff5a8ec6d6ec62d577ca656cfe4fc85a"></a>dsigmf&#160;</td><td class="fielddoc"><p >Difference between two sigmoidal Membership functions f(a1,c1,a2,c2) </p>
+</td></tr>
+<tr><td class="fieldname"><a id="gga57d388104d07dbb852d11d277d439302ab0662075b7e1fe69127012a8963f3ae1" name="gga57d388104d07dbb852d11d277d439302ab0662075b7e1fe69127012a8963f3ae1"></a>psigmf&#160;</td><td class="fielddoc"><p >Product of two sigmoidal membership functions f(a1,c1,a2,c2) </p>
+</td></tr>
+<tr><td class="fieldname"><a id="gga57d388104d07dbb852d11d277d439302a2ebaaf5da9f4f9658a77cbb7b955fde4" name="gga57d388104d07dbb852d11d277d439302a2ebaaf5da9f4f9658a77cbb7b955fde4"></a>pimf&#160;</td><td class="fielddoc"><p >Pi-shaped membership function f(a,b,c,d) </p>
+</td></tr>
+<tr><td class="fieldname"><a id="gga57d388104d07dbb852d11d277d439302a1b9910ce8deaabf94e74eb0228f165fc" name="gga57d388104d07dbb852d11d277d439302a1b9910ce8deaabf94e74eb0228f165fc"></a>smf&#160;</td><td class="fielddoc"><p >S-shaped membership function f(a,b) </p>
+</td></tr>
+<tr><td class="fieldname"><a id="gga57d388104d07dbb852d11d277d439302a18ef4cfb7704044a8fae2f7edea657dd" name="gga57d388104d07dbb852d11d277d439302a18ef4cfb7704044a8fae2f7edea657dd"></a>zmf&#160;</td><td class="fielddoc"><p >Z-shaped membership function f(a,b) </p>
+</td></tr>
+<tr><td class="fieldname"><a id="gga57d388104d07dbb852d11d277d439302a517ec5d7ed4ba84016d6d5d5963584b7" name="gga57d388104d07dbb852d11d277d439302a517ec5d7ed4ba84016d6d5d5963584b7"></a>singletonmf&#160;</td><td class="fielddoc"><p >Singleton Membership Function f(a) </p>
+</td></tr>
+<tr><td class="fieldname"><a id="gga57d388104d07dbb852d11d277d439302aa8c90d32cef75c377abaacb0aeaacab7" name="gga57d388104d07dbb852d11d277d439302aa8c90d32cef75c377abaacb0aeaacab7"></a>concavemf&#160;</td><td class="fielddoc"><p >Concave Membership Function f(i,e) </p>
+</td></tr>
+<tr><td class="fieldname"><a id="gga57d388104d07dbb852d11d277d439302ab52e90d79ad862c0608aa3c228300e09" name="gga57d388104d07dbb852d11d277d439302ab52e90d79ad862c0608aa3c228300e09"></a>spikemf&#160;</td><td class="fielddoc"><p >Spike Membership Function f(w,c) </p>
+</td></tr>
+<tr><td class="fieldname"><a id="gga57d388104d07dbb852d11d277d439302a1b7f254eb17ba94e97a9fe60fb7bf09b" name="gga57d388104d07dbb852d11d277d439302a1b7f254eb17ba94e97a9fe60fb7bf09b"></a>linsmf&#160;</td><td class="fielddoc"><p >Linear s-shaped saturation membership function f(a,b) </p>
+</td></tr>
+<tr><td class="fieldname"><a id="gga57d388104d07dbb852d11d277d439302a50279291d8a418eb06941a1f5208d1aa" name="gga57d388104d07dbb852d11d277d439302a50279291d8a418eb06941a1f5208d1aa"></a>linzmf&#160;</td><td class="fielddoc"><p >Linear z-shaped saturation membership function f(a,b) </p>
+</td></tr>
+<tr><td class="fieldname"><a id="gga57d388104d07dbb852d11d277d439302a72d1cca9c64d5a0ff1ef5f931713d74e" name="gga57d388104d07dbb852d11d277d439302a72d1cca9c64d5a0ff1ef5f931713d74e"></a>rectmf&#160;</td><td class="fielddoc"><p >Rectangle Membership Function f(s,e) </p>
+</td></tr>
+<tr><td class="fieldname"><a id="gga57d388104d07dbb852d11d277d439302af419a1c2ca368381483a582cd2527eff" name="gga57d388104d07dbb852d11d277d439302af419a1c2ca368381483a582cd2527eff"></a>cosmf&#160;</td><td class="fielddoc"><p >Cosine Membership Function f(c,w) </p>
+</td></tr>
+<tr><td class="fieldname"><a id="gga57d388104d07dbb852d11d277d439302a2c8b9058af45167c4cef2e4f7f0e0c42" name="gga57d388104d07dbb852d11d277d439302a2c8b9058af45167c4cef2e4f7f0e0c42"></a>constantmf&#160;</td><td class="fielddoc"><p >Constant membership function f(a) [Only for <a class="el" href="group__qfis.html#gga2f3f0184eca9e38c98afca2275fbe13da6be5a07806b4e50dc6aa3ce912692ad6">Sugeno</a> FIS] </p>
+</td></tr>
+<tr><td class="fieldname"><a id="gga57d388104d07dbb852d11d277d439302a3e187547bd00b7f8ef46fd105d170914" name="gga57d388104d07dbb852d11d277d439302a3e187547bd00b7f8ef46fd105d170914"></a>linearmf&#160;</td><td class="fielddoc"><p >Linear membership function f(...) [Only for <a class="el" href="group__qfis.html#gga2f3f0184eca9e38c98afca2275fbe13da6be5a07806b4e50dc6aa3ce912692ad6">Sugeno</a> FIS] </p>
+</td></tr>
+<tr><td class="fieldname"><a id="gga57d388104d07dbb852d11d277d439302ad23bd69a0c39f41ec183701ea88fca62" name="gga57d388104d07dbb852d11d277d439302ad23bd69a0c39f41ec183701ea88fca62"></a>tlinsmf&#160;</td><td class="fielddoc"><p >Tsukamoto s-shaped saturation membership function f(a,b) [Only for <a class="el" href="group__qfis.html#gga2f3f0184eca9e38c98afca2275fbe13da7b5af38242e88e34875821666e361935">Tsukamoto</a> FIS] </p>
+</td></tr>
+<tr><td class="fieldname"><a id="gga57d388104d07dbb852d11d277d439302a7e69801214edbd12464450ec32caa952" name="gga57d388104d07dbb852d11d277d439302a7e69801214edbd12464450ec32caa952"></a>tlinzmf&#160;</td><td class="fielddoc"><p >Tsukamoto linzmf membership function f(a,b) [Only for <a class="el" href="group__qfis.html#gga2f3f0184eca9e38c98afca2275fbe13da7b5af38242e88e34875821666e361935">Tsukamoto</a> FIS] </p>
+</td></tr>
+<tr><td class="fieldname"><a id="gga57d388104d07dbb852d11d277d439302a43b3471fcf257414fd73960961f71f8c" name="gga57d388104d07dbb852d11d277d439302a43b3471fcf257414fd73960961f71f8c"></a>tconcavemf&#160;</td><td class="fielddoc"><p >Tsukamoto z-shaped saturation membership function f(i,e) [Only for <a class="el" href="group__qfis.html#gga2f3f0184eca9e38c98afca2275fbe13da7b5af38242e88e34875821666e361935">Tsukamoto</a> FIS] </p>
+</td></tr>
+<tr><td class="fieldname"><a id="gga57d388104d07dbb852d11d277d439302a15d4fd087b99bfae1ad35c04a4196be4" name="gga57d388104d07dbb852d11d277d439302a15d4fd087b99bfae1ad35c04a4196be4"></a>tsigmf&#160;</td><td class="fielddoc"><p >Tsukamoto Sigmoid membership function f(a,c) [Only for <a class="el" href="group__qfis.html#gga2f3f0184eca9e38c98afca2275fbe13da7b5af38242e88e34875821666e361935">Tsukamoto</a> FIS] </p>
+</td></tr>
+<tr><td class="fieldname"><a id="gga57d388104d07dbb852d11d277d439302a5ac08b226723d99e82d613115b2fef6a" name="gga57d388104d07dbb852d11d277d439302a5ac08b226723d99e82d613115b2fef6a"></a>tsmf&#160;</td><td class="fielddoc"><p >Tsukamoto S-Shape membership function f(a,b) [Only for <a class="el" href="group__qfis.html#gga2f3f0184eca9e38c98afca2275fbe13da7b5af38242e88e34875821666e361935">Tsukamoto</a> FIS] </p>
+</td></tr>
+<tr><td class="fieldname"><a id="gga57d388104d07dbb852d11d277d439302af737be9cb431f74baa61fca9f29688c3" name="gga57d388104d07dbb852d11d277d439302af737be9cb431f74baa61fca9f29688c3"></a>tzmf&#160;</td><td class="fielddoc"><p >Tsukamoto Z-Shape membership function f(a,b) [Only for <a class="el" href="group__qfis.html#gga2f3f0184eca9e38c98afca2275fbe13da7b5af38242e88e34875821666e361935">Tsukamoto</a> FIS] </p>
+</td></tr>
+</table>
+
+</div>
+</div>
+<a id="ga933f1f7eb2e8a0ae89258ead19a61199" name="ga933f1f7eb2e8a0ae89258ead19a61199"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga933f1f7eb2e8a0ae89258ead19a61199">&#9670;&nbsp;</a></span>qFIS_Parameter_t</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="group__qfis.html#ga933f1f7eb2e8a0ae89258ead19a61199">qFIS_Parameter_t</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>An enum with the allowed parameters that can be set on a FIS instance. </p>
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="gga933f1f7eb2e8a0ae89258ead19a61199ad5608b2374924491ea4af9b47ab5440f" name="gga933f1f7eb2e8a0ae89258ead19a61199ad5608b2374924491ea4af9b47ab5440f"></a>qFIS_Implication&#160;</td><td class="fielddoc"><p >Only <a class="el" href="group__qfis.html#gga4a36da9d08e666f99234ad63ad8edea8a180a4073ca83341220b737f6ea72ab34">qFIS_MIN</a> and qFIS_PROD supported </p>
+</td></tr>
+<tr><td class="fieldname"><a id="gga933f1f7eb2e8a0ae89258ead19a61199af182b91aa583adf923b766bf0998be59" name="gga933f1f7eb2e8a0ae89258ead19a61199af182b91aa583adf923b766bf0998be59"></a>qFIS_Aggregation&#160;</td><td class="fielddoc"><p >Only <a class="el" href="group__qfis.html#gga4a36da9d08e666f99234ad63ad8edea8a87c9e76c7baa678420ecc602d3aeae14">qFIS_MAX</a>, qFIS_PROBOR and qFIS_SUM supported </p>
+</td></tr>
+<tr><td class="fieldname"><a id="gga933f1f7eb2e8a0ae89258ead19a61199aff88525fdbf6058636aea383fbc82ea9" name="gga933f1f7eb2e8a0ae89258ead19a61199aff88525fdbf6058636aea383fbc82ea9"></a>qFIS_AND&#160;</td><td class="fielddoc"><p >Only <a class="el" href="group__qfis.html#gga4a36da9d08e666f99234ad63ad8edea8a180a4073ca83341220b737f6ea72ab34">qFIS_MIN</a> and qFIS_PROD supported </p>
+</td></tr>
+<tr><td class="fieldname"><a id="gga933f1f7eb2e8a0ae89258ead19a61199ad1befb564bfac8c54233c51eac3b5122" name="gga933f1f7eb2e8a0ae89258ead19a61199ad1befb564bfac8c54233c51eac3b5122"></a>qFIS_OR&#160;</td><td class="fielddoc"><p >Only <a class="el" href="group__qfis.html#gga4a36da9d08e666f99234ad63ad8edea8a87c9e76c7baa678420ecc602d3aeae14">qFIS_MAX</a> and qFIS_PROBOR supported </p>
+</td></tr>
+<tr><td class="fieldname"><a id="gga933f1f7eb2e8a0ae89258ead19a61199a5f9c9f3a169153cc6c09f4b2ebaa23a8" name="gga933f1f7eb2e8a0ae89258ead19a61199a5f9c9f3a169153cc6c09f4b2ebaa23a8"></a>qFIS_EvalPoints&#160;</td><td class="fielddoc"><p >The number of points for de-fuzzification </p>
+</td></tr>
+</table>
+
+</div>
+</div>
+<a id="ga4a36da9d08e666f99234ad63ad8edea8" name="ga4a36da9d08e666f99234ad63ad8edea8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga4a36da9d08e666f99234ad63ad8edea8">&#9670;&nbsp;</a></span>qFIS_ParamValue_t</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="group__qfis.html#ga4a36da9d08e666f99234ad63ad8edea8">qFIS_ParamValue_t</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>An enum with the supported parameter values. </p>
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="gga4a36da9d08e666f99234ad63ad8edea8a180a4073ca83341220b737f6ea72ab34" name="gga4a36da9d08e666f99234ad63ad8edea8a180a4073ca83341220b737f6ea72ab34"></a>qFIS_MIN&#160;</td><td class="fielddoc"><p >Minimal value </p>
+</td></tr>
+<tr><td class="fieldname"><a id="gga4a36da9d08e666f99234ad63ad8edea8a17b9fce953a0105ea84a5d3ea24382ce" name="gga4a36da9d08e666f99234ad63ad8edea8a17b9fce953a0105ea84a5d3ea24382ce"></a>qFIS_PROD&#160;</td><td class="fielddoc"><p >Product </p>
+</td></tr>
+<tr><td class="fieldname"><a id="gga4a36da9d08e666f99234ad63ad8edea8a87c9e76c7baa678420ecc602d3aeae14" name="gga4a36da9d08e666f99234ad63ad8edea8a87c9e76c7baa678420ecc602d3aeae14"></a>qFIS_MAX&#160;</td><td class="fielddoc"><p >Maximum value </p>
+</td></tr>
+<tr><td class="fieldname"><a id="gga4a36da9d08e666f99234ad63ad8edea8acba3768c95dfdc791cc01eea64a58deb" name="gga4a36da9d08e666f99234ad63ad8edea8acba3768c95dfdc791cc01eea64a58deb"></a>qFIS_PROBOR&#160;</td><td class="fielddoc"><p >Probabilistic OR </p>
+</td></tr>
+<tr><td class="fieldname"><a id="gga4a36da9d08e666f99234ad63ad8edea8a02129fa1b1988846ddcaa24763ca4759" name="gga4a36da9d08e666f99234ad63ad8edea8a02129fa1b1988846ddcaa24763ca4759"></a>qFIS_SUM&#160;</td><td class="fielddoc"><p >Sum </p>
+</td></tr>
+</table>
+
+</div>
+</div>
+<a id="ga2f3f0184eca9e38c98afca2275fbe13d" name="ga2f3f0184eca9e38c98afca2275fbe13d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga2f3f0184eca9e38c98afca2275fbe13d">&#9670;&nbsp;</a></span>qFIS_Type_t</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="group__qfis.html#ga2f3f0184eca9e38c98afca2275fbe13d">qFIS_Type_t</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>An enum with the inference system types supported by qFIS. </p>
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="gga2f3f0184eca9e38c98afca2275fbe13daaaafece1969d49f7a63d07fd66937799" name="gga2f3f0184eca9e38c98afca2275fbe13daaaafece1969d49f7a63d07fd66937799"></a>Mamdani&#160;</td><td class="fielddoc"><p >Mamdani inference system. The output of each rule its a fuzzy logic set. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="gga2f3f0184eca9e38c98afca2275fbe13da6be5a07806b4e50dc6aa3ce912692ad6" name="gga2f3f0184eca9e38c98afca2275fbe13da6be5a07806b4e50dc6aa3ce912692ad6"></a>Sugeno&#160;</td><td class="fielddoc"><p >Takagi-Sugeno inference system. The output of each rule its a function either linear or constant. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="gga2f3f0184eca9e38c98afca2275fbe13da7b5af38242e88e34875821666e361935" name="gga2f3f0184eca9e38c98afca2275fbe13da7b5af38242e88e34875821666e361935"></a>Tsukamoto&#160;</td><td class="fielddoc"><p >Mamdani inference system. The output of each rule its a fuzzy logic set represented with a monotonic membership function. </p>
+</td></tr>
+</table>
+
+</div>
+</div>
+<h2 class="groupheader">Function Documentation</h2>
+<a id="ga74cf29a2008f1169fab3b56635a4c620" name="ga74cf29a2008f1169fab3b56635a4c620"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga74cf29a2008f1169fab3b56635a4c620">&#9670;&nbsp;</a></span>qFIS_DeFuzzify()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int qFIS_DeFuzzify </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structq_f_i_s__t.html">qFIS_t</a> *const&#160;</td>
+          <td class="paramname"><em>f</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Perform the de-Fuzzification operation to compute the crisp outputs. </p>
+<dl class="section note"><dt>Note</dt><dd>By default, this function, this API uses the Centroid method on <a class="el" href="group__qfis.html#gga2f3f0184eca9e38c98afca2275fbe13daaaafece1969d49f7a63d07fd66937799">Mamdani</a> type FIS and weight-average on <a class="el" href="group__qfis.html#gga2f3f0184eca9e38c98afca2275fbe13da6be5a07806b4e50dc6aa3ce912692ad6">Sugeno</a> type FIS. To change the default settings use the <a class="el" href="group__qfis.html#ga77c1447bb727d37d75a20d8d8f9f85fb" title="Change the default deFuzzification method of the FIS instance.">qFIS_SetDeFuzzMethod()</a> function. </dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">f</td><td>A pointer to the Fuzzy Inference System instance. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>1 on success, otherwise return 0. </dd></dl>
+
+</div>
+</div>
+<a id="gafeb90b7b41ef3c5b25d12bf6a2adb6e5" name="gafeb90b7b41ef3c5b25d12bf6a2adb6e5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gafeb90b7b41ef3c5b25d12bf6a2adb6e5">&#9670;&nbsp;</a></span>qFIS_Fuzzify()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int qFIS_Fuzzify </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structq_f_i_s__t.html">qFIS_t</a> *const&#160;</td>
+          <td class="paramname"><em>f</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Perform the fuzzification operation over the crisp inputs on the requested FIS object. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">f</td><td>A pointer to the Fuzzy Inference System instance. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>1 on success, otherwise return 0. </dd></dl>
+
+</div>
+</div>
+<a id="ga3c84df9b59cb1e2a66db3f57946fac94" name="ga3c84df9b59cb1e2a66db3f57946fac94"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga3c84df9b59cb1e2a66db3f57946fac94">&#9670;&nbsp;</a></span>qFIS_GetOutput()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float qFIS_GetOutput </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structq_f_i_s___output__t.html">qFIS_Output_t</a> *const&#160;</td>
+          <td class="paramname"><em>v</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const qFIS_Tag_t&#160;</td>
+          <td class="paramname"><em>t</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Get the de-fuzzified crisp value from the the output with the specified tag. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">v</td><td>An array with the FIS inputs as a <a class="el" href="structq_f_i_s___output__t.html" title="A FIS Output object.">qFIS_Output_t</a> array. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">t</td><td>The output tag </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The requested de-fuzzified crips value. </dd></dl>
+
+</div>
+</div>
+<a id="ga471e4559534e3fe726a895bc4466e05e" name="ga471e4559534e3fe726a895bc4466e05e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga471e4559534e3fe726a895bc4466e05e">&#9670;&nbsp;</a></span>qFIS_Inference()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int qFIS_Inference </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structq_f_i_s__t.html">qFIS_t</a> *const&#160;</td>
+          <td class="paramname"><em>f</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Perform the inference process on the requested FIS object. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">f</td><td>A pointer to the Fuzzy Inference System instance. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>1 on success, otherwise return 0. </dd></dl>
+
+</div>
+</div>
+<a id="ga9157fd772255f73e6b5aca365986068a" name="ga9157fd772255f73e6b5aca365986068a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga9157fd772255f73e6b5aca365986068a">&#9670;&nbsp;</a></span>qFIS_InputSetup()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int qFIS_InputSetup </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structq_f_i_s___input__t.html">qFIS_Input_t</a> *const&#160;</td>
+          <td class="paramname"><em>v</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const qFIS_Tag_t&#160;</td>
+          <td class="paramname"><em>t</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const float&#160;</td>
+          <td class="paramname"><em>min</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const float&#160;</td>
+          <td class="paramname"><em>max</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Setup the input with the specified tag and set limits for it. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">v</td><td>An array with the FIS inputs as a <a class="el" href="structq_f_i_s___input__t.html" title="A FIS Input object.">qFIS_Input_t</a> array. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">t</td><td>The input tag </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">min</td><td>Minimum allowed value for this input </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">max</td><td>Max allowed value for this input </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>1 on success, otherwise return 0. </dd></dl>
+
+</div>
+</div>
+<a id="gae2f10a746a4e19752a985e6892132a80" name="gae2f10a746a4e19752a985e6892132a80"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gae2f10a746a4e19752a985e6892132a80">&#9670;&nbsp;</a></span>qFIS_OutputSetup()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int qFIS_OutputSetup </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structq_f_i_s___output__t.html">qFIS_Output_t</a> *const&#160;</td>
+          <td class="paramname"><em>v</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const qFIS_Tag_t&#160;</td>
+          <td class="paramname"><em>t</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const float&#160;</td>
+          <td class="paramname"><em>min</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const float&#160;</td>
+          <td class="paramname"><em>max</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Setup the output with the specified tag and set limits for it. </p>
+<dl class="section note"><dt>Note</dt><dd>limits do not apply in <a class="el" href="group__qfis.html#gga2f3f0184eca9e38c98afca2275fbe13da6be5a07806b4e50dc6aa3ce912692ad6">Sugeno</a> outputs </dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">v</td><td>An array with the FIS outputs inputs as a <a class="el" href="structq_f_i_s___output__t.html" title="A FIS Output object.">qFIS_Output_t</a> array. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">t</td><td>The output tag </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">min</td><td>Minimum allowed value for this output </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">max</td><td>Max allowed value for this output </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>1 on success, otherwise return 0. </dd></dl>
+
+</div>
+</div>
+<a id="ga77c1447bb727d37d75a20d8d8f9f85fb" name="ga77c1447bb727d37d75a20d8d8f9f85fb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga77c1447bb727d37d75a20d8d8f9f85fb">&#9670;&nbsp;</a></span>qFIS_SetDeFuzzMethod()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int qFIS_SetDeFuzzMethod </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structq_f_i_s__t.html">qFIS_t</a> *const&#160;</td>
+          <td class="paramname"><em>f</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="group__qfis.html#gaedbcaf3cb5c4b57eb1f44f4dea0f1a72">qFIS_DeFuzz_Method_t</a>&#160;</td>
+          <td class="paramname"><em>m</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Change the default deFuzzification method of the FIS instance. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">f</td><td>A pointer to the Fuzzy Inference System instance. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">m</td><td>The de-fuzzification method: use one of the following : <a class="el" href="group__qfis.html#ggaedbcaf3cb5c4b57eb1f44f4dea0f1a72a6fb78ba59773ac48c2709d20df1ebefd">centroid</a>, <a class="el" href="group__qfis.html#ggaedbcaf3cb5c4b57eb1f44f4dea0f1a72a5f0b55cf3261a197a8d0212f90669e35">bisector</a>, <a class="el" href="group__qfis.html#ggaedbcaf3cb5c4b57eb1f44f4dea0f1a72a91e435ff054716e32ac834ddfdf8ece9">mom</a>, <a class="el" href="group__qfis.html#ggaedbcaf3cb5c4b57eb1f44f4dea0f1a72a58713f014a11fca36091e803ff431b04">lom</a>, <a class="el" href="group__qfis.html#ggaedbcaf3cb5c4b57eb1f44f4dea0f1a72ab1088c07d3cf9e75c6e7fbd84bd759c4">som</a>, <a class="el" href="group__qfis.html#ggaedbcaf3cb5c4b57eb1f44f4dea0f1a72a8d62125ef3bf552069d621be0af68f5e">wtaver</a>, <a class="el" href="group__qfis.html#ggaedbcaf3cb5c4b57eb1f44f4dea0f1a72a442dbe21e1b302813ac2a42e552a72a0">wtsum</a> </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section note"><dt>Note</dt><dd><a class="el" href="group__qfis.html#ggaedbcaf3cb5c4b57eb1f44f4dea0f1a72a6fb78ba59773ac48c2709d20df1ebefd">centroid</a>, <a class="el" href="group__qfis.html#ggaedbcaf3cb5c4b57eb1f44f4dea0f1a72a5f0b55cf3261a197a8d0212f90669e35">bisector</a>, <a class="el" href="group__qfis.html#ggaedbcaf3cb5c4b57eb1f44f4dea0f1a72a91e435ff054716e32ac834ddfdf8ece9">mom</a>, <a class="el" href="group__qfis.html#ggaedbcaf3cb5c4b57eb1f44f4dea0f1a72a58713f014a11fca36091e803ff431b04">lom</a> and <a class="el" href="group__qfis.html#ggaedbcaf3cb5c4b57eb1f44f4dea0f1a72ab1088c07d3cf9e75c6e7fbd84bd759c4">som</a> only apply for a <a class="el" href="group__qfis.html#gga2f3f0184eca9e38c98afca2275fbe13daaaafece1969d49f7a63d07fd66937799">Mamdani</a> FIS </dd>
+<dd>
+<a class="el" href="group__qfis.html#ggaedbcaf3cb5c4b57eb1f44f4dea0f1a72a8d62125ef3bf552069d621be0af68f5e">wtaver</a> and <a class="el" href="group__qfis.html#ggaedbcaf3cb5c4b57eb1f44f4dea0f1a72a442dbe21e1b302813ac2a42e552a72a0">wtsum</a> only apply for a <a class="el" href="group__qfis.html#gga2f3f0184eca9e38c98afca2275fbe13da6be5a07806b4e50dc6aa3ce912692ad6">Sugeno</a> FIS. </dd>
+<dd>
+<a class="el" href="group__qfis.html#ggaedbcaf3cb5c4b57eb1f44f4dea0f1a72a8d62125ef3bf552069d621be0af68f5e">wtaver</a> only apply for a <a class="el" href="group__qfis.html#gga2f3f0184eca9e38c98afca2275fbe13da7b5af38242e88e34875821666e361935">Tsukamoto</a> FIS </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>1 on success, otherwise return 0. </dd></dl>
+
+</div>
+</div>
+<a id="gadc51ab655860a45c7ecb535c7a6c0b52" name="gadc51ab655860a45c7ecb535c7a6c0b52"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gadc51ab655860a45c7ecb535c7a6c0b52">&#9670;&nbsp;</a></span>qFIS_SetInput()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int qFIS_SetInput </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structq_f_i_s___input__t.html">qFIS_Input_t</a> *const&#160;</td>
+          <td class="paramname"><em>v</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const qFIS_Tag_t&#160;</td>
+          <td class="paramname"><em>t</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const float&#160;</td>
+          <td class="paramname"><em>value</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Set a crisp value of the input with the specified tag. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">v</td><td>An array with the FIS inputs as a <a class="el" href="structq_f_i_s___input__t.html" title="A FIS Input object.">qFIS_Input_t</a> array. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">t</td><td>The input tag </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">value</td><td>The crisp value to set </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>1 on success, otherwise return 0. </dd></dl>
+
+</div>
+</div>
+<a id="gad187010550dc9d983c589f6dd9fa971c" name="gad187010550dc9d983c589f6dd9fa971c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gad187010550dc9d983c589f6dd9fa971c">&#9670;&nbsp;</a></span>qFIS_SetMF()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int qFIS_SetMF </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structq_f_i_s___m_f__t.html">qFIS_MF_t</a> *const&#160;</td>
+          <td class="paramname"><em>m</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const qFIS_Tag_t&#160;</td>
+          <td class="paramname"><em>io</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const qFIS_Tag_t&#160;</td>
+          <td class="paramname"><em>mf</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="group__qfis.html#ga57d388104d07dbb852d11d277d439302">qFIS_MF_Name_t</a>&#160;</td>
+          <td class="paramname"><em>s</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">qFIS_MF_Fcn_t&#160;</td>
+          <td class="paramname"><em>custom_mf</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const float *&#160;</td>
+          <td class="paramname"><em>cp</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const float&#160;</td>
+          <td class="paramname"><em>h</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Set the IO tag and points for the specified membership function. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">m</td><td>An array with the required membership functions as <a class="el" href="structq_f_i_s___m_f__t.html" title="A FIS Membership Function.">qFIS_MF_t</a> objects. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">io</td><td>The I/O tag related with this membership function </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">mf</td><td>The user-defined tag for this membership function </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">s</td><td>The wanted shape/form for this membership function, cam be one of the following: <a class="el" href="group__qfis.html#gga57d388104d07dbb852d11d277d439302a8f91868e5f151b88a97174ac79cbc6b9">trimf</a>, <a class="el" href="group__qfis.html#gga57d388104d07dbb852d11d277d439302a7676242f70c14c24cddeb8ee5bedf094">trapmf</a>, <a class="el" href="group__qfis.html#gga57d388104d07dbb852d11d277d439302ab211a8a8f9c9933e4ee7f2738684e8d3">gbellmf</a>, <a class="el" href="group__qfis.html#gga57d388104d07dbb852d11d277d439302af622ac933207179e7864deb02eb3aa29">gaussmf</a>, <a class="el" href="group__qfis.html#gga57d388104d07dbb852d11d277d439302a4d57e0dc8df50e01b5912fcf06ac9af7">gauss2mf</a>, <a class="el" href="group__qfis.html#gga57d388104d07dbb852d11d277d439302a26b5b0fec349f4dd75ea138509c7f9bc">sigmf</a>, <a class="el" href="group__qfis.html#gga57d388104d07dbb852d11d277d439302aff5a8ec6d6ec62d577ca656cfe4fc85a">dsigmf</a>, <a class="el" href="group__qfis.html#gga57d388104d07dbb852d11d277d439302ab0662075b7e1fe69127012a8963f3ae1">psigmf</a>, <a class="el" href="group__qfis.html#gga57d388104d07dbb852d11d277d439302a2ebaaf5da9f4f9658a77cbb7b955fde4">pimf</a>, <a class="el" href="group__qfis.html#gga57d388104d07dbb852d11d277d439302a1b9910ce8deaabf94e74eb0228f165fc">smf</a>, <a class="el" href="group__qfis.html#gga57d388104d07dbb852d11d277d439302a18ef4cfb7704044a8fae2f7edea657dd">zmf</a>, <a class="el" href="group__qfis.html#gga57d388104d07dbb852d11d277d439302a517ec5d7ed4ba84016d6d5d5963584b7">singletonmf</a>, <a class="el" href="group__qfis.html#gga57d388104d07dbb852d11d277d439302aa8c90d32cef75c377abaacb0aeaacab7">concavemf</a>, <a class="el" href="group__qfis.html#gga57d388104d07dbb852d11d277d439302ab52e90d79ad862c0608aa3c228300e09">spikemf</a>, <a class="el" href="group__qfis.html#gga57d388104d07dbb852d11d277d439302a1b7f254eb17ba94e97a9fe60fb7bf09b">linsmf</a>, <a class="el" href="group__qfis.html#gga57d388104d07dbb852d11d277d439302a50279291d8a418eb06941a1f5208d1aa">linzmf</a>, <a class="el" href="group__qfis.html#gga57d388104d07dbb852d11d277d439302a72d1cca9c64d5a0ff1ef5f931713d74e">rectmf</a>, <a class="el" href="group__qfis.html#gga57d388104d07dbb852d11d277d439302af419a1c2ca368381483a582cd2527eff">cosmf</a>. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section note"><dt>Note</dt><dd>For <a class="el" href="group__qfis.html#gga2f3f0184eca9e38c98afca2275fbe13da6be5a07806b4e50dc6aa3ce912692ad6">Sugeno</a> FIS, an output membership function should be one of the following: <a class="el" href="group__qfis.html#gga57d388104d07dbb852d11d277d439302a2c8b9058af45167c4cef2e4f7f0e0c42">constantmf</a>, <a class="el" href="group__qfis.html#gga57d388104d07dbb852d11d277d439302a3e187547bd00b7f8ef46fd105d170914">linearmf</a>. </dd>
+<dd>
+For <a class="el" href="group__qfis.html#gga2f3f0184eca9e38c98afca2275fbe13da7b5af38242e88e34875821666e361935">Tsukamoto</a> FIS, an output membership function should be one the following monotonic functions : <a class="el" href="group__qfis.html#gga57d388104d07dbb852d11d277d439302ad23bd69a0c39f41ec183701ea88fca62">tlinsmf</a>, <a class="el" href="group__qfis.html#gga57d388104d07dbb852d11d277d439302a7e69801214edbd12464450ec32caa952">tlinzmf</a>, <a class="el" href="group__qfis.html#gga57d388104d07dbb852d11d277d439302a5ac08b226723d99e82d613115b2fef6a">tsmf</a>, <a class="el" href="group__qfis.html#gga57d388104d07dbb852d11d277d439302af737be9cb431f74baa61fca9f29688c3">tzmf</a>, <a class="el" href="group__qfis.html#gga57d388104d07dbb852d11d277d439302a43b3471fcf257414fd73960961f71f8c">tconcavemf</a> </dd>
+<dd>
+To set a custom user-defined membership function, set this argument as <a class="el" href="group__qfis.html#gga57d388104d07dbb852d11d277d439302a59077554a504ca1e69784f650fbd8952">custommf</a> and pass a pointer to the desired function on the <em>custom_mf</em> argument. </dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">custom_mf</td><td>Custom user-defined membership function. To ignore pass NULL as argument. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">cp</td><td>Points or coefficients of the membership function. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">h</td><td>Height of the membership function. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section note"><dt>Note</dt><dd>Heigth parameter <em>h</em> does not apply for output membership functions on <a class="el" href="group__qfis.html#gga2f3f0184eca9e38c98afca2275fbe13da6be5a07806b4e50dc6aa3ce912692ad6">Sugeno</a> and <a class="el" href="group__qfis.html#gga2f3f0184eca9e38c98afca2275fbe13da7b5af38242e88e34875821666e361935">Tsukamoto</a> inference systems. [ 0 &lt;= h &lt;= 1] </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>1 on success, otherwise return 0. </dd></dl>
+
+</div>
+</div>
+<a id="gafd1779c21247298e6ea9a2b5934a8e52" name="gafd1779c21247298e6ea9a2b5934a8e52"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gafd1779c21247298e6ea9a2b5934a8e52">&#9670;&nbsp;</a></span>qFIS_SetParameter()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int qFIS_SetParameter </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structq_f_i_s__t.html">qFIS_t</a> *const&#160;</td>
+          <td class="paramname"><em>f</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="group__qfis.html#ga933f1f7eb2e8a0ae89258ead19a61199">qFIS_Parameter_t</a>&#160;</td>
+          <td class="paramname"><em>p</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="group__qfis.html#ga4a36da9d08e666f99234ad63ad8edea8">qFIS_ParamValue_t</a>&#160;</td>
+          <td class="paramname"><em>x</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Set parameters of the FIS instance. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">f</td><td>A pointer to the Fuzzy Inference System instance. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">p</td><td>The requested parameter to change/set. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">x</td><td>The value of the parameter to set. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>1 on success, otherwise return 0. </dd></dl>
+
+</div>
+</div>
+<a id="gad48fca6d1233a283d167012b5fe84c9b" name="gad48fca6d1233a283d167012b5fe84c9b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gad48fca6d1233a283d167012b5fe84c9b">&#9670;&nbsp;</a></span>qFIS_SetRuleWeights()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int qFIS_SetRuleWeights </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structq_f_i_s__t.html">qFIS_t</a> *const&#160;</td>
+          <td class="paramname"><em>f</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float *&#160;</td>
+          <td class="paramname"><em>rWeights</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Set weights to the rules of the inference system. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">f</td><td>A pointer to the Fuzzy Inference System instance. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">rWeights</td><td>An array with the values of every rule weight; </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>1 on success, otherwise return 0. </dd></dl>
+
+</div>
+</div>
+<a id="gaae3433474a516fbf41e0e406fe41410b" name="gaae3433474a516fbf41e0e406fe41410b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gaae3433474a516fbf41e0e406fe41410b">&#9670;&nbsp;</a></span>qFIS_Setup()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int qFIS_Setup </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structq_f_i_s__t.html">qFIS_t</a> *const&#160;</td>
+          <td class="paramname"><em>f</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="group__qfis.html#ga2f3f0184eca9e38c98afca2275fbe13d">qFIS_Type_t</a>&#160;</td>
+          <td class="paramname"><em>t</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structq_f_i_s___input__t.html">qFIS_Input_t</a> *const&#160;</td>
+          <td class="paramname"><em>inputs</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const size_t&#160;</td>
+          <td class="paramname"><em>ni</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structq_f_i_s___output__t.html">qFIS_Output_t</a> *const&#160;</td>
+          <td class="paramname"><em>outputs</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const size_t&#160;</td>
+          <td class="paramname"><em>no</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structq_f_i_s___m_f__t.html">qFIS_MF_t</a> *const&#160;</td>
+          <td class="paramname"><em>mf_inputs</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const size_t&#160;</td>
+          <td class="paramname"><em>nmi</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structq_f_i_s___m_f__t.html">qFIS_MF_t</a> *const&#160;</td>
+          <td class="paramname"><em>mf_outputs</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const size_t&#160;</td>
+          <td class="paramname"><em>nmo</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="group__qfis.html#ga07efc356794273b23e2d469e8e4d882e">qFIS_Rules_t</a> *const&#160;</td>
+          <td class="paramname"><em>r</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float *&#160;</td>
+          <td class="paramname"><em>wi</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const size_t&#160;</td>
+          <td class="paramname"><em>n</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Setup and initialize the FIS instance. </p>
+<dl class="section note"><dt>Note</dt><dd>Default configuration : AND = Min, OR = Max, Implication = Min Aggregation = Max, EvalPoints = 100 </dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">f</td><td>A pointer to the Fuzzy Inference System instance. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">t</td><td>Type of inference <a class="el" href="group__qfis.html#gga2f3f0184eca9e38c98afca2275fbe13daaaafece1969d49f7a63d07fd66937799">Mamdani</a>, <a class="el" href="group__qfis.html#gga2f3f0184eca9e38c98afca2275fbe13da6be5a07806b4e50dc6aa3ce912692ad6">Sugeno</a> or <a class="el" href="group__qfis.html#gga2f3f0184eca9e38c98afca2275fbe13da7b5af38242e88e34875821666e361935">Tsukamoto</a>. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">inputs</td><td>An array with all the system inputs as <a class="el" href="structq_f_i_s___input__t.html" title="A FIS Input object.">qFIS_Input_t</a> objects. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">ni</td><td>The number of bytes used by <em>inputs</em>. Use the sizeof operator. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">outputs</td><td>An array with all the system outputs as <a class="el" href="structq_f_i_s___output__t.html" title="A FIS Output object.">qFIS_Output_t</a> objects. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">no</td><td>The number of bytes used by <em>inputs</em>. Use the sizeof operator. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">mf_inputs</td><td>An array with all the membership functions related to the inputs. This should be an array of <a class="el" href="structq_f_i_s___m_f__t.html" title="A FIS Membership Function.">qFIS_MF_t</a> objects. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">nmi</td><td>The number of bytes used by <em>mf_inputs</em>. Use the sizeof operator. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">mf_outputs</td><td>An array with all the membership functions related to the outputs. This should be an array of <a class="el" href="structq_f_i_s___m_f__t.html" title="A FIS Membership Function.">qFIS_MF_t</a> objects. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">nmo</td><td>The number of bytes used by <em>mf_outputs</em>. Use the sizeof operator. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">r</td><td>The rules set. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">wi</td><td>An array of size <em>n</em> were the rule strengths will be stored. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">n</td><td>Number of rules </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>1 on success, otherwise return 0. </dd></dl>
+
+</div>
+</div>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.2 </li>
+  </ul>
+</div>
+</body>
+</html>

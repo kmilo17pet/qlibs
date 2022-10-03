@@ -1,0 +1,400 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.2"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<!-- BEGIN opengraph metadata -->
+<meta property="og:title" content="Doxygen Awesome" />
+<meta property="og:image" content="https://repository-images.githubusercontent.com/348492097/4f16df80-88fb-11eb-9d31-4015ff22c452" />
+<meta property="og:description" content="Custom CSS theme for doxygen html-documentation with lots of customization parameters." />
+<meta property="og:url" content="https://jothepro.github.io/doxygen-awesome-css/" />
+<!-- END opengraph metadata -->
+<!-- BEGIN twitter metadata -->
+<meta name="twitter:image:src" content="https://repository-images.githubusercontent.com/348492097/4f16df80-88fb-11eb-9d31-4015ff22c452" />
+<meta name="twitter:title" content="Doxygen Awesome" />
+<meta name="twitter:description" content="Custom CSS theme for doxygen html-documentation with lots of customization parameters." />
+<!-- END twitter metadata -->
+<title>API Reference: Fuzzy Inference System Engine</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link rel="icon" type="image/svg+xml" href="logo.drawio.svg"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="doxygen-awesome-darkmode-toggle.js"></script>
+<script type="text/javascript" src="doxygen-awesome-fragment-copy-button.js"></script>
+<script type="text/javascript" src="doxygen-awesome-paragraph-link.js"></script>
+<script type="text/javascript" src="doxygen-awesome-interactive-toc.js"></script>
+<script type="text/javascript" src="toggle-alternative-theme.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeFragmentCopyButton.init()
+    DoxygenAwesomeDarkModeToggle.init()
+    DoxygenAwesomeParagraphLink.init()
+    DoxygenAwesomeInteractiveToc.init()
+</script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  extensions: ["tex2jax.js"],
+  jax: ["input/TeX","output/HTML-CSS"],
+});
+</script>
+<script type="text/javascript" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
+<link href="custom.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only-darkmode-toggle.css" rel="stylesheet" type="text/css"/>
+<link href="custom-alternative.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<!-- https://tholman.com/github-corners/ -->
+<a href="https://github.com/jothepro/doxygen-awesome-css" class="github-corner" title="View source on GitHub" target="_blank">
+    <svg viewBox="0 0 250 250" width="40" height="40" style="position: absolute; top: 0; border: 0; right: 0; z-index: 99;" aria-hidden="true">
+    <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="qlibs_logo.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">API Reference
+   &#160;<span id="projectnumber">v1.2</span>
+   </div>
+   <div id="projectbrief">A collection of useful libraries for embedded systems</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generated by Doxygen 1.9.2 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search",'Search','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Search');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('qfis_desc.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div><div class="header">
+  <div class="headertitle"><div class="title">Fuzzy Inference System Engine </div></div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><p >The <a class="el" href="group__qfis.html">qFIS</a> Fuzzy Inference System engine provides an API for building and evaluation of type-1 fuzzy logic systems. You can tune membership functions and rules easily.</p>
+<p >The types of inferences supported by qFIS are listed in the <a class="el" href="group__qfis.html#ga2f3f0184eca9e38c98afca2275fbe13d">qFIS_Type_t</a> and are detailed below:</p>
+<ul>
+<li><b> Mamdani Fuzzy Inference Systems </b></li>
+</ul>
+<p >In a Mamdani system, the output of each rule is a fuzzy set. Since Mamdani systems have more intuitive and easier to understand rule bases, they are well-suited to expert system applications where the rules are created from human expert knowledge.</p>
+<p >The output of each rule is a fuzzy set derived from the output membership function and the implication method of the FIS. These output fuzzy sets are combined into a single fuzzy set using the aggregation method of the FIS. Then, to compute a final crisp output value, the combined output fuzzy set is defuzzified using one of the methods described in Defuzzification Methods.</p>
+<ul>
+<li><b> Sugeno Fuzzy Inference Systems </b></li>
+</ul>
+<p >Sugeno fuzzy inference, also referred to as Takagi-Sugeno-Kang fuzzy inference, uses singleton output membership functions that are either constant or a linear function of the input values. The defuzzification process for a Sugeno system is more computationally efficient compared to that of a Mamdani system, since it uses a weighted average or weighted sum of a few data points rather than computing the centroid of a two-dimensional area.</p>
+<p >Each rule generates two values:</p>
+<p >\(z_i\) Rule output level, which is either a constant value or a linear function of the input values.</p>
+<p >and \(w_i\), the rule firing strength, is determined by the rule antecedent</p>
+<p >The output of each rule is the weighted output level, which is the product of \(w_i\) and \(z_i\).</p>
+<p >The final output of the system is the weighted average/sum over all rule outputs:</p>
+<p >\(out= \frac{ \sum_{i=1}^{N}w_{i}z_{i} }{ \sum_{i=1}^{N}w_{i}} \)</p>
+<p >where \(N\) is the number of rules.</p>
+<p >Because of the linear dependence of each rule on the input variables, the Sugeno method is ideal for acting as an interpolating supervisor of multiple linear controllers that are to be applied, respectively, to different operating conditions of a dynamic nonlinear system.</p>
+<ul>
+<li><b> Tsukamoto Fuzzy Inference Systems </b></li>
+</ul>
+<p >In the Tsukamoto inference system, the consequent of each fuzzy if-then rule is represented by a fuzzy set with a monotonical membership function, As a result, the inferred output of each rule is defined as a crisp value induced by the rule's firing strength.</p>
+<p >The overall output is taken as the weighted average of each rule's output. Since each rule infers a crisp output, the Tsukamoto fuzzy model aggregates each rule's output by the method of weighted average and thus avoids the time-consuming process of defuzzification.</p>
+<p ><b> Comparision among supported Inference Systems</b></p>
+<div class="image">
+<img src="https://user-images.githubusercontent.com/11412210/192664066-ab40cb04-a36f-4b49-9c14-cc34a4683f43.jpg" alt="" width="50%"/>
+</div>
+<p ><b> Defuzzification Methods </b></p>
+<p >qFIS supports five different methods, as listed in the <a class="el" href="group__qfis.html#gaedbcaf3cb5c4b57eb1f44f4dea0f1a72">qFIS_DeFuzz_Method_t</a> type for computing a single crisp output value for such a fuzzy set.</p>
+<ol type="1">
+<li>Centroid : this method applies only to Mamdani systems and returns the center of gravity of the fuzzy set along the x-axis. If you think of the area as a plate with uniform thickness and density, the centroid is the point along the x-axis about which the fuzzy set would balance. The centroid is computed using the following formula, where \(\mu(x)\) is the membership value for point \(x_i\) in the universe of discourse.</li>
+</ol>
+<p >\(\text{centroid}= \frac{ \sum_{i=1}\mu(x_{i})x_{i} }{ \sum_{i=1}\mu(x_{i})} \)</p>
+<ol type="1">
+<li>Bisector : this method applies only for Mamdani systems and finds the vertical line that divides the fuzzy set into two sub-regions of equal area. It is sometimes, but not always, coincident with the centroid line.</li>
+<li>MOM : Middle of Maximum. Only for Mamdani systems.</li>
+<li>SOM : Smallest of Maximum. Only for Mamdani systems.</li>
+<li>LOM : Largest of Maximum. Only for Mamdani systems.</li>
+<li>WtAver: Weighted average of all rule outputs. this method applies only for Sugeno and Tsukamoto systems.</li>
+<li>WtSum: Weighted sum of all rule outputs. This method applies only for Sugeno and Tsukamoto systems.</li>
+</ol>
+<p ><b> Building a Mamdani FIS </b></p>
+<p >To carry the FIS building process in a more friendly way, we are going to explain it with a particular example.</p>
+<p >This example goal is to solve the tipping problem, and its described as follows:</p>
+<p >Given a number from 0 through 10 that represents the quality of service at a restaurant, where 10 is excellent, and another number from 0 through 10 that represents the quality of the food, where 10 is delicious, what should the tip be?</p>
+<p >Tipping behavior varies depending on local traditions and personal preferences. In this example, the problem is based on tipping as it is typically practiced in the United States. An average tip for a meal in the US is 15%. A generous tip could be as high as 25% and a cheap tip could be 5%.</p>
+<p >The actual amount of the tip can vary depending on the quality of the service and food.</p>
+<p >To solve this problem using fuzzy logic, first capture the essentials of the desired tipping behavior, leaving aside all the factors that could be arbitrary.</p>
+<p >After analyzing this problem, the tipping behavior is defined using the following three rules.</p>
+<ol type="1">
+<li>If the service is poor or the food is rancid, then the tip is cheap.</li>
+<li>If the service is good, then the tip is average.</li>
+<li>If the service is excellent or the food is delicious, then the tip is generous.</li>
+</ol>
+<p >This leads to a system with 2 inputs</p>
+<ol type="1">
+<li>service</li>
+<li>food</li>
+</ol>
+<p >and 1 output: tip</p>
+<div class="image">
+<img src="https://www.mathworks.com/help/examples/fuzzy/win64/BuildMamdaniSystemsAtTheCommandLineExample_01.png" alt=""/>
+</div>
+<p >5 membership functions for the inputs</p>
+<ol type="1">
+<li>(service)poor : A gaussian membership function with spread of 1.5 and center on 0</li>
+<li>(service)good : A gaussian membership function with spread of 1.5 and center on 5</li>
+<li>(service)excelent : A gaussian membership function with spread of 1.5 and center on 10</li>
+<li>(food)rancid : A trapezoidal membership function with points located on [0 0 1 3]</li>
+<li>(food)delicious : A trapezoidal membership function with points located on [7 9 10 10]</li>
+</ol>
+<div class="image">
+<img src="https://www.mathworks.com/help/examples/fuzzy/win64/BuildMamdaniSystemsAtTheCommandLineExample_02.png" alt=""/>
+</div>
+<p >and 3 membership functions for the output</p>
+<ol type="1">
+<li>(tip)cheap : A triangular membership function with points located on [0 5 10]</li>
+<li>(tip)average : A triangular membership function with points located on [10 15 20]</li>
+<li>(tip)generous : A triangular membership function with points located on [20 25 30]</li>
+</ol>
+<div class="image">
+<img src="https://www.mathworks.com/help/examples/fuzzy/win64/BuildMamdaniSystemsAtTheCommandLineExample_03.png" alt=""/>
+</div>
+<p >To build a fuzzy system, you must first instantiate an abstract object of type <a class="el" href="structq_f_i_s__t.html">qFIS_t</a> that represents the fuzzy inference system, then the input and output vectors, fuzzy set vectors for inputs and outputs, and enumerations with the tags for all of them. Let's take a look :</p>
+<div class="fragment"><div class="line"><span class="comment">// FIS Object</span></div>
+<div class="line"><span class="keyword">static</span> <a class="code hl_struct" href="structq_f_i_s__t.html">qFIS_t</a> tipper;</div>
+<div class="line"><span class="comment">// I/O Fuzzy Objects</span></div>
+<div class="line"><span class="keyword">static</span> qFIS_IO_t tipper_inputs[2], tipper_outputs[1];</div>
+<div class="line"><span class="comment">// I/O Membership Objects</span></div>
+<div class="line"><span class="keyword">static</span> <a class="code hl_struct" href="structq_f_i_s___m_f__t.html">qFIS_MF_t</a> MFin[5], MFout[3];</div>
+<div class="line"><span class="comment">// I/O Names</span></div>
+<div class="line"><span class="keyword">enum</span> { service, food};</div>
+<div class="line"><span class="keyword">enum</span> { tip};</div>
+<div class="line"><span class="comment">// I/O Membership functions tags</span></div>
+<div class="line"><span class="keyword">enum</span> { service_poor, service_good, service_excellent, food_rancid, food_delicious};</div>
+<div class="line"><span class="keyword">enum</span> { tip_cheap, tip_average, tip_generous};</div>
+<div class="ttc" id="astructq_f_i_s___m_f__t_html"><div class="ttname"><a href="structq_f_i_s___m_f__t.html">qFIS_MF_t</a></div><div class="ttdoc">A FIS Membership Function.</div><div class="ttdef"><b>Definition:</b> qfis.h:161</div></div>
+<div class="ttc" id="astructq_f_i_s__t_html"><div class="ttname"><a href="structq_f_i_s__t.html">qFIS_t</a></div><div class="ttdoc">A FIS(Fuzzy Inference System) object.</div><div class="ttdef"><b>Definition:</b> qfis.h:202</div></div>
+</div><!-- fragment --><p >Please note that all tag names are unique. Then we will define the rules of the fuzzy system using the previously defined tags. Rules should be defined through an array of type <a class="el" href="group__qfis.html#ga07efc356794273b23e2d469e8e4d882e">qFIS_Rules_t</a> and the contents should be rules constructed with the provided statements:</p>
+<ul>
+<li><a class="el" href="group__qfis.html#gadd5af13b8fd13530a1a481cec2ef0637">QFIS_RULES_BEGIN</a> to start the rules set</li>
+<li><a class="el" href="group__qfis.html#ga80454033f67a79247305ba0a18d98247">QFIS_RULES_END</a> to end the rules set</li>
+<li><a class="el" href="group__qfis.html#gac138c68a0709c57bc5f7567abc1558eb">IF</a> to start a rule sentence</li>
+<li><a class="el" href="group__qfis.html#ga29fd18bed01c4d836c7ebfe73a125c3f">END</a> to end a rule sentence</li>
+<li><a class="el" href="group__qfis.html#gacd1b97556dfbbac61063a63031d2f91d">AND</a> and <a class="el" href="group__qfis.html#ga3363ca4d6d3cc0230b2804280591c991">OR</a> fuzzy connectors</li>
+<li><a class="el" href="group__qfis.html#gad28e1b10e158ae134bb6fa3bb2f34a06">IS</a> and <a class="el" href="group__qfis.html#gab3262baea101d64a3d11969b9dd2e78d">IS_NOT</a> to represent a premise and a negated premise respectively.</li>
+<li><a class="el" href="group__qfis.html#gad9884c43f4f50a5852711a614f2343ac">THEN</a> to represent the implication</li>
+</ul>
+<p >Let's apply some of these statements to build the rule set.</p>
+<div class="fragment"><div class="line"><span class="keyword">static</span> <span class="keyword">const</span> <a class="code hl_typedef" href="group__qfis.html#ga07efc356794273b23e2d469e8e4d882e">qFIS_Rules_t</a> rules[] = { </div>
+<div class="line">    <a class="code hl_define" href="group__qfis.html#gadd5af13b8fd13530a1a481cec2ef0637">QFIS_RULES_BEGIN</a></div>
+<div class="line">       <a class="code hl_define" href="group__qfis.html#gac138c68a0709c57bc5f7567abc1558eb">IF</a> service <a class="code hl_define" href="group__qfis.html#gad28e1b10e158ae134bb6fa3bb2f34a06">IS</a> service_poor <a class="code hl_define" href="group__qfis.html#ga3363ca4d6d3cc0230b2804280591c991">OR</a> food <a class="code hl_define" href="group__qfis.html#gad28e1b10e158ae134bb6fa3bb2f34a06">IS</a> food_rancid <a class="code hl_define" href="group__qfis.html#gad9884c43f4f50a5852711a614f2343ac">THEN</a> tip <a class="code hl_define" href="group__qfis.html#gad28e1b10e158ae134bb6fa3bb2f34a06">IS</a> tip_cheap <a class="code hl_define" href="group__qfis.html#ga29fd18bed01c4d836c7ebfe73a125c3f">END</a></div>
+<div class="line">       <a class="code hl_define" href="group__qfis.html#gac138c68a0709c57bc5f7567abc1558eb">IF</a> service <a class="code hl_define" href="group__qfis.html#gad28e1b10e158ae134bb6fa3bb2f34a06">IS</a> service_good <a class="code hl_define" href="group__qfis.html#gad9884c43f4f50a5852711a614f2343ac">THEN</a> tip <a class="code hl_define" href="group__qfis.html#gad28e1b10e158ae134bb6fa3bb2f34a06">IS</a> tip_average <a class="code hl_define" href="group__qfis.html#ga29fd18bed01c4d836c7ebfe73a125c3f">END</a></div>
+<div class="line">       <a class="code hl_define" href="group__qfis.html#gac138c68a0709c57bc5f7567abc1558eb">IF</a> service <a class="code hl_define" href="group__qfis.html#gad28e1b10e158ae134bb6fa3bb2f34a06">IS</a> service_excellent <a class="code hl_define" href="group__qfis.html#ga3363ca4d6d3cc0230b2804280591c991">OR</a> food <a class="code hl_define" href="group__qfis.html#gad28e1b10e158ae134bb6fa3bb2f34a06">IS</a> food_delicious <a class="code hl_define" href="group__qfis.html#gad9884c43f4f50a5852711a614f2343ac">THEN</a> tip <a class="code hl_define" href="group__qfis.html#gad28e1b10e158ae134bb6fa3bb2f34a06">IS</a> tip_generous <a class="code hl_define" href="group__qfis.html#ga29fd18bed01c4d836c7ebfe73a125c3f">END</a></div>
+<div class="line">    <a class="code hl_define" href="group__qfis.html#ga80454033f67a79247305ba0a18d98247">QFIS_RULES_END</a></div>
+<div class="line">};</div>
+<div class="ttc" id="agroup__qfis_html_ga07efc356794273b23e2d469e8e4d882e"><div class="ttname"><a href="group__qfis.html#ga07efc356794273b23e2d469e8e4d882e">qFIS_Rules_t</a></div><div class="ttdeci">int16_t qFIS_Rules_t</div><div class="ttdoc">Type definition to instantiate a set of fuzzy rules.</div><div class="ttdef"><b>Definition:</b> qfis.h:189</div></div>
+<div class="ttc" id="agroup__qfis_html_ga29fd18bed01c4d836c7ebfe73a125c3f"><div class="ttname"><a href="group__qfis.html#ga29fd18bed01c4d836c7ebfe73a125c3f">END</a></div><div class="ttdeci">#define END</div><div class="ttdoc">Rule statement to end a rule sentence.</div><div class="ttdef"><b>Definition:</b> qfis.h:292</div></div>
+<div class="ttc" id="agroup__qfis_html_ga3363ca4d6d3cc0230b2804280591c991"><div class="ttname"><a href="group__qfis.html#ga3363ca4d6d3cc0230b2804280591c991">OR</a></div><div class="ttdeci">#define OR</div><div class="ttdoc">Rule statement to represent the OR connector.</div><div class="ttdef"><b>Definition:</b> qfis.h:284</div></div>
+<div class="ttc" id="agroup__qfis_html_ga80454033f67a79247305ba0a18d98247"><div class="ttname"><a href="group__qfis.html#ga80454033f67a79247305ba0a18d98247">QFIS_RULES_END</a></div><div class="ttdeci">#define QFIS_RULES_END</div><div class="ttdoc">Ends a Fuzzy rule set. The QFIS_RULES_END statement is used to finalize the declaration of a FIS rule...</div><div class="ttdef"><b>Definition:</b> qfis.h:277</div></div>
+<div class="ttc" id="agroup__qfis_html_gac138c68a0709c57bc5f7567abc1558eb"><div class="ttname"><a href="group__qfis.html#gac138c68a0709c57bc5f7567abc1558eb">IF</a></div><div class="ttdeci">#define IF</div><div class="ttdoc">Rule statement to begin a rule sentence.</div><div class="ttdef"><b>Definition:</b> qfis.h:280</div></div>
+<div class="ttc" id="agroup__qfis_html_gad28e1b10e158ae134bb6fa3bb2f34a06"><div class="ttname"><a href="group__qfis.html#gad28e1b10e158ae134bb6fa3bb2f34a06">IS</a></div><div class="ttdeci">#define IS</div><div class="ttdoc">Rule statement to represent a premise.</div><div class="ttdef"><b>Definition:</b> qfis.h:288</div></div>
+<div class="ttc" id="agroup__qfis_html_gad9884c43f4f50a5852711a614f2343ac"><div class="ttname"><a href="group__qfis.html#gad9884c43f4f50a5852711a614f2343ac">THEN</a></div><div class="ttdeci">#define THEN</div><div class="ttdoc">Rule statement to represent the implication.</div><div class="ttdef"><b>Definition:</b> qfis.h:286</div></div>
+<div class="ttc" id="agroup__qfis_html_gadd5af13b8fd13530a1a481cec2ef0637"><div class="ttname"><a href="group__qfis.html#gadd5af13b8fd13530a1a481cec2ef0637">QFIS_RULES_BEGIN</a></div><div class="ttdeci">#define QFIS_RULES_BEGIN</div><div class="ttdoc">Start a Fuzzy rule set. The QFIS_RULES_BEGIN statement is used to declare the starting point of a FIS...</div><div class="ttdef"><b>Definition:</b> qfis.h:257</div></div>
+</div><!-- fragment --><p >Additionally, we also need to define a vector where the firing strength of each rule will be stored. The size of the vector will be the number of rules. In this particular case, there will be only three.</p>
+<div class="fragment"><div class="line"><span class="keyword">static</span> <span class="keywordtype">float</span> rulesStrength[ 3 ];</div>
+</div><!-- fragment --><p >Once all the necessary elements have been defined, we can proceed to the construction of the system. First we must configure the inputs and outputs by setting the ranges of each. For this, we will use the <a class="el" href="group__qfis.html#ga9157fd772255f73e6b5aca365986068a">qFIS_InputSetup()</a> and <a class="el" href="group__qfis.html#gae2f10a746a4e19752a985e6892132a80" title="Setup the output with the specified tag and set limits for it.">qFIS_OutputSetup()</a> functions as follows:</p>
+<div class="fragment"><div class="line"><a class="code hl_function" href="group__qfis.html#ga9157fd772255f73e6b5aca365986068a">qFIS_InputSetup</a>( tipper_inputs, service, 0.0f, 10.0f );</div>
+<div class="line"><a class="code hl_function" href="group__qfis.html#ga9157fd772255f73e6b5aca365986068a">qFIS_InputSetup</a>( tipper_inputs, food, 0.0f, 10.0f );</div>
+<div class="line"><a class="code hl_function" href="group__qfis.html#gae2f10a746a4e19752a985e6892132a80">qFIS_OutputSetup</a>( tipper_outputs, tip, 0.0f, 30.0f );</div>
+<div class="ttc" id="agroup__qfis_html_ga9157fd772255f73e6b5aca365986068a"><div class="ttname"><a href="group__qfis.html#ga9157fd772255f73e6b5aca365986068a">qFIS_InputSetup</a></div><div class="ttdeci">int qFIS_InputSetup(qFIS_Input_t *const v, const qFIS_Tag_t t, const float min, const float max)</div><div class="ttdoc">Setup the input with the specified tag and set limits for it.</div><div class="ttdef"><b>Definition:</b> qfis.c:262</div></div>
+<div class="ttc" id="agroup__qfis_html_gae2f10a746a4e19752a985e6892132a80"><div class="ttname"><a href="group__qfis.html#gae2f10a746a4e19752a985e6892132a80">qFIS_OutputSetup</a></div><div class="ttdeci">int qFIS_OutputSetup(qFIS_Output_t *const v, const qFIS_Tag_t t, const float min, const float max)</div><div class="ttdoc">Setup the output with the specified tag and set limits for it.</div><div class="ttdef"><b>Definition:</b> qfis.c:278</div></div>
+</div><!-- fragment --><p >Then, let's define the parameters of all the membership functions:</p>
+<div class="fragment"><div class="line"><span class="comment">/*Parameters of the membership functions*/</span></div>
+<div class="line"><span class="keyword">static</span> <span class="keyword">const</span> <span class="keywordtype">float</span> service_poor_p[] = { 1.5f, 0.0f };</div>
+<div class="line"><span class="keyword">static</span> <span class="keyword">const</span> <span class="keywordtype">float</span> service_good_p[] = { 1.5f, 5.0f };</div>
+<div class="line"><span class="keyword">static</span> <span class="keyword">const</span> <span class="keywordtype">float</span> service_excellent_p[] = { 1.5f, 10.0f };</div>
+<div class="line"><span class="keyword">static</span> <span class="keyword">const</span> <span class="keywordtype">float</span> food_rancid_p[] = { 0.0f, 0.0f, 1.0f, 3.0f };</div>
+<div class="line"><span class="keyword">static</span> <span class="keyword">const</span> <span class="keywordtype">float</span> food_delicious_p[] = { 7.0f, 9.0f, 10.0f, 10.0f };</div>
+<div class="line"><span class="keyword">static</span> <span class="keyword">const</span> <span class="keywordtype">float</span> tip_cheap_p[] = { 0.0f, 5.0f, 10.0f };</div>
+<div class="line"><span class="keyword">static</span> <span class="keyword">const</span> <span class="keywordtype">float</span> tip_average_p[] = { 10.0f, 15.0f, 20.0f };</div>
+<div class="line"><span class="keyword">static</span> <span class="keyword">const</span> <span class="keywordtype">float</span> tip_generous_p[] = { 20.0f, 25.0f, 30.0f }</div>
+</div><!-- fragment --><p >Note: The number of parameters may vary depending on the shape of the membership function.</p>
+<p >Then, let's proceed to configure the membership functions by relating I/O, tags, shape and parameters one by one by using the <a class="el" href="group__qfis.html#gad187010550dc9d983c589f6dd9fa971c">qFIS_SetMF()</a> API as follows:</p>
+<div class="fragment"><div class="line"><span class="comment">/* setup membership functions for the inputs */</span></div>
+<div class="line"><a class="code hl_function" href="group__qfis.html#gad187010550dc9d983c589f6dd9fa971c">qFIS_SetMF</a>( MFin, service, service_poor, <a class="code hl_enumvalue" href="group__qfis.html#gga57d388104d07dbb852d11d277d439302af622ac933207179e7864deb02eb3aa29">gaussmf</a>, NULL, service_poor_p, 1.0f );</div>
+<div class="line"><a class="code hl_function" href="group__qfis.html#gad187010550dc9d983c589f6dd9fa971c">qFIS_SetMF</a>( MFin, service, service_good, <a class="code hl_enumvalue" href="group__qfis.html#gga57d388104d07dbb852d11d277d439302af622ac933207179e7864deb02eb3aa29">gaussmf</a>, NULL, service_good_p, 1.0f );</div>
+<div class="line"><a class="code hl_function" href="group__qfis.html#gad187010550dc9d983c589f6dd9fa971c">qFIS_SetMF</a>( MFin, service, service_excellent, <a class="code hl_enumvalue" href="group__qfis.html#gga57d388104d07dbb852d11d277d439302af622ac933207179e7864deb02eb3aa29">gaussmf</a>, NULL, service_excellent_p, 1.0f );</div>
+<div class="line"><a class="code hl_function" href="group__qfis.html#gad187010550dc9d983c589f6dd9fa971c">qFIS_SetMF</a>( MFin, food, food_rancid, <a class="code hl_enumvalue" href="group__qfis.html#gga57d388104d07dbb852d11d277d439302a7676242f70c14c24cddeb8ee5bedf094">trapmf</a>, NULL, food_rancid_p, 1.0f );</div>
+<div class="line"><a class="code hl_function" href="group__qfis.html#gad187010550dc9d983c589f6dd9fa971c">qFIS_SetMF</a>( MFin, food, food_delicious, <a class="code hl_enumvalue" href="group__qfis.html#gga57d388104d07dbb852d11d277d439302a7676242f70c14c24cddeb8ee5bedf094">trapmf</a>, NULL, food_delicious_p, 1.0f );</div>
+<div class="line"><span class="comment">/* setup membership functions for the outputs */</span></div>
+<div class="line"><a class="code hl_function" href="group__qfis.html#gad187010550dc9d983c589f6dd9fa971c">qFIS_SetMF</a>( MFout, tip, tip_cheap, <a class="code hl_enumvalue" href="group__qfis.html#gga57d388104d07dbb852d11d277d439302a8f91868e5f151b88a97174ac79cbc6b9">trimf</a>, NULL, tip_cheap_p, 1.0f );</div>
+<div class="line"><a class="code hl_function" href="group__qfis.html#gad187010550dc9d983c589f6dd9fa971c">qFIS_SetMF</a>( MFout, tip, tip_average, <a class="code hl_enumvalue" href="group__qfis.html#gga57d388104d07dbb852d11d277d439302a8f91868e5f151b88a97174ac79cbc6b9">trimf</a>, NULL, tip_average_p, 1.0f );</div>
+<div class="line"><a class="code hl_function" href="group__qfis.html#gad187010550dc9d983c589f6dd9fa971c">qFIS_SetMF</a>( MFout, tip, tip_generous, <a class="code hl_enumvalue" href="group__qfis.html#gga57d388104d07dbb852d11d277d439302a8f91868e5f151b88a97174ac79cbc6b9">trimf</a>, NULL, tip_generous_p, 1.0f );</div>
+<div class="ttc" id="agroup__qfis_html_gad187010550dc9d983c589f6dd9fa971c"><div class="ttname"><a href="group__qfis.html#gad187010550dc9d983c589f6dd9fa971c">qFIS_SetMF</a></div><div class="ttdeci">int qFIS_SetMF(qFIS_MF_t *const m, const qFIS_Tag_t io, const qFIS_Tag_t mf, const qFIS_MF_Name_t s, qFIS_MF_Fcn_t custom_mf, const float *cp, const float h)</div><div class="ttdoc">Set the IO tag and points for the specified membership function.</div><div class="ttdef"><b>Definition:</b> qfis.c:327</div></div>
+<div class="ttc" id="agroup__qfis_html_gga57d388104d07dbb852d11d277d439302a7676242f70c14c24cddeb8ee5bedf094"><div class="ttname"><a href="group__qfis.html#gga57d388104d07dbb852d11d277d439302a7676242f70c14c24cddeb8ee5bedf094">trapmf</a></div><div class="ttdeci">@ trapmf</div><div class="ttdef"><b>Definition:</b> qfis.h:33</div></div>
+<div class="ttc" id="agroup__qfis_html_gga57d388104d07dbb852d11d277d439302a8f91868e5f151b88a97174ac79cbc6b9"><div class="ttname"><a href="group__qfis.html#gga57d388104d07dbb852d11d277d439302a8f91868e5f151b88a97174ac79cbc6b9">trimf</a></div><div class="ttdeci">@ trimf</div><div class="ttdef"><b>Definition:</b> qfis.h:32</div></div>
+<div class="ttc" id="agroup__qfis_html_gga57d388104d07dbb852d11d277d439302af622ac933207179e7864deb02eb3aa29"><div class="ttname"><a href="group__qfis.html#gga57d388104d07dbb852d11d277d439302af622ac933207179e7864deb02eb3aa29">gaussmf</a></div><div class="ttdeci">@ gaussmf</div><div class="ttdef"><b>Definition:</b> qfis.h:35</div></div>
+</div><!-- fragment --><p >Finally, we only have to configure the instance that represents the fuzzy system using the <a class="el" href="group__qfis.html#gaae3433474a516fbf41e0e406fe41410b">qFIS_Setup()</a> API:</p>
+<div class="fragment"><div class="line"><span class="comment">/*Parameters of the membership functions*/</span></div>
+<div class="line"><a class="code hl_function" href="group__qfis.html#gaae3433474a516fbf41e0e406fe41410b">qFIS_Setup</a>( &amp;tipper, <a class="code hl_enumvalue" href="group__qfis.html#gga2f3f0184eca9e38c98afca2275fbe13daaaafece1969d49f7a63d07fd66937799">Mamdani</a>,</div>
+<div class="line">            tipper_inputs, <span class="keyword">sizeof</span>(tipper_inputs),</div>
+<div class="line">            tipper_outputs, <span class="keyword">sizeof</span>(tipper_outputs),</div>
+<div class="line">            MFin, <span class="keyword">sizeof</span>(MFin), MFout, <span class="keyword">sizeof</span>(MFout),</div>
+<div class="line">            rules, rStrength, 3u );</div>
+<div class="ttc" id="agroup__qfis_html_gaae3433474a516fbf41e0e406fe41410b"><div class="ttname"><a href="group__qfis.html#gaae3433474a516fbf41e0e406fe41410b">qFIS_Setup</a></div><div class="ttdeci">int qFIS_Setup(qFIS_t *const f, const qFIS_Type_t t, qFIS_Input_t *const inputs, const size_t ni, qFIS_Output_t *const outputs, const size_t no, qFIS_MF_t *const mf_inputs, const size_t nmi, qFIS_MF_t *const mf_outputs, const size_t nmo, const qFIS_Rules_t *const r, float *wi, const size_t n)</div><div class="ttdoc">Setup and initialize the FIS instance.</div><div class="ttdef"><b>Definition:</b> qfis.c:211</div></div>
+<div class="ttc" id="agroup__qfis_html_gga2f3f0184eca9e38c98afca2275fbe13daaaafece1969d49f7a63d07fd66937799"><div class="ttname"><a href="group__qfis.html#gga2f3f0184eca9e38c98afca2275fbe13daaaafece1969d49f7a63d07fd66937799">Mamdani</a></div><div class="ttdeci">@ Mamdani</div><div class="ttdef"><b>Definition:</b> qfis.h:105</div></div>
+</div><!-- fragment --><p ><b> Evaluating the Fuzzy Inference System</b></p>
+<p >If we already have a fuzzy system configured with <a class="el" href="group__qfis.html#gaae3433474a516fbf41e0e406fe41410b">qFIS_Setup()</a>, we can evaluate it by using <a class="el" href="group__qfis.html#gafeb90b7b41ef3c5b25d12bf6a2adb6e5">qFIS_Fuzzify()</a>, <a class="el" href="group__qfis.html#ga471e4559534e3fe726a895bc4466e05e">qFIS_Inference()</a> and <a class="el" href="group__qfis.html#ga74cf29a2008f1169fab3b56635a4c620">qFIS_DeFuzzify()</a>. Input values can be set with <a class="el" href="group__qfis.html#gadc51ab655860a45c7ecb535c7a6c0b52">qFIS_SetInput()</a> and output values can be obtained with <a class="el" href="group__qfis.html#ga3c84df9b59cb1e2a66db3f57946fac94">qFIS_GetOutput()</a></p>
+<p >To show its use, first we are going to put everything together in a single code snippet, and we are going to create a function tipper_run() that will be in charge of evaluating the fuzzy system by invoking the previously mentioned functions.</p>
+<div class="fragment"><div class="line"><span class="preprocessor">#include &quot;tipper_fis.h&quot;</span></div>
+<div class="line"><span class="preprocessor">#include &quot;qfis.h&quot;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="comment">// FIS Object</span></div>
+<div class="line"><span class="keyword">static</span> <a class="code hl_struct" href="structq_f_i_s__t.html">qFIS_t</a> tipper;</div>
+<div class="line"><span class="comment">// I/O Fuzzy Objects </span></div>
+<div class="line"><span class="keyword">static</span> <a class="code hl_struct" href="structq_f_i_s___input__t.html">qFIS_Input_t</a> tipper_inputs[ 2 ];</div>
+<div class="line"><span class="keyword">static</span> <a class="code hl_struct" href="structq_f_i_s___output__t.html">qFIS_Output_t</a> tipper_outputs[ 1 ];</div>
+<div class="line"><span class="comment">// I/O Membership Objects </span></div>
+<div class="line"><span class="keyword">static</span> <a class="code hl_struct" href="structq_f_i_s___m_f__t.html">qFIS_MF_t</a> MFin[ 5 ], MFout[ 3 ];</div>
+<div class="line"><span class="comment">// I/O Names </span></div>
+<div class="line"><span class="keyword">enum</span> { service, food };</div>
+<div class="line"><span class="keyword">enum</span> { tip };</div>
+<div class="line"><span class="comment">// I/O Membership functions tags </span></div>
+<div class="line"><span class="keyword">enum</span> { service_poor, service_good, service_excellent, food_rancid, food_delicious };</div>
+<div class="line"><span class="keyword">enum</span> { tip_cheap, tip_average, tip_generous };</div>
+<div class="line"><span class="comment">// Rules of the inference system</span></div>
+<div class="line"><span class="keyword">static</span> <span class="keyword">const</span> <a class="code hl_typedef" href="group__qfis.html#ga07efc356794273b23e2d469e8e4d882e">qFIS_Rules_t</a> rules[] = { </div>
+<div class="line">    <a class="code hl_define" href="group__qfis.html#gadd5af13b8fd13530a1a481cec2ef0637">QFIS_RULES_BEGIN</a></div>
+<div class="line">       <a class="code hl_define" href="group__qfis.html#gac138c68a0709c57bc5f7567abc1558eb">IF</a> service <a class="code hl_define" href="group__qfis.html#gad28e1b10e158ae134bb6fa3bb2f34a06">IS</a> service_poor <a class="code hl_define" href="group__qfis.html#ga3363ca4d6d3cc0230b2804280591c991">OR</a> food <a class="code hl_define" href="group__qfis.html#gad28e1b10e158ae134bb6fa3bb2f34a06">IS</a> food_rancid <a class="code hl_define" href="group__qfis.html#gad9884c43f4f50a5852711a614f2343ac">THEN</a> tip <a class="code hl_define" href="group__qfis.html#gad28e1b10e158ae134bb6fa3bb2f34a06">IS</a> tip_cheap <a class="code hl_define" href="group__qfis.html#ga29fd18bed01c4d836c7ebfe73a125c3f">END</a></div>
+<div class="line">       <a class="code hl_define" href="group__qfis.html#gac138c68a0709c57bc5f7567abc1558eb">IF</a> service <a class="code hl_define" href="group__qfis.html#gad28e1b10e158ae134bb6fa3bb2f34a06">IS</a> service_good <a class="code hl_define" href="group__qfis.html#gad9884c43f4f50a5852711a614f2343ac">THEN</a> tip <a class="code hl_define" href="group__qfis.html#gad28e1b10e158ae134bb6fa3bb2f34a06">IS</a> tip_average <a class="code hl_define" href="group__qfis.html#ga29fd18bed01c4d836c7ebfe73a125c3f">END</a></div>
+<div class="line">       <a class="code hl_define" href="group__qfis.html#gac138c68a0709c57bc5f7567abc1558eb">IF</a> service <a class="code hl_define" href="group__qfis.html#gad28e1b10e158ae134bb6fa3bb2f34a06">IS</a> service_excellent <a class="code hl_define" href="group__qfis.html#ga3363ca4d6d3cc0230b2804280591c991">OR</a> food <a class="code hl_define" href="group__qfis.html#gad28e1b10e158ae134bb6fa3bb2f34a06">IS</a> food_delicious <a class="code hl_define" href="group__qfis.html#gad9884c43f4f50a5852711a614f2343ac">THEN</a> tip <a class="code hl_define" href="group__qfis.html#gad28e1b10e158ae134bb6fa3bb2f34a06">IS</a> tip_generous <a class="code hl_define" href="group__qfis.html#ga29fd18bed01c4d836c7ebfe73a125c3f">END</a></div>
+<div class="line">    <a class="code hl_define" href="group__qfis.html#ga80454033f67a79247305ba0a18d98247">QFIS_RULES_END</a></div>
+<div class="line">};</div>
+<div class="line"><span class="comment">//Rule strengths</span></div>
+<div class="line"><span class="keywordtype">float</span> rStrength[ 3 ] = { 0.0f };</div>
+<div class="line"> </div>
+<div class="line"><span class="comment">// Parameters of the membership functions</span></div>
+<div class="line"><span class="keyword">static</span> <span class="keyword">const</span> <span class="keywordtype">float</span> service_poor_p[] = { 1.5f, 0.0f };</div>
+<div class="line"><span class="keyword">static</span> <span class="keyword">const</span> <span class="keywordtype">float</span> service_good_p[] = { 1.5f, 5.0f };</div>
+<div class="line"><span class="keyword">static</span> <span class="keyword">const</span> <span class="keywordtype">float</span> service_excellent_p[] = { 1.5f, 10.0f };</div>
+<div class="line"><span class="keyword">static</span> <span class="keyword">const</span> <span class="keywordtype">float</span> food_rancid_p[] = { 0.0f, 0.0f, 1.0f, 3.0f };</div>
+<div class="line"><span class="keyword">static</span> <span class="keyword">const</span> <span class="keywordtype">float</span> food_delicious_p[] = { 7.0f, 9.0f, 10.0f, 10.0f };</div>
+<div class="line"><span class="keyword">static</span> <span class="keyword">const</span> <span class="keywordtype">float</span> tip_cheap_p[] = { 0.0f, 5.0f, 10.0f };</div>
+<div class="line"><span class="keyword">static</span> <span class="keyword">const</span> <span class="keywordtype">float</span> tip_average_p[] = { 10.0f, 15.0f, 20.0f };</div>
+<div class="line"><span class="keyword">static</span> <span class="keyword">const</span> <span class="keywordtype">float</span> tip_generous_p[] = { 20.0f, 25.0f, 30.0f };</div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">void</span> tipper_init( <span class="keywordtype">void</span> ){</div>
+<div class="line">    <span class="comment">// Set inputs </span></div>
+<div class="line">    <a class="code hl_function" href="group__qfis.html#ga9157fd772255f73e6b5aca365986068a">qFIS_InputSetup</a>( tipper_inputs, service, 0.0f, 10.0f );</div>
+<div class="line">    <a class="code hl_function" href="group__qfis.html#ga9157fd772255f73e6b5aca365986068a">qFIS_InputSetup</a>( tipper_inputs, food, 0.0f, 10.0f );</div>
+<div class="line">    <a class="code hl_function" href="group__qfis.html#gae2f10a746a4e19752a985e6892132a80">qFIS_OutputSetup</a>( tipper_outputs, tip, 0.0f, 30.0f );</div>
+<div class="line">    <span class="comment">// Set membership functions for the inputs</span></div>
+<div class="line">    <a class="code hl_function" href="group__qfis.html#gad187010550dc9d983c589f6dd9fa971c">qFIS_SetMF</a>( MFin, service, service_poor, <a class="code hl_enumvalue" href="group__qfis.html#gga57d388104d07dbb852d11d277d439302af622ac933207179e7864deb02eb3aa29">gaussmf</a>, NULL, service_poor_p, 1.0f );</div>
+<div class="line">    <a class="code hl_function" href="group__qfis.html#gad187010550dc9d983c589f6dd9fa971c">qFIS_SetMF</a>( MFin, service, service_good, <a class="code hl_enumvalue" href="group__qfis.html#gga57d388104d07dbb852d11d277d439302af622ac933207179e7864deb02eb3aa29">gaussmf</a>, NULL, service_good_p, 1.0f );</div>
+<div class="line">    <a class="code hl_function" href="group__qfis.html#gad187010550dc9d983c589f6dd9fa971c">qFIS_SetMF</a>( MFin, service, service_excellent, <a class="code hl_enumvalue" href="group__qfis.html#gga57d388104d07dbb852d11d277d439302af622ac933207179e7864deb02eb3aa29">gaussmf</a>, NULL, service_excellent_p, 1.0f );</div>
+<div class="line">    <a class="code hl_function" href="group__qfis.html#gad187010550dc9d983c589f6dd9fa971c">qFIS_SetMF</a>( MFin, food, food_rancid, <a class="code hl_enumvalue" href="group__qfis.html#gga57d388104d07dbb852d11d277d439302a7676242f70c14c24cddeb8ee5bedf094">trapmf</a>, NULL, food_rancid_p, 1.0f );</div>
+<div class="line">    <a class="code hl_function" href="group__qfis.html#gad187010550dc9d983c589f6dd9fa971c">qFIS_SetMF</a>( MFin, food, food_delicious, <a class="code hl_enumvalue" href="group__qfis.html#gga57d388104d07dbb852d11d277d439302a7676242f70c14c24cddeb8ee5bedf094">trapmf</a>, NULL, food_delicious_p, 1.0f );</div>
+<div class="line">    <span class="comment">// Set membership functions for the outputs</span></div>
+<div class="line">    <a class="code hl_function" href="group__qfis.html#gad187010550dc9d983c589f6dd9fa971c">qFIS_SetMF</a>( MFout, tip, tip_cheap, <a class="code hl_enumvalue" href="group__qfis.html#gga57d388104d07dbb852d11d277d439302a8f91868e5f151b88a97174ac79cbc6b9">trimf</a>, NULL, tip_cheap_p, 1.0f );</div>
+<div class="line">    <a class="code hl_function" href="group__qfis.html#gad187010550dc9d983c589f6dd9fa971c">qFIS_SetMF</a>( MFout, tip, tip_average, <a class="code hl_enumvalue" href="group__qfis.html#gga57d388104d07dbb852d11d277d439302a8f91868e5f151b88a97174ac79cbc6b9">trimf</a>, NULL, tip_average_p, 1.0f );</div>
+<div class="line">    <a class="code hl_function" href="group__qfis.html#gad187010550dc9d983c589f6dd9fa971c">qFIS_SetMF</a>( MFout, tip, tip_generous, <a class="code hl_enumvalue" href="group__qfis.html#gga57d388104d07dbb852d11d277d439302a8f91868e5f151b88a97174ac79cbc6b9">trimf</a>, NULL, tip_generous_p, 1.0f );</div>
+<div class="line"> </div>
+<div class="line">    <span class="comment">// Configure the Inference System</span></div>
+<div class="line">    <a class="code hl_function" href="group__qfis.html#gaae3433474a516fbf41e0e406fe41410b">qFIS_Setup</a>( &amp;tipper, <a class="code hl_enumvalue" href="group__qfis.html#gga2f3f0184eca9e38c98afca2275fbe13daaaafece1969d49f7a63d07fd66937799">Mamdani</a>,</div>
+<div class="line">                tipper_inputs, <span class="keyword">sizeof</span>(tipper_inputs),</div>
+<div class="line">                tipper_outputs, <span class="keyword">sizeof</span>(tipper_outputs),</div>
+<div class="line">                MFin, <span class="keyword">sizeof</span>(MFin), MFout, <span class="keyword">sizeof</span>(MFout),</div>
+<div class="line">                rules, rStrength, 3u );</div>
+<div class="line">}</div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">void</span> tipper_run( <span class="keywordtype">float</span> *inputs, <span class="keywordtype">float</span> *outputs ) {</div>
+<div class="line">    <span class="comment">// Set the crips inputs</span></div>
+<div class="line">    <a class="code hl_function" href="group__qfis.html#gadc51ab655860a45c7ecb535c7a6c0b52">qFIS_SetInput</a>( tipper_inputs, service, inputs[ service ] );</div>
+<div class="line">    <a class="code hl_function" href="group__qfis.html#gadc51ab655860a45c7ecb535c7a6c0b52">qFIS_SetInput</a>( tipper_inputs, food, inputs[ food ] );</div>
+<div class="line"> </div>
+<div class="line">    <a class="code hl_function" href="group__qfis.html#gafeb90b7b41ef3c5b25d12bf6a2adb6e5">qFIS_Fuzzify</a>( &amp;tipper );</div>
+<div class="line">    <span class="keywordflow">if</span> ( <a class="code hl_function" href="group__qfis.html#ga471e4559534e3fe726a895bc4466e05e">qFIS_Inference</a>( &amp;tipper ) &gt; 0 ) {</div>
+<div class="line">        <a class="code hl_function" href="group__qfis.html#ga74cf29a2008f1169fab3b56635a4c620">qFIS_DeFuzzify</a>( &amp;tipper );</div>
+<div class="line">    }</div>
+<div class="line">    <span class="keywordflow">else</span> {</div>
+<div class="line">        <span class="comment">// Error!</span></div>
+<div class="line">    }</div>
+<div class="line"> </div>
+<div class="line">    <span class="comment">// Get the crips outputs</span></div>
+<div class="line">    outputs[ tip ] = <a class="code hl_function" href="group__qfis.html#ga3c84df9b59cb1e2a66db3f57946fac94">qFIS_GetOutput</a>( tipper_outputs, tip );</div>
+<div class="line">}</div>
+<div class="ttc" id="agroup__qfis_html_ga3c84df9b59cb1e2a66db3f57946fac94"><div class="ttname"><a href="group__qfis.html#ga3c84df9b59cb1e2a66db3f57946fac94">qFIS_GetOutput</a></div><div class="ttdeci">float qFIS_GetOutput(const qFIS_Output_t *const v, const qFIS_Tag_t t)</div><div class="ttdoc">Get the de-fuzzified crisp value from the the output with the specified tag.</div><div class="ttdef"><b>Definition:</b> qfis.c:314</div></div>
+<div class="ttc" id="agroup__qfis_html_ga471e4559534e3fe726a895bc4466e05e"><div class="ttname"><a href="group__qfis.html#ga471e4559534e3fe726a895bc4466e05e">qFIS_Inference</a></div><div class="ttdeci">int qFIS_Inference(qFIS_t *const f)</div><div class="ttdoc">Perform the inference process on the requested FIS object.</div><div class="ttdef"><b>Definition:</b> qfis.c:812</div></div>
+<div class="ttc" id="agroup__qfis_html_ga74cf29a2008f1169fab3b56635a4c620"><div class="ttname"><a href="group__qfis.html#ga74cf29a2008f1169fab3b56635a4c620">qFIS_DeFuzzify</a></div><div class="ttdeci">int qFIS_DeFuzzify(qFIS_t *const f)</div><div class="ttdoc">Perform the de-Fuzzification operation to compute the crisp outputs.</div><div class="ttdef"><b>Definition:</b> qfis.c:749</div></div>
+<div class="ttc" id="agroup__qfis_html_gadc51ab655860a45c7ecb535c7a6c0b52"><div class="ttname"><a href="group__qfis.html#gadc51ab655860a45c7ecb535c7a6c0b52">qFIS_SetInput</a></div><div class="ttdeci">int qFIS_SetInput(qFIS_Input_t *const v, const qFIS_Tag_t t, const float value)</div><div class="ttdoc">Set a crisp value of the input with the specified tag.</div><div class="ttdef"><b>Definition:</b> qfis.c:300</div></div>
+<div class="ttc" id="agroup__qfis_html_gafeb90b7b41ef3c5b25d12bf6a2adb6e5"><div class="ttname"><a href="group__qfis.html#gafeb90b7b41ef3c5b25d12bf6a2adb6e5">qFIS_Fuzzify</a></div><div class="ttdeci">int qFIS_Fuzzify(qFIS_t *const f)</div><div class="ttdoc">Perform the fuzzification operation over the crisp inputs on the requested FIS object.</div><div class="ttdef"><b>Definition:</b> qfis.c:392</div></div>
+<div class="ttc" id="astructq_f_i_s___input__t_html"><div class="ttname"><a href="structq_f_i_s___input__t.html">qFIS_Input_t</a></div><div class="ttdoc">A FIS Input object.</div><div class="ttdef"><b>Definition:</b> qfis.h:131</div></div>
+<div class="ttc" id="astructq_f_i_s___output__t_html"><div class="ttname"><a href="structq_f_i_s___output__t.html">qFIS_Output_t</a></div><div class="ttdoc">A FIS Output object.</div><div class="ttdef"><b>Definition:</b> qfis.h:143</div></div>
+</div><!-- fragment --><p >Building a fuzzy system in code can become tedious, especially when you want to tune membership function parameters, where it would be appropriate to have a graphical tool that reflects the changes made by each tweak.</p>
+<p >Although the qFIS engine does not provide such a tool, a well-known tool can be used to build the fuzzy system and generate qFIS-compatible C code. The tool we are talking about is MATLAB's Fuzzy Logic Toolbox and qLibs provides a MATLAB command that can be used to take a fis object generated from MATLAB and generate C code based on the qFIS engine.</p>
+<p >Download the C-Code generator here:</p>
+<p ><a href="https://la.mathworks.com/matlabcentral/fileexchange/117465-qfiscgen-fuzzy-c-code-generator-for-embedded-systems"><img src="https://www.mathworks.com/matlabcentral/images/matlab-file-exchange.svg" alt="" style="pointer-events: none;" class="inline"/></a> </p>
+</div></div><!-- contents -->
+</div><!-- PageDoc -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="index.html">qLibs</a></li>
+    <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.2 </li>
+  </ul>
+</div>
+</body>
+</html>

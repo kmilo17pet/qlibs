@@ -1,0 +1,426 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.2"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<!-- BEGIN opengraph metadata -->
+<meta property="og:title" content="Doxygen Awesome" />
+<meta property="og:image" content="https://repository-images.githubusercontent.com/348492097/4f16df80-88fb-11eb-9d31-4015ff22c452" />
+<meta property="og:description" content="Custom CSS theme for doxygen html-documentation with lots of customization parameters." />
+<meta property="og:url" content="https://jothepro.github.io/doxygen-awesome-css/" />
+<!-- END opengraph metadata -->
+<!-- BEGIN twitter metadata -->
+<meta name="twitter:image:src" content="https://repository-images.githubusercontent.com/348492097/4f16df80-88fb-11eb-9d31-4015ff22c452" />
+<meta name="twitter:title" content="Doxygen Awesome" />
+<meta name="twitter:description" content="Custom CSS theme for doxygen html-documentation with lots of customization parameters." />
+<!-- END twitter metadata -->
+<title>API Reference: qfis.h Source File</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link rel="icon" type="image/svg+xml" href="logo.drawio.svg"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="doxygen-awesome-darkmode-toggle.js"></script>
+<script type="text/javascript" src="doxygen-awesome-fragment-copy-button.js"></script>
+<script type="text/javascript" src="doxygen-awesome-paragraph-link.js"></script>
+<script type="text/javascript" src="doxygen-awesome-interactive-toc.js"></script>
+<script type="text/javascript" src="toggle-alternative-theme.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeFragmentCopyButton.init()
+    DoxygenAwesomeDarkModeToggle.init()
+    DoxygenAwesomeParagraphLink.init()
+    DoxygenAwesomeInteractiveToc.init()
+</script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  extensions: ["tex2jax.js"],
+  jax: ["input/TeX","output/HTML-CSS"],
+});
+</script>
+<script type="text/javascript" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
+<link href="custom.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only-darkmode-toggle.css" rel="stylesheet" type="text/css"/>
+<link href="custom-alternative.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<!-- https://tholman.com/github-corners/ -->
+<a href="https://github.com/jothepro/doxygen-awesome-css" class="github-corner" title="View source on GitHub" target="_blank">
+    <svg viewBox="0 0 250 250" width="40" height="40" style="position: absolute; top: 0; border: 0; right: 0; z-index: 99;" aria-hidden="true">
+    <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="qlibs_logo.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">API Reference
+   &#160;<span id="projectnumber">v1.2</span>
+   </div>
+   <div id="projectbrief">A collection of useful libraries for embedded systems</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generated by Doxygen 1.9.2 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search",'Search','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Search');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('qfis_8h_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">qfis.h</div></div>
+</div><!--header-->
+<div class="contents">
+<div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span> </div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#ifndef QFIS_H</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#define QFIS_H</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span> </div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#ifdef __cplusplus</span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="keyword">extern</span> <span class="stringliteral">&quot;C&quot;</span> {</div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span> </div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="preprocessor">    #include &lt;stdlib.h&gt;</span></div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="preprocessor">    #include &lt;float.h&gt;</span></div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="preprocessor">    #include &lt;stdint.h&gt;</span></div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="preprocessor">    #include &lt;limits.h&gt;</span></div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span> </div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno"><a class="line" href="group__qfis.html#ga57d388104d07dbb852d11d277d439302">   30</a></span>    <span class="keyword">typedef</span> <span class="keyword">enum</span> {</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno"><a class="line" href="group__qfis.html#gga57d388104d07dbb852d11d277d439302a59077554a504ca1e69784f650fbd8952">   31</a></span>        <a class="code hl_enumvalue" href="group__qfis.html#gga57d388104d07dbb852d11d277d439302a59077554a504ca1e69784f650fbd8952">custommf</a> = 0,   </div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno"><a class="line" href="group__qfis.html#gga57d388104d07dbb852d11d277d439302a8f91868e5f151b88a97174ac79cbc6b9">   32</a></span>        <a class="code hl_enumvalue" href="group__qfis.html#gga57d388104d07dbb852d11d277d439302a8f91868e5f151b88a97174ac79cbc6b9">trimf</a>,          </div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno"><a class="line" href="group__qfis.html#gga57d388104d07dbb852d11d277d439302a7676242f70c14c24cddeb8ee5bedf094">   33</a></span>        <a class="code hl_enumvalue" href="group__qfis.html#gga57d388104d07dbb852d11d277d439302a7676242f70c14c24cddeb8ee5bedf094">trapmf</a>,         </div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno"><a class="line" href="group__qfis.html#gga57d388104d07dbb852d11d277d439302ab211a8a8f9c9933e4ee7f2738684e8d3">   34</a></span>        <a class="code hl_enumvalue" href="group__qfis.html#gga57d388104d07dbb852d11d277d439302ab211a8a8f9c9933e4ee7f2738684e8d3">gbellmf</a>,        </div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno"><a class="line" href="group__qfis.html#gga57d388104d07dbb852d11d277d439302af622ac933207179e7864deb02eb3aa29">   35</a></span>        <a class="code hl_enumvalue" href="group__qfis.html#gga57d388104d07dbb852d11d277d439302af622ac933207179e7864deb02eb3aa29">gaussmf</a>,        </div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno"><a class="line" href="group__qfis.html#gga57d388104d07dbb852d11d277d439302a4d57e0dc8df50e01b5912fcf06ac9af7">   36</a></span>        <a class="code hl_enumvalue" href="group__qfis.html#gga57d388104d07dbb852d11d277d439302a4d57e0dc8df50e01b5912fcf06ac9af7">gauss2mf</a>,       </div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno"><a class="line" href="group__qfis.html#gga57d388104d07dbb852d11d277d439302a26b5b0fec349f4dd75ea138509c7f9bc">   37</a></span>        <a class="code hl_enumvalue" href="group__qfis.html#gga57d388104d07dbb852d11d277d439302a26b5b0fec349f4dd75ea138509c7f9bc">sigmf</a>,          </div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno"><a class="line" href="group__qfis.html#gga57d388104d07dbb852d11d277d439302aff5a8ec6d6ec62d577ca656cfe4fc85a">   38</a></span>        <a class="code hl_enumvalue" href="group__qfis.html#gga57d388104d07dbb852d11d277d439302aff5a8ec6d6ec62d577ca656cfe4fc85a">dsigmf</a>,         </div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno"><a class="line" href="group__qfis.html#gga57d388104d07dbb852d11d277d439302ab0662075b7e1fe69127012a8963f3ae1">   39</a></span>        <a class="code hl_enumvalue" href="group__qfis.html#gga57d388104d07dbb852d11d277d439302ab0662075b7e1fe69127012a8963f3ae1">psigmf</a>,         </div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno"><a class="line" href="group__qfis.html#gga57d388104d07dbb852d11d277d439302a2ebaaf5da9f4f9658a77cbb7b955fde4">   40</a></span>        <a class="code hl_enumvalue" href="group__qfis.html#gga57d388104d07dbb852d11d277d439302a2ebaaf5da9f4f9658a77cbb7b955fde4">pimf</a>,           </div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno"><a class="line" href="group__qfis.html#gga57d388104d07dbb852d11d277d439302a1b9910ce8deaabf94e74eb0228f165fc">   41</a></span>        <a class="code hl_enumvalue" href="group__qfis.html#gga57d388104d07dbb852d11d277d439302a1b9910ce8deaabf94e74eb0228f165fc">smf</a>,            </div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno"><a class="line" href="group__qfis.html#gga57d388104d07dbb852d11d277d439302a18ef4cfb7704044a8fae2f7edea657dd">   42</a></span>        <a class="code hl_enumvalue" href="group__qfis.html#gga57d388104d07dbb852d11d277d439302a18ef4cfb7704044a8fae2f7edea657dd">zmf</a>,            </div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno"><a class="line" href="group__qfis.html#gga57d388104d07dbb852d11d277d439302a517ec5d7ed4ba84016d6d5d5963584b7">   43</a></span>        <a class="code hl_enumvalue" href="group__qfis.html#gga57d388104d07dbb852d11d277d439302a517ec5d7ed4ba84016d6d5d5963584b7">singletonmf</a>,    </div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno"><a class="line" href="group__qfis.html#gga57d388104d07dbb852d11d277d439302aa8c90d32cef75c377abaacb0aeaacab7">   44</a></span>        <a class="code hl_enumvalue" href="group__qfis.html#gga57d388104d07dbb852d11d277d439302aa8c90d32cef75c377abaacb0aeaacab7">concavemf</a>,      </div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno"><a class="line" href="group__qfis.html#gga57d388104d07dbb852d11d277d439302ab52e90d79ad862c0608aa3c228300e09">   45</a></span>        <a class="code hl_enumvalue" href="group__qfis.html#gga57d388104d07dbb852d11d277d439302ab52e90d79ad862c0608aa3c228300e09">spikemf</a>,        </div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno"><a class="line" href="group__qfis.html#gga57d388104d07dbb852d11d277d439302a1b7f254eb17ba94e97a9fe60fb7bf09b">   46</a></span>        <a class="code hl_enumvalue" href="group__qfis.html#gga57d388104d07dbb852d11d277d439302a1b7f254eb17ba94e97a9fe60fb7bf09b">linsmf</a>,         </div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno"><a class="line" href="group__qfis.html#gga57d388104d07dbb852d11d277d439302a50279291d8a418eb06941a1f5208d1aa">   47</a></span>        <a class="code hl_enumvalue" href="group__qfis.html#gga57d388104d07dbb852d11d277d439302a50279291d8a418eb06941a1f5208d1aa">linzmf</a>,         </div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno"><a class="line" href="group__qfis.html#gga57d388104d07dbb852d11d277d439302a72d1cca9c64d5a0ff1ef5f931713d74e">   48</a></span>        <a class="code hl_enumvalue" href="group__qfis.html#gga57d388104d07dbb852d11d277d439302a72d1cca9c64d5a0ff1ef5f931713d74e">rectmf</a>,         </div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno"><a class="line" href="group__qfis.html#gga57d388104d07dbb852d11d277d439302af419a1c2ca368381483a582cd2527eff">   49</a></span>        <a class="code hl_enumvalue" href="group__qfis.html#gga57d388104d07dbb852d11d277d439302af419a1c2ca368381483a582cd2527eff">cosmf</a>,          </div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno"><a class="line" href="group__qfis.html#gga57d388104d07dbb852d11d277d439302a2c8b9058af45167c4cef2e4f7f0e0c42">   50</a></span>        <a class="code hl_enumvalue" href="group__qfis.html#gga57d388104d07dbb852d11d277d439302a2c8b9058af45167c4cef2e4f7f0e0c42">constantmf</a>,     </div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno"><a class="line" href="group__qfis.html#gga57d388104d07dbb852d11d277d439302a3e187547bd00b7f8ef46fd105d170914">   51</a></span>        <a class="code hl_enumvalue" href="group__qfis.html#gga57d388104d07dbb852d11d277d439302a3e187547bd00b7f8ef46fd105d170914">linearmf</a>,       </div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno"><a class="line" href="group__qfis.html#gga57d388104d07dbb852d11d277d439302ad23bd69a0c39f41ec183701ea88fca62">   52</a></span>        <a class="code hl_enumvalue" href="group__qfis.html#gga57d388104d07dbb852d11d277d439302ad23bd69a0c39f41ec183701ea88fca62">tlinsmf</a>,        </div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno"><a class="line" href="group__qfis.html#gga57d388104d07dbb852d11d277d439302a7e69801214edbd12464450ec32caa952">   53</a></span>        <a class="code hl_enumvalue" href="group__qfis.html#gga57d388104d07dbb852d11d277d439302a7e69801214edbd12464450ec32caa952">tlinzmf</a>,        </div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno"><a class="line" href="group__qfis.html#gga57d388104d07dbb852d11d277d439302a43b3471fcf257414fd73960961f71f8c">   54</a></span>        <a class="code hl_enumvalue" href="group__qfis.html#gga57d388104d07dbb852d11d277d439302a43b3471fcf257414fd73960961f71f8c">tconcavemf</a>,     </div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno"><a class="line" href="group__qfis.html#gga57d388104d07dbb852d11d277d439302a15d4fd087b99bfae1ad35c04a4196be4">   55</a></span>        <a class="code hl_enumvalue" href="group__qfis.html#gga57d388104d07dbb852d11d277d439302a15d4fd087b99bfae1ad35c04a4196be4">tsigmf</a>,         </div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno"><a class="line" href="group__qfis.html#gga57d388104d07dbb852d11d277d439302a5ac08b226723d99e82d613115b2fef6a">   56</a></span>        <a class="code hl_enumvalue" href="group__qfis.html#gga57d388104d07dbb852d11d277d439302a5ac08b226723d99e82d613115b2fef6a">tsmf</a>,           </div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno"><a class="line" href="group__qfis.html#gga57d388104d07dbb852d11d277d439302af737be9cb431f74baa61fca9f29688c3">   57</a></span>        <a class="code hl_enumvalue" href="group__qfis.html#gga57d388104d07dbb852d11d277d439302af737be9cb431f74baa61fca9f29688c3">tzmf</a>,           </div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>        _NUM_MFS        </div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>    } <a class="code hl_enumeration" href="group__qfis.html#ga57d388104d07dbb852d11d277d439302">qFIS_MF_Name_t</a>;</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span> </div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno"><a class="line" href="group__qfis.html#gaedbcaf3cb5c4b57eb1f44f4dea0f1a72">   66</a></span>    <span class="keyword">typedef</span> <span class="keyword">enum</span> {</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno"><a class="line" href="group__qfis.html#ggaedbcaf3cb5c4b57eb1f44f4dea0f1a72a6fb78ba59773ac48c2709d20df1ebefd">   67</a></span>        <a class="code hl_enumvalue" href="group__qfis.html#ggaedbcaf3cb5c4b57eb1f44f4dea0f1a72a6fb78ba59773ac48c2709d20df1ebefd">centroid</a> = 0,   </div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno"><a class="line" href="group__qfis.html#ggaedbcaf3cb5c4b57eb1f44f4dea0f1a72a5f0b55cf3261a197a8d0212f90669e35">   68</a></span>        <a class="code hl_enumvalue" href="group__qfis.html#ggaedbcaf3cb5c4b57eb1f44f4dea0f1a72a5f0b55cf3261a197a8d0212f90669e35">bisector</a>,       </div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno"><a class="line" href="group__qfis.html#ggaedbcaf3cb5c4b57eb1f44f4dea0f1a72a91e435ff054716e32ac834ddfdf8ece9">   69</a></span>        <a class="code hl_enumvalue" href="group__qfis.html#ggaedbcaf3cb5c4b57eb1f44f4dea0f1a72a91e435ff054716e32ac834ddfdf8ece9">mom</a>,            </div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno"><a class="line" href="group__qfis.html#ggaedbcaf3cb5c4b57eb1f44f4dea0f1a72a58713f014a11fca36091e803ff431b04">   70</a></span>        <a class="code hl_enumvalue" href="group__qfis.html#ggaedbcaf3cb5c4b57eb1f44f4dea0f1a72a58713f014a11fca36091e803ff431b04">lom</a>,            </div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno"><a class="line" href="group__qfis.html#ggaedbcaf3cb5c4b57eb1f44f4dea0f1a72ab1088c07d3cf9e75c6e7fbd84bd759c4">   71</a></span>        <a class="code hl_enumvalue" href="group__qfis.html#ggaedbcaf3cb5c4b57eb1f44f4dea0f1a72ab1088c07d3cf9e75c6e7fbd84bd759c4">som</a>,            </div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno"><a class="line" href="group__qfis.html#ggaedbcaf3cb5c4b57eb1f44f4dea0f1a72a8d62125ef3bf552069d621be0af68f5e">   72</a></span>        <a class="code hl_enumvalue" href="group__qfis.html#ggaedbcaf3cb5c4b57eb1f44f4dea0f1a72a8d62125ef3bf552069d621be0af68f5e">wtaver</a>,         </div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno"><a class="line" href="group__qfis.html#ggaedbcaf3cb5c4b57eb1f44f4dea0f1a72a442dbe21e1b302813ac2a42e552a72a0">   73</a></span>        <a class="code hl_enumvalue" href="group__qfis.html#ggaedbcaf3cb5c4b57eb1f44f4dea0f1a72a442dbe21e1b302813ac2a42e552a72a0">wtsum</a>,          </div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>        _NUM_DFUZZ      </div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>    } <a class="code hl_enumeration" href="group__qfis.html#gaedbcaf3cb5c4b57eb1f44f4dea0f1a72">qFIS_DeFuzz_Method_t</a>;</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span> </div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno"><a class="line" href="group__qfis.html#ga4a36da9d08e666f99234ad63ad8edea8">   82</a></span>    <span class="keyword">typedef</span> <span class="keyword">enum</span> {</div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno"><a class="line" href="group__qfis.html#gga4a36da9d08e666f99234ad63ad8edea8a180a4073ca83341220b737f6ea72ab34">   83</a></span>        <a class="code hl_enumvalue" href="group__qfis.html#gga4a36da9d08e666f99234ad63ad8edea8a180a4073ca83341220b737f6ea72ab34">qFIS_MIN</a> = 0,   </div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno"><a class="line" href="group__qfis.html#gga4a36da9d08e666f99234ad63ad8edea8a17b9fce953a0105ea84a5d3ea24382ce">   84</a></span>        <a class="code hl_enumvalue" href="group__qfis.html#gga4a36da9d08e666f99234ad63ad8edea8a17b9fce953a0105ea84a5d3ea24382ce">qFIS_PROD</a>,      </div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno"><a class="line" href="group__qfis.html#gga4a36da9d08e666f99234ad63ad8edea8a87c9e76c7baa678420ecc602d3aeae14">   85</a></span>        <a class="code hl_enumvalue" href="group__qfis.html#gga4a36da9d08e666f99234ad63ad8edea8a87c9e76c7baa678420ecc602d3aeae14">qFIS_MAX</a>,       </div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno"><a class="line" href="group__qfis.html#gga4a36da9d08e666f99234ad63ad8edea8acba3768c95dfdc791cc01eea64a58deb">   86</a></span>        <a class="code hl_enumvalue" href="group__qfis.html#gga4a36da9d08e666f99234ad63ad8edea8acba3768c95dfdc791cc01eea64a58deb">qFIS_PROBOR</a>,    </div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>        <a class="code hl_enumvalue" href="group__qfis.html#gga4a36da9d08e666f99234ad63ad8edea8a02129fa1b1988846ddcaa24763ca4759">qFIS_SUM</a>        </div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno"><a class="line" href="group__qfis.html#gga4a36da9d08e666f99234ad63ad8edea8a02129fa1b1988846ddcaa24763ca4759">   88</a></span>    } <a class="code hl_enumeration" href="group__qfis.html#ga4a36da9d08e666f99234ad63ad8edea8">qFIS_ParamValue_t</a>;</div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span> </div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno"><a class="line" href="group__qfis.html#ga933f1f7eb2e8a0ae89258ead19a61199">   93</a></span>    <span class="keyword">typedef</span> <span class="keyword">enum</span> {</div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno"><a class="line" href="group__qfis.html#gga933f1f7eb2e8a0ae89258ead19a61199ad5608b2374924491ea4af9b47ab5440f">   94</a></span>        <a class="code hl_enumvalue" href="group__qfis.html#gga933f1f7eb2e8a0ae89258ead19a61199ad5608b2374924491ea4af9b47ab5440f">qFIS_Implication</a>,   </div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno"><a class="line" href="group__qfis.html#gga933f1f7eb2e8a0ae89258ead19a61199af182b91aa583adf923b766bf0998be59">   95</a></span>        <a class="code hl_enumvalue" href="group__qfis.html#gga933f1f7eb2e8a0ae89258ead19a61199af182b91aa583adf923b766bf0998be59">qFIS_Aggregation</a>,   </div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno"><a class="line" href="group__qfis.html#gga933f1f7eb2e8a0ae89258ead19a61199aff88525fdbf6058636aea383fbc82ea9">   96</a></span>        <a class="code hl_enumvalue" href="group__qfis.html#gga933f1f7eb2e8a0ae89258ead19a61199aff88525fdbf6058636aea383fbc82ea9">qFIS_AND</a>,           </div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno"><a class="line" href="group__qfis.html#gga933f1f7eb2e8a0ae89258ead19a61199ad1befb564bfac8c54233c51eac3b5122">   97</a></span>        <a class="code hl_enumvalue" href="group__qfis.html#gga933f1f7eb2e8a0ae89258ead19a61199ad1befb564bfac8c54233c51eac3b5122">qFIS_OR</a>,            </div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>        <a class="code hl_enumvalue" href="group__qfis.html#gga933f1f7eb2e8a0ae89258ead19a61199a5f9c9f3a169153cc6c09f4b2ebaa23a8">qFIS_EvalPoints</a>     </div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno"><a class="line" href="group__qfis.html#gga933f1f7eb2e8a0ae89258ead19a61199a5f9c9f3a169153cc6c09f4b2ebaa23a8">   99</a></span>    } <a class="code hl_enumeration" href="group__qfis.html#ga933f1f7eb2e8a0ae89258ead19a61199">qFIS_Parameter_t</a>;</div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span> </div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno"><a class="line" href="group__qfis.html#ga2f3f0184eca9e38c98afca2275fbe13d">  104</a></span>    <span class="keyword">typedef</span> <span class="keyword">enum</span> {</div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno"><a class="line" href="group__qfis.html#gga2f3f0184eca9e38c98afca2275fbe13daaaafece1969d49f7a63d07fd66937799">  105</a></span>        <a class="code hl_enumvalue" href="group__qfis.html#gga2f3f0184eca9e38c98afca2275fbe13daaaafece1969d49f7a63d07fd66937799">Mamdani</a> = 0,        </div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno"><a class="line" href="group__qfis.html#gga2f3f0184eca9e38c98afca2275fbe13da6be5a07806b4e50dc6aa3ce912692ad6">  106</a></span>        <a class="code hl_enumvalue" href="group__qfis.html#gga2f3f0184eca9e38c98afca2275fbe13da6be5a07806b4e50dc6aa3ce912692ad6">Sugeno</a>,             </div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>        <a class="code hl_enumvalue" href="group__qfis.html#gga2f3f0184eca9e38c98afca2275fbe13da7b5af38242e88e34875821666e361935">Tsukamoto</a>           </div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno"><a class="line" href="group__qfis.html#gga2f3f0184eca9e38c98afca2275fbe13da7b5af38242e88e34875821666e361935">  108</a></span>    } <a class="code hl_enumeration" href="group__qfis.html#ga2f3f0184eca9e38c98afca2275fbe13d">qFIS_Type_t</a>;</div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span> </div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>    <span class="keyword">typedef</span> <span class="keyword">enum</span> {</div>
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>        DeFuzz_Init,</div>
+<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>        DeFuzz_Compute,</div>
+<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>        DeFuzz_End,</div>
+<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span>    } qFIS_DeFuzzState_t;</div>
+<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span>    <span class="keyword">typedef</span> <span class="keyword">struct</span></div>
+<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span>    {</div>
+<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span>        <span class="keywordtype">float</span> min, max, value;</div>
+<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span>    } qFIS_IO_Base_t;</div>
+<div class="line"><a id="l00130" name="l00130"></a><span class="lineno"><a class="line" href="structq_f_i_s___input__t.html">  130</a></span>    <span class="keyword">typedef</span> <span class="keyword">struct</span></div>
+<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span>    {</div>
+<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span>        qFIS_IO_Base_t b;</div>
+<div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span>    } <a class="code hl_struct" href="structq_f_i_s___input__t.html">qFIS_Input_t</a>;</div>
+<div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span> </div>
+<div class="line"><a id="l00142" name="l00142"></a><span class="lineno"><a class="line" href="structq_f_i_s___output__t.html">  142</a></span>    <span class="keyword">typedef</span> <span class="keyword">struct</span></div>
+<div class="line"><a id="l00143" name="l00143"></a><span class="lineno">  143</span>    {</div>
+<div class="line"><a id="l00145" name="l00145"></a><span class="lineno">  145</span>        qFIS_IO_Base_t b;</div>
+<div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span>        <span class="keywordtype">float</span> res, x, y, data[ 4 ];</div>
+<div class="line"><a id="l00147" name="l00147"></a><span class="lineno">  147</span>        <span class="keywordtype">void</span> *owner;</div>
+<div class="line"><a id="l00149" name="l00149"></a><span class="lineno">  149</span>    } <a class="code hl_struct" href="structq_f_i_s___output__t.html">qFIS_Output_t</a>;</div>
+<div class="line"><a id="l00150" name="l00150"></a><span class="lineno">  150</span> </div>
+<div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span>    <span class="keyword">typedef</span> float (*qFIS_MF_Fcn_t)( <span class="keyword">const</span> qFIS_IO_Base_t * <span class="keyword">const</span> in, <span class="keyword">const</span> <span class="keywordtype">float</span> *p, <span class="keyword">const</span> <span class="keywordtype">size_t</span> n );</div>
+<div class="line"><a id="l00160" name="l00160"></a><span class="lineno"><a class="line" href="structq_f_i_s___m_f__t.html">  160</a></span>    <span class="keyword">typedef</span> <span class="keyword">struct</span></div>
+<div class="line"><a id="l00161" name="l00161"></a><span class="lineno">  161</span>    {</div>
+<div class="line"><a id="l00163" name="l00163"></a><span class="lineno">  163</span>        qFIS_MF_Fcn_t shape;</div>
+<div class="line"><a id="l00164" name="l00164"></a><span class="lineno">  164</span>        <span class="keyword">const</span> <span class="keywordtype">float</span> *points;</div>
+<div class="line"><a id="l00165" name="l00165"></a><span class="lineno">  165</span>        <span class="keywordtype">float</span> fx, h;</div>
+<div class="line"><a id="l00166" name="l00166"></a><span class="lineno">  166</span>        <span class="keywordtype">size_t</span> index;</div>
+<div class="line"><a id="l00168" name="l00168"></a><span class="lineno">  168</span>    } <a class="code hl_struct" href="structq_f_i_s___m_f__t.html">qFIS_MF_t</a>;</div>
+<div class="line"><a id="l00169" name="l00169"></a><span class="lineno">  169</span> </div>
+<div class="line"><a id="l00189" name="l00189"></a><span class="lineno"><a class="line" href="group__qfis.html#ga07efc356794273b23e2d469e8e4d882e">  189</a></span>    <span class="keyword">typedef</span> int16_t <a class="code hl_typedef" href="group__qfis.html#ga07efc356794273b23e2d469e8e4d882e">qFIS_Rules_t</a>;</div>
+<div class="line"><a id="l00190" name="l00190"></a><span class="lineno">  190</span> </div>
+<div class="line"><a id="l00192" name="l00192"></a><span class="lineno">  192</span>    <span class="keyword">typedef</span> <span class="keywordtype">int</span> qFIS_Tag_t;</div>
+<div class="line"><a id="l00193" name="l00193"></a><span class="lineno">  193</span>    <span class="keyword">typedef</span> float (*qFIS_DeFuzz_Fcn_t)( <a class="code hl_struct" href="structq_f_i_s___output__t.html">qFIS_Output_t</a> * <span class="keyword">const</span> o, <span class="keyword">const</span> qFIS_DeFuzzState_t stage );</div>
+<div class="line"><a id="l00201" name="l00201"></a><span class="lineno"><a class="line" href="structq_f_i_s__t.html">  201</a></span>    <span class="keyword">typedef</span> <span class="keyword">struct </span>_qFIS_s</div>
+<div class="line"><a id="l00202" name="l00202"></a><span class="lineno">  202</span>    {</div>
+<div class="line"><a id="l00204" name="l00204"></a><span class="lineno">  204</span>        <a class="code hl_struct" href="structq_f_i_s___input__t.html">qFIS_Input_t</a> *input;</div>
+<div class="line"><a id="l00205" name="l00205"></a><span class="lineno">  205</span>        <a class="code hl_struct" href="structq_f_i_s___output__t.html">qFIS_Output_t</a> *output;</div>
+<div class="line"><a id="l00206" name="l00206"></a><span class="lineno">  206</span>        <a class="code hl_struct" href="structq_f_i_s___m_f__t.html">qFIS_MF_t</a> *inMF, *outMF;</div>
+<div class="line"><a id="l00207" name="l00207"></a><span class="lineno">  207</span>        float (*andOp)( <span class="keyword">const</span> <span class="keywordtype">float</span> a, <span class="keyword">const</span> <span class="keywordtype">float</span> b );</div>
+<div class="line"><a id="l00208" name="l00208"></a><span class="lineno">  208</span>        float (*orOp)( <span class="keyword">const</span> <span class="keywordtype">float</span> a, <span class="keyword">const</span> <span class="keywordtype">float</span> b );</div>
+<div class="line"><a id="l00209" name="l00209"></a><span class="lineno">  209</span>        float (*implicate)( <span class="keyword">const</span> <span class="keywordtype">float</span> a, <span class="keyword">const</span> <span class="keywordtype">float</span> b );</div>
+<div class="line"><a id="l00210" name="l00210"></a><span class="lineno">  210</span>        float (*aggregate)( <span class="keyword">const</span> <span class="keywordtype">float</span> a, <span class="keyword">const</span> <span class="keywordtype">float</span> b );</div>
+<div class="line"><a id="l00211" name="l00211"></a><span class="lineno">  211</span>        size_t (*inferenceState)( <span class="keyword">struct </span>_qFIS_s * <span class="keyword">const</span> f, <span class="keywordtype">size_t</span> i );</div>
+<div class="line"><a id="l00212" name="l00212"></a><span class="lineno">  212</span>        size_t (*aggregationState)( <span class="keyword">struct </span>_qFIS_s * <span class="keyword">const</span> f, <span class="keywordtype">size_t</span> i );</div>
+<div class="line"><a id="l00213" name="l00213"></a><span class="lineno">  213</span>        <span class="comment">//void (*typeDeFuzz)( struct _qFIS_s * const f );</span></div>
+<div class="line"><a id="l00214" name="l00214"></a><span class="lineno">  214</span>        qFIS_DeFuzz_Fcn_t deFuzz;</div>
+<div class="line"><a id="l00215" name="l00215"></a><span class="lineno">  215</span>        <span class="keywordtype">float</span> *ruleWeight;</div>
+<div class="line"><a id="l00216" name="l00216"></a><span class="lineno">  216</span>        <span class="keywordtype">float</span> *wi;</div>
+<div class="line"><a id="l00217" name="l00217"></a><span class="lineno">  217</span>        <span class="keyword">const</span> <a class="code hl_typedef" href="group__qfis.html#ga07efc356794273b23e2d469e8e4d882e">qFIS_Rules_t</a> *rules;</div>
+<div class="line"><a id="l00218" name="l00218"></a><span class="lineno">  218</span>        <span class="keywordtype">size_t</span> rule_cols;</div>
+<div class="line"><a id="l00219" name="l00219"></a><span class="lineno">  219</span>        <span class="keywordtype">size_t</span> nInputs, nOutputs;</div>
+<div class="line"><a id="l00220" name="l00220"></a><span class="lineno">  220</span>        <span class="keywordtype">size_t</span> nMFInputs, nMFOutputs;</div>
+<div class="line"><a id="l00221" name="l00221"></a><span class="lineno">  221</span>        <span class="keywordtype">size_t</span> nPoints;</div>
+<div class="line"><a id="l00222" name="l00222"></a><span class="lineno">  222</span>        <span class="keywordtype">size_t</span> nRules, ruleCount;</div>
+<div class="line"><a id="l00223" name="l00223"></a><span class="lineno">  223</span>        <span class="keywordtype">float</span> rStrength;</div>
+<div class="line"><a id="l00224" name="l00224"></a><span class="lineno">  224</span>        <a class="code hl_typedef" href="group__qfis.html#ga07efc356794273b23e2d469e8e4d882e">qFIS_Rules_t</a> lastConnector;</div>
+<div class="line"><a id="l00225" name="l00225"></a><span class="lineno">  225</span>        <a class="code hl_enumeration" href="group__qfis.html#ga2f3f0184eca9e38c98afca2275fbe13d">qFIS_Type_t</a> type;</div>
+<div class="line"><a id="l00227" name="l00227"></a><span class="lineno">  227</span>    } <a class="code hl_struct" href="structq_f_i_s__t.html">qFIS_t</a>;</div>
+<div class="line"><a id="l00228" name="l00228"></a><span class="lineno">  228</span> </div>
+<div class="line"><a id="l00230" name="l00230"></a><span class="lineno">  230</span><span class="preprocessor">    #define _QFIS_RULES_END         ( INT16_MIN + 1 )</span></div>
+<div class="line"><a id="l00231" name="l00231"></a><span class="lineno">  231</span><span class="preprocessor">    #define _QFIS_AND               ( INT16_MIN + 2 )</span></div>
+<div class="line"><a id="l00232" name="l00232"></a><span class="lineno">  232</span><span class="preprocessor">    #define _QFIS_OR                ( INT16_MIN + 3 )</span></div>
+<div class="line"><a id="l00233" name="l00233"></a><span class="lineno">  233</span><span class="preprocessor">    #define _QFIS_THEN              ( INT16_MIN + 4 )</span></div>
+<div class="line"><a id="l00234" name="l00234"></a><span class="lineno">  234</span><span class="preprocessor">    #define _QFIS_RULE_END          ( INT16_MIN + 5 )</span></div>
+<div class="line"><a id="l00237" name="l00237"></a><span class="lineno">  237</span>    <span class="comment">/*Rules build keywords*/</span></div>
+<div class="line"><a id="l00238" name="l00238"></a><span class="lineno">  238</span> </div>
+<div class="line"><a id="l00257" name="l00257"></a><span class="lineno"><a class="line" href="group__qfis.html#gadd5af13b8fd13530a1a481cec2ef0637">  257</a></span><span class="preprocessor">    #define QFIS_RULES_BEGIN        ( INT16_MIN )</span></div>
+<div class="line"><a id="l00258" name="l00258"></a><span class="lineno">  258</span> </div>
+<div class="line"><a id="l00277" name="l00277"></a><span class="lineno"><a class="line" href="group__qfis.html#ga80454033f67a79247305ba0a18d98247">  277</a></span><span class="preprocessor">    #define QFIS_RULES_END          ,_QFIS_RULES_END</span></div>
+<div class="line"><a id="l00278" name="l00278"></a><span class="lineno">  278</span> </div>
+<div class="line"><a id="l00280" name="l00280"></a><span class="lineno"><a class="line" href="group__qfis.html#gac138c68a0709c57bc5f7567abc1558eb">  280</a></span><span class="preprocessor">    #define IF                      ,</span></div>
+<div class="line"><a id="l00282" name="l00282"></a><span class="lineno"><a class="line" href="group__qfis.html#gacd1b97556dfbbac61063a63031d2f91d">  282</a></span><span class="preprocessor">    #define AND                     +1),_QFIS_AND,</span></div>
+<div class="line"><a id="l00284" name="l00284"></a><span class="lineno"><a class="line" href="group__qfis.html#ga3363ca4d6d3cc0230b2804280591c991">  284</a></span><span class="preprocessor">    #define OR                      +1),_QFIS_OR,</span></div>
+<div class="line"><a id="l00286" name="l00286"></a><span class="lineno"><a class="line" href="group__qfis.html#gad9884c43f4f50a5852711a614f2343ac">  286</a></span><span class="preprocessor">    #define THEN                    +1),_QFIS_THEN,</span></div>
+<div class="line"><a id="l00288" name="l00288"></a><span class="lineno"><a class="line" href="group__qfis.html#gad28e1b10e158ae134bb6fa3bb2f34a06">  288</a></span><span class="preprocessor">    #define IS                      ,(</span></div>
+<div class="line"><a id="l00290" name="l00290"></a><span class="lineno"><a class="line" href="group__qfis.html#gab3262baea101d64a3d11969b9dd2e78d">  290</a></span><span class="preprocessor">    #define IS_NOT                  ,-(</span></div>
+<div class="line"><a id="l00292" name="l00292"></a><span class="lineno"><a class="line" href="group__qfis.html#ga29fd18bed01c4d836c7ebfe73a125c3f">  292</a></span><span class="preprocessor">    #define END                     +1)</span></div>
+<div class="line"><a id="l00293" name="l00293"></a><span class="lineno">  293</span> </div>
+<div class="line"><a id="l00301" name="l00301"></a><span class="lineno">  301</span>    <span class="keywordtype">int</span> <a class="code hl_function" href="group__qfis.html#gafd1779c21247298e6ea9a2b5934a8e52">qFIS_SetParameter</a>( <a class="code hl_struct" href="structq_f_i_s__t.html">qFIS_t</a> * <span class="keyword">const</span> f,</div>
+<div class="line"><a id="l00302" name="l00302"></a><span class="lineno">  302</span>                           <span class="keyword">const</span> <a class="code hl_enumeration" href="group__qfis.html#ga933f1f7eb2e8a0ae89258ead19a61199">qFIS_Parameter_t</a> p,</div>
+<div class="line"><a id="l00303" name="l00303"></a><span class="lineno">  303</span>                           <span class="keyword">const</span> <a class="code hl_enumeration" href="group__qfis.html#ga4a36da9d08e666f99234ad63ad8edea8">qFIS_ParamValue_t</a> x );</div>
+<div class="line"><a id="l00304" name="l00304"></a><span class="lineno">  304</span> </div>
+<div class="line"><a id="l00316" name="l00316"></a><span class="lineno">  316</span>    <span class="keywordtype">int</span> <a class="code hl_function" href="group__qfis.html#ga77c1447bb727d37d75a20d8d8f9f85fb">qFIS_SetDeFuzzMethod</a>( <a class="code hl_struct" href="structq_f_i_s__t.html">qFIS_t</a> * <span class="keyword">const</span> f,</div>
+<div class="line"><a id="l00317" name="l00317"></a><span class="lineno">  317</span>                              <a class="code hl_enumeration" href="group__qfis.html#gaedbcaf3cb5c4b57eb1f44f4dea0f1a72">qFIS_DeFuzz_Method_t</a> m );</div>
+<div class="line"><a id="l00318" name="l00318"></a><span class="lineno">  318</span> </div>
+<div class="line"><a id="l00344" name="l00344"></a><span class="lineno">  344</span>    <span class="keywordtype">int</span> <a class="code hl_function" href="group__qfis.html#gaae3433474a516fbf41e0e406fe41410b">qFIS_Setup</a>( <a class="code hl_struct" href="structq_f_i_s__t.html">qFIS_t</a> * <span class="keyword">const</span> f,</div>
+<div class="line"><a id="l00345" name="l00345"></a><span class="lineno">  345</span>                    <span class="keyword">const</span> <a class="code hl_enumeration" href="group__qfis.html#ga2f3f0184eca9e38c98afca2275fbe13d">qFIS_Type_t</a> t,</div>
+<div class="line"><a id="l00346" name="l00346"></a><span class="lineno">  346</span>                    <a class="code hl_struct" href="structq_f_i_s___input__t.html">qFIS_Input_t</a> * <span class="keyword">const</span> inputs,</div>
+<div class="line"><a id="l00347" name="l00347"></a><span class="lineno">  347</span>                    <span class="keyword">const</span> <span class="keywordtype">size_t</span> ni,</div>
+<div class="line"><a id="l00348" name="l00348"></a><span class="lineno">  348</span>                    <a class="code hl_struct" href="structq_f_i_s___output__t.html">qFIS_Output_t</a> * <span class="keyword">const</span> outputs,</div>
+<div class="line"><a id="l00349" name="l00349"></a><span class="lineno">  349</span>                    <span class="keyword">const</span> <span class="keywordtype">size_t</span> no,</div>
+<div class="line"><a id="l00350" name="l00350"></a><span class="lineno">  350</span>                    <a class="code hl_struct" href="structq_f_i_s___m_f__t.html">qFIS_MF_t</a> * <span class="keyword">const</span> mf_inputs,</div>
+<div class="line"><a id="l00351" name="l00351"></a><span class="lineno">  351</span>                    <span class="keyword">const</span> <span class="keywordtype">size_t</span> nmi,</div>
+<div class="line"><a id="l00352" name="l00352"></a><span class="lineno">  352</span>                    <a class="code hl_struct" href="structq_f_i_s___m_f__t.html">qFIS_MF_t</a> * <span class="keyword">const</span> mf_outputs,</div>
+<div class="line"><a id="l00353" name="l00353"></a><span class="lineno">  353</span>                    <span class="keyword">const</span> <span class="keywordtype">size_t</span> nmo,</div>
+<div class="line"><a id="l00354" name="l00354"></a><span class="lineno">  354</span>                    <span class="keyword">const</span> <a class="code hl_typedef" href="group__qfis.html#ga07efc356794273b23e2d469e8e4d882e">qFIS_Rules_t</a> * <span class="keyword">const</span> r,</div>
+<div class="line"><a id="l00355" name="l00355"></a><span class="lineno">  355</span>                    <span class="keywordtype">float</span> *wi,</div>
+<div class="line"><a id="l00356" name="l00356"></a><span class="lineno">  356</span>                    <span class="keyword">const</span> <span class="keywordtype">size_t</span> n</div>
+<div class="line"><a id="l00357" name="l00357"></a><span class="lineno">  357</span>                    );</div>
+<div class="line"><a id="l00358" name="l00358"></a><span class="lineno">  358</span> </div>
+<div class="line"><a id="l00367" name="l00367"></a><span class="lineno">  367</span>    <span class="keywordtype">int</span> <a class="code hl_function" href="group__qfis.html#ga9157fd772255f73e6b5aca365986068a">qFIS_InputSetup</a>( <a class="code hl_struct" href="structq_f_i_s___input__t.html">qFIS_Input_t</a> * <span class="keyword">const</span> v,</div>
+<div class="line"><a id="l00368" name="l00368"></a><span class="lineno">  368</span>                         <span class="keyword">const</span> qFIS_Tag_t t,</div>
+<div class="line"><a id="l00369" name="l00369"></a><span class="lineno">  369</span>                         <span class="keyword">const</span> <span class="keywordtype">float</span> min,</div>
+<div class="line"><a id="l00370" name="l00370"></a><span class="lineno">  370</span>                         <span class="keyword">const</span> <span class="keywordtype">float</span> max );</div>
+<div class="line"><a id="l00371" name="l00371"></a><span class="lineno">  371</span> </div>
+<div class="line"><a id="l00381" name="l00381"></a><span class="lineno">  381</span>    <span class="keywordtype">int</span> <a class="code hl_function" href="group__qfis.html#gae2f10a746a4e19752a985e6892132a80">qFIS_OutputSetup</a>( <a class="code hl_struct" href="structq_f_i_s___output__t.html">qFIS_Output_t</a> * <span class="keyword">const</span> v,</div>
+<div class="line"><a id="l00382" name="l00382"></a><span class="lineno">  382</span>                          <span class="keyword">const</span> qFIS_Tag_t t,</div>
+<div class="line"><a id="l00383" name="l00383"></a><span class="lineno">  383</span>                          <span class="keyword">const</span> <span class="keywordtype">float</span> min,</div>
+<div class="line"><a id="l00384" name="l00384"></a><span class="lineno">  384</span>                          <span class="keyword">const</span> <span class="keywordtype">float</span> max );</div>
+<div class="line"><a id="l00385" name="l00385"></a><span class="lineno">  385</span> </div>
+<div class="line"><a id="l00393" name="l00393"></a><span class="lineno">  393</span>    <span class="keywordtype">int</span> <a class="code hl_function" href="group__qfis.html#gadc51ab655860a45c7ecb535c7a6c0b52">qFIS_SetInput</a>( <a class="code hl_struct" href="structq_f_i_s___input__t.html">qFIS_Input_t</a> * <span class="keyword">const</span> v,</div>
+<div class="line"><a id="l00394" name="l00394"></a><span class="lineno">  394</span>                       <span class="keyword">const</span> qFIS_Tag_t t,</div>
+<div class="line"><a id="l00395" name="l00395"></a><span class="lineno">  395</span>                       <span class="keyword">const</span> <span class="keywordtype">float</span> value );</div>
+<div class="line"><a id="l00396" name="l00396"></a><span class="lineno">  396</span> </div>
+<div class="line"><a id="l00404" name="l00404"></a><span class="lineno">  404</span>    <span class="keywordtype">float</span> <a class="code hl_function" href="group__qfis.html#ga3c84df9b59cb1e2a66db3f57946fac94">qFIS_GetOutput</a>( <span class="keyword">const</span> <a class="code hl_struct" href="structq_f_i_s___output__t.html">qFIS_Output_t</a> * <span class="keyword">const</span> v,</div>
+<div class="line"><a id="l00405" name="l00405"></a><span class="lineno">  405</span>                          <span class="keyword">const</span> qFIS_Tag_t t );</div>
+<div class="line"><a id="l00406" name="l00406"></a><span class="lineno">  406</span> </div>
+<div class="line"><a id="l00434" name="l00434"></a><span class="lineno">  434</span>    <span class="keywordtype">int</span> <a class="code hl_function" href="group__qfis.html#gad187010550dc9d983c589f6dd9fa971c">qFIS_SetMF</a>( <a class="code hl_struct" href="structq_f_i_s___m_f__t.html">qFIS_MF_t</a> * <span class="keyword">const</span> m,</div>
+<div class="line"><a id="l00435" name="l00435"></a><span class="lineno">  435</span>                    <span class="keyword">const</span> qFIS_Tag_t io,</div>
+<div class="line"><a id="l00436" name="l00436"></a><span class="lineno">  436</span>                    <span class="keyword">const</span> qFIS_Tag_t mf,</div>
+<div class="line"><a id="l00437" name="l00437"></a><span class="lineno">  437</span>                    <span class="keyword">const</span> <a class="code hl_enumeration" href="group__qfis.html#ga57d388104d07dbb852d11d277d439302">qFIS_MF_Name_t</a> s,</div>
+<div class="line"><a id="l00438" name="l00438"></a><span class="lineno">  438</span>                    qFIS_MF_Fcn_t custom_mf,</div>
+<div class="line"><a id="l00439" name="l00439"></a><span class="lineno">  439</span>                    <span class="keyword">const</span> <span class="keywordtype">float</span> *cp,</div>
+<div class="line"><a id="l00440" name="l00440"></a><span class="lineno">  440</span>                    <span class="keyword">const</span> <span class="keywordtype">float</span> h );</div>
+<div class="line"><a id="l00441" name="l00441"></a><span class="lineno">  441</span> </div>
+<div class="line"><a id="l00448" name="l00448"></a><span class="lineno">  448</span>    <span class="keywordtype">int</span> <a class="code hl_function" href="group__qfis.html#gafeb90b7b41ef3c5b25d12bf6a2adb6e5">qFIS_Fuzzify</a>( <a class="code hl_struct" href="structq_f_i_s__t.html">qFIS_t</a> * <span class="keyword">const</span> f );</div>
+<div class="line"><a id="l00449" name="l00449"></a><span class="lineno">  449</span> </div>
+<div class="line"><a id="l00455" name="l00455"></a><span class="lineno">  455</span>    <span class="keywordtype">int</span> <a class="code hl_function" href="group__qfis.html#ga471e4559534e3fe726a895bc4466e05e">qFIS_Inference</a>( <a class="code hl_struct" href="structq_f_i_s__t.html">qFIS_t</a> * <span class="keyword">const</span> f );</div>
+<div class="line"><a id="l00456" name="l00456"></a><span class="lineno">  456</span> </div>
+<div class="line"><a id="l00465" name="l00465"></a><span class="lineno">  465</span>    <span class="keywordtype">int</span> <a class="code hl_function" href="group__qfis.html#ga74cf29a2008f1169fab3b56635a4c620">qFIS_DeFuzzify</a>( <a class="code hl_struct" href="structq_f_i_s__t.html">qFIS_t</a> * <span class="keyword">const</span> f );</div>
+<div class="line"><a id="l00466" name="l00466"></a><span class="lineno">  466</span> </div>
+<div class="line"><a id="l00473" name="l00473"></a><span class="lineno">  473</span>    <span class="keywordtype">int</span> <a class="code hl_function" href="group__qfis.html#gad48fca6d1233a283d167012b5fe84c9b">qFIS_SetRuleWeights</a>( <a class="code hl_struct" href="structq_f_i_s__t.html">qFIS_t</a> * <span class="keyword">const</span> f,</div>
+<div class="line"><a id="l00474" name="l00474"></a><span class="lineno">  474</span>                             <span class="keywordtype">float</span> *rWeights );</div>
+<div class="line"><a id="l00475" name="l00475"></a><span class="lineno">  475</span> </div>
+<div class="line"><a id="l00478" name="l00478"></a><span class="lineno">  478</span><span class="preprocessor">#ifdef __cplusplus</span></div>
+<div class="line"><a id="l00479" name="l00479"></a><span class="lineno">  479</span>}</div>
+<div class="line"><a id="l00480" name="l00480"></a><span class="lineno">  480</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00481" name="l00481"></a><span class="lineno">  481</span> </div>
+<div class="line"><a id="l00482" name="l00482"></a><span class="lineno">  482</span><span class="preprocessor">#endif</span></div>
+<div class="ttc" id="agroup__qfis_html_ga07efc356794273b23e2d469e8e4d882e"><div class="ttname"><a href="group__qfis.html#ga07efc356794273b23e2d469e8e4d882e">qFIS_Rules_t</a></div><div class="ttdeci">int16_t qFIS_Rules_t</div><div class="ttdoc">Type definition to instantiate a set of fuzzy rules.</div><div class="ttdef"><b>Definition:</b> qfis.h:189</div></div>
+<div class="ttc" id="agroup__qfis_html_ga2f3f0184eca9e38c98afca2275fbe13d"><div class="ttname"><a href="group__qfis.html#ga2f3f0184eca9e38c98afca2275fbe13d">qFIS_Type_t</a></div><div class="ttdeci">qFIS_Type_t</div><div class="ttdoc">An enum with the inference system types supported by qFIS.</div><div class="ttdef"><b>Definition:</b> qfis.h:104</div></div>
+<div class="ttc" id="agroup__qfis_html_ga3c84df9b59cb1e2a66db3f57946fac94"><div class="ttname"><a href="group__qfis.html#ga3c84df9b59cb1e2a66db3f57946fac94">qFIS_GetOutput</a></div><div class="ttdeci">float qFIS_GetOutput(const qFIS_Output_t *const v, const qFIS_Tag_t t)</div><div class="ttdoc">Get the de-fuzzified crisp value from the the output with the specified tag.</div><div class="ttdef"><b>Definition:</b> qfis.c:314</div></div>
+<div class="ttc" id="agroup__qfis_html_ga471e4559534e3fe726a895bc4466e05e"><div class="ttname"><a href="group__qfis.html#ga471e4559534e3fe726a895bc4466e05e">qFIS_Inference</a></div><div class="ttdeci">int qFIS_Inference(qFIS_t *const f)</div><div class="ttdoc">Perform the inference process on the requested FIS object.</div><div class="ttdef"><b>Definition:</b> qfis.c:812</div></div>
+<div class="ttc" id="agroup__qfis_html_ga4a36da9d08e666f99234ad63ad8edea8"><div class="ttname"><a href="group__qfis.html#ga4a36da9d08e666f99234ad63ad8edea8">qFIS_ParamValue_t</a></div><div class="ttdeci">qFIS_ParamValue_t</div><div class="ttdoc">An enum with the supported parameter values.</div><div class="ttdef"><b>Definition:</b> qfis.h:82</div></div>
+<div class="ttc" id="agroup__qfis_html_ga57d388104d07dbb852d11d277d439302"><div class="ttname"><a href="group__qfis.html#ga57d388104d07dbb852d11d277d439302">qFIS_MF_Name_t</a></div><div class="ttdeci">qFIS_MF_Name_t</div><div class="ttdoc">An enum with all the possible values to specify a membership function.</div><div class="ttdef"><b>Definition:</b> qfis.h:30</div></div>
+<div class="ttc" id="agroup__qfis_html_ga74cf29a2008f1169fab3b56635a4c620"><div class="ttname"><a href="group__qfis.html#ga74cf29a2008f1169fab3b56635a4c620">qFIS_DeFuzzify</a></div><div class="ttdeci">int qFIS_DeFuzzify(qFIS_t *const f)</div><div class="ttdoc">Perform the de-Fuzzification operation to compute the crisp outputs.</div><div class="ttdef"><b>Definition:</b> qfis.c:749</div></div>
+<div class="ttc" id="agroup__qfis_html_ga77c1447bb727d37d75a20d8d8f9f85fb"><div class="ttname"><a href="group__qfis.html#ga77c1447bb727d37d75a20d8d8f9f85fb">qFIS_SetDeFuzzMethod</a></div><div class="ttdeci">int qFIS_SetDeFuzzMethod(qFIS_t *const f, qFIS_DeFuzz_Method_t m)</div><div class="ttdoc">Change the default deFuzzification method of the FIS instance.</div><div class="ttdef"><b>Definition:</b> qfis.c:186</div></div>
+<div class="ttc" id="agroup__qfis_html_ga9157fd772255f73e6b5aca365986068a"><div class="ttname"><a href="group__qfis.html#ga9157fd772255f73e6b5aca365986068a">qFIS_InputSetup</a></div><div class="ttdeci">int qFIS_InputSetup(qFIS_Input_t *const v, const qFIS_Tag_t t, const float min, const float max)</div><div class="ttdoc">Setup the input with the specified tag and set limits for it.</div><div class="ttdef"><b>Definition:</b> qfis.c:262</div></div>
+<div class="ttc" id="agroup__qfis_html_ga933f1f7eb2e8a0ae89258ead19a61199"><div class="ttname"><a href="group__qfis.html#ga933f1f7eb2e8a0ae89258ead19a61199">qFIS_Parameter_t</a></div><div class="ttdeci">qFIS_Parameter_t</div><div class="ttdoc">An enum with the allowed parameters that can be set on a FIS instance.</div><div class="ttdef"><b>Definition:</b> qfis.h:93</div></div>
+<div class="ttc" id="agroup__qfis_html_gaae3433474a516fbf41e0e406fe41410b"><div class="ttname"><a href="group__qfis.html#gaae3433474a516fbf41e0e406fe41410b">qFIS_Setup</a></div><div class="ttdeci">int qFIS_Setup(qFIS_t *const f, const qFIS_Type_t t, qFIS_Input_t *const inputs, const size_t ni, qFIS_Output_t *const outputs, const size_t no, qFIS_MF_t *const mf_inputs, const size_t nmi, qFIS_MF_t *const mf_outputs, const size_t nmo, const qFIS_Rules_t *const r, float *wi, const size_t n)</div><div class="ttdoc">Setup and initialize the FIS instance.</div><div class="ttdef"><b>Definition:</b> qfis.c:211</div></div>
+<div class="ttc" id="agroup__qfis_html_gad187010550dc9d983c589f6dd9fa971c"><div class="ttname"><a href="group__qfis.html#gad187010550dc9d983c589f6dd9fa971c">qFIS_SetMF</a></div><div class="ttdeci">int qFIS_SetMF(qFIS_MF_t *const m, const qFIS_Tag_t io, const qFIS_Tag_t mf, const qFIS_MF_Name_t s, qFIS_MF_Fcn_t custom_mf, const float *cp, const float h)</div><div class="ttdoc">Set the IO tag and points for the specified membership function.</div><div class="ttdef"><b>Definition:</b> qfis.c:327</div></div>
+<div class="ttc" id="agroup__qfis_html_gad48fca6d1233a283d167012b5fe84c9b"><div class="ttname"><a href="group__qfis.html#gad48fca6d1233a283d167012b5fe84c9b">qFIS_SetRuleWeights</a></div><div class="ttdeci">int qFIS_SetRuleWeights(qFIS_t *const f, float *rWeights)</div><div class="ttdoc">Set weights to the rules of the inference system.</div><div class="ttdef"><b>Definition:</b> qfis.c:799</div></div>
+<div class="ttc" id="agroup__qfis_html_gadc51ab655860a45c7ecb535c7a6c0b52"><div class="ttname"><a href="group__qfis.html#gadc51ab655860a45c7ecb535c7a6c0b52">qFIS_SetInput</a></div><div class="ttdeci">int qFIS_SetInput(qFIS_Input_t *const v, const qFIS_Tag_t t, const float value)</div><div class="ttdoc">Set a crisp value of the input with the specified tag.</div><div class="ttdef"><b>Definition:</b> qfis.c:300</div></div>
+<div class="ttc" id="agroup__qfis_html_gae2f10a746a4e19752a985e6892132a80"><div class="ttname"><a href="group__qfis.html#gae2f10a746a4e19752a985e6892132a80">qFIS_OutputSetup</a></div><div class="ttdeci">int qFIS_OutputSetup(qFIS_Output_t *const v, const qFIS_Tag_t t, const float min, const float max)</div><div class="ttdoc">Setup the output with the specified tag and set limits for it.</div><div class="ttdef"><b>Definition:</b> qfis.c:278</div></div>
+<div class="ttc" id="agroup__qfis_html_gaedbcaf3cb5c4b57eb1f44f4dea0f1a72"><div class="ttname"><a href="group__qfis.html#gaedbcaf3cb5c4b57eb1f44f4dea0f1a72">qFIS_DeFuzz_Method_t</a></div><div class="ttdeci">qFIS_DeFuzz_Method_t</div><div class="ttdoc">An enum with all the possible de-Fuzzyfication methods.</div><div class="ttdef"><b>Definition:</b> qfis.h:66</div></div>
+<div class="ttc" id="agroup__qfis_html_gafd1779c21247298e6ea9a2b5934a8e52"><div class="ttname"><a href="group__qfis.html#gafd1779c21247298e6ea9a2b5934a8e52">qFIS_SetParameter</a></div><div class="ttdeci">int qFIS_SetParameter(qFIS_t *const f, const qFIS_Parameter_t p, const qFIS_ParamValue_t x)</div><div class="ttdoc">Set parameters of the FIS instance.</div><div class="ttdef"><b>Definition:</b> qfis.c:136</div></div>
+<div class="ttc" id="agroup__qfis_html_gafeb90b7b41ef3c5b25d12bf6a2adb6e5"><div class="ttname"><a href="group__qfis.html#gafeb90b7b41ef3c5b25d12bf6a2adb6e5">qFIS_Fuzzify</a></div><div class="ttdeci">int qFIS_Fuzzify(qFIS_t *const f)</div><div class="ttdoc">Perform the fuzzification operation over the crisp inputs on the requested FIS object.</div><div class="ttdef"><b>Definition:</b> qfis.c:392</div></div>
+<div class="ttc" id="agroup__qfis_html_gga2f3f0184eca9e38c98afca2275fbe13da6be5a07806b4e50dc6aa3ce912692ad6"><div class="ttname"><a href="group__qfis.html#gga2f3f0184eca9e38c98afca2275fbe13da6be5a07806b4e50dc6aa3ce912692ad6">Sugeno</a></div><div class="ttdeci">@ Sugeno</div><div class="ttdef"><b>Definition:</b> qfis.h:106</div></div>
+<div class="ttc" id="agroup__qfis_html_gga2f3f0184eca9e38c98afca2275fbe13da7b5af38242e88e34875821666e361935"><div class="ttname"><a href="group__qfis.html#gga2f3f0184eca9e38c98afca2275fbe13da7b5af38242e88e34875821666e361935">Tsukamoto</a></div><div class="ttdeci">@ Tsukamoto</div><div class="ttdef"><b>Definition:</b> qfis.h:107</div></div>
+<div class="ttc" id="agroup__qfis_html_gga2f3f0184eca9e38c98afca2275fbe13daaaafece1969d49f7a63d07fd66937799"><div class="ttname"><a href="group__qfis.html#gga2f3f0184eca9e38c98afca2275fbe13daaaafece1969d49f7a63d07fd66937799">Mamdani</a></div><div class="ttdeci">@ Mamdani</div><div class="ttdef"><b>Definition:</b> qfis.h:105</div></div>
+<div class="ttc" id="agroup__qfis_html_gga4a36da9d08e666f99234ad63ad8edea8a02129fa1b1988846ddcaa24763ca4759"><div class="ttname"><a href="group__qfis.html#gga4a36da9d08e666f99234ad63ad8edea8a02129fa1b1988846ddcaa24763ca4759">qFIS_SUM</a></div><div class="ttdeci">@ qFIS_SUM</div><div class="ttdef"><b>Definition:</b> qfis.h:87</div></div>
+<div class="ttc" id="agroup__qfis_html_gga4a36da9d08e666f99234ad63ad8edea8a17b9fce953a0105ea84a5d3ea24382ce"><div class="ttname"><a href="group__qfis.html#gga4a36da9d08e666f99234ad63ad8edea8a17b9fce953a0105ea84a5d3ea24382ce">qFIS_PROD</a></div><div class="ttdeci">@ qFIS_PROD</div><div class="ttdef"><b>Definition:</b> qfis.h:84</div></div>
+<div class="ttc" id="agroup__qfis_html_gga4a36da9d08e666f99234ad63ad8edea8a180a4073ca83341220b737f6ea72ab34"><div class="ttname"><a href="group__qfis.html#gga4a36da9d08e666f99234ad63ad8edea8a180a4073ca83341220b737f6ea72ab34">qFIS_MIN</a></div><div class="ttdeci">@ qFIS_MIN</div><div class="ttdef"><b>Definition:</b> qfis.h:83</div></div>
+<div class="ttc" id="agroup__qfis_html_gga4a36da9d08e666f99234ad63ad8edea8a87c9e76c7baa678420ecc602d3aeae14"><div class="ttname"><a href="group__qfis.html#gga4a36da9d08e666f99234ad63ad8edea8a87c9e76c7baa678420ecc602d3aeae14">qFIS_MAX</a></div><div class="ttdeci">@ qFIS_MAX</div><div class="ttdef"><b>Definition:</b> qfis.h:85</div></div>
+<div class="ttc" id="agroup__qfis_html_gga4a36da9d08e666f99234ad63ad8edea8acba3768c95dfdc791cc01eea64a58deb"><div class="ttname"><a href="group__qfis.html#gga4a36da9d08e666f99234ad63ad8edea8acba3768c95dfdc791cc01eea64a58deb">qFIS_PROBOR</a></div><div class="ttdeci">@ qFIS_PROBOR</div><div class="ttdef"><b>Definition:</b> qfis.h:86</div></div>
+<div class="ttc" id="agroup__qfis_html_gga57d388104d07dbb852d11d277d439302a15d4fd087b99bfae1ad35c04a4196be4"><div class="ttname"><a href="group__qfis.html#gga57d388104d07dbb852d11d277d439302a15d4fd087b99bfae1ad35c04a4196be4">tsigmf</a></div><div class="ttdeci">@ tsigmf</div><div class="ttdef"><b>Definition:</b> qfis.h:55</div></div>
+<div class="ttc" id="agroup__qfis_html_gga57d388104d07dbb852d11d277d439302a18ef4cfb7704044a8fae2f7edea657dd"><div class="ttname"><a href="group__qfis.html#gga57d388104d07dbb852d11d277d439302a18ef4cfb7704044a8fae2f7edea657dd">zmf</a></div><div class="ttdeci">@ zmf</div><div class="ttdef"><b>Definition:</b> qfis.h:42</div></div>
+<div class="ttc" id="agroup__qfis_html_gga57d388104d07dbb852d11d277d439302a1b7f254eb17ba94e97a9fe60fb7bf09b"><div class="ttname"><a href="group__qfis.html#gga57d388104d07dbb852d11d277d439302a1b7f254eb17ba94e97a9fe60fb7bf09b">linsmf</a></div><div class="ttdeci">@ linsmf</div><div class="ttdef"><b>Definition:</b> qfis.h:46</div></div>
+<div class="ttc" id="agroup__qfis_html_gga57d388104d07dbb852d11d277d439302a1b9910ce8deaabf94e74eb0228f165fc"><div class="ttname"><a href="group__qfis.html#gga57d388104d07dbb852d11d277d439302a1b9910ce8deaabf94e74eb0228f165fc">smf</a></div><div class="ttdeci">@ smf</div><div class="ttdef"><b>Definition:</b> qfis.h:41</div></div>
+<div class="ttc" id="agroup__qfis_html_gga57d388104d07dbb852d11d277d439302a26b5b0fec349f4dd75ea138509c7f9bc"><div class="ttname"><a href="group__qfis.html#gga57d388104d07dbb852d11d277d439302a26b5b0fec349f4dd75ea138509c7f9bc">sigmf</a></div><div class="ttdeci">@ sigmf</div><div class="ttdef"><b>Definition:</b> qfis.h:37</div></div>
+<div class="ttc" id="agroup__qfis_html_gga57d388104d07dbb852d11d277d439302a2c8b9058af45167c4cef2e4f7f0e0c42"><div class="ttname"><a href="group__qfis.html#gga57d388104d07dbb852d11d277d439302a2c8b9058af45167c4cef2e4f7f0e0c42">constantmf</a></div><div class="ttdeci">@ constantmf</div><div class="ttdef"><b>Definition:</b> qfis.h:50</div></div>
+<div class="ttc" id="agroup__qfis_html_gga57d388104d07dbb852d11d277d439302a2ebaaf5da9f4f9658a77cbb7b955fde4"><div class="ttname"><a href="group__qfis.html#gga57d388104d07dbb852d11d277d439302a2ebaaf5da9f4f9658a77cbb7b955fde4">pimf</a></div><div class="ttdeci">@ pimf</div><div class="ttdef"><b>Definition:</b> qfis.h:40</div></div>
+<div class="ttc" id="agroup__qfis_html_gga57d388104d07dbb852d11d277d439302a3e187547bd00b7f8ef46fd105d170914"><div class="ttname"><a href="group__qfis.html#gga57d388104d07dbb852d11d277d439302a3e187547bd00b7f8ef46fd105d170914">linearmf</a></div><div class="ttdeci">@ linearmf</div><div class="ttdef"><b>Definition:</b> qfis.h:51</div></div>
+<div class="ttc" id="agroup__qfis_html_gga57d388104d07dbb852d11d277d439302a43b3471fcf257414fd73960961f71f8c"><div class="ttname"><a href="group__qfis.html#gga57d388104d07dbb852d11d277d439302a43b3471fcf257414fd73960961f71f8c">tconcavemf</a></div><div class="ttdeci">@ tconcavemf</div><div class="ttdef"><b>Definition:</b> qfis.h:54</div></div>
+<div class="ttc" id="agroup__qfis_html_gga57d388104d07dbb852d11d277d439302a4d57e0dc8df50e01b5912fcf06ac9af7"><div class="ttname"><a href="group__qfis.html#gga57d388104d07dbb852d11d277d439302a4d57e0dc8df50e01b5912fcf06ac9af7">gauss2mf</a></div><div class="ttdeci">@ gauss2mf</div><div class="ttdef"><b>Definition:</b> qfis.h:36</div></div>
+<div class="ttc" id="agroup__qfis_html_gga57d388104d07dbb852d11d277d439302a50279291d8a418eb06941a1f5208d1aa"><div class="ttname"><a href="group__qfis.html#gga57d388104d07dbb852d11d277d439302a50279291d8a418eb06941a1f5208d1aa">linzmf</a></div><div class="ttdeci">@ linzmf</div><div class="ttdef"><b>Definition:</b> qfis.h:47</div></div>
+<div class="ttc" id="agroup__qfis_html_gga57d388104d07dbb852d11d277d439302a517ec5d7ed4ba84016d6d5d5963584b7"><div class="ttname"><a href="group__qfis.html#gga57d388104d07dbb852d11d277d439302a517ec5d7ed4ba84016d6d5d5963584b7">singletonmf</a></div><div class="ttdeci">@ singletonmf</div><div class="ttdef"><b>Definition:</b> qfis.h:43</div></div>
+<div class="ttc" id="agroup__qfis_html_gga57d388104d07dbb852d11d277d439302a59077554a504ca1e69784f650fbd8952"><div class="ttname"><a href="group__qfis.html#gga57d388104d07dbb852d11d277d439302a59077554a504ca1e69784f650fbd8952">custommf</a></div><div class="ttdeci">@ custommf</div><div class="ttdef"><b>Definition:</b> qfis.h:31</div></div>
+<div class="ttc" id="agroup__qfis_html_gga57d388104d07dbb852d11d277d439302a5ac08b226723d99e82d613115b2fef6a"><div class="ttname"><a href="group__qfis.html#gga57d388104d07dbb852d11d277d439302a5ac08b226723d99e82d613115b2fef6a">tsmf</a></div><div class="ttdeci">@ tsmf</div><div class="ttdef"><b>Definition:</b> qfis.h:56</div></div>
+<div class="ttc" id="agroup__qfis_html_gga57d388104d07dbb852d11d277d439302a72d1cca9c64d5a0ff1ef5f931713d74e"><div class="ttname"><a href="group__qfis.html#gga57d388104d07dbb852d11d277d439302a72d1cca9c64d5a0ff1ef5f931713d74e">rectmf</a></div><div class="ttdeci">@ rectmf</div><div class="ttdef"><b>Definition:</b> qfis.h:48</div></div>
+<div class="ttc" id="agroup__qfis_html_gga57d388104d07dbb852d11d277d439302a7676242f70c14c24cddeb8ee5bedf094"><div class="ttname"><a href="group__qfis.html#gga57d388104d07dbb852d11d277d439302a7676242f70c14c24cddeb8ee5bedf094">trapmf</a></div><div class="ttdeci">@ trapmf</div><div class="ttdef"><b>Definition:</b> qfis.h:33</div></div>
+<div class="ttc" id="agroup__qfis_html_gga57d388104d07dbb852d11d277d439302a7e69801214edbd12464450ec32caa952"><div class="ttname"><a href="group__qfis.html#gga57d388104d07dbb852d11d277d439302a7e69801214edbd12464450ec32caa952">tlinzmf</a></div><div class="ttdeci">@ tlinzmf</div><div class="ttdef"><b>Definition:</b> qfis.h:53</div></div>
+<div class="ttc" id="agroup__qfis_html_gga57d388104d07dbb852d11d277d439302a8f91868e5f151b88a97174ac79cbc6b9"><div class="ttname"><a href="group__qfis.html#gga57d388104d07dbb852d11d277d439302a8f91868e5f151b88a97174ac79cbc6b9">trimf</a></div><div class="ttdeci">@ trimf</div><div class="ttdef"><b>Definition:</b> qfis.h:32</div></div>
+<div class="ttc" id="agroup__qfis_html_gga57d388104d07dbb852d11d277d439302aa8c90d32cef75c377abaacb0aeaacab7"><div class="ttname"><a href="group__qfis.html#gga57d388104d07dbb852d11d277d439302aa8c90d32cef75c377abaacb0aeaacab7">concavemf</a></div><div class="ttdeci">@ concavemf</div><div class="ttdef"><b>Definition:</b> qfis.h:44</div></div>
+<div class="ttc" id="agroup__qfis_html_gga57d388104d07dbb852d11d277d439302ab0662075b7e1fe69127012a8963f3ae1"><div class="ttname"><a href="group__qfis.html#gga57d388104d07dbb852d11d277d439302ab0662075b7e1fe69127012a8963f3ae1">psigmf</a></div><div class="ttdeci">@ psigmf</div><div class="ttdef"><b>Definition:</b> qfis.h:39</div></div>
+<div class="ttc" id="agroup__qfis_html_gga57d388104d07dbb852d11d277d439302ab211a8a8f9c9933e4ee7f2738684e8d3"><div class="ttname"><a href="group__qfis.html#gga57d388104d07dbb852d11d277d439302ab211a8a8f9c9933e4ee7f2738684e8d3">gbellmf</a></div><div class="ttdeci">@ gbellmf</div><div class="ttdef"><b>Definition:</b> qfis.h:34</div></div>
+<div class="ttc" id="agroup__qfis_html_gga57d388104d07dbb852d11d277d439302ab52e90d79ad862c0608aa3c228300e09"><div class="ttname"><a href="group__qfis.html#gga57d388104d07dbb852d11d277d439302ab52e90d79ad862c0608aa3c228300e09">spikemf</a></div><div class="ttdeci">@ spikemf</div><div class="ttdef"><b>Definition:</b> qfis.h:45</div></div>
+<div class="ttc" id="agroup__qfis_html_gga57d388104d07dbb852d11d277d439302ad23bd69a0c39f41ec183701ea88fca62"><div class="ttname"><a href="group__qfis.html#gga57d388104d07dbb852d11d277d439302ad23bd69a0c39f41ec183701ea88fca62">tlinsmf</a></div><div class="ttdeci">@ tlinsmf</div><div class="ttdef"><b>Definition:</b> qfis.h:52</div></div>
+<div class="ttc" id="agroup__qfis_html_gga57d388104d07dbb852d11d277d439302af419a1c2ca368381483a582cd2527eff"><div class="ttname"><a href="group__qfis.html#gga57d388104d07dbb852d11d277d439302af419a1c2ca368381483a582cd2527eff">cosmf</a></div><div class="ttdeci">@ cosmf</div><div class="ttdef"><b>Definition:</b> qfis.h:49</div></div>
+<div class="ttc" id="agroup__qfis_html_gga57d388104d07dbb852d11d277d439302af622ac933207179e7864deb02eb3aa29"><div class="ttname"><a href="group__qfis.html#gga57d388104d07dbb852d11d277d439302af622ac933207179e7864deb02eb3aa29">gaussmf</a></div><div class="ttdeci">@ gaussmf</div><div class="ttdef"><b>Definition:</b> qfis.h:35</div></div>
+<div class="ttc" id="agroup__qfis_html_gga57d388104d07dbb852d11d277d439302af737be9cb431f74baa61fca9f29688c3"><div class="ttname"><a href="group__qfis.html#gga57d388104d07dbb852d11d277d439302af737be9cb431f74baa61fca9f29688c3">tzmf</a></div><div class="ttdeci">@ tzmf</div><div class="ttdef"><b>Definition:</b> qfis.h:57</div></div>
+<div class="ttc" id="agroup__qfis_html_gga57d388104d07dbb852d11d277d439302aff5a8ec6d6ec62d577ca656cfe4fc85a"><div class="ttname"><a href="group__qfis.html#gga57d388104d07dbb852d11d277d439302aff5a8ec6d6ec62d577ca656cfe4fc85a">dsigmf</a></div><div class="ttdeci">@ dsigmf</div><div class="ttdef"><b>Definition:</b> qfis.h:38</div></div>
+<div class="ttc" id="agroup__qfis_html_gga933f1f7eb2e8a0ae89258ead19a61199a5f9c9f3a169153cc6c09f4b2ebaa23a8"><div class="ttname"><a href="group__qfis.html#gga933f1f7eb2e8a0ae89258ead19a61199a5f9c9f3a169153cc6c09f4b2ebaa23a8">qFIS_EvalPoints</a></div><div class="ttdeci">@ qFIS_EvalPoints</div><div class="ttdef"><b>Definition:</b> qfis.h:98</div></div>
+<div class="ttc" id="agroup__qfis_html_gga933f1f7eb2e8a0ae89258ead19a61199ad1befb564bfac8c54233c51eac3b5122"><div class="ttname"><a href="group__qfis.html#gga933f1f7eb2e8a0ae89258ead19a61199ad1befb564bfac8c54233c51eac3b5122">qFIS_OR</a></div><div class="ttdeci">@ qFIS_OR</div><div class="ttdef"><b>Definition:</b> qfis.h:97</div></div>
+<div class="ttc" id="agroup__qfis_html_gga933f1f7eb2e8a0ae89258ead19a61199ad5608b2374924491ea4af9b47ab5440f"><div class="ttname"><a href="group__qfis.html#gga933f1f7eb2e8a0ae89258ead19a61199ad5608b2374924491ea4af9b47ab5440f">qFIS_Implication</a></div><div class="ttdeci">@ qFIS_Implication</div><div class="ttdef"><b>Definition:</b> qfis.h:94</div></div>
+<div class="ttc" id="agroup__qfis_html_gga933f1f7eb2e8a0ae89258ead19a61199af182b91aa583adf923b766bf0998be59"><div class="ttname"><a href="group__qfis.html#gga933f1f7eb2e8a0ae89258ead19a61199af182b91aa583adf923b766bf0998be59">qFIS_Aggregation</a></div><div class="ttdeci">@ qFIS_Aggregation</div><div class="ttdef"><b>Definition:</b> qfis.h:95</div></div>
+<div class="ttc" id="agroup__qfis_html_gga933f1f7eb2e8a0ae89258ead19a61199aff88525fdbf6058636aea383fbc82ea9"><div class="ttname"><a href="group__qfis.html#gga933f1f7eb2e8a0ae89258ead19a61199aff88525fdbf6058636aea383fbc82ea9">qFIS_AND</a></div><div class="ttdeci">@ qFIS_AND</div><div class="ttdef"><b>Definition:</b> qfis.h:96</div></div>
+<div class="ttc" id="agroup__qfis_html_ggaedbcaf3cb5c4b57eb1f44f4dea0f1a72a442dbe21e1b302813ac2a42e552a72a0"><div class="ttname"><a href="group__qfis.html#ggaedbcaf3cb5c4b57eb1f44f4dea0f1a72a442dbe21e1b302813ac2a42e552a72a0">wtsum</a></div><div class="ttdeci">@ wtsum</div><div class="ttdef"><b>Definition:</b> qfis.h:73</div></div>
+<div class="ttc" id="agroup__qfis_html_ggaedbcaf3cb5c4b57eb1f44f4dea0f1a72a58713f014a11fca36091e803ff431b04"><div class="ttname"><a href="group__qfis.html#ggaedbcaf3cb5c4b57eb1f44f4dea0f1a72a58713f014a11fca36091e803ff431b04">lom</a></div><div class="ttdeci">@ lom</div><div class="ttdef"><b>Definition:</b> qfis.h:70</div></div>
+<div class="ttc" id="agroup__qfis_html_ggaedbcaf3cb5c4b57eb1f44f4dea0f1a72a5f0b55cf3261a197a8d0212f90669e35"><div class="ttname"><a href="group__qfis.html#ggaedbcaf3cb5c4b57eb1f44f4dea0f1a72a5f0b55cf3261a197a8d0212f90669e35">bisector</a></div><div class="ttdeci">@ bisector</div><div class="ttdef"><b>Definition:</b> qfis.h:68</div></div>
+<div class="ttc" id="agroup__qfis_html_ggaedbcaf3cb5c4b57eb1f44f4dea0f1a72a6fb78ba59773ac48c2709d20df1ebefd"><div class="ttname"><a href="group__qfis.html#ggaedbcaf3cb5c4b57eb1f44f4dea0f1a72a6fb78ba59773ac48c2709d20df1ebefd">centroid</a></div><div class="ttdeci">@ centroid</div><div class="ttdef"><b>Definition:</b> qfis.h:67</div></div>
+<div class="ttc" id="agroup__qfis_html_ggaedbcaf3cb5c4b57eb1f44f4dea0f1a72a8d62125ef3bf552069d621be0af68f5e"><div class="ttname"><a href="group__qfis.html#ggaedbcaf3cb5c4b57eb1f44f4dea0f1a72a8d62125ef3bf552069d621be0af68f5e">wtaver</a></div><div class="ttdeci">@ wtaver</div><div class="ttdef"><b>Definition:</b> qfis.h:72</div></div>
+<div class="ttc" id="agroup__qfis_html_ggaedbcaf3cb5c4b57eb1f44f4dea0f1a72a91e435ff054716e32ac834ddfdf8ece9"><div class="ttname"><a href="group__qfis.html#ggaedbcaf3cb5c4b57eb1f44f4dea0f1a72a91e435ff054716e32ac834ddfdf8ece9">mom</a></div><div class="ttdeci">@ mom</div><div class="ttdef"><b>Definition:</b> qfis.h:69</div></div>
+<div class="ttc" id="agroup__qfis_html_ggaedbcaf3cb5c4b57eb1f44f4dea0f1a72ab1088c07d3cf9e75c6e7fbd84bd759c4"><div class="ttname"><a href="group__qfis.html#ggaedbcaf3cb5c4b57eb1f44f4dea0f1a72ab1088c07d3cf9e75c6e7fbd84bd759c4">som</a></div><div class="ttdeci">@ som</div><div class="ttdef"><b>Definition:</b> qfis.h:71</div></div>
+<div class="ttc" id="astructq_f_i_s___input__t_html"><div class="ttname"><a href="structq_f_i_s___input__t.html">qFIS_Input_t</a></div><div class="ttdoc">A FIS Input object.</div><div class="ttdef"><b>Definition:</b> qfis.h:131</div></div>
+<div class="ttc" id="astructq_f_i_s___m_f__t_html"><div class="ttname"><a href="structq_f_i_s___m_f__t.html">qFIS_MF_t</a></div><div class="ttdoc">A FIS Membership Function.</div><div class="ttdef"><b>Definition:</b> qfis.h:161</div></div>
+<div class="ttc" id="astructq_f_i_s___output__t_html"><div class="ttname"><a href="structq_f_i_s___output__t.html">qFIS_Output_t</a></div><div class="ttdoc">A FIS Output object.</div><div class="ttdef"><b>Definition:</b> qfis.h:143</div></div>
+<div class="ttc" id="astructq_f_i_s__t_html"><div class="ttname"><a href="structq_f_i_s__t.html">qFIS_t</a></div><div class="ttdoc">A FIS(Fuzzy Inference System) object.</div><div class="ttdef"><b>Definition:</b> qfis.h:202</div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><b>qfis.h</b></li>
+    <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.2 </li>
+  </ul>
+</div>
+</body>
+</html>

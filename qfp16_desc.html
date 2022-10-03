@@ -1,0 +1,227 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.2"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<!-- BEGIN opengraph metadata -->
+<meta property="og:title" content="Doxygen Awesome" />
+<meta property="og:image" content="https://repository-images.githubusercontent.com/348492097/4f16df80-88fb-11eb-9d31-4015ff22c452" />
+<meta property="og:description" content="Custom CSS theme for doxygen html-documentation with lots of customization parameters." />
+<meta property="og:url" content="https://jothepro.github.io/doxygen-awesome-css/" />
+<!-- END opengraph metadata -->
+<!-- BEGIN twitter metadata -->
+<meta name="twitter:image:src" content="https://repository-images.githubusercontent.com/348492097/4f16df80-88fb-11eb-9d31-4015ff22c452" />
+<meta name="twitter:title" content="Doxygen Awesome" />
+<meta name="twitter:description" content="Custom CSS theme for doxygen html-documentation with lots of customization parameters." />
+<!-- END twitter metadata -->
+<title>API Reference: Fixed-Point Q16.16 library</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link rel="icon" type="image/svg+xml" href="logo.drawio.svg"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="doxygen-awesome-darkmode-toggle.js"></script>
+<script type="text/javascript" src="doxygen-awesome-fragment-copy-button.js"></script>
+<script type="text/javascript" src="doxygen-awesome-paragraph-link.js"></script>
+<script type="text/javascript" src="doxygen-awesome-interactive-toc.js"></script>
+<script type="text/javascript" src="toggle-alternative-theme.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeFragmentCopyButton.init()
+    DoxygenAwesomeDarkModeToggle.init()
+    DoxygenAwesomeParagraphLink.init()
+    DoxygenAwesomeInteractiveToc.init()
+</script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  extensions: ["tex2jax.js"],
+  jax: ["input/TeX","output/HTML-CSS"],
+});
+</script>
+<script type="text/javascript" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
+<link href="custom.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only-darkmode-toggle.css" rel="stylesheet" type="text/css"/>
+<link href="custom-alternative.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<!-- https://tholman.com/github-corners/ -->
+<a href="https://github.com/jothepro/doxygen-awesome-css" class="github-corner" title="View source on GitHub" target="_blank">
+    <svg viewBox="0 0 250 250" width="40" height="40" style="position: absolute; top: 0; border: 0; right: 0; z-index: 99;" aria-hidden="true">
+    <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="qlibs_logo.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">API Reference
+   &#160;<span id="projectnumber">v1.2</span>
+   </div>
+   <div id="projectbrief">A collection of useful libraries for embedded systems</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generated by Doxygen 1.9.2 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search",'Search','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Search');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('qfp16_desc.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div><div class="header">
+  <div class="headertitle"><div class="title">Fixed-Point Q16.16 library </div></div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><p >qLibs provide <a class="el" href="group__qfp16.html">qFP16</a> , which is a small fixed point number library designed for embedded use. It implements all of your favorite transcendental functions, plus only the best basic operators, selected for your calculating pleasure.</p>
+<p >The format is a signed Q16.16, which is good enough for most purposes.</p>
+<p ><b> Datatype limits </b></p>
+<p >The maximum representable value is 32767.999 985. The minimum value is -32768.0.</p>
+<p >The minimum value is also used to represent fp16.overflow for overflow detection, so for some operations it cannot be determined whether it overflowed or the result was the smallest possible value. In practice, this does not matter much.</p>
+<p >The smallest unit (machine precision) of the datatype is 1/65536 = 0.000 015.</p>
+<p ><b> Fixed-point functions </b></p>
+<p >All the provided functions operate on 32-bit numbers, <a class="el" href="group__qfp16.html#ga1c178e35bab36bb263045df6d93a26e1">qFP16_t</a>, which have 16 bit integer part and 16-bit fractional part.</p>
+<p ><b> Conversion functions </b></p>
+<p >Conversion from integers and floating-point values. These conversions retain the numeric value and perform rounding where necessary.</p>
+<ul>
+<li><a class="el" href="group__qfp16.html#ga8fa3922fde6d48e1bcd3c8719a30c4e6">qFP16_IntToFP()</a> Simply multiplies a by qFP16.one = 65536</li>
+<li><a class="el" href="group__qfp16.html#ga4cea2d97fd0599ea67ea75903ab1540c">qFP16_FPToInt()</a> Divides by <a class="el" href="group__qfp16.html#ga1c178e35bab36bb263045df6d93a26e1">qFP16_t</a> and rounds to nearest integer.</li>
+<li><a class="el" href="group__qfp16.html#ga81eb8aafcbe9660fbac4855cacf6cf71">qFP16_FloatToFP()</a> Multiplies by <a class="el" href="group__qfp16.html#ga1c178e35bab36bb263045df6d93a26e1">qFP16_t</a> and rounds to nearest value.</li>
+<li><a class="el" href="group__qfp16.html#gaf666a6462e9e975c10d517bb925886c8">qFP16_FPToFloat()</a> Divides by qFP16.one. Rounding is according to the current floating point mode</li>
+<li><a class="el" href="group__qfp16.html#ga53c7e00384ee53dd655c7f948301a72a">qFP16_DoubleToFP()</a> Multiplies by <a class="el" href="group__qfp16.html#gaa0ae25eb4d075d483c7918007b58d452">qFP16</a> and rounds to nearest value.</li>
+<li><a class="el" href="group__qfp16.html#gab2bc9cb63aa879b0a1af9ae9bca9202a">qFP16_FPToDouble()</a> Divides by qFP16.one. All <a class="el" href="group__qfp16.html#ga1c178e35bab36bb263045df6d93a26e1">qFP16_t</a> values fit into a double, so no rounding happens.</li>
+<li><a class="el" href="group__qfp16.html#ga1980709d72e7d474d7a567c3d6483e98">qFP16_FPToA()</a> Converts from <a class="el" href="group__qfp16.html#ga1c178e35bab36bb263045df6d93a26e1">qFP16_t</a> to string.</li>
+<li><a class="el" href="group__qfp16.html#ga5587d33713383ad8ea4e82803464749d">qFP16_AToFP()</a> Converts from string to <a class="el" href="group__qfp16.html#ga1c178e35bab36bb263045df6d93a26e1">qFP16_t</a>.</li>
+</ul>
+<p ><b> Basic arithmetic </b></p>
+<p >These functions perform rounding and detect overflows. When overflow is detected, they return qfp16.overflow as a marker value.</p>
+<ul>
+<li><a class="el" href="group__qfp16.html#ga608fdcec4665120752be09aedac1d0ac">qFP16_Add()</a> Addition</li>
+<li><a class="el" href="group__qfp16.html#gaca9307b9e27758648ccf96f3d355a1aa">qFP16_Sub()</a> Subtraction</li>
+<li><a class="el" href="group__qfp16.html#gae73aa884099b8f8b1a8ee04ffcf7c25e">qFP16_Mul()</a> Multiplication</li>
+<li><a class="el" href="group__qfp16.html#ga3506df0d61901963c5484ababaeed656">qFP16_Div()</a> Division</li>
+<li><a class="el" href="group__qfp16.html#ga06576be265a983aaa6a173c114558b82">qFP16_Mod()</a> Modulo</li>
+</ul>
+<p ><b> Exponential and transcendental functions </b></p>
+<p >Roots, exponents &amp; similar.</p>
+<ul>
+<li><a class="el" href="group__qfp16.html#ga069e685a25df6b6db6c0c567cb30a290">qFP16_Sqrt()</a> Square root. Performs rounding and is accurate to <a class="el" href="group__qfp16.html#gaa0ae25eb4d075d483c7918007b58d452">qFP16</a> limits.</li>
+<li><a class="el" href="group__qfp16.html#ga1debd4fc616382d16f417471f1825244">qFP16_Exp()</a> Exponential function using power series approximation. Accuracy depends on range, worst case +-40 absolute for negative inputs and +-0.003% for positive inputs. Average error is +-1 for neg and +-0.0003% for pos.</li>
+<li><a class="el" href="group__qfp16.html#ga7b7ee8dc1fc3e8475a192b7f24cf5e12">qFP16_Log()</a> Natural logarithm using Newton approximation and <a class="el" href="group__qfp16.html#ga1debd4fc616382d16f417471f1825244">qFP16_Exp()</a>. Worst case error +-3 absolute, average error less than 1 unit.</li>
+<li><a class="el" href="group__qfp16.html#gad4f5059f7c7b77add35285e4f59347dd">qFP16_Log2()</a> Logarithm base 2.</li>
+<li><a class="el" href="group__qfp16.html#ga65c6bdb2eceeded0ac6d4af83f8d1f31">qFP16_IPow()</a> Computes the integer-power of a <a class="el" href="group__qfp16.html#ga1c178e35bab36bb263045df6d93a26e1">qFP16_t</a> number</li>
+<li><a class="el" href="group__qfp16.html#gaadcc417638114d8352d7bfb4a1a8d4a4">qFP16_Pow()</a> Modulo</li>
+</ul>
+<p ><b> Trigonometric functions and helpers </b></p>
+<ul>
+<li><a class="el" href="group__qfp16.html#gaa7591c7f1e74fc7e13f14e9d14e87e7d">qFP16_Sin()</a> Sine for angle in radians</li>
+<li><a class="el" href="group__qfp16.html#ga2566c6af5e3727c6ddf02861dfcae204">qFP16_Cos()</a> Cosine for angle in radians</li>
+<li><a class="el" href="group__qfp16.html#ga64cd9598319856925cb1dae8894aeae7">qFP16_Tan()</a> Tangent for angle in radians</li>
+<li><a class="el" href="group__qfp16.html#gacab3f07113a318c16cf3e120f0e727e4">qFP16_Asin()</a> Inverse of sine, output in radians</li>
+<li><a class="el" href="group__qfp16.html#gaa27da0ed101dc13834389eede501d92d">qFP16_Acos()</a> Inverse of cosine, output in radians</li>
+<li><a class="el" href="group__qfp16.html#ga5b0d29c347104d5dd7a740fc2602c916">qFP16_Atan()</a> Inverse of tangent, output in radians</li>
+<li><a class="el" href="group__qfp16.html#ga0e8c0b2f6d4c2b9a81b9bc5edc60da54">qFP16_Atan2()</a> Arc tangent in radians x,y</li>
+<li><a class="el" href="group__qfp16.html#ga4e6462085b54b2ab97dcbbda50521981">qFP16_Sinh()</a> Hyperbolic sine</li>
+<li><a class="el" href="group__qfp16.html#gac5f542821ac3986b7733bf8e734e7008">qFP16_Cosh()</a> Hyperbolic cosine</li>
+<li><a class="el" href="group__qfp16.html#gada9cfddd2e972f9ab43f975858f0ee83">qFP16_Tanh()</a> Hyperbolic tangent</li>
+<li><a class="el" href="group__qfp16.html#gaca46df2dbc6b4a5c12daabdd1aee91a0">fp16_RadToDeg()</a> Converts angle units from radians to degrees.</li>
+<li><a class="el" href="group__qfp16.html#ga5725ee6fd9a84a99b457e4a6d38018eb">fp16_DegToRad()</a> Converts angle units from degrees to radians</li>
+<li><a class="el" href="group__qfp16.html#gaa2b38df53038ca2b587f41c64ea94297">qFP16_WrapToPi()</a> Wrap the fixed-point angle in radians to [−pi pi]</li>
+<li><a class="el" href="group__qfp16.html#gad12f9293c13418cbb5f226b864b4bf17">qFP16_WrapTo180()</a> Wrap the fixed-point angle in degrees to [−180 180]</li>
+</ul>
+<p ><b> Example: Solution of the quadratic equation </b></p>
+<p >This draft example computes one solution of the quadratic equation by using the fixed point format. Equation is given by:</p>
+<p >\( x = \frac{ -b + \sqrt{ b^{2} - 4ac} }{ 2a } \)</p>
+<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;stdio.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;stdlib.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &quot;qfp16.h&quot;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">int</span> main( <span class="keywordtype">int</span> argc, <span class="keywordtype">char</span> *argv[] ) </div>
+<div class="line">{</div>
+<div class="line">    <a class="code hl_typedef" href="group__qfp16.html#ga1c178e35bab36bb263045df6d93a26e1">qFP16_t</a> a = <a class="code hl_define" href="group__qfp16.html#ga123222ca2a22f06410950f7fc03b9efc">qFP16_Constant</a>( 1.5f );</div>
+<div class="line">    <a class="code hl_typedef" href="group__qfp16.html#ga1c178e35bab36bb263045df6d93a26e1">qFP16_t</a> b = <a class="code hl_define" href="group__qfp16.html#ga123222ca2a22f06410950f7fc03b9efc">qFP16_Constant</a>( 5.2f );</div>
+<div class="line">    <a class="code hl_typedef" href="group__qfp16.html#ga1c178e35bab36bb263045df6d93a26e1">qFP16_t</a> c = <a class="code hl_define" href="group__qfp16.html#ga123222ca2a22f06410950f7fc03b9efc">qFP16_Constant</a>( 4.0f );</div>
+<div class="line">    <a class="code hl_typedef" href="group__qfp16.html#ga1c178e35bab36bb263045df6d93a26e1">qFP16_t</a> tmp;</div>
+<div class="line">    <span class="keywordtype">char</span> ans[ 10 ];</div>
+<div class="line">    </div>
+<div class="line">    tmp = <a class="code hl_function" href="group__qfp16.html#gae73aa884099b8f8b1a8ee04ffcf7c25e">qFP16_Mul</a>( <a class="code hl_function" href="group__qfp16.html#ga8fa3922fde6d48e1bcd3c8719a30c4e6">qFP16_IntToFP</a>( 4 ), <a class="code hl_function" href="group__qfp16.html#gae73aa884099b8f8b1a8ee04ffcf7c25e">qFP16_Mul</a>( a, c ) );</div>
+<div class="line">    tmp = <a class="code hl_function" href="group__qfp16.html#ga608fdcec4665120752be09aedac1d0ac">qFP16_Add</a>( -b, <a class="code hl_function" href="group__qfp16.html#ga069e685a25df6b6db6c0c567cb30a290">qFP16_Sqrt</a>( <a class="code hl_function" href="group__qfp16.html#gaca9307b9e27758648ccf96f3d355a1aa">qFP16_Sub</a>( <a class="code hl_function" href="group__qfp16.html#gae73aa884099b8f8b1a8ee04ffcf7c25e">qFP16_Mul</a>( b, b ), tmp  ) ) );</div>
+<div class="line">    tmp = <a class="code hl_function" href="group__qfp16.html#ga3506df0d61901963c5484ababaeed656">qFP16_Div</a>( tmp, <a class="code hl_function" href="group__qfp16.html#gae73aa884099b8f8b1a8ee04ffcf7c25e">qFP16_Mul</a>( <a class="code hl_function" href="group__qfp16.html#ga8fa3922fde6d48e1bcd3c8719a30c4e6">qFP16_IntToFP</a>( 2 ), a ) );</div>
+<div class="line">    printf( <span class="stringliteral">&quot; result = %s \r\n&quot;</span> , <a class="code hl_function" href="group__qfp16.html#ga1980709d72e7d474d7a567c3d6483e98">qFP16_FPToA</a>( tmp, ans, 4 ) );</div>
+<div class="line">    <span class="keywordflow">return</span> EXIT_SUCCESS;</div>
+<div class="line">}</div>
+<div class="ttc" id="agroup__qfp16_html_ga069e685a25df6b6db6c0c567cb30a290"><div class="ttname"><a href="group__qfp16.html#ga069e685a25df6b6db6c0c567cb30a290">qFP16_Sqrt</a></div><div class="ttdeci">qFP16_t qFP16_Sqrt(qFP16_t x)</div><div class="ttdoc">Returns the fixed-point square root of x.</div><div class="ttdef"><b>Definition:</b> qfp16.c:355</div></div>
+<div class="ttc" id="agroup__qfp16_html_ga123222ca2a22f06410950f7fc03b9efc"><div class="ttname"><a href="group__qfp16.html#ga123222ca2a22f06410950f7fc03b9efc">qFP16_Constant</a></div><div class="ttdeci">#define qFP16_Constant(x)</div><div class="ttdoc">A macro for defining a fixed-point constant value.</div><div class="ttdef"><b>Definition:</b> qfp16.h:70</div></div>
+<div class="ttc" id="agroup__qfp16_html_ga1980709d72e7d474d7a567c3d6483e98"><div class="ttname"><a href="group__qfp16.html#ga1980709d72e7d474d7a567c3d6483e98">qFP16_FPToA</a></div><div class="ttdeci">char * qFP16_FPToA(const qFP16_t num, char *str, int decimals)</div><div class="ttdoc">Converts the fixed-point value to a formatted string.</div><div class="ttdef"><b>Definition:</b> qfp16.c:779</div></div>
+<div class="ttc" id="agroup__qfp16_html_ga1c178e35bab36bb263045df6d93a26e1"><div class="ttname"><a href="group__qfp16.html#ga1c178e35bab36bb263045df6d93a26e1">qFP16_t</a></div><div class="ttdeci">int32_t qFP16_t</div><div class="ttdoc">Fixed-point Q16.16 type with width of exactly 32 bits.</div><div class="ttdef"><b>Definition:</b> qfp16.h:26</div></div>
+<div class="ttc" id="agroup__qfp16_html_ga3506df0d61901963c5484ababaeed656"><div class="ttname"><a href="group__qfp16.html#ga3506df0d61901963c5484ababaeed656">qFP16_Div</a></div><div class="ttdeci">qFP16_t qFP16_Div(const qFP16_t x, const qFP16_t y)</div><div class="ttdoc">Returns the fixed-point division operation x / y.</div><div class="ttdef"><b>Definition:</b> qfp16.c:283</div></div>
+<div class="ttc" id="agroup__qfp16_html_ga608fdcec4665120752be09aedac1d0ac"><div class="ttname"><a href="group__qfp16.html#ga608fdcec4665120752be09aedac1d0ac">qFP16_Add</a></div><div class="ttdeci">qFP16_t qFP16_Add(const qFP16_t X, const qFP16_t Y)</div><div class="ttdoc">Returns the fixed-point addition x + y.</div><div class="ttdef"><b>Definition:</b> qfp16.c:216</div></div>
+<div class="ttc" id="agroup__qfp16_html_ga8fa3922fde6d48e1bcd3c8719a30c4e6"><div class="ttname"><a href="group__qfp16.html#ga8fa3922fde6d48e1bcd3c8719a30c4e6">qFP16_IntToFP</a></div><div class="ttdeci">qFP16_t qFP16_IntToFP(const int x)</div><div class="ttdoc">Returns the int value x converted to fixed-point q16.16.</div><div class="ttdef"><b>Definition:</b> qfp16.c:139</div></div>
+<div class="ttc" id="agroup__qfp16_html_gaca9307b9e27758648ccf96f3d355a1aa"><div class="ttname"><a href="group__qfp16.html#gaca9307b9e27758648ccf96f3d355a1aa">qFP16_Sub</a></div><div class="ttdeci">qFP16_t qFP16_Sub(const qFP16_t X, const qFP16_t Y)</div><div class="ttdoc">Returns the fixed-point subtraction x - y.</div><div class="ttdef"><b>Definition:</b> qfp16.c:228</div></div>
+<div class="ttc" id="agroup__qfp16_html_gae73aa884099b8f8b1a8ee04ffcf7c25e"><div class="ttname"><a href="group__qfp16.html#gae73aa884099b8f8b1a8ee04ffcf7c25e">qFP16_Mul</a></div><div class="ttdeci">qFP16_t qFP16_Mul(const qFP16_t x, const qFP16_t y)</div><div class="ttdoc">Returns the fixed-point product operation x * y.</div><div class="ttdef"><b>Definition:</b> qfp16.c:240</div></div>
+</div><!-- fragment --> </div></div><!-- contents -->
+</div><!-- PageDoc -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="index.html">qLibs</a></li>
+    <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.2 </li>
+  </ul>
+</div>
+</body>
+</html>

@@ -1,0 +1,1568 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.2"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<!-- BEGIN opengraph metadata -->
+<meta property="og:title" content="Doxygen Awesome" />
+<meta property="og:image" content="https://repository-images.githubusercontent.com/348492097/4f16df80-88fb-11eb-9d31-4015ff22c452" />
+<meta property="og:description" content="Custom CSS theme for doxygen html-documentation with lots of customization parameters." />
+<meta property="og:url" content="https://jothepro.github.io/doxygen-awesome-css/" />
+<!-- END opengraph metadata -->
+<!-- BEGIN twitter metadata -->
+<meta name="twitter:image:src" content="https://repository-images.githubusercontent.com/348492097/4f16df80-88fb-11eb-9d31-4015ff22c452" />
+<meta name="twitter:title" content="Doxygen Awesome" />
+<meta name="twitter:description" content="Custom CSS theme for doxygen html-documentation with lots of customization parameters." />
+<!-- END twitter metadata -->
+<title>API Reference: qFP16</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link rel="icon" type="image/svg+xml" href="logo.drawio.svg"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="doxygen-awesome-darkmode-toggle.js"></script>
+<script type="text/javascript" src="doxygen-awesome-fragment-copy-button.js"></script>
+<script type="text/javascript" src="doxygen-awesome-paragraph-link.js"></script>
+<script type="text/javascript" src="doxygen-awesome-interactive-toc.js"></script>
+<script type="text/javascript" src="toggle-alternative-theme.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeFragmentCopyButton.init()
+    DoxygenAwesomeDarkModeToggle.init()
+    DoxygenAwesomeParagraphLink.init()
+    DoxygenAwesomeInteractiveToc.init()
+</script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  extensions: ["tex2jax.js"],
+  jax: ["input/TeX","output/HTML-CSS"],
+});
+</script>
+<script type="text/javascript" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
+<link href="custom.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only-darkmode-toggle.css" rel="stylesheet" type="text/css"/>
+<link href="custom-alternative.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<!-- https://tholman.com/github-corners/ -->
+<a href="https://github.com/jothepro/doxygen-awesome-css" class="github-corner" title="View source on GitHub" target="_blank">
+    <svg viewBox="0 0 250 250" width="40" height="40" style="position: absolute; top: 0; border: 0; right: 0; z-index: 99;" aria-hidden="true">
+    <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="qlibs_logo.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">API Reference
+   &#160;<span id="projectnumber">v1.2</span>
+   </div>
+   <div id="projectbrief">A collection of useful libraries for embedded systems</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generated by Doxygen 1.9.2 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search",'Search','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Search');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('group__qfp16.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="summary">
+<a href="#nested-classes">Data Structures</a> &#124;
+<a href="#define-members">Macros</a> &#124;
+<a href="#typedef-members">Typedefs</a> &#124;
+<a href="#func-members">Functions</a> &#124;
+<a href="#var-members">Variables</a>  </div>
+  <div class="headertitle"><div class="title">qFP16</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>API for the qFP16 Fixed-point math library.  
+<a href="#details">More...</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
+Data Structures</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structq_f_p16___settings__t.html">qFP16_Settings_t</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A Q16.16 fixed-point settings object.  <a href="structq_f_p16___settings__t.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
+Macros</h2></td></tr>
+<tr class="memitem:ga123222ca2a22f06410950f7fc03b9efc"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qfp16.html#ga123222ca2a22f06410950f7fc03b9efc">qFP16_Constant</a>(x)</td></tr>
+<tr class="memdesc:ga123222ca2a22f06410950f7fc03b9efc"><td class="mdescLeft">&#160;</td><td class="mdescRight">A macro for defining a fixed-point constant value.  <a href="group__qfp16.html#ga123222ca2a22f06410950f7fc03b9efc">More...</a><br /></td></tr>
+<tr class="separator:ga123222ca2a22f06410950f7fc03b9efc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="typedef-members" name="typedef-members"></a>
+Typedefs</h2></td></tr>
+<tr class="memitem:ga1c178e35bab36bb263045df6d93a26e1"><td class="memItemLeft" align="right" valign="top"><a id="ga1c178e35bab36bb263045df6d93a26e1" name="ga1c178e35bab36bb263045df6d93a26e1"></a>
+typedef int32_t&#160;</td><td class="memItemRight" valign="bottom"><b>qFP16_t</b></td></tr>
+<tr class="memdesc:ga1c178e35bab36bb263045df6d93a26e1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fixed-point Q16.16 type with width of exactly 32 bits. <br /></td></tr>
+<tr class="separator:ga1c178e35bab36bb263045df6d93a26e1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
+Functions</h2></td></tr>
+<tr class="memitem:ga2bd7560f242dce9718f5f5cf2e0d196f"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qfp16.html#ga2bd7560f242dce9718f5f5cf2e0d196f">qFP16_SettingsSet</a> (<a class="el" href="structq_f_p16___settings__t.html">qFP16_Settings_t</a> *const instance, <a class="el" href="group__qfp16.html#ga1c178e35bab36bb263045df6d93a26e1">qFP16_t</a> min, <a class="el" href="group__qfp16.html#ga1c178e35bab36bb263045df6d93a26e1">qFP16_t</a> max, uint8_t rounding, uint8_t saturate)</td></tr>
+<tr class="memdesc:ga2bd7560f242dce9718f5f5cf2e0d196f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set settings for the fixed-point API.  <a href="group__qfp16.html#ga2bd7560f242dce9718f5f5cf2e0d196f">More...</a><br /></td></tr>
+<tr class="separator:ga2bd7560f242dce9718f5f5cf2e0d196f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga9f2ef99a86280587ece9aed667c6f492"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qfp16.html#ga9f2ef99a86280587ece9aed667c6f492">qFP16_SettingsSelect</a> (<a class="el" href="structq_f_p16___settings__t.html">qFP16_Settings_t</a> *const instance)</td></tr>
+<tr class="memdesc:ga9f2ef99a86280587ece9aed667c6f492"><td class="mdescLeft">&#160;</td><td class="mdescRight">Select the provided setting instance to perform fixed-point operations.  <a href="group__qfp16.html#ga9f2ef99a86280587ece9aed667c6f492">More...</a><br /></td></tr>
+<tr class="separator:ga9f2ef99a86280587ece9aed667c6f492"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga4cea2d97fd0599ea67ea75903ab1540c"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qfp16.html#ga4cea2d97fd0599ea67ea75903ab1540c">qFP16_FPToInt</a> (const <a class="el" href="group__qfp16.html#ga1c178e35bab36bb263045df6d93a26e1">qFP16_t</a> x)</td></tr>
+<tr class="memdesc:ga4cea2d97fd0599ea67ea75903ab1540c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the fixed-point value <em>x</em> converted to int.  <a href="group__qfp16.html#ga4cea2d97fd0599ea67ea75903ab1540c">More...</a><br /></td></tr>
+<tr class="separator:ga4cea2d97fd0599ea67ea75903ab1540c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga8fa3922fde6d48e1bcd3c8719a30c4e6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__qfp16.html#ga1c178e35bab36bb263045df6d93a26e1">qFP16_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qfp16.html#ga8fa3922fde6d48e1bcd3c8719a30c4e6">qFP16_IntToFP</a> (const int x)</td></tr>
+<tr class="memdesc:ga8fa3922fde6d48e1bcd3c8719a30c4e6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the int value <em>x</em> converted to fixed-point q16.16.  <a href="group__qfp16.html#ga8fa3922fde6d48e1bcd3c8719a30c4e6">More...</a><br /></td></tr>
+<tr class="separator:ga8fa3922fde6d48e1bcd3c8719a30c4e6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga81eb8aafcbe9660fbac4855cacf6cf71"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__qfp16.html#ga1c178e35bab36bb263045df6d93a26e1">qFP16_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qfp16.html#ga81eb8aafcbe9660fbac4855cacf6cf71">qFP16_FloatToFP</a> (const float x)</td></tr>
+<tr class="memdesc:ga81eb8aafcbe9660fbac4855cacf6cf71"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the float value <em>x</em> converted to fixed-point q16.16.  <a href="group__qfp16.html#ga81eb8aafcbe9660fbac4855cacf6cf71">More...</a><br /></td></tr>
+<tr class="separator:ga81eb8aafcbe9660fbac4855cacf6cf71"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaf666a6462e9e975c10d517bb925886c8"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qfp16.html#gaf666a6462e9e975c10d517bb925886c8">qFP16_FPToFloat</a> (const <a class="el" href="group__qfp16.html#ga1c178e35bab36bb263045df6d93a26e1">qFP16_t</a> x)</td></tr>
+<tr class="memdesc:gaf666a6462e9e975c10d517bb925886c8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the fixed-point value @ x converted to float.  <a href="group__qfp16.html#gaf666a6462e9e975c10d517bb925886c8">More...</a><br /></td></tr>
+<tr class="separator:gaf666a6462e9e975c10d517bb925886c8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga53c7e00384ee53dd655c7f948301a72a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__qfp16.html#ga1c178e35bab36bb263045df6d93a26e1">qFP16_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qfp16.html#ga53c7e00384ee53dd655c7f948301a72a">qFP16_DoubleToFP</a> (const double x)</td></tr>
+<tr class="memdesc:ga53c7e00384ee53dd655c7f948301a72a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the double value <em>x</em> converted to fixed-point q16.16.  <a href="group__qfp16.html#ga53c7e00384ee53dd655c7f948301a72a">More...</a><br /></td></tr>
+<tr class="separator:ga53c7e00384ee53dd655c7f948301a72a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gab2bc9cb63aa879b0a1af9ae9bca9202a"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qfp16.html#gab2bc9cb63aa879b0a1af9ae9bca9202a">qFP16_FPToDouble</a> (const <a class="el" href="group__qfp16.html#ga1c178e35bab36bb263045df6d93a26e1">qFP16_t</a> x)</td></tr>
+<tr class="memdesc:gab2bc9cb63aa879b0a1af9ae9bca9202a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the fixed-point value @ x converted to double.  <a href="group__qfp16.html#gab2bc9cb63aa879b0a1af9ae9bca9202a">More...</a><br /></td></tr>
+<tr class="separator:gab2bc9cb63aa879b0a1af9ae9bca9202a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga54f1071dab12214ab7f27d14b72af389"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__qfp16.html#ga1c178e35bab36bb263045df6d93a26e1">qFP16_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qfp16.html#ga54f1071dab12214ab7f27d14b72af389">qFP16_Abs</a> (const <a class="el" href="group__qfp16.html#ga1c178e35bab36bb263045df6d93a26e1">qFP16_t</a> x)</td></tr>
+<tr class="memdesc:ga54f1071dab12214ab7f27d14b72af389"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the absolute value of <em>x</em>.  <a href="group__qfp16.html#ga54f1071dab12214ab7f27d14b72af389">More...</a><br /></td></tr>
+<tr class="separator:ga54f1071dab12214ab7f27d14b72af389"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga1ff77b23f26f5c7d591cbfb678c3b1c1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__qfp16.html#ga1c178e35bab36bb263045df6d93a26e1">qFP16_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qfp16.html#ga1ff77b23f26f5c7d591cbfb678c3b1c1">qFP16_Floor</a> (const <a class="el" href="group__qfp16.html#ga1c178e35bab36bb263045df6d93a26e1">qFP16_t</a> x)</td></tr>
+<tr class="memdesc:ga1ff77b23f26f5c7d591cbfb678c3b1c1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the largest integer value less than or equal to <em>x</em>.  <a href="group__qfp16.html#ga1ff77b23f26f5c7d591cbfb678c3b1c1">More...</a><br /></td></tr>
+<tr class="separator:ga1ff77b23f26f5c7d591cbfb678c3b1c1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga30a1704b050878822b013bbc889af083"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__qfp16.html#ga1c178e35bab36bb263045df6d93a26e1">qFP16_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qfp16.html#ga30a1704b050878822b013bbc889af083">qFP16_Ceil</a> (const <a class="el" href="group__qfp16.html#ga1c178e35bab36bb263045df6d93a26e1">qFP16_t</a> x)</td></tr>
+<tr class="memdesc:ga30a1704b050878822b013bbc889af083"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the smallest integer value greater than or equal to <em>x</em>.  <a href="group__qfp16.html#ga30a1704b050878822b013bbc889af083">More...</a><br /></td></tr>
+<tr class="separator:ga30a1704b050878822b013bbc889af083"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga24498700a7cb2a841f024f96aaf5f644"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__qfp16.html#ga1c178e35bab36bb263045df6d93a26e1">qFP16_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qfp16.html#ga24498700a7cb2a841f024f96aaf5f644">qFP16_Round</a> (const <a class="el" href="group__qfp16.html#ga1c178e35bab36bb263045df6d93a26e1">qFP16_t</a> x)</td></tr>
+<tr class="memdesc:ga24498700a7cb2a841f024f96aaf5f644"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the nearest integer value of the fixed-point argument <em>x</em>.  <a href="group__qfp16.html#ga24498700a7cb2a841f024f96aaf5f644">More...</a><br /></td></tr>
+<tr class="separator:ga24498700a7cb2a841f024f96aaf5f644"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga608fdcec4665120752be09aedac1d0ac"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__qfp16.html#ga1c178e35bab36bb263045df6d93a26e1">qFP16_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qfp16.html#ga608fdcec4665120752be09aedac1d0ac">qFP16_Add</a> (const <a class="el" href="group__qfp16.html#ga1c178e35bab36bb263045df6d93a26e1">qFP16_t</a> X, const <a class="el" href="group__qfp16.html#ga1c178e35bab36bb263045df6d93a26e1">qFP16_t</a> Y)</td></tr>
+<tr class="memdesc:ga608fdcec4665120752be09aedac1d0ac"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the fixed-point addition <em>x</em> + <em>y</em>.  <a href="group__qfp16.html#ga608fdcec4665120752be09aedac1d0ac">More...</a><br /></td></tr>
+<tr class="separator:ga608fdcec4665120752be09aedac1d0ac"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaca9307b9e27758648ccf96f3d355a1aa"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__qfp16.html#ga1c178e35bab36bb263045df6d93a26e1">qFP16_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qfp16.html#gaca9307b9e27758648ccf96f3d355a1aa">qFP16_Sub</a> (const <a class="el" href="group__qfp16.html#ga1c178e35bab36bb263045df6d93a26e1">qFP16_t</a> X, const <a class="el" href="group__qfp16.html#ga1c178e35bab36bb263045df6d93a26e1">qFP16_t</a> Y)</td></tr>
+<tr class="memdesc:gaca9307b9e27758648ccf96f3d355a1aa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the fixed-point subtraction <em>x</em> - <em>y</em>.  <a href="group__qfp16.html#gaca9307b9e27758648ccf96f3d355a1aa">More...</a><br /></td></tr>
+<tr class="separator:gaca9307b9e27758648ccf96f3d355a1aa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gae73aa884099b8f8b1a8ee04ffcf7c25e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__qfp16.html#ga1c178e35bab36bb263045df6d93a26e1">qFP16_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qfp16.html#gae73aa884099b8f8b1a8ee04ffcf7c25e">qFP16_Mul</a> (const <a class="el" href="group__qfp16.html#ga1c178e35bab36bb263045df6d93a26e1">qFP16_t</a> x, const <a class="el" href="group__qfp16.html#ga1c178e35bab36bb263045df6d93a26e1">qFP16_t</a> y)</td></tr>
+<tr class="memdesc:gae73aa884099b8f8b1a8ee04ffcf7c25e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the fixed-point product operation <em>x</em> * <em>y</em>.  <a href="group__qfp16.html#gae73aa884099b8f8b1a8ee04ffcf7c25e">More...</a><br /></td></tr>
+<tr class="separator:gae73aa884099b8f8b1a8ee04ffcf7c25e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga3506df0d61901963c5484ababaeed656"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__qfp16.html#ga1c178e35bab36bb263045df6d93a26e1">qFP16_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qfp16.html#ga3506df0d61901963c5484ababaeed656">qFP16_Div</a> (const <a class="el" href="group__qfp16.html#ga1c178e35bab36bb263045df6d93a26e1">qFP16_t</a> x, const <a class="el" href="group__qfp16.html#ga1c178e35bab36bb263045df6d93a26e1">qFP16_t</a> y)</td></tr>
+<tr class="memdesc:ga3506df0d61901963c5484ababaeed656"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the fixed-point division operation <em>x</em> / <em>y</em>.  <a href="group__qfp16.html#ga3506df0d61901963c5484ababaeed656">More...</a><br /></td></tr>
+<tr class="separator:ga3506df0d61901963c5484ababaeed656"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga06576be265a983aaa6a173c114558b82"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__qfp16.html#ga1c178e35bab36bb263045df6d93a26e1">qFP16_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qfp16.html#ga06576be265a983aaa6a173c114558b82">qFP16_Mod</a> (const <a class="el" href="group__qfp16.html#ga1c178e35bab36bb263045df6d93a26e1">qFP16_t</a> x, const <a class="el" href="group__qfp16.html#ga1c178e35bab36bb263045df6d93a26e1">qFP16_t</a> y)</td></tr>
+<tr class="memdesc:ga06576be265a983aaa6a173c114558b82"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the fixed-point modulo operation <em>x</em> % <em>y</em>.  <a href="group__qfp16.html#ga06576be265a983aaa6a173c114558b82">More...</a><br /></td></tr>
+<tr class="separator:ga06576be265a983aaa6a173c114558b82"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga069e685a25df6b6db6c0c567cb30a290"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__qfp16.html#ga1c178e35bab36bb263045df6d93a26e1">qFP16_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qfp16.html#ga069e685a25df6b6db6c0c567cb30a290">qFP16_Sqrt</a> (<a class="el" href="group__qfp16.html#ga1c178e35bab36bb263045df6d93a26e1">qFP16_t</a> x)</td></tr>
+<tr class="memdesc:ga069e685a25df6b6db6c0c567cb30a290"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the fixed-point square root of <em>x</em>.  <a href="group__qfp16.html#ga069e685a25df6b6db6c0c567cb30a290">More...</a><br /></td></tr>
+<tr class="separator:ga069e685a25df6b6db6c0c567cb30a290"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga1debd4fc616382d16f417471f1825244"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__qfp16.html#ga1c178e35bab36bb263045df6d93a26e1">qFP16_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qfp16.html#ga1debd4fc616382d16f417471f1825244">qFP16_Exp</a> (<a class="el" href="group__qfp16.html#ga1c178e35bab36bb263045df6d93a26e1">qFP16_t</a> x)</td></tr>
+<tr class="memdesc:ga1debd4fc616382d16f417471f1825244"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the fixed-point value of e raised to the xth power.  <a href="group__qfp16.html#ga1debd4fc616382d16f417471f1825244">More...</a><br /></td></tr>
+<tr class="separator:ga1debd4fc616382d16f417471f1825244"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga7b7ee8dc1fc3e8475a192b7f24cf5e12"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__qfp16.html#ga1c178e35bab36bb263045df6d93a26e1">qFP16_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qfp16.html#ga7b7ee8dc1fc3e8475a192b7f24cf5e12">qFP16_Log</a> (<a class="el" href="group__qfp16.html#ga1c178e35bab36bb263045df6d93a26e1">qFP16_t</a> x)</td></tr>
+<tr class="memdesc:ga7b7ee8dc1fc3e8475a192b7f24cf5e12"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the fixed-point natural logarithm (base-e logarithm) of <em>x</em>.  <a href="group__qfp16.html#ga7b7ee8dc1fc3e8475a192b7f24cf5e12">More...</a><br /></td></tr>
+<tr class="separator:ga7b7ee8dc1fc3e8475a192b7f24cf5e12"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gad4f5059f7c7b77add35285e4f59347dd"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__qfp16.html#ga1c178e35bab36bb263045df6d93a26e1">qFP16_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qfp16.html#gad4f5059f7c7b77add35285e4f59347dd">qFP16_Log2</a> (const <a class="el" href="group__qfp16.html#ga1c178e35bab36bb263045df6d93a26e1">qFP16_t</a> x)</td></tr>
+<tr class="memdesc:gad4f5059f7c7b77add35285e4f59347dd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the fixed-point log base 2 of <em>x</em>.  <a href="group__qfp16.html#gad4f5059f7c7b77add35285e4f59347dd">More...</a><br /></td></tr>
+<tr class="separator:gad4f5059f7c7b77add35285e4f59347dd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaca46df2dbc6b4a5c12daabdd1aee91a0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__qfp16.html#ga1c178e35bab36bb263045df6d93a26e1">qFP16_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qfp16.html#gaca46df2dbc6b4a5c12daabdd1aee91a0">fp16_RadToDeg</a> (const <a class="el" href="group__qfp16.html#ga1c178e35bab36bb263045df6d93a26e1">qFP16_t</a> x)</td></tr>
+<tr class="memdesc:gaca46df2dbc6b4a5c12daabdd1aee91a0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts angle units from radians to degrees.  <a href="group__qfp16.html#gaca46df2dbc6b4a5c12daabdd1aee91a0">More...</a><br /></td></tr>
+<tr class="separator:gaca46df2dbc6b4a5c12daabdd1aee91a0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga5725ee6fd9a84a99b457e4a6d38018eb"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__qfp16.html#ga1c178e35bab36bb263045df6d93a26e1">qFP16_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qfp16.html#ga5725ee6fd9a84a99b457e4a6d38018eb">fp16_DegToRad</a> (const <a class="el" href="group__qfp16.html#ga1c178e35bab36bb263045df6d93a26e1">qFP16_t</a> x)</td></tr>
+<tr class="memdesc:ga5725ee6fd9a84a99b457e4a6d38018eb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts angle units from degrees to radians.  <a href="group__qfp16.html#ga5725ee6fd9a84a99b457e4a6d38018eb">More...</a><br /></td></tr>
+<tr class="separator:ga5725ee6fd9a84a99b457e4a6d38018eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaa2b38df53038ca2b587f41c64ea94297"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__qfp16.html#ga1c178e35bab36bb263045df6d93a26e1">qFP16_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qfp16.html#gaa2b38df53038ca2b587f41c64ea94297">qFP16_WrapToPi</a> (<a class="el" href="group__qfp16.html#ga1c178e35bab36bb263045df6d93a26e1">qFP16_t</a> x)</td></tr>
+<tr class="memdesc:gaa2b38df53038ca2b587f41c64ea94297"><td class="mdescLeft">&#160;</td><td class="mdescRight">Wrap the fixed-point angle in radians to [−pi pi].  <a href="group__qfp16.html#gaa2b38df53038ca2b587f41c64ea94297">More...</a><br /></td></tr>
+<tr class="separator:gaa2b38df53038ca2b587f41c64ea94297"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gad12f9293c13418cbb5f226b864b4bf17"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__qfp16.html#ga1c178e35bab36bb263045df6d93a26e1">qFP16_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qfp16.html#gad12f9293c13418cbb5f226b864b4bf17">qFP16_WrapTo180</a> (<a class="el" href="group__qfp16.html#ga1c178e35bab36bb263045df6d93a26e1">qFP16_t</a> x)</td></tr>
+<tr class="memdesc:gad12f9293c13418cbb5f226b864b4bf17"><td class="mdescLeft">&#160;</td><td class="mdescRight">Wrap the fixed-point angle in degrees to [−180 180].  <a href="group__qfp16.html#gad12f9293c13418cbb5f226b864b4bf17">More...</a><br /></td></tr>
+<tr class="separator:gad12f9293c13418cbb5f226b864b4bf17"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaa7591c7f1e74fc7e13f14e9d14e87e7d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__qfp16.html#ga1c178e35bab36bb263045df6d93a26e1">qFP16_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qfp16.html#gaa7591c7f1e74fc7e13f14e9d14e87e7d">qFP16_Sin</a> (<a class="el" href="group__qfp16.html#ga1c178e35bab36bb263045df6d93a26e1">qFP16_t</a> x)</td></tr>
+<tr class="memdesc:gaa7591c7f1e74fc7e13f14e9d14e87e7d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes the fixed-point sine of the radian angle <em>x</em>.  <a href="group__qfp16.html#gaa7591c7f1e74fc7e13f14e9d14e87e7d">More...</a><br /></td></tr>
+<tr class="separator:gaa7591c7f1e74fc7e13f14e9d14e87e7d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga2566c6af5e3727c6ddf02861dfcae204"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__qfp16.html#ga1c178e35bab36bb263045df6d93a26e1">qFP16_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qfp16.html#ga2566c6af5e3727c6ddf02861dfcae204">qFP16_Cos</a> (<a class="el" href="group__qfp16.html#ga1c178e35bab36bb263045df6d93a26e1">qFP16_t</a> x)</td></tr>
+<tr class="memdesc:ga2566c6af5e3727c6ddf02861dfcae204"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes the fixed-point cosine of the radian angle <em>x</em>.  <a href="group__qfp16.html#ga2566c6af5e3727c6ddf02861dfcae204">More...</a><br /></td></tr>
+<tr class="separator:ga2566c6af5e3727c6ddf02861dfcae204"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga64cd9598319856925cb1dae8894aeae7"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__qfp16.html#ga1c178e35bab36bb263045df6d93a26e1">qFP16_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qfp16.html#ga64cd9598319856925cb1dae8894aeae7">qFP16_Tan</a> (<a class="el" href="group__qfp16.html#ga1c178e35bab36bb263045df6d93a26e1">qFP16_t</a> x)</td></tr>
+<tr class="memdesc:ga64cd9598319856925cb1dae8894aeae7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes the fixed-point tangent of the radian angle <em>x</em>.  <a href="group__qfp16.html#ga64cd9598319856925cb1dae8894aeae7">More...</a><br /></td></tr>
+<tr class="separator:ga64cd9598319856925cb1dae8894aeae7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga0e8c0b2f6d4c2b9a81b9bc5edc60da54"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__qfp16.html#ga1c178e35bab36bb263045df6d93a26e1">qFP16_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qfp16.html#ga0e8c0b2f6d4c2b9a81b9bc5edc60da54">qFP16_Atan2</a> (const <a class="el" href="group__qfp16.html#ga1c178e35bab36bb263045df6d93a26e1">qFP16_t</a> y, const <a class="el" href="group__qfp16.html#ga1c178e35bab36bb263045df6d93a26e1">qFP16_t</a> x)</td></tr>
+<tr class="memdesc:ga0e8c0b2f6d4c2b9a81b9bc5edc60da54"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes the fixed-point arc tangent in radians of <em>y</em> / <em>x</em> based on the signs of both values to determine the correct quadrant.  <a href="group__qfp16.html#ga0e8c0b2f6d4c2b9a81b9bc5edc60da54">More...</a><br /></td></tr>
+<tr class="separator:ga0e8c0b2f6d4c2b9a81b9bc5edc60da54"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga5b0d29c347104d5dd7a740fc2602c916"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__qfp16.html#ga1c178e35bab36bb263045df6d93a26e1">qFP16_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qfp16.html#ga5b0d29c347104d5dd7a740fc2602c916">qFP16_Atan</a> (<a class="el" href="group__qfp16.html#ga1c178e35bab36bb263045df6d93a26e1">qFP16_t</a> x)</td></tr>
+<tr class="memdesc:ga5b0d29c347104d5dd7a740fc2602c916"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes the fixed-point arc tangent of <em>x</em> in radians.  <a href="group__qfp16.html#ga5b0d29c347104d5dd7a740fc2602c916">More...</a><br /></td></tr>
+<tr class="separator:ga5b0d29c347104d5dd7a740fc2602c916"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gacab3f07113a318c16cf3e120f0e727e4"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__qfp16.html#ga1c178e35bab36bb263045df6d93a26e1">qFP16_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qfp16.html#gacab3f07113a318c16cf3e120f0e727e4">qFP16_Asin</a> (<a class="el" href="group__qfp16.html#ga1c178e35bab36bb263045df6d93a26e1">qFP16_t</a> x)</td></tr>
+<tr class="memdesc:gacab3f07113a318c16cf3e120f0e727e4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes the fixed-point arc sine of <em>x</em> in radians.  <a href="group__qfp16.html#gacab3f07113a318c16cf3e120f0e727e4">More...</a><br /></td></tr>
+<tr class="separator:gacab3f07113a318c16cf3e120f0e727e4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaa27da0ed101dc13834389eede501d92d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__qfp16.html#ga1c178e35bab36bb263045df6d93a26e1">qFP16_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qfp16.html#gaa27da0ed101dc13834389eede501d92d">qFP16_Acos</a> (<a class="el" href="group__qfp16.html#ga1c178e35bab36bb263045df6d93a26e1">qFP16_t</a> x)</td></tr>
+<tr class="memdesc:gaa27da0ed101dc13834389eede501d92d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes the fixed-point arc cosine of <em>x</em> in radians.  <a href="group__qfp16.html#gaa27da0ed101dc13834389eede501d92d">More...</a><br /></td></tr>
+<tr class="separator:gaa27da0ed101dc13834389eede501d92d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gac5f542821ac3986b7733bf8e734e7008"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__qfp16.html#ga1c178e35bab36bb263045df6d93a26e1">qFP16_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qfp16.html#gac5f542821ac3986b7733bf8e734e7008">qFP16_Cosh</a> (<a class="el" href="group__qfp16.html#ga1c178e35bab36bb263045df6d93a26e1">qFP16_t</a> x)</td></tr>
+<tr class="memdesc:gac5f542821ac3986b7733bf8e734e7008"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes the fixed-point hyperbolic cosine of <em>x</em>.  <a href="group__qfp16.html#gac5f542821ac3986b7733bf8e734e7008">More...</a><br /></td></tr>
+<tr class="separator:gac5f542821ac3986b7733bf8e734e7008"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga4e6462085b54b2ab97dcbbda50521981"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__qfp16.html#ga1c178e35bab36bb263045df6d93a26e1">qFP16_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qfp16.html#ga4e6462085b54b2ab97dcbbda50521981">qFP16_Sinh</a> (<a class="el" href="group__qfp16.html#ga1c178e35bab36bb263045df6d93a26e1">qFP16_t</a> x)</td></tr>
+<tr class="memdesc:ga4e6462085b54b2ab97dcbbda50521981"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes the fixed-point hyperbolic sine of <em>x</em>.  <a href="group__qfp16.html#ga4e6462085b54b2ab97dcbbda50521981">More...</a><br /></td></tr>
+<tr class="separator:ga4e6462085b54b2ab97dcbbda50521981"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gada9cfddd2e972f9ab43f975858f0ee83"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__qfp16.html#ga1c178e35bab36bb263045df6d93a26e1">qFP16_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qfp16.html#gada9cfddd2e972f9ab43f975858f0ee83">qFP16_Tanh</a> (<a class="el" href="group__qfp16.html#ga1c178e35bab36bb263045df6d93a26e1">qFP16_t</a> x)</td></tr>
+<tr class="memdesc:gada9cfddd2e972f9ab43f975858f0ee83"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes the fixed-point hyperbolic tangent of <em>x</em>.  <a href="group__qfp16.html#gada9cfddd2e972f9ab43f975858f0ee83">More...</a><br /></td></tr>
+<tr class="separator:gada9cfddd2e972f9ab43f975858f0ee83"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga1c8c07e564e606900429adfe3f3a288b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__qfp16.html#ga1c178e35bab36bb263045df6d93a26e1">qFP16_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qfp16.html#ga1c8c07e564e606900429adfe3f3a288b">qFP16_Polyval</a> (const <a class="el" href="group__qfp16.html#ga1c178e35bab36bb263045df6d93a26e1">qFP16_t</a> *const p, const size_t n, const <a class="el" href="group__qfp16.html#ga1c178e35bab36bb263045df6d93a26e1">qFP16_t</a> x)</td></tr>
+<tr class="memdesc:ga1c8c07e564e606900429adfe3f3a288b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Evaluates the fixed-point polynomial <em>p</em> at the point <em>x</em>. The argument <em>p</em> is a vector of length n+1 whose elements are the coefficients (in descending powers) of an nth-degree polynomial.  <a href="group__qfp16.html#ga1c8c07e564e606900429adfe3f3a288b">More...</a><br /></td></tr>
+<tr class="separator:ga1c8c07e564e606900429adfe3f3a288b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga65c6bdb2eceeded0ac6d4af83f8d1f31"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__qfp16.html#ga1c178e35bab36bb263045df6d93a26e1">qFP16_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qfp16.html#ga65c6bdb2eceeded0ac6d4af83f8d1f31">qFP16_IPow</a> (const <a class="el" href="group__qfp16.html#ga1c178e35bab36bb263045df6d93a26e1">qFP16_t</a> x, const <a class="el" href="group__qfp16.html#ga1c178e35bab36bb263045df6d93a26e1">qFP16_t</a> y)</td></tr>
+<tr class="memdesc:ga65c6bdb2eceeded0ac6d4af83f8d1f31"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns <em>x</em> raised to the power of the integer part of <em>y</em>. (x^y)  <a href="group__qfp16.html#ga65c6bdb2eceeded0ac6d4af83f8d1f31">More...</a><br /></td></tr>
+<tr class="separator:ga65c6bdb2eceeded0ac6d4af83f8d1f31"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaadcc417638114d8352d7bfb4a1a8d4a4"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__qfp16.html#ga1c178e35bab36bb263045df6d93a26e1">qFP16_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qfp16.html#gaadcc417638114d8352d7bfb4a1a8d4a4">qFP16_Pow</a> (const <a class="el" href="group__qfp16.html#ga1c178e35bab36bb263045df6d93a26e1">qFP16_t</a> x, const <a class="el" href="group__qfp16.html#ga1c178e35bab36bb263045df6d93a26e1">qFP16_t</a> y)</td></tr>
+<tr class="memdesc:gaadcc417638114d8352d7bfb4a1a8d4a4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns <em>x</em> raised to the power of <em>y</em>. (x^y)  <a href="group__qfp16.html#gaadcc417638114d8352d7bfb4a1a8d4a4">More...</a><br /></td></tr>
+<tr class="separator:gaadcc417638114d8352d7bfb4a1a8d4a4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga1980709d72e7d474d7a567c3d6483e98"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qfp16.html#ga1980709d72e7d474d7a567c3d6483e98">qFP16_FPToA</a> (const <a class="el" href="group__qfp16.html#ga1c178e35bab36bb263045df6d93a26e1">qFP16_t</a> num, char *str, int decimals)</td></tr>
+<tr class="memdesc:ga1980709d72e7d474d7a567c3d6483e98"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts the fixed-point value to a formatted string.  <a href="group__qfp16.html#ga1980709d72e7d474d7a567c3d6483e98">More...</a><br /></td></tr>
+<tr class="separator:ga1980709d72e7d474d7a567c3d6483e98"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga5587d33713383ad8ea4e82803464749d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__qfp16.html#ga1c178e35bab36bb263045df6d93a26e1">qFP16_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qfp16.html#ga5587d33713383ad8ea4e82803464749d">qFP16_AToFP</a> (const char *s)</td></tr>
+<tr class="memdesc:ga5587d33713383ad8ea4e82803464749d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parses the C string <em>s</em>, interpreting its content as a fixed-point (q16.16) number and returns its value as a qFP16_t. The function first discards as many whitespace characters (as in isspace) as necessary until the first non-whitespace character is found. Then, starting from this character, takes as many characters as possible that are valid following a syntax resembling that of floating point literals, and interprets them as a fixed-point numerical value. The rest of the string after the last valid character is ignored and has no effect on the behavior of this function.  <a href="group__qfp16.html#ga5587d33713383ad8ea4e82803464749d">More...</a><br /></td></tr>
+<tr class="separator:ga5587d33713383ad8ea4e82803464749d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
+Variables</h2></td></tr>
+<tr class="memitem:gaa0ae25eb4d075d483c7918007b58d452"><td class="memItemLeft" align="right" valign="top"><a id="gaa0ae25eb4d075d483c7918007b58d452" name="gaa0ae25eb4d075d483c7918007b58d452"></a>
+const struct _qFP16_const_s&#160;</td><td class="memItemRight" valign="bottom"><b>qFP16</b></td></tr>
+<tr class="memdesc:gaa0ae25eb4d075d483c7918007b58d452"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fixed-point Q16.16 constants. <br /></td></tr>
+<tr class="separator:gaa0ae25eb4d075d483c7918007b58d452"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<p >API for the qFP16 Fixed-point math library. </p>
+<p >For a brief description of this module, please read <a class="el" href="qfp16_desc.html">Fixed-Point Q16.16 library</a> </p>
+<h2 class="groupheader">Macro Definition Documentation</h2>
+<a id="ga123222ca2a22f06410950f7fc03b9efc" name="ga123222ca2a22f06410950f7fc03b9efc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga123222ca2a22f06410950f7fc03b9efc">&#9670;&nbsp;</a></span>qFP16_Constant</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define qFP16_Constant</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">x</td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>A macro for defining a fixed-point constant value. </p>
+<dl class="section note"><dt>Note</dt><dd>You should only use this for constant values. For runtime-conversions use <a class="el" href="group__qfp16.html#ga8fa3922fde6d48e1bcd3c8719a30c4e6" title="Returns the int value x converted to fixed-point q16.16.">qFP16_IntToFP()</a>, <a class="el" href="group__qfp16.html#ga81eb8aafcbe9660fbac4855cacf6cf71" title="Returns the float value x converted to fixed-point q16.16.">qFP16_FloatToFP()</a> or <a class="el" href="group__qfp16.html#ga53c7e00384ee53dd655c7f948301a72a" title="Returns the double value x converted to fixed-point q16.16.">qFP16_DoubleToFP()</a> instead. </dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">x</td><td>A literal value </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The literal argument <em>x</em> converted to fixed-point(qFP16_t). </dd></dl>
+
+</div>
+</div>
+<h2 class="groupheader">Function Documentation</h2>
+<a id="ga5725ee6fd9a84a99b457e4a6d38018eb" name="ga5725ee6fd9a84a99b457e4a6d38018eb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga5725ee6fd9a84a99b457e4a6d38018eb">&#9670;&nbsp;</a></span>fp16_DegToRad()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="group__qfp16.html#ga1c178e35bab36bb263045df6d93a26e1">qFP16_t</a> fp16_DegToRad </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="group__qfp16.html#ga1c178e35bab36bb263045df6d93a26e1">qFP16_t</a>&#160;</td>
+          <td class="paramname"><em>x</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Converts angle units from degrees to radians. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">x</td><td>The fixed-point(q16.16) value representing an angle expressed in degrees. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>This function returns the angle converted in radians. </dd></dl>
+
+</div>
+</div>
+<a id="gaca46df2dbc6b4a5c12daabdd1aee91a0" name="gaca46df2dbc6b4a5c12daabdd1aee91a0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gaca46df2dbc6b4a5c12daabdd1aee91a0">&#9670;&nbsp;</a></span>fp16_RadToDeg()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="group__qfp16.html#ga1c178e35bab36bb263045df6d93a26e1">qFP16_t</a> fp16_RadToDeg </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="group__qfp16.html#ga1c178e35bab36bb263045df6d93a26e1">qFP16_t</a>&#160;</td>
+          <td class="paramname"><em>x</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Converts angle units from radians to degrees. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">x</td><td>The fixed-point(q16.16) value representing an angle expressed in radians. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>This function returns the angle converted in degrees. </dd></dl>
+
+</div>
+</div>
+<a id="ga54f1071dab12214ab7f27d14b72af389" name="ga54f1071dab12214ab7f27d14b72af389"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga54f1071dab12214ab7f27d14b72af389">&#9670;&nbsp;</a></span>qFP16_Abs()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="group__qfp16.html#ga1c178e35bab36bb263045df6d93a26e1">qFP16_t</a> qFP16_Abs </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="group__qfp16.html#ga1c178e35bab36bb263045df6d93a26e1">qFP16_t</a>&#160;</td>
+          <td class="paramname"><em>x</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Returns the absolute value of <em>x</em>. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">x</td><td>The fixed-point(q16.16) value. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>This function returns the absolute value of x. </dd></dl>
+
+</div>
+</div>
+<a id="gaa27da0ed101dc13834389eede501d92d" name="gaa27da0ed101dc13834389eede501d92d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gaa27da0ed101dc13834389eede501d92d">&#9670;&nbsp;</a></span>qFP16_Acos()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="group__qfp16.html#ga1c178e35bab36bb263045df6d93a26e1">qFP16_t</a> qFP16_Acos </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="group__qfp16.html#ga1c178e35bab36bb263045df6d93a26e1">qFP16_t</a>&#160;</td>
+          <td class="paramname"><em>x</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Computes the fixed-point arc cosine of <em>x</em> in radians. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">x</td><td>The fixed-point(q16.16) value representing an angle expressed in radians. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>This function returns arc cosine of <em>x</em>. </dd></dl>
+
+</div>
+</div>
+<a id="ga608fdcec4665120752be09aedac1d0ac" name="ga608fdcec4665120752be09aedac1d0ac"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga608fdcec4665120752be09aedac1d0ac">&#9670;&nbsp;</a></span>qFP16_Add()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="group__qfp16.html#ga1c178e35bab36bb263045df6d93a26e1">qFP16_t</a> qFP16_Add </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="group__qfp16.html#ga1c178e35bab36bb263045df6d93a26e1">qFP16_t</a>&#160;</td>
+          <td class="paramname"><em>X</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="group__qfp16.html#ga1c178e35bab36bb263045df6d93a26e1">qFP16_t</a>&#160;</td>
+          <td class="paramname"><em>Y</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Returns the fixed-point addition <em>x</em> + <em>y</em>. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">X</td><td>The fixed-point(q16.16) value. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">Y</td><td>The fixed-point(q16.16) value. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>This function returns the addition operation x+y. QFP16_OVERFLOW when an operation overflow is detected. </dd></dl>
+
+</div>
+</div>
+<a id="gacab3f07113a318c16cf3e120f0e727e4" name="gacab3f07113a318c16cf3e120f0e727e4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gacab3f07113a318c16cf3e120f0e727e4">&#9670;&nbsp;</a></span>qFP16_Asin()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="group__qfp16.html#ga1c178e35bab36bb263045df6d93a26e1">qFP16_t</a> qFP16_Asin </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="group__qfp16.html#ga1c178e35bab36bb263045df6d93a26e1">qFP16_t</a>&#160;</td>
+          <td class="paramname"><em>x</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Computes the fixed-point arc sine of <em>x</em> in radians. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">x</td><td>The fixed-point(q16.16) value representing an angle expressed in radians. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>This function returns arc sine of <em>x</em>. </dd></dl>
+
+</div>
+</div>
+<a id="ga5b0d29c347104d5dd7a740fc2602c916" name="ga5b0d29c347104d5dd7a740fc2602c916"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga5b0d29c347104d5dd7a740fc2602c916">&#9670;&nbsp;</a></span>qFP16_Atan()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="group__qfp16.html#ga1c178e35bab36bb263045df6d93a26e1">qFP16_t</a> qFP16_Atan </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="group__qfp16.html#ga1c178e35bab36bb263045df6d93a26e1">qFP16_t</a>&#160;</td>
+          <td class="paramname"><em>x</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Computes the fixed-point arc tangent of <em>x</em> in radians. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">x</td><td>The fixed-point(q16.16) value representing an angle expressed in radians. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>This function returns arc tangent of <em>x</em>. </dd></dl>
+
+</div>
+</div>
+<a id="ga0e8c0b2f6d4c2b9a81b9bc5edc60da54" name="ga0e8c0b2f6d4c2b9a81b9bc5edc60da54"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga0e8c0b2f6d4c2b9a81b9bc5edc60da54">&#9670;&nbsp;</a></span>qFP16_Atan2()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="group__qfp16.html#ga1c178e35bab36bb263045df6d93a26e1">qFP16_t</a> qFP16_Atan2 </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="group__qfp16.html#ga1c178e35bab36bb263045df6d93a26e1">qFP16_t</a>&#160;</td>
+          <td class="paramname"><em>y</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="group__qfp16.html#ga1c178e35bab36bb263045df6d93a26e1">qFP16_t</a>&#160;</td>
+          <td class="paramname"><em>x</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Computes the fixed-point arc tangent in radians of <em>y</em> / <em>x</em> based on the signs of both values to determine the correct quadrant. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">y</td><td>The fixed-point(q16.16) value representing an x-coordinate. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">x</td><td>The fixed-point(q16.16) value representing an y-coordinate. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>This function returns the principal arc tangent of y/x, in the interval [-pi,+pi] radians. </dd></dl>
+
+</div>
+</div>
+<a id="ga5587d33713383ad8ea4e82803464749d" name="ga5587d33713383ad8ea4e82803464749d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga5587d33713383ad8ea4e82803464749d">&#9670;&nbsp;</a></span>qFP16_AToFP()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="group__qfp16.html#ga1c178e35bab36bb263045df6d93a26e1">qFP16_t</a> qFP16_AToFP </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>s</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Parses the C string <em>s</em>, interpreting its content as a fixed-point (q16.16) number and returns its value as a qFP16_t. The function first discards as many whitespace characters (as in isspace) as necessary until the first non-whitespace character is found. Then, starting from this character, takes as many characters as possible that are valid following a syntax resembling that of floating point literals, and interprets them as a fixed-point numerical value. The rest of the string after the last valid character is ignored and has no effect on the behavior of this function. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">s</td><td>The string beginning with the representation of a floating-point number. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>On success, the function returns the converted floating point number as a fixed-point value. If no valid conversion could be performed, the function returns zero (0.0) or QFP16_OVERFLOW. If the converted value would be out of the range of representable values by a fixed-point Q16.16, the function returns QFP16_OVERFLOW. </dd></dl>
+
+</div>
+</div>
+<a id="ga30a1704b050878822b013bbc889af083" name="ga30a1704b050878822b013bbc889af083"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga30a1704b050878822b013bbc889af083">&#9670;&nbsp;</a></span>qFP16_Ceil()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="group__qfp16.html#ga1c178e35bab36bb263045df6d93a26e1">qFP16_t</a> qFP16_Ceil </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="group__qfp16.html#ga1c178e35bab36bb263045df6d93a26e1">qFP16_t</a>&#160;</td>
+          <td class="paramname"><em>x</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Returns the smallest integer value greater than or equal to <em>x</em>. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">x</td><td>The fixed-point(q16.16) value. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>This function returns the smallest integral value not less than <em>x</em>. </dd></dl>
+
+</div>
+</div>
+<a id="ga2566c6af5e3727c6ddf02861dfcae204" name="ga2566c6af5e3727c6ddf02861dfcae204"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga2566c6af5e3727c6ddf02861dfcae204">&#9670;&nbsp;</a></span>qFP16_Cos()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="group__qfp16.html#ga1c178e35bab36bb263045df6d93a26e1">qFP16_t</a> qFP16_Cos </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="group__qfp16.html#ga1c178e35bab36bb263045df6d93a26e1">qFP16_t</a>&#160;</td>
+          <td class="paramname"><em>x</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Computes the fixed-point cosine of the radian angle <em>x</em>. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">x</td><td>The fixed-point(q16.16) value representing an angle expressed in radians. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>This function returns cosine of <em>x</em>. </dd></dl>
+
+</div>
+</div>
+<a id="gac5f542821ac3986b7733bf8e734e7008" name="gac5f542821ac3986b7733bf8e734e7008"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gac5f542821ac3986b7733bf8e734e7008">&#9670;&nbsp;</a></span>qFP16_Cosh()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="group__qfp16.html#ga1c178e35bab36bb263045df6d93a26e1">qFP16_t</a> qFP16_Cosh </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="group__qfp16.html#ga1c178e35bab36bb263045df6d93a26e1">qFP16_t</a>&#160;</td>
+          <td class="paramname"><em>x</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Computes the fixed-point hyperbolic cosine of <em>x</em>. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">x</td><td>The fixed-point(q16.16) value. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>This function returns hyperbolic cosine of <em>x</em>. If overflow detected returns QFP16_OVERFLOW. If the function saturates, returns QFP16_EXP_MAX or QFP16_EXP_MIN. </dd></dl>
+
+</div>
+</div>
+<a id="ga3506df0d61901963c5484ababaeed656" name="ga3506df0d61901963c5484ababaeed656"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga3506df0d61901963c5484ababaeed656">&#9670;&nbsp;</a></span>qFP16_Div()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="group__qfp16.html#ga1c178e35bab36bb263045df6d93a26e1">qFP16_t</a> qFP16_Div </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="group__qfp16.html#ga1c178e35bab36bb263045df6d93a26e1">qFP16_t</a>&#160;</td>
+          <td class="paramname"><em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="group__qfp16.html#ga1c178e35bab36bb263045df6d93a26e1">qFP16_t</a>&#160;</td>
+          <td class="paramname"><em>y</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Returns the fixed-point division operation <em>x</em> / <em>y</em>. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">x</td><td>The fixed-point(q16.16) value. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">y</td><td>The fixed-point(q16.16) value. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>This function returns the product operation x/y. QFP16_OVERFLOW when an operation overflow is detected. </dd></dl>
+
+</div>
+</div>
+<a id="ga53c7e00384ee53dd655c7f948301a72a" name="ga53c7e00384ee53dd655c7f948301a72a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga53c7e00384ee53dd655c7f948301a72a">&#9670;&nbsp;</a></span>qFP16_DoubleToFP()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="group__qfp16.html#ga1c178e35bab36bb263045df6d93a26e1">qFP16_t</a> qFP16_DoubleToFP </td>
+          <td>(</td>
+          <td class="paramtype">const double&#160;</td>
+          <td class="paramname"><em>x</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Returns the double value <em>x</em> converted to fixed-point q16.16. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">x</td><td>The double precision floating-point value. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>This function returns <em>x</em> converted to fixed-point q16.16. </dd></dl>
+
+</div>
+</div>
+<a id="ga1debd4fc616382d16f417471f1825244" name="ga1debd4fc616382d16f417471f1825244"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga1debd4fc616382d16f417471f1825244">&#9670;&nbsp;</a></span>qFP16_Exp()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="group__qfp16.html#ga1c178e35bab36bb263045df6d93a26e1">qFP16_t</a> qFP16_Exp </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="group__qfp16.html#ga1c178e35bab36bb263045df6d93a26e1">qFP16_t</a>&#160;</td>
+          <td class="paramname"><em>x</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Returns the fixed-point value of e raised to the xth power. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">x</td><td>The fixed-point(q16.16) value. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>This function returns the exponential value of x. QFP16_OVERFLOW when an operation overflow is detected. </dd></dl>
+
+</div>
+</div>
+<a id="ga81eb8aafcbe9660fbac4855cacf6cf71" name="ga81eb8aafcbe9660fbac4855cacf6cf71"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga81eb8aafcbe9660fbac4855cacf6cf71">&#9670;&nbsp;</a></span>qFP16_FloatToFP()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="group__qfp16.html#ga1c178e35bab36bb263045df6d93a26e1">qFP16_t</a> qFP16_FloatToFP </td>
+          <td>(</td>
+          <td class="paramtype">const float&#160;</td>
+          <td class="paramname"><em>x</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Returns the float value <em>x</em> converted to fixed-point q16.16. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">x</td><td>The floating-point value. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>This function returns <em>x</em> converted to fixed-point q16.16. </dd></dl>
+
+</div>
+</div>
+<a id="ga1ff77b23f26f5c7d591cbfb678c3b1c1" name="ga1ff77b23f26f5c7d591cbfb678c3b1c1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga1ff77b23f26f5c7d591cbfb678c3b1c1">&#9670;&nbsp;</a></span>qFP16_Floor()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="group__qfp16.html#ga1c178e35bab36bb263045df6d93a26e1">qFP16_t</a> qFP16_Floor </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="group__qfp16.html#ga1c178e35bab36bb263045df6d93a26e1">qFP16_t</a>&#160;</td>
+          <td class="paramname"><em>x</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Returns the largest integer value less than or equal to <em>x</em>. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">x</td><td>The fixed-point(q16.16) value. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>This function returns the largest integral value not greater than <em>x</em>. </dd></dl>
+
+</div>
+</div>
+<a id="ga1980709d72e7d474d7a567c3d6483e98" name="ga1980709d72e7d474d7a567c3d6483e98"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga1980709d72e7d474d7a567c3d6483e98">&#9670;&nbsp;</a></span>qFP16_FPToA()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char * qFP16_FPToA </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="group__qfp16.html#ga1c178e35bab36bb263045df6d93a26e1">qFP16_t</a>&#160;</td>
+          <td class="paramname"><em>num</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>str</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>decimals</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Converts the fixed-point value to a formatted string. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">num</td><td>The fixed-point(q16.16) value to be converted to string. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">str</td><td>Array in memory where to store the resulting null-terminated string. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">decimals</td><td>Number of decimals to show in the string representation. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section note"><dt>Note</dt><dd>: Max decimal allowed = 5 </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>A pointer to the resulting null-terminated string, same as parameter <em>str</em> </dd></dl>
+
+</div>
+</div>
+<a id="gab2bc9cb63aa879b0a1af9ae9bca9202a" name="gab2bc9cb63aa879b0a1af9ae9bca9202a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gab2bc9cb63aa879b0a1af9ae9bca9202a">&#9670;&nbsp;</a></span>qFP16_FPToDouble()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double qFP16_FPToDouble </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="group__qfp16.html#ga1c178e35bab36bb263045df6d93a26e1">qFP16_t</a>&#160;</td>
+          <td class="paramname"><em>x</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Returns the fixed-point value @ x converted to double. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">x</td><td>The fixed-point(q16.16) value. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>This function returns <em>x</em> converted to double. </dd></dl>
+
+</div>
+</div>
+<a id="gaf666a6462e9e975c10d517bb925886c8" name="gaf666a6462e9e975c10d517bb925886c8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gaf666a6462e9e975c10d517bb925886c8">&#9670;&nbsp;</a></span>qFP16_FPToFloat()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float qFP16_FPToFloat </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="group__qfp16.html#ga1c178e35bab36bb263045df6d93a26e1">qFP16_t</a>&#160;</td>
+          <td class="paramname"><em>x</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Returns the fixed-point value @ x converted to float. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">x</td><td>The fixed-point(q16.16) value. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>This function returns <em>x</em> converted to float. </dd></dl>
+
+</div>
+</div>
+<a id="ga4cea2d97fd0599ea67ea75903ab1540c" name="ga4cea2d97fd0599ea67ea75903ab1540c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga4cea2d97fd0599ea67ea75903ab1540c">&#9670;&nbsp;</a></span>qFP16_FPToInt()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int qFP16_FPToInt </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="group__qfp16.html#ga1c178e35bab36bb263045df6d93a26e1">qFP16_t</a>&#160;</td>
+          <td class="paramname"><em>x</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Returns the fixed-point value <em>x</em> converted to int. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">x</td><td>The fixed-point(q16.16) value. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>This function returns <em>x</em> converted to int. </dd></dl>
+
+</div>
+</div>
+<a id="ga8fa3922fde6d48e1bcd3c8719a30c4e6" name="ga8fa3922fde6d48e1bcd3c8719a30c4e6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga8fa3922fde6d48e1bcd3c8719a30c4e6">&#9670;&nbsp;</a></span>qFP16_IntToFP()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="group__qfp16.html#ga1c178e35bab36bb263045df6d93a26e1">qFP16_t</a> qFP16_IntToFP </td>
+          <td>(</td>
+          <td class="paramtype">const int&#160;</td>
+          <td class="paramname"><em>x</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Returns the int value <em>x</em> converted to fixed-point q16.16. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">x</td><td>The integer value. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>This function returns <em>x</em> converted to fixed-point q16.16. </dd></dl>
+
+</div>
+</div>
+<a id="ga65c6bdb2eceeded0ac6d4af83f8d1f31" name="ga65c6bdb2eceeded0ac6d4af83f8d1f31"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga65c6bdb2eceeded0ac6d4af83f8d1f31">&#9670;&nbsp;</a></span>qFP16_IPow()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="group__qfp16.html#ga1c178e35bab36bb263045df6d93a26e1">qFP16_t</a> qFP16_IPow </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="group__qfp16.html#ga1c178e35bab36bb263045df6d93a26e1">qFP16_t</a>&#160;</td>
+          <td class="paramname"><em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="group__qfp16.html#ga1c178e35bab36bb263045df6d93a26e1">qFP16_t</a>&#160;</td>
+          <td class="paramname"><em>y</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Returns <em>x</em> raised to the power of the integer part of <em>y</em>. (x^y) </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">x</td><td>The fixed-point(q16.16) base value. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">y</td><td>The fixed-point(q16.16) power value. Only the integer part is taken </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>This function returns the result of raising <em>x</em> to the power <em>y</em>. QFP16_OVERFLOW when an operation overflow is detected. </dd></dl>
+
+</div>
+</div>
+<a id="ga7b7ee8dc1fc3e8475a192b7f24cf5e12" name="ga7b7ee8dc1fc3e8475a192b7f24cf5e12"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga7b7ee8dc1fc3e8475a192b7f24cf5e12">&#9670;&nbsp;</a></span>qFP16_Log()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="group__qfp16.html#ga1c178e35bab36bb263045df6d93a26e1">qFP16_t</a> qFP16_Log </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="group__qfp16.html#ga1c178e35bab36bb263045df6d93a26e1">qFP16_t</a>&#160;</td>
+          <td class="paramname"><em>x</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Returns the fixed-point natural logarithm (base-e logarithm) of <em>x</em>. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">x</td><td>The fixed-point(q16.16) value. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>This function returns natural logarithm of <em>x</em>. For negative values returns QFP16_OVERFLOW </dd></dl>
+
+</div>
+</div>
+<a id="gad4f5059f7c7b77add35285e4f59347dd" name="gad4f5059f7c7b77add35285e4f59347dd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gad4f5059f7c7b77add35285e4f59347dd">&#9670;&nbsp;</a></span>qFP16_Log2()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="group__qfp16.html#ga1c178e35bab36bb263045df6d93a26e1">qFP16_t</a> qFP16_Log2 </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="group__qfp16.html#ga1c178e35bab36bb263045df6d93a26e1">qFP16_t</a>&#160;</td>
+          <td class="paramname"><em>x</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Returns the fixed-point log base 2 of <em>x</em>. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">x</td><td>The fixed-point(q16.16) value. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>This function returns log base 2 of <em>x</em>. For negative values returns QFP16_OVERFLOW </dd></dl>
+
+</div>
+</div>
+<a id="ga06576be265a983aaa6a173c114558b82" name="ga06576be265a983aaa6a173c114558b82"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga06576be265a983aaa6a173c114558b82">&#9670;&nbsp;</a></span>qFP16_Mod()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="group__qfp16.html#ga1c178e35bab36bb263045df6d93a26e1">qFP16_t</a> qFP16_Mod </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="group__qfp16.html#ga1c178e35bab36bb263045df6d93a26e1">qFP16_t</a>&#160;</td>
+          <td class="paramname"><em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="group__qfp16.html#ga1c178e35bab36bb263045df6d93a26e1">qFP16_t</a>&#160;</td>
+          <td class="paramname"><em>y</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Returns the fixed-point modulo operation <em>x</em> % <em>y</em>. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">x</td><td>The fixed-point(q16.16) value. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">y</td><td>The fixed-point(q16.16) value. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>This function returns the modulo operation xy. </dd></dl>
+
+</div>
+</div>
+<a id="gae73aa884099b8f8b1a8ee04ffcf7c25e" name="gae73aa884099b8f8b1a8ee04ffcf7c25e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gae73aa884099b8f8b1a8ee04ffcf7c25e">&#9670;&nbsp;</a></span>qFP16_Mul()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="group__qfp16.html#ga1c178e35bab36bb263045df6d93a26e1">qFP16_t</a> qFP16_Mul </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="group__qfp16.html#ga1c178e35bab36bb263045df6d93a26e1">qFP16_t</a>&#160;</td>
+          <td class="paramname"><em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="group__qfp16.html#ga1c178e35bab36bb263045df6d93a26e1">qFP16_t</a>&#160;</td>
+          <td class="paramname"><em>y</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Returns the fixed-point product operation <em>x</em> * <em>y</em>. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">x</td><td>The fixed-point(q16.16) value. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">y</td><td>The fixed-point(q16.16) value. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>This function returns the product operation x*y. QFP16_OVERFLOW when an operation overflow is detected. </dd></dl>
+
+</div>
+</div>
+<a id="ga1c8c07e564e606900429adfe3f3a288b" name="ga1c8c07e564e606900429adfe3f3a288b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga1c8c07e564e606900429adfe3f3a288b">&#9670;&nbsp;</a></span>qFP16_Polyval()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="group__qfp16.html#ga1c178e35bab36bb263045df6d93a26e1">qFP16_t</a> qFP16_Polyval </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="group__qfp16.html#ga1c178e35bab36bb263045df6d93a26e1">qFP16_t</a> *const&#160;</td>
+          <td class="paramname"><em>p</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const size_t&#160;</td>
+          <td class="paramname"><em>n</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="group__qfp16.html#ga1c178e35bab36bb263045df6d93a26e1">qFP16_t</a>&#160;</td>
+          <td class="paramname"><em>x</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Evaluates the fixed-point polynomial <em>p</em> at the point <em>x</em>. The argument <em>p</em> is a vector of length n+1 whose elements are the coefficients (in descending powers) of an nth-degree polynomial. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">p</td><td>Polynomial coefficients, specified as a fixed-point(q16.16) array. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">n</td><td>The number of elements of the fixed-point array <em>p</em>. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">x</td><td>The fixed-point(q16.16) value to evaluate the polynomial. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>This function returns the polynomial evaluation p(x). If overflow detected returns QFP16_OVERFLOW. </dd></dl>
+
+</div>
+</div>
+<a id="gaadcc417638114d8352d7bfb4a1a8d4a4" name="gaadcc417638114d8352d7bfb4a1a8d4a4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gaadcc417638114d8352d7bfb4a1a8d4a4">&#9670;&nbsp;</a></span>qFP16_Pow()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="group__qfp16.html#ga1c178e35bab36bb263045df6d93a26e1">qFP16_t</a> qFP16_Pow </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="group__qfp16.html#ga1c178e35bab36bb263045df6d93a26e1">qFP16_t</a>&#160;</td>
+          <td class="paramname"><em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="group__qfp16.html#ga1c178e35bab36bb263045df6d93a26e1">qFP16_t</a>&#160;</td>
+          <td class="paramname"><em>y</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Returns <em>x</em> raised to the power of <em>y</em>. (x^y) </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">x</td><td>The fixed-point(q16.16) base value. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">y</td><td>The fixed-point(q16.16) power value. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>This function returns the result of raising <em>x</em> to the power <em>y</em>. QFP16_OVERFLOW when an operation overflow is detected. </dd></dl>
+
+</div>
+</div>
+<a id="ga24498700a7cb2a841f024f96aaf5f644" name="ga24498700a7cb2a841f024f96aaf5f644"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga24498700a7cb2a841f024f96aaf5f644">&#9670;&nbsp;</a></span>qFP16_Round()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="group__qfp16.html#ga1c178e35bab36bb263045df6d93a26e1">qFP16_t</a> qFP16_Round </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="group__qfp16.html#ga1c178e35bab36bb263045df6d93a26e1">qFP16_t</a>&#160;</td>
+          <td class="paramname"><em>x</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Returns the nearest integer value of the fixed-point argument <em>x</em>. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">x</td><td>The fixed-point(q16.16) value. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>This function returns the nearest integral value of <em>x</em>. </dd></dl>
+
+</div>
+</div>
+<a id="ga9f2ef99a86280587ece9aed667c6f492" name="ga9f2ef99a86280587ece9aed667c6f492"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga9f2ef99a86280587ece9aed667c6f492">&#9670;&nbsp;</a></span>qFP16_SettingsSelect()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void qFP16_SettingsSelect </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structq_f_p16___settings__t.html">qFP16_Settings_t</a> *const&#160;</td>
+          <td class="paramname"><em>instance</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Select the provided setting instance to perform fixed-point operations. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">instance</td><td>A pointer to the fixed-point settings instance. Pass NULL to use the default settings. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>none. </dd></dl>
+
+</div>
+</div>
+<a id="ga2bd7560f242dce9718f5f5cf2e0d196f" name="ga2bd7560f242dce9718f5f5cf2e0d196f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga2bd7560f242dce9718f5f5cf2e0d196f">&#9670;&nbsp;</a></span>qFP16_SettingsSet()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int qFP16_SettingsSet </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structq_f_p16___settings__t.html">qFP16_Settings_t</a> *const&#160;</td>
+          <td class="paramname"><em>instance</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="group__qfp16.html#ga1c178e35bab36bb263045df6d93a26e1">qFP16_t</a>&#160;</td>
+          <td class="paramname"><em>min</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="group__qfp16.html#ga1c178e35bab36bb263045df6d93a26e1">qFP16_t</a>&#160;</td>
+          <td class="paramname"><em>max</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>rounding</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>saturate</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Set settings for the fixed-point API. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">instance</td><td>A pointer to the fixed-point settings instance </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">min</td><td>The minimal value allowed for the output. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">max</td><td>The maximal value allowed for the output. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">rounding</td><td>Enable rounding mode. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">saturate</td><td>Enable saturation mode. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>1 on success, otherwise return 0. </dd></dl>
+
+</div>
+</div>
+<a id="gaa7591c7f1e74fc7e13f14e9d14e87e7d" name="gaa7591c7f1e74fc7e13f14e9d14e87e7d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gaa7591c7f1e74fc7e13f14e9d14e87e7d">&#9670;&nbsp;</a></span>qFP16_Sin()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="group__qfp16.html#ga1c178e35bab36bb263045df6d93a26e1">qFP16_t</a> qFP16_Sin </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="group__qfp16.html#ga1c178e35bab36bb263045df6d93a26e1">qFP16_t</a>&#160;</td>
+          <td class="paramname"><em>x</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Computes the fixed-point sine of the radian angle <em>x</em>. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">x</td><td>The fixed-point(q16.16) value representing an angle expressed in radians. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>This function returns sine of <em>x</em>. </dd></dl>
+
+</div>
+</div>
+<a id="ga4e6462085b54b2ab97dcbbda50521981" name="ga4e6462085b54b2ab97dcbbda50521981"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga4e6462085b54b2ab97dcbbda50521981">&#9670;&nbsp;</a></span>qFP16_Sinh()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="group__qfp16.html#ga1c178e35bab36bb263045df6d93a26e1">qFP16_t</a> qFP16_Sinh </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="group__qfp16.html#ga1c178e35bab36bb263045df6d93a26e1">qFP16_t</a>&#160;</td>
+          <td class="paramname"><em>x</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Computes the fixed-point hyperbolic sine of <em>x</em>. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">x</td><td>The fixed-point(q16.16) value. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>This function returns hyperbolic sine of <em>x</em>. If overflow detected returns QFP16_OVERFLOW. If the function saturates, returns QFP16_EXP_MAX or QFP16_EXP_MIN. </dd></dl>
+
+</div>
+</div>
+<a id="ga069e685a25df6b6db6c0c567cb30a290" name="ga069e685a25df6b6db6c0c567cb30a290"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga069e685a25df6b6db6c0c567cb30a290">&#9670;&nbsp;</a></span>qFP16_Sqrt()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="group__qfp16.html#ga1c178e35bab36bb263045df6d93a26e1">qFP16_t</a> qFP16_Sqrt </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="group__qfp16.html#ga1c178e35bab36bb263045df6d93a26e1">qFP16_t</a>&#160;</td>
+          <td class="paramname"><em>x</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Returns the fixed-point square root of <em>x</em>. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">x</td><td>The fixed-point(q16.16) value. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>This function returns the square root of <em>x</em>. For negative numbers, returns QFP16_OVERFLOW. </dd></dl>
+
+</div>
+</div>
+<a id="gaca9307b9e27758648ccf96f3d355a1aa" name="gaca9307b9e27758648ccf96f3d355a1aa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gaca9307b9e27758648ccf96f3d355a1aa">&#9670;&nbsp;</a></span>qFP16_Sub()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="group__qfp16.html#ga1c178e35bab36bb263045df6d93a26e1">qFP16_t</a> qFP16_Sub </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="group__qfp16.html#ga1c178e35bab36bb263045df6d93a26e1">qFP16_t</a>&#160;</td>
+          <td class="paramname"><em>X</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="group__qfp16.html#ga1c178e35bab36bb263045df6d93a26e1">qFP16_t</a>&#160;</td>
+          <td class="paramname"><em>Y</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Returns the fixed-point subtraction <em>x</em> - <em>y</em>. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">X</td><td>The fixed-point(q16.16) value. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">Y</td><td>The fixed-point(q16.16) value. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>This function returns the subtraction operation x-y. QFP16_OVERFLOW when an operation overflow is detected. </dd></dl>
+
+</div>
+</div>
+<a id="ga64cd9598319856925cb1dae8894aeae7" name="ga64cd9598319856925cb1dae8894aeae7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga64cd9598319856925cb1dae8894aeae7">&#9670;&nbsp;</a></span>qFP16_Tan()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="group__qfp16.html#ga1c178e35bab36bb263045df6d93a26e1">qFP16_t</a> qFP16_Tan </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="group__qfp16.html#ga1c178e35bab36bb263045df6d93a26e1">qFP16_t</a>&#160;</td>
+          <td class="paramname"><em>x</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Computes the fixed-point tangent of the radian angle <em>x</em>. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">x</td><td>The fixed-point(q16.16) value representing an angle expressed in radians. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>This function returns tangent of <em>x</em>. </dd></dl>
+
+</div>
+</div>
+<a id="gada9cfddd2e972f9ab43f975858f0ee83" name="gada9cfddd2e972f9ab43f975858f0ee83"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gada9cfddd2e972f9ab43f975858f0ee83">&#9670;&nbsp;</a></span>qFP16_Tanh()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="group__qfp16.html#ga1c178e35bab36bb263045df6d93a26e1">qFP16_t</a> qFP16_Tanh </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="group__qfp16.html#ga1c178e35bab36bb263045df6d93a26e1">qFP16_t</a>&#160;</td>
+          <td class="paramname"><em>x</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Computes the fixed-point hyperbolic tangent of <em>x</em>. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">x</td><td>The fixed-point(q16.16) value. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>This function returns hyperbolic tangent of <em>x</em>. If overflow detected returns QFP16_OVERFLOW. If the function saturates, returns QFP16_EXP_MAX or QFP16_EXP_MIN. </dd></dl>
+
+</div>
+</div>
+<a id="gad12f9293c13418cbb5f226b864b4bf17" name="gad12f9293c13418cbb5f226b864b4bf17"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gad12f9293c13418cbb5f226b864b4bf17">&#9670;&nbsp;</a></span>qFP16_WrapTo180()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="group__qfp16.html#ga1c178e35bab36bb263045df6d93a26e1">qFP16_t</a> qFP16_WrapTo180 </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="group__qfp16.html#ga1c178e35bab36bb263045df6d93a26e1">qFP16_t</a>&#160;</td>
+          <td class="paramname"><em>x</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Wrap the fixed-point angle in degrees to [−180 180]. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">x</td><td>The fixed-point(q16.16) value representing an angle expressed in degrees. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>This function returns the wrapped angle in the range [−180, 180] of <em>x</em>. </dd></dl>
+
+</div>
+</div>
+<a id="gaa2b38df53038ca2b587f41c64ea94297" name="gaa2b38df53038ca2b587f41c64ea94297"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gaa2b38df53038ca2b587f41c64ea94297">&#9670;&nbsp;</a></span>qFP16_WrapToPi()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="group__qfp16.html#ga1c178e35bab36bb263045df6d93a26e1">qFP16_t</a> qFP16_WrapToPi </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="group__qfp16.html#ga1c178e35bab36bb263045df6d93a26e1">qFP16_t</a>&#160;</td>
+          <td class="paramname"><em>x</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Wrap the fixed-point angle in radians to [−pi pi]. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">x</td><td>The fixed-point(q16.16) value representing an angle expressed in radians. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>This function returns the wrapped angle in the range [−pi, pi] of <em>x</em>. </dd></dl>
+
+</div>
+</div>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.2 </li>
+  </ul>
+</div>
+</body>
+</html>
