@@ -1,0 +1,41 @@
+/*! @page qcrc_desc Generic Cyclic Redundancy Check (CRC) calculator
+* A Cyclic Redundancy Check (CRC) is a verification method used to ensure that
+* data being sent is not corrupted during transfer. The use of CRCs is common in
+* communication mediums that transmit digital data, such as WiFi and Ethernet. 
+* There is a need to check for communication errors in embedded systems, as 
+* technology drives them to be capable of creating and sending larger data 
+* packets in a faster and more complex manner. 
+*
+* The CRC algorithm computes a checksum for each specific data set that is sent 
+* through it. This algorithm utilizes a polynomial key and the transferred data.
+*
+* The sending system calculates the check or verification code and appends it 
+* to the outgoing message. On the receiving end, the data is put through the 
+* same process. If the CRC produced at the receiving end does not match the sent 
+* CRC, then the data is possibly corrupt. The receiver can request that the data 
+* be retransmitted or simply ignore the data. When the CRC matches the received 
+* version, the user can be fairly confident that the transmission is not corrupted.
+*
+* Implementing CRCs is accomplished using two different methods. The brute force
+* method requires more computational resources and can be more time consuming. 
+* The lookup table method requires more memory resources and is useful for 
+* defined and/or repetitive data sets.
+*
+* The calculator \ref qcrc provided here, uses the brute force method. CRC math can 
+* be accomplished in software by shifting the data or shifting the polynomial
+* key, then performing the computations. Supported CRCs includes 8, 16 and 32-bit
+* in a generic way, this means that you can specify the polynomial key, the CRC
+* initial value, I/O reflection and XOR the final output value. in this way, 
+* the user can implement any variant of CRC only by adjusting these parameters.
+*
+* Example: A code snippet to compute the CRC-16/KERMIT. 
+*
+* Validate against http://www.sunshine2k.de/coding/javascript/crc/crc_js.html
+* 
+*  @code{.c}
+*  char data[] = "123456789";
+*  uint32_t crc_value;
+*
+*  crc_value = qCRCx( QCRC16, data, strlen(data), 0x1021, 0x0000, 1u, 1u, 0x0000 );
+*  @endcode
+*/

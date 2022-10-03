@@ -1,0 +1,29 @@
+name: documentation
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout repository and submodules
+      uses: actions/checkout@v2
+      with:
+        submodules: recursive      
+    - name: create dirs
+      run: mkdir docout
+    - name: Doxygen Action
+      uses: mattnotmitt/doxygen-action@v1.9.2
+      with:
+        doxyfile-path: './doc/Doxyfile'
+    - name: rm gitignore
+      run: rm .gitignore  
+    - name: Deploy doc
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./doxyout/html    

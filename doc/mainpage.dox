@@ -1,43 +1,77 @@
 /** @mainpage qLibs
-* A collection of useful libraries for embedded systems
+* A collection of useful libraries written in C for embedded systems. qLibs 
+* is developed using a formal and rigorous process framed in compliance with 
+* the MISRA C 2012 and CERT coding standard guidelines and complemented with 
+* multiple static-analysis checks targeted to safe critical applications.
+*
+* qLibs includes the following modules:
+*
+* - @subpage qssmoother_desc "qSSMoother : Filters for signal smoothing"
+*        -# 1st and 2nd order Low-Pass filters
+*        -# Moving Average filters
+*        -# Outlier Removal filters
+*        -# Gaussian filter
+*        -# Exponential weighting filter
+*        -# Scalar Kalman filter
+* - @subpage qfp16_desc "qFP16 : Fixed-Point Q16.16 math library"
+*        -# Basic operations
+*        -# Trigonometric functions
+*        -# Exponential functions
+* - @subpage qfis_desc "qFIS : Fuzzy Inference System Engine"
+*        -# Mamdani
+*        -# Sugeno
+*        -# Tsukamoto
+* - @subpage qpid_desc "qPID : Close-Loop PID Controller"
+*        -# Derivative filter
+*        -# Anti-windup
+*        -# Tracking mode
+*        -# Auto-tunning
+*        -# Additive MRAC
+* - @subpage qlitisys_desc "qLTISys : Recursive LTI systems evaluation by transfer functions"
+*        -# Continuos
+*        -# Discrete
+* - @subpage qbitfield_desc "qBitField : Bit-Field manipulation library"
+* - @subpage qrms_desc "qRMS : Recursive Root Mean Square (RMS) calculation"
+* - @subpage qcrc_desc "qCRC : Generic Cyclic Redundancy Check (CRC) calculator"
+* - @subpage qtdl_desc "qTDL : Tapped Delay Line in O(1)"
 */
 
 /**
-*  @defgroup qfp16 Q16.16 Fixed-point math
+*  @defgroup qfp16 qFP16
+* For a brief description of this module, please read \ref qfp16_desc
+*/
+
+/**
+*  @defgroup qssmoother qSSMoother
+* For a brief description of this module, please read \ref qssmoother_desc
+*/
+
+/**
+*  @defgroup qpid qPID
 *  This is the second group
 */
 
 /**
-*  @defgroup qssmoother Filters to smooth noisy signals
+*  @defgroup qltisys qLTISys
 *  This is the second group
 */
 
 /**
-*  @defgroup qpid Closed Loop PID Controller
+*  @defgroup qfis qFIS
+*  For a brief description of this module, please read \ref qfis_desc
+*/
+
+/**
+*  @defgroup qbitfield qBitField
 *  This is the second group
 */
 
 /**
-*  @defgroup qltisys Recursive LTI systems evaluation by transfer functions
+*  @defgroup qrms qRMS
 *  This is the second group
 */
 
 /**
-*  @defgroup qfis Fuzzy Inference System Engine
-*  This is the second group
-*/
-
-/**
-*  @defgroup qbitfield A Bit-Field manipulation library
-*  This is the second group
-*/
-
-/**
-*  @defgroup qrms Recursive Root Mean Square(RMS) calculation of a signal.
-*  This is the second group
-*/
-
-/**
-*  @defgroup qcrc Generic Cyclic Redundancy Check (CRC) calculator
+*  @defgroup qcrc qCRC
 *  This is the second group
 */

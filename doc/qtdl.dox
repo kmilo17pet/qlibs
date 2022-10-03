@@ -1,0 +1,35 @@
+/*! @page qtdl_desc Tapped Delay Line in O(1)
+* The class \ref qtdl is an implementation of the Tapped Delay Line (TDL) structure.
+* A TDL is a discrete element in digital filter theory, that allows a signal to 
+* be delayed by a number of samples and provides an output signal for each delay.
+* Here, a TDL is implemented as a circular buffer. This means 
+* that the complexity of the enqueue and dequeue operations is constant O(1), so
+* integer delays can be computed very efficiently.
+*
+* The delay by one sample is notated \f$z^{-1}\f$ and delays of \f$N\f$ samples 
+* is notated as \f$z^{-N}\f$  motivated by the role the z-transform plays in 
+* describing digital filter structures.
+*
+* To create a TDL, you just need to define an instance of type \ref qTDL_t and
+* then, configure it by using \ref qTDL_Setup(), where you can define the number of
+* lines to be delayed and the initial values for all of them. Then, you can start
+* operating over this structure by inserting samples of the input signal by using
+* \ref qTDL_InsertSample().
+* You can also get any specific delay from it by using:
+*
+* - \ref qTDL_GetOldest(), to get the oldest delay at tap \f$z^{-N}\f$
+* - \ref qTDL_GetAtIndex(), to get the delay at tap \f$z^{-i}\f$
+*
+* Given the applications of this structure, the \ref qtdl class is used as the
+* base component of some aspects of \ref qssmoother and \ref qltisys.
+*
+* Example : Code snipped to instantiate a TDL to hold up to 256 delays.
+* 
+*  @code{.c}
+*  #define MAX_DELAYS   ( 256 )
+*  float tdl_storage[ MAX_DELAYS ];
+*  qTDL_t tdl;
+*
+*  qTDL_Setup( &tdl, tdl_storage, MAX_DELAYS, 0.0f );
+*  @endcode
+*/

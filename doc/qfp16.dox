@@ -1,0 +1,111 @@
+/*! @page qfp16_desc Fixed-Point Q16.16 library
+* qLibs provide \ref qfp16 , which is a small fixed point number library 
+* designed for embedded use. 
+* It implements all of your favorite transcendental functions, plus only the 
+* best basic operators, selected for your calculating pleasure. 
+*
+* The format is a signed Q16.16, which is good enough for most purposes.
+*
+* <b> Datatype limits </b>
+*
+* The maximum representable value is 32767.999 985. The minimum value is -32768.0.
+*
+* The minimum value is also used to represent fp16.overflow for overflow detection,
+* so for some operations it cannot be determined whether it overflowed or the 
+* result was the smallest possible value. In practice, this does not matter much.
+*
+* The smallest unit (machine precision) of the datatype is 1/65536 = 0.000 015.
+*
+* <b> Fixed-point functions </b>
+*
+* All the provided functions operate on 32-bit numbers, \ref qFP16_t, which have 16 
+* bit integer part and 16-bit fractional part.
+*
+* <b> Conversion functions </b>
+*
+* Conversion from integers and floating-point values. These conversions retain 
+* the numeric value and perform rounding where necessary.
+*
+* - \ref qFP16_IntToFP() Simply multiplies a by qFP16.one = 65536
+* - \ref qFP16_FPToInt() Divides by \ref qFP16_t and rounds to nearest integer.
+* - \ref qFP16_FloatToFP() Multiplies by \ref qFP16_t and rounds to nearest value.
+* - \ref qFP16_FPToFloat() Divides by qFP16.one. Rounding is according to the 
+* current floating point mode
+* - \ref qFP16_DoubleToFP()  Multiplies by \ref qFP16 and rounds to nearest value.
+* - \ref qFP16_FPToDouble() Divides by qFP16.one. All \ref qFP16_t values fit into 
+* a double, so no rounding happens.
+* - \ref qFP16_FPToA()  Converts from \ref qFP16_t to string.
+* - \ref qFP16_AToFP()  Converts from string to \ref qFP16_t.
+*
+* <b> Basic arithmetic </b>
+*
+* These functions perform rounding and detect overflows. When overflow is 
+* detected, they return qfp16.overflow as a marker value.
+*
+* - \ref qFP16_Add()  Addition
+* - \ref qFP16_Sub()  Subtraction
+* - \ref qFP16_Mul()  Multiplication
+* - \ref qFP16_Div()  Division
+* - \ref qFP16_Mod()  Modulo
+*
+* <b> Exponential and transcendental functions </b>
+*
+* Roots, exponents & similar.
+*
+* - \ref qFP16_Sqrt()  Square root. Performs rounding and is accurate to \ref qFP16 limits.
+* - \ref qFP16_Exp()   Exponential function using power series approximation. 
+* Accuracy depends on range, worst case +-40 absolute for negative inputs and 
+* +-0.003% for positive inputs. Average error is +-1 for neg and +-0.0003% for pos.
+* - \ref qFP16_Log()  Natural logarithm using Newton approximation and \ref qFP16_Exp().
+* Worst case error +-3 absolute, average error less than 1 unit.
+* - \ref qFP16_Log2()  Logarithm base 2.
+* - \ref qFP16_IPow()  Computes the integer-power of a \ref qFP16_t number 
+* - \ref qFP16_Pow()  Modulo
+*
+*
+* <b> Trigonometric functions and helpers </b>
+*
+* - \ref qFP16_Sin()  Sine for angle in radians
+* - \ref qFP16_Cos()  Cosine for angle in radians
+* - \ref qFP16_Tan()  Tangent for angle in radians
+* - \ref qFP16_Asin()  Inverse of sine, output in radians
+* - \ref qFP16_Acos()  Inverse of cosine, output in radians
+* - \ref qFP16_Atan()  Inverse of tangent, output in radians
+* - \ref qFP16_Atan2()  Arc tangent in radians x,y
+* - \ref qFP16_Sinh()  Hyperbolic sine
+* - \ref qFP16_Cosh()  Hyperbolic cosine
+* - \ref qFP16_Tanh()  Hyperbolic tangent
+* - \ref fp16_RadToDeg()  Converts angle units from radians to degrees.
+* - \ref fp16_DegToRad()  Converts angle units from degrees to radians
+* - \ref qFP16_WrapToPi()  Wrap the fixed-point angle in radians to [−pi pi]
+* - \ref qFP16_WrapTo180()  Wrap the fixed-point angle in degrees  to [−180 180]
+*
+*
+* <b> Example: Solution of the quadratic equation </b>
+* 
+* This draft example computes one solution of the quadratic equation
+* by using the fixed point format. Equation is given by:
+*
+* \f$ x = \frac{ -b + \sqrt{ b^{2} - 4ac} }{ 2a } \f$
+*
+*  @code{.c}
+*  #include <stdio.h>
+*  #include <stdlib.h>
+*  #include "qfp16.h"
+*  
+*  int main( int argc, char *argv[] ) 
+*  {
+*      qFP16_t a = qFP16_Constant( 1.5f );
+*      qFP16_t b = qFP16_Constant( 5.2f );
+*      qFP16_t c = qFP16_Constant( 4.0f );
+*      qFP16_t tmp;
+*      char ans[ 10 ];
+*      
+*      tmp = qFP16_Mul( qFP16_IntToFP( 4 ), qFP16_Mul( a, c ) );
+*      tmp = qFP16_Add( -b, qFP16_Sqrt( qFP16_Sub( qFP16_Mul( b, b ), tmp  ) ) );
+*      tmp = qFP16_Div( tmp, qFP16_Mul( qFP16_IntToFP( 2 ), a ) );
+*      printf( " result = %s \r\n" , qFP16_FPToA( tmp, ans, 4 ) );
+*      return EXIT_SUCCESS;
+*  }
+*  @endcode
+*/

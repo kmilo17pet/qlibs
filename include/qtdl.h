@@ -20,7 +20,11 @@ extern "C" {
     #include <stdlib.h>
     #include <stdint.h>
 
-    /*! @cond  */
+
+    /** @addtogroup  qtdl qTDL
+    * @brief An implementation of the Tapped Delay Line (TDL) structure in O(1) 
+    *  @{
+    */
 
     /**
     * @brief A Tapped Delay Line (TDL) object
@@ -90,7 +94,7 @@ extern "C" {
     void qTDL_InsertSample( qTDL_t * const q,
                             const float sample );
 
-    /*! @endcond  */
+    /** @}*/
 
 #ifdef __cplusplus
 }

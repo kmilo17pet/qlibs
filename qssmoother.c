@@ -552,7 +552,7 @@ static float qSSmoother_Filter_KLMN( _qSSmoother_t *f,
     pH = s->p*s->H;
     s->gain =  pH/( s->r + ( s->H*pH ) );
     s->x += s->gain*( x - ( s->H*s->x ) );
-    s->p = ( 1.0f - ( s->gain*s->H ) )*s->p;
+    s->p = ( 1.0f - ( s->gain*s->H ) )*s->p; /*covariance update*/
 
     return s->x;
 }

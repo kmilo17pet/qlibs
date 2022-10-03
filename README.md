@@ -201,9 +201,11 @@ void xTaskPIDspeedControl( void *arg )
     qPID_controller_t *controller = (qPID_controller_t *)arg;
     float processMeasurement;
     float controlOutput;
+    float setpoint = 300.0f; /*desired speed 200rpm*/;
+
     for ( ;; ) {
         processMeasurement = BSP_ScaletoSpeed ( BSP_AnalogRead( BSP_AI_SPEED_CHANNEL ) );
-        controlOutput = qPID_Control( controller, processMeasurement );
+        controlOutput = qPID_Control( controller, setpoint, processMeasurement );
         BSP_PWMSet( BSP_AO_SPEED_PWM_CHANNEL, BSP_ScaletoPWM( controlOutput ) ); 
         vTaskDelay( dt / portTICK_RATE_MS) ;
     }
