@@ -128,7 +128,7 @@ $(document).ready(function(){initNavTree('qpid_desc.html',''); initResizable(); 
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><p >A PID controller seeks to keep some input variable close to a desired setpoint by adjusting an output. The way in which it does this can be 'tuned' by adjusting three parameters (Proportinal,Integral,Derivative).</p>
-<p >qLibs provides the <a class="el" href="group__qpid.html">qPID</a> implementation, which, apart from the simplified overview representation of the PID controller, also addresses some practical issues and includes the additional features:</p>
+<p >qLibs provides the <a class="el" href="group__qpid.html">qPID</a> implementation, which, apart from the simplified overview representation of the PID controller, also addresses some practical issues and includes additional features as listed below:</p>
 <ul>
 <li>Noisy Derivative Contributions (Derivative filter)</li>
 <li>Automatic Anti-windup control</li>
@@ -136,22 +136,24 @@ $(document).ready(function(){initNavTree('qpid_desc.html',''); initResizable(); 
 <li>Auto-tunning</li>
 <li>Additive MRAC</li>
 </ul>
-<p ><b> PID Controller approach </b></p>
-<p >The mathematical model and practical loop above both use a direct control action for all the PID terms, which means an increasing positive error results in an increasing positive control output correction.</p>
-<p >The overall control function is given by:</p>
+<h1><a class="anchor" id="qpid_approach"></a>
+PID Controller approach</h1>
+<p >The mathematical model and practical loop uses a direct control action for all the PID terms, which means an increasing positive error results in an increasing positive control output correction.</p>
+<p >The overall control function implemented by <a class="el" href="group__qpid.html">qPID</a> is given by:</p>
 <p >\( v(t)= \psi(t)r(t) + [ K_{c}e(t) + K_{i}\int [ e(t) + c(t-1) ]dt + K_{d}f_{d}(t) ] \)</p>
 <p >\( u(t) = \text{Sat}[ v(t), u_{min}, u_{max} ]\)</p>
 <p >where \(r(t)\) the set-point, \( e(t) = r(t) - y(t) \) its the error \(y(t)\) the process output, \(K_{c},K_{i},K_{d}\) the PID gain respectively and \(u(t)\) the control action.</p>
 <p >\(\psi(t)\) the adaptive gain from the additive MRAC (later explained)</p>
-<p >As shown above, the derivative term \( f_{d}(t)\) is the output of a low-pass filter of the error derivative.</p>
+<p >As shown above, the derivative term \( f_{d}(t)\) is the output of a low-pass filter who take the error derivative as input.</p>
 <p >\( f_{d}(t) = \text{LPF}[ \frac{de(t)}{dt} ]\)</p>
 <p >and \( c(t)\), the Anti-Windup and tracking mode feedback, with \(K_{w}\) and \(K_{T}\) as the ajustment parameters respectively.</p>
 <p >\( c(t) = K_{w}[ u(t) - v(t) ] + K_{T}[ r_{t}(t) - u(t) ]\)</p>
 <div class="image">
 <img src="https://user-images.githubusercontent.com/11412210/193475586-80d41932-d7f3-4567-8820-2ab423261354.png" alt=""/>
 </div>
-<p ><b> Controller instantiation </b></p>
-<p >Before you start using a controller, it must first be instantiated first via the <a class="el" href="structq_p_i_d__controller__t.html">qPID_controller_t</a> type and then configured using the <a class="el" href="group__qpid.html#gaec33f4b01047504ebeea758bc7ce6798">qPID_Setup()</a> API, where you can define the PID gains and time step.</p>
+<h1><a class="anchor" id="qpid_create"></a>
+Creating a PID Controller</h1>
+<p >Before you start using a controller, it must be instantiated first via the <a class="el" href="structq_p_i_d__controller__t.html">qPID_controller_t</a> type and then configured using the <a class="el" href="group__qpid.html#gaec33f4b01047504ebeea758bc7ce6798">qPID_Setup()</a> API, where you can define the PID gains and time step.</p>
 <p >Example: Instantiating an configuring a PID controller: </p><div class="fragment"><div class="line"><a class="code hl_struct" href="structq_p_i_d__controller__t.html">qPID_controller_t</a> control;</div>
 <div class="line"><span class="keyword">const</span> <span class="keywordtype">float</span> kc = 1.0f, ki = 0.1f, kd = 0.0f;</div>
 <div class="line"><span class="keyword">const</span> <span class="keywordtype">float</span> dt = 0.01f; <span class="comment">// time-step of 10mS</span></div>
@@ -163,9 +165,12 @@ $(document).ready(function(){initNavTree('qpid_desc.html',''); initResizable(); 
 <div class="line">}</div>
 <div class="ttc" id="agroup__qpid_html_gaec33f4b01047504ebeea758bc7ce6798"><div class="ttname"><a href="group__qpid.html#gaec33f4b01047504ebeea758bc7ce6798">qPID_Setup</a></div><div class="ttdeci">int qPID_Setup(qPID_controller_t *const c, const float kc, const float ki, const float kd, const float dt)</div><div class="ttdoc">Setup and initialize the PID controller instance.</div><div class="ttdef"><b>Definition:</b> qpid.c:18</div></div>
 <div class="ttc" id="astructq_p_i_d__controller__t_html"><div class="ttname"><a href="structq_p_i_d__controller__t.html">qPID_controller_t</a></div><div class="ttdoc">A PID controller object.</div><div class="ttdef"><b>Definition:</b> qpid.h:57</div></div>
-</div><!-- fragment --><p ><b> Usign the controller </b></p>
+</div><!-- fragment --><h1><a class="anchor" id="qfpid_usage"></a>
+Usign the controller</h1>
 <p >The following example illustrates how a PID controller can be used to regulate the speed of a DC motor. PID control operates on a separate task running periodically at a rate of 50mS. The speed measurement is being read through an analog input and then scaled to the appropriate units (RPM). The <a class="el" href="group__qpid.html#ga35578d503547dbd39bf8647700c66eb5">qPID_Control()</a> function will be in charge of computing the control action and updating the internal states of the controller. Then, the control output gets scaled-back in order to send the control command by using the PWM(Pulse Width Modulation) module.</p>
-<p >Example: Speed control using a PID controller: </p><div class="fragment"><div class="line"><span class="preprocessor">#include &lt;stdio.h&gt;</span></div>
+<h2><a class="anchor" id="qpid_ex1"></a>
+Example: Speed control using a PID controller:</h2>
+<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;stdio.h&gt;</span></div>
 <div class="line"><span class="preprocessor">#include &lt;stdlib.h&gt;</span></div>
 <div class="line"><span class="preprocessor">#include &quot;freertos/FreeRTOS.h&quot;</span></div>
 <div class="line"><span class="preprocessor">#include &quot;freertos/task.h&quot;</span></div>
@@ -208,8 +213,9 @@ $(document).ready(function(){initNavTree('qpid_desc.html',''); initResizable(); 
 <div class="line">}</div>
 <div class="ttc" id="agroup__qpid_html_ga35578d503547dbd39bf8647700c66eb5"><div class="ttname"><a href="group__qpid.html#ga35578d503547dbd39bf8647700c66eb5">qPID_Control</a></div><div class="ttdeci">float qPID_Control(qPID_controller_t *const c, const float w, const float y)</div><div class="ttdoc">Computes the control action for given PID controller instance.</div><div class="ttdef"><b>Definition:</b> qpid.c:171</div></div>
 <div class="ttc" id="agroup__qpid_html_ga544fd18e2912b8d14083337e434d59a3"><div class="ttname"><a href="group__qpid.html#ga544fd18e2912b8d14083337e434d59a3">qPID_SetSaturation</a></div><div class="ttdeci">int qPID_SetSaturation(qPID_controller_t *const c, const float min, const float max, const float kw)</div><div class="ttdoc">Setup the output saturation for the PID controller.</div><div class="ttdef"><b>Definition:</b> qpid.c:77</div></div>
-</div><!-- fragment --><p ><b> Additive MRAC (Model Reference Adaptive Control) </b></p>
-<p >Model Reference Adaptive Control (MRAC) is a strategy where the controller of the closed-loop is adapted by an adjustment mechanism, which takes \( y_{m}(t) \) from a reference model as input and tries to adjust the controller output \(v(t)\). The adjustment mechanism used by qPID is the enhanced MIT-rule approach, which adapts a feed-forward gain by the error between the system \( y(t) \) and the model \( y_{m}(t) \) and therefore is the so-called Gradient approach.</p>
+</div><!-- fragment --><h1><a class="anchor" id="qpid_mrac"></a>
+Additive MRAC (Model Reference Adaptive Control)</h1>
+<p >Model Reference Adaptive Control (MRAC) is a strategy where the controller of the closed-loop is adapted by an adjustment mechanism, which takes \( y_{m}(t) \) from a reference model as input and tries to adjust the controller output \(v(t)\). The adjustment mechanism used by <a class="el" href="group__qpid.html">qPID</a> is the enhanced MIT-rule approach, which adapts a feed-forward gain by the error between the system \( y(t) \) and a reference model \( y_{m}(t) \), therefore is the so-called Gradient approach.</p>
 <p >\( e_{m}(t) = y(t) - y_{m}(t)\)</p>
 <p >\( \delta(t) = -\gamma \frac{ e_{m}(t) y_{m}(t) }{ \beta + y_{m}^{2}(t) } \)</p>
 <p >where \(\gamma(t)\) is the adaptation gain and \(\beta(t)\) is introduced to remove the problem of the possible division by zero if \(y_{m}^{2}(t) \) gets too small.</p>
@@ -218,7 +224,9 @@ $(document).ready(function(){initNavTree('qpid_desc.html',''); initResizable(); 
 <p >This method can be used to adapt to slower changes but can become unstable for abrupt changes to the system. Therefore, this implementation uses a so called modified MRAC (M-MRAC) where the adaptation is later added to a PID controller, being the MRAC the additive loop.</p>
 <p >Abrupt changes to the system are absorbed by the PID controller, while the change of the dynamics will still be handled by the MIT gain \(\psi(t)\). This results in the equation of the control function presented at the beginning of this section.</p>
 <p >To use the additive MRAC, you should first instantiate a reference model and then, enable the MRAC by using the <a class="el" href="group__qpid.html#gace4705569152c216c12b482267eb834f">qPID_SetMRAC()</a> API. Here, you must provide a pointer to the output of the reference model and the adaptation gain \(\gamma(t)\)</p>
-<p >Example: Speed control with PID controller with an additive MRAC: </p><div class="fragment"><div class="line"><span class="preprocessor">#include &lt;stdio.h&gt;</span></div>
+<h2><a class="anchor" id="qpid_ex2"></a>
+Example: Speed control with PID controller with an additive MRAC:</h2>
+<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;stdio.h&gt;</span></div>
 <div class="line"><span class="preprocessor">#include &lt;stdlib.h&gt;</span></div>
 <div class="line"><span class="preprocessor">#include &quot;freertos/FreeRTOS.h&quot;</span></div>
 <div class="line"><span class="preprocessor">#include &quot;freertos/task.h&quot;</span></div>
@@ -274,9 +282,10 @@ $(document).ready(function(){initNavTree('qpid_desc.html',''); initResizable(); 
 <div class="ttc" id="agroup__qltisys_html_ga62e08fd5775f0d1b9f0347ee69e5833e"><div class="ttname"><a href="group__qltisys.html#ga62e08fd5775f0d1b9f0347ee69e5833e">qLTISys_Setup</a></div><div class="ttdeci">int qLTISys_Setup(qLTISys_t *const sys, float *num, float *den, void *x, const size_t nb, const size_t na, const float dt)</div><div class="ttdoc">Setup and initialize an instance of a LTI system.</div><div class="ttdef"><b>Definition:</b> qltisys.c:128</div></div>
 <div class="ttc" id="agroup__qpid_html_gace4705569152c216c12b482267eb834f"><div class="ttname"><a href="group__qpid.html#gace4705569152c216c12b482267eb834f">qPID_SetMRAC</a></div><div class="ttdeci">int qPID_SetMRAC(qPID_controller_t *const c, const float *modelRef, const float gamma)</div><div class="ttdoc">Enable the additive MRAC(Model Reference Adaptive Control) feature.</div><div class="ttdef"><b>Definition:</b> qpid.c:154</div></div>
 <div class="ttc" id="astructq_l_t_i_sys__t_html"><div class="ttname"><a href="structq_l_t_i_sys__t.html">qLTISys_t</a></div><div class="ttdoc">A LTI system object.</div><div class="ttdef"><b>Definition:</b> qltisys.h:49</div></div>
-</div><!-- fragment --><p ><b> Autotunning </b></p>
+</div><!-- fragment --><h1><a class="anchor" id="qpid_autotune"></a>
+Autotunning</h1>
 <p >Autotuning can eliminate much of the trial and error of a manual tuning approach, especially if you do not have a lot of loop tuning experience. Performing the autotuning procedure will get the tuning parameters close to their optimal values, but additional manual tuning may be required to get the tuning parameters to their optimal values.</p>
-<p >The Autotune feature for the controller will only run for a limited amount of time each time it is enabled. In other words, autotuning does not run continuously during operation. Whenever there is a substantial change in the process dynamics, the tuning process will need to be repeated in order to derive new gains required for optimal control.</p>
+<p >The Autotune feature for the controller will only run for a limited amount of time after it gets enabled. In other words, autotuning does not run continuously during operation. Whenever there is a substantial change in the process dynamics, the tuning process will need to be repeated in order to derive new gains required for optimal control.</p>
 <p >Autotunning is performed by using the following recursive algorithm:</p>
 <p >\( L(t) = \frac{ P(t-1)\phi }{ \lambda + \phi^{T}P(t-1)\phi } \)</p>
 <p >\(\theta(t) = \theta(t-1) + L[ y(t) - \phi^{T}\theta(t) ] \)</p>
@@ -289,9 +298,10 @@ $(document).ready(function(){initNavTree('qpid_desc.html',''); initResizable(); 
 <p >\( K_{c}(t) = \alpha \frac{ K_{c}(t)dt }{ r_{2} } \)</p>
 <p >where \( r_{1} = dt/\tau(t) \) and \( r_{2} = 1.35 + 0.25r_{1} \)</p>
 <p >and the remaining parameters \(\mu\), \(\alpha\), \(\lambda\) are internally computed for best performance.</p>
-<p ><b> Autotunning Usage </b></p>
+<h2><a class="anchor" id="qpid_autotune_usage"></a>
+Autotunning Usage</h2>
 <p >In order to use the autotuner, you must first instantiate the <a class="el" href="structq_p_i_d___auto_tunning__t.html">qPID_AutoTunning_t</a> object and bind it to a previously configured PID controller by using the <a class="el" href="group__qpid.html#ga1dc553b9a08e94605eef62b6f794f6e6">qPID_BindAutoTunning()</a>.</p>
-<p >After this, you can enable auto tuning via <a class="el" href="group__qpid.html#gaa7e6a680ce09aafcd299c4ec4c6cd107">qPID_EnableAutoTunning()</a> for a defined number of intervals. When the autotune ends, the resulting PID gains will be applied to the binded controller </p>
+<p >After this, you can enable auto tuning via <a class="el" href="group__qpid.html#gaa7e6a680ce09aafcd299c4ec4c6cd107">qPID_EnableAutoTunning()</a> for a defined number of intervals. When the autotune ends, the resulting PID gains will be applied to the bounded controller </p>
 </div></div><!-- contents -->
 </div><!-- PageDoc -->
 </div><!-- doc-content -->

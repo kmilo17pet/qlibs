@@ -36,7 +36,8 @@ var NAVTREE =
 
 var NAVTREEINDEX =
 [
-"annotated.html"
+"annotated.html",
+"qssmoother_desc.html#qssmoother_klmn"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

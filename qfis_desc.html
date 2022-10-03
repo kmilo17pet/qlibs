@@ -129,14 +129,12 @@ $(document).ready(function(){initNavTree('qfis_desc.html',''); initResizable(); 
 <div class="contents">
 <div class="textblock"><p >The <a class="el" href="group__qfis.html">qFIS</a> Fuzzy Inference System engine provides an API for building and evaluation of type-1 fuzzy logic systems. You can tune membership functions and rules easily.</p>
 <p >The types of inferences supported by qFIS are listed in the <a class="el" href="group__qfis.html#ga2f3f0184eca9e38c98afca2275fbe13d">qFIS_Type_t</a> and are detailed below:</p>
-<ul>
-<li><b> Mamdani Fuzzy Inference Systems </b></li>
-</ul>
+<h1><a class="anchor" id="qfis_mamdani"></a>
+Mamdani Fuzzy Inference Systems</h1>
 <p >In a Mamdani system, the output of each rule is a fuzzy set. Since Mamdani systems have more intuitive and easier to understand rule bases, they are well-suited to expert system applications where the rules are created from human expert knowledge.</p>
 <p >The output of each rule is a fuzzy set derived from the output membership function and the implication method of the FIS. These output fuzzy sets are combined into a single fuzzy set using the aggregation method of the FIS. Then, to compute a final crisp output value, the combined output fuzzy set is defuzzified using one of the methods described in Defuzzification Methods.</p>
-<ul>
-<li><b> Sugeno Fuzzy Inference Systems </b></li>
-</ul>
+<h1><a class="anchor" id="qfis_sugeno"></a>
+Sugeno Fuzzy Inference Systems</h1>
 <p >Sugeno fuzzy inference, also referred to as Takagi-Sugeno-Kang fuzzy inference, uses singleton output membership functions that are either constant or a linear function of the input values. The defuzzification process for a Sugeno system is more computationally efficient compared to that of a Mamdani system, since it uses a weighted average or weighted sum of a few data points rather than computing the centroid of a two-dimensional area.</p>
 <p >Each rule generates two values:</p>
 <p >\(z_i\) Rule output level, which is either a constant value or a linear function of the input values.</p>
@@ -146,16 +144,17 @@ $(document).ready(function(){initNavTree('qfis_desc.html',''); initResizable(); 
 <p >\(out= \frac{ \sum_{i=1}^{N}w_{i}z_{i} }{ \sum_{i=1}^{N}w_{i}} \)</p>
 <p >where \(N\) is the number of rules.</p>
 <p >Because of the linear dependence of each rule on the input variables, the Sugeno method is ideal for acting as an interpolating supervisor of multiple linear controllers that are to be applied, respectively, to different operating conditions of a dynamic nonlinear system.</p>
-<ul>
-<li><b> Tsukamoto Fuzzy Inference Systems </b></li>
-</ul>
+<h1><a class="anchor" id="qfis_tsukamoto"></a>
+Tsukamoto Fuzzy Inference Systems</h1>
 <p >In the Tsukamoto inference system, the consequent of each fuzzy if-then rule is represented by a fuzzy set with a monotonical membership function, As a result, the inferred output of each rule is defined as a crisp value induced by the rule's firing strength.</p>
 <p >The overall output is taken as the weighted average of each rule's output. Since each rule infers a crisp output, the Tsukamoto fuzzy model aggregates each rule's output by the method of weighted average and thus avoids the time-consuming process of defuzzification.</p>
-<p ><b> Comparision among supported Inference Systems</b></p>
+<h1><a class="anchor" id="qfis_comp"></a>
+Comparision among supported Inference Systems</h1>
 <div class="image">
 <img src="https://user-images.githubusercontent.com/11412210/192664066-ab40cb04-a36f-4b49-9c14-cc34a4683f43.jpg" alt="" width="50%"/>
 </div>
-<p ><b> Defuzzification Methods </b></p>
+<h1><a class="anchor" id="qfis_defuzz"></a>
+Defuzzification Methods</h1>
 <p >qFIS supports five different methods, as listed in the <a class="el" href="group__qfis.html#gaedbcaf3cb5c4b57eb1f44f4dea0f1a72">qFIS_DeFuzz_Method_t</a> type for computing a single crisp output value for such a fuzzy set.</p>
 <ol type="1">
 <li>Centroid : this method applies only to Mamdani systems and returns the center of gravity of the fuzzy set along the x-axis. If you think of the area as a plate with uniform thickness and density, the centroid is the point along the x-axis about which the fuzzy set would balance. The centroid is computed using the following formula, where \(\mu(x)\) is the membership value for point \(x_i\) in the universe of discourse.</li>
@@ -169,7 +168,8 @@ $(document).ready(function(){initNavTree('qfis_desc.html',''); initResizable(); 
 <li>WtAver: Weighted average of all rule outputs. this method applies only for Sugeno and Tsukamoto systems.</li>
 <li>WtSum: Weighted sum of all rule outputs. This method applies only for Sugeno and Tsukamoto systems.</li>
 </ol>
-<p ><b> Building a Mamdani FIS </b></p>
+<h1><a class="anchor" id="qfis_buildfis"></a>
+Building a Mamdani FIS</h1>
 <p >To carry the FIS building process in a more friendly way, we are going to explain it with a particular example.</p>
 <p >This example goal is to solve the tipping problem, and its described as follows:</p>
 <p >Given a number from 0 through 10 that represents the quality of service at a restaurant, where 10 is excellent, and another number from 0 through 10 that represents the quality of the food, where 10 is delicious, what should the tip be?</p>
@@ -226,7 +226,7 @@ $(document).ready(function(){initNavTree('qfis_desc.html',''); initResizable(); 
 <div class="line"><span class="keyword">enum</span> { tip_cheap, tip_average, tip_generous};</div>
 <div class="ttc" id="astructq_f_i_s___m_f__t_html"><div class="ttname"><a href="structq_f_i_s___m_f__t.html">qFIS_MF_t</a></div><div class="ttdoc">A FIS Membership Function.</div><div class="ttdef"><b>Definition:</b> qfis.h:161</div></div>
 <div class="ttc" id="astructq_f_i_s__t_html"><div class="ttname"><a href="structq_f_i_s__t.html">qFIS_t</a></div><div class="ttdoc">A FIS(Fuzzy Inference System) object.</div><div class="ttdef"><b>Definition:</b> qfis.h:202</div></div>
-</div><!-- fragment --><p >Please note that all tag names are unique. Then we will define the rules of the fuzzy system using the previously defined tags. Rules should be defined through an array of type <a class="el" href="group__qfis.html#ga07efc356794273b23e2d469e8e4d882e">qFIS_Rules_t</a> and the contents should be rules constructed with the provided statements:</p>
+</div><!-- fragment --><p >Please note that all tag names are unique. Then, we will define the rules of the fuzzy system using the previously defined tags. Rules should be defined through an array of type <a class="el" href="group__qfis.html#ga07efc356794273b23e2d469e8e4d882e">qFIS_Rules_t</a> and the contents should be rules constructed with the provided statements:</p>
 <ul>
 <li><a class="el" href="group__qfis.html#gadd5af13b8fd13530a1a481cec2ef0637">QFIS_RULES_BEGIN</a> to start the rules set</li>
 <li><a class="el" href="group__qfis.html#ga80454033f67a79247305ba0a18d98247">QFIS_RULES_END</a> to end the rules set</li>
@@ -254,7 +254,7 @@ $(document).ready(function(){initNavTree('qfis_desc.html',''); initResizable(); 
 <div class="ttc" id="agroup__qfis_html_gadd5af13b8fd13530a1a481cec2ef0637"><div class="ttname"><a href="group__qfis.html#gadd5af13b8fd13530a1a481cec2ef0637">QFIS_RULES_BEGIN</a></div><div class="ttdeci">#define QFIS_RULES_BEGIN</div><div class="ttdoc">Start a Fuzzy rule set. The QFIS_RULES_BEGIN statement is used to declare the starting point of a FIS...</div><div class="ttdef"><b>Definition:</b> qfis.h:257</div></div>
 </div><!-- fragment --><p >Additionally, we also need to define a vector where the firing strength of each rule will be stored. The size of the vector will be the number of rules. In this particular case, there will be only three.</p>
 <div class="fragment"><div class="line"><span class="keyword">static</span> <span class="keywordtype">float</span> rulesStrength[ 3 ];</div>
-</div><!-- fragment --><p >Once all the necessary elements have been defined, we can proceed to the construction of the system. First we must configure the inputs and outputs by setting the ranges of each. For this, we will use the <a class="el" href="group__qfis.html#ga9157fd772255f73e6b5aca365986068a">qFIS_InputSetup()</a> and <a class="el" href="group__qfis.html#gae2f10a746a4e19752a985e6892132a80" title="Setup the output with the specified tag and set limits for it.">qFIS_OutputSetup()</a> functions as follows:</p>
+</div><!-- fragment --><p >Once all the necessary elements have been defined, we can proceed to the construction of the fuzzy system. Firstm we must configure the inputs and outputs by setting the ranges of each. For this, we will use the <a class="el" href="group__qfis.html#ga9157fd772255f73e6b5aca365986068a">qFIS_InputSetup()</a> and <a class="el" href="group__qfis.html#gae2f10a746a4e19752a985e6892132a80" title="Setup the output with the specified tag and set limits for it.">qFIS_OutputSetup()</a> functions as follows:</p>
 <div class="fragment"><div class="line"><a class="code hl_function" href="group__qfis.html#ga9157fd772255f73e6b5aca365986068a">qFIS_InputSetup</a>( tipper_inputs, service, 0.0f, 10.0f );</div>
 <div class="line"><a class="code hl_function" href="group__qfis.html#ga9157fd772255f73e6b5aca365986068a">qFIS_InputSetup</a>( tipper_inputs, food, 0.0f, 10.0f );</div>
 <div class="line"><a class="code hl_function" href="group__qfis.html#gae2f10a746a4e19752a985e6892132a80">qFIS_OutputSetup</a>( tipper_outputs, tip, 0.0f, 30.0f );</div>
@@ -295,7 +295,8 @@ $(document).ready(function(){initNavTree('qfis_desc.html',''); initResizable(); 
 <div class="line">            rules, rStrength, 3u );</div>
 <div class="ttc" id="agroup__qfis_html_gaae3433474a516fbf41e0e406fe41410b"><div class="ttname"><a href="group__qfis.html#gaae3433474a516fbf41e0e406fe41410b">qFIS_Setup</a></div><div class="ttdeci">int qFIS_Setup(qFIS_t *const f, const qFIS_Type_t t, qFIS_Input_t *const inputs, const size_t ni, qFIS_Output_t *const outputs, const size_t no, qFIS_MF_t *const mf_inputs, const size_t nmi, qFIS_MF_t *const mf_outputs, const size_t nmo, const qFIS_Rules_t *const r, float *wi, const size_t n)</div><div class="ttdoc">Setup and initialize the FIS instance.</div><div class="ttdef"><b>Definition:</b> qfis.c:211</div></div>
 <div class="ttc" id="agroup__qfis_html_gga2f3f0184eca9e38c98afca2275fbe13daaaafece1969d49f7a63d07fd66937799"><div class="ttname"><a href="group__qfis.html#gga2f3f0184eca9e38c98afca2275fbe13daaaafece1969d49f7a63d07fd66937799">Mamdani</a></div><div class="ttdeci">@ Mamdani</div><div class="ttdef"><b>Definition:</b> qfis.h:105</div></div>
-</div><!-- fragment --><p ><b> Evaluating the Fuzzy Inference System</b></p>
+</div><!-- fragment --><h1><a class="anchor" id="qfis_eval"></a>
+Evaluating a Fuzzy Inference System</h1>
 <p >If we already have a fuzzy system configured with <a class="el" href="group__qfis.html#gaae3433474a516fbf41e0e406fe41410b">qFIS_Setup()</a>, we can evaluate it by using <a class="el" href="group__qfis.html#gafeb90b7b41ef3c5b25d12bf6a2adb6e5">qFIS_Fuzzify()</a>, <a class="el" href="group__qfis.html#ga471e4559534e3fe726a895bc4466e05e">qFIS_Inference()</a> and <a class="el" href="group__qfis.html#ga74cf29a2008f1169fab3b56635a4c620">qFIS_DeFuzzify()</a>. Input values can be set with <a class="el" href="group__qfis.html#gadc51ab655860a45c7ecb535c7a6c0b52">qFIS_SetInput()</a> and output values can be obtained with <a class="el" href="group__qfis.html#ga3c84df9b59cb1e2a66db3f57946fac94">qFIS_GetOutput()</a></p>
 <p >To show its use, first we are going to put everything together in a single code snippet, and we are going to create a function tipper_run() that will be in charge of evaluating the fuzzy system by invoking the previously mentioned functions.</p>
 <div class="fragment"><div class="line"><span class="preprocessor">#include &quot;tipper_fis.h&quot;</span></div>
@@ -382,8 +383,10 @@ $(document).ready(function(){initNavTree('qfis_desc.html',''); initResizable(); 
 <div class="ttc" id="agroup__qfis_html_gafeb90b7b41ef3c5b25d12bf6a2adb6e5"><div class="ttname"><a href="group__qfis.html#gafeb90b7b41ef3c5b25d12bf6a2adb6e5">qFIS_Fuzzify</a></div><div class="ttdeci">int qFIS_Fuzzify(qFIS_t *const f)</div><div class="ttdoc">Perform the fuzzification operation over the crisp inputs on the requested FIS object.</div><div class="ttdef"><b>Definition:</b> qfis.c:392</div></div>
 <div class="ttc" id="astructq_f_i_s___input__t_html"><div class="ttname"><a href="structq_f_i_s___input__t.html">qFIS_Input_t</a></div><div class="ttdoc">A FIS Input object.</div><div class="ttdef"><b>Definition:</b> qfis.h:131</div></div>
 <div class="ttc" id="astructq_f_i_s___output__t_html"><div class="ttname"><a href="structq_f_i_s___output__t.html">qFIS_Output_t</a></div><div class="ttdoc">A FIS Output object.</div><div class="ttdef"><b>Definition:</b> qfis.h:143</div></div>
-</div><!-- fragment --><p >Building a fuzzy system in code can become tedious, especially when you want to tune membership function parameters, where it would be appropriate to have a graphical tool that reflects the changes made by each tweak.</p>
-<p >Although the qFIS engine does not provide such a tool, a well-known tool can be used to build the fuzzy system and generate qFIS-compatible C code. The tool we are talking about is MATLAB's Fuzzy Logic Toolbox and qLibs provides a MATLAB command that can be used to take a fis object generated from MATLAB and generate C code based on the qFIS engine.</p>
+</div><!-- fragment --><h1><a class="anchor" id="qfis_codegen"></a>
+Code generation</h1>
+<p >Building a fuzzy system in code can become tedious, especially when you want to tune membership function parameters, where it would be appropriate to have a graphical tool that reflects the changes made by each tweak.</p>
+<p >Although the qFIS engine does not provide such a tool, a well-known tool can be used to build the fuzzy system and generate qFIS-compatible C code. The tool we are talking about is MATLAB's Fuzzy Logic Toolbox and qLibs provides a MATLAB command that can be used to take a fis object generated that tool and generate C code based on the qFIS engine.</p>
 <p >Download the C-Code generator here:</p>
 <p ><a href="https://la.mathworks.com/matlabcentral/fileexchange/117465-qfiscgen-fuzzy-c-code-generator-for-embedded-systems"><img src="https://www.mathworks.com/matlabcentral/images/matlab-file-exchange.svg" alt="" style="pointer-events: none;" class="inline"/></a> </p>
 </div></div><!-- contents -->
