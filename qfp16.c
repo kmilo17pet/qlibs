@@ -507,12 +507,12 @@ qFP16_t qFP16_Log2( const qFP16_t x )
     return retValue;
 }
 /*============================================================================*/
-qFP16_t fp16_RadToDeg( const qFP16_t x )
+qFP16_t qFP16_RadToDeg( const qFP16_t x )
 {
     return qFP16_Mul( qFP16_WrapToPi( x ), qFP16.f_180_pi );
 }
 /*============================================================================*/
-qFP16_t fp16_DegToRad( qFP16_t x )
+qFP16_t qFP16_DegToRad( qFP16_t x )
 {
     return qFP16_Mul( qFP16_WrapTo180( x ), qFP16.f_pi_180 );
 }

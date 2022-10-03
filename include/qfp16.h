@@ -266,7 +266,7 @@ extern "C" {
     * in radians.
     * @return This function returns the angle converted in degrees.
     */
-    qFP16_t fp16_RadToDeg( const qFP16_t x );
+    qFP16_t qFP16_RadToDeg( const qFP16_t x );
 
     /**
     * @brief Converts angle units from degrees to radians.
@@ -274,7 +274,7 @@ extern "C" {
     * in degrees.
     * @return This function returns the angle converted in radians.
     */
-    qFP16_t fp16_DegToRad( const qFP16_t x );
+    qFP16_t qFP16_DegToRad( const qFP16_t x );
 
     /**
     * @brief Wrap the fixed-point angle in radians to [−pi pi]
