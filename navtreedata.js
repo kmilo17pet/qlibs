@@ -26,20 +26,6 @@ var NAVTREE =
 [
   [ "API Reference", "index.html", [
     [ "qLibs", "index.html", "index" ],
-    [ "README", "md__r_e_a_d_m_e.html", [
-      [ "qlibs : A collection of useful libraries for embedded systems", "md__r_e_a_d_m_e.html#autotoc_md0", [
-        [ "Draft examples", "md__r_e_a_d_m_e.html#autotoc_md1", [
-          [ "Working with a bitfield", "md__r_e_a_d_m_e.html#autotoc_md2", null ],
-          [ "A simple fixed-point calculation", "md__r_e_a_d_m_e.html#autotoc_md3", null ],
-          [ "Simulating a 3rd-order continuous transfer function", "md__r_e_a_d_m_e.html#autotoc_md4", null ],
-          [ "Simulating a 2nd-order discrete transfer function", "md__r_e_a_d_m_e.html#autotoc_md5", null ],
-          [ "A speed control using the PID algorithm", "md__r_e_a_d_m_e.html#autotoc_md6", null ],
-          [ "Smoothing a noisy signal by using a gaussian filter", "md__r_e_a_d_m_e.html#autotoc_md7", null ],
-          [ "A Mamdani Fuzzy Inference System example", "md__r_e_a_d_m_e.html#autotoc_md8", null ],
-          [ "Generate C code from the MATLAB Fuzzy Logic Toolbox", "md__r_e_a_d_m_e.html#autotoc_md9", null ]
-        ] ]
-      ] ]
-    ] ],
     [ "Modules", "modules.html", "modules" ],
     [ "Data Structures", "annotated.html", [
       [ "Data Structures", "annotated.html", "annotated_dup" ],
