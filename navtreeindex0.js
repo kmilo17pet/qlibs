@@ -201,8 +201,13 @@ var NAVTREEINDEX0 =
 "modules.html":[1],
 "pages.html":[],
 "qbitfield_desc.html":[0,5],
+"qbitfield_desc.html#qbitfield_dump":[0,5,1,3],
+"qbitfield_desc.html#qbitfield_functions":[0,5,1],
+"qbitfield_desc.html#qbitfield_pattern":[0,5,1,2],
+"qbitfield_desc.html#qbitfield_sbit":[0,5,1,1],
+"qbitfield_desc.html#qbitfield_setup":[0,5,1,0],
 "qbitfield_desc.html#qbitfield_structure":[0,5,0],
-"qbitfield_desc.html#qbitfield_workingwith":[0,5,1],
+"qbitfield_desc.html#qbitfield_workingwith":[0,5,2],
 "qcrc_desc.html":[0,7],
 "qfis_desc.html":[0,2],
 "qfis_desc.html#qfis_buildfis":[0,2,5],
@@ -244,10 +249,5 @@ var NAVTREEINDEX0 =
 "qssmoother_desc.html#qssmoother_ex3":[0,0,2,0],
 "qssmoother_desc.html#qssmoother_ex4":[0,0,3,0],
 "qssmoother_desc.html#qssmoother_ex5":[0,0,4,0],
-"qssmoother_desc.html#qssmoother_ex6":[0,0,5,0],
-"qssmoother_desc.html#qssmoother_ex7":[0,0,6,0],
-"qssmoother_desc.html#qssmoother_ex8":[0,0,7,0],
-"qssmoother_desc.html#qssmoother_ex9":[0,0,8,0],
-"qssmoother_desc.html#qssmoother_expw":[0,0,7],
-"qssmoother_desc.html#qssmoother_gmwf":[0,0,6]
+"qssmoother_desc.html#qssmoother_ex6":[0,0,5,0]
 };

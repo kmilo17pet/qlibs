@@ -1,5 +1,10 @@
 var NAVTREEINDEX1 =
 {
+"qssmoother_desc.html#qssmoother_ex7":[0,0,6,0],
+"qssmoother_desc.html#qssmoother_ex8":[0,0,7,0],
+"qssmoother_desc.html#qssmoother_ex9":[0,0,8,0],
+"qssmoother_desc.html#qssmoother_expw":[0,0,7],
+"qssmoother_desc.html#qssmoother_gmwf":[0,0,6],
 "qssmoother_desc.html#qssmoother_klmn":[0,0,8],
 "qssmoother_desc.html#qssmoother_lpf1":[0,0,0],
 "qssmoother_desc.html#qssmoother_lpf2":[0,0,1],

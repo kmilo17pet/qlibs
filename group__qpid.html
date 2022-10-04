@@ -354,6 +354,7 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Computes the control action for given PID controller instance. </p>
+<dl class="section pre"><dt>Precondition</dt><dd>Instance must be previously initialized by <a class="el" href="group__qpid.html#gaec33f4b01047504ebeea758bc7ce6798" title="Setup and initialize the PID controller instance.">qPID_Setup()</a> </dd></dl>
 <dl class="section note"><dt>Note</dt><dd>The user must ensure that this function is executed in the time specified in <em>dt</em> either by using a HW or SW timer, a real time task, or a timing service. </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
@@ -394,6 +395,7 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Set the number of time steps where the auto tuner algorithm will modify the controller gains. </p>
+<dl class="section pre"><dt>Precondition</dt><dd>Controller must have an <a class="el" href="structq_p_i_d___auto_tunning__t.html" title="A PID Auto-tunning object.">qPID_AutoTunning_t</a> object already binded wih <a class="el" href="group__qpid.html#ga1dc553b9a08e94605eef62b6f794f6e6" title="Binds the specified instance to enable the PID controller auto tuning algorithm.">qPID_BindAutoTunning()</a> </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">c</td><td>A pointer to the PID controller instance. </td></tr>

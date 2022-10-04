@@ -283,7 +283,7 @@ Functions</h2></td></tr>
 <tr class="memdesc:gafd1779c21247298e6ea9a2b5934a8e52"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set parameters of the FIS instance.  <a href="group__qfis.html#gafd1779c21247298e6ea9a2b5934a8e52">More...</a><br /></td></tr>
 <tr class="separator:gafd1779c21247298e6ea9a2b5934a8e52"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga77c1447bb727d37d75a20d8d8f9f85fb"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qfis.html#ga77c1447bb727d37d75a20d8d8f9f85fb">qFIS_SetDeFuzzMethod</a> (<a class="el" href="structq_f_i_s__t.html">qFIS_t</a> *const f, <a class="el" href="group__qfis.html#gaedbcaf3cb5c4b57eb1f44f4dea0f1a72">qFIS_DeFuzz_Method_t</a> m)</td></tr>
-<tr class="memdesc:ga77c1447bb727d37d75a20d8d8f9f85fb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Change the default deFuzzification method of the FIS instance.  <a href="group__qfis.html#ga77c1447bb727d37d75a20d8d8f9f85fb">More...</a><br /></td></tr>
+<tr class="memdesc:ga77c1447bb727d37d75a20d8d8f9f85fb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Change the default de-Fuzzification method of the FIS instance.  <a href="group__qfis.html#ga77c1447bb727d37d75a20d8d8f9f85fb">More...</a><br /></td></tr>
 <tr class="separator:ga77c1447bb727d37d75a20d8d8f9f85fb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gaae3433474a516fbf41e0e406fe41410b"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qfis.html#gaae3433474a516fbf41e0e406fe41410b">qFIS_Setup</a> (<a class="el" href="structq_f_i_s__t.html">qFIS_t</a> *const f, const <a class="el" href="group__qfis.html#ga2f3f0184eca9e38c98afca2275fbe13d">qFIS_Type_t</a> t, <a class="el" href="structq_f_i_s___input__t.html">qFIS_Input_t</a> *const inputs, const size_t ni, <a class="el" href="structq_f_i_s___output__t.html">qFIS_Output_t</a> *const outputs, const size_t no, <a class="el" href="structq_f_i_s___m_f__t.html">qFIS_MF_t</a> *const mf_inputs, const size_t nmi, <a class="el" href="structq_f_i_s___m_f__t.html">qFIS_MF_t</a> *const mf_outputs, const size_t nmo, const <a class="el" href="group__qfis.html#ga07efc356794273b23e2d469e8e4d882e">qFIS_Rules_t</a> *const r, float *wi, const size_t n)</td></tr>
 <tr class="memdesc:gaae3433474a516fbf41e0e406fe41410b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Setup and initialize the FIS instance.  <a href="group__qfis.html#gaae3433474a516fbf41e0e406fe41410b">More...</a><br /></td></tr>
@@ -605,7 +605,8 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Perform the de-Fuzzification operation to compute the crisp outputs. </p>
-<dl class="section note"><dt>Note</dt><dd>By default, this function, this API uses the Centroid method on <a class="el" href="group__qfis.html#gga2f3f0184eca9e38c98afca2275fbe13daaaafece1969d49f7a63d07fd66937799">Mamdani</a> type FIS and weight-average on <a class="el" href="group__qfis.html#gga2f3f0184eca9e38c98afca2275fbe13da6be5a07806b4e50dc6aa3ce912692ad6">Sugeno</a> type FIS. To change the default settings use the <a class="el" href="group__qfis.html#ga77c1447bb727d37d75a20d8d8f9f85fb" title="Change the default deFuzzification method of the FIS instance.">qFIS_SetDeFuzzMethod()</a> function. </dd></dl>
+<dl class="section pre"><dt>Precondition</dt><dd>The instance should have already invoked the inference process successfully with <a class="el" href="group__qfis.html#ga471e4559534e3fe726a895bc4466e05e" title="Perform the inference process on the requested FIS object.">qFIS_Inference()</a> </dd></dl>
+<dl class="section note"><dt>Note</dt><dd>By default, this function, this API uses the Centroid method on <a class="el" href="group__qfis.html#gga2f3f0184eca9e38c98afca2275fbe13daaaafece1969d49f7a63d07fd66937799">Mamdani</a> type FIS and weight-average on <a class="el" href="group__qfis.html#gga2f3f0184eca9e38c98afca2275fbe13da6be5a07806b4e50dc6aa3ce912692ad6">Sugeno</a> type FIS. To change the default settings use the <a class="el" href="group__qfis.html#ga77c1447bb727d37d75a20d8d8f9f85fb" title="Change the default de-Fuzzification method of the FIS instance.">qFIS_SetDeFuzzMethod()</a> function. </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">f</td><td>A pointer to the Fuzzy Inference System instance. </td></tr>
@@ -633,6 +634,7 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Perform the fuzzification operation over the crisp inputs on the requested FIS object. </p>
+<dl class="section pre"><dt>Precondition</dt><dd>I/Os and fuzzy sets must be previously initialized by <a class="el" href="group__qfis.html#ga9157fd772255f73e6b5aca365986068a" title="Setup the input with the specified tag and set limits for it.">qFIS_InputSetup()</a>, <a class="el" href="group__qfis.html#gae2f10a746a4e19752a985e6892132a80" title="Setup the output with the specified tag and set limits for it.">qFIS_OutputSetup()</a>, <a class="el" href="group__qfis.html#gad187010550dc9d983c589f6dd9fa971c" title="Set the IO tag and points for the specified membership function.">qFIS_SetMF()</a> and <a class="el" href="group__qfis.html#gaae3433474a516fbf41e0e406fe41410b" title="Setup and initialize the FIS instance.">qFIS_Setup()</a> respectively. </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">f</td><td>A pointer to the Fuzzy Inference System instance. </td></tr>
@@ -698,6 +700,7 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Perform the inference process on the requested FIS object. </p>
+<dl class="section pre"><dt>Precondition</dt><dd>The instance should have already invoked the fuzzification operation successfully with <a class="el" href="group__qfis.html#gafeb90b7b41ef3c5b25d12bf6a2adb6e5" title="Perform the fuzzification operation over the crisp inputs on the requested FIS object.">qFIS_Fuzzify()</a> </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">f</td><td>A pointer to the Fuzzy Inference System instance. </td></tr>
@@ -839,7 +842,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Change the default deFuzzification method of the FIS instance. </p>
+<p>Change the default de-Fuzzification method of the FIS instance. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">f</td><td>A pointer to the Fuzzy Inference System instance. </td></tr>
@@ -1057,6 +1060,7 @@ To set a custom user-defined membership function, set this argument as <a class=
 </div><div class="memdoc">
 
 <p>Set weights to the rules of the inference system. </p>
+<dl class="section pre"><dt>Precondition</dt><dd>I/Os and fuzzy sets must be previously initialized by <a class="el" href="group__qfis.html#ga9157fd772255f73e6b5aca365986068a" title="Setup the input with the specified tag and set limits for it.">qFIS_InputSetup()</a>, <a class="el" href="group__qfis.html#gae2f10a746a4e19752a985e6892132a80" title="Setup the output with the specified tag and set limits for it.">qFIS_OutputSetup()</a>, <a class="el" href="group__qfis.html#gad187010550dc9d983c589f6dd9fa971c" title="Set the IO tag and points for the specified membership function.">qFIS_SetMF()</a> and <a class="el" href="group__qfis.html#gaae3433474a516fbf41e0e406fe41410b" title="Setup and initialize the FIS instance.">qFIS_Setup()</a> respectively. </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">f</td><td>A pointer to the Fuzzy Inference System instance. </td></tr>

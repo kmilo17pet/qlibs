@@ -13,10 +13,10 @@ var index =
       [ "Moving Window Median Filter O(1)", "qssmoother_desc.html#qssmoother_mwm2", [
         [ "Example: Setting up a moving window median filter:", "qssmoother_desc.html#qssmoother_ex4", null ]
       ] ],
-      [ "Moving Outliar Removal Filter O(n)", "qssmoother_desc.html#qssmoother_mor1", [
+      [ "Moving Outlier Removal Filter O(n)", "qssmoother_desc.html#qssmoother_mor1", [
         [ "Example: setting up an outlier removal filter:", "qssmoother_desc.html#qssmoother_ex5", null ]
       ] ],
-      [ "Moving Outliar Removal Filter O(1)", "qssmoother_desc.html#qssmoother_mor2", [
+      [ "Moving Outlier Removal Filter O(1)", "qssmoother_desc.html#qssmoother_mor2", [
         [ "Example: setting up an outlier removal filter:", "qssmoother_desc.html#qssmoother_ex6", null ]
       ] ],
       [ "Gaussian Filter", "qssmoother_desc.html#qssmoother_gmwf", [
@@ -73,6 +73,12 @@ var index =
     ] ],
     [ "Bit-Field manipulation library", "qbitfield_desc.html", [
       [ "Structure", "qbitfield_desc.html#qbitfield_structure", null ],
+      [ "Functions", "qbitfield_desc.html#qbitfield_functions", [
+        [ "Instance setup", "qbitfield_desc.html#qbitfield_setup", null ],
+        [ "Single-bit", "qbitfield_desc.html#qbitfield_sbit", null ],
+        [ "Multiple-bits", "qbitfield_desc.html#qbitfield_pattern", null ],
+        [ "Dump", "qbitfield_desc.html#qbitfield_dump", null ]
+      ] ],
       [ "Working with bitfields", "qbitfield_desc.html#qbitfield_workingwith", null ]
     ] ],
     [ "Recursive Root Mean Square estimator", "qrms_desc.html", [

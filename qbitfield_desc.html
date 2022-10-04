@@ -131,6 +131,38 @@ $(document).ready(function(){initNavTree('qbitfield_desc.html',''); initResizabl
 <h1><a class="anchor" id="qbitfield_structure"></a>
 Structure</h1>
 <p >Bit arrays are stored in data structures of type <a class="el" href="structq_bit_field__t.html">qBitField_t</a>. This structure has two elements: an array of unsigned long integers 'field' for storing the bits and an integer 'size' for storing the number of bits in the array.</p>
+<h1><a class="anchor" id="qbitfield_functions"></a>
+Functions</h1>
+<h2><a class="anchor" id="qbitfield_setup"></a>
+Instance setup</h2>
+<ul>
+<li><a class="el" href="group__qbitfield.html#ga0522c031406f6eeb60b6308af7d5a8f9">QBITFIELD_SIZE</a> Use it to determine the number of bytes required for a BitField.</li>
+<li><a class="el" href="group__qbitfield.html#gad44d5e2d7e20c3222d35dadfd4a0db40">qBitField_Setup()</a> Setup a initialize a BitField instance.</li>
+</ul>
+<h2><a class="anchor" id="qbitfield_sbit"></a>
+Single-bit</h2>
+<ul>
+<li><a class="el" href="group__qbitfield.html#ga8cd9997e2aba748a77f5e3baa4dbb919">qBitField_SetBit()</a> Sets one bit in a BitField.</li>
+<li><a class="el" href="group__qbitfield.html#ga816ccc133ac37d866bc0b2489432f6cf">qBitField_ClearBit()</a> Clears one bit in a BitField.</li>
+<li><a class="el" href="group__qbitfield.html#gae2184513f0c88edfe2569998fab907ac">qBitField_ToggleBit()</a> Toggles (i.e. reverses the state of) a bit in a BitField.</li>
+<li><a class="el" href="group__qbitfield.html#gad74a713c536508817c953c97d9e63613">qBitField_ReadBit()</a> Retrieve the state of a bit in a bitfield.</li>
+<li><a class="el" href="group__qbitfield.html#gac3ce9561d185645224e0c6fd81489dbe">qBitField_WriteBit()</a> Writes one bit in a bitfield.</li>
+</ul>
+<h2><a class="anchor" id="qbitfield_pattern"></a>
+Multiple-bits</h2>
+<ul>
+<li><a class="el" href="group__qbitfield.html#gaafc179a7c207518c9be5706c51a1f4ec">qBitField_ClearAll()</a> Clear all the bits in the BitField.</li>
+<li><a class="el" href="group__qbitfield.html#gaf994b9f7adae46ed8fb008e05ebd45a5">qBitField_SetAll()</a> Set all the bits in the BitField.</li>
+<li><a class="el" href="group__qbitfield.html#gada09ad4cd6cdf81e60bc7f377bc2e2fc">qBitField_ReadUINTn()</a> Reads an unsigned 32-bit value from the BitField.</li>
+<li><a class="el" href="group__qbitfield.html#gaabb07b13860270db44b67600801293bd">qBitField_WriteUINTn()</a> Writes an unsigned n-bit value from the BitField.</li>
+<li><a class="el" href="group__qbitfield.html#ga70d1266d0f0def7513ead9fd5eacc74c">qBitField_ReadFloat()</a> Reads a 32-bit floating point value from the BitField.</li>
+<li><a class="el" href="group__qbitfield.html#ga6ebaab04f9abb91934cd2016a557ea3c">qBitField_WriteFloat()</a> Writes a 32-bit floating point value to the BitField.</li>
+</ul>
+<h2><a class="anchor" id="qbitfield_dump"></a>
+Dump</h2>
+<ul>
+<li><a class="el" href="group__qbitfield.html#ga6697a4787931f494396902a1431afc46">qBitField_Dump()</a> Copies n bytes from the bit-field instance to a designed memory area.</li>
+</ul>
 <h1><a class="anchor" id="qbitfield_workingwith"></a>
 Working with bitfields</h1>
 <div class="fragment"><div class="line"><span class="preprocessor">#include &lt;stdio.h&gt;</span></div>

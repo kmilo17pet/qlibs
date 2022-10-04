@@ -211,7 +211,7 @@ Example: Setting up a moving window median filter:</h2>
 <div class="line">}</div>
 <div class="ttc" id="astructq_s_smoother___m_w_m2__t_html"><div class="ttname"><a href="structq_s_smoother___m_w_m2__t.html">qSSmoother_MWM2_t</a></div><div class="ttdoc">A Moving Window Median filter.</div><div class="ttdef"><b>Definition:</b> qssmoother.h:93</div></div>
 </div><!-- fragment --><h1><a class="anchor" id="qssmoother_mor1"></a>
-Moving Outliar Removal Filter O(n)</h1>
+Moving Outlier Removal Filter O(n)</h1>
 <p >This filter is used to detect and remove outliers in the input signal. For each sample of input signal, the filter computes the median of the moving window. If a new incoming sample deviates from the median by a specified margin \(\alpha\), it is replaced by the moving median \(\overline{m(k)} \).</p>
 <p >This filter uses the following criteria for outlier removal:</p>
 <p >\( y(k) = \overline{m(k)} \rightarrow \text{if} \rightarrow | \overline{m(k)} - x(k) | &gt; \alpha|\overline{m(k)}| \)</p>
@@ -233,7 +233,7 @@ Example: setting up an outlier removal filter:</h2>
 <div class="ttc" id="agroup__qssmoother_html_gga8953f71916f57517edbe8cab4d7ee639ad4c3e7ec5b54fc155c6a84381f8e29f8"><div class="ttname"><a href="group__qssmoother.html#gga8953f71916f57517edbe8cab4d7ee639ad4c3e7ec5b54fc155c6a84381f8e29f8">QSSMOOTHER_TYPE_MOR1</a></div><div class="ttdeci">@ QSSMOOTHER_TYPE_MOR1</div><div class="ttdef"><b>Definition:</b> qssmoother.h:35</div></div>
 <div class="ttc" id="astructq_s_smoother___m_o_r1__t_html"><div class="ttname"><a href="structq_s_smoother___m_o_r1__t.html">qSSmoother_MOR1_t</a></div><div class="ttdoc">A Moving Outlier Removal filter.</div><div class="ttdef"><b>Definition:</b> qssmoother.h:106</div></div>
 </div><!-- fragment --><h1><a class="anchor" id="qssmoother_mor2"></a>
-Moving Outliar Removal Filter O(1)</h1>
+Moving Outlier Removal Filter O(1)</h1>
 <p >Similar to the previous filter, but with a constant time complexity of  \(O(1)\) by using a <a class="el" href="group__qtdl.html">qTDL</a> data structure.</p>
 <h2><a class="anchor" id="qssmoother_ex6"></a>
 Example: setting up an outlier removal filter:</h2>

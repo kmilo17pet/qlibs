@@ -294,6 +294,7 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Perform the smooth operation recursively for the input signal <em>x</em>. </p>
+<dl class="section pre"><dt>Precondition</dt><dd>Instance must be previously initialized by <a class="el" href="group__qssmoother.html#gae494958fd1353a8cd956e35abd6641f7" title="Setup an initialize smoother filter.">qSSmoother_Setup()</a> </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">s</td><td>A pointer to the signal smoother instance. </td></tr>
@@ -408,7 +409,7 @@ Functions</h2></td></tr>
 <p >if <a class="el" href="group__qssmoother.html#gga8953f71916f57517edbe8cab4d7ee639ad4c3e7ec5b54fc155c6a84381f8e29f8">QSSMOOTHER_TYPE_MOR1</a> a pointer to a value between [ 0 &lt; alpha &lt; 1 ]</p>
 <p >if <a class="el" href="group__qssmoother.html#gga8953f71916f57517edbe8cab4d7ee639a5679bf69e01eed679eec13883af3d117">QSSMOOTHER_TYPE_MOR2</a> a pointer to a value between [ 0 &lt; alpha &lt; 1 ]</p>
 <p >if <a class="el" href="group__qssmoother.html#gga8953f71916f57517edbe8cab4d7ee639a0f072f41aec7b912c7e49bf897a0d87b">QSSMOOTHER_TYPE_GMWF</a>, an array with two values. The first element with the Standard deviation [ sigma &gt; 0 ]. The second element with the offset of the gaussian center. [ 0 &lt; pos &lt; (wsize-1) ].</p>
-<p >if <a class="el" href="group__qssmoother.html#gga8953f71916f57517edbe8cab4d7ee639ab3aa23be42e760981dfeb0dcce302b11">QSSMOOTHER_TYPE_KLMN</a>, an array with three values. The first element with the initial estimated error convariance. The second element with the process(predict) noise convariance. The third element with the measure noise convariance</p>
+<p >if <a class="el" href="group__qssmoother.html#gga8953f71916f57517edbe8cab4d7ee639ab3aa23be42e760981dfeb0dcce302b11">QSSMOOTHER_TYPE_KLMN</a>, an array with three values. The first element with the initial estimated error covariance. The second element with the process(predict) noise covariance. The third element with the measure noise convariance</p>
 <p >if <a class="el" href="group__qssmoother.html#gga8953f71916f57517edbe8cab4d7ee639a3113bceea7e0aed76fd9885b0bdaf135">QSSMOOTHER_TYPE_EXPW</a>, a pointer to a value between [ 0 &lt; lambda &lt; 1 ] that represents the forgetting factor.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
