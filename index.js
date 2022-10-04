@@ -86,6 +86,6 @@ var index =
     ] ],
     [ "Generic Cyclic Redundancy Check (CRC) calculator", "qcrc_desc.html", null ],
     [ "Tapped Delay Line in O(1)", "qtdl_desc.html", [
-      [ "Example : Code snipped to instantiate a TDL to hold up to 256 delays.", "qtdl_desc.html#qtdl_ex1", null ]
+      [ "Example : Code snippet to instantiate a TDL to hold up to 256 delays.", "qtdl_desc.html#qtdl_ex1", null ]
     ] ]
 ];

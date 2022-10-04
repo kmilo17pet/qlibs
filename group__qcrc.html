@@ -125,6 +125,7 @@ $(document).ready(function(){initNavTree('group__qcrc.html',''); initResizable()
 
 <div class="header">
   <div class="summary">
+<a href="#define-members">Macros</a> &#124;
 <a href="#enum-members">Enumerations</a> &#124;
 <a href="#func-members">Functions</a>  </div>
   <div class="headertitle"><div class="title">qCRC</div></div>
@@ -134,6 +135,177 @@ $(document).ready(function(){initNavTree('group__qcrc.html',''); initResizable()
 <p>API for the qCRC Generic Cyclic Redundancy Check (CRC) calculator.  
 <a href="#details">More...</a></p>
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
+Macros</h2></td></tr>
+<tr class="memitem:ga665b97981afa93c942091c56e732e39d"><td class="memItemLeft" align="right" valign="top"><a id="ga665b97981afa93c942091c56e732e39d" name="ga665b97981afa93c942091c56e732e39d"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>qCRC8</b>(pData,  length)</td></tr>
+<tr class="memdesc:ga665b97981afa93c942091c56e732e39d"><td class="mdescLeft">&#160;</td><td class="mdescRight">CRC-8 with poly = 0x07 init = 0x00 refIn = false refOut = false xorOut= 0x00. <br /></td></tr>
+<tr class="separator:ga665b97981afa93c942091c56e732e39d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga1d9036e6fc4b48983d9decc0569cdd8d"><td class="memItemLeft" align="right" valign="top"><a id="ga1d9036e6fc4b48983d9decc0569cdd8d" name="ga1d9036e6fc4b48983d9decc0569cdd8d"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>qCRC8_CDMA2000</b>(pData,  length)</td></tr>
+<tr class="memdesc:ga1d9036e6fc4b48983d9decc0569cdd8d"><td class="mdescLeft">&#160;</td><td class="mdescRight">CRC-8/CDMA2000 with poly = 0x9B init = 0xFF refIn = false refOut = false xorOut= 0x00. <br /></td></tr>
+<tr class="separator:ga1d9036e6fc4b48983d9decc0569cdd8d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga546760b869a84ba07d3ef459773aa2e6"><td class="memItemLeft" align="right" valign="top"><a id="ga546760b869a84ba07d3ef459773aa2e6" name="ga546760b869a84ba07d3ef459773aa2e6"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>qCRC8_DARC</b>(pData,  length)</td></tr>
+<tr class="memdesc:ga546760b869a84ba07d3ef459773aa2e6"><td class="mdescLeft">&#160;</td><td class="mdescRight">CRC-8/CDMA2000 with poly = 0x39 init = 0x00 refIn = true refOut = true xorOut= 0x00. <br /></td></tr>
+<tr class="separator:ga546760b869a84ba07d3ef459773aa2e6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga74d2516862728fabfa3035d8740721e6"><td class="memItemLeft" align="right" valign="top"><a id="ga74d2516862728fabfa3035d8740721e6" name="ga74d2516862728fabfa3035d8740721e6"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>qCRC8_DVB_S2</b>(pData,  length)</td></tr>
+<tr class="memdesc:ga74d2516862728fabfa3035d8740721e6"><td class="mdescLeft">&#160;</td><td class="mdescRight">CRC-8/CDMA2000 with poly = 0xD5 init = 0x00 refIn = false refOut = false xorOut= 0x00. <br /></td></tr>
+<tr class="separator:ga74d2516862728fabfa3035d8740721e6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga803bf08b1ca4ae9d4fe87f96a759fb3d"><td class="memItemLeft" align="right" valign="top"><a id="ga803bf08b1ca4ae9d4fe87f96a759fb3d" name="ga803bf08b1ca4ae9d4fe87f96a759fb3d"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>qCRC8_EBU</b>(pData,  length)</td></tr>
+<tr class="memdesc:ga803bf08b1ca4ae9d4fe87f96a759fb3d"><td class="mdescLeft">&#160;</td><td class="mdescRight">CRC-8/EBU with poly = 0x1D init = 0xFF refIn = true refOut = true xorOut= 0x00. <br /></td></tr>
+<tr class="separator:ga803bf08b1ca4ae9d4fe87f96a759fb3d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga09657326d6df6b5ef8adbe24e0243512"><td class="memItemLeft" align="right" valign="top"><a id="ga09657326d6df6b5ef8adbe24e0243512" name="ga09657326d6df6b5ef8adbe24e0243512"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>qCRC8_I_CODE</b>(pData,  length)</td></tr>
+<tr class="memdesc:ga09657326d6df6b5ef8adbe24e0243512"><td class="mdescLeft">&#160;</td><td class="mdescRight">CRC-8/I-CODE with poly = 0x1D init = 0xFD refIn = false refOut = false xorOut= 0x00. <br /></td></tr>
+<tr class="separator:ga09657326d6df6b5ef8adbe24e0243512"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga8a111e77132142ddcbe71d74549d7ee1"><td class="memItemLeft" align="right" valign="top"><a id="ga8a111e77132142ddcbe71d74549d7ee1" name="ga8a111e77132142ddcbe71d74549d7ee1"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>qCRC8_ITU</b>(pData,  length)</td></tr>
+<tr class="memdesc:ga8a111e77132142ddcbe71d74549d7ee1"><td class="mdescLeft">&#160;</td><td class="mdescRight">CRC-8/ITU with poly = 0x07 init = 0x00 refIn = false refOut = false xorOut= 0x55. <br /></td></tr>
+<tr class="separator:ga8a111e77132142ddcbe71d74549d7ee1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga5c1f5fe89b04a955bbb33b37e3077dd3"><td class="memItemLeft" align="right" valign="top"><a id="ga5c1f5fe89b04a955bbb33b37e3077dd3" name="ga5c1f5fe89b04a955bbb33b37e3077dd3"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>qCRC8_MAXIM</b>(pData,  length)</td></tr>
+<tr class="memdesc:ga5c1f5fe89b04a955bbb33b37e3077dd3"><td class="mdescLeft">&#160;</td><td class="mdescRight">CRC-8/MAXIM with poly = 0x31 init = 0x00 refIn = true refOut = true xorOut= 0x00. <br /></td></tr>
+<tr class="separator:ga5c1f5fe89b04a955bbb33b37e3077dd3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaa59ef712cf74be6c8789ca76398c14c0"><td class="memItemLeft" align="right" valign="top"><a id="gaa59ef712cf74be6c8789ca76398c14c0" name="gaa59ef712cf74be6c8789ca76398c14c0"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>qCRC8_ROHC</b>(pData,  length)</td></tr>
+<tr class="memdesc:gaa59ef712cf74be6c8789ca76398c14c0"><td class="mdescLeft">&#160;</td><td class="mdescRight">CRC-8/ROHC with poly = 0x07 init = 0xFF refIn = true refOut = true xorOut= 0x00. <br /></td></tr>
+<tr class="separator:gaa59ef712cf74be6c8789ca76398c14c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga92f4caa0830afa5674de24cffe415514"><td class="memItemLeft" align="right" valign="top"><a id="ga92f4caa0830afa5674de24cffe415514" name="ga92f4caa0830afa5674de24cffe415514"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>qCRC8_WCDMA</b>(pData,  length)</td></tr>
+<tr class="memdesc:ga92f4caa0830afa5674de24cffe415514"><td class="mdescLeft">&#160;</td><td class="mdescRight">CRC-8/WCDMA with poly = 0x9B init = 0x00 refIn = true refOut = true xorOut= 0x00. <br /></td></tr>
+<tr class="separator:ga92f4caa0830afa5674de24cffe415514"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga89b783b08b3d5a72a187f50f39b3fc45"><td class="memItemLeft" align="right" valign="top"><a id="ga89b783b08b3d5a72a187f50f39b3fc45" name="ga89b783b08b3d5a72a187f50f39b3fc45"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>qCRC16_CCITT_FALSE</b>(pData,  length)</td></tr>
+<tr class="memdesc:ga89b783b08b3d5a72a187f50f39b3fc45"><td class="mdescLeft">&#160;</td><td class="mdescRight">CRC-16/CCITT-FALSE with poly = 0x1021 init = 0xFFFF refIn = false refOut = false xorOut= 0x0000. <br /></td></tr>
+<tr class="separator:ga89b783b08b3d5a72a187f50f39b3fc45"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gacc61a66687d1e8e26c9a38332e664b06"><td class="memItemLeft" align="right" valign="top"><a id="gacc61a66687d1e8e26c9a38332e664b06" name="gacc61a66687d1e8e26c9a38332e664b06"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>qCRC16_ARC</b>(pData,  length)</td></tr>
+<tr class="memdesc:gacc61a66687d1e8e26c9a38332e664b06"><td class="mdescLeft">&#160;</td><td class="mdescRight">CRC-16/ARC with poly = 0x8005 init = 0x0000 refIn = true r efOut = true xorOut= 0x0000. <br /></td></tr>
+<tr class="separator:gacc61a66687d1e8e26c9a38332e664b06"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gacc0fc12bfa3811af30e597debed2015d"><td class="memItemLeft" align="right" valign="top"><a id="gacc0fc12bfa3811af30e597debed2015d" name="gacc0fc12bfa3811af30e597debed2015d"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>qCRC16_AUG_CCITT</b>(pData,  length)</td></tr>
+<tr class="memdesc:gacc0fc12bfa3811af30e597debed2015d"><td class="mdescLeft">&#160;</td><td class="mdescRight">CRC-16/AUG-CCITT with poly = 0x1021 init = 0x1D0F refIn = false refOut = false xorOut= 0x0000. <br /></td></tr>
+<tr class="separator:gacc0fc12bfa3811af30e597debed2015d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga98af7625bca546cb57ce5d03afcb74fd"><td class="memItemLeft" align="right" valign="top"><a id="ga98af7625bca546cb57ce5d03afcb74fd" name="ga98af7625bca546cb57ce5d03afcb74fd"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>qCRC16_BUYPASS</b>(pData,  length)</td></tr>
+<tr class="memdesc:ga98af7625bca546cb57ce5d03afcb74fd"><td class="mdescLeft">&#160;</td><td class="mdescRight">CRC-16/BUYPASS with poly = 0x8005 init = 0x0000 refIn = false refOut = false xorOut= 0x0000. <br /></td></tr>
+<tr class="separator:ga98af7625bca546cb57ce5d03afcb74fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga59cccf78128516a83ba6e3a3aeb1898b"><td class="memItemLeft" align="right" valign="top"><a id="ga59cccf78128516a83ba6e3a3aeb1898b" name="ga59cccf78128516a83ba6e3a3aeb1898b"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>qCRC16_CDMA2000</b>(pData,  length)</td></tr>
+<tr class="memdesc:ga59cccf78128516a83ba6e3a3aeb1898b"><td class="mdescLeft">&#160;</td><td class="mdescRight">CRC-16/CDMA2000 with poly = 0xC867 init = 0xFFFF refIn = false refOut = false xorOut= 0x0000. <br /></td></tr>
+<tr class="separator:ga59cccf78128516a83ba6e3a3aeb1898b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga3f9f66145a1f4c2fd1b152454e14da38"><td class="memItemLeft" align="right" valign="top"><a id="ga3f9f66145a1f4c2fd1b152454e14da38" name="ga3f9f66145a1f4c2fd1b152454e14da38"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>qCRC16_DDS_110</b>(pData,  length)</td></tr>
+<tr class="memdesc:ga3f9f66145a1f4c2fd1b152454e14da38"><td class="mdescLeft">&#160;</td><td class="mdescRight">CRC-16/DDS-110 with poly = 0x8005 init = 0x800D refIn = false refOut = false xorOut= 0x0000. <br /></td></tr>
+<tr class="separator:ga3f9f66145a1f4c2fd1b152454e14da38"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaaa927b2f1de7dfa53c6616901c726f44"><td class="memItemLeft" align="right" valign="top"><a id="gaaa927b2f1de7dfa53c6616901c726f44" name="gaaa927b2f1de7dfa53c6616901c726f44"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>qCRC16_DECT_R</b>(pData,  length)</td></tr>
+<tr class="memdesc:gaaa927b2f1de7dfa53c6616901c726f44"><td class="mdescLeft">&#160;</td><td class="mdescRight">CRC-16/DECT-R with poly = 0x0589 init = 0x0000 refIn = false refOut = false xorOut= 0x0001. <br /></td></tr>
+<tr class="separator:gaaa927b2f1de7dfa53c6616901c726f44"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaec9ed352594521090ff469af3cd565df"><td class="memItemLeft" align="right" valign="top"><a id="gaec9ed352594521090ff469af3cd565df" name="gaec9ed352594521090ff469af3cd565df"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>qCRC16_DECT_X</b>(pData,  length)</td></tr>
+<tr class="memdesc:gaec9ed352594521090ff469af3cd565df"><td class="mdescLeft">&#160;</td><td class="mdescRight">CRC-16/DECT-X with poly = 0x0589 init = 0x0000 refIn = false refOut = false xorOut= 0x0000. <br /></td></tr>
+<tr class="separator:gaec9ed352594521090ff469af3cd565df"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga711c43c58fbca63734ec2ce51ce4341f"><td class="memItemLeft" align="right" valign="top"><a id="ga711c43c58fbca63734ec2ce51ce4341f" name="ga711c43c58fbca63734ec2ce51ce4341f"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>qCRC16_DNP</b>(pData,  length)</td></tr>
+<tr class="memdesc:ga711c43c58fbca63734ec2ce51ce4341f"><td class="mdescLeft">&#160;</td><td class="mdescRight">CRC-16/DNP with poly = 0x3D98 init = 0x0000 refIn = true refOut = true xorOut= 0xFFFF. <br /></td></tr>
+<tr class="separator:ga711c43c58fbca63734ec2ce51ce4341f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga262a70e347e79858b333541f400ac499"><td class="memItemLeft" align="right" valign="top"><a id="ga262a70e347e79858b333541f400ac499" name="ga262a70e347e79858b333541f400ac499"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>qCRC16_EN_13757</b>(pData,  length)</td></tr>
+<tr class="memdesc:ga262a70e347e79858b333541f400ac499"><td class="mdescLeft">&#160;</td><td class="mdescRight">CRC-16/EN-13757 with poly = 0x3D65 init = 0x0000 refIn = false refOut = false xorOut= 0xFFFF. <br /></td></tr>
+<tr class="separator:ga262a70e347e79858b333541f400ac499"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga1784a48419c9ead8d9445e4ced44bfd6"><td class="memItemLeft" align="right" valign="top"><a id="ga1784a48419c9ead8d9445e4ced44bfd6" name="ga1784a48419c9ead8d9445e4ced44bfd6"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>qCRC16_GENIBUS</b>(pData,  length)</td></tr>
+<tr class="memdesc:ga1784a48419c9ead8d9445e4ced44bfd6"><td class="mdescLeft">&#160;</td><td class="mdescRight">CRC-16/GENIBUS with poly = 0x1021 init = 0xFFFF refIn = false refOut = false xorOut= 0xFFFF. <br /></td></tr>
+<tr class="separator:ga1784a48419c9ead8d9445e4ced44bfd6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gab076cd757ff10a4b834feee869ad1c9d"><td class="memItemLeft" align="right" valign="top"><a id="gab076cd757ff10a4b834feee869ad1c9d" name="gab076cd757ff10a4b834feee869ad1c9d"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>qCRC16_MAXIM</b>(pData,  length)</td></tr>
+<tr class="memdesc:gab076cd757ff10a4b834feee869ad1c9d"><td class="mdescLeft">&#160;</td><td class="mdescRight">CRC-16/MAXIM with poly = 0x8005 init = 0x0000 refIn = true refOut = true xorOut= 0xFFFF. <br /></td></tr>
+<tr class="separator:gab076cd757ff10a4b834feee869ad1c9d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gabe53ec0776af97d10336fe09e1e56c51"><td class="memItemLeft" align="right" valign="top"><a id="gabe53ec0776af97d10336fe09e1e56c51" name="gabe53ec0776af97d10336fe09e1e56c51"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>qCRC16_MCRF4XX</b>(pData,  length)</td></tr>
+<tr class="memdesc:gabe53ec0776af97d10336fe09e1e56c51"><td class="mdescLeft">&#160;</td><td class="mdescRight">CRC-16/MCRF4XX with poly = 0x1021 init = 0xFFFF refIn = true refOut = true xorOut= 0x0000. <br /></td></tr>
+<tr class="separator:gabe53ec0776af97d10336fe09e1e56c51"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gac526e813a9f0e24d10d7c04597a01c17"><td class="memItemLeft" align="right" valign="top"><a id="gac526e813a9f0e24d10d7c04597a01c17" name="gac526e813a9f0e24d10d7c04597a01c17"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>qCRC16_RIELLO</b>(pData,  length)</td></tr>
+<tr class="memdesc:gac526e813a9f0e24d10d7c04597a01c17"><td class="mdescLeft">&#160;</td><td class="mdescRight">CRC-16/RIELLO with poly = 0x1021 init = 0xB2AA refIn = true refOut = true xorOut= 0x0000. <br /></td></tr>
+<tr class="separator:gac526e813a9f0e24d10d7c04597a01c17"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga28658505a05d6f69e47653388cfaf4ce"><td class="memItemLeft" align="right" valign="top"><a id="ga28658505a05d6f69e47653388cfaf4ce" name="ga28658505a05d6f69e47653388cfaf4ce"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>qCRC16_T10_DIF</b>(pData,  length)</td></tr>
+<tr class="memdesc:ga28658505a05d6f69e47653388cfaf4ce"><td class="mdescLeft">&#160;</td><td class="mdescRight">CRC-16/DECT-X with poly = 0x8bb7 init = 0x0000 refIn = false refOut = false xorOut= 0x0000. <br /></td></tr>
+<tr class="separator:ga28658505a05d6f69e47653388cfaf4ce"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga7955f573ca4d180226694fd80d5e32ab"><td class="memItemLeft" align="right" valign="top"><a id="ga7955f573ca4d180226694fd80d5e32ab" name="ga7955f573ca4d180226694fd80d5e32ab"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>qCRC16_TELEDISK</b>(pData,  length)</td></tr>
+<tr class="memdesc:ga7955f573ca4d180226694fd80d5e32ab"><td class="mdescLeft">&#160;</td><td class="mdescRight">CRC-16/TELEDISK with poly = 0xA097 init = 0x0000 refIn = false refOut = false xorOut= 0x0000. <br /></td></tr>
+<tr class="separator:ga7955f573ca4d180226694fd80d5e32ab"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gacce7e757f5bbf7a1aaf84c6eca447e3f"><td class="memItemLeft" align="right" valign="top"><a id="gacce7e757f5bbf7a1aaf84c6eca447e3f" name="gacce7e757f5bbf7a1aaf84c6eca447e3f"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>qCRC16_TMS37157</b>(pData,  length)</td></tr>
+<tr class="memdesc:gacce7e757f5bbf7a1aaf84c6eca447e3f"><td class="mdescLeft">&#160;</td><td class="mdescRight">CRC-16/TMS37157 with poly = 0x1021 init = 0x89EC refIn = true refOut = true xorOut= 0x0000. <br /></td></tr>
+<tr class="separator:gacce7e757f5bbf7a1aaf84c6eca447e3f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga04f507cea2006d1e0d5f5d09a4e92ba1"><td class="memItemLeft" align="right" valign="top"><a id="ga04f507cea2006d1e0d5f5d09a4e92ba1" name="ga04f507cea2006d1e0d5f5d09a4e92ba1"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>qCRC16_USB</b>(pData,  length)</td></tr>
+<tr class="memdesc:ga04f507cea2006d1e0d5f5d09a4e92ba1"><td class="mdescLeft">&#160;</td><td class="mdescRight">CRC-16/USB with poly = 0x8005 init = 0xFFFF refIn = true refOut = true xorOut= 0xFFFF. <br /></td></tr>
+<tr class="separator:ga04f507cea2006d1e0d5f5d09a4e92ba1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga98f1ddaaa84320dc77d4e52c2dca08cb"><td class="memItemLeft" align="right" valign="top"><a id="ga98f1ddaaa84320dc77d4e52c2dca08cb" name="ga98f1ddaaa84320dc77d4e52c2dca08cb"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>qCRC16_A</b>(pData,  length)</td></tr>
+<tr class="memdesc:ga98f1ddaaa84320dc77d4e52c2dca08cb"><td class="mdescLeft">&#160;</td><td class="mdescRight">CRC-A with poly = 0x1021 init = 0xC6C6 refIn = true refOut = true xorOut= 0x0000. <br /></td></tr>
+<tr class="separator:ga98f1ddaaa84320dc77d4e52c2dca08cb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaa301c05d6e3543b116ba35c81e8300e8"><td class="memItemLeft" align="right" valign="top"><a id="gaa301c05d6e3543b116ba35c81e8300e8" name="gaa301c05d6e3543b116ba35c81e8300e8"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>qCRC16_KERMIT</b>(pData,  length)</td></tr>
+<tr class="memdesc:gaa301c05d6e3543b116ba35c81e8300e8"><td class="mdescLeft">&#160;</td><td class="mdescRight">CRC-16/KERMIT with poly = 0x1021 init = 0x0000 refIn = true refOut = true xorOut= 0x0000. <br /></td></tr>
+<tr class="separator:gaa301c05d6e3543b116ba35c81e8300e8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga110412d5b549f4f41fa1609734b00ac3"><td class="memItemLeft" align="right" valign="top"><a id="ga110412d5b549f4f41fa1609734b00ac3" name="ga110412d5b549f4f41fa1609734b00ac3"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>qCRC16_MODBUS</b>(pData,  length)</td></tr>
+<tr class="memdesc:ga110412d5b549f4f41fa1609734b00ac3"><td class="mdescLeft">&#160;</td><td class="mdescRight">CRC-16/MODBUS with poly = 0x8005 init = 0xFFFF refIn = true refOut = true xorOut= 0x0000. <br /></td></tr>
+<tr class="separator:ga110412d5b549f4f41fa1609734b00ac3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaac5ecf1a8b58e3c74a07835f579b82cb"><td class="memItemLeft" align="right" valign="top"><a id="gaac5ecf1a8b58e3c74a07835f579b82cb" name="gaac5ecf1a8b58e3c74a07835f579b82cb"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>qCRC16_X_25</b>(pData,  length)</td></tr>
+<tr class="memdesc:gaac5ecf1a8b58e3c74a07835f579b82cb"><td class="mdescLeft">&#160;</td><td class="mdescRight">CRC-16/X-25 with poly = 0x1021 init = 0xFFFF refIn = true refOut = true xorOut= 0xFFFF. <br /></td></tr>
+<tr class="separator:gaac5ecf1a8b58e3c74a07835f579b82cb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gae904a61d3a1f66711a8dff81679a1b15"><td class="memItemLeft" align="right" valign="top"><a id="gae904a61d3a1f66711a8dff81679a1b15" name="gae904a61d3a1f66711a8dff81679a1b15"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>qCRC16_XMODEM</b>(pData,  length)</td></tr>
+<tr class="memdesc:gae904a61d3a1f66711a8dff81679a1b15"><td class="mdescLeft">&#160;</td><td class="mdescRight">CRC-16/XMODEM with poly = 0x1021 init = 0x0000 refIn = false refOut = false xorOut= 0x0000. <br /></td></tr>
+<tr class="separator:gae904a61d3a1f66711a8dff81679a1b15"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga0a0f26e1d0e497df75cd59ab487c9f88"><td class="memItemLeft" align="right" valign="top"><a id="ga0a0f26e1d0e497df75cd59ab487c9f88" name="ga0a0f26e1d0e497df75cd59ab487c9f88"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>qCRC32</b>(pData,  length)</td></tr>
+<tr class="memdesc:ga0a0f26e1d0e497df75cd59ab487c9f88"><td class="mdescLeft">&#160;</td><td class="mdescRight">CRC-32 with poly = 0x04C11DB7 init = 0xFFFFFFFF refIn = true refOut = true xorOut= 0xFFFFFFFF. <br /></td></tr>
+<tr class="separator:ga0a0f26e1d0e497df75cd59ab487c9f88"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga3968ebeaae79466ddfa20f8f17a635a5"><td class="memItemLeft" align="right" valign="top"><a id="ga3968ebeaae79466ddfa20f8f17a635a5" name="ga3968ebeaae79466ddfa20f8f17a635a5"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>qCRC32_BZIP2</b>(pData,  length)</td></tr>
+<tr class="memdesc:ga3968ebeaae79466ddfa20f8f17a635a5"><td class="mdescLeft">&#160;</td><td class="mdescRight">CRC-32/BZIP2 with poly = 0x04C11DB7 init = 0xFFFFFFFF refIn = false refOut = false xorOut= 0xFFFFFFFF. <br /></td></tr>
+<tr class="separator:ga3968ebeaae79466ddfa20f8f17a635a5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaba87941c296a3c1f2246da5db60fa7cf"><td class="memItemLeft" align="right" valign="top"><a id="gaba87941c296a3c1f2246da5db60fa7cf" name="gaba87941c296a3c1f2246da5db60fa7cf"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>qCRC32_C</b>(pData,  length)</td></tr>
+<tr class="memdesc:gaba87941c296a3c1f2246da5db60fa7cf"><td class="mdescLeft">&#160;</td><td class="mdescRight">CRC-32C with poly = 0x1EDC6F41 init = 0xFFFFFFFF refIn = true refOut = true xorOut= 0xFFFFFFFF. <br /></td></tr>
+<tr class="separator:gaba87941c296a3c1f2246da5db60fa7cf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga645eb3ab0524d44ab1e8e382319116bd"><td class="memItemLeft" align="right" valign="top"><a id="ga645eb3ab0524d44ab1e8e382319116bd" name="ga645eb3ab0524d44ab1e8e382319116bd"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>qCRC32_D</b>(pData,  length)</td></tr>
+<tr class="memdesc:ga645eb3ab0524d44ab1e8e382319116bd"><td class="mdescLeft">&#160;</td><td class="mdescRight">CRC-32D with poly = 0xA833982B init = 0xFFFFFFFF refIn = true refOut = true xorOut= 0xFFFFFFFF. <br /></td></tr>
+<tr class="separator:ga645eb3ab0524d44ab1e8e382319116bd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga5d1574d6625b06e9be181818e5b6575a"><td class="memItemLeft" align="right" valign="top"><a id="ga5d1574d6625b06e9be181818e5b6575a" name="ga5d1574d6625b06e9be181818e5b6575a"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>qCRC32_JAMCRC</b>(pData,  length)</td></tr>
+<tr class="memdesc:ga5d1574d6625b06e9be181818e5b6575a"><td class="mdescLeft">&#160;</td><td class="mdescRight">CRC-32/JAMCRC with poly = 0x04C11DB7 init = 0xFFFFFFFF refIn = true refOut = true xorOut= 0x00000000. <br /></td></tr>
+<tr class="separator:ga5d1574d6625b06e9be181818e5b6575a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga229d5f893e39f2b4188a578662399816"><td class="memItemLeft" align="right" valign="top"><a id="ga229d5f893e39f2b4188a578662399816" name="ga229d5f893e39f2b4188a578662399816"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>qCRC32_MPEG2</b>(pData,  length)</td></tr>
+<tr class="memdesc:ga229d5f893e39f2b4188a578662399816"><td class="mdescLeft">&#160;</td><td class="mdescRight">CRC-32/MPEG2 with poly = 0x04C11DB7 init = 0xFFFFFFFF refIn = false refOut = false xorOut= 0x00000000. <br /></td></tr>
+<tr class="separator:ga229d5f893e39f2b4188a578662399816"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaa734ab765711c633a451302bb9f81d73"><td class="memItemLeft" align="right" valign="top"><a id="gaa734ab765711c633a451302bb9f81d73" name="gaa734ab765711c633a451302bb9f81d73"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>qCRC32_POSIX</b>(pData,  length)</td></tr>
+<tr class="memdesc:gaa734ab765711c633a451302bb9f81d73"><td class="mdescLeft">&#160;</td><td class="mdescRight">CRC-32/POSIX with poly = 0x04C11DB7 init = 0x00000000 refIn = false refOut = false xorOut= 0xFFFFFFFF. <br /></td></tr>
+<tr class="separator:gaa734ab765711c633a451302bb9f81d73"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga52d22401dc7676ac88e5903bf0380191"><td class="memItemLeft" align="right" valign="top"><a id="ga52d22401dc7676ac88e5903bf0380191" name="ga52d22401dc7676ac88e5903bf0380191"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>qCRC32_Q</b>(pData,  length)</td></tr>
+<tr class="memdesc:ga52d22401dc7676ac88e5903bf0380191"><td class="mdescLeft">&#160;</td><td class="mdescRight">CRC-32Q with poly = 0x814141AB init = 0x00000000 refIn = false refOut = false xorOut= 0x00000000. <br /></td></tr>
+<tr class="separator:ga52d22401dc7676ac88e5903bf0380191"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga55be8a650450c3031afe56509afb5da4"><td class="memItemLeft" align="right" valign="top"><a id="ga55be8a650450c3031afe56509afb5da4" name="ga55be8a650450c3031afe56509afb5da4"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>qCRC32_XFER</b>(pData,  length)</td></tr>
+<tr class="memdesc:ga55be8a650450c3031afe56509afb5da4"><td class="mdescLeft">&#160;</td><td class="mdescRight">CRC-32/XFER with poly = 0x000000AF init = 0x00000000 refIn = false refOut = false xorOut= 0x00000000. <br /></td></tr>
+<tr class="separator:ga55be8a650450c3031afe56509afb5da4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="enum-members" name="enum-members"></a>
 Enumerations</h2></td></tr>
 <tr class="memitem:ga2e68685bd767706a72f8dbfed97e1ce3"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qcrc.html#ga2e68685bd767706a72f8dbfed97e1ce3">qCRC_Mode_t</a> { <a class="el" href="group__qcrc.html#gga2e68685bd767706a72f8dbfed97e1ce3a13b3cc6c7926b0cda942796008f6780e">QCRC8</a>
