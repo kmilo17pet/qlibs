@@ -138,7 +138,7 @@
 *  @endcode
 *
 *
-*  @section qssmoother_mor1 Moving Outliar Removal Filter O(n) 
+*  @section qssmoother_mor1 Moving Outlier Removal Filter O(n) 
 *  
 *  This filter is used to detect and remove outliers in the input signal. For 
 *  each sample of input signal, the filter computes the median of the moving 
@@ -169,7 +169,7 @@
 *  @endcode
 *
 *
-*  @section qssmoother_mor2 Moving Outliar Removal Filter O(1) 
+*  @section qssmoother_mor2 Moving Outlier Removal Filter O(1) 
 *  
 *  Similar to the previous filter, but with a constant time complexity of  \f$O(1)\f$ 
 *  by using a \ref qtdl data structure.

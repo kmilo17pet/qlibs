@@ -170,6 +170,7 @@ extern "C" {
 
     /**
     * @brief Computes the control action for given PID controller instance.
+    * @pre Instance must be previously initialized by qPID_Setup()
     * @note The user must ensure that this function is executed in the time
     * specified in @a dt either by using a HW or SW timer, a real time task,
     * or a timing service.
@@ -195,7 +196,9 @@ extern "C" {
 
     /**
     * @brief Set the number of time steps where the auto tuner algorithm will
-    *  modify the controller gains.
+    * modify the controller gains.
+    * @pre Controller must have an qPID_AutoTunning_t object already binded wih
+    * qPID_BindAutoTunning()
     * @param[in] c A pointer to the PID controller instance.
     * @param[in] tEnable The number of time steps. To keep the auto tuner
     * enabled indefinitely pass #QPID_AUTOTUNNING_UNDEFINED as argument.

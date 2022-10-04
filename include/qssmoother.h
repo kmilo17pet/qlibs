@@ -157,9 +157,9 @@ extern "C" {
         float x;  /* state */
         float A;  /* x(n)=A*x(n-1)+u(n),u(n)~N(0,q) */
         float H;  /* z(n)=H*x(n)+w(n),w(n)~N(0,r) */
-        float q;  /* process(predict) noise convariance */
-        float r;  /* measure noise convariance */
-        float p;  /* estimated error convariance */
+        float q;  /* process(predict) noise covariance */
+        float r;  /* measure noise covariance */
+        float p;  /* estimated error covariance */
         float gain;
         /*! @endcond  */
     } qSSmoother_KLMN_t;
@@ -180,6 +180,7 @@ extern "C" {
 
     /**
     * @brief Perform the smooth operation recursively for the input signal @a x.
+    * @pre Instance must be previously initialized by qSSmoother_Setup()
     * @param[in] s A pointer to the signal smoother instance.
     * @param[in] x A sample of the input signal.
     * @return The smoothed output.
@@ -229,8 +230,8 @@ extern "C" {
     * offset of the gaussian center. [ 0 < pos < (wsize-1) ].
     *
     * if ::QSSMOOTHER_TYPE_KLMN, an array with three values. The first element
-    * with the initial estimated error convariance. The second element with the
-    * process(predict) noise convariance. The third element with the measure
+    * with the initial estimated error covariance. The second element with the
+    * process(predict) noise covariance. The third element with the measure
     * noise convariance
     *
     * if ::QSSMOOTHER_TYPE_EXPW, a pointer to a value between [ 0 < lambda < 1 ]

@@ -61,6 +61,7 @@ extern "C" {
 
     /**
     * @brief Drives the LTI system recursively using the input signal provided
+    * @pre Instance must be previously initialized by qLTISys_Setup()
     * @note The user must ensure that this function is executed in the time
     * specified in @a dt either by using a HW or SW timer, a real time task,
     * or a timing service.

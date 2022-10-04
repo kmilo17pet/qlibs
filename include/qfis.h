@@ -303,7 +303,7 @@ extern "C" {
                            const qFIS_ParamValue_t x );
 
     /**
-    * @brief Change the default deFuzzification method of the FIS instance.
+    * @brief Change the default de-Fuzzification method of the FIS instance.
     * @param[in] f A pointer to the Fuzzy Inference System instance.
     * @param[in] m The de-fuzzification method: use one of the following :
     *  ::centroid, ::bisector, ::mom, ::lom, ::som, ::wtaver, ::wtsum
@@ -442,6 +442,8 @@ extern "C" {
     /**
     * @brief Perform the fuzzification operation over the crisp inputs on the
     * requested FIS object
+    * @pre I/Os and fuzzy sets must be previously initialized by qFIS_InputSetup(),
+    * qFIS_OutputSetup(), qFIS_SetMF() and qFIS_Setup() respectively.
     * @param[in] f A pointer to the Fuzzy Inference System instance.
     * @return 1 on success, otherwise return 0.
     */
@@ -449,6 +451,8 @@ extern "C" {
 
     /**
     * @brief Perform the inference process on the requested FIS object
+    * @pre The instance should have already invoked the fuzzification operation 
+    * successfully with qFIS_Fuzzify()
     * @param[in] f A pointer to the Fuzzy Inference System instance.
     * @return 1 on success, otherwise return 0.
     */
@@ -456,6 +460,8 @@ extern "C" {
 
     /**
     * @brief Perform the de-Fuzzification operation to compute the crisp outputs.
+    * @pre The instance should have already invoked the inference process 
+    * successfully with qFIS_Inference()
     * @note By default, this function, this API uses the Centroid method on
     * ::Mamdani type FIS and weight-average on ::Sugeno type FIS. To change
     * the default settings use the qFIS_SetDeFuzzMethod() function.
@@ -466,6 +472,8 @@ extern "C" {
 
     /**
     * @brief Set weights to the rules of the inference system.
+    * @pre I/Os and fuzzy sets must be previously initialized by qFIS_InputSetup(),
+    * qFIS_OutputSetup(), qFIS_SetMF() and qFIS_Setup() respectively.
     * @param[in] f A pointer to the Fuzzy Inference System instance.
     * @param[in] rWeights An array with the values of every rule weight;
     * @return 1 on success, otherwise return 0.

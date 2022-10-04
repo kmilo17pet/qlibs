@@ -17,7 +17,7 @@ extern "C" {
     #include <string.h>
 
     /** @addtogroup  qbitfield A Bit-Field manipulation library
-    * @brief API for the Bit-Field manipulation libraryr
+    * @brief API for the Bit-Field manipulation library
     *  @{
     */
 
