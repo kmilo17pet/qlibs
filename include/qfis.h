@@ -427,7 +427,7 @@ extern "C" {
     * pass NULL as argument.
     * @param[in] cp Points or coefficients of the membership function.
     * @param[in] h Height of the membership function.
-    * @note Heigth parameter @a h does not apply for output membership functions
+    * @note Height parameter @a h does not apply for output membership functions
     * on ::Sugeno and ::Tsukamoto inference systems. [ 0 <= h <= 1]
     * @return 1 on success, otherwise return 0.
     */
