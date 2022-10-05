@@ -103,9 +103,8 @@
 * @section qfis_buildfis Building a Mamdani FIS
 *
 * To carry the FIS building process in a more friendly way, we are going to explain 
-* it with a particular example. 
-*
-* This example goal is to solve the tipping problem, and its described as follows:
+* it with a particular example. This example goal is to solve the tipping problem, 
+* and its described as follows:
 *
 * Given a number from 0 through 10 that represents the quality of service at a 
 * restaurant, where 10 is excellent, and another number from 0 through 10 that 
@@ -117,27 +116,16 @@
 * tip could be as high as 25% and a cheap tip could be 5%.
 *
 * The actual amount of the tip can vary depending on the quality of the service
-* and food. 
-*
-* To solve this problem using fuzzy logic, first capture the essentials of the 
-* desired tipping behavior, leaving aside all the factors that could be arbitrary. 
-*
-* After  analyzing this problem, the tipping behavior is defined using the following
+* and food.  For this problem, tipping behavior is defined using the following 
 * three rules.
 *
 * -# If the service is poor or the food is rancid, then the tip is cheap.
 * -# If the service is good, then the tip is average.
 * -# If the service is excellent or the food is delicious, then the tip is generous.
 *
-* This leads to a system with 2 inputs
-*
-* -# service
-* -# food
-*
-* and 1 output: tip
-*
+* This leads to a system with 2 inputs : "service" and "food" and 1 output: "tip"
 * 
-* \image html https://www.mathworks.com/help/examples/fuzzy/win64/BuildMamdaniSystemsAtTheCommandLineExample_01.png
+* \image html https://user-images.githubusercontent.com/11412210/194061849-2386352d-9b6b-4605-a2d9-6d31b18673a1.png width=80%
 *
 * 5 membership functions for the inputs
 *

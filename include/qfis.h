@@ -1,7 +1,7 @@
 /*!
  * @file qfis.h
  * @author J. Camilo Gomez C.
- * @version 1.4.2
+ * @version 1.4.3
  * @note This file is part of the qLibs distribution.
  * @brief Fuzzy Inference System (FIS) Engine
  **/
@@ -145,6 +145,7 @@ extern "C" {
         qFIS_IO_Base_t b;
         float res, x, y, data[ 4 ];
         void *owner;
+        float *xag, *yag;
         /*! @endcond  */
     } qFIS_Output_t;
 
@@ -231,7 +232,14 @@ extern "C" {
     #define _QFIS_AND               ( INT16_MIN + 2 )
     #define _QFIS_OR                ( INT16_MIN + 3 )
     #define _QFIS_THEN              ( INT16_MIN + 4 )
-    #define _QFIS_RULE_END          ( INT16_MIN + 5 )
+
+    #define _QFIS_IF_STATEMENT      ,
+    #define _QFIS_AND_STATEMENT     +1),_QFIS_AND,
+    #define _QFIS_OR_STATEMENT      +1),_QFIS_OR,
+    #define _QFIS_THEN_STATEMENT    +1),_QFIS_THEN,
+    #define _QFIS_IS_STATEMENT      ,(
+    #define _QFIS_IS_NOT_STATEMENT  ,-(
+    #define _QFIS_END_STATEMENT     +1)
     /*! @endcond  */
 
     /*Rules build keywords*/
@@ -277,19 +285,19 @@ extern "C" {
     #define QFIS_RULES_END          ,_QFIS_RULES_END
 
     /** @brief Rule statement to begin a rule sentence */
-    #define IF                      ,
+    #define IF                      _QFIS_IF_STATEMENT
     /** @brief Rule statement to represent the AND connector */
-    #define AND                     +1),_QFIS_AND,
+    #define AND                     _QFIS_AND_STATEMENT
     /** @brief Rule statement to represent the OR connector */
-    #define OR                      +1),_QFIS_OR,
+    #define OR                      _QFIS_OR_STATEMENT
     /** @brief Rule statement to represent the implication */
-    #define THEN                    +1),_QFIS_THEN,
+    #define THEN                    _QFIS_THEN_STATEMENT
     /** @brief Rule statement to represent a premise*/
-    #define IS                      ,(
+    #define IS                      _QFIS_IS_STATEMENT
     /** @brief Rule statement to represent a negated premise */
-    #define IS_NOT                  ,-(
+    #define IS_NOT                  _QFIS_IS_NOT_STATEMENT
     /** @brief Rule statement to end a rule sentence */
-    #define END                     +1)
+    #define END                     _QFIS_END_STATEMENT
 
     /**
     * @brief Set parameters of the FIS instance.
@@ -372,7 +380,7 @@ extern "C" {
     /**
     * @brief Setup the output with the specified tag and set limits for it
     * @note limits do not apply in ::Sugeno outputs
-    * @param[in] v An array with the FIS outputs inputs as a qFIS_Output_t array.
+    * @param[in] v An array with the FIS outputs as a qFIS_Output_t array.
     * @param[in] t The output tag
     * @param[in] min Minimum allowed value for this output
     * @param[in] max Max allowed value for this output
@@ -438,6 +446,28 @@ extern "C" {
                     qFIS_MF_Fcn_t custom_mf,
                     const float *cp,
                     const float h );
+
+    /**
+    * @brief Set location to store the aggregated region for supplied FIS output
+    * @note This feature only applies to Mamdani systems.
+    * @warning Array size of @a x and @a y should be greater or equal to the 
+    * number of evaluation points of the FIS instance.
+    * @pre The FIS instance and the output should be previously configured 
+    * initialized with qFIS_Setup() and qFIS_OutputSetup() respectively.
+    * @param[in] v An array with the FIS outputs as a qFIS_Output_t array.
+    * @param[in] t The output tag
+    * @param[in] x Array where the x-axis points of the aggregated output will be
+    * stored
+    * @param[in] y Array where the y-axis points of the aggregated output will be
+    * stored
+    * @param[in] n Number of elements in  @a x or @a y.
+    * @return 1 on success, otherwise return 0.
+    */
+    int qFIS_StoreAggregatedRegion( qFIS_Output_t * const o,
+                                    const qFIS_Tag_t t,
+                                    float *x,
+                                    float *y,
+                                    const size_t n );
 
     /**
     * @brief Perform the fuzzification operation over the crisp inputs on the
