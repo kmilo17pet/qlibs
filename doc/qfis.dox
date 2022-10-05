@@ -1,4 +1,5 @@
 /*! @page qfis_desc Fuzzy Inference System Engine
+* @tableofcontents
 * The \ref qfis Fuzzy Inference System engine provides an API for building and 
 * evaluation of type-1 fuzzy logic systems. You can tune membership functions 
 * and rules easily.

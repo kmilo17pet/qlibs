@@ -1,4 +1,5 @@
 /*! @page qpid_desc Closed-loop PID Controller
+* @tableofcontents
 * A PID controller seeks to keep some input variable close to a desired setpoint
 * by adjusting an output. The way in which it does this can be 'tuned' by 
 * adjusting three parameters (Proportinal,Integral,Derivative).
