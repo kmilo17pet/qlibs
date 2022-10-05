@@ -70,6 +70,7 @@ var NAVTREEINDEX0 =
 "group__qfis.html#ga29fd18bed01c4d836c7ebfe73a125c3f":[1,4,5],
 "group__qfis.html#ga2f3f0184eca9e38c98afca2275fbe13d":[1,4,18],
 "group__qfis.html#ga3363ca4d6d3cc0230b2804280591c991":[1,4,9],
+"group__qfis.html#ga3821fe501888d93fcfef52e97246ed09":[1,4,31],
 "group__qfis.html#ga3c84df9b59cb1e2a66db3f57946fac94":[1,4,21],
 "group__qfis.html#ga471e4559534e3fe726a895bc4466e05e":[1,4,22],
 "group__qfis.html#ga4a36da9d08e666f99234ad63ad8edea8":[1,4,17],
@@ -248,6 +249,5 @@ var NAVTREEINDEX0 =
 "qbitfield_desc.html#qbitfield_pattern":[0,5,1,2],
 "qbitfield_desc.html#qbitfield_sbit":[0,5,1,1],
 "qbitfield_desc.html#qbitfield_setup":[0,5,1,0],
-"qbitfield_desc.html#qbitfield_structure":[0,5,0],
-"qbitfield_desc.html#qbitfield_workingwith":[0,5,2]
+"qbitfield_desc.html#qbitfield_structure":[0,5,0]
 };

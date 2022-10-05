@@ -82,5 +82,6 @@ var group__qfis =
     [ "qFIS_SetMF", "group__qfis.html#gad187010550dc9d983c589f6dd9fa971c", null ],
     [ "qFIS_SetParameter", "group__qfis.html#gafd1779c21247298e6ea9a2b5934a8e52", null ],
     [ "qFIS_SetRuleWeights", "group__qfis.html#gad48fca6d1233a283d167012b5fe84c9b", null ],
-    [ "qFIS_Setup", "group__qfis.html#gaae3433474a516fbf41e0e406fe41410b", null ]
+    [ "qFIS_Setup", "group__qfis.html#gaae3433474a516fbf41e0e406fe41410b", null ],
+    [ "qFIS_StoreAggregatedRegion", "group__qfis.html#ga3821fe501888d93fcfef52e97246ed09", null ]
 ];

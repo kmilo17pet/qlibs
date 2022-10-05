@@ -303,6 +303,9 @@ Functions</h2></td></tr>
 <tr class="memitem:gad187010550dc9d983c589f6dd9fa971c"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qfis.html#gad187010550dc9d983c589f6dd9fa971c">qFIS_SetMF</a> (<a class="el" href="structq_f_i_s___m_f__t.html">qFIS_MF_t</a> *const m, const qFIS_Tag_t io, const qFIS_Tag_t mf, const <a class="el" href="group__qfis.html#ga57d388104d07dbb852d11d277d439302">qFIS_MF_Name_t</a> s, qFIS_MF_Fcn_t custom_mf, const float *cp, const float h)</td></tr>
 <tr class="memdesc:gad187010550dc9d983c589f6dd9fa971c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the IO tag and points for the specified membership function.  <a href="group__qfis.html#gad187010550dc9d983c589f6dd9fa971c">More...</a><br /></td></tr>
 <tr class="separator:gad187010550dc9d983c589f6dd9fa971c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga3821fe501888d93fcfef52e97246ed09"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qfis.html#ga3821fe501888d93fcfef52e97246ed09">qFIS_StoreAggregatedRegion</a> (<a class="el" href="structq_f_i_s___output__t.html">qFIS_Output_t</a> *const o, const qFIS_Tag_t t, float *x, float *y, const size_t n)</td></tr>
+<tr class="memdesc:ga3821fe501888d93fcfef52e97246ed09"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set location to store the aggregated region for supplied FIS output.  <a href="group__qfis.html#ga3821fe501888d93fcfef52e97246ed09">More...</a><br /></td></tr>
+<tr class="separator:ga3821fe501888d93fcfef52e97246ed09"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gafeb90b7b41ef3c5b25d12bf6a2adb6e5"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qfis.html#gafeb90b7b41ef3c5b25d12bf6a2adb6e5">qFIS_Fuzzify</a> (<a class="el" href="structq_f_i_s__t.html">qFIS_t</a> *const f)</td></tr>
 <tr class="memdesc:gafeb90b7b41ef3c5b25d12bf6a2adb6e5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Perform the fuzzification operation over the crisp inputs on the requested FIS object.  <a href="group__qfis.html#gafeb90b7b41ef3c5b25d12bf6a2adb6e5">More...</a><br /></td></tr>
 <tr class="separator:gafeb90b7b41ef3c5b25d12bf6a2adb6e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -340,9 +343,9 @@ Functions</h2></td></tr>
 <div class="line">      </div>
 <div class="line">    <a class="code hl_define" href="group__qfis.html#ga80454033f67a79247305ba0a18d98247">QFIS_RULES_END</a></div>
 <div class="line">};</div>
-<div class="ttc" id="agroup__qfis_html_ga07efc356794273b23e2d469e8e4d882e"><div class="ttname"><a href="group__qfis.html#ga07efc356794273b23e2d469e8e4d882e">qFIS_Rules_t</a></div><div class="ttdeci">int16_t qFIS_Rules_t</div><div class="ttdoc">Type definition to instantiate a set of fuzzy rules.</div><div class="ttdef"><b>Definition:</b> qfis.h:189</div></div>
-<div class="ttc" id="agroup__qfis_html_ga80454033f67a79247305ba0a18d98247"><div class="ttname"><a href="group__qfis.html#ga80454033f67a79247305ba0a18d98247">QFIS_RULES_END</a></div><div class="ttdeci">#define QFIS_RULES_END</div><div class="ttdoc">Ends a Fuzzy rule set. The QFIS_RULES_END statement is used to finalize the declaration of a FIS rule...</div><div class="ttdef"><b>Definition:</b> qfis.h:277</div></div>
-<div class="ttc" id="agroup__qfis_html_gadd5af13b8fd13530a1a481cec2ef0637"><div class="ttname"><a href="group__qfis.html#gadd5af13b8fd13530a1a481cec2ef0637">QFIS_RULES_BEGIN</a></div><div class="ttdeci">#define QFIS_RULES_BEGIN</div><div class="ttdoc">Start a Fuzzy rule set. The QFIS_RULES_BEGIN statement is used to declare the starting point of a FIS...</div><div class="ttdef"><b>Definition:</b> qfis.h:257</div></div>
+<div class="ttc" id="agroup__qfis_html_ga07efc356794273b23e2d469e8e4d882e"><div class="ttname"><a href="group__qfis.html#ga07efc356794273b23e2d469e8e4d882e">qFIS_Rules_t</a></div><div class="ttdeci">int16_t qFIS_Rules_t</div><div class="ttdoc">Type definition to instantiate a set of fuzzy rules.</div><div class="ttdef"><b>Definition:</b> qfis.h:190</div></div>
+<div class="ttc" id="agroup__qfis_html_ga80454033f67a79247305ba0a18d98247"><div class="ttname"><a href="group__qfis.html#ga80454033f67a79247305ba0a18d98247">QFIS_RULES_END</a></div><div class="ttdeci">#define QFIS_RULES_END</div><div class="ttdoc">Ends a Fuzzy rule set. The QFIS_RULES_END statement is used to finalize the declaration of a FIS rule...</div><div class="ttdef"><b>Definition:</b> qfis.h:285</div></div>
+<div class="ttc" id="agroup__qfis_html_gadd5af13b8fd13530a1a481cec2ef0637"><div class="ttname"><a href="group__qfis.html#gadd5af13b8fd13530a1a481cec2ef0637">QFIS_RULES_BEGIN</a></div><div class="ttdeci">#define QFIS_RULES_BEGIN</div><div class="ttdoc">Start a Fuzzy rule set. The QFIS_RULES_BEGIN statement is used to declare the starting point of a FIS...</div><div class="ttdef"><b>Definition:</b> qfis.h:265</div></div>
 </div><!-- fragment --> </dd></dl>
 
 </div>
@@ -394,11 +397,11 @@ Functions</h2></td></tr>
 <div class="line">        <a class="code hl_define" href="group__qfis.html#gac138c68a0709c57bc5f7567abc1558eb">IF</a> service <a class="code hl_define" href="group__qfis.html#gad28e1b10e158ae134bb6fa3bb2f34a06">IS</a> service_excellent <a class="code hl_define" href="group__qfis.html#ga3363ca4d6d3cc0230b2804280591c991">OR</a> food <a class="code hl_define" href="group__qfis.html#gad28e1b10e158ae134bb6fa3bb2f34a06">IS</a> food_delicious <a class="code hl_define" href="group__qfis.html#gad9884c43f4f50a5852711a614f2343ac">THEN</a> tip <a class="code hl_define" href="group__qfis.html#gad28e1b10e158ae134bb6fa3bb2f34a06">IS</a> tip_generous <a class="code hl_define" href="group__qfis.html#ga29fd18bed01c4d836c7ebfe73a125c3f">END</a></div>
 <div class="line">    <a class="code hl_define" href="group__qfis.html#ga80454033f67a79247305ba0a18d98247">QFIS_RULES_END</a></div>
 <div class="line">};</div>
-<div class="ttc" id="agroup__qfis_html_ga29fd18bed01c4d836c7ebfe73a125c3f"><div class="ttname"><a href="group__qfis.html#ga29fd18bed01c4d836c7ebfe73a125c3f">END</a></div><div class="ttdeci">#define END</div><div class="ttdoc">Rule statement to end a rule sentence.</div><div class="ttdef"><b>Definition:</b> qfis.h:292</div></div>
-<div class="ttc" id="agroup__qfis_html_ga3363ca4d6d3cc0230b2804280591c991"><div class="ttname"><a href="group__qfis.html#ga3363ca4d6d3cc0230b2804280591c991">OR</a></div><div class="ttdeci">#define OR</div><div class="ttdoc">Rule statement to represent the OR connector.</div><div class="ttdef"><b>Definition:</b> qfis.h:284</div></div>
-<div class="ttc" id="agroup__qfis_html_gac138c68a0709c57bc5f7567abc1558eb"><div class="ttname"><a href="group__qfis.html#gac138c68a0709c57bc5f7567abc1558eb">IF</a></div><div class="ttdeci">#define IF</div><div class="ttdoc">Rule statement to begin a rule sentence.</div><div class="ttdef"><b>Definition:</b> qfis.h:280</div></div>
-<div class="ttc" id="agroup__qfis_html_gad28e1b10e158ae134bb6fa3bb2f34a06"><div class="ttname"><a href="group__qfis.html#gad28e1b10e158ae134bb6fa3bb2f34a06">IS</a></div><div class="ttdeci">#define IS</div><div class="ttdoc">Rule statement to represent a premise.</div><div class="ttdef"><b>Definition:</b> qfis.h:288</div></div>
-<div class="ttc" id="agroup__qfis_html_gad9884c43f4f50a5852711a614f2343ac"><div class="ttname"><a href="group__qfis.html#gad9884c43f4f50a5852711a614f2343ac">THEN</a></div><div class="ttdeci">#define THEN</div><div class="ttdoc">Rule statement to represent the implication.</div><div class="ttdef"><b>Definition:</b> qfis.h:286</div></div>
+<div class="ttc" id="agroup__qfis_html_ga29fd18bed01c4d836c7ebfe73a125c3f"><div class="ttname"><a href="group__qfis.html#ga29fd18bed01c4d836c7ebfe73a125c3f">END</a></div><div class="ttdeci">#define END</div><div class="ttdoc">Rule statement to end a rule sentence.</div><div class="ttdef"><b>Definition:</b> qfis.h:300</div></div>
+<div class="ttc" id="agroup__qfis_html_ga3363ca4d6d3cc0230b2804280591c991"><div class="ttname"><a href="group__qfis.html#ga3363ca4d6d3cc0230b2804280591c991">OR</a></div><div class="ttdeci">#define OR</div><div class="ttdoc">Rule statement to represent the OR connector.</div><div class="ttdef"><b>Definition:</b> qfis.h:292</div></div>
+<div class="ttc" id="agroup__qfis_html_gac138c68a0709c57bc5f7567abc1558eb"><div class="ttname"><a href="group__qfis.html#gac138c68a0709c57bc5f7567abc1558eb">IF</a></div><div class="ttdeci">#define IF</div><div class="ttdoc">Rule statement to begin a rule sentence.</div><div class="ttdef"><b>Definition:</b> qfis.h:288</div></div>
+<div class="ttc" id="agroup__qfis_html_gad28e1b10e158ae134bb6fa3bb2f34a06"><div class="ttname"><a href="group__qfis.html#gad28e1b10e158ae134bb6fa3bb2f34a06">IS</a></div><div class="ttdeci">#define IS</div><div class="ttdoc">Rule statement to represent a premise.</div><div class="ttdef"><b>Definition:</b> qfis.h:296</div></div>
+<div class="ttc" id="agroup__qfis_html_gad9884c43f4f50a5852711a614f2343ac"><div class="ttname"><a href="group__qfis.html#gad9884c43f4f50a5852711a614f2343ac">THEN</a></div><div class="ttdeci">#define THEN</div><div class="ttdoc">Rule statement to represent the implication.</div><div class="ttdef"><b>Definition:</b> qfis.h:294</div></div>
 </div><!-- fragment --> 
 </div>
 </div>
@@ -805,7 +808,7 @@ Functions</h2></td></tr>
 <dl class="section note"><dt>Note</dt><dd>limits do not apply in <a class="el" href="group__qfis.html#gga2f3f0184eca9e38c98afca2275fbe13da6be5a07806b4e50dc6aa3ce912692ad6">Sugeno</a> outputs </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">v</td><td>An array with the FIS outputs inputs as a <a class="el" href="structq_f_i_s___output__t.html" title="A FIS Output object.">qFIS_Output_t</a> array. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">v</td><td>An array with the FIS outputs as a <a class="el" href="structq_f_i_s___output__t.html" title="A FIS Output object.">qFIS_Output_t</a> array. </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">t</td><td>The output tag </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">min</td><td>Minimum allowed value for this output </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">max</td><td>Max allowed value for this output </td></tr>
@@ -1181,6 +1184,68 @@ To set a custom user-defined membership function, set this argument as <a class=
     <tr><td class="paramdir">[in]</td><td class="paramname">r</td><td>The rules set. </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">wi</td><td>An array of size <em>n</em> were the rule strengths will be stored. </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">n</td><td>Number of rules </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>1 on success, otherwise return 0. </dd></dl>
+
+</div>
+</div>
+<a id="ga3821fe501888d93fcfef52e97246ed09" name="ga3821fe501888d93fcfef52e97246ed09"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga3821fe501888d93fcfef52e97246ed09">&#9670;&nbsp;</a></span>qFIS_StoreAggregatedRegion()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int qFIS_StoreAggregatedRegion </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structq_f_i_s___output__t.html">qFIS_Output_t</a> *const&#160;</td>
+          <td class="paramname"><em>o</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const qFIS_Tag_t&#160;</td>
+          <td class="paramname"><em>t</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float *&#160;</td>
+          <td class="paramname"><em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float *&#160;</td>
+          <td class="paramname"><em>y</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const size_t&#160;</td>
+          <td class="paramname"><em>n</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Set location to store the aggregated region for supplied FIS output. </p>
+<dl class="section note"><dt>Note</dt><dd>This feature only applies to Mamdani systems. </dd></dl>
+<dl class="section warning"><dt>Warning</dt><dd>Array size of <em>x</em> and <em>y</em> should be greater or equal to the number of evaluation points of the FIS instance. </dd></dl>
+<dl class="section pre"><dt>Precondition</dt><dd>The FIS instance and the output should be previously configured initialized with <a class="el" href="group__qfis.html#gaae3433474a516fbf41e0e406fe41410b" title="Setup and initialize the FIS instance.">qFIS_Setup()</a> and <a class="el" href="group__qfis.html#gae2f10a746a4e19752a985e6892132a80" title="Setup the output with the specified tag and set limits for it.">qFIS_OutputSetup()</a> respectively. </dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">v</td><td>An array with the FIS outputs as a <a class="el" href="structq_f_i_s___output__t.html" title="A FIS Output object.">qFIS_Output_t</a> array. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">t</td><td>The output tag </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">x</td><td>Array where the x-axis points of the aggregated output will be stored </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">y</td><td>Array where the y-axis points of the aggregated output will be stored </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">n</td><td>Number of elements in <em>x</em> or <em>y</em>. </td></tr>
   </table>
   </dd>
 </dl>
