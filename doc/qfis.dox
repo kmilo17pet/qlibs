@@ -109,7 +109,6 @@
 * Given a number from 0 through 10 that represents the quality of service at a 
 * restaurant, where 10 is excellent, and another number from 0 through 10 that 
 * represents the quality of the food, where 10 is delicious, what should the tip be?
-*
 * Tipping behavior varies depending on local traditions and personal preferences. 
 * In this example, the problem is based on tipping as it is typically practiced 
 * in the United States. An average tip for a meal in the US is 15%. A generous 
@@ -125,7 +124,7 @@
 *
 * This leads to a system with 2 inputs : "service" and "food" and 1 output: "tip"
 * 
-* \image html https://user-images.githubusercontent.com/11412210/194061849-2386352d-9b6b-4605-a2d9-6d31b18673a1.png width=80%
+* \image html https://www.mathworks.com/help/examples/fuzzy/win64/BuildMamdaniSystemsAtTheCommandLineExample_01.png
 *
 * 5 membership functions for the inputs
 *
@@ -135,7 +134,7 @@
 * -# (food)rancid : A trapezoidal membership function with points located on [0 0 1 3]
 * -# (food)delicious : A trapezoidal membership function with points located on [7 9 10 10]
 *
-* \image html https://www.mathworks.com/help/examples/fuzzy/win64/BuildMamdaniSystemsAtTheCommandLineExample_02.png
+* \image html https://user-images.githubusercontent.com/11412210/194061849-2386352d-9b6b-4605-a2d9-6d31b18673a1.png width=80%
 *
 * and 3 membership functions for the output 
 *
