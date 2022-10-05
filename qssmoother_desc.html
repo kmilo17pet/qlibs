@@ -127,6 +127,37 @@ $(document).ready(function(){initNavTree('qssmoother_desc.html',''); initResizab
   <div class="headertitle"><div class="title">Filters for signal smoothing </div></div>
 </div><!--header-->
 <div class="contents">
+<div class="toc"><h3>Table of Contents</h3>
+<ul><li class="level1"><a href="#qssmoother_lpf1">First Order Low Pass Filter</a><ul><li class="level2"><a href="#qssmoother_ex1">Example: setting up a 1st order low-pass filter:</a></li>
+</ul>
+</li>
+<li class="level1"><a href="#qssmoother_lpf2">Second Order Low Pass Filter</a><ul><li class="level2"><a href="#qssmoother_ex2">Example: setting up a 2nd order low-pass filter:</a></li>
+</ul>
+</li>
+<li class="level1"><a href="#qssmoother_mwm1">Moving Window Median Filter O(n)</a><ul><li class="level2"><a href="#qssmoother_ex3">Example: setting up a moving window median filter:</a></li>
+</ul>
+</li>
+<li class="level1"><a href="#qssmoother_mwm2">Moving Window Median Filter O(1)</a><ul><li class="level2"><a href="#qssmoother_ex4">Example: Setting up a moving window median filter:</a></li>
+</ul>
+</li>
+<li class="level1"><a href="#qssmoother_mor1">Moving Outlier Removal Filter O(n)</a><ul><li class="level2"><a href="#qssmoother_ex5">Example: setting up an outlier removal filter:</a></li>
+</ul>
+</li>
+<li class="level1"><a href="#qssmoother_mor2">Moving Outlier Removal Filter O(1)</a><ul><li class="level2"><a href="#qssmoother_ex6">Example: setting up an outlier removal filter:</a></li>
+</ul>
+</li>
+<li class="level1"><a href="#qssmoother_gmwf">Gaussian Filter</a><ul><li class="level2"><a href="#qssmoother_ex7">Example: setting up a gaussian filter:</a></li>
+</ul>
+</li>
+<li class="level1"><a href="#qssmoother_expw">Exponential Weighting filter</a><ul><li class="level2"><a href="#qssmoother_ex8">Example: setting up an exponential weighting filter:</a></li>
+</ul>
+</li>
+<li class="level1"><a href="#qssmoother_klmn">Scalar Kalman filter</a><ul><li class="level2"><a href="#qssmoother_ex9">Example: setting up a scalar kalman filter:</a></li>
+</ul>
+</li>
+<li class="level1"><a href="#qssmoother_ex10">Example of signal smoothing</a></li>
+</ul>
+</div>
 <div class="textblock"><p >Smoothing is how we discover important patterns in a signal while leaving out things that are unimportant (i.e. noise). This smoothing is accomplished through the use of filtering. The goal of smoothing is to produce slow changes in value so that it's easier to see trends in our signal. <em>qLibs</em> provides a collection of smoothing filters to improve our signals, the <a class="el" href="group__qssmoother.html">qSSMoother</a> module.</p>
 <p >Below is the list of filters supported by <a class="el" href="group__qssmoother.html">qSSMoother</a> :</p>
 <h1><a class="anchor" id="qssmoother_lpf1"></a>

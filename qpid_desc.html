@@ -127,6 +127,20 @@ $(document).ready(function(){initNavTree('qpid_desc.html',''); initResizable(); 
   <div class="headertitle"><div class="title">Closed-loop PID Controller </div></div>
 </div><!--header-->
 <div class="contents">
+<div class="toc"><h3>Table of Contents</h3>
+<ul><li class="level1"><a href="#qpid_approach">PID Controller approach</a></li>
+<li class="level1"><a href="#qpid_create">Creating a PID Controller</a></li>
+<li class="level1"><a href="#qfpid_usage">Usign the controller</a><ul><li class="level2"><a href="#qpid_ex1">Example: Speed control using a PID controller:</a></li>
+</ul>
+</li>
+<li class="level1"><a href="#qpid_mrac">Additive MRAC (Model Reference Adaptive Control)</a><ul><li class="level2"><a href="#qpid_ex2">Example: Speed control with PID controller with an additive MRAC:</a></li>
+</ul>
+</li>
+<li class="level1"><a href="#qpid_autotune">Autotunning</a><ul><li class="level2"><a href="#qpid_autotune_usage">Autotunning Usage</a></li>
+</ul>
+</li>
+</ul>
+</div>
 <div class="textblock"><p >A PID controller seeks to keep some input variable close to a desired setpoint by adjusting an output. The way in which it does this can be 'tuned' by adjusting three parameters (Proportinal,Integral,Derivative).</p>
 <p >qLibs provides the <a class="el" href="group__qpid.html">qPID</a> implementation, which, apart from the simplified overview representation of the PID controller, also addresses some practical issues and includes additional features as listed below:</p>
 <ul>
