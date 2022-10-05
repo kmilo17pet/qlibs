@@ -171,8 +171,7 @@ Defuzzification Methods</h1>
 <h1><a class="anchor" id="qfis_buildfis"></a>
 Building a Mamdani FIS</h1>
 <p >To carry the FIS building process in a more friendly way, we are going to explain it with a particular example. This example goal is to solve the tipping problem, and its described as follows:</p>
-<p >Given a number from 0 through 10 that represents the quality of service at a restaurant, where 10 is excellent, and another number from 0 through 10 that represents the quality of the food, where 10 is delicious, what should the tip be?</p>
-<p >Tipping behavior varies depending on local traditions and personal preferences. In this example, the problem is based on tipping as it is typically practiced in the United States. An average tip for a meal in the US is 15%. A generous tip could be as high as 25% and a cheap tip could be 5%.</p>
+<p >Given a number from 0 through 10 that represents the quality of service at a restaurant, where 10 is excellent, and another number from 0 through 10 that represents the quality of the food, where 10 is delicious, what should the tip be? Tipping behavior varies depending on local traditions and personal preferences. In this example, the problem is based on tipping as it is typically practiced in the United States. An average tip for a meal in the US is 15%. A generous tip could be as high as 25% and a cheap tip could be 5%.</p>
 <p >The actual amount of the tip can vary depending on the quality of the service and food. For this problem, tipping behavior is defined using the following three rules.</p>
 <ol type="1">
 <li>If the service is poor or the food is rancid, then the tip is cheap.</li>
@@ -181,7 +180,7 @@ Building a Mamdani FIS</h1>
 </ol>
 <p >This leads to a system with 2 inputs : "service" and "food" and 1 output: "tip"</p>
 <div class="image">
-<img src="https://user-images.githubusercontent.com/11412210/194061849-2386352d-9b6b-4605-a2d9-6d31b18673a1.png" alt="" width="80%"/>
+<img src="https://www.mathworks.com/help/examples/fuzzy/win64/BuildMamdaniSystemsAtTheCommandLineExample_01.png" alt=""/>
 </div>
 <p >5 membership functions for the inputs</p>
 <ol type="1">
@@ -192,7 +191,7 @@ Building a Mamdani FIS</h1>
 <li>(food)delicious : A trapezoidal membership function with points located on [7 9 10 10]</li>
 </ol>
 <div class="image">
-<img src="https://www.mathworks.com/help/examples/fuzzy/win64/BuildMamdaniSystemsAtTheCommandLineExample_02.png" alt=""/>
+<img src="https://user-images.githubusercontent.com/11412210/194061849-2386352d-9b6b-4605-a2d9-6d31b18673a1.png" alt="" width="80%"/>
 </div>
 <p >and 3 membership functions for the output</p>
 <ol type="1">
