@@ -30,16 +30,6 @@ var index =
       ] ],
       [ "Example of signal smoothing", "qssmoother_desc.html#qssmoother_ex10", null ]
     ] ],
-    [ "Fixed-Point Q16.16 library", "qfp16_desc.html", [
-      [ "Datatype limits", "qfp16_desc.html#qfp16_datatype_limits", null ],
-      [ "Fixed-point functions", "qfp16_desc.html#qfp16_functions", [
-        [ "Conversion functions", "qfp16_desc.html#qfp16_conv_functions", null ],
-        [ "Basic arithmetic", "qfp16_desc.html#qfp16_basic_arithmetic", null ],
-        [ "Exponential and transcendental functions", "qfp16_desc.html#qfp16_exp_functions", null ],
-        [ "Trigonometric functions and helpers", "qfp16_desc.html#qfp16_trig_functions", null ]
-      ] ],
-      [ "Example: Solution of the quadratic equation", "qfp16_desc.html#qfp16_example", null ]
-    ] ],
     [ "Fuzzy Inference System Engine", "qfis_desc.html", [
       [ "Mamdani Fuzzy Inference Systems", "qfis_desc.html#qfis_mamdani", null ],
       [ "Sugeno Fuzzy Inference Systems", "qfis_desc.html#qfis_sugeno", null ],
@@ -60,7 +50,8 @@ var index =
         [ "Example: Speed control with PID controller with an additive MRAC:", "qpid_desc.html#qpid_ex2", null ]
       ] ],
       [ "Autotunning", "qpid_desc.html#qpid_autotune", [
-        [ "Autotunning Usage", "qpid_desc.html#qpid_autotune_usage", null ]
+        [ "Autotunning Usage", "qpid_desc.html#qpid_autotune_usage", null ],
+        [ "Example: Speed control with PID controller and autotunning:", "qpid_desc.html#qpid_ex3", null ]
       ] ]
     ] ],
     [ "Recursive LTI Systems Evaluation by transfer functions.", "qlitisys_desc.html", [
@@ -70,6 +61,16 @@ var index =
       [ "Discrete-time transfer functions", "qlitisys_desc.html#qltisys_disc", [
         [ "Example: Evaluate the given discrete transfer function", "qlitisys_desc.html#qltisys_ex2", null ]
       ] ]
+    ] ],
+    [ "Fixed-Point Q16.16 library", "qfp16_desc.html", [
+      [ "Datatype limits", "qfp16_desc.html#qfp16_datatype_limits", null ],
+      [ "Fixed-point functions", "qfp16_desc.html#qfp16_functions", [
+        [ "Conversion functions", "qfp16_desc.html#qfp16_conv_functions", null ],
+        [ "Basic arithmetic", "qfp16_desc.html#qfp16_basic_arithmetic", null ],
+        [ "Exponential and transcendental functions", "qfp16_desc.html#qfp16_exp_functions", null ],
+        [ "Trigonometric functions and helpers", "qfp16_desc.html#qfp16_trig_functions", null ]
+      ] ],
+      [ "Example: Solution of the quadratic equation", "qfp16_desc.html#qfp16_example", null ]
     ] ],
     [ "Bit-Field manipulation library", "qbitfield_desc.html", [
       [ "Structure", "qbitfield_desc.html#qbitfield_structure", null ],
