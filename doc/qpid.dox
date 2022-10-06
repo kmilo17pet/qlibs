@@ -262,6 +262,88 @@
 *
 * After this, you can enable auto tuning via \ref qPID_EnableAutoTunning() 
 * for a defined number of intervals. When the autotune ends, the resulting PID
-* gains will be applied to the bounded controller
+* gains will be applied to the bounded controller.
 * 
+* @subsection qpid_ex3 Example: Speed control with PID controller and autotunning:
+* This example takes avantage of the FreeRTOS task notifications to enable the
+* autotunningm when a rising-edge is detected on a certain digital input. Autotuning
+* is enabled for 5 sec. Note that the setpoint is briefly modified during this 
+* process to stimulate the process. Upon completion, the setpoint is restored to 
+* its original value.
+*
+*  @code{.c}
+*  #include <stdio.h>
+*  #include <stdlib.h>
+*  #include "freertos/FreeRTOS.h"
+*  #include "freertos/task.h"
+*  #include "bsp.h"
+*  #include "qpid.h"
+*  
+*  #define REF_MODEL_ORDER   ( 1 )
+*
+*  const TickType_t dt = 50; //50mS time-step
+*  void xTaskPIDspeedControl( void *arg );
+*  TaskHandle_t pid_task;
+*  
+*  void gpio_Int_Handler( void ) {
+*      BaseType_t xHigherPriorityTaskWoken = pdFALSE;
+*
+*      vTaskNotifyGiveFromISR( pid_task, &xHigherPriorityTaskWoken);
+*      portYIELD_FROM_ISR(xHigherPriorityTaskWoken);
+*      HAL_GPIO_ClearStatusFlag();
+*  }
+*
+*  void xTaskPIDspeedControl( void *arg )
+*  {
+*      qPID_controller_t *controller = (qPID_controller_t *)arg;
+*      float processMeasurement;
+*      float SetPoint = 300.0f; // desired motor speed 300rpm
+*      float tmpSetPoint = 320.0f;
+*      float *p_setpoint  = &SetPoint;  
+*      float refmodel_output = 0.0f;
+*      float controlOutput = 0.0f;
+*      uint32_t notification_autotune_enable;
+*
+*      qLTISys_Setup( &ref_model, num, den, x, 0, REF_MODEL_ORDER+1, (float)dt/1000.0f ) );
+*      qPID_SetMRAC( controller, &refmodel_output, 0.01f );
+*      for ( ;; ) {
+*          notification_autotune_enable = ulTaskNotifyTake( pdTRUE, 0 ); // dont wait
+*          if ( notification_autotune_enable ) {
+*              p_setpoint = &tmpSetPoint; 
+*              qPID_EnableAutoTunning( controller, 100 ); //enable for 5 seconds ( 100*50mS )
+*          }
+*          if ( qPID_AutoTunningComplete( controller) ) {
+*              p_setpoint = &SetPoint;
+*              qPID_EnableAutoTunning( controller, 0uL ); //disable
+*          }
+*          processMeasurement = BSP_ScaletoSpeed ( BSP_AnalogRead( BSP_AI_SPEED_CHANNEL ) );
+*          controlOutput = qPID_Control( controller, *p_setpoint, processMeasurement );
+*          BSP_PWMSet( BSP_AO_SPEED_PWM_CHANNEL, BSP_ScaletoPWM( controlOutput ) ); 
+*          vTaskDelay( dt / portTICK_RATE_MS) ;
+*      }
+*  }
+*  
+*  int main( int argc, char *argv[] ) 
+*  {
+*      qPID_controller_t speedControl;
+*      qPID_AutoTunning_t at;
+*      int ret;
+*      
+*      BSP_SystemInit( );
+*      HAL_GPIO_Enable( GPIO12, GPIO_INPUT );
+*      HAL_GPIO_SetInterruptMode( GPIO12, RISING_EDGE );
+*      HAL_GPIO_EnableInterrupts( );
+*      ret = qPID_Setup( &speedControl, 1, 0.1, 0, (float)dt/1000.0f );
+*      if ( 0 == ret ) {
+*          puts( "ERROR: Cant configure PID controller" );
+*      }
+*      qPID_SetSaturation( &speedControl, 0.0f, 100.0f );
+*      qPID_BindAutoTunning( &speedControl, &at );
+*      // Create the task that handles the speed control at the defined rate
+*      xTaskCreate( xTaskPIDspeedControl, "speedControl", 1024, &speedControl, configMAX_PRIORITIES - 1 , &pid_task );
+*      vTaskStartScheduler();
+*      for( ;; );
+*      return EXIT_SUCCESS;
+*  }
+*  @endcode
 */

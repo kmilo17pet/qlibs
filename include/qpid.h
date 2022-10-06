@@ -186,7 +186,7 @@ extern "C" {
     /**
     * @brief Binds the specified instance to enable the PID controller auto
     * tuning algorithm.
-    * @note To unbind the auto tunning algorithm, pass NULL as argument.
+    * @note To unbind the auto-tunning algorithm, pass NULL as argument.
     * @param[in] c A pointer to the PID controller instance.
     * @param[in] at A pointer to the PID auto tunning instance.
     * @return 1 on success, otherwise return 0.
@@ -199,6 +199,7 @@ extern "C" {
     * modify the controller gains.
     * @pre Controller must have an qPID_AutoTunning_t object already binded wih
     * qPID_BindAutoTunning()
+    * @note To disable auto-tunning pass a 0uL value to the @a tEnable argument.
     * @param[in] c A pointer to the PID controller instance.
     * @param[in] tEnable The number of time steps. To keep the auto tuner
     * enabled indefinitely pass #QPID_AUTOTUNNING_UNDEFINED as argument.

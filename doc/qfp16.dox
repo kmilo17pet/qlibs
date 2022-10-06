@@ -1,4 +1,5 @@
 /*! @page qfp16_desc Fixed-Point Q16.16 library
+* @tableofcontents
 * qLibs provide \ref qfp16 , which is a small fixed point number library 
 * designed for embedded use. 
 * It implements all of your favorite transcendental functions, plus only the 

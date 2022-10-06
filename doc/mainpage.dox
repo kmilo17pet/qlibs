@@ -15,10 +15,6 @@
 *        -# Gaussian filter
 *        -# Exponential weighting filter
 *        -# Scalar Kalman filter
-* - @subpage qfp16_desc "qFP16 : Fixed-Point Q16.16 math library"
-*        -# Basic operations
-*        -# Trigonometric functions
-*        -# Exponential functions
 * - @subpage qfis_desc "qFIS : Fuzzy Inference System Engine"
 *        -# Mamdani
 *        -# Sugeno
@@ -32,6 +28,10 @@
 * - @subpage qlitisys_desc "qLTISys : Recursive LTI systems evaluation by transfer functions"
 *        -# Continuos
 *        -# Discrete
+* - @subpage qfp16_desc "qFP16 : Fixed-Point Q16.16 math library"
+*        -# Basic operations
+*        -# Trigonometric functions
+*        -# Exponential functions
 * - @subpage qbitfield_desc "qBitField : Bit-Field manipulation library"
 * - @subpage qrms_desc "qRMS : Recursive Root Mean Square (RMS) calculation"
 * - @subpage qcrc_desc "qCRC : Generic Cyclic Redundancy Check (CRC) calculator"

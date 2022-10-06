@@ -1,4 +1,5 @@
 /*! @page qbitfield_desc Bit-Field manipulation library
+* @tableofcontents
 * \ref qbitfield bitfield is a library of functions for creating and manipulate
 * bit fields (or bit arrays), i.e. series of zeroes and ones spread across an 
 * array of storage units (unsigned long integers).
