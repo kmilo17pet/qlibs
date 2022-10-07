@@ -120,14 +120,14 @@ extern "C" {
     * For both cases, the supplied array will be updated on every invocation of
     * qLTISys_Excite().
     * @param[in] nb The order of polynomial @a num + 1 (Only for discrete systems).
-    * example: \f$ b_{0} + b_{1}*z^{-1} + b_{2}*z^{-2} + b_{3}*z^{-3} , nb = 4 \f$
+    * example: \f$ b_{0}+b_{1}z^{-1}+b_{2}z^{-2}+b_{3}z^{-3}, nb = 4 \f$
     * @note If the system is continuous, pass 0 as argument.
     * @param[in] na The order of polynomial @a den. (if system is discrete). For
     * continuous system the number of elements of @a num and @a den.
     * 
-    * example 1: \f$ a_{0} + a_{1}*z^{-1} + a_{2}*z^{-2} + a_{3}*z^{-3} , na = 3 \f$
+    * example 1: \f$ a_{0}+a_{1}z^{-1}+a_{2}z^{-2}+a_{3}z^{-3}, na = 3 \f$
     * 
-    * example 2: \f$ \frac{ b_{0}*s^{2} + b_{1}*s + b_{2} }{ a_{0}*s^{2} + a_{1}*s + a_{2} }, na = 3
+    * example 2: \f$ \frac{ b_{0}s^{2}+b_{1}s+b_{2} }{ a_{0}s^{2} + a_{1}s + a_{2} }, na = 3 \f$
     * @note For continuous systems, size of @a num and @a den should be equal.
     * @param[in] dt The time-step of the continuos system. For discrete systems
     * pass #QLTISYS_DISCRETE as argument
