@@ -89,6 +89,7 @@ extern "C" {
     /**
     * @brief Insert a new sample to the TDL removing the oldest sample
     * @param[in] q A pointer to the TDL instance.
+    * @param[in] sample The new sample to insert.
     * @return none
     */
     void qTDL_InsertSample( qTDL_t * const q,

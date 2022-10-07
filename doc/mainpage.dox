@@ -50,12 +50,12 @@
 
 /**
 *  @defgroup qpid qPID
-*  This is the second group
+*  For a brief description of this module, please read \ref qpid_desc
 */
 
 /**
 *  @defgroup qltisys qLTISys
-*  This is the second group
+*  For a brief description of this module, please read \ref qltisys_desc
 */
 
 /**
@@ -65,15 +65,15 @@
 
 /**
 *  @defgroup qbitfield qBitField
-*  This is the second group
+*  For a brief description of this module, please read \ref qbitfield_desc
 */
 
 /**
 *  @defgroup qrms qRMS
-*  This is the second group
+*  For a brief description of this module, please read \ref qrms_desc
 */
 
 /**
 *  @defgroup qcrc qCRC
-*  This is the second group
+*  For a brief description of this module, please read \ref qcrc_desc
 */

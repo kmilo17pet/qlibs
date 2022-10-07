@@ -454,7 +454,7 @@ extern "C" {
     * number of evaluation points of the FIS instance.
     * @pre The FIS instance and the output should be previously configured 
     * initialized with qFIS_Setup() and qFIS_OutputSetup() respectively.
-    * @param[in] v An array with the FIS outputs as a qFIS_Output_t array.
+    * @param[in] o An array of type qFIS_Output_t with the FIS outputs.
     * @param[in] t The output tag
     * @param[in] x Array where the x-axis points of the aggregated output will be
     * stored
