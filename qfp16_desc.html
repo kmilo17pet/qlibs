@@ -139,12 +139,12 @@ $(document).ready(function(){initNavTree('qfp16_desc.html',''); initResizable();
 </ul>
 </div>
 <div class="textblock"><p >qLibs provide <a class="el" href="group__qfp16.html">qFP16</a> , which is a small fixed point number library designed for embedded use. It implements all of your favorite transcendental functions, plus only the best basic operators, selected for your calculating pleasure.</p>
-<p >The format is a signed Q16.16, which is good enough for most purposes.</p>
+<p >The format is a signed <code>Q16.16</code>, which is good enough for most purposes.</p>
 <h1><a class="anchor" id="qfp16_datatype_limits"></a>
 Datatype limits</h1>
-<p >The maximum representable value is 32767.999 985. The minimum value is -32768.0.</p>
-<p >The minimum value is also used to represent fp16.overflow for overflow detection, so for some operations it cannot be determined whether it overflowed or the result was the smallest possible value. In practice, this does not matter much.</p>
-<p >The smallest unit (machine precision) of the datatype is 1/65536 = 0.000 015.</p>
+<p >The maximum representable value is <code>32767.999</code> 985. The minimum value is <code>-32768.0</code>.</p>
+<p >The minimum value is also used to represent <code>fp16.overflow</code> for overflow detection, so for some operations it cannot be determined whether it overflowed or the result was the smallest possible value. In practice, this does not matter much.</p>
+<p >The smallest unit (machine precision) of the datatype is <code>1/65536=0.000015</code>.</p>
 <h1><a class="anchor" id="qfp16_functions"></a>
 Fixed-point functions</h1>
 <p >All the provided functions operate on 32-bit numbers, <a class="el" href="group__qfp16.html#ga1c178e35bab36bb263045df6d93a26e1">qFP16_t</a>, which have 16 bit integer part and 16-bit fractional part.</p>
@@ -152,7 +152,7 @@ Fixed-point functions</h1>
 Conversion functions</h2>
 <p >Conversion from integers and floating-point values. These conversions retain the numeric value and perform rounding where necessary.</p>
 <ul>
-<li><a class="el" href="group__qfp16.html#ga8fa3922fde6d48e1bcd3c8719a30c4e6">qFP16_IntToFP()</a> Simply multiplies a by qFP16.one = 65536</li>
+<li><a class="el" href="group__qfp16.html#ga8fa3922fde6d48e1bcd3c8719a30c4e6">qFP16_IntToFP()</a> Simply multiplies a by <code>qFP16.one=65536</code> </li>
 <li><a class="el" href="group__qfp16.html#ga4cea2d97fd0599ea67ea75903ab1540c">qFP16_FPToInt()</a> Divides by <a class="el" href="group__qfp16.html#ga1c178e35bab36bb263045df6d93a26e1">qFP16_t</a> and rounds to nearest integer.</li>
 <li><a class="el" href="group__qfp16.html#ga81eb8aafcbe9660fbac4855cacf6cf71">qFP16_FloatToFP()</a> Multiplies by <a class="el" href="group__qfp16.html#ga1c178e35bab36bb263045df6d93a26e1">qFP16_t</a> and rounds to nearest value.</li>
 <li><a class="el" href="group__qfp16.html#gaf666a6462e9e975c10d517bb925886c8">qFP16_FPToFloat()</a> Divides by qFP16.one. Rounding is according to the current floating point mode</li>
@@ -163,7 +163,7 @@ Conversion functions</h2>
 </ul>
 <h2><a class="anchor" id="qfp16_basic_arithmetic"></a>
 Basic arithmetic</h2>
-<p >These functions perform rounding and detect overflows. When overflow is detected, they return qfp16.overflow as a marker value.</p>
+<p >These functions perform rounding and detect overflows. When overflow is detected, they return <code>qfp16.overflow</code> as a marker value.</p>
 <ul>
 <li><a class="el" href="group__qfp16.html#ga608fdcec4665120752be09aedac1d0ac">qFP16_Add()</a> Addition</li>
 <li><a class="el" href="group__qfp16.html#gaca9307b9e27758648ccf96f3d355a1aa">qFP16_Sub()</a> Subtraction</li>

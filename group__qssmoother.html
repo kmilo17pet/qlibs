@@ -404,8 +404,8 @@ Functions</h2></td></tr>
 </dl>
 <p>if <a class="el" href="group__qssmoother.html#gga8953f71916f57517edbe8cab4d7ee639ad67f57dd9afcfa9a0a6803aa92a616ea">QSSMOOTHER_TYPE_LPF1</a> a pointer to a value between [ 0 &lt; alpha &lt; 1 ]</p>
 <p >if <a class="el" href="group__qssmoother.html#gga8953f71916f57517edbe8cab4d7ee639a3247b5a5622c33af6599c5dfef9f1796">QSSMOOTHER_TYPE_LPF2</a> a pointer to a value between [ 0 &lt; alpha &lt; 1 ]</p>
-<p >if <a class="el" href="group__qssmoother.html#gga8953f71916f57517edbe8cab4d7ee639ac2598cbedb9a3b3b663f3f887be4a342">QSSMOOTHER_TYPE_MWM1</a> can be ignored. Pass NULL as argument.</p>
-<p >if <a class="el" href="group__qssmoother.html#gga8953f71916f57517edbe8cab4d7ee639a2663b7f579b7bf0e1706bf8b441b1500">QSSMOOTHER_TYPE_MWM2</a> can be ignored. Pass NULL as argument.</p>
+<p >if <a class="el" href="group__qssmoother.html#gga8953f71916f57517edbe8cab4d7ee639ac2598cbedb9a3b3b663f3f887be4a342">QSSMOOTHER_TYPE_MWM1</a> can be ignored. Pass <code>NULL</code> as argument.</p>
+<p >if <a class="el" href="group__qssmoother.html#gga8953f71916f57517edbe8cab4d7ee639a2663b7f579b7bf0e1706bf8b441b1500">QSSMOOTHER_TYPE_MWM2</a> can be ignored. Pass <code>NULL</code> as argument.</p>
 <p >if <a class="el" href="group__qssmoother.html#gga8953f71916f57517edbe8cab4d7ee639ad4c3e7ec5b54fc155c6a84381f8e29f8">QSSMOOTHER_TYPE_MOR1</a> a pointer to a value between [ 0 &lt; alpha &lt; 1 ]</p>
 <p >if <a class="el" href="group__qssmoother.html#gga8953f71916f57517edbe8cab4d7ee639a5679bf69e01eed679eec13883af3d117">QSSMOOTHER_TYPE_MOR2</a> a pointer to a value between [ 0 &lt; alpha &lt; 1 ]</p>
 <p >if <a class="el" href="group__qssmoother.html#gga8953f71916f57517edbe8cab4d7ee639a0f072f41aec7b912c7e49bf897a0d87b">QSSMOOTHER_TYPE_GMWF</a>, an array with two values. The first element with the Standard deviation [ sigma &gt; 0 ]. The second element with the offset of the gaussian center. [ 0 &lt; pos &lt; (wsize-1) ].</p>
@@ -417,15 +417,15 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<p>if <a class="el" href="group__qssmoother.html#gga8953f71916f57517edbe8cab4d7ee639ad67f57dd9afcfa9a0a6803aa92a616ea">QSSMOOTHER_TYPE_LPF1</a>, can be ignored. Pass NULL as argument.</p>
-<p >if <a class="el" href="group__qssmoother.html#gga8953f71916f57517edbe8cab4d7ee639a3247b5a5622c33af6599c5dfef9f1796">QSSMOOTHER_TYPE_LPF2</a>, can be ignored. Pass NULL as argument.</p>
+<p>if <a class="el" href="group__qssmoother.html#gga8953f71916f57517edbe8cab4d7ee639ad67f57dd9afcfa9a0a6803aa92a616ea">QSSMOOTHER_TYPE_LPF1</a>, can be ignored. Pass <code>NULL</code> as argument.</p>
+<p >if <a class="el" href="group__qssmoother.html#gga8953f71916f57517edbe8cab4d7ee639a3247b5a5622c33af6599c5dfef9f1796">QSSMOOTHER_TYPE_LPF2</a>, can be ignored. Pass <code>NULL</code> as argument.</p>
 <p >if <a class="el" href="group__qssmoother.html#gga8953f71916f57517edbe8cab4d7ee639ac2598cbedb9a3b3b663f3f887be4a342">QSSMOOTHER_TYPE_MWM1</a>, An array of <em>wsize</em> elements.</p>
 <p >if <a class="el" href="group__qssmoother.html#gga8953f71916f57517edbe8cab4d7ee639a2663b7f579b7bf0e1706bf8b441b1500">QSSMOOTHER_TYPE_MWM2</a>, An array of <em>wsize</em> elements.</p>
 <p >if <a class="el" href="group__qssmoother.html#gga8953f71916f57517edbe8cab4d7ee639ad4c3e7ec5b54fc155c6a84381f8e29f8">QSSMOOTHER_TYPE_MOR1</a>, An array of <em>wsize</em> elements.</p>
 <p >if <a class="el" href="group__qssmoother.html#gga8953f71916f57517edbe8cab4d7ee639a5679bf69e01eed679eec13883af3d117">QSSMOOTHER_TYPE_MOR2</a>, An array of <em>wsize</em> elements.</p>
 <p >if <a class="el" href="group__qssmoother.html#gga8953f71916f57517edbe8cab4d7ee639a0f072f41aec7b912c7e49bf897a0d87b">QSSMOOTHER_TYPE_GMWF</a>, An array of 2x <em>wsize</em> to hold both, the window and the gaussian kernel coefficients.</p>
-<p >if <a class="el" href="group__qssmoother.html#gga8953f71916f57517edbe8cab4d7ee639ab3aa23be42e760981dfeb0dcce302b11">QSSMOOTHER_TYPE_KLMN</a>, can be ignored. Pass NULL as argument.</p>
-<p >if <a class="el" href="group__qssmoother.html#gga8953f71916f57517edbe8cab4d7ee639a3113bceea7e0aed76fd9885b0bdaf135">QSSMOOTHER_TYPE_EXPW</a>, can be ignored. Pass NULL as argument.</p>
+<p >if <a class="el" href="group__qssmoother.html#gga8953f71916f57517edbe8cab4d7ee639ab3aa23be42e760981dfeb0dcce302b11">QSSMOOTHER_TYPE_KLMN</a>, can be ignored. Pass <code>NULL</code> as argument.</p>
+<p >if <a class="el" href="group__qssmoother.html#gga8953f71916f57517edbe8cab4d7ee639a3113bceea7e0aed76fd9885b0bdaf135">QSSMOOTHER_TYPE_EXPW</a>, can be ignored. Pass <code>NULL</code> as argument.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">wsize</td><td>If used, the number of elements in <em>window</em>, otherwise pass 0uL as argument. </td></tr>

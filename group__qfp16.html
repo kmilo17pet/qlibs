@@ -407,7 +407,7 @@ const struct _qFP16_const_s&#160;</td><td class="memItemRight" valign="bottom"><
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>This function returns the addition operation x+y. QFP16_OVERFLOW when an operation overflow is detected. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>This function returns the addition operation x+y. <code>qFP16.overflow</code> when an operation overflow is detected. </dd></dl>
 
 </div>
 </div>
@@ -526,7 +526,7 @@ const struct _qFP16_const_s&#160;</td><td class="memItemRight" valign="bottom"><
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>On success, the function returns the converted floating point number as a fixed-point value. If no valid conversion could be performed, the function returns zero (0.0) or QFP16_OVERFLOW. If the converted value would be out of the range of representable values by a fixed-point Q16.16, the function returns QFP16_OVERFLOW. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>On success, the function returns the converted floating point number as a fixed-point value. If no valid conversion could be performed, the function returns zero (0.0) or <code>qFP16.overflow</code>. If the converted value would be out of the range of representable values by a fixed-point Q16.16, the function returns <code>qFP16.overflow</code> . </dd></dl>
 
 </div>
 </div>
@@ -607,7 +607,7 @@ const struct _qFP16_const_s&#160;</td><td class="memItemRight" valign="bottom"><
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>This function returns hyperbolic cosine of <em>x</em>. If overflow detected returns QFP16_OVERFLOW. If the function saturates, returns QFP16_EXP_MAX or QFP16_EXP_MIN. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>This function returns hyperbolic cosine of <em>x</em>. If overflow detected returns <code>qFP16.overflow</code>. If the function saturates, returns QFP16_EXP_MAX or QFP16_EXP_MIN. </dd></dl>
 
 </div>
 </div>
@@ -672,7 +672,7 @@ const struct _qFP16_const_s&#160;</td><td class="memItemRight" valign="bottom"><
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>This function returns the product operation x/y. QFP16_OVERFLOW when an operation overflow is detected. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>This function returns the product operation x/y. <code>qFP16.overflow</code> when an operation overflow is detected. </dd></dl>
 
 </div>
 </div>
@@ -726,7 +726,7 @@ const struct _qFP16_const_s&#160;</td><td class="memItemRight" valign="bottom"><
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>This function returns the exponential value of x. QFP16_OVERFLOW when an operation overflow is detected. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>This function returns the exponential value of x. <code>qFP16.overflow</code> when an operation overflow is detected. </dd></dl>
 
 </div>
 </div>
@@ -972,7 +972,7 @@ const struct _qFP16_const_s&#160;</td><td class="memItemRight" valign="bottom"><
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>This function returns the result of raising <em>x</em> to the power <em>y</em>. QFP16_OVERFLOW when an operation overflow is detected. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>This function returns the result of raising <em>x</em> to the power <em>y</em>. <code>qFP16.overflow</code> when an operation overflow is detected. </dd></dl>
 
 </div>
 </div>
@@ -999,7 +999,7 @@ const struct _qFP16_const_s&#160;</td><td class="memItemRight" valign="bottom"><
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>This function returns natural logarithm of <em>x</em>. For negative values returns QFP16_OVERFLOW </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>This function returns natural logarithm of <em>x</em>. For negative values returns<code>qFP16.overflow</code> </dd></dl>
 
 </div>
 </div>
@@ -1026,7 +1026,7 @@ const struct _qFP16_const_s&#160;</td><td class="memItemRight" valign="bottom"><
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>This function returns log base 2 of <em>x</em>. For negative values returns QFP16_OVERFLOW </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>This function returns log base 2 of <em>x</em>. For negative values returns <code>qFP16.overflow</code> </dd></dl>
 
 </div>
 </div>
@@ -1102,7 +1102,7 @@ const struct _qFP16_const_s&#160;</td><td class="memItemRight" valign="bottom"><
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>This function returns the product operation x*y. QFP16_OVERFLOW when an operation overflow is detected. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>This function returns the product operation x*y. <code>qFP16.overflow</code> when an operation overflow is detected. </dd></dl>
 
 </div>
 </div>
@@ -1147,7 +1147,7 @@ const struct _qFP16_const_s&#160;</td><td class="memItemRight" valign="bottom"><
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>This function returns the polynomial evaluation p(x). If overflow detected returns QFP16_OVERFLOW. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>This function returns the polynomial evaluation p(x). If overflow detected returns <code>qFP16.overflow</code>. </dd></dl>
 
 </div>
 </div>
@@ -1185,7 +1185,7 @@ const struct _qFP16_const_s&#160;</td><td class="memItemRight" valign="bottom"><
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>This function returns the result of raising <em>x</em> to the power <em>y</em>. QFP16_OVERFLOW when an operation overflow is detected. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>This function returns the result of raising <em>x</em> to the power <em>y</em>. <code>qFP16.overflow</code> when an operation overflow is detected. </dd></dl>
 
 </div>
 </div>
@@ -1262,7 +1262,7 @@ const struct _qFP16_const_s&#160;</td><td class="memItemRight" valign="bottom"><
 <p>Select the provided setting instance to perform fixed-point operations. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">instance</td><td>A pointer to the fixed-point settings instance. Pass NULL to use the default settings. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">instance</td><td>A pointer to the fixed-point settings instance. Pass <code>NULL</code> to use the default settings. </td></tr>
   </table>
   </dd>
 </dl>
@@ -1379,7 +1379,7 @@ const struct _qFP16_const_s&#160;</td><td class="memItemRight" valign="bottom"><
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>This function returns hyperbolic sine of <em>x</em>. If overflow detected returns QFP16_OVERFLOW. If the function saturates, returns QFP16_EXP_MAX or QFP16_EXP_MIN. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>This function returns hyperbolic sine of <em>x</em>. If overflow detected returns <code>qFP16.overflow</code>. If the function saturates, returns QFP16_EXP_MAX or QFP16_EXP_MIN. </dd></dl>
 
 </div>
 </div>
@@ -1406,7 +1406,7 @@ const struct _qFP16_const_s&#160;</td><td class="memItemRight" valign="bottom"><
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>This function returns the square root of <em>x</em>. For negative numbers, returns QFP16_OVERFLOW. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>This function returns the square root of <em>x</em>. For negative numbers, returns <code>qFP16.overflow</code> . </dd></dl>
 
 </div>
 </div>
@@ -1444,7 +1444,7 @@ const struct _qFP16_const_s&#160;</td><td class="memItemRight" valign="bottom"><
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>This function returns the subtraction operation x-y. QFP16_OVERFLOW when an operation overflow is detected. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>This function returns the subtraction operation x-y. <code>qFP16.overflow</code> when an operation overflow is detected. </dd></dl>
 
 </div>
 </div>
@@ -1498,7 +1498,7 @@ const struct _qFP16_const_s&#160;</td><td class="memItemRight" valign="bottom"><
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>This function returns hyperbolic tangent of <em>x</em>. If overflow detected returns QFP16_OVERFLOW. If the function saturates, returns QFP16_EXP_MAX or QFP16_EXP_MIN. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>This function returns hyperbolic tangent of <em>x</em>. If overflow detected returns <code>qFP16.overflow</code>. If the function saturates, returns QFP16_EXP_MAX or QFP16_EXP_MIN. </dd></dl>
 
 </div>
 </div>

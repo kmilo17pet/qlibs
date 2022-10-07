@@ -168,7 +168,7 @@ Comparision among supported Inference Systems</h1>
 Defuzzification Methods</h1>
 <p >qFIS supports five different methods, as listed in the <a class="el" href="group__qfis.html#gaedbcaf3cb5c4b57eb1f44f4dea0f1a72">qFIS_DeFuzz_Method_t</a> type for computing a single crisp output value for such a fuzzy set.</p>
 <ol type="1">
-<li>Centroid : this method applies only to Mamdani systems and returns the center of gravity of the fuzzy set along the x-axis. If you think of the area as a plate with uniform thickness and density, the centroid is the point along the x-axis about which the fuzzy set would balance. The centroid is computed using the following formula, where \(\mu(x)\) is the membership value for point \(x_i\) in the universe of discourse.</li>
+<li>Centroid (default): this method applies only to Mamdani systems and returns the center of gravity of the fuzzy set along the x-axis. If you think of the area as a plate with uniform thickness and density, the centroid is the point along the x-axis about which the fuzzy set would balance. The centroid is computed using the following formula, where \(\mu(x)\) is the membership value for point \(x_i\) in the universe of discourse.</li>
 </ol>
 <p >\(\text{centroid}= \frac{ \sum_{i=1}\mu(x_{i})x_{i} }{ \sum_{i=1}\mu(x_{i})} \)</p>
 <ol type="1">
@@ -176,9 +176,10 @@ Defuzzification Methods</h1>
 <li>MOM : Middle of Maximum. Only for Mamdani systems.</li>
 <li>SOM : Smallest of Maximum. Only for Mamdani systems.</li>
 <li>LOM : Largest of Maximum. Only for Mamdani systems.</li>
-<li>WtAver: Weighted average of all rule outputs. this method applies only for Sugeno and Tsukamoto systems.</li>
+<li>WtAver (default): Weighted average of all rule outputs. this method applies only for Sugeno and Tsukamoto systems.</li>
 <li>WtSum: Weighted sum of all rule outputs. This method applies only for Sugeno and Tsukamoto systems.</li>
 </ol>
+<dl class="section note"><dt>Note</dt><dd>The defuzzification method is selected by default when setting up the FIS instance with <a class="el" href="group__qfis.html#gaae3433474a516fbf41e0e406fe41410b" title="Setup and initialize the FIS instance.">qFIS_Setup()</a>. However, the user can later change the default method using the <a class="el" href="group__qfis.html#ga77c1447bb727d37d75a20d8d8f9f85fb" title="Change the default de-Fuzzification method of the FIS instance.">qFIS_SetDeFuzzMethod()</a> function.</dd></dl>
 <h1><a class="anchor" id="qfis_buildfis"></a>
 Building a Mamdani FIS</h1>
 <p >To carry the FIS building process in a more friendly way, we are going to explain it with a particular example. This example goal is to solve the tipping problem, and its described as follows:</p>

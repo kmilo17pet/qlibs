@@ -265,7 +265,7 @@ Example: Speed control with PID controller with an additive MRAC:</h2>
 <div class="line">    <span class="keywordtype">float</span> refmodel_output = 0.0f;</div>
 <div class="line">    <span class="keywordtype">float</span> controlOutput = 0.0f;</div>
 <div class="line"> </div>
-<div class="line">    <a class="code hl_function" href="group__qltisys.html#ga62e08fd5775f0d1b9f0347ee69e5833e">qLTISys_Setup</a>( &amp;ref_model, num, den, x, 0, REF_MODEL_ORDER+1, (<span class="keywordtype">float</span>)dt/1000.0f ) );</div>
+<div class="line">    qLTISys_Setup( &amp;ref_model, num, den, x, 0, REF_MODEL_ORDER+1, (<span class="keywordtype">float</span>)dt/1000.0f ) );</div>
 <div class="line">    <a class="code hl_function" href="group__qpid.html#gace4705569152c216c12b482267eb834f">qPID_SetMRAC</a>( controller, &amp;refmodel_output, 0.01f );</div>
 <div class="line">    <span class="keywordflow">for</span> ( ;; ) {</div>
 <div class="line">        refmodel_output = <a class="code hl_function" href="group__qltisys.html#ga036826af288f92730a8ab5edb66647a9">qLTISys_Excite</a>( &amp;ref_model, controlOutput );</div>
@@ -294,7 +294,6 @@ Example: Speed control with PID controller with an additive MRAC:</h2>
 <div class="line">    <span class="keywordflow">return</span> EXIT_SUCCESS;</div>
 <div class="line">}</div>
 <div class="ttc" id="agroup__qltisys_html_ga036826af288f92730a8ab5edb66647a9"><div class="ttname"><a href="group__qltisys.html#ga036826af288f92730a8ab5edb66647a9">qLTISys_Excite</a></div><div class="ttdeci">float qLTISys_Excite(qLTISys_t *const sys, float u)</div><div class="ttdoc">Drives the LTI system recursively using the input signal provided.</div><div class="ttdef"><b>Definition:</b> qltisys.c:60</div></div>
-<div class="ttc" id="agroup__qltisys_html_ga62e08fd5775f0d1b9f0347ee69e5833e"><div class="ttname"><a href="group__qltisys.html#ga62e08fd5775f0d1b9f0347ee69e5833e">qLTISys_Setup</a></div><div class="ttdeci">int qLTISys_Setup(qLTISys_t *const sys, float *num, float *den, void *x, const size_t nb, const size_t na, const float dt)</div><div class="ttdoc">Setup and initialize an instance of a LTI system.</div><div class="ttdef"><b>Definition:</b> qltisys.c:128</div></div>
 <div class="ttc" id="agroup__qpid_html_gace4705569152c216c12b482267eb834f"><div class="ttname"><a href="group__qpid.html#gace4705569152c216c12b482267eb834f">qPID_SetMRAC</a></div><div class="ttdeci">int qPID_SetMRAC(qPID_controller_t *const c, const float *modelRef, const float gamma)</div><div class="ttdoc">Enable the additive MRAC(Model Reference Adaptive Control) feature.</div><div class="ttdef"><b>Definition:</b> qpid.c:154</div></div>
 <div class="ttc" id="astructq_l_t_i_sys__t_html"><div class="ttname"><a href="structq_l_t_i_sys__t.html">qLTISys_t</a></div><div class="ttdoc">A LTI system object.</div><div class="ttdef"><b>Definition:</b> qltisys.h:49</div></div>
 </div><!-- fragment --><h1><a class="anchor" id="qpid_autotune"></a>
@@ -352,7 +351,7 @@ Example: Speed control with PID controller and autotunning:</h2>
 <div class="line">    <span class="keywordtype">float</span> controlOutput = 0.0f;</div>
 <div class="line">    uint32_t notification_autotune_enable;</div>
 <div class="line"> </div>
-<div class="line">    <a class="code hl_function" href="group__qltisys.html#ga62e08fd5775f0d1b9f0347ee69e5833e">qLTISys_Setup</a>( &amp;ref_model, num, den, x, 0, REF_MODEL_ORDER+1, (<span class="keywordtype">float</span>)dt/1000.0f ) );</div>
+<div class="line">    qLTISys_Setup( &amp;ref_model, num, den, x, 0, REF_MODEL_ORDER+1, (<span class="keywordtype">float</span>)dt/1000.0f ) );</div>
 <div class="line">    <a class="code hl_function" href="group__qpid.html#gace4705569152c216c12b482267eb834f">qPID_SetMRAC</a>( controller, &amp;refmodel_output, 0.01f );</div>
 <div class="line">    <span class="keywordflow">for</span> ( ;; ) {</div>
 <div class="line">        notification_autotune_enable = ulTaskNotifyTake( pdTRUE, 0 ); <span class="comment">// dont wait</span></div>
