@@ -1,5 +1,8 @@
 var NAVTREEINDEX1 =
 {
+"qbitfield_desc.html#qbitfield_workingwith":[0,5,2],
+"qcrc_desc.html":[0,7],
+"qfis_desc.html":[0,1],
 "qfis_desc.html#qfis_buildfis":[0,1,5],
 "qfis_desc.html#qfis_codegen":[0,1,7],
 "qfis_desc.html#qfis_comp":[0,1,3],

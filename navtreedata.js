@@ -37,7 +37,7 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "annotated.html",
-"qfis_desc.html#qfis_buildfis"
+"qbitfield_desc.html#qbitfield_workingwith"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';
