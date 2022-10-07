@@ -186,7 +186,7 @@ extern "C" {
     /**
     * @brief Binds the specified instance to enable the PID controller auto
     * tuning algorithm.
-    * @note To unbind the auto-tunning algorithm, pass NULL as argument.
+    * @note To unbind the auto-tunning algorithm, pass @c NULL as argument.
     * @param[in] c A pointer to the PID controller instance.
     * @param[in] at A pointer to the PID auto tunning instance.
     * @return 1 on success, otherwise return 0.
@@ -233,11 +233,11 @@ extern "C" {
     * @param[in] c A pointer to the PID controller instance.
     * @param[in] im The desired integration method. Use one of the following:
     *
-    * qNumA_IntegralRe : Integrate using the Rectangular rule.
+    * @c qNumA_IntegralRe : Integrate using the Rectangular rule.
     *
-    * qNumA_IntegralTr : (default) Integrate using the Trapezoidal rule.
+    * @c qNumA_IntegralTr : (default) Integrate using the Trapezoidal rule.
     *
-    * qNumA_IntegralSi : Integrate using the Simpson's 1/3 rule.
+    * @c qNumA_IntegralSi : Integrate using the Simpson's 1/3 rule.
     *
     * @return 1 on success, otherwise return 0.
     */

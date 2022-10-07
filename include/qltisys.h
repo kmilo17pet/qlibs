@@ -120,14 +120,14 @@ extern "C" {
     * For both cases, the supplied array will be updated on every invocation of
     * qLTISys_Excite().
     * @param[in] nb The order of polynomial @a num + 1 (Only for discrete systems).
-    * example: b0 + b1*z^-1 + b2*z^-2 + b3*z^-3 , nb = 4
+    * example: \f$ b_{0} + b_{1}*z^{-1} + b_{2}*z^{-2} + b_{3}*z^{-3} , nb = 4 \f$
     * @note If the system is continuous, pass 0 as argument.
     * @param[in] na The order of polynomial @a den. (if system is discrete). For
     * continuous system the number of elements of @a num and @a den.
     * 
-    * example 1: a0 + a1*z^-1 + a2*z^-2 + a3*z^-3 , na = 3
+    * example 1: \f$ a_{0} + a_{1}*z^{-1} + a_{2}*z^{-2} + a_{3}*z^{-3} , na = 3 \f$
     * 
-    * example 2: num = b0*s^2 + b1*s + b2 , den = a0*s^2 + a1*s + a2 , na = 3
+    * example 2: \f$ \frac{ b_{0}*s^{2} + b_{1}*s + b_{2} }{ a_{0}*s^{2} + a_{1}*s + a_{2} }, na = 3
     * @note For continuous systems, size of @a num and @a den should be equal.
     * @param[in] dt The time-step of the continuos system. For discrete systems
     * pass #QLTISYS_DISCRETE as argument
@@ -150,7 +150,7 @@ extern "C" {
     * the delay lines of @a x.
     * @param[in] c An array of @a wsize elements with the coefficients of the
     * FIR filter. Coefficients should be given in descending powers of the
-    * nth-degree polynomial. To ignore pass NULL.
+    * nth-degree polynomial. To ignore pass @a NULL.
     * @param[in] wsize The number of elements of @a w.
     * @param[in] x A sample of the input signal.
     * @return If @a c is provided, returns the evaluation of the FIR filter.
@@ -166,11 +166,11 @@ extern "C" {
     * @param[in] sys A pointer to the continuous LTI system instance
     * @param[in] im The desired integration method. Use one of the following:
     *
-    * qNumA_IntegralRe : Integrate using the Rectangular rule.
+    * @c qNumA_IntegralRe : Integrate using the Rectangular rule.
     *
-    * qNumA_IntegralTr : (default) Integrate using the Trapezoidal rule.
+    * @c qNumA_IntegralTr : (default) Integrate using the Trapezoidal rule.
     *
-    * qNumA_IntegralSi : Integrate using the Simpson's 1/3 rule.
+    * @c qNumA_IntegralSi : Integrate using the Simpson's 1/3 rule.
     *
     * @return 1 on success, otherwise return 0.
     */

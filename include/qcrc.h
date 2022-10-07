@@ -35,7 +35,7 @@ extern "C" {
     * block of data that is passed to the function together with a parameter
     * indicating the @a length.
     * @param[in] mode To select the CRC calculation mode. Only the following
-    * values are supported: QCRC8, QCRC16 and QCRC32.
+    * values are supported: ::QCRC8, ::QCRC16 and ::QCRC32.
     * @param[in] pData A pointer to the block of data.
     * @param[in] length The number of bytes in @a data.
     * @param[in] poly CRC polynomial value.

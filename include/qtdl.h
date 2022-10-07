@@ -44,7 +44,7 @@ extern "C" {
     * @brief Setup and initialize a Tapped Delay Line (TDL) instance by setting
     * the default optimal parameters.
     * @param[in] q A pointer to the TDL instance.
-    * @param[in] area An array of size @ n where delays will be stored
+    * @param[in] area An array of size @a n where delays will be stored
     * @param[in] n The number of elements on @a area.
     * @param[in] initVal The value with which all TDL delays will be initialized
     * @return none

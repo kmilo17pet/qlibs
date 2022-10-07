@@ -165,7 +165,7 @@ extern "C" {
     * @param[in] dst Pointer to the destination array where the content is to
     * be copied.
     * @param[in] n Number of bytes to copy.
-    * @return Destination is returned on success, otherwise NULL.
+    * @return Destination is returned on success, otherwise @c NULL.
     */
     void* qBitField_Dump( const qBitField_t * const b,
                           void * const dst,

@@ -217,9 +217,9 @@ extern "C" {
     *
     * if ::QSSMOOTHER_TYPE_LPF2 a pointer to a value between  [ 0 < alpha < 1 ]
     *
-    * if ::QSSMOOTHER_TYPE_MWM1 can be ignored. Pass NULL as argument.
+    * if ::QSSMOOTHER_TYPE_MWM1 can be ignored. Pass @c NULL as argument.
     *
-    * if ::QSSMOOTHER_TYPE_MWM2 can be ignored. Pass NULL as argument.
+    * if ::QSSMOOTHER_TYPE_MWM2 can be ignored. Pass @c NULL as argument.
     *
     * if ::QSSMOOTHER_TYPE_MOR1 a pointer to a value between  [ 0 < alpha < 1 ]
     *
@@ -240,9 +240,9 @@ extern "C" {
     * @param[in] window The filter window and coefficients. Depends of the type
     * selected:
     *
-    * if ::QSSMOOTHER_TYPE_LPF1, can be ignored. Pass NULL as argument.
+    * if ::QSSMOOTHER_TYPE_LPF1, can be ignored. Pass @c NULL as argument.
     *
-    * if ::QSSMOOTHER_TYPE_LPF2, can be ignored. Pass NULL as argument.
+    * if ::QSSMOOTHER_TYPE_LPF2, can be ignored. Pass @c NULL as argument.
     *
     * if ::QSSMOOTHER_TYPE_MWM1, An array of @a wsize elements.
     *
@@ -255,9 +255,9 @@ extern "C" {
     * if ::QSSMOOTHER_TYPE_GMWF, An array of 2x @a wsize to hold both, the
     * window and the gaussian kernel coefficients.
     *
-    * if ::QSSMOOTHER_TYPE_KLMN, can be ignored. Pass NULL as argument.
+    * if ::QSSMOOTHER_TYPE_KLMN, can be ignored. Pass @c NULL as argument.
     *
-    * if ::QSSMOOTHER_TYPE_EXPW, can be ignored. Pass NULL as argument.
+    * if ::QSSMOOTHER_TYPE_EXPW, can be ignored. Pass @c NULL as argument.
     *
     * @param[in] wsize If used, the number of elements in @a window, otherwise
     * pass 0uL as argument.

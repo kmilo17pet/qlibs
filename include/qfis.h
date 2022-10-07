@@ -432,7 +432,7 @@ extern "C" {
     * as ::custommf and pass a pointer to the desired function on the
     * @a custom_mf argument.
     * @param[in] custom_mf Custom user-defined membership function. To ignore
-    * pass NULL as argument.
+    * pass @c NULL as argument.
     * @param[in] cp Points or coefficients of the membership function.
     * @param[in] h Height of the membership function.
     * @note Height parameter @a h does not apply for output membership functions

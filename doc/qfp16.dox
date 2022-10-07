@@ -5,17 +5,17 @@
 * It implements all of your favorite transcendental functions, plus only the 
 * best basic operators, selected for your calculating pleasure. 
 *
-* The format is a signed Q16.16, which is good enough for most purposes.
+* The format is a signed @c Q16.16, which is good enough for most purposes.
 *
 * @section qfp16_datatype_limits Datatype limits
 *
-* The maximum representable value is 32767.999 985. The minimum value is -32768.0.
+* The maximum representable value is @c 32767.999 985. The minimum value is @c -32768.0.
 *
-* The minimum value is also used to represent fp16.overflow for overflow detection,
+* The minimum value is also used to represent @c fp16.overflow for overflow detection,
 * so for some operations it cannot be determined whether it overflowed or the 
 * result was the smallest possible value. In practice, this does not matter much.
 *
-* The smallest unit (machine precision) of the datatype is 1/65536 = 0.000 015.
+* The smallest unit (machine precision) of the datatype is @c 1/65536=0.000015.
 *
 * @section qfp16_functions Fixed-point functions
 *
@@ -27,7 +27,7 @@
 * Conversion from integers and floating-point values. These conversions retain 
 * the numeric value and perform rounding where necessary.
 *
-* - \ref qFP16_IntToFP() Simply multiplies a by qFP16.one = 65536
+* - \ref qFP16_IntToFP() Simply multiplies a by @c qFP16.one=65536
 * - \ref qFP16_FPToInt() Divides by \ref qFP16_t and rounds to nearest integer.
 * - \ref qFP16_FloatToFP() Multiplies by \ref qFP16_t and rounds to nearest value.
 * - \ref qFP16_FPToFloat() Divides by qFP16.one. Rounding is according to the 
@@ -41,7 +41,7 @@
 * @subsection  qfp16_basic_arithmetic Basic arithmetic
 *
 * These functions perform rounding and detect overflows. When overflow is 
-* detected, they return qfp16.overflow as a marker value.
+* detected, they return @c qfp16.overflow as a marker value.
 *
 * - \ref qFP16_Add()  Addition
 * - \ref qFP16_Sub()  Subtraction

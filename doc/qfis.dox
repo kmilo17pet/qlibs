@@ -74,7 +74,7 @@
 *  qFIS supports five different methods, as listed in the \ref qFIS_DeFuzz_Method_t type
 * for computing a single crisp output value for such a fuzzy set.
 *
-*  -# Centroid : this method applies only to Mamdani systems and returns the 
+*  -# Centroid (default): this method applies only to Mamdani systems and returns the 
 * center of gravity of the fuzzy set along the x-axis. If you think of the area 
 * as a plate with uniform thickness and density, the centroid is the point along 
 * the x-axis about which the fuzzy set would balance. The centroid is computed 
@@ -94,12 +94,15 @@
 *
 *  -# LOM : Largest of Maximum. Only for Mamdani systems.
 *
-*  -# WtAver: Weighted average of all rule outputs. this method applies only 
+*  -# WtAver (default): Weighted average of all rule outputs. this method applies only 
 * for Sugeno and Tsukamoto systems.
 *
 *  -# WtSum:  Weighted sum of all rule outputs. This method applies only for 
 * Sugeno and Tsukamoto systems.
 *
+* @note The defuzzification method is selected by default when setting up the 
+* FIS instance with qFIS_Setup(). However, the user can later change the default
+* method using the qFIS_SetDeFuzzMethod() function.
 *
 * @section qfis_buildfis Building a Mamdani FIS
 *

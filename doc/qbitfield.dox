@@ -7,8 +7,8 @@
 * @section qbitfield_structure Structure
 * 
 * Bit arrays are stored in data structures of type \ref qBitField_t. This structure
-* has two elements: an array of unsigned long integers 'field' for storing the 
-* bits and an integer 'size' for storing the number of bits in the array. 
+* has two elements: an array of unsigned long integers called @field for storing the 
+* bits and an integer @c size for storing the number of bits in the array. 
 *
 *
 * @section qbitfield_functions Functions
