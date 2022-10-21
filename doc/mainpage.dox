@@ -25,7 +25,7 @@
 *        -# Tracking mode
 *        -# Auto-tunning
 *        -# Additive MRAC
-* - @subpage qlitisys_desc "qLTISys : Recursive LTI systems evaluation by transfer functions"
+* - @subpage qltisys_desc "qLTISys : Recursive LTI systems evaluation by transfer functions"
 *        -# Continuos
 *        -# Discrete
 * - @subpage qfp16_desc "qFP16 : Fixed-Point Q16.16 math library"

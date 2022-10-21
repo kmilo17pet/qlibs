@@ -1,4 +1,4 @@
-/*! @page qlitisys_desc Recursive LTI Systems Evaluation by transfer functions.
+/*! @page qltisys_desc Recursive LTI Systems Evaluation by transfer functions.
 * @tableofcontents
 * \ref qltisys is a class to evaluate real-valued transfer function SISO models. 
 * In a nutshell, a transfer function is a model that describes the frequency-dependent 

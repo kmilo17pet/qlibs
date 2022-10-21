@@ -66,7 +66,21 @@
 *
 * @section qfis_comp Comparision among supported Inference Systems
 *
-* \image html https://user-images.githubusercontent.com/11412210/192664066-ab40cb04-a36f-4b49-9c14-cc34a4683f43.jpg width=50%
+* <center>
+* @htmlonly
+* <!DOCTYPE html>
+* <html>
+* <head>
+* <title>fiscomp</title>
+* <meta charset="utf-8"/>
+* </head>
+* <body><div class="mxgraph" style="max-width:100%;border:1px solid transparent;" data-mxgraph="{&quot;highlight&quot;:&quot;#0000ff&quot;,&quot;nav&quot;:true,&quot;zoom&quot;:0.9,&quot;resize&quot;:true,&quot;toolbar&quot;:&quot;zoom layers tags lightbox&quot;,&quot;edit&quot;:&quot;_blank&quot;,&quot;xml&quot;:&quot;&lt;mxfile host=\&quot;app.diagrams.net\&quot; modified=\&quot;2022-10-21T02:07:37.777Z\&quot; agent=\&quot;5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36\&quot; etag=\&quot;P493-Feyvwg5Z2kTL-gA\&quot; version=\&quot;20.4.2\&quot; type=\&quot;google\&quot;&gt;&lt;diagram id=\&quot;vvDfH6an24iXrg2Fqdn8\&quot; name=\&quot;Página-1\&quot;&gt;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&lt;/diagram&gt;&lt;/mxfile&gt;&quot;}"></div>
+* <script type="text/javascript" src="https://viewer.diagrams.net/js/viewer-static.min.js"></script>
+* </body>
+* </html>
+* @endhtmlonly
+* <em>Tsukamoto vs Mamdani vs Sugeno</em>
+* </center>
 *
 *
 * @section qfis_defuzz Defuzzification Methods
@@ -128,7 +142,21 @@
 *
 * This leads to a system with 2 inputs : "service" and "food" and 1 output: "tip"
 * 
-* \image html https://www.mathworks.com/help/examples/fuzzy/win64/BuildMamdaniSystemsAtTheCommandLineExample_01.png
+* <center>
+* @htmlonly
+* <!DOCTYPE html>
+* <html>
+* <head>
+* <title>fistipper</title>
+* <meta charset="utf-8"/>
+* </head>
+* <body><div class="mxgraph" style="max-width:100%;border:1px solid transparent;" data-mxgraph="{&quot;highlight&quot;:&quot;#0000ff&quot;,&quot;nav&quot;:true,&quot;zoom&quot;:1.1,&quot;resize&quot;:true,&quot;toolbar&quot;:&quot;zoom layers tags lightbox&quot;,&quot;edit&quot;:&quot;_blank&quot;,&quot;xml&quot;:&quot;&lt;mxfile host=\&quot;app.diagrams.net\&quot; modified=\&quot;2022-10-21T02:08:39.175Z\&quot; agent=\&quot;5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36\&quot; etag=\&quot;SCuM4LE2NdtaU8qmsqFR\&quot; version=\&quot;20.4.2\&quot; type=\&quot;google\&quot;&gt;&lt;diagram id=\&quot;tCH73QwP0SZsCBjILYLj\&quot; name=\&quot;Página-1\&quot;&gt;7VvbcuI4EP0aHuOybr48BhI2u7Wpmt1s1ew8arAA1xibscVtv35btoxvODjEwGQGQiWoJbVbrXOkVisMyGix/S3my/lz5IlggE1vOyAPA4xdG8FvJdhlAmTaOJPMYt/TskLw4v8n8oZauvI9kVQayigKpL+sCidRGIqJrMh4HEebarNpFFSfuuQz0RC8THjQlH72PTnXUmS5RcWT8Gdz/WgH21nFgueN9UiSOfeiTUlEHgdkFEeRzD4ttiMRKOflfsn6jVtq94bFIpRdOiy+/3H3Of6LfUO/Dz1r/fTlmZA7PRlrHqz0gLWxcpd7II5WoSeUEnNAhpu5L8XLkk9U7QbmHGRzuQighOBjIuPomxhFQRSnvYljqp99Te5DGP1w6gdB3jKMQlA41NaIWIpt6zDR3nmAOhEthIx30ER3wI72t0Ycobq8KabP0VrnpYljuhnXgJntNRc+hQ/arW9wMTnu4skqXqceVi4UoXevgFt4peTf6mR09bZWO/aV5WnPzAThNcB/1M0lN+YuO+TGWARc+uuq+kO+1U/4FPnw4NIsouosurXpSaJVPBG6Vxn1NUXEOqJI8ngmZEMRTAHflZotVYOk3WCCDj+n1S5ca0+PtCev6ocPmcUFTvdzdjp06Q26b4cuQZaBXLN4sZ6QzF7XW1/A+gI26TScVqtpJ6vPCmN2g/EJMMbMcJxi3npaj7EDam23eF0GxCYzKCk9lb4JxBDHGg65PHCt48D94NEZNa8cndnHXXy25QDs/1d1NCgcGrTgi6o1TNPNBQ9brTsr7cqlTyL2wQ0ifuOaAmeolFfHoHe96I8ZLmvdNCg6dQtFGPRWddFzrTjNR6ELLBnOj4BnxlAZz6bhuvhXxjNh+Dx4xo196Wx4JraBWGkHtS+PbfcAtq1Aqs0qSm2d7IFqfV+pvAogiJimPZ1Oy6ISGXKhUnCXpNmne2iA8HKbNi06WTP9N31gsuThuxQ984XHQz/X9zV+l7Z/dkuh6nN14N7MwqrVIM48lYuvEUxAywf6iMZMj0/n/BDOy9oe1EO4QZzGKnwoH2TZRk7JMvtRnZe9RR254p8osqM2NWjN1faVg7s8J/Nz7IZi68tMI7FsXc7DRaLLhT5V2JUKp++t2W50FM3X2lyZ6TY47kBMfdqWSh1kWAS1HHspPs/uSl1qIKtlDGfdUxG+UeS9FLka8rFlYGx3xWpXCjCTGJZTUMCsJksocg2HNjI4PTOCIRhbLecEjMDsApTocGNzo8QPSgnqGnBU6YkIwC/bNVtylRfiAYEBodZ86aUo0eEmqESJScCTxJ+8iRVwTBuPx4cD1uKU4OrioY450lEJ5cCjVzHeYxSkPXI0E+Fekx/EbqalyIn0oLh5uHK6xUe94bLD1c6vjsvrZr5stXG1X7zYzCilxUx8GhKzY373/Nq5Udnh3uZDorIIT6qhCTsSmPSIZrfjKnvdM+kR2FNCK9XOibB3D9wxuK9pPjfwm7dp0l8uIXqsw1+KrWzgWkfSB/JTPPBnoaIK4EXFokOVqvInPLjXFQvf85RulZid+OHsTzFVM0oLyd96kpUogu7TICXfHDoK0DDUgRhYx4bwBhyMFLAZWDuCMirK8FbNY6BVCAPgfophwRO5EYlMuSu55F/Tsabszf/zDzX5uD8MKPmYL/xAzeSTCNZCDbBlJWjwvdecqWXUj5JU46jEHkoMx24SqB5r95fLa95sAbZuwPo4wFJJLrOa5Nofza4JrOa10jSKvBuyPg6ysOsYrHboZ9dHFm7e8iQiXvsQ4NzA9YHApcZZObUcWLWsA8HkCcCCYvGNgCwsK75XQR7/Bw==&lt;/diagram&gt;&lt;/mxfile&gt;&quot;}"></div>
+* <script type="text/javascript" src="https://viewer.diagrams.net/js/viewer-static.min.js"></script>
+* </body>
+* </html>
+* @endhtmlonly
+* <em>Tipper FIS</em>
+* </center>
 *
 * 5 membership functions for the inputs
 *
@@ -138,15 +166,27 @@
 * -# (food)rancid : A trapezoidal membership function with points located on [0 0 1 3]
 * -# (food)delicious : A trapezoidal membership function with points located on [7 9 10 10]
 *
-* \image html https://user-images.githubusercontent.com/11412210/194061849-2386352d-9b6b-4605-a2d9-6d31b18673a1.png width=80%
-*
 * and 3 membership functions for the output 
 *
 * -# (tip)cheap : A triangular membership function with points located on [0 5 10]
 * -# (tip)average : A triangular membership function with points located on [10 15 20]
 * -# (tip)generous : A triangular membership function with points located on [20 25 30]
 *
-* \image html https://www.mathworks.com/help/examples/fuzzy/win64/BuildMamdaniSystemsAtTheCommandLineExample_03.png
+* <center>
+* @htmlonly
+* <!DOCTYPE html>
+* <html>
+* <head>
+* <title>tippermfs</title>
+* <meta charset="utf-8"/>
+* </head>
+* <body><div class="mxgraph" style="max-width:100%;border:1px solid transparent;" data-mxgraph="{&quot;highlight&quot;:&quot;#0000ff&quot;,&quot;nav&quot;:true,&quot;resize&quot;:true,&quot;toolbar&quot;:&quot;zoom layers tags lightbox&quot;,&quot;edit&quot;:&quot;_blank&quot;,&quot;xml&quot;:&quot;&lt;mxfile host=\&quot;app.diagrams.net\&quot; modified=\&quot;2022-10-21T02:13:24.870Z\&quot; agent=\&quot;5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36\&quot; etag=\&quot;Qe3RoTolmIGLi8g_wPUW\&quot; version=\&quot;20.4.2\&quot; type=\&quot;google\&quot;&gt;&lt;diagram id=\&quot;TkKrG8LqcgTcTKjQ6oiX\&quot; name=\&quot;Página-1\&quot;&gt;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&lt;/diagram&gt;&lt;/mxfile&gt;&quot;}"></div>
+* <script type="text/javascript" src="https://viewer.diagrams.net/js/viewer-static.min.js"></script>
+* </body>
+* </html>
+* @endhtmlonly
+* <em>Membership functions for the tipper FIS</em>
+* </center>
 *
 * To build a fuzzy system, you must first instantiate an abstract object of
 * type \ref qFIS_t that represents the fuzzy inference system, then the input and 
