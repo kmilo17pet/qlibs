@@ -54,12 +54,12 @@ var index =
         [ "Example: Speed control with PID controller and autotunning:", "qpid_desc.html#qpid_ex3", null ]
       ] ]
     ] ],
-    [ "Recursive LTI Systems Evaluation by transfer functions.", "qlitisys_desc.html", [
-      [ "Continous-time transfer functions", "qlitisys_desc.html#qltisys_cont", [
-        [ "Example: Evaluate the given continous transfer function", "qlitisys_desc.html#qltisys_ex1", null ]
+    [ "Recursive LTI Systems Evaluation by transfer functions.", "qltisys_desc.html", [
+      [ "Continous-time transfer functions", "qltisys_desc.html#qltisys_cont", [
+        [ "Example: Evaluate the given continous transfer function", "qltisys_desc.html#qltisys_ex1", null ]
       ] ],
-      [ "Discrete-time transfer functions", "qlitisys_desc.html#qltisys_disc", [
-        [ "Example: Evaluate the given discrete transfer function", "qlitisys_desc.html#qltisys_ex2", null ]
+      [ "Discrete-time transfer functions", "qltisys_desc.html#qltisys_disc", [
+        [ "Example: Evaluate the given discrete transfer function", "qltisys_desc.html#qltisys_ex2", null ]
       ] ]
     ] ],
     [ "Fixed-Point Q16.16 library", "qfp16_desc.html", [
