@@ -31,9 +31,9 @@ var index =
       [ "Example of signal smoothing", "qssmoother_desc.html#qssmoother_ex10", null ]
     ] ],
     [ "Fuzzy Inference System Engine", "qfis_desc.html", [
-      [ "Mamdani Fuzzy Inference Systems", "qfis_desc.html#qfis_mamdani", null ],
-      [ "Sugeno Fuzzy Inference Systems", "qfis_desc.html#qfis_sugeno", null ],
-      [ "Tsukamoto Fuzzy Inference Systems", "qfis_desc.html#qfis_tsukamoto", null ],
+      [ "Mamdani", "qfis_desc.html#qfis_mamdani", null ],
+      [ "Sugeno", "qfis_desc.html#qfis_sugeno", null ],
+      [ "Tsukamoto", "qfis_desc.html#qfis_tsukamoto", null ],
       [ "Defuzzification Methods", "qfis_desc.html#qfis_defuzz", null ],
       [ "Building a Mamdani FIS", "qfis_desc.html#qfis_buildfis", null ],
       [ "Evaluating a Fuzzy Inference System", "qfis_desc.html#qfis_eval", null ],
