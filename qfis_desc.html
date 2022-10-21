@@ -197,16 +197,16 @@ Tsukamoto Fuzzy Inference Systems</h1>
 Defuzzification Methods</h1>
 <p >qFIS supports five different methods, as listed in the <a class="el" href="group__qfis.html#gaedbcaf3cb5c4b57eb1f44f4dea0f1a72">qFIS_DeFuzz_Method_t</a> type for computing a single crisp output value for such a fuzzy set.</p>
 <ol type="1">
-<li>Centroid (default): this method applies only to Mamdani systems and returns the center of gravity of the fuzzy set along the x-axis. If you think of the area as a plate with uniform thickness and density, the centroid is the point along the x-axis about which the fuzzy set would balance. The centroid is computed using the following formula, where \(\mu(x)\) is the membership value for point \(x_i\) in the universe of discourse.</li>
+<li><a class="el" href="group__qfis.html#ggaedbcaf3cb5c4b57eb1f44f4dea0f1a72a6fb78ba59773ac48c2709d20df1ebefd">centroid</a> (default): this method applies only to <a class="el" href="group__qfis.html#gga2f3f0184eca9e38c98afca2275fbe13daaaafece1969d49f7a63d07fd66937799">Mamdani</a> systems and returns the center of gravity of the fuzzy set along the x-axis. If you think of the area as a plate with uniform thickness and density, the centroid is the point along the x-axis about which the fuzzy set would balance. The centroid is computed using the following formula, where \(\mu(x)\) is the membership value for point \(x_i\) in the universe of discourse.</li>
 </ol>
 <p >\(\text{centroid}= \frac{ \sum_{i=1}\mu(x_{i})x_{i} }{ \sum_{i=1}\mu(x_{i})} \)</p>
 <ol type="1">
-<li>Bisector : this method applies only for Mamdani systems and finds the vertical line that divides the fuzzy set into two sub-regions of equal area. It is sometimes, but not always, coincident with the centroid line.</li>
-<li>MOM : Middle of Maximum. Only for Mamdani systems.</li>
-<li>SOM : Smallest of Maximum. Only for Mamdani systems.</li>
-<li>LOM : Largest of Maximum. Only for Mamdani systems.</li>
-<li>WtAver (default): Weighted average of all rule outputs. this method applies only for Sugeno and Tsukamoto systems.</li>
-<li>WtSum: Weighted sum of all rule outputs. This method applies only for Sugeno and Tsukamoto systems.</li>
+<li><a class="el" href="group__qfis.html#ggaedbcaf3cb5c4b57eb1f44f4dea0f1a72a5f0b55cf3261a197a8d0212f90669e35">bisector</a> : this method applies only for <a class="el" href="group__qfis.html#gga2f3f0184eca9e38c98afca2275fbe13daaaafece1969d49f7a63d07fd66937799">Mamdani</a> systems and finds the vertical line that divides the fuzzy set into two sub-regions of equal area. It is sometimes, but not always, coincident with the centroid line.</li>
+<li><a class="el" href="group__qfis.html#ggaedbcaf3cb5c4b57eb1f44f4dea0f1a72a91e435ff054716e32ac834ddfdf8ece9">mom</a> : Middle of Maximum. Only for <a class="el" href="group__qfis.html#gga2f3f0184eca9e38c98afca2275fbe13daaaafece1969d49f7a63d07fd66937799">Mamdani</a> systems.</li>
+<li><a class="el" href="group__qfis.html#ggaedbcaf3cb5c4b57eb1f44f4dea0f1a72ab1088c07d3cf9e75c6e7fbd84bd759c4">som</a> : Smallest of Maximum. Only for <a class="el" href="group__qfis.html#gga2f3f0184eca9e38c98afca2275fbe13daaaafece1969d49f7a63d07fd66937799">Mamdani</a> systems.</li>
+<li><a class="el" href="group__qfis.html#ggaedbcaf3cb5c4b57eb1f44f4dea0f1a72a58713f014a11fca36091e803ff431b04">lom</a> : Largest of Maximum. Only for <a class="el" href="group__qfis.html#gga2f3f0184eca9e38c98afca2275fbe13daaaafece1969d49f7a63d07fd66937799">Mamdani</a> systems.</li>
+<li><a class="el" href="group__qfis.html#ggaedbcaf3cb5c4b57eb1f44f4dea0f1a72a8d62125ef3bf552069d621be0af68f5e">wtaver</a> (default): Weighted average of all rule outputs. this method applies only for <a class="el" href="group__qfis.html#gga2f3f0184eca9e38c98afca2275fbe13da6be5a07806b4e50dc6aa3ce912692ad6">Sugeno</a> and <a class="el" href="group__qfis.html#gga2f3f0184eca9e38c98afca2275fbe13da7b5af38242e88e34875821666e361935">Tsukamoto</a> systems.</li>
+<li><a class="el" href="group__qfis.html#ggaedbcaf3cb5c4b57eb1f44f4dea0f1a72a442dbe21e1b302813ac2a42e552a72a0">wtsum</a>: Weighted sum of all rule outputs. This method applies only for <a class="el" href="group__qfis.html#gga2f3f0184eca9e38c98afca2275fbe13da6be5a07806b4e50dc6aa3ce912692ad6">Sugeno</a> and <a class="el" href="group__qfis.html#gga2f3f0184eca9e38c98afca2275fbe13da7b5af38242e88e34875821666e361935">Tsukamoto</a> systems.</li>
 </ol>
 <dl class="section note"><dt>Note</dt><dd>The defuzzification method is selected by default when setting up the FIS instance with <a class="el" href="group__qfis.html#gaae3433474a516fbf41e0e406fe41410b" title="Setup and initialize the FIS instance.">qFIS_Setup()</a>. However, the user can later change the default method using the <a class="el" href="group__qfis.html#ga77c1447bb727d37d75a20d8d8f9f85fb" title="Change the default de-Fuzzification method of the FIS instance.">qFIS_SetDeFuzzMethod()</a> function.</dd></dl>
 <h1><a class="anchor" id="qfis_buildfis"></a>
@@ -215,11 +215,11 @@ Building a Mamdani FIS</h1>
 <p >Given a number from 0 through 10 that represents the quality of service at a restaurant, where 10 is excellent, and another number from 0 through 10 that represents the quality of the food, where 10 is delicious, what should the tip be? Tipping behavior varies depending on local traditions and personal preferences. In this example, the problem is based on tipping as it is typically practiced in the United States. An average tip for a meal in the US is 15%. A generous tip could be as high as 25% and a cheap tip could be 5%.</p>
 <p >The actual amount of the tip can vary depending on the quality of the service and food. For this problem, tipping behavior is defined using the following three rules.</p>
 <ol type="1">
-<li>If the service is poor or the food is rancid, then the tip is cheap.</li>
-<li>If the service is good, then the tip is average.</li>
-<li>If the service is excellent or the food is delicious, then the tip is generous.</li>
+<li><code> IF the service IS poor OR the food IS rancid, THEN the tip IS cheap. </code></li>
+<li><code> IF the service IS good, THEN the tip IS average. </code></li>
+<li><code> IF the service IS excellent OR the food IS delicious, THEN the tip IS generous. </code></li>
 </ol>
-<p >This leads to a system with 2 inputs : "service" and "food" and 1 output: "tip"</p>
+<p >This leads to a system with 2 inputs : <code>service</code> and <code>food</code> and 1 output: <code>tip</code> </p>
 <center>  
 <!DOCTYPE html>
 <html>
@@ -233,17 +233,17 @@ Building a Mamdani FIS</h1>
 </html>
  <em>Tipper FIS</em> </center><p >5 membership functions for the inputs</p>
 <ol type="1">
-<li>(service)poor : A gaussian membership function with spread of 1.5 and center on 0</li>
-<li>(service)good : A gaussian membership function with spread of 1.5 and center on 5</li>
-<li>(service)excelent : A gaussian membership function with spread of 1.5 and center on 10</li>
-<li>(food)rancid : A trapezoidal membership function with points located on [0 0 1 3]</li>
-<li>(food)delicious : A trapezoidal membership function with points located on [7 9 10 10]</li>
+<li>(service)poor : A <em>gaussian</em> membership function with spread of <code>1.5</code> and center on <code>0</code> </li>
+<li>(service)good : A <em>gaussian</em> membership function with spread of <code>1.5</code> and center on <code>5</code> </li>
+<li>(service)excelent : A <em>gaussian</em> membership function with spread of <code>1.5</code> and center on <code>10</code> </li>
+<li>(food)rancid : A <em>trapezoidal</em> membership function with points located on <code> [0 0 1 3] </code></li>
+<li>(food)delicious : A <em>trapezoidal</em> membership function with points located on <code> [7 9 10 10] </code></li>
 </ol>
 <p >and 3 membership functions for the output</p>
 <ol type="1">
-<li>(tip)cheap : A triangular membership function with points located on [0 5 10]</li>
-<li>(tip)average : A triangular membership function with points located on [10 15 20]</li>
-<li>(tip)generous : A triangular membership function with points located on [20 25 30]</li>
+<li>(tip)cheap : A <em>triangular</em> membership function with points located on <code> [0 5 10] </code></li>
+<li>(tip)average : A <em>triangular</em> membership function with points located on <code> [10 15 20] </code></li>
+<li>(tip)generous : A <em>triangular</em> membership function with points located on <code> [20 25 30] </code></li>
 </ol>
 <center>  
 <!DOCTYPE html>
@@ -344,7 +344,7 @@ Building a Mamdani FIS</h1>
 </div><!-- fragment --><h1><a class="anchor" id="qfis_eval"></a>
 Evaluating a Fuzzy Inference System</h1>
 <p >If we already have a fuzzy system configured with <a class="el" href="group__qfis.html#gaae3433474a516fbf41e0e406fe41410b">qFIS_Setup()</a>, we can evaluate it by using <a class="el" href="group__qfis.html#gafeb90b7b41ef3c5b25d12bf6a2adb6e5">qFIS_Fuzzify()</a>, <a class="el" href="group__qfis.html#ga471e4559534e3fe726a895bc4466e05e">qFIS_Inference()</a> and <a class="el" href="group__qfis.html#ga74cf29a2008f1169fab3b56635a4c620">qFIS_DeFuzzify()</a>. Input values can be set with <a class="el" href="group__qfis.html#gadc51ab655860a45c7ecb535c7a6c0b52">qFIS_SetInput()</a> and output values can be obtained with <a class="el" href="group__qfis.html#ga3c84df9b59cb1e2a66db3f57946fac94">qFIS_GetOutput()</a></p>
-<p >To show its use, first we are going to put everything together in a single code snippet, and we are going to create a function tipper_run() that will be in charge of evaluating the fuzzy system by invoking the previously mentioned functions.</p>
+<p >To show its use, first we are going to put everything together in a single code snippet, and we are going to create a function <code>tipper_run()</code> that will be in charge of evaluating the fuzzy system by invoking the previously mentioned functions.</p>
 <div class="fragment"><div class="line"><span class="preprocessor">#include &quot;tipper_fis.h&quot;</span></div>
 <div class="line"><span class="preprocessor">#include &quot;qfis.h&quot;</span></div>
 <div class="line"> </div>
