@@ -19,10 +19,10 @@
 *
 * @section qfp16_functions Fixed-point functions
 *
-* All the provided functions operate on 32-bit numbers, \ref qFP16_t, which have 16 
-* bit integer part and 16-bit fractional part.
+* All the provided functions operate on 32-bit numbers, \ref qFP16_t, which have 
+* 16-bit integer part and 16-bit fractional part.
 *
-* @subsection  qfp16_conv_functions Conversion functions
+* @subsection qfp16_conv_functions Conversion functions
 *
 * Conversion from integers and floating-point values. These conversions retain 
 * the numeric value and perform rounding where necessary.

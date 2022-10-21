@@ -47,14 +47,14 @@ extern "C" {
         linzmf,         /*!< Linear z-shaped saturation membership function f(a,b)*/
         rectmf,         /*!< Rectangle Membership Function f(s,e)*/
         cosmf,          /*!< Cosine Membership Function f(c,w)*/
-        constantmf,     /*!< Constant membership function f(a) [Only for ::Sugeno FIS]*/
-        linearmf,       /*!< Linear membership function f(...) [Only for ::Sugeno FIS]*/
-        tlinsmf,        /*!< Tsukamoto s-shaped saturation membership function f(a,b) [Only for ::Tsukamoto FIS]*/
-        tlinzmf,        /*!< Tsukamoto linzmf membership function f(a,b) [Only for ::Tsukamoto FIS]*/
-        tconcavemf,     /*!< Tsukamoto z-shaped saturation membership function f(i,e) [Only for ::Tsukamoto FIS]*/
-        tsigmf,         /*!< Tsukamoto Sigmoid membership function f(a,c) [Only for ::Tsukamoto FIS]*/
-        tsmf,           /*!< Tsukamoto S-Shape membership function f(a,b) [Only for ::Tsukamoto FIS]*/
-        tzmf,           /*!< Tsukamoto Z-Shape membership function f(a,b) [Only for ::Tsukamoto FIS]*/
+        constantmf,     /*!< Constant membership function f(a) [Only for ::Sugeno FIS ]*/
+        linearmf,       /*!< Linear membership function f(...) [Only for ::Sugeno FIS ]*/
+        tlinsmf,        /*!< Tsukamoto s-shaped saturation membership function f(a,b) [Only for ::Tsukamoto FIS ]*/
+        tlinzmf,        /*!< Tsukamoto linzmf membership function f(a,b) [ Only for ::Tsukamoto FIS ]*/
+        tconcavemf,     /*!< Tsukamoto z-shaped saturation membership function f(i,e) [Only for ::Tsukamoto FIS ]*/
+        tsigmf,         /*!< Tsukamoto Sigmoid membership function f(a,c) [ Only for ::Tsukamoto FIS ]*/
+        tsmf,           /*!< Tsukamoto S-Shape membership function f(a,b) [ Only for ::Tsukamoto FIS ]*/
+        tzmf,           /*!< Tsukamoto Z-Shape membership function f(a,b) [ Only for ::Tsukamoto FIS ]*/
         /*! @cond  */
         _NUM_MFS        /*!< Number of supported membership functions*/
         /*! @endcond  */
@@ -64,13 +64,13 @@ extern "C" {
     * @brief An enum with all the possible de-Fuzzyfication methods.
     */
     typedef enum {
-        centroid = 0,   /*!< Center of gravity of the fuzzy set along the x-axis [ Only for ::Mamdani FIS]*/
-        bisector,       /*!< Vertical line that divides the fuzzy set into two sub-regions of equal area [ Only for ::Mamdani FIS]**/
-        mom,            /*!< Middle of Maximum [ Only for ::Mamdani FIS]**/
-        lom,            /*!< Largest of Maximum [ Only for ::Mamdani FIS]**/
-        som,            /*!< Smallest of Maximum [ Only for ::Mamdani FIS]**/
-        wtaver,         /*!< Weighted average of all rule outputs [ Only for ::Sugeno and ::Tsukamoto FIS]*/
-        wtsum,          /*!< Weighted sum of all rule outputs [ Only for ::Sugeno FIS]*/
+        centroid = 0,   /*!< Center of gravity of the fuzzy set along the x-axis [ Only for ::Mamdani FIS ]*/
+        bisector,       /*!< Vertical line that divides the fuzzy set into two sub-regions of equal area [ Only for ::Mamdani FIS ]**/
+        mom,            /*!< Middle of Maximum [ Only for ::Mamdani FIS ]**/
+        lom,            /*!< Largest of Maximum [ Only for ::Mamdani FIS ]**/
+        som,            /*!< Smallest of Maximum [ Only for ::Mamdani FIS ]**/
+        wtaver,         /*!< Weighted average of all rule outputs [ Only for ::Sugeno and ::Tsukamoto FIS ]*/
+        wtsum,          /*!< Weighted sum of all rule outputs [ Only for ::Sugeno FIS ]*/
         /*! @cond  */
         _NUM_DFUZZ      /*!< Number of supported defuzzification methods*/
         /*! @endcond  */
@@ -173,7 +173,7 @@ extern "C" {
     * @details Rules are defined by combining I/O and membership function tags
     * with the following statements:
     * 
-    * #QFIS_RULES_BEGIN   #IF, #IS, #IS_NOT, #AND, #OR, #THEN, #END and
+    * #QFIS_RULES_BEGIN, #IF, #IS, #IS_NOT, #AND, #OR, #THEN, #END and
     * #QFIS_RULES_END
     * 
     * Example:
@@ -418,7 +418,7 @@ extern "C" {
     * objects.
     * @param[in] io The I/O tag related with this membership function
     * @param[in] mf The user-defined tag for this membership function
-    * @param[in] s The wanted shape/form for this membership function, cam
+    * @param[in] s The wanted shape/form for this membership function, can
     * be one of the following: ::trimf, ::trapmf, ::gbellmf, ::gaussmf,
     * ::gauss2mf, ::sigmf, ::dsigmf, ::psigmf, ::pimf, ::smf, ::zmf,
     * ::singletonmf, ::concavemf, ::spikemf, ::linsmf, ::linzmf, ::rectmf,

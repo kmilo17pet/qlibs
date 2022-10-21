@@ -150,7 +150,7 @@ extern "C" {
     * the delay lines of @a x.
     * @param[in] c An array of @a wsize elements with the coefficients of the
     * FIR filter. Coefficients should be given in descending powers of the
-    * nth-degree polynomial. To ignore pass @a NULL.
+    * nth-degree polynomial. To ignore pass @c NULL.
     * @param[in] wsize The number of elements of @a w.
     * @param[in] x A sample of the input signal.
     * @return If @a c is provided, returns the evaluation of the FIR filter.

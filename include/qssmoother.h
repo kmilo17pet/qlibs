@@ -213,28 +213,28 @@ extern "C" {
     *
     * @param[in] param The smoother parameters. Depends of the type selected:
     *
-    * if ::QSSMOOTHER_TYPE_LPF1 a pointer to a value between  [ 0 < alpha < 1 ]
+    * if ::QSSMOOTHER_TYPE_LPF1 a pointer to a value between  [ 0 < @a alpha < 1 ]
     *
-    * if ::QSSMOOTHER_TYPE_LPF2 a pointer to a value between  [ 0 < alpha < 1 ]
+    * if ::QSSMOOTHER_TYPE_LPF2 a pointer to a value between  [ 0 < @a alpha < 1 ]
     *
     * if ::QSSMOOTHER_TYPE_MWM1 can be ignored. Pass @c NULL as argument.
     *
     * if ::QSSMOOTHER_TYPE_MWM2 can be ignored. Pass @c NULL as argument.
     *
-    * if ::QSSMOOTHER_TYPE_MOR1 a pointer to a value between  [ 0 < alpha < 1 ]
+    * if ::QSSMOOTHER_TYPE_MOR1 a pointer to a value between  [ 0 < @a alpha < 1 ]
     *
-    * if ::QSSMOOTHER_TYPE_MOR2 a pointer to a value between  [ 0 < alpha < 1 ]
+    * if ::QSSMOOTHER_TYPE_MOR2 a pointer to a value between  [ 0 < @a alpha < 1 ]
     *
     * if ::QSSMOOTHER_TYPE_GMWF, an array with two values. The first element
-    * with the Standard deviation [ sigma > 0 ]. The second element with the
-    * offset of the gaussian center. [ 0 < pos < (wsize-1) ].
+    * with the Standard deviation [ @a sigma > 0 ]. The second element with the
+    * offset of the gaussian center. [ 0 < @ offset < ( @a wsize - 1 ) ].
     *
     * if ::QSSMOOTHER_TYPE_KLMN, an array with three values. The first element
     * with the initial estimated error covariance. The second element with the
     * process(predict) noise covariance. The third element with the measure
     * noise convariance
     *
-    * if ::QSSMOOTHER_TYPE_EXPW, a pointer to a value between [ 0 < lambda < 1 ]
+    * if ::QSSMOOTHER_TYPE_EXPW, a pointer to a value between [ 0 < @a lambda < 1 ]
     * that represents the forgetting factor.
     *
     * @param[in] window The filter window and coefficients. Depends of the type
@@ -252,7 +252,7 @@ extern "C" {
     *
     * if ::QSSMOOTHER_TYPE_MOR2, An array of @a wsize elements.
     *
-    * if ::QSSMOOTHER_TYPE_GMWF, An array of 2x @a wsize to hold both, the
+    * if ::QSSMOOTHER_TYPE_GMWF, An array of 2* @a wsize to hold both, the
     * window and the gaussian kernel coefficients.
     *
     * if ::QSSMOOTHER_TYPE_KLMN, can be ignored. Pass @c NULL as argument.

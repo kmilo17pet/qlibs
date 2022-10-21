@@ -120,7 +120,7 @@
 * qFIS supports five different methods, as listed in the \ref qFIS_DeFuzz_Method_t type
 * for computing a single crisp output value for such a fuzzy set.
 *
-*  -# Centroid (default): this method applies only to Mamdani systems and returns the 
+*  -# ::centroid (default): this method applies only to ::Mamdani systems and returns the 
 * center of gravity of the fuzzy set along the x-axis. If you think of the area 
 * as a plate with uniform thickness and density, the centroid is the point along 
 * the x-axis about which the fuzzy set would balance. The centroid is computed 
@@ -130,21 +130,21 @@
 *
 * \f$\text{centroid}= \frac{ \sum_{i=1}\mu(x_{i})x_{i} }{ \sum_{i=1}\mu(x_{i})} \f$ 
 *
-*  -# Bisector : this method applies only for Mamdani systems and finds the 
+*  -# ::bisector : this method applies only for ::Mamdani systems and finds the 
 * vertical line that divides the fuzzy set into two sub-regions of equal area. 
 * It is sometimes, but not always, coincident with the centroid line.
 *
-*  -# MOM : Middle of Maximum. Only for Mamdani systems.
+*  -# ::mom : Middle of Maximum. Only for ::Mamdani systems.
 *
-*  -# SOM : Smallest of Maximum. Only for Mamdani systems.
+*  -# ::som : Smallest of Maximum. Only for ::Mamdani systems.
 *
-*  -# LOM : Largest of Maximum. Only for Mamdani systems.
+*  -# ::lom : Largest of Maximum. Only for ::Mamdani systems.
 *
-*  -# WtAver (default): Weighted average of all rule outputs. this method applies only 
-* for Sugeno and Tsukamoto systems.
+*  -# ::wtaver (default): Weighted average of all rule outputs. this method applies only 
+* for ::Sugeno and ::Tsukamoto systems.
 *
-*  -# WtSum:  Weighted sum of all rule outputs. This method applies only for 
-* Sugeno and Tsukamoto systems.
+*  -# ::wtsum:  Weighted sum of all rule outputs. This method applies only for 
+* ::Sugeno and ::Tsukamoto systems.
 *
 * @note The defuzzification method is selected by default when setting up the 
 * FIS instance with qFIS_Setup(). However, the user can later change the default
@@ -168,11 +168,11 @@
 * and food.  For this problem, tipping behavior is defined using the following 
 * three rules.
 *
-* -# If the service is poor or the food is rancid, then the tip is cheap.
-* -# If the service is good, then the tip is average.
-* -# If the service is excellent or the food is delicious, then the tip is generous.
+* -# <tt> IF the service IS poor OR the food IS rancid, THEN the tip IS cheap. </tt>
+* -# <tt> IF the service IS good, THEN the tip IS average. </tt>
+* -# <tt> IF the service IS excellent OR the food IS delicious, THEN the tip IS generous. </tt>
 *
-* This leads to a system with 2 inputs : "service" and "food" and 1 output: "tip"
+* This leads to a system with 2 inputs : @c service and @c food and 1 output: @c tip
 * 
 * <center>
 * @htmlonly
@@ -192,17 +192,17 @@
 *
 * 5 membership functions for the inputs
 *
-* -# (service)poor : A gaussian membership function with spread of 1.5 and center on 0
-* -# (service)good : A gaussian membership function with spread of 1.5 and center on 5
-* -# (service)excelent  : A gaussian membership function with spread of 1.5 and center on 10
-* -# (food)rancid : A trapezoidal membership function with points located on [0 0 1 3]
-* -# (food)delicious : A trapezoidal membership function with points located on [7 9 10 10]
+* -# (service)poor : A @a gaussian membership function with spread of @c 1.5 and center on @c 0
+* -# (service)good : A @a gaussian membership function with spread of @c 1.5 and center on @c 5
+* -# (service)excelent : A @a gaussian membership function with spread of @c 1.5 and center on @c 10
+* -# (food)rancid : A @a trapezoidal membership function with points located on <tt> [0 0 1 3] </tt>
+* -# (food)delicious : A @a trapezoidal membership function with points located on <tt> [7 9 10 10] </tt>
 *
 * and 3 membership functions for the output 
 *
-* -# (tip)cheap : A triangular membership function with points located on [0 5 10]
-* -# (tip)average : A triangular membership function with points located on [10 15 20]
-* -# (tip)generous : A triangular membership function with points located on [20 25 30]
+* -# (tip)cheap : A @a triangular membership function with points located on <tt> [0 5 10] </tt>
+* -# (tip)average : A @a triangular membership function with points located on <tt> [10 15 20] </tt>
+* -# (tip)generous : A @a triangular membership function with points located on <tt> [20 25 30] </tt>
 *
 * <center>
 * @htmlonly
@@ -341,7 +341,7 @@
 * obtained with \ref qFIS_GetOutput()
 *
 * To show its use, first we are going to put everything together in a single 
-* code snippet, and we are going to create a function tipper_run() that will be in
+* code snippet, and we are going to create a function @c tipper_run() that will be in
 * charge of evaluating the fuzzy system by invoking the previously mentioned functions.
 *
 *  @code{.c}
