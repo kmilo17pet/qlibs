@@ -341,7 +341,8 @@ Example: Speed control with PID controller and autotunning:</h2>
 <div class="line"><span class="keywordtype">void</span> xTaskPIDspeedControl( <span class="keywordtype">void</span> *arg );</div>
 <div class="line">TaskHandle_t pid_task;</div>
 <div class="line"> </div>
-<div class="line"><span class="keywordtype">void</span> gpio_Int_Handler( <span class="keywordtype">void</span> ) {</div>
+<div class="line"><span class="keywordtype">void</span> gpio_Int_Handler( <span class="keywordtype">void</span> ) </div>
+<div class="line">{</div>
 <div class="line">    BaseType_t xHigherPriorityTaskWoken = pdFALSE;</div>
 <div class="line"> </div>
 <div class="line">    vTaskNotifyGiveFromISR( pid_task, &amp;xHigherPriorityTaskWoken);</div>

@@ -141,12 +141,14 @@ Example :  By using a timer interrupt</h1>
 <div class="line"><span class="keyword">static</span> <span class="keyword">volatile</span> <span class="keywordtype">float</span> rms_value = 0.0f;</div>
 <div class="line"><span class="keyword">static</span> <span class="keywordtype">float</span> window[ RMS_WIN_SIZE ] = { 0.0f };</div>
 <div class="line"> </div>
-<div class="line"><span class="keywordtype">void</span> TimerA0_Int_Handler( <span class="keywordtype">void</span> ) { <span class="comment">//interrupt tick at 1mS</span></div>
+<div class="line"><span class="keywordtype">void</span> TimerA0_Int_Handler( <span class="keywordtype">void</span> ) <span class="comment">//interrupt tick at 1mS</span></div>
+<div class="line">{</div>
 <div class="line">    rms_value = <a class="code hl_function" href="group__qrms.html#ga9bfeb8d905357aec3741ad2bcf795ecd">qRMS_Update</a>( &amp;rms_instance, get_sample() );</div>
 <div class="line">    HAL_TimerA0_ClearStatusFlag();</div>
 <div class="line">}</div>
 <div class="line"> </div>
-<div class="line"><span class="keywordtype">void</span> rms_setup( <span class="keywordtype">void</span> ) {</div>
+<div class="line"><span class="keywordtype">void</span> rms_setup( <span class="keywordtype">void</span> )</div>
+<div class="line">{</div>
 <div class="line">    <a class="code hl_function" href="group__qrms.html#ga80e0418be06004723a434361846a57c5">qRMS_Setup</a>( &amp;rms_instance, window, RMS_WIN_SIZE );</div>
 <div class="line">    HAL_TimerA0_Init();</div>
 <div class="line">    HAL_TimerA0_SetPeriod_mS( 1 );</div>
@@ -154,7 +156,8 @@ Example :  By using a timer interrupt</h1>
 <div class="line">    HAL_TimerA0_Enable();</div>
 <div class="line">}</div>
 <div class="line"> </div>
-<div class="line"><span class="keywordtype">float</span> rms_getvalue( <span class="keywordtype">void</span> ) { </div>
+<div class="line"><span class="keywordtype">float</span> rms_getvalue( <span class="keywordtype">void</span> )</div>
+<div class="line">{</div>
 <div class="line">    <span class="keywordflow">return</span> rms_value;</div>
 <div class="line">}</div>
 <div class="ttc" id="agroup__qrms_html_ga80e0418be06004723a434361846a57c5"><div class="ttname"><a href="group__qrms.html#ga80e0418be06004723a434361846a57c5">qRMS_Setup</a></div><div class="ttdeci">int qRMS_Setup(qRMS_t *const q, float *const window, const size_t wsize)</div><div class="ttdoc">Initialize the RMS instance by setting the default optimal parameters.</div><div class="ttdef"><b>Definition:</b> qrms.c:13</div></div>

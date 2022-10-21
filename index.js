@@ -34,7 +34,6 @@ var index =
       [ "Mamdani Fuzzy Inference Systems", "qfis_desc.html#qfis_mamdani", null ],
       [ "Sugeno Fuzzy Inference Systems", "qfis_desc.html#qfis_sugeno", null ],
       [ "Tsukamoto Fuzzy Inference Systems", "qfis_desc.html#qfis_tsukamoto", null ],
-      [ "Comparision among supported Inference Systems", "qfis_desc.html#qfis_comp", null ],
       [ "Defuzzification Methods", "qfis_desc.html#qfis_defuzz", null ],
       [ "Building a Mamdani FIS", "qfis_desc.html#qfis_buildfis", null ],
       [ "Evaluating a Fuzzy Inference System", "qfis_desc.html#qfis_eval", null ],
