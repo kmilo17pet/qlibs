@@ -19,7 +19,7 @@
 * combined into a single fuzzy set using the aggregation method of the FIS. 
 * Then, to compute a final crisp output value, the combined output fuzzy set is
 * defuzzified using one of the methods described in Defuzzification Methods. 
-* To specificy a Mamdani use the qFIS_Type_t::Mamdani when calling qFIS_Setup().
+* To specificy a Mamdani use the ::Mamdani enum definition when calling qFIS_Setup().
 *
 * <center>
 * @htmlonly
@@ -67,7 +67,7 @@
 * controllers that are to be applied, respectively, to different operating 
 * conditions of a dynamic nonlinear system.
 *
-* To specificy a Mamdani use the qFIS_Type_t::Sugeno when calling qFIS_Setup().
+* To specificy a Mamdani use the ::Sugeno enum definition when calling qFIS_Setup().
 *
 * <center>
 * @htmlonly
@@ -97,7 +97,7 @@
 * each rule's output by the method of weighted average and thus avoids the 
 * time-consuming process of defuzzification.
 *
-* To specificy a Mamdani use the qFIS_Type_t::Tsukamoto when calling qFIS_Setup().
+* To specificy a Mamdani use the ::Tsukamoto enum definition when calling qFIS_Setup().
 *
 * <center>
 * @htmlonly
