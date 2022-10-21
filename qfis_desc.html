@@ -142,7 +142,7 @@ $(document).ready(function(){initNavTree('qfis_desc.html',''); initResizable(); 
 <h1><a class="anchor" id="qfis_mamdani"></a>
 Mamdani Fuzzy Inference Systems</h1>
 <p >In a Mamdani system, the output of each rule is a fuzzy set. Since Mamdani systems have more intuitive and easier to understand rule bases, they are well-suited to expert system applications where the rules are created from human expert knowledge.</p>
-<p >The output of each rule is a fuzzy set derived from the output membership function and the implication method of the FIS. These output fuzzy sets are combined into a single fuzzy set using the aggregation method of the FIS. Then, to compute a final crisp output value, the combined output fuzzy set is defuzzified using one of the methods described in Defuzzification Methods. To specificy a Mamdani use the qFIS_Type_t::Mamdani when calling <a class="el" href="group__qfis.html#gaae3433474a516fbf41e0e406fe41410b" title="Setup and initialize the FIS instance.">qFIS_Setup()</a>.</p>
+<p >The output of each rule is a fuzzy set derived from the output membership function and the implication method of the FIS. These output fuzzy sets are combined into a single fuzzy set using the aggregation method of the FIS. Then, to compute a final crisp output value, the combined output fuzzy set is defuzzified using one of the methods described in Defuzzification Methods. To specificy a Mamdani use the <a class="el" href="group__qfis.html#gga2f3f0184eca9e38c98afca2275fbe13daaaafece1969d49f7a63d07fd66937799">Mamdani</a> enum definition when calling <a class="el" href="group__qfis.html#gaae3433474a516fbf41e0e406fe41410b" title="Setup and initialize the FIS instance.">qFIS_Setup()</a>.</p>
 <center>  
 <!DOCTYPE html>
 <html>
@@ -165,7 +165,7 @@ Sugeno Fuzzy Inference Systems</h1>
 <p >\(out= \frac{ \sum_{i=1}^{N}w_{i}z_{i} }{ \sum_{i=1}^{N}w_{i}} \)</p>
 <p >where \(N\) is the number of rules.</p>
 <p >Because of the linear dependence of each rule on the input variables, the Sugeno method is ideal for acting as an interpolating supervisor of multiple linear controllers that are to be applied, respectively, to different operating conditions of a dynamic nonlinear system.</p>
-<p >To specificy a Mamdani use the qFIS_Type_t::Sugeno when calling <a class="el" href="group__qfis.html#gaae3433474a516fbf41e0e406fe41410b" title="Setup and initialize the FIS instance.">qFIS_Setup()</a>.</p>
+<p >To specificy a Mamdani use the <a class="el" href="group__qfis.html#gga2f3f0184eca9e38c98afca2275fbe13da6be5a07806b4e50dc6aa3ce912692ad6">Sugeno</a> enum definition when calling <a class="el" href="group__qfis.html#gaae3433474a516fbf41e0e406fe41410b" title="Setup and initialize the FIS instance.">qFIS_Setup()</a>.</p>
 <center>  
 <!DOCTYPE html>
 <html>
@@ -181,7 +181,7 @@ Sugeno Fuzzy Inference Systems</h1>
 Tsukamoto Fuzzy Inference Systems</h1>
 <p >In the Tsukamoto inference system, the consequent of each fuzzy if-then rule is represented by a fuzzy set with a monotonical membership function, As a result, the inferred output of each rule is defined as a crisp value induced by the rule's firing strength.</p>
 <p >The overall output is taken as the weighted average of each rule's output. Since each rule infers a crisp output, the Tsukamoto fuzzy model aggregates each rule's output by the method of weighted average and thus avoids the time-consuming process of defuzzification.</p>
-<p >To specificy a Mamdani use the qFIS_Type_t::Tsukamoto when calling <a class="el" href="group__qfis.html#gaae3433474a516fbf41e0e406fe41410b" title="Setup and initialize the FIS instance.">qFIS_Setup()</a>.</p>
+<p >To specificy a Mamdani use the <a class="el" href="group__qfis.html#gga2f3f0184eca9e38c98afca2275fbe13da7b5af38242e88e34875821666e361935">Tsukamoto</a> enum definition when calling <a class="el" href="group__qfis.html#gaae3433474a516fbf41e0e406fe41410b" title="Setup and initialize the FIS instance.">qFIS_Setup()</a>.</p>
 <center>  
 <!DOCTYPE html>
 <html>
