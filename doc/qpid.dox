@@ -299,7 +299,8 @@
 *  void xTaskPIDspeedControl( void *arg );
 *  TaskHandle_t pid_task;
 *  
-*  void gpio_Int_Handler( void ) {
+*  void gpio_Int_Handler( void ) 
+*  {
 *      BaseType_t xHigherPriorityTaskWoken = pdFALSE;
 *
 *      vTaskNotifyGiveFromISR( pid_task, &xHigherPriorityTaskWoken);

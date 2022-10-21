@@ -12,13 +12,30 @@
 * In a Mamdani system, the output of each rule is a fuzzy set. Since Mamdani 
 * systems have more intuitive and easier to understand rule bases, they are 
 * well-suited to expert system applications where the rules are created
-* from human expert knowledge.
+* from human expert knowledge. 
 *
 * The output of each rule is a fuzzy set derived from the output membership
 * function and the implication method of the FIS. These output fuzzy sets are
 * combined into a single fuzzy set using the aggregation method of the FIS. 
 * Then, to compute a final crisp output value, the combined output fuzzy set is
-* defuzzified using one of the methods described in Defuzzification Methods.
+* defuzzified using one of the methods described in Defuzzification Methods. 
+* To specificy a Mamdani use the qFIS_Type_t::Mamdani when calling qFIS_Setup().
+*
+* <center>
+* @htmlonly
+* <!DOCTYPE html>
+* <html>
+* <head>
+* <title>mamdanifis</title>
+* <meta charset="utf-8"/>
+* </head>
+* <body><div class="mxgraph" style="max-width:100%;border:1px solid transparent;" data-mxgraph="{&quot;highlight&quot;:&quot;#0000ff&quot;,&quot;nav&quot;:true,&quot;resize&quot;:true,&quot;toolbar&quot;:&quot;zoom layers tags lightbox&quot;,&quot;edit&quot;:&quot;_blank&quot;,&quot;xml&quot;:&quot;&lt;mxfile host=\&quot;app.diagrams.net\&quot; modified=\&quot;2022-10-21T12:24:51.086Z\&quot; agent=\&quot;5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36\&quot; etag=\&quot;GporpD4HgS3TULajmcnV\&quot; version=\&quot;20.4.2\&quot; type=\&quot;google\&quot;&gt;&lt;diagram id=\&quot;b76JhKOhOGUdQaUB4UHg\&quot; name=\&quot;Página-1\&quot;&gt;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&lt;/diagram&gt;&lt;/mxfile&gt;&quot;}"></div>
+* <script type="text/javascript" src="https://viewer.diagrams.net/js/viewer-static.min.js"></script>
+* </body>
+* </html>
+* @endhtmlonly
+* <em>Mamdani inference system</em>
+* </center>
 *
 * @section qfis_sugeno Sugeno Fuzzy Inference Systems
 *
@@ -50,6 +67,23 @@
 * controllers that are to be applied, respectively, to different operating 
 * conditions of a dynamic nonlinear system.
 *
+* To specificy a Mamdani use the qFIS_Type_t::Sugeno when calling qFIS_Setup().
+*
+* <center>
+* @htmlonly
+* <!DOCTYPE html>
+* <html>
+* <head>
+* <title>sugenofis</title>
+* <meta charset="utf-8"/>
+* </head>
+* <body><div class="mxgraph" style="max-width:100%;border:1px solid transparent;" data-mxgraph="{&quot;highlight&quot;:&quot;#0000ff&quot;,&quot;nav&quot;:true,&quot;resize&quot;:true,&quot;toolbar&quot;:&quot;zoom layers tags lightbox&quot;,&quot;edit&quot;:&quot;_blank&quot;,&quot;xml&quot;:&quot;&lt;mxfile host=\&quot;app.diagrams.net\&quot; modified=\&quot;2022-10-21T12:26:53.087Z\&quot; agent=\&quot;5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36\&quot; etag=\&quot;Gn7_LPBRFnYcJWAdcmce\&quot; version=\&quot;20.4.2\&quot; type=\&quot;google\&quot;&gt;&lt;diagram id=\&quot;B5A3irbYMv0O7n4GprYW\&quot; name=\&quot;Página-1\&quot;&gt;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&lt;/diagram&gt;&lt;/mxfile&gt;&quot;}"></div>
+* <script type="text/javascript" src="https://viewer.diagrams.net/js/viewer-static.min.js"></script>
+* </body>
+* </html>
+* @endhtmlonly
+* <em>Sugeno inference system</em>
+* </center>
 *
 * @section qfis_tsukamoto Tsukamoto Fuzzy Inference Systems
 *
@@ -63,29 +97,27 @@
 * each rule's output by the method of weighted average and thus avoids the 
 * time-consuming process of defuzzification.
 *
-*
-* @section qfis_comp Comparision among supported Inference Systems
+* To specificy a Mamdani use the qFIS_Type_t::Tsukamoto when calling qFIS_Setup().
 *
 * <center>
 * @htmlonly
 * <!DOCTYPE html>
 * <html>
 * <head>
-* <title>fiscomp</title>
+* <title>tsukamotofis</title>
 * <meta charset="utf-8"/>
 * </head>
-* <body><div class="mxgraph" style="max-width:100%;border:1px solid transparent;" data-mxgraph="{&quot;highlight&quot;:&quot;#0000ff&quot;,&quot;nav&quot;:true,&quot;zoom&quot;:0.9,&quot;resize&quot;:true,&quot;toolbar&quot;:&quot;zoom layers tags lightbox&quot;,&quot;edit&quot;:&quot;_blank&quot;,&quot;xml&quot;:&quot;&lt;mxfile host=\&quot;app.diagrams.net\&quot; modified=\&quot;2022-10-21T02:07:37.777Z\&quot; agent=\&quot;5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36\&quot; etag=\&quot;P493-Feyvwg5Z2kTL-gA\&quot; version=\&quot;20.4.2\&quot; type=\&quot;google\&quot;&gt;&lt;diagram id=\&quot;vvDfH6an24iXrg2Fqdn8\&quot; name=\&quot;Página-1\&quot;&gt;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&lt;/diagram&gt;&lt;/mxfile&gt;&quot;}"></div>
+* <body><div class="mxgraph" style="max-width:100%;border:1px solid transparent;" data-mxgraph="{&quot;highlight&quot;:&quot;#0000ff&quot;,&quot;nav&quot;:true,&quot;resize&quot;:true,&quot;toolbar&quot;:&quot;zoom layers tags lightbox&quot;,&quot;edit&quot;:&quot;_blank&quot;,&quot;xml&quot;:&quot;&lt;mxfile host=\&quot;app.diagrams.net\&quot; modified=\&quot;2022-10-21T12:28:30.817Z\&quot; agent=\&quot;5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36\&quot; etag=\&quot;GO0rFroHnX2iWalfD0AV\&quot; version=\&quot;20.4.2\&quot; type=\&quot;google\&quot;&gt;&lt;diagram id=\&quot;yG3-giIi_3HVufmugneO\&quot; name=\&quot;Página-1\&quot;&gt;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&lt;/diagram&gt;&lt;/mxfile&gt;&quot;}"></div>
 * <script type="text/javascript" src="https://viewer.diagrams.net/js/viewer-static.min.js"></script>
 * </body>
 * </html>
 * @endhtmlonly
-* <em>Tsukamoto vs Mamdani vs Sugeno</em>
+* <em>Tsukamoto inference system</em>
 * </center>
-*
 *
 * @section qfis_defuzz Defuzzification Methods
 * 
-*  qFIS supports five different methods, as listed in the \ref qFIS_DeFuzz_Method_t type
+* qFIS supports five different methods, as listed in the \ref qFIS_DeFuzz_Method_t type
 * for computing a single crisp output value for such a fuzzy set.
 *
 *  -# Centroid (default): this method applies only to Mamdani systems and returns the 
@@ -350,7 +382,8 @@
 *  static const float tip_average_p[] = { 10.0f, 15.0f, 20.0f };
 *  static const float tip_generous_p[] = { 20.0f, 25.0f, 30.0f };
 *  
-*  void tipper_init( void ){
+*  void tipper_init( void )
+*  {
 *      // Set inputs 
 *      qFIS_InputSetup( tipper_inputs, service, 0.0f, 10.0f );
 *      qFIS_InputSetup( tipper_inputs, food, 0.0f, 10.0f );
@@ -374,7 +407,8 @@
 *                  rules, rStrength, 3u );
 *  }
 *  
-*  void tipper_run( float *inputs, float *outputs ) {
+*  void tipper_run( float *inputs, float *outputs )
+*  {
 *      // Set the crips inputs
 *      qFIS_SetInput( tipper_inputs, service, inputs[ service ] );
 *      qFIS_SetInput( tipper_inputs, food, inputs[ food ] );

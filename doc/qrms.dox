@@ -31,12 +31,14 @@
 *  static volatile float rms_value = 0.0f;
 *  static float window[ RMS_WIN_SIZE ] = { 0.0f };
 *
-*  void TimerA0_Int_Handler( void ) { //interrupt tick at 1mS
+*  void TimerA0_Int_Handler( void ) //interrupt tick at 1mS
+*  {
 *      rms_value = qRMS_Update( &rms_instance, get_sample() );
 *      HAL_TimerA0_ClearStatusFlag();
 *  }
 *
-*  void rms_setup( void ) {
+*  void rms_setup( void )
+*  {
 *      qRMS_Setup( &rms_instance, window, RMS_WIN_SIZE );
 *      HAL_TimerA0_Init();
 *      HAL_TimerA0_SetPeriod_mS( 1 );
@@ -44,7 +46,8 @@
 *      HAL_TimerA0_Enable();
 *  }
 *
-*  float rms_getvalue( void ) { 
+*  float rms_getvalue( void )
+*  {
 *      return rms_value;
 *  }
 *
