@@ -36,7 +36,7 @@ int qPID_Setup( qPID_controller_t * const c,
         (void)qPID_SetMode( c, qPID_Automatic );
         (void)qPID_SetManualInput( c, 0.0f );
         (void)qPID_SetExtraGains( c, 1.0f, 1.0f );
-        qPID_RemoveDerivativeKick( c, 1u );
+        (void)qPID_RemoveDerivativeKick( c, 1u );
         retValue = qPID_Reset( c );
     }
 
@@ -84,8 +84,11 @@ int qPID_Reset( qPID_controller_t * const c )
 
     if ( ( NULL != c ) && ( 0u != c->init ) ) {
         qNumA_StateInit( &c->c_state, 0.0f, 0.0f, 0.0f );
+        qNumA_StateInit( &c->m_state, 0.0f, 0.0f, 0.0f );
+        qNumA_StateInit( &c->b_state, 0.0f, 0.0f, 0.0f );
         c->D = 0.0f;
         c->u1 = 0.0f;
+        c->m = 0.0f;
         retValue = 1;
     }
 
@@ -204,7 +207,7 @@ float qPID_Control( qPID_controller_t * const c,
     float u = w;
 
     if ( ( NULL != c ) && ( 0u != c->init ) ) {
-        float e, v, de, ie, m, bt, sw;
+        float e, v, de, ie, bt, sw;
 
         e = w - y;
         if ( fabs( e ) <= ( c->epsilon ) ) {
@@ -228,9 +231,9 @@ float qPID_Control( qPID_controller_t * const c,
             v += w*theta;
         }
         /*bumpless-transfer*/
-        bt = c->kt*c->mInput + c->kw*( u - m );
-        m = c->integrate( &c->b_state, bt ,c->dt );
-        sw = ( qPID_Automatic == c->mode ) ? v : m; 
+        bt = ( c->kt*c->mInput ) + ( c->kw*( u - c->m ) );
+        c->m = c->integrate( &c->b_state, bt ,c->dt );
+        sw = ( qPID_Automatic == c->mode ) ? v : c->m; 
         u = qPID_Sat( sw, c->min, c->max );
         /*anti-windup feedback*/
         c->u1 = c->kw*( u - v );
