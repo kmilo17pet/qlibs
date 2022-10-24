@@ -32,8 +32,11 @@ int qPID_Setup( qPID_controller_t * const c,
         (void)qPID_SetEpsilon( c, FLT_MIN );
         (void)qPID_SetGains( c, kc, ki, kd );
         (void)qPID_SetSaturation( c , 0.0f, 100.0f, 1.0f );
-        (void)qPID_SetTrackingMode( c, NULL, 1.0f );
         (void)qPID_SetMRAC( c, NULL, 0.5f );
+        (void)qPID_SetMode( c, qPID_Automatic );
+        (void)qPID_SetManualInput( c, 0.0f );
+        (void)qPID_SetExtraGains( c, 1.0f, 1.0f );
+        qPID_RemoveDerivativeKick( c, 1u );
         retValue = qPID_Reset( c );
     }
 
@@ -54,6 +57,21 @@ int qPID_SetGains( qPID_controller_t * const c,
         if ( NULL != c->adapt ) {
             /*to be defined*/
         }
+        retValue = 1;
+    }
+
+    return retValue;
+}
+/*============================================================================*/
+int qPID_SetExtraGains( qPID_controller_t * const c,
+                        const float kw,
+                        const float kt )
+{
+    int retValue = 0;
+
+    if ( ( NULL != c ) && ( 0u != c->init ) ) {
+        c->kw = kw;
+        c->kt = kt;
         retValue = 1;
     }
 
@@ -136,15 +154,26 @@ int qPID_SetDerivativeFilter( qPID_controller_t * const c,
     return retValue;
 }
 /*============================================================================*/
-int qPID_SetTrackingMode( qPID_controller_t * const c,
-                          float *var,
-                          const float kt )
+int qPID_SetMode( qPID_controller_t * const c,
+                  const qPID_Mode_t m )
 {
     int retValue = 0;
 
-    if ( ( NULL != c ) && ( kt > 0.0f ) && ( 0u != c->init ) ) {
-        c->kt = kt;
-        c->uEF = var;
+    if ( ( NULL != c ) && ( 0u != c->init ) ) {
+        c->mode = m;
+        retValue = 1;
+    }
+
+    return retValue;
+}
+/*============================================================================*/
+int qPID_SetManualInput( qPID_controller_t * const c,
+                         float manualInput )
+{
+    int retValue = 0;
+
+    if ( ( NULL != c ) && ( 0u != c->init ) ) {
+        c->mInput = manualInput;
         retValue = 1;
     }
 
@@ -175,7 +204,7 @@ float qPID_Control( qPID_controller_t * const c,
     float u = w;
 
     if ( ( NULL != c ) && ( 0u != c->init ) ) {
-        float e, v, de, ie;
+        float e, v, de, ie, m, bt, sw;
 
         e = w - y;
         if ( fabs( e ) <= ( c->epsilon ) ) {
@@ -183,7 +212,7 @@ float qPID_Control( qPID_controller_t * const c,
         }
         /*integral with anti-windup*/
         ie = c->integrate( &c->c_state,  e + c->u1, c->dt );
-        de = qNumA_Derivative( &c->c_state, e, c->dt  );
+        de = qNumA_Derivative( &c->c_state, ( 1u == c->dKick ) ? -y : e, c->dt  );
         c->D = de + ( c->beta*( c->D - de ) ); /*derivative filtering*/
         v  = ( c->kc*e ) + ( c->ki*ie ) + ( c->kd*c->D ); /*compute PID action*/
 
@@ -198,13 +227,13 @@ float qPID_Control( qPID_controller_t * const c,
             }
             v += w*theta;
         }
-
-        u = qPID_Sat( v, c->min, c->max );
-        c->u1 = c->kw*( u - v ); /*anti-windup feedback*/
-        if ( NULL != c->uEF ) { /*tracking mode*/
-            c->u1 += c->kt*( c->uEF[ 0 ] - u );
-        }
-
+        /*bumpless-transfer*/
+        bt = c->kt*c->mInput + c->kw*( u - m );
+        m = c->integrate( &c->b_state, bt ,c->dt );
+        sw = ( qPID_Automatic == c->mode ) ? v : m; 
+        u = qPID_Sat( sw, c->min, c->max );
+        /*anti-windup feedback*/
+        c->u1 = c->kw*( u - v );
         if ( NULL != c->adapt ) {
             qPID_AdaptGains( c, u, y );
         }
@@ -245,6 +274,19 @@ int qPID_BindAutoTunning( qPID_controller_t * const c,
         else {
             c->adapt = NULL;
         }
+        retValue = 1;
+    }
+
+    return retValue;
+}
+/*============================================================================*/
+int qPID_RemoveDerivativeKick( qPID_controller_t * const c,
+                               const uint32_t tEnable )
+{
+    int retValue = 0;
+
+    if ( NULL != c ) {
+        c->dKick = ( 0uL != tEnable )? 1u : 0u;
         retValue = 1;
     }
 

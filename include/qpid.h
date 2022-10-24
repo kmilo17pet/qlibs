@@ -1,7 +1,7 @@
 /*!
  * @file qpid.h
  * @author J. Camilo Gomez C.
- * @version 1.08
+ * @version 1.11
  * @note This file is part of the qLibs distribution.
  * @brief API to control systems using the PID algorithm. This controller
  * features anti-windup, tracking mode, and derivative filter.
@@ -24,6 +24,12 @@ extern "C" {
     * @brief API for the qPID Controller library
     *  @{
     */
+
+
+    typedef enum {
+        qPID_Automatic,
+        qPID_Manual
+    } qPID_Mode_t;
 
     /**
     * @brief A PID Auto-tunning object
@@ -57,14 +63,16 @@ extern "C" {
     {
         /*! @cond  */
         float kc, ki, kd, dt, min, max, epsilon, kw, kt, D, u1, beta;
-        float *uEF; /*external feedback for tracking mode*/
+        float m, mInput;
         const float *yr;
         float alfa, gamma; /*MRAC additive controller parameters*/
         qNumA_state_t c_state; /*controller integral & derivative state*/
         qNumA_state_t m_state; /*MRAC additive controller state*/
+        qNumA_state_t b_state; /*bumples-transfer state*/
         qPID_AutoTunning_t *adapt;
         qNumA_IntegrationMethod_t integrate;
-        uint8_t init;
+        qPID_Mode_t mode;
+        uint8_t init, dKick;
         /*! @endcond  */
     } qPID_controller_t;
 
@@ -95,6 +103,17 @@ extern "C" {
                        const float kc,
                        const float ki,
                        const float kd );
+
+    /**
+    * @brief Set/Change extra PID controller gains.
+    * @param[in] c A pointer to the PID controller instance.
+    * @param[in] kw Saturation feedback gain.
+    * @param[in] kt Manual input gain.
+    * @return 1 on success, otherwise return 0.
+    */
+    int qPID_SetExtraGains( qPID_controller_t * const c,
+                            const float kw,
+                            const float kt );
 
     /**
     * @brief Reset the internal PID controller calculations.
@@ -144,18 +163,30 @@ extern "C" {
                                   const float beta );
 
     /**
-    * @brief Set the PID tracking mode. This allows the PID controller to adjust
-    * its internal state by changing its integrator output so that the output
-    * tracks a prescribed signal feeding this extra input. Can be used to
-    * achieve bumpless control transfer.
+    * @brief Set the PID manual input mode. This value will be used
+    * as the manual input when the controller it set into the ::qPID_Manual
+    * mode. Bumpless transfer is guaranteed.
     * @param[in] c A pointer to the PID controller instance.
-    * @param[in] var A pointer to the external feedback variable.
-    * @param[in] kt Tracking gain.
+    * @param[in] manualInput The value of the manual input.
     * @return 1 on success, otherwise return 0.
     */
-    int qPID_SetTrackingMode( qPID_controller_t * const c,
-                              float *var,
-                              const float kt );
+    int qPID_SetManualInput( qPID_controller_t * const c,
+                             float manualInput );
+
+    /**
+    * @brief Change the controller operational mode.
+    * In ::qPID_Automatic mode, the computed output of the PID controller
+    * will be used as the control signal for the process. In
+    * ::qPID_Manual mode, the manual input will be used as the control
+    * signal for the process and the PID controller loop will continue
+    * operating to guarantee the bumpless transfer when a switch to 
+    * the ::qPID_Automatic mode its performed;
+    * @param[in] c A pointer to the PID controller instance.
+    * @param[in] m The desired operational mode.
+    * @return 1 on success, otherwise return 0.
+    */
+    int qPID_SetMode( qPID_controller_t * const c,
+                      const qPID_Mode_t m );
 
     /**
     * @brief Enable the additive MRAC(Model Reference Adaptive Control) feature.
@@ -193,6 +224,15 @@ extern "C" {
     */
     int qPID_BindAutoTunning( qPID_controller_t * const c,
                               qPID_AutoTunning_t * const at );
+
+    /**
+    * @brief Feature to eliminate the phenomena called Derivative Kick
+    * @param[in] c A pointer to the PID controller instance.
+    * @param[in] tEnable The value to enable(1u) or disable(0u) this feature.
+    * @return 1 on success, otherwise return 0.
+    */
+    int qPID_RemoveDerivativeKick( qPID_controller_t * const c,
+                                   const uint32_t tEnable );
 
     /**
     * @brief Set the number of time steps where the auto tuner algorithm will

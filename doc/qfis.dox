@@ -48,17 +48,17 @@
 *
 * Each rule generates two values:
 *
-* \f$z_i\f$ Rule output level, which is either a constant value or a linear 
+* \f$u_i\f$ Rule output level, which is either a constant value or a linear 
 * function of the input values.
 *
 * and \f$w_i\f$, the rule firing strength, is determined by the rule antecedent
 * 
 * The output of each rule is the weighted output level, which is the product of 
-* \f$w_i\f$ and \f$z_i\f$.
+* \f$w_i\f$ and \f$u_i\f$.
 * 
 * The final output of the system is the weighted average/sum over all rule outputs:
 *
-* \f$out= \frac{ \sum_{i=1}^{N}w_{i}z_{i} }{ \sum_{i=1}^{N}w_{i}} \f$ 
+* \f$out= \frac{ \sum_{i=1}^{N}w_{i}u_{i} }{ \sum_{i=1}^{N}w_{i}} \f$ 
 * 
 * where \f$N\f$  is the number of rules.
 *
