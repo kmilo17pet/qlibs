@@ -7,7 +7,7 @@
 * The types of inferences supported by qFIS are listed in the \ref qFIS_Type_t and
 * are detailed below:
 *
-* @section qfis_mamdani Mamdani Fuzzy Inference Systems
+* @section qfis_mamdani Mamdani
 *
 * In a Mamdani system, the output of each rule is a fuzzy set. Since Mamdani 
 * systems have more intuitive and easier to understand rule bases, they are 
@@ -19,7 +19,7 @@
 * combined into a single fuzzy set using the aggregation method of the FIS. 
 * Then, to compute a final crisp output value, the combined output fuzzy set is
 * defuzzified using one of the methods described in Defuzzification Methods. 
-* To specificy a Mamdani use the ::Mamdani enum definition when calling qFIS_Setup().
+* To specificy a FIS of this type use the ::Mamdani enum definition when calling qFIS_Setup().
 *
 * <center>
 * @htmlonly
@@ -37,7 +37,7 @@
 * <em>Mamdani inference system</em>
 * </center>
 *
-* @section qfis_sugeno Sugeno Fuzzy Inference Systems
+* @section qfis_sugeno Sugeno
 *
 * Sugeno fuzzy inference, also referred to as Takagi-Sugeno-Kang fuzzy inference,
 * uses singleton output membership functions that are either constant or a linear
@@ -51,7 +51,7 @@
 * \f$u_i\f$ Rule output level, which is either a constant value or a linear 
 * function of the input values.
 *
-* and \f$w_i\f$, the rule firing strength, is determined by the rule antecedent
+* and \f$w_i\f$, the rule firing strength, that is determined by the rule antecedent
 * 
 * The output of each rule is the weighted output level, which is the product of 
 * \f$w_i\f$ and \f$u_i\f$.
@@ -67,7 +67,7 @@
 * controllers that are to be applied, respectively, to different operating 
 * conditions of a dynamic nonlinear system.
 *
-* To specificy a Mamdani use the ::Sugeno enum definition when calling qFIS_Setup().
+* To specificy a FIS of this type,  use the ::Sugeno enum definition when calling qFIS_Setup().
 *
 * <center>
 * @htmlonly
@@ -85,7 +85,7 @@
 * <em>Sugeno inference system</em>
 * </center>
 *
-* @section qfis_tsukamoto Tsukamoto Fuzzy Inference Systems
+* @section qfis_tsukamoto Tsukamoto
 *
 * In the Tsukamoto inference system, the consequent of each fuzzy if-then rule 
 * is represented by a fuzzy set with a monotonical membership function, As a result, 
@@ -97,7 +97,7 @@
 * each rule's output by the method of weighted average and thus avoids the 
 * time-consuming process of defuzzification.
 *
-* To specificy a Mamdani use the ::Tsukamoto enum definition when calling qFIS_Setup().
+* To specificy a FIS of this type, use the ::Tsukamoto enum definition when calling qFIS_Setup().
 *
 * <center>
 * @htmlonly
@@ -220,7 +220,7 @@
 * <em>Membership functions for the tipper FIS</em>
 * </center>
 *
-* To build a fuzzy system, you must first instantiate an abstract object of
+* To build the fuzzy system, you must first instantiate an abstract object of
 * type \ref qFIS_t that represents the fuzzy inference system, then the input and 
 * output vectors, fuzzy set vectors for inputs and outputs, and enumerations with 
 * the tags for all of them. Let's take a look :
@@ -244,7 +244,7 @@
 * Please note that all tag names are unique. 
 *
 * Then, we will define the rules of 
-* the fuzzy system using the previously defined tags. Rules should be defined through
+* the fuzzy system using the previously defined tags. Rules should be defined as
 * an array of type \ref qFIS_Rules_t and the contents should be rules constructed
 * with the provided statements: 
 * 
@@ -277,7 +277,7 @@
 *  @endcode
 *
 * Once all the necessary elements have been defined, we can proceed to the 
-* construction of the fuzzy system. Firstm we must configure the inputs and outputs by
+* construction of the fuzzy system. First we must configure the inputs and outputs by
 * setting the ranges of each. For this, we will use the \ref qFIS_InputSetup() 
 * and qFIS_OutputSetup() functions as follows:
 *
@@ -304,7 +304,7 @@
 * @note
 * The number of parameters may vary depending on the shape of the membership function.
 *
-* Then, let's proceed to configure the membership functions by relating I/O, 
+* the next step is to configure the membership functions by relating I/O, 
 * tags, shape and parameters one by one by using the \ref qFIS_SetMF() API as follows:
 *
 *  @code{.c}
@@ -341,8 +341,8 @@
 * obtained with \ref qFIS_GetOutput()
 *
 * To show its use, first we are going to put everything together in a single 
-* code snippet, and we are going to create a function @c tipper_run() that will be in
-* charge of evaluating the fuzzy system by invoking the previously mentioned functions.
+* code snippet, and we are going to create two functions, @c tipper_init() and @c tipper_run() that will be in
+* charge of setting up the fuzzy inference system and  evaluating it respectively.
 *
 *  @code{.c}
 *  #include "tipper_fis.h"
