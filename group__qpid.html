@@ -127,6 +127,7 @@ $(document).ready(function(){initNavTree('group__qpid.html',''); initResizable()
   <div class="summary">
 <a href="#nested-classes">Data Structures</a> &#124;
 <a href="#define-members">Macros</a> &#124;
+<a href="#enum-members">Enumerations</a> &#124;
 <a href="#func-members">Functions</a>  </div>
   <div class="headertitle"><div class="title">qPID</div></div>
 </div><!--header-->
@@ -151,6 +152,13 @@ Macros</h2></td></tr>
 <tr class="memdesc:gab5476062cacdea0be922e73585dc5aa2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Macro to keep the auto-tuner enabled indefinitely. <br /></td></tr>
 <tr class="separator:gab5476062cacdea0be922e73585dc5aa2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="enum-members" name="enum-members"></a>
+Enumerations</h2></td></tr>
+<tr class="memitem:ga05a79879807411fa30d5f21816030f5d"><td class="memItemLeft" align="right" valign="top"><a id="ga05a79879807411fa30d5f21816030f5d" name="ga05a79879807411fa30d5f21816030f5d"></a>enum &#160;</td><td class="memItemRight" valign="bottom"><b>qPID_Mode_t</b> { <b>qPID_Automatic</b>
+, <b>qPID_Manual</b>
+ }</td></tr>
+<tr class="separator:ga05a79879807411fa30d5f21816030f5d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:gaec33f4b01047504ebeea758bc7ce6798"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qpid.html#gaec33f4b01047504ebeea758bc7ce6798">qPID_Setup</a> (<a class="el" href="structq_p_i_d__controller__t.html">qPID_controller_t</a> *const c, const float kc, const float ki, const float kd, const float dt)</td></tr>
@@ -159,6 +167,9 @@ Functions</h2></td></tr>
 <tr class="memitem:gae753554e76bdfd3cf58e56b35739336b"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qpid.html#gae753554e76bdfd3cf58e56b35739336b">qPID_SetGains</a> (<a class="el" href="structq_p_i_d__controller__t.html">qPID_controller_t</a> *const c, const float kc, const float ki, const float kd)</td></tr>
 <tr class="memdesc:gae753554e76bdfd3cf58e56b35739336b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set/Change the PID controller gains.  <a href="group__qpid.html#gae753554e76bdfd3cf58e56b35739336b">More...</a><br /></td></tr>
 <tr class="separator:gae753554e76bdfd3cf58e56b35739336b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga792de22b34677074a287d51a377360a9"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qpid.html#ga792de22b34677074a287d51a377360a9">qPID_SetExtraGains</a> (<a class="el" href="structq_p_i_d__controller__t.html">qPID_controller_t</a> *const c, const float kw, const float kt)</td></tr>
+<tr class="memdesc:ga792de22b34677074a287d51a377360a9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set/Change extra PID controller gains.  <a href="group__qpid.html#ga792de22b34677074a287d51a377360a9">More...</a><br /></td></tr>
+<tr class="separator:ga792de22b34677074a287d51a377360a9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga529fc13e912b855918346ebe3807c1b1"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qpid.html#ga529fc13e912b855918346ebe3807c1b1">qPID_Reset</a> (<a class="el" href="structq_p_i_d__controller__t.html">qPID_controller_t</a> *const c)</td></tr>
 <tr class="memdesc:ga529fc13e912b855918346ebe3807c1b1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reset the internal PID controller calculations.  <a href="group__qpid.html#ga529fc13e912b855918346ebe3807c1b1">More...</a><br /></td></tr>
 <tr class="separator:ga529fc13e912b855918346ebe3807c1b1"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -174,9 +185,12 @@ Functions</h2></td></tr>
 <tr class="memitem:gaa6b1cdfe6594c3296d1ef3ea4b3ab3fa"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qpid.html#gaa6b1cdfe6594c3296d1ef3ea4b3ab3fa">qPID_SetDerivativeFilter</a> (<a class="el" href="structq_p_i_d__controller__t.html">qPID_controller_t</a> *const c, const float beta)</td></tr>
 <tr class="memdesc:gaa6b1cdfe6594c3296d1ef3ea4b3ab3fa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the tunning parameter for the derivative filter.  <a href="group__qpid.html#gaa6b1cdfe6594c3296d1ef3ea4b3ab3fa">More...</a><br /></td></tr>
 <tr class="separator:gaa6b1cdfe6594c3296d1ef3ea4b3ab3fa"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga19909c805541f8744db3494e2adb70f2"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qpid.html#ga19909c805541f8744db3494e2adb70f2">qPID_SetTrackingMode</a> (<a class="el" href="structq_p_i_d__controller__t.html">qPID_controller_t</a> *const c, float *var, const float kt)</td></tr>
-<tr class="memdesc:ga19909c805541f8744db3494e2adb70f2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the PID tracking mode. This allows the PID controller to adjust its internal state by changing its integrator output so that the output tracks a prescribed signal feeding this extra input. Can be used to achieve bumpless control transfer.  <a href="group__qpid.html#ga19909c805541f8744db3494e2adb70f2">More...</a><br /></td></tr>
-<tr class="separator:ga19909c805541f8744db3494e2adb70f2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga6d4c9b388c8856b0a917cf85903c1d66"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qpid.html#ga6d4c9b388c8856b0a917cf85903c1d66">qPID_SetManualInput</a> (<a class="el" href="structq_p_i_d__controller__t.html">qPID_controller_t</a> *const c, float manualInput)</td></tr>
+<tr class="memdesc:ga6d4c9b388c8856b0a917cf85903c1d66"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the PID manual input mode. This value will be used as the manual input when the controller it set into the ::qPID_Manual mode. Bumpless transfer is guaranteed.  <a href="group__qpid.html#ga6d4c9b388c8856b0a917cf85903c1d66">More...</a><br /></td></tr>
+<tr class="separator:ga6d4c9b388c8856b0a917cf85903c1d66"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gac09383b81a52097e06214cbc16999c4d"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qpid.html#gac09383b81a52097e06214cbc16999c4d">qPID_SetMode</a> (<a class="el" href="structq_p_i_d__controller__t.html">qPID_controller_t</a> *const c, const qPID_Mode_t m)</td></tr>
+<tr class="memdesc:gac09383b81a52097e06214cbc16999c4d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Change the controller operational mode. In ::qPID_Automatic mode, the computed output of the PID controller will be used as the control signal for the process. In ::qPID_Manual mode, the manual input will be used as the control signal for the process and the PID controller loop will continue operating to guarantee the bumpless transfer when a switch to the ::qPID_Automatic mode its performed;.  <a href="group__qpid.html#gac09383b81a52097e06214cbc16999c4d">More...</a><br /></td></tr>
+<tr class="separator:gac09383b81a52097e06214cbc16999c4d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gace4705569152c216c12b482267eb834f"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qpid.html#gace4705569152c216c12b482267eb834f">qPID_SetMRAC</a> (<a class="el" href="structq_p_i_d__controller__t.html">qPID_controller_t</a> *const c, const float *modelRef, const float gamma)</td></tr>
 <tr class="memdesc:gace4705569152c216c12b482267eb834f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enable the additive MRAC(Model Reference Adaptive Control) feature.  <a href="group__qpid.html#gace4705569152c216c12b482267eb834f">More...</a><br /></td></tr>
 <tr class="separator:gace4705569152c216c12b482267eb834f"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -186,6 +200,9 @@ Functions</h2></td></tr>
 <tr class="memitem:ga1dc553b9a08e94605eef62b6f794f6e6"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qpid.html#ga1dc553b9a08e94605eef62b6f794f6e6">qPID_BindAutoTunning</a> (<a class="el" href="structq_p_i_d__controller__t.html">qPID_controller_t</a> *const c, <a class="el" href="structq_p_i_d___auto_tunning__t.html">qPID_AutoTunning_t</a> *const at)</td></tr>
 <tr class="memdesc:ga1dc553b9a08e94605eef62b6f794f6e6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Binds the specified instance to enable the PID controller auto tuning algorithm.  <a href="group__qpid.html#ga1dc553b9a08e94605eef62b6f794f6e6">More...</a><br /></td></tr>
 <tr class="separator:ga1dc553b9a08e94605eef62b6f794f6e6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga1ac68bcfbb438deb2569fb111122b562"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qpid.html#ga1ac68bcfbb438deb2569fb111122b562">qPID_RemoveDerivativeKick</a> (<a class="el" href="structq_p_i_d__controller__t.html">qPID_controller_t</a> *const c, const uint32_t tEnable)</td></tr>
+<tr class="memdesc:ga1ac68bcfbb438deb2569fb111122b562"><td class="mdescLeft">&#160;</td><td class="mdescRight">Feature to eliminate the phenomena called Derivative Kick.  <a href="group__qpid.html#ga1ac68bcfbb438deb2569fb111122b562">More...</a><br /></td></tr>
+<tr class="separator:ga1ac68bcfbb438deb2569fb111122b562"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gaa7e6a680ce09aafcd299c4ec4c6cd107"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qpid.html#gaa7e6a680ce09aafcd299c4ec4c6cd107">qPID_EnableAutoTunning</a> (<a class="el" href="structq_p_i_d__controller__t.html">qPID_controller_t</a> *const c, const uint32_t tEnable)</td></tr>
 <tr class="memdesc:gaa7e6a680ce09aafcd299c4ec4c6cd107"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the number of time steps where the auto tuner algorithm will modify the controller gains.  <a href="group__qpid.html#gaa7e6a680ce09aafcd299c4ec4c6cd107">More...</a><br /></td></tr>
 <tr class="separator:gaa7e6a680ce09aafcd299c4ec4c6cd107"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -408,6 +425,44 @@ Functions</h2></td></tr>
 
 </div>
 </div>
+<a id="ga1ac68bcfbb438deb2569fb111122b562" name="ga1ac68bcfbb438deb2569fb111122b562"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga1ac68bcfbb438deb2569fb111122b562">&#9670;&nbsp;</a></span>qPID_RemoveDerivativeKick()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int qPID_RemoveDerivativeKick </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structq_p_i_d__controller__t.html">qPID_controller_t</a> *const&#160;</td>
+          <td class="paramname"><em>c</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const uint32_t&#160;</td>
+          <td class="paramname"><em>tEnable</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Feature to eliminate the phenomena called Derivative Kick. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">c</td><td>A pointer to the PID controller instance. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">tEnable</td><td>The value to enable(1u) or disable(0u) this feature. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>1 on success, otherwise return 0. </dd></dl>
+
+</div>
+</div>
 <a id="ga529fc13e912b855918346ebe3807c1b1" name="ga529fc13e912b855918346ebe3807c1b1"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ga529fc13e912b855918346ebe3807c1b1">&#9670;&nbsp;</a></span>qPID_Reset()</h2>
 
@@ -511,6 +566,51 @@ Functions</h2></td></tr>
 
 </div>
 </div>
+<a id="ga792de22b34677074a287d51a377360a9" name="ga792de22b34677074a287d51a377360a9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga792de22b34677074a287d51a377360a9">&#9670;&nbsp;</a></span>qPID_SetExtraGains()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int qPID_SetExtraGains </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structq_p_i_d__controller__t.html">qPID_controller_t</a> *const&#160;</td>
+          <td class="paramname"><em>c</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const float&#160;</td>
+          <td class="paramname"><em>kw</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const float&#160;</td>
+          <td class="paramname"><em>kt</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Set/Change extra PID controller gains. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">c</td><td>A pointer to the PID controller instance. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">kw</td><td>Saturation feedback gain. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">kt</td><td>Manual input gain. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>1 on success, otherwise return 0. </dd></dl>
+
+</div>
+</div>
 <a id="gae753554e76bdfd3cf58e56b35739336b" name="gae753554e76bdfd3cf58e56b35739336b"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#gae753554e76bdfd3cf58e56b35739336b">&#9670;&nbsp;</a></span>qPID_SetGains()</h2>
 
@@ -600,6 +700,82 @@ Functions</h2></td></tr>
 <p><code>qNumA_IntegralRe</code> : Integrate using the Rectangular rule.</p>
 <p ><code>qNumA_IntegralTr</code> : (default) Integrate using the Trapezoidal rule.</p>
 <p ><code>qNumA_IntegralSi</code> : Integrate using the Simpson's 1/3 rule.</p>
+<dl class="section return"><dt>Returns</dt><dd>1 on success, otherwise return 0. </dd></dl>
+
+</div>
+</div>
+<a id="ga6d4c9b388c8856b0a917cf85903c1d66" name="ga6d4c9b388c8856b0a917cf85903c1d66"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga6d4c9b388c8856b0a917cf85903c1d66">&#9670;&nbsp;</a></span>qPID_SetManualInput()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int qPID_SetManualInput </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structq_p_i_d__controller__t.html">qPID_controller_t</a> *const&#160;</td>
+          <td class="paramname"><em>c</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>manualInput</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Set the PID manual input mode. This value will be used as the manual input when the controller it set into the ::qPID_Manual mode. Bumpless transfer is guaranteed. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">c</td><td>A pointer to the PID controller instance. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">manualInput</td><td>The value of the manual input. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>1 on success, otherwise return 0. </dd></dl>
+
+</div>
+</div>
+<a id="gac09383b81a52097e06214cbc16999c4d" name="gac09383b81a52097e06214cbc16999c4d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gac09383b81a52097e06214cbc16999c4d">&#9670;&nbsp;</a></span>qPID_SetMode()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int qPID_SetMode </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structq_p_i_d__controller__t.html">qPID_controller_t</a> *const&#160;</td>
+          <td class="paramname"><em>c</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const qPID_Mode_t&#160;</td>
+          <td class="paramname"><em>m</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Change the controller operational mode. In ::qPID_Automatic mode, the computed output of the PID controller will be used as the control signal for the process. In ::qPID_Manual mode, the manual input will be used as the control signal for the process and the PID controller loop will continue operating to guarantee the bumpless transfer when a switch to the ::qPID_Automatic mode its performed;. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">c</td><td>A pointer to the PID controller instance. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">m</td><td>The desired operational mode. </td></tr>
+  </table>
+  </dd>
+</dl>
 <dl class="section return"><dt>Returns</dt><dd>1 on success, otherwise return 0. </dd></dl>
 
 </div>
@@ -721,51 +897,6 @@ Functions</h2></td></tr>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">c</td><td>A pointer to the PID controller instance. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>1 on success, otherwise return 0. </dd></dl>
-
-</div>
-</div>
-<a id="ga19909c805541f8744db3494e2adb70f2" name="ga19909c805541f8744db3494e2adb70f2"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga19909c805541f8744db3494e2adb70f2">&#9670;&nbsp;</a></span>qPID_SetTrackingMode()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int qPID_SetTrackingMode </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="structq_p_i_d__controller__t.html">qPID_controller_t</a> *const&#160;</td>
-          <td class="paramname"><em>c</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">float *&#160;</td>
-          <td class="paramname"><em>var</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const float&#160;</td>
-          <td class="paramname"><em>kt</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Set the PID tracking mode. This allows the PID controller to adjust its internal state by changing its integrator output so that the output tracks a prescribed signal feeding this extra input. Can be used to achieve bumpless control transfer. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">c</td><td>A pointer to the PID controller instance. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">var</td><td>A pointer to the external feedback variable. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">kt</td><td>Tracking gain. </td></tr>
   </table>
   </dd>
 </dl>
