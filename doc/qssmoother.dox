@@ -20,13 +20,13 @@
 *
 *  The difference-ecuation of the output of this filter is given by:
 *
-*     \f$y(t)=x(t)+\alpha[y(t-1)+x(t)]\f$
+*     <center> \f$y(t)=x(t)+\alpha[y(t-1)+x(t)]\f$ </center>
 *
 * where,
 *
-*     \f$\alpha=e^{-T_{m}w}\f$
+*     <center> \f$\alpha=e^{-T_{m}w}\f$ </center>
 *
-*     \f$ 0 < \alpha < 1\f$
+*     <center> \f$ 0 < \alpha < 1\f$ </center>
 *
 *
 *  @subsection qssmoother_ex1 Example: setting up a 1st order low-pass filter:
@@ -50,16 +50,17 @@
 *
 *  The difference-ecuation of the output of this filter is given by:
 *
-*     \f$y(t)=kx(t)+b_{1}x(t-1)+kx(t-2)-a_{1}y(t-1)-a_{2}y(t-2)\f$
+*     <center> \f$y(t)=kx(t)+b_{1}x(t-1)+kx(t-2)-a_{1}y(t-1)-a_{2}y(t-2)\f$ </center>
 *
 *  where,
 *
+*  <center>
 *  \f$ 0 < \alpha < 1\f$
 *
 *  \f$p=\sqrt{2\alpha}\f$, \f$r=1+p+\alpha^{2}\f$, \f$k=\frac{\alpha^{2}}{r}\f$
 *
 *  \f$a_1=\frac{ 2(\alpha^{2}-1)}{r}\f$, \f$a_2=\frac{ 1-p+\alpha^{2} }{r}\f$, \f$b_1=2k\f$
-*
+*  </center>
 *
 *  @subsection qssmoother_ex2 Example: setting up a 2nd order low-pass filter:
 *  @code{.c}
@@ -88,7 +89,7 @@
 *
 *  The difference-ecuation of the output of this filter is given by:
 *
-*     \f$ \frac{1}{N}\sum_{i=0}^{N-1}y(t-i)=\frac{1}{N}[ y(t) + y(t-1) + ... + y(t-N-1) ] \f$
+*  <center> \f$ \frac{1}{N}\sum_{i=0}^{N-1}y(t-i)=\frac{1}{N}[ y(t) + y(t-1) + ... + y(t-N-1) ] \f$ </center>
 *
 *  This filter has a time complexity of \f$O(n)\f$ 
 *
@@ -148,9 +149,11 @@
 *
 *  This filter uses the following criteria for outlier removal:
 *
+*     <center>
 *     \f$  y(k) =  \overline{m(k)} \rightarrow \text{if} \rightarrow | \overline{m(k)} - x(k) | > \alpha|\overline{m(k)}| \f$
 *
 *     \f$  \text{else}=x(k) \f$
+*     </center>
 *
 *  This filter has a time complexity of \f$O(n)\f$ 
 *
@@ -199,7 +202,7 @@
 *
 *  The coefficients of the kernel are computed from the following equation:
 *
-*     \f$ w(n)=e^{\frac{1}{2}( \alpha\frac{ n }{ (L-1)/2} )^2}  = e^{-n^{2}/2\sigma^2 }\f$
+*  <center> \f$ w(n)=e^{\frac{1}{2}( \alpha\frac{ n }{ (L-1)/2} )^2}  = e^{-n^{2}/2\sigma^2 }\f$ </center>
 *
 *  were \f$ -(L-1)/2 \leq n \leq (L-1)/2 \f$ and \f$\alpha\f$ is inversely proportional 
 *  to the standard deviation, \f$\sigma\f$, of a Gaussian random variable. The exact 
@@ -247,9 +250,9 @@
 *  average recursively for each data sample that comes in by using the following
 *  recursive equations.
 *
-*     \f$ w(t) = \lambda w(t-1) + 1  \f$
+*     <center> \f$ w(t) = \lambda w(t-1) + 1  \f$ </center>
 *
-*     \f$ y(t) = ( 1-\frac{1}{w(t)} )y(t-1) + \frac{1}{w(t)}x(t)\f$
+*     <center> \f$ y(t) = ( 1-\frac{1}{w(t)} )y(t-1) + \frac{1}{w(t)}x(t)\f$ </center>
 *
 *  @subsection qssmoother_ex8 Example: setting up an exponential weighting filter:
 *  @code{.c}
@@ -277,19 +280,19 @@
 *
 *  predict
 *
-*  \f$ x(k) = Ax(k-1)\f$
+*  <center> \f$ x(k) = Ax(k-1)\f$ </center>
 *
-*  \f$ P(k) = A^{2}P(k-1) + Q\f$
+*  <center> \f$ P(k) = A^{2}P(k-1) + Q\f$ </center>
 *
 *  compute the Kalman gain
 *
-*  \f$ K(k) = \frac{P(k)H}{r + H P(k) H}  \f$
+*  <center> \f$ K(k) = \frac{P(k)H}{r + H P(k) H}  \f$ </center>
 *
 *  update the state and the state uncertainty
 *
-*  \f$ x(k) = x(k-1) + K(k)( u(k) - H x(k) ) \f$
+*  <center> \f$ x(k) = x(k-1) + K(k)( u(k) - H x(k) ) \f$ </center>
 *
-*  \f$ P(k) = ( 1 - K(k)H )P(k-1) \f$
+*  <center> \f$ P(k) = ( 1 - K(k)H )P(k-1) \f$ </center>
 *
 *  Where
 * 

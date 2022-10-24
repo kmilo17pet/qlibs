@@ -23,25 +23,27 @@
 *
 * The overall control function implemented by \ref qpid is given by:
 *
+* <center>
 * \f$ v(t)= \psi(t)r(t) + [ K_{c}e(t) + K_{i}\int [ e(t) + c(t-1) ]dt + K_{d}f_{d}(t) ] \f$ 
 *
 * \f$ u(t) = \text{Sat}[ v(t), u_{min}, u_{max} ]\f$ 
 *
+* </center>
 * where \f$r(t)\f$ the set-point, \f$ e(t) = r(t) - y(t) \f$ its the error
 * \f$y(t)\f$ the process output, \f$K_{c},K_{i},K_{d}\f$ the PID gain respectively 
 *  and \f$u(t)\f$ the control action.
 *
-* \f$\psi(t)\f$ the adaptive gain from the additive MRAC (later explained)
+* <center> \f$\psi(t)\f$ the adaptive gain from the additive MRAC (later explained) </center>
 *
 * As shown above, the derivative term \f$ f_{d}(t)\f$ is the output of a 
 * low-pass filter who take the error derivative as input.
 *
-* \f$ f_{d}(t) = \text{LPF}[ \frac{de(t)}{dt} ]\f$ 
+* <center> \f$ f_{d}(t) = \text{LPF}[ \frac{de(t)}{dt} ]\f$  </center>
 *
 * and \f$ c(t)\f$, the Anti-Windup and tracking mode feedback, with \f$K_{w}\f$
 * and \f$K_{T}\f$ as the ajustment parameters respectively.
 *
-* \f$ c(t) = K_{w}[ u(t) - v(t) ] + K_{T}[ r_{t}(t) - u(t) ]\f$
+* <center> \f$ c(t) = K_{w}[ u(t) - v(t) ] + K_{T}[ r_{t}(t) - u(t) ]\f$ </center>
 *
 * <center>
 * @htmlonly
@@ -144,10 +146,11 @@
 * which adapts a feed-forward gain by the error between the system \f$ y(t) \f$
 * and a reference model \f$ y_{m}(t) \f$, therefore is the so-called Gradient approach.
 *
-*
+* <center>
 * \f$ e_{m}(t) = y(t) - y_{m}(t)\f$ 
 *
 * \f$ \delta(t) = -\gamma  \frac{ e_{m}(t) y_{m}(t) }{ \beta + y_{m}^{2}(t)  }  \f$ 
+* </center>
 *
 * where \f$\gamma(t)\f$ is the adaptation gain and \f$\beta(t)\f$ is introduced 
 * to remove the problem of the possible division by zero if \f$y_{m}^{2}(t) \f$
@@ -156,7 +159,7 @@
 * The MRAC adaptation is then computed by integrating the \f$\delta(t)\f$ term 
 * as follows:
 *
-*  \f$ \psi(t) = \int \delta(t) dt \f$ 
+* <center> \f$ \psi(t) = \int \delta(t) dt \f$ </center>
 *
 * This method can be used to adapt to slower changes but can become unstable for
 * abrupt changes to the system. Therefore, this implementation uses a so called 
@@ -244,6 +247,7 @@
 *
 * Autotunning is performed by using the following recursive algorithm:
 *
+* <center>
 * \f$ L(t) =  \frac{ P(t-1)\phi }{ \lambda + \phi^{T}P(t-1)\phi  } \f$
 *
 * \f$\theta(t) = \theta(t-1) + L[ y(t) - \phi^{T}\theta(t)  ] \f$
@@ -262,6 +266,7 @@
 * \f$ K_{i}(t) = \alpha \frac{ g(t)[ 0.54 + 0.33r_{1} ] }{ r_{2}dt } \f$
 *
 * \f$ K_{c}(t) = \alpha \frac{ K_{c}(t)dt }{ r_{2} } \f$
+* </center>
 *
 * where  \f$ r_{1} = dt/\tau(t) \f$  and \f$ r_{2} = 1.35 + 0.25r_{1} \f$ 
 *

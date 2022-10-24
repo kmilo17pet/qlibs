@@ -58,7 +58,7 @@
 * 
 * The final output of the system is the weighted average/sum over all rule outputs:
 *
-* \f$out= \frac{ \sum_{i=1}^{N}w_{i}u_{i} }{ \sum_{i=1}^{N}w_{i}} \f$ 
+* <center> \f$out= \frac{ \sum_{i=1}^{N}w_{i}u_{i} }{ \sum_{i=1}^{N}w_{i}} \f$  </center>
 * 
 * where \f$N\f$  is the number of rules.
 *
