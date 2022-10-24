@@ -162,8 +162,7 @@ Sugeno</h1>
 <p >and \(w_i\), the rule firing strength, that is determined by the rule antecedent</p>
 <p >The output of each rule is the weighted output level, which is the product of \(w_i\) and \(u_i\).</p>
 <p >The final output of the system is the weighted average/sum over all rule outputs:</p>
-<p >\(out= \frac{ \sum_{i=1}^{N}w_{i}u_{i} }{ \sum_{i=1}^{N}w_{i}} \)</p>
-<p >where \(N\) is the number of rules.</p>
+<center> \(out= \frac{ \sum_{i=1}^{N}w_{i}u_{i} }{ \sum_{i=1}^{N}w_{i}} \) </center><p >where \(N\) is the number of rules.</p>
 <p >Because of the linear dependence of each rule on the input variables, the Sugeno method is ideal for acting as an interpolating supervisor of multiple linear controllers that are to be applied, respectively, to different operating conditions of a dynamic nonlinear system.</p>
 <p >To specificy a FIS of this type, use the <a class="el" href="group__qfis.html#gga2f3f0184eca9e38c98afca2275fbe13da6be5a07806b4e50dc6aa3ce912692ad6">Sugeno</a> enum definition when calling <a class="el" href="group__qfis.html#gaae3433474a516fbf41e0e406fe41410b" title="Setup and initialize the FIS instance.">qFIS_Setup()</a>.</p>
 <center>  

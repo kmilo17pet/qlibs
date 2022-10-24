@@ -155,15 +155,10 @@ $(document).ready(function(){initNavTree('qpid_desc.html',''); initResizable(); 
 PID Controller approach</h1>
 <p >The mathematical model and practical loop uses a direct control action for all the PID terms, which means an increasing positive error results in an increasing positive control output correction.</p>
 <p >The overall control function implemented by <a class="el" href="group__qpid.html">qPID</a> is given by:</p>
-<p >\( v(t)= \psi(t)r(t) + [ K_{c}e(t) + K_{i}\int [ e(t) + c(t-1) ]dt + K_{d}f_{d}(t) ] \)</p>
-<p >\( u(t) = \text{Sat}[ v(t), u_{min}, u_{max} ]\)</p>
-<p >where \(r(t)\) the set-point, \( e(t) = r(t) - y(t) \) its the error \(y(t)\) the process output, \(K_{c},K_{i},K_{d}\) the PID gain respectively and \(u(t)\) the control action.</p>
-<p >\(\psi(t)\) the adaptive gain from the additive MRAC (later explained)</p>
-<p >As shown above, the derivative term \( f_{d}(t)\) is the output of a low-pass filter who take the error derivative as input.</p>
-<p >\( f_{d}(t) = \text{LPF}[ \frac{de(t)}{dt} ]\)</p>
-<p >and \( c(t)\), the Anti-Windup and tracking mode feedback, with \(K_{w}\) and \(K_{T}\) as the ajustment parameters respectively.</p>
-<p >\( c(t) = K_{w}[ u(t) - v(t) ] + K_{T}[ r_{t}(t) - u(t) ]\)</p>
-<center>  
+<center> \( v(t)= \psi(t)r(t) + [ K_{c}e(t) + K_{i}\int [ e(t) + c(t-1) ]dt + K_{d}f_{d}(t) ] \)</center><center> \( u(t) = \text{Sat}[ v(t), u_{min}, u_{max} ]\)</center><center></center><p> where \(r(t)\) the set-point, \( e(t) = r(t) - y(t) \) its the error \(y(t)\) the process output, \(K_{c},K_{i},K_{d}\) the PID gain respectively and \(u(t)\) the control action.</p>
+<center> \(\psi(t)\) the adaptive gain from the additive MRAC (later explained) </center><p >As shown above, the derivative term \( f_{d}(t)\) is the output of a low-pass filter who take the error derivative as input.</p>
+<center> \( f_{d}(t) = \text{LPF}[ \frac{de(t)}{dt} ]\) </center><p >and \( c(t)\), the Anti-Windup and tracking mode feedback, with \(K_{w}\) and \(K_{T}\) as the ajustment parameters respectively.</p>
+<center> \( c(t) = K_{w}[ u(t) - v(t) ] + K_{T}[ r_{t}(t) - u(t) ]\) </center><center>  
 <!DOCTYPE html>
 <html>
 <head>
@@ -239,12 +234,9 @@ Example: Speed control using a PID controller:</h2>
 </div><!-- fragment --><h1><a class="anchor" id="qpid_mrac"></a>
 Additive MRAC (Model Reference Adaptive Control)</h1>
 <p >Model Reference Adaptive Control (MRAC) is a strategy where the controller of the closed-loop is adapted by an adjustment mechanism, which takes \( y_{m}(t) \) from a reference model as input and tries to adjust the controller output \(v(t)\). The adjustment mechanism used by <a class="el" href="group__qpid.html">qPID</a> is the enhanced MIT-rule approach, which adapts a feed-forward gain by the error between the system \( y(t) \) and a reference model \( y_{m}(t) \), therefore is the so-called Gradient approach.</p>
-<p >\( e_{m}(t) = y(t) - y_{m}(t)\)</p>
-<p >\( \delta(t) = -\gamma \frac{ e_{m}(t) y_{m}(t) }{ \beta + y_{m}^{2}(t) } \)</p>
-<p >where \(\gamma(t)\) is the adaptation gain and \(\beta(t)\) is introduced to remove the problem of the possible division by zero if \(y_{m}^{2}(t) \) gets too small.</p>
+<center> \( e_{m}(t) = y(t) - y_{m}(t)\)</center><center> \( \delta(t) = -\gamma \frac{ e_{m}(t) y_{m}(t) }{ \beta + y_{m}^{2}(t) } \) </center><p >where \(\gamma(t)\) is the adaptation gain and \(\beta(t)\) is introduced to remove the problem of the possible division by zero if \(y_{m}^{2}(t) \) gets too small.</p>
 <p >The MRAC adaptation is then computed by integrating the \(\delta(t)\) term as follows:</p>
-<p >\( \psi(t) = \int \delta(t) dt \)</p>
-<p >This method can be used to adapt to slower changes but can become unstable for abrupt changes to the system. Therefore, this implementation uses a so called modified MRAC (M-MRAC) where the adaptation is later added to a PID controller, being the MRAC the additive loop.</p>
+<center> \( \psi(t) = \int \delta(t) dt \) </center><p >This method can be used to adapt to slower changes but can become unstable for abrupt changes to the system. Therefore, this implementation uses a so called modified MRAC (M-MRAC) where the adaptation is later added to a PID controller, being the MRAC the additive loop.</p>
 <p >Abrupt changes to the system are absorbed by the PID controller, while the change of the dynamics will still be handled by the MIT gain \(\psi(t)\). This results in the equation of the control function presented at the beginning of this section.</p>
 <p >To use the additive MRAC, you should first instantiate a reference model and then, enable the MRAC by using the <a class="el" href="group__qpid.html#gace4705569152c216c12b482267eb834f">qPID_SetMRAC()</a> API. Here, you must provide a pointer to the output of the reference model and the adaptation gain \(\gamma(t)\)</p>
 <h2><a class="anchor" id="qpid_ex2"></a>
@@ -310,16 +302,7 @@ Autotunning</h1>
 <p >Autotuning can eliminate much of the trial and error of a manual tuning approach, especially if you do not have a lot of loop tuning experience. Performing the autotuning procedure will get the tuning parameters close to their optimal values, but additional manual tuning may be required to get the tuning parameters to their optimal values.</p>
 <p >The Autotune feature for the controller will only run for a limited amount of time after it gets enabled. In other words, autotuning does not run continuously during operation. Whenever there is a substantial change in the process dynamics, the tuning process will need to be repeated in order to derive new gains required for optimal control.</p>
 <p >Autotunning is performed by using the following recursive algorithm:</p>
-<p >\( L(t) = \frac{ P(t-1)\phi }{ \lambda + \phi^{T}P(t-1)\phi } \)</p>
-<p >\(\theta(t) = \theta(t-1) + L[ y(t) - \phi^{T}\theta(t) ] \)</p>
-<p >\( P(t) = \lambda^{-1}[ I - L(t)+\phi^{T}]P(t-1) \)</p>
-<p >\( \theta(t) = \begin{bmatrix} \theta_{1}(t) &amp; \theta_{2}(t) \end{bmatrix}^T \) and \( \phi(t) = \begin{bmatrix} -y(t-1) &amp; u(t-1) \end{bmatrix}^T \)</p>
-<p >\( g(t) = \frac{ (1 - \mu)\theta_{2}(t) }{ 1 + \theta_{1} } + \mu g(t-1) \)</p>
-<p >\( \tau(t) = \frac{ ( \mu - 1 )dt }{ ln( |\theta_{1}| ) } + \mu \tau(t-1) \)</p>
-<p >\( K_{c}(t) = \alpha \frac{ r_{2} \tau(t) }{ g(t)dt } \)</p>
-<p >\( K_{i}(t) = \alpha \frac{ g(t)[ 0.54 + 0.33r_{1} ] }{ r_{2}dt } \)</p>
-<p >\( K_{c}(t) = \alpha \frac{ K_{c}(t)dt }{ r_{2} } \)</p>
-<p >where \( r_{1} = dt/\tau(t) \) and \( r_{2} = 1.35 + 0.25r_{1} \)</p>
+<center> \( L(t) = \frac{ P(t-1)\phi }{ \lambda + \phi^{T}P(t-1)\phi } \)</center><center> \(\theta(t) = \theta(t-1) + L[ y(t) - \phi^{T}\theta(t) ] \)</center><center> \( P(t) = \lambda^{-1}[ I - L(t)+\phi^{T}]P(t-1) \)</center><center> \( \theta(t) = \begin{bmatrix} \theta_{1}(t) &amp; \theta_{2}(t) \end{bmatrix}^T \) and \( \phi(t) = \begin{bmatrix} -y(t-1) &amp; u(t-1) \end{bmatrix}^T \)</center><center> \( g(t) = \frac{ (1 - \mu)\theta_{2}(t) }{ 1 + \theta_{1} } + \mu g(t-1) \)</center><center> \( \tau(t) = \frac{ ( \mu - 1 )dt }{ ln( |\theta_{1}| ) } + \mu \tau(t-1) \)</center><center> \( K_{c}(t) = \alpha \frac{ r_{2} \tau(t) }{ g(t)dt } \)</center><center> \( K_{i}(t) = \alpha \frac{ g(t)[ 0.54 + 0.33r_{1} ] }{ r_{2}dt } \)</center><center> \( K_{c}(t) = \alpha \frac{ K_{c}(t)dt }{ r_{2} } \) </center><p >where \( r_{1} = dt/\tau(t) \) and \( r_{2} = 1.35 + 0.25r_{1} \)</p>
 <p >and the remaining parameters \(\mu\), \(\alpha\), \(\lambda\) are internally computed for best performance.</p>
 <h2><a class="anchor" id="qpid_autotune_usage"></a>
 Autotunning Usage</h2>
