@@ -1,8 +1,25 @@
 /*! @page qpid_desc Closed-loop PID Controller
 * @tableofcontents
-* A PID controller seeks to keep some input variable close to a desired setpoint
-* by adjusting an output. The way in which it does this can be 'tuned' by 
-* adjusting three parameters (Proportional, Integral and Derivative).
+* A Proportional Integral Derivative (PID) controller is an automatically 
+* optimized and accurate control system responsible for ensuring that a 
+* process remains as close to the desired value as possible regardless of 
+* various disruptions. The controller compares the measured process variable  
+* \f$ y(t)\f$ and a desired Setpoint \f$ r(t)\f$ (desired outcome). Based on 
+* that comparison, the controller calculates the Proportional, Integral and 
+* Derivative terms and adds them to obtain the output signal \f$ u(t) \f that 
+* attempts to minimize the error. This output signal is then used to command
+* the Final Control Element (e.g an actuator) that is in charge of operating 
+* the process.
+*
+* Proportional is used to find out the error between the desired value and 
+* actual value and is responsible for the corrective response. Integral is 
+* applied to calculate all the past values of error and then integrate them to
+* find out the Integral term. When error is expelled from the system this 
+* integral stops increasing. The derivative is used to predict the expected 
+* error values in future based on the present values. Controlling effect can be
+* increased if the system has a rapid rate of change, which is also based on 
+* Derivative. Combining all these three operations gives the name Proportional 
+* Integral Derivative (PID) Controller.
 *
 * qLibs provides the \ref qpid implementation, which, apart from the simplified 
 * overview representation of the PID controller, also addresses some practical

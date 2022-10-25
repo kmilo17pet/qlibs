@@ -4,7 +4,7 @@
 *  out things that are unimportant (i.e. noise). This smoothing is accomplished 
 *  through the use of filtering. The goal of smoothing is to produce slow changes 
 *  in value so that it's easier to see trends in our signal.
-*  @a qLibs provides a collection of smoothing filters to improve our signals,  
+*  @a qLibs provides a collection of smoothing filters to improve our signals,
 *  the @ref qssmoother module.
 *
 *  Below is the list of filters supported by @ref qssmoother :
@@ -349,7 +349,7 @@
 *      }
 *  }
 *  
-*  int main( int argc, char *argv[] ) 
+*  int main( int argc, char *argv[] )
 *  {
 *      qSSmoother_GMWF_t smoother;
 *      float win_kernel[ 2*SMOOTHER_WINDOW_SIZE ]; //storage for the window and the kernel
