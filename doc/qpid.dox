@@ -21,7 +21,8 @@
 * action for all the PID terms, which means an increasing positive error 
 * results in an increasing positive control output correction.
 *
-* The overall control function implemented by \ref qpid is given by:
+* The overall control function implemented by \ref qpid in ::Automatic mode is 
+* given by:
 *
 * <center>
 * \f$ v(t)= \psi(t)r(t) + [ K_{c}e(t) + K_{i}\int [ e(t) + c(t-1) ]dt + K_{d}f_{d}(t) ] \f$ 
@@ -33,7 +34,7 @@
 * \f$y(t)\f$ the process output, \f$K_{c},K_{i},K_{d}\f$ the PID gain respectively 
 *  and \f$u(t)\f$ the control action.
 *
-* <center> \f$\psi(t)\f$ the adaptive gain from the additive MRAC (later explained) </center>
+* \f$\psi(t)\f$ the adaptive gain from the additive MRAC (later explained)
 *
 * As shown above, the derivative term \f$ f_{d}(t)\f$ is the output of a 
 * low-pass filter who take the error derivative as input.
@@ -41,9 +42,9 @@
 * <center> \f$ f_{d}(t) = \text{LPF}[ \frac{de(t)}{dt} ]\f$  </center>
 *
 * and \f$ c(t)\f$, the Anti-Windup and tracking mode feedback, with \f$K_{w}\f$
-* and \f$K_{T}\f$ as the ajustment parameters respectively.
+* as the ajustment parameter.
 *
-* <center> \f$ c(t) = K_{w}[ u(t) - v(t) ] + K_{T}[ r_{t}(t) - u(t) ]\f$ </center>
+* <center> \f$ c(t) = K_{w}[ u(t) - v(t) ] \f$ </center>
 *
 * <center>
 * @htmlonly
@@ -60,6 +61,17 @@
 * @endhtmlonly
 * <em>PID Implementation</em>
 * </center>
+*
+* When the operation mode is changed to ::Manual, the feedback is disconnected and 
+* the controller works in open loop being commanded by the manual input \f$ m(t) \f$. 
+* Since the controller is a dynamic system, it is necessary to make sure that
+* the state of the system is correct when switching the controller between manual
+* and automatic mode. When the system is in manual mode, the control algorithm 
+* produces a control signal that may be different from the manually generated 
+* control signal. It is necessary to make sure that the two outputs coincide at 
+* the time of switching. This is called bumpless transfer and its given by 
+*
+* <center> \f$ v(t) = \int [ K_{T}m(t) + K_{w}[ u(t) - v(t) ] ]dt\f$ </center>
 *
 * @section qpid_create Creating a PID Controller
 *
