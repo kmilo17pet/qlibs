@@ -154,11 +154,12 @@ $(document).ready(function(){initNavTree('qpid_desc.html',''); initResizable(); 
 <h1><a class="anchor" id="qpid_approach"></a>
 PID Controller approach</h1>
 <p >The mathematical model and practical loop uses a direct control action for all the PID terms, which means an increasing positive error results in an increasing positive control output correction.</p>
-<p >The overall control function implemented by <a class="el" href="group__qpid.html">qPID</a> is given by:</p>
+<p >The overall control function implemented by <a class="el" href="group__qpid.html">qPID</a> in ::Automatic mode is given by:</p>
 <center> \( v(t)= \psi(t)r(t) + [ K_{c}e(t) + K_{i}\int [ e(t) + c(t-1) ]dt + K_{d}f_{d}(t) ] \)</center><center> \( u(t) = \text{Sat}[ v(t), u_{min}, u_{max} ]\)</center><center></center><p> where \(r(t)\) the set-point, \( e(t) = r(t) - y(t) \) its the error \(y(t)\) the process output, \(K_{c},K_{i},K_{d}\) the PID gain respectively and \(u(t)\) the control action.</p>
-<center> \(\psi(t)\) the adaptive gain from the additive MRAC (later explained) </center><p >As shown above, the derivative term \( f_{d}(t)\) is the output of a low-pass filter who take the error derivative as input.</p>
-<center> \( f_{d}(t) = \text{LPF}[ \frac{de(t)}{dt} ]\) </center><p >and \( c(t)\), the Anti-Windup and tracking mode feedback, with \(K_{w}\) and \(K_{T}\) as the ajustment parameters respectively.</p>
-<center> \( c(t) = K_{w}[ u(t) - v(t) ] + K_{T}[ r_{t}(t) - u(t) ]\) </center><center>  
+<p >\(\psi(t)\) the adaptive gain from the additive MRAC (later explained)</p>
+<p >As shown above, the derivative term \( f_{d}(t)\) is the output of a low-pass filter who take the error derivative as input.</p>
+<center> \( f_{d}(t) = \text{LPF}[ \frac{de(t)}{dt} ]\) </center><p >and \( c(t)\), the Anti-Windup and tracking mode feedback, with \(K_{w}\) as the ajustment parameter.</p>
+<center> \( c(t) = K_{w}[ u(t) - v(t) ] \) </center><center>  
 <!DOCTYPE html>
 <html>
 <head>
@@ -169,7 +170,8 @@ PID Controller approach</h1>
 <script type="text/javascript" src="https://viewer.diagrams.net/js/viewer-static.min.js"></script>
 </body>
 </html>
- <em>PID Implementation</em> </center><h1><a class="anchor" id="qpid_create"></a>
+ <em>PID Implementation</em> </center><p >When the operation mode is changed to ::Manual, the feedback is disconnected and the controller works in open loop being commanded by the manual input \( m(t) \). Since the controller is a dynamic system, it is necessary to make sure that the state of the system is correct when switching the controller between manual and automatic mode. When the system is in manual mode, the control algorithm produces a control signal that may be different from the manually generated control signal. It is necessary to make sure that the two outputs coincide at the time of switching. This is called bumpless transfer and its given by</p>
+<center> \( v(t) = \int [ K_{T}m(t) + K_{w}[ u(t) - v(t) ] ]dt\) </center><h1><a class="anchor" id="qpid_create"></a>
 Creating a PID Controller</h1>
 <p >Before you start using a controller, it must be instantiated first via the <a class="el" href="structq_p_i_d__controller__t.html">qPID_controller_t</a> type and then configured using the <a class="el" href="group__qpid.html#gaec33f4b01047504ebeea758bc7ce6798">qPID_Setup()</a> API, where you can define the PID gains and time step.</p>
 <p >Example: Instantiating an configuring a PID controller: </p><div class="fragment"><div class="line"><a class="code hl_struct" href="structq_p_i_d__controller__t.html">qPID_controller_t</a> control;</div>
