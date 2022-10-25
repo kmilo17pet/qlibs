@@ -182,7 +182,7 @@ Creating a PID Controller</h1>
 <div class="line">    <span class="comment">// error, pid controller cant be configured</span></div>
 <div class="line">}</div>
 <div class="ttc" id="agroup__qpid_html_gaec33f4b01047504ebeea758bc7ce6798"><div class="ttname"><a href="group__qpid.html#gaec33f4b01047504ebeea758bc7ce6798">qPID_Setup</a></div><div class="ttdeci">int qPID_Setup(qPID_controller_t *const c, const float kc, const float ki, const float kd, const float dt)</div><div class="ttdoc">Setup and initialize the PID controller instance.</div><div class="ttdef"><b>Definition:</b> qpid.c:18</div></div>
-<div class="ttc" id="astructq_p_i_d__controller__t_html"><div class="ttname"><a href="structq_p_i_d__controller__t.html">qPID_controller_t</a></div><div class="ttdoc">A PID controller object.</div><div class="ttdef"><b>Definition:</b> qpid.h:63</div></div>
+<div class="ttc" id="astructq_p_i_d__controller__t_html"><div class="ttname"><a href="structq_p_i_d__controller__t.html">qPID_controller_t</a></div><div class="ttdoc">A PID controller object.</div><div class="ttdef"><b>Definition:</b> qpid.h:65</div></div>
 </div><!-- fragment --><h1><a class="anchor" id="qfpid_usage"></a>
 Usign the controller</h1>
 <p >The following example illustrates how a PID controller can be used to regulate the speed of a DC motor. PID control operates on a separate task running periodically at a rate of 50mS. The speed measurement is being read through an analog input and then scaled to the appropriate units (RPM). The <a class="el" href="group__qpid.html#ga35578d503547dbd39bf8647700c66eb5">qPID_Control()</a> function will be in charge of computing the control action and updating the internal states of the controller. Then, the control output gets scaled-back in order to send the control command by using the PWM(Pulse Width Modulation) module.</p>
@@ -222,15 +222,15 @@ Example: Speed control using a PID controller:</h2>
 <div class="line">    <span class="keywordflow">if</span> ( 0 == ret ) {</div>
 <div class="line">        puts( <span class="stringliteral">&quot;ERROR: Cant configure PID controller&quot;</span> );</div>
 <div class="line">    }</div>
-<div class="line">    <a class="code hl_function" href="group__qpid.html#ga544fd18e2912b8d14083337e434d59a3">qPID_SetSaturation</a>( &amp;speedControl, 0.0f, 100.0f );</div>
+<div class="line">    <a class="code hl_function" href="group__qpid.html#ga8b40b9e975519f12ea9d1e2baf2f4bf9">qPID_SetSaturation</a>( &amp;speedControl, 0.0f, 100.0f );</div>
 <div class="line">    <span class="comment">// Create the task that handles the speed control at the defined rate</span></div>
 <div class="line">    xTaskCreate( xTaskPIDspeedControl, <span class="stringliteral">&quot;speedControl&quot;</span>, 1024, &amp;speedControl, configMAX_PRIORITIES - 1 ,NULL );</div>
 <div class="line">    vTaskStartScheduler();</div>
 <div class="line">    <span class="keywordflow">for</span>( ;; );</div>
 <div class="line">    <span class="keywordflow">return</span> EXIT_SUCCESS;</div>
 <div class="line">}</div>
-<div class="ttc" id="agroup__qpid_html_ga35578d503547dbd39bf8647700c66eb5"><div class="ttname"><a href="group__qpid.html#ga35578d503547dbd39bf8647700c66eb5">qPID_Control</a></div><div class="ttdeci">float qPID_Control(qPID_controller_t *const c, const float w, const float y)</div><div class="ttdoc">Computes the control action for given PID controller instance.</div><div class="ttdef"><b>Definition:</b> qpid.c:203</div></div>
-<div class="ttc" id="agroup__qpid_html_ga544fd18e2912b8d14083337e434d59a3"><div class="ttname"><a href="group__qpid.html#ga544fd18e2912b8d14083337e434d59a3">qPID_SetSaturation</a></div><div class="ttdeci">int qPID_SetSaturation(qPID_controller_t *const c, const float min, const float max, const float kw)</div><div class="ttdoc">Setup the output saturation for the PID controller.</div><div class="ttdef"><b>Definition:</b> qpid.c:98</div></div>
+<div class="ttc" id="agroup__qpid_html_ga35578d503547dbd39bf8647700c66eb5"><div class="ttname"><a href="group__qpid.html#ga35578d503547dbd39bf8647700c66eb5">qPID_Control</a></div><div class="ttdeci">float qPID_Control(qPID_controller_t *const c, const float w, const float y)</div><div class="ttdoc">Computes the control action for given PID controller instance.</div><div class="ttdef"><b>Definition:</b> qpid.c:198</div></div>
+<div class="ttc" id="agroup__qpid_html_ga8b40b9e975519f12ea9d1e2baf2f4bf9"><div class="ttname"><a href="group__qpid.html#ga8b40b9e975519f12ea9d1e2baf2f4bf9">qPID_SetSaturation</a></div><div class="ttdeci">int qPID_SetSaturation(qPID_controller_t *const c, const float min, const float max)</div><div class="ttdoc">Setup the output saturation for the PID controller.</div><div class="ttdef"><b>Definition:</b> qpid.c:95</div></div>
 </div><!-- fragment --><h1><a class="anchor" id="qpid_mrac"></a>
 Additive MRAC (Model Reference Adaptive Control)</h1>
 <p >Model Reference Adaptive Control (MRAC) is a strategy where the controller of the closed-loop is adapted by an adjustment mechanism, which takes \( y_{m}(t) \) from a reference model as input and tries to adjust the controller output \(v(t)\). The adjustment mechanism used by <a class="el" href="group__qpid.html">qPID</a> is the enhanced MIT-rule approach, which adapts a feed-forward gain by the error between the system \( y(t) \) and a reference model \( y_{m}(t) \), therefore is the so-called Gradient approach.</p>
@@ -286,7 +286,7 @@ Example: Speed control with PID controller with an additive MRAC:</h2>
 <div class="line">    <span class="keywordflow">if</span> ( 0 == ret ) {</div>
 <div class="line">        puts( <span class="stringliteral">&quot;ERROR: Cant configure PID controller&quot;</span> );</div>
 <div class="line">    }</div>
-<div class="line">    <a class="code hl_function" href="group__qpid.html#ga544fd18e2912b8d14083337e434d59a3">qPID_SetSaturation</a>( &amp;speedControl, 0.0f, 100.0f );</div>
+<div class="line">    <a class="code hl_function" href="group__qpid.html#ga8b40b9e975519f12ea9d1e2baf2f4bf9">qPID_SetSaturation</a>( &amp;speedControl, 0.0f, 100.0f );</div>
 <div class="line">    <span class="comment">// Create the task that handles the speed control at the defined rate</span></div>
 <div class="line">    xTaskCreate( xTaskPIDspeedControl, <span class="stringliteral">&quot;speedControl&quot;</span>, 1024, &amp;speedControl, configMAX_PRIORITIES - 1 ,NULL );</div>
 <div class="line">    vTaskStartScheduler();</div>
@@ -295,8 +295,8 @@ Example: Speed control with PID controller with an additive MRAC:</h2>
 <div class="line">}</div>
 <div class="ttc" id="agroup__qltisys_html_ga036826af288f92730a8ab5edb66647a9"><div class="ttname"><a href="group__qltisys.html#ga036826af288f92730a8ab5edb66647a9">qLTISys_Excite</a></div><div class="ttdeci">float qLTISys_Excite(qLTISys_t *const sys, float u)</div><div class="ttdoc">Drives the LTI system recursively using the input signal provided.</div><div class="ttdef"><b>Definition:</b> qltisys.c:60</div></div>
 <div class="ttc" id="agroup__qltisys_html_ga62e08fd5775f0d1b9f0347ee69e5833e"><div class="ttname"><a href="group__qltisys.html#ga62e08fd5775f0d1b9f0347ee69e5833e">qLTISys_Setup</a></div><div class="ttdeci">int qLTISys_Setup(qLTISys_t *const sys, float *num, float *den, void *x, const size_t nb, const size_t na, const float dt)</div><div class="ttdoc">Setup and initialize an instance of a LTI system.</div><div class="ttdef"><b>Definition:</b> qltisys.c:128</div></div>
-<div class="ttc" id="agroup__qpid_html_gace4705569152c216c12b482267eb834f"><div class="ttname"><a href="group__qpid.html#gace4705569152c216c12b482267eb834f">qPID_SetMRAC</a></div><div class="ttdeci">int qPID_SetMRAC(qPID_controller_t *const c, const float *modelRef, const float gamma)</div><div class="ttdoc">Enable the additive MRAC(Model Reference Adaptive Control) feature.</div><div class="ttdef"><b>Definition:</b> qpid.c:186</div></div>
-<div class="ttc" id="astructq_l_t_i_sys__t_html"><div class="ttname"><a href="structq_l_t_i_sys__t.html">qLTISys_t</a></div><div class="ttdoc">A LTI system object.</div><div class="ttdef"><b>Definition:</b> qltisys.h:49</div></div>
+<div class="ttc" id="agroup__qpid_html_gace4705569152c216c12b482267eb834f"><div class="ttname"><a href="group__qpid.html#gace4705569152c216c12b482267eb834f">qPID_SetMRAC</a></div><div class="ttdeci">int qPID_SetMRAC(qPID_controller_t *const c, const float *modelRef, const float gamma)</div><div class="ttdoc">Enable the additive MRAC(Model Reference Adaptive Control) feature.</div><div class="ttdef"><b>Definition:</b> qpid.c:181</div></div>
+<div class="ttc" id="astructq_l_t_i_sys__t_html"><div class="ttname"><a href="structq_l_t_i_sys__t.html">qLTISys_t</a></div><div class="ttdoc">A LTI system object.</div><div class="ttdef"><b>Definition:</b> qltisys.h:53</div></div>
 </div><!-- fragment --><h1><a class="anchor" id="qpid_autotune"></a>
 Autotunning</h1>
 <p >Autotuning can eliminate much of the trial and error of a manual tuning approach, especially if you do not have a lot of loop tuning experience. Performing the autotuning procedure will get the tuning parameters close to their optimal values, but additional manual tuning may be required to get the tuning parameters to their optimal values.</p>
@@ -377,7 +377,7 @@ Example: Speed control with PID controller and autotunning:</h2>
 <div class="line">    <span class="keywordflow">if</span> ( 0 == ret ) {</div>
 <div class="line">        puts( <span class="stringliteral">&quot;ERROR: Cant configure PID controller&quot;</span> );</div>
 <div class="line">    }</div>
-<div class="line">    <a class="code hl_function" href="group__qpid.html#ga544fd18e2912b8d14083337e434d59a3">qPID_SetSaturation</a>( &amp;speedControl, 0.0f, 100.0f );</div>
+<div class="line">    <a class="code hl_function" href="group__qpid.html#ga8b40b9e975519f12ea9d1e2baf2f4bf9">qPID_SetSaturation</a>( &amp;speedControl, 0.0f, 100.0f );</div>
 <div class="line">    <a class="code hl_function" href="group__qpid.html#ga1dc553b9a08e94605eef62b6f794f6e6">qPID_BindAutoTunning</a>( &amp;speedControl, &amp;at );</div>
 <div class="line">    <span class="comment">// Create the task that handles the speed control at the defined rate</span></div>
 <div class="line">    xTaskCreate( xTaskPIDspeedControl, <span class="stringliteral">&quot;speedControl&quot;</span>, 1024, &amp;speedControl, configMAX_PRIORITIES - 1 , &amp;pid_task );</div>
@@ -385,10 +385,10 @@ Example: Speed control with PID controller and autotunning:</h2>
 <div class="line">    <span class="keywordflow">for</span>( ;; );</div>
 <div class="line">    <span class="keywordflow">return</span> EXIT_SUCCESS;</div>
 <div class="line">}</div>
-<div class="ttc" id="agroup__qpid_html_ga1dc553b9a08e94605eef62b6f794f6e6"><div class="ttname"><a href="group__qpid.html#ga1dc553b9a08e94605eef62b6f794f6e6">qPID_BindAutoTunning</a></div><div class="ttdeci">int qPID_BindAutoTunning(qPID_controller_t *const c, qPID_AutoTunning_t *const at)</div><div class="ttdoc">Binds the specified instance to enable the PID controller auto tuning algorithm.</div><div class="ttdef"><b>Definition:</b> qpid.c:248</div></div>
-<div class="ttc" id="agroup__qpid_html_gaa7e6a680ce09aafcd299c4ec4c6cd107"><div class="ttname"><a href="group__qpid.html#gaa7e6a680ce09aafcd299c4ec4c6cd107">qPID_EnableAutoTunning</a></div><div class="ttdeci">int qPID_EnableAutoTunning(qPID_controller_t *const c, const uint32_t tEnable)</div><div class="ttdoc">Set the number of time steps where the auto tuner algorithm will modify the controller gains.</div><div class="ttdef"><b>Definition:</b> qpid.c:299</div></div>
-<div class="ttc" id="agroup__qpid_html_gab124780b727b07bd32eb61ff802ec7a4"><div class="ttname"><a href="group__qpid.html#gab124780b727b07bd32eb61ff802ec7a4">qPID_AutoTunningComplete</a></div><div class="ttdeci">int qPID_AutoTunningComplete(const qPID_controller_t *const c)</div><div class="ttdoc">Verifies that the auto tuning process has finished with new gains set on the controller.</div><div class="ttdef"><b>Definition:</b> qpid.c:365</div></div>
-<div class="ttc" id="astructq_p_i_d___auto_tunning__t_html"><div class="ttname"><a href="structq_p_i_d___auto_tunning__t.html">qPID_AutoTunning_t</a></div><div class="ttdoc">A PID Auto-tunning object.</div><div class="ttdef"><b>Definition:</b> qpid.h:40</div></div>
+<div class="ttc" id="agroup__qpid_html_ga1dc553b9a08e94605eef62b6f794f6e6"><div class="ttname"><a href="group__qpid.html#ga1dc553b9a08e94605eef62b6f794f6e6">qPID_BindAutoTunning</a></div><div class="ttdeci">int qPID_BindAutoTunning(qPID_controller_t *const c, qPID_AutoTunning_t *const at)</div><div class="ttdoc">Binds the specified instance to enable the PID controller auto tuning algorithm.</div><div class="ttdef"><b>Definition:</b> qpid.c:243</div></div>
+<div class="ttc" id="agroup__qpid_html_gaa7e6a680ce09aafcd299c4ec4c6cd107"><div class="ttname"><a href="group__qpid.html#gaa7e6a680ce09aafcd299c4ec4c6cd107">qPID_EnableAutoTunning</a></div><div class="ttdeci">int qPID_EnableAutoTunning(qPID_controller_t *const c, const uint32_t tEnable)</div><div class="ttdoc">Set the number of time steps where the auto tuner algorithm will modify the controller gains.</div><div class="ttdef"><b>Definition:</b> qpid.c:294</div></div>
+<div class="ttc" id="agroup__qpid_html_gab124780b727b07bd32eb61ff802ec7a4"><div class="ttname"><a href="group__qpid.html#gab124780b727b07bd32eb61ff802ec7a4">qPID_AutoTunningComplete</a></div><div class="ttdeci">int qPID_AutoTunningComplete(const qPID_controller_t *const c)</div><div class="ttdoc">Verifies that the auto tuning process has finished with new gains set on the controller.</div><div class="ttdef"><b>Definition:</b> qpid.c:360</div></div>
+<div class="ttc" id="astructq_p_i_d___auto_tunning__t_html"><div class="ttname"><a href="structq_p_i_d___auto_tunning__t.html">qPID_AutoTunning_t</a></div><div class="ttdoc">A PID Auto-tunning object.</div><div class="ttdef"><b>Definition:</b> qpid.h:42</div></div>
 </div><!-- fragment --> </div></div><!-- contents -->
 </div><!-- PageDoc -->
 </div><!-- doc-content -->

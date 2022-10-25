@@ -6,5 +6,6 @@ var searchData=
   ['qfis_5fparameter_5ft_3',['qFIS_Parameter_t',['../group__qfis.html#ga933f1f7eb2e8a0ae89258ead19a61199',1,'qfis.h']]],
   ['qfis_5fparamvalue_5ft_4',['qFIS_ParamValue_t',['../group__qfis.html#ga4a36da9d08e666f99234ad63ad8edea8',1,'qfis.h']]],
   ['qfis_5ftype_5ft_5',['qFIS_Type_t',['../group__qfis.html#ga2f3f0184eca9e38c98afca2275fbe13d',1,'qfis.h']]],
-  ['qssmoother_5ftype_5ft_6',['qSSmoother_Type_t',['../group__qssmoother.html#ga8953f71916f57517edbe8cab4d7ee639',1,'qssmoother.h']]]
+  ['qpid_5fmode_5ft_6',['qPID_Mode_t',['../group__qpid.html#ga05a79879807411fa30d5f21816030f5d',1,'qpid.h']]],
+  ['qssmoother_5ftype_5ft_7',['qSSmoother_Type_t',['../group__qssmoother.html#ga8953f71916f57517edbe8cab4d7ee639',1,'qssmoother.h']]]
 ];
