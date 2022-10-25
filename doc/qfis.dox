@@ -128,7 +128,7 @@
 * point \f$x_i\f$ in the universe of discourse.
 *
 *
-* \f$\text{centroid}= \frac{ \sum_{i=1}\mu(x_{i})x_{i} }{ \sum_{i=1}\mu(x_{i})} \f$ 
+* <center> \f$\text{centroid}= \frac{ \sum_{i=1}\mu(x_{i})x_{i} }{ \sum_{i=1}\mu(x_{i})} \f$  </center>
 *
 *  -# ::bisector : this method applies only for ::Mamdani systems and finds the 
 * vertical line that divides the fuzzy set into two sub-regions of equal area. 

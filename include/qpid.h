@@ -1,7 +1,7 @@
 /*!
  * @file qpid.h
  * @author J. Camilo Gomez C.
- * @version 1.12
+ * @version 1.13
  * @note This file is part of the qLibs distribution.
  * @brief API to control systems using the PID algorithm. This controller
  * features anti-windup, tracking mode, and derivative filter.
@@ -25,10 +25,12 @@ extern "C" {
     *  @{
     */
 
-
+    /**
+    * @brief Enumeration with the operational modes for the PID controller
+    */
     typedef enum {
-        qPID_Automatic,
-        qPID_Manual
+        qPID_Automatic, /*!< Fully operational closed-loop PID controller */
+        qPID_Manual     /*!< Open-loop with manual input*/
     } qPID_Mode_t;
 
     /**
@@ -68,7 +70,7 @@ extern "C" {
         float alfa, gamma; /*MRAC additive controller parameters*/
         qNumA_state_t c_state; /*controller integral & derivative state*/
         qNumA_state_t m_state; /*MRAC additive controller state*/
-        qNumA_state_t b_state; /*bumples-transfer state*/
+        qNumA_state_t b_state; /*Bumples-transfer state*/
         qPID_AutoTunning_t *adapt;
         qNumA_IntegrationMethod_t integrate;
         qPID_Mode_t mode;
@@ -107,7 +109,8 @@ extern "C" {
     /**
     * @brief Set/Change extra PID controller gains.
     * @param[in] c A pointer to the PID controller instance.
-    * @param[in] kw Saturation feedback gain.
+    * @param[in] kw Saturation feedback gain. Used for antiWindup and bumpless
+    * transfer. A zero value disables these features.
     * @param[in] kt Manual input gain.
     * @return 1 on success, otherwise return 0.
     */
@@ -127,14 +130,11 @@ extern "C" {
     * @param[in] c A pointer to the PID controller instance.
     * @param[in] min The minimal value allowed for the output.
     * @param[in] max The maximal value allowed for the output.
-    * @param[in] kw Anti-windup feedback gain. A zero value disables the
-    * anti-windup feature.
     * @return 1 on success, otherwise return 0.
     */
     int qPID_SetSaturation( qPID_controller_t * const c,
                             const float min,
-                            const float max,
-                            const float kw );
+                            const float max );
 
     /**
     * @brief Convert the controller gains to conform the series or interacting
@@ -165,13 +165,13 @@ extern "C" {
     /**
     * @brief Set the PID manual input mode. This value will be used
     * as the manual input when the controller it set into the ::qPID_Manual
-    * mode. Bumpless transfer is guaranteed.
+    * mode. Bumpless-transfer is guaranteed.
     * @param[in] c A pointer to the PID controller instance.
     * @param[in] manualInput The value of the manual input.
     * @return 1 on success, otherwise return 0.
     */
     int qPID_SetManualInput( qPID_controller_t * const c,
-                             float manualInput );
+                             const float manualInput );
 
     /**
     * @brief Change the controller operational mode.
@@ -179,7 +179,7 @@ extern "C" {
     * will be used as the control signal for the process. In
     * ::qPID_Manual mode, the manual input will be used as the control
     * signal for the process and the PID controller loop will continue
-    * operating to guarantee the bumpless transfer when a switch to 
+    * operating to guarantee the bumpless-transfer when a switch to 
     * the ::qPID_Automatic mode its performed;
     * @param[in] c A pointer to the PID controller instance.
     * @param[in] m The desired operational mode.

@@ -30,6 +30,8 @@ extern "C" {
     */
     #define QLTISYS_DISCRETE        ( -1.0f )
 
+    /*cstat -MISRAC2012-Rule-2.3*/
+
     /**
     * @brief Type to specify continuos states 
     */
@@ -39,6 +41,8 @@ extern "C" {
     * @brief Type to specify continuos states 
     */
     typedef float qLTISys_DiscreteX_t;
+
+    /*cstat +MISRAC2012-Rule-2.3*/
 
     /**
     * @brief A LTI system object

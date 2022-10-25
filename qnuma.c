@@ -54,7 +54,7 @@ float qNumA_Derivative( qNumA_state_t *x,
                         const float s,
                         const float dt )
 {
-    x->x[ 0 ]= ( s - x->x[ 1 ] )/dt;
+    x->x[ 0 ] = ( s - x->x[ 1 ] )/dt;
     qNumA_Update( x );
 
     return x->x[ 0 ];

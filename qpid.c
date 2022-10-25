@@ -31,7 +31,7 @@ int qPID_Setup( qPID_controller_t * const c,
         (void)qPID_SetDerivativeFilter( c, 0.98f );
         (void)qPID_SetEpsilon( c, FLT_MIN );
         (void)qPID_SetGains( c, kc, ki, kd );
-        (void)qPID_SetSaturation( c , 0.0f, 100.0f, 1.0f );
+        (void)qPID_SetSaturation( c , 0.0f, 100.0f );
         (void)qPID_SetMRAC( c, NULL, 0.5f );
         (void)qPID_SetMode( c, qPID_Automatic );
         (void)qPID_SetManualInput( c, 0.0f );
@@ -54,9 +54,6 @@ int qPID_SetGains( qPID_controller_t * const c,
         c->kc = kc;
         c->ki = ki;
         c->kd = kd;
-        if ( NULL != c->adapt ) {
-            /*to be defined*/
-        }
         retValue = 1;
     }
 
@@ -97,15 +94,13 @@ int qPID_Reset( qPID_controller_t * const c )
 /*============================================================================*/
 int qPID_SetSaturation( qPID_controller_t * const c,
                         const float min,
-                        const float max,
-                        const float kw )
+                        const float max )
 {
     int retValue = 0;
 
-    if ( ( NULL != c ) && ( max > min ) && ( 0u != c->init ) && ( kw >= 0.0f ) ) {
+    if ( ( NULL != c ) && ( max > min ) && ( 0u != c->init ) ) {
         c->min = min;
         c->max = max;
-        c->kw = kw;
         retValue = 1;
     }
 
@@ -171,7 +166,7 @@ int qPID_SetMode( qPID_controller_t * const c,
 }
 /*============================================================================*/
 int qPID_SetManualInput( qPID_controller_t * const c,
-                         float manualInput )
+                         const float manualInput )
 {
     int retValue = 0;
 
@@ -368,7 +363,7 @@ int qPID_AutoTunningComplete( const qPID_controller_t * const c )
 
     if ( NULL != c ) {
         if ( NULL != c->adapt ) {
-            retVal = ( ( 0uL == c->adapt->it ) && 
+            retVal = ( ( 0uL == c->adapt->it ) &&
                        ( c->adapt->it != QPID_AUTOTUNNING_UNDEFINED )
                      ) ? 1 : 0;
         }
