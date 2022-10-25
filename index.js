@@ -39,21 +39,6 @@ var index =
       [ "Evaluating a Fuzzy Inference System", "qfis_desc.html#qfis_eval", null ],
       [ "Code generation", "qfis_desc.html#qfis_codegen", null ]
     ] ],
-    [ "Closed-loop PID Controller", "qpid_desc.html", [
-      [ "PID Controller approach", "qpid_desc.html#qpid_approach", null ],
-      [ "Manual Mode", "qpid_desc.html#qpid_maninput", null ],
-      [ "Creating a PID Controller", "qpid_desc.html#qpid_create", null ],
-      [ "Usign the controller", "qpid_desc.html#qfpid_usage", [
-        [ "Example: Speed control using a PID controller:", "qpid_desc.html#qpid_ex1", null ]
-      ] ],
-      [ "Additive MRAC (Model Reference Adaptive Control)", "qpid_desc.html#qpid_mrac", [
-        [ "Example: Speed control with PID controller with an additive MRAC:", "qpid_desc.html#qpid_ex2", null ]
-      ] ],
-      [ "Autotunning", "qpid_desc.html#qpid_autotune", [
-        [ "Autotunning Usage", "qpid_desc.html#qpid_autotune_usage", null ],
-        [ "Example: Speed control with PID controller and autotunning:", "qpid_desc.html#qpid_ex3", null ]
-      ] ]
-    ] ],
     [ "Recursive LTI Systems Evaluation by transfer functions.", "qltisys_desc.html", [
       [ "Continous-time transfer functions", "qltisys_desc.html#qltisys_cont", [
         [ "Example: Evaluate the given continous transfer function", "qltisys_desc.html#qltisys_ex1", null ]
