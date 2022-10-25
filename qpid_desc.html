@@ -129,6 +129,7 @@ $(document).ready(function(){initNavTree('qpid_desc.html',''); initResizable(); 
 <div class="contents">
 <div class="toc"><h3>Table of Contents</h3>
 <ul><li class="level1"><a href="#qpid_approach">PID Controller approach</a></li>
+<li class="level1"><a href="#qpid_maninput">Manual Mode</a></li>
 <li class="level1"><a href="#qpid_create">Creating a PID Controller</a></li>
 <li class="level1"><a href="#qfpid_usage">Usign the controller</a><ul><li class="level2"><a href="#qpid_ex1">Example: Speed control using a PID controller:</a></li>
 </ul>
@@ -142,7 +143,7 @@ $(document).ready(function(){initNavTree('qpid_desc.html',''); initResizable(); 
 </li>
 </ul>
 </div>
-<div class="textblock"><p >A PID controller seeks to keep some input variable close to a desired setpoint by adjusting an output. The way in which it does this can be 'tuned' by adjusting three parameters (Proportional, Integral, Derivative).</p>
+<div class="textblock"><p >A PID controller seeks to keep some input variable close to a desired setpoint by adjusting an output. The way in which it does this can be 'tuned' by adjusting three parameters (Proportional, Integral and Derivative).</p>
 <p >qLibs provides the <a class="el" href="group__qpid.html">qPID</a> implementation, which, apart from the simplified overview representation of the PID controller, also addresses some practical issues and includes additional features as listed below:</p>
 <ul>
 <li>Noisy Derivative Contributions (Derivative filter)</li>
@@ -154,10 +155,10 @@ $(document).ready(function(){initNavTree('qpid_desc.html',''); initResizable(); 
 <h1><a class="anchor" id="qpid_approach"></a>
 PID Controller approach</h1>
 <p >The mathematical model and practical loop uses a direct control action for all the PID terms, which means an increasing positive error results in an increasing positive control output correction.</p>
-<p >The overall control function implemented by <a class="el" href="group__qpid.html">qPID</a> in ::Automatic mode is given by:</p>
-<center> \( v(t)= \psi(t)r(t) + [ K_{c}e(t) + K_{i}\int [ e(t) + c(t-1) ]dt + K_{d}f_{d}(t) ] \)</center><center> \( u(t) = \text{Sat}[ v(t), u_{min}, u_{max} ]\)</center><center></center><p> where \(r(t)\) the set-point, \( e(t) = r(t) - y(t) \) its the error \(y(t)\) the process output, \(K_{c},K_{i},K_{d}\) the PID gain respectively and \(u(t)\) the control action.</p>
+<p >The overall control function implemented in <a class="el" href="group__qpid.html#gga05a79879807411fa30d5f21816030f5dad3d742debf8eef2ecff74778254b4cf9">qPID_Automatic</a> mode is given by:</p>
+<center> \( v(t)= \psi(t)r(t) + [ K_{c}e(t) + K_{i}\int [ e(t) + c(t-1) ]dt + K_{d}f_{d}(t) ] \)</center><center> \( u(t) = \text{Sat}[ v(t), u_{min}, u_{max} ]\)</center><center></center><p> where \(r(t)\) the set-point, \( e(t) = r(t) - y(t) \) its the error \(y(t)\) the process output, \(K_{c},K_{i},K_{d}\) the PID gains respectively and \(u(t)\) the control action.</p>
 <p >\(\psi(t)\) the adaptive gain from the additive MRAC (later explained)</p>
-<p >As shown above, the derivative term \( f_{d}(t)\) is the output of a low-pass filter who take the error derivative as input.</p>
+<p >As shown above, the derivative term \( f_{d}(t)\) is the output of a low-pass filter who take raw derivative as input.</p>
 <center> \( f_{d}(t) = \text{LPF}[ \frac{de(t)}{dt} ]\) </center><p >and \( c(t)\), the saturation feedback for the anti-windup, with \(K_{w}\) as the ajustment parameter.</p>
 <center> \( c(t) = K_{w}[ u(t) - v(t) ] \) </center><center>  
 <!DOCTYPE html>
@@ -170,7 +171,9 @@ PID Controller approach</h1>
 <script type="text/javascript" src="https://viewer.diagrams.net/js/viewer-static.min.js"></script>
 </body>
 </html>
- <em>PID Implementation</em> </center><p >When the operation mode is changed to ::Manual, the feedback is disconnected and the controller works in open loop being commanded by the manual input \( m(t) \). Since the controller is a dynamic system, it is necessary to make sure that the state of the system is correct when switching the controller between manual and automatic mode. When the system is in manual mode, the control algorithm produces a control signal that may be different from the manually generated control signal. It is necessary to make sure that the two outputs coincide at the time of switching. This is called bumpless transfer and its given by</p>
+ <em>PID Implementation</em> </center><h1><a class="anchor" id="qpid_maninput"></a>
+Manual Mode</h1>
+<p >When the operation mode is changed to <a class="el" href="group__qpid.html#gga05a79879807411fa30d5f21816030f5da0cc4e1987e0c9ff009774cbd63e75edb">qPID_Manual</a>, the feedback is disconnected and the controller works in open loop being commanded by the manual input \( m(t) \). Since the controller is a dynamic system, it is necessary to make sure that the state of the system is correct when switching the controller between manual and automatic mode. When the system is in manual mode, the control algorithm produces a control signal that may be different from the manually generated control signal. It is necessary to make sure that the two outputs coincide at the time of switching. This is called bumpless transfer and its given by</p>
 <center> \( v(t) = \int [ K_{T}m(t) + c(t-1) ]dt\) </center><h1><a class="anchor" id="qpid_create"></a>
 Creating a PID Controller</h1>
 <p >Before you start using a controller, it must be instantiated first via the <a class="el" href="structq_p_i_d__controller__t.html">qPID_controller_t</a> type and then configured using the <a class="el" href="group__qpid.html#gaec33f4b01047504ebeea758bc7ce6798">qPID_Setup()</a> API, where you can define the PID gains and time step.</p>
@@ -273,7 +276,7 @@ Example: Speed control with PID controller with an additive MRAC:</h2>
 <div class="line">        refmodel_output = <a class="code hl_function" href="group__qltisys.html#ga036826af288f92730a8ab5edb66647a9">qLTISys_Excite</a>( &amp;ref_model, controlOutput );</div>
 <div class="line">        processMeasurement = BSP_ScaletoSpeed ( BSP_AnalogRead( BSP_AI_SPEED_CHANNEL ) );</div>
 <div class="line">        controlOutput = <a class="code hl_function" href="group__qpid.html#ga35578d503547dbd39bf8647700c66eb5">qPID_Control</a>( controller, SetPoint, processMeasurement );</div>
-<div class="line">        BSP_PWMSet( BSP_AO_SPEED_PWM_CHANNEL, BSP_ScaletoPWM( controlOutput ) ); </div>
+<div class="line">        BSP_PWMSet( BSP_AO_SPEED_PWM_CHANNEL, BSP_ScaletoPWM( controlOutput ) );</div>
 <div class="line">        vTaskDelay( dt / portTICK_RATE_MS) ;</div>
 <div class="line">    }</div>
 <div class="line">}</div>

@@ -41,6 +41,7 @@ var index =
     ] ],
     [ "Closed-loop PID Controller", "qpid_desc.html", [
       [ "PID Controller approach", "qpid_desc.html#qpid_approach", null ],
+      [ "Manual Mode", "qpid_desc.html#qpid_maninput", null ],
       [ "Creating a PID Controller", "qpid_desc.html#qpid_create", null ],
       [ "Usign the controller", "qpid_desc.html#qfpid_usage", [
         [ "Example: Speed control using a PID controller:", "qpid_desc.html#qpid_ex1", null ]
