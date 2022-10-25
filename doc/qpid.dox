@@ -2,7 +2,7 @@
 * @tableofcontents
 * A PID controller seeks to keep some input variable close to a desired setpoint
 * by adjusting an output. The way in which it does this can be 'tuned' by 
-* adjusting three parameters (Proportional, Integral, Derivative).
+* adjusting three parameters (Proportional, Integral and Derivative).
 *
 * qLibs provides the \ref qpid implementation, which, apart from the simplified 
 * overview representation of the PID controller, also addresses some practical
@@ -21,7 +21,7 @@
 * action for all the PID terms, which means an increasing positive error 
 * results in an increasing positive control output correction.
 *
-* The overall control function implemented by \ref qpid in \ref ::Automatic mode is 
+* The overall control function implemented in ::qPID_Automatic mode is 
 * given by:
 *
 * <center>
@@ -31,13 +31,13 @@
 *
 * </center>
 * where \f$r(t)\f$ the set-point, \f$ e(t) = r(t) - y(t) \f$ its the error
-* \f$y(t)\f$ the process output, \f$K_{c},K_{i},K_{d}\f$ the PID gain respectively 
+* \f$y(t)\f$ the process output, \f$K_{c},K_{i},K_{d}\f$ the PID gains respectively 
 *  and \f$u(t)\f$ the control action.
 *
 * \f$\psi(t)\f$ the adaptive gain from the additive MRAC (later explained)
 *
 * As shown above, the derivative term \f$ f_{d}(t)\f$ is the output of a 
-* low-pass filter who take the error derivative as input.
+* low-pass filter who take raw derivative as input.
 *
 * <center> \f$ f_{d}(t) = \text{LPF}[ \frac{de(t)}{dt} ]\f$  </center>
 *
@@ -62,7 +62,8 @@
 * <em>PID Implementation</em>
 * </center>
 *
-* When the operation mode is changed to \ref ::Manual, the feedback is disconnected and 
+* @section qpid_maninput Manual Mode 
+* When the operation mode is changed to ::qPID_Manual, the feedback is disconnected and 
 * the controller works in open loop being commanded by the manual input \f$ m(t) \f$. 
 * Since the controller is a dynamic system, it is necessary to make sure that
 * the state of the system is correct when switching the controller between manual
@@ -96,8 +97,8 @@
 *  @section qfpid_usage Usign the controller
 *
 *  The following example illustrates how a PID controller can be used to regulate
-*  the speed of a DC motor. PID control operates on a separate task running  
-*  periodically  at a rate of 50mS. The speed measurement is being read through
+*  the speed of a DC motor. PID control operates on a separate task running
+*  periodically at a rate of 50mS. The speed measurement is being read through
 *  an analog input and then scaled to the appropriate units (RPM). The \ref qPID_Control() 
 *  function will be in charge of computing the control action and  updating the internal
 *  states of the controller. Then, the control output gets scaled-back in order to
@@ -216,10 +217,10 @@
 *      qLTISys_Setup( &ref_model, num, den, x, 0, REF_MODEL_ORDER+1, (float)dt/1000.0f ) );
 *      qPID_SetMRAC( controller, &refmodel_output, 0.01f );
 *      for ( ;; ) {
-           refmodel_output = qLTISys_Excite( &ref_model, controlOutput );
+*          refmodel_output = qLTISys_Excite( &ref_model, controlOutput );
 *          processMeasurement = BSP_ScaletoSpeed ( BSP_AnalogRead( BSP_AI_SPEED_CHANNEL ) );
 *          controlOutput = qPID_Control( controller, SetPoint, processMeasurement );
-*          BSP_PWMSet( BSP_AO_SPEED_PWM_CHANNEL, BSP_ScaletoPWM( controlOutput ) ); 
+*          BSP_PWMSet( BSP_AO_SPEED_PWM_CHANNEL, BSP_ScaletoPWM( controlOutput ) );
 *          vTaskDelay( dt / portTICK_RATE_MS) ;
 *      }
 *  }
