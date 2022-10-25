@@ -221,7 +221,7 @@ float qPID_Control( qPID_controller_t * const c,
                 const float em = y - c->yr[ 0 ];
                 const float delta = -c->gamma*em*c->yr[ 0 ]/
                                     ( c->alfa + ( c->yr[ 0 ]*c->yr[ 0 ] ) );
-                theta = c->integrate( &c->m_state, delta, c->dt );
+                theta = c->integrate( &c->m_state, delta + c->u1, c->dt );
             }
             v += w*theta;
         }
