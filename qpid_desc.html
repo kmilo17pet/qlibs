@@ -1,0 +1,409 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.2"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<!-- BEGIN opengraph metadata -->
+<meta property="og:title" content="Doxygen Awesome" />
+<meta property="og:image" content="https://repository-images.githubusercontent.com/348492097/4f16df80-88fb-11eb-9d31-4015ff22c452" />
+<meta property="og:description" content="Custom CSS theme for doxygen html-documentation with lots of customization parameters." />
+<meta property="og:url" content="https://jothepro.github.io/doxygen-awesome-css/" />
+<!-- END opengraph metadata -->
+<!-- BEGIN twitter metadata -->
+<meta name="twitter:image:src" content="https://repository-images.githubusercontent.com/348492097/4f16df80-88fb-11eb-9d31-4015ff22c452" />
+<meta name="twitter:title" content="Doxygen Awesome" />
+<meta name="twitter:description" content="Custom CSS theme for doxygen html-documentation with lots of customization parameters." />
+<!-- END twitter metadata -->
+<title>API Reference: Closed-loop PID Controller</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link rel="icon" type="image/svg+xml" href="logo.drawio.svg"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="doxygen-awesome-darkmode-toggle.js"></script>
+<script type="text/javascript" src="doxygen-awesome-fragment-copy-button.js"></script>
+<script type="text/javascript" src="doxygen-awesome-paragraph-link.js"></script>
+<script type="text/javascript" src="doxygen-awesome-interactive-toc.js"></script>
+<script type="text/javascript" src="toggle-alternative-theme.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeFragmentCopyButton.init()
+    DoxygenAwesomeDarkModeToggle.init()
+    DoxygenAwesomeParagraphLink.init()
+    DoxygenAwesomeInteractiveToc.init()
+</script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  extensions: ["tex2jax.js"],
+  jax: ["input/TeX","output/HTML-CSS"],
+});
+</script>
+<script type="text/javascript" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
+<link href="custom.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only-darkmode-toggle.css" rel="stylesheet" type="text/css"/>
+<link href="custom-alternative.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<!-- https://tholman.com/github-corners/ -->
+<a href="https://github.com/jothepro/doxygen-awesome-css" class="github-corner" title="View source on GitHub" target="_blank">
+    <svg viewBox="0 0 250 250" width="40" height="40" style="position: absolute; top: 0; border: 0; right: 0; z-index: 99;" aria-hidden="true">
+    <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="qlibs_logo.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">API Reference
+   &#160;<span id="projectnumber">v1.2</span>
+   </div>
+   <div id="projectbrief">A collection of useful libraries for embedded systems</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generated by Doxygen 1.9.2 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search",'Search','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Search');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('qpid_desc.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div><div class="header">
+  <div class="headertitle"><div class="title">Closed-loop PID Controller </div></div>
+</div><!--header-->
+<div class="contents">
+<div class="toc"><h3>Table of Contents</h3>
+<ul><li class="level1"><a href="#qpid_approach">PID Controller approach</a></li>
+<li class="level1"><a href="#qpid_maninput">Manual Mode</a></li>
+<li class="level1"><a href="#qpid_create">Creating a PID Controller</a></li>
+<li class="level1"><a href="#qfpid_usage">Usign the controller</a><ul><li class="level2"><a href="#qpid_ex1">Example: Speed control using a PID controller:</a></li>
+</ul>
+</li>
+<li class="level1"><a href="#qpid_mrac">Additive MRAC (Model Reference Adaptive Control)</a><ul><li class="level2"><a href="#qpid_ex2">Example: Speed control with PID controller with an additive MRAC:</a></li>
+</ul>
+</li>
+<li class="level1"><a href="#qpid_autotune">Autotunning</a><ul><li class="level2"><a href="#qpid_autotune_usage">Autotunning Usage</a></li>
+<li class="level2"><a href="#qpid_ex3">Example: Speed control with PID controller and autotunning:</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="textblock"><p >A Proportional Integral Derivative (PID) controller is an automatically optimized and accurate control system responsible for ensuring that a process remains as close to the desired value as possible regardless of various disruptions. The controller compares the measured process variable \( y(t)\) and a desired Setpoint \( r(t)\) (desired outcome). Based on that comparison, the controller calculates the Proportional, Integral and Derivative terms and adds them to obtain the output signal \( u(t) \) that attempts to minimize the error. This output signal is then used to command the Final Control Element (e.g an actuator) that is in charge of operating the process.</p>
+<p >Proportional is used to find out the error between the desired value and actual value and is responsible for the corrective response. Integral is applied to calculate all the past values of error and then integrate them to find out the Integral term. When error is expelled from the system this integral stops increasing. The derivative is used to predict the expected error values in future based on the present values. Controlling effect can be increased if the system has a rapid rate of change, which is also based on Derivative. Combining all these three operations gives the name Proportional Integral Derivative (PID) Controller.</p>
+<p >qLibs provides the <a class="el" href="group__qpid.html">qPID</a> implementation, which, apart from the simplified overview representation of the PID controller, also addresses some practical issues and includes additional features as listed below:</p>
+<ul>
+<li>Noisy Derivative Contributions (Derivative filter)</li>
+<li>Automatic Anti-windup control</li>
+<li>Bumpless transfer</li>
+<li>Auto-tunning</li>
+<li>Additive MRAC</li>
+</ul>
+<h1><a class="anchor" id="qpid_approach"></a>
+PID Controller approach</h1>
+<p >The mathematical model and practical loop uses a direct control action for all the PID terms, which means an increasing positive error results in an increasing positive control output correction.</p>
+<p >The overall control function implemented in <a class="el" href="group__qpid.html#gga05a79879807411fa30d5f21816030f5dad3d742debf8eef2ecff74778254b4cf9">qPID_Automatic</a> mode is given by:</p>
+<center> \( v(t)= \psi(t)r(t) + [ K_{c}e(t) + K_{i}\int [ e(t) + c(t-1) ]dt + K_{d}f_{d}(t) ] \)</center><center> \( u(t) = \text{Sat}[ v(t), u_{min}, u_{max} ]\)</center><center></center><p> where \(r(t)\) the set-point, \( e(t) = r(t) - y(t) \) its the error \(y(t)\) the process output, \(K_{c},K_{i},K_{d}\) the PID gains respectively and \(u(t)\) the control action.</p>
+<p >\(\psi(t)\) the adaptive gain from the additive MRAC (later explained)</p>
+<p >As shown above, the derivative term \( f_{d}(t)\) is the output of a low-pass filter who take raw derivative as input.</p>
+<center> \( f_{d}(t) = \text{LPF}[ \frac{de(t)}{dt} ]\) </center><p >and \( c(t)\), the saturation feedback for the anti-windup, with \(K_{w}\) as the ajustment parameter.</p>
+<center> \( c(t) = K_{w}[ u(t) - v(t) ] \) </center><center>  
+<!DOCTYPE html>
+<html>
+<head>
+<title>qpid</title>
+<meta charset="utf-8"/>
+</head>
+<body><div class="mxgraph" style="max-width:100%;border:1px solid transparent;" data-mxgraph="{&quot;highlight&quot;:&quot;#0000ff&quot;,&quot;nav&quot;:true,&quot;resize&quot;:true,&quot;toolbar&quot;:&quot;zoom layers tags lightbox&quot;,&quot;edit&quot;:&quot;_blank&quot;,&quot;xml&quot;:&quot;&lt;mxfile host=\&quot;app.diagrams.net\&quot; modified=\&quot;2022-10-25T19:12:47.892Z\&quot; agent=\&quot;5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36\&quot; etag=\&quot;Nv_7YvHx5ZYOPMX_SnPj\&quot; version=\&quot;20.5.1\&quot; type=\&quot;google\&quot;&gt;&lt;diagram id=\&quot;Y54Sw13SpVrxC9X4pJjL\&quot; name=\&quot;Página-1\&quot;&gt;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&lt;/diagram&gt;&lt;/mxfile&gt;&quot;}"></div>
+<script type="text/javascript" src="https://viewer.diagrams.net/js/viewer-static.min.js"></script>
+</body>
+</html>
+ <em>PID Implementation</em> </center><h1><a class="anchor" id="qpid_maninput"></a>
+Manual Mode</h1>
+<p >When the operation mode is changed to <a class="el" href="group__qpid.html#gga05a79879807411fa30d5f21816030f5da0cc4e1987e0c9ff009774cbd63e75edb">qPID_Manual</a>, the feedback is disconnected and the controller works in open loop being commanded by the manual input \( m(t) \). Since the controller is a dynamic system, it is necessary to make sure that the state of the system is correct when switching the controller between manual and automatic mode. When the system is in manual mode, the control algorithm produces a control signal that may be different from the manually generated control signal. It is necessary to make sure that the two outputs coincide at the time of switching. This is called bumpless transfer and its given by</p>
+<center> \( v(t) = \int [ K_{T}m(t) + c(t-1) ]dt\) </center><h1><a class="anchor" id="qpid_create"></a>
+Creating a PID Controller</h1>
+<p >Before you start using a controller, it must be instantiated first via the <a class="el" href="structq_p_i_d__controller__t.html">qPID_controller_t</a> type and then configured using the <a class="el" href="group__qpid.html#gaec33f4b01047504ebeea758bc7ce6798">qPID_Setup()</a> API, where you can define the PID gains and time step.</p>
+<p >Example: Instantiating an configuring a PID controller: </p><div class="fragment"><div class="line"><a class="code hl_struct" href="structq_p_i_d__controller__t.html">qPID_controller_t</a> control;</div>
+<div class="line"><span class="keyword">const</span> <span class="keywordtype">float</span> kc = 1.0f, ki = 0.1f, kd = 0.0f;</div>
+<div class="line"><span class="keyword">const</span> <span class="keywordtype">float</span> dt = 0.01f; <span class="comment">// time-step of 10mS</span></div>
+<div class="line"><span class="keywordtype">int</span> ret;</div>
+<div class="line"> </div>
+<div class="line">ret = <a class="code hl_function" href="group__qpid.html#gaec33f4b01047504ebeea758bc7ce6798">qPID_Setup</a>( &amp;control, kc, ki, kd, dt );</div>
+<div class="line"><span class="keywordflow">if</span> ( 0 == ret ) {</div>
+<div class="line">    <span class="comment">// error, pid controller cant be configured</span></div>
+<div class="line">}</div>
+<div class="ttc" id="agroup__qpid_html_gaec33f4b01047504ebeea758bc7ce6798"><div class="ttname"><a href="group__qpid.html#gaec33f4b01047504ebeea758bc7ce6798">qPID_Setup</a></div><div class="ttdeci">int qPID_Setup(qPID_controller_t *const c, const float kc, const float ki, const float kd, const float dt)</div><div class="ttdoc">Setup and initialize the PID controller instance.</div><div class="ttdef"><b>Definition:</b> qpid.c:18</div></div>
+<div class="ttc" id="astructq_p_i_d__controller__t_html"><div class="ttname"><a href="structq_p_i_d__controller__t.html">qPID_controller_t</a></div><div class="ttdoc">A PID controller object.</div><div class="ttdef"><b>Definition:</b> qpid.h:65</div></div>
+</div><!-- fragment --><h1><a class="anchor" id="qfpid_usage"></a>
+Usign the controller</h1>
+<p >The following example illustrates how a PID controller can be used to regulate the speed of a DC motor. PID control operates on a separate task running periodically at a rate of 50mS. The speed measurement is being read through an analog input and then scaled to the appropriate units (RPM). The <a class="el" href="group__qpid.html#ga35578d503547dbd39bf8647700c66eb5">qPID_Control()</a> function will be in charge of computing the control action and updating the internal states of the controller. Then, the control output gets scaled-back in order to send the control command by using the PWM(Pulse Width Modulation) module.</p>
+<h2><a class="anchor" id="qpid_ex1"></a>
+Example: Speed control using a PID controller:</h2>
+<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;stdio.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;stdlib.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &quot;freertos/FreeRTOS.h&quot;</span></div>
+<div class="line"><span class="preprocessor">#include &quot;freertos/task.h&quot;</span></div>
+<div class="line"><span class="preprocessor">#include &quot;bsp.h&quot;</span></div>
+<div class="line"><span class="preprocessor">#include &quot;qpid.h&quot;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">const</span> TickType_t  dt = 50; <span class="comment">//50mS time-step</span></div>
+<div class="line"><span class="keywordtype">void</span> xTaskPIDspeedControl( <span class="keywordtype">void</span> *arg );</div>
+<div class="line"><span class="keywordtype">float</span> SetPoint = 300.0f; <span class="comment">// desired motor speed 300rpm</span></div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">void</span> xTaskPIDspeedControl( <span class="keywordtype">void</span> *arg )</div>
+<div class="line">{</div>
+<div class="line">    <a class="code hl_struct" href="structq_p_i_d__controller__t.html">qPID_controller_t</a> *controller = (<a class="code hl_struct" href="structq_p_i_d__controller__t.html">qPID_controller_t</a> *)arg;</div>
+<div class="line">    <span class="keywordtype">float</span> processMeasurement;</div>
+<div class="line">    <span class="keywordtype">float</span> controlOutput;</div>
+<div class="line">    <span class="keywordflow">for</span> ( ;; ) {</div>
+<div class="line">        processMeasurement = BSP_ScaletoSpeed ( BSP_AnalogRead( BSP_AI_SPEED_CHANNEL ) );</div>
+<div class="line">        controlOutput = <a class="code hl_function" href="group__qpid.html#ga35578d503547dbd39bf8647700c66eb5">qPID_Control</a>( controller, SetPoint, processMeasurement );</div>
+<div class="line">        BSP_PWMSet( BSP_AO_SPEED_PWM_CHANNEL, BSP_ScaletoPWM( controlOutput ) ); </div>
+<div class="line">        vTaskDelay( dt / portTICK_RATE_MS) ;</div>
+<div class="line">    }</div>
+<div class="line">}</div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">int</span> main( <span class="keywordtype">int</span> argc, <span class="keywordtype">char</span> *argv[] ) </div>
+<div class="line">{</div>
+<div class="line">    <a class="code hl_struct" href="structq_p_i_d__controller__t.html">qPID_controller_t</a> speedControl;</div>
+<div class="line">    <span class="keywordtype">int</span> ret;</div>
+<div class="line">    </div>
+<div class="line">    BSP_SystemInit();</div>
+<div class="line">    ret = <a class="code hl_function" href="group__qpid.html#gaec33f4b01047504ebeea758bc7ce6798">qPID_Setup</a>( &amp;speedControl, 1, 0.1, 0, (<span class="keywordtype">float</span>)dt/1000.0f );</div>
+<div class="line">    <span class="keywordflow">if</span> ( 0 == ret ) {</div>
+<div class="line">        puts( <span class="stringliteral">&quot;ERROR: Cant configure PID controller&quot;</span> );</div>
+<div class="line">    }</div>
+<div class="line">    <a class="code hl_function" href="group__qpid.html#ga8b40b9e975519f12ea9d1e2baf2f4bf9">qPID_SetSaturation</a>( &amp;speedControl, 0.0f, 100.0f );</div>
+<div class="line">    <span class="comment">// Create the task that handles the speed control at the defined rate</span></div>
+<div class="line">    xTaskCreate( xTaskPIDspeedControl, <span class="stringliteral">&quot;speedControl&quot;</span>, 1024, &amp;speedControl, configMAX_PRIORITIES - 1 ,NULL );</div>
+<div class="line">    vTaskStartScheduler();</div>
+<div class="line">    <span class="keywordflow">for</span>( ;; );</div>
+<div class="line">    <span class="keywordflow">return</span> EXIT_SUCCESS;</div>
+<div class="line">}</div>
+<div class="ttc" id="agroup__qpid_html_ga35578d503547dbd39bf8647700c66eb5"><div class="ttname"><a href="group__qpid.html#ga35578d503547dbd39bf8647700c66eb5">qPID_Control</a></div><div class="ttdeci">float qPID_Control(qPID_controller_t *const c, const float w, const float y)</div><div class="ttdoc">Computes the control action for given PID controller instance.</div><div class="ttdef"><b>Definition:</b> qpid.c:198</div></div>
+<div class="ttc" id="agroup__qpid_html_ga8b40b9e975519f12ea9d1e2baf2f4bf9"><div class="ttname"><a href="group__qpid.html#ga8b40b9e975519f12ea9d1e2baf2f4bf9">qPID_SetSaturation</a></div><div class="ttdeci">int qPID_SetSaturation(qPID_controller_t *const c, const float min, const float max)</div><div class="ttdoc">Setup the output saturation for the PID controller.</div><div class="ttdef"><b>Definition:</b> qpid.c:95</div></div>
+</div><!-- fragment --><h1><a class="anchor" id="qpid_mrac"></a>
+Additive MRAC (Model Reference Adaptive Control)</h1>
+<p >Model Reference Adaptive Control (MRAC) is a strategy where the controller of the closed-loop is adapted by an adjustment mechanism, which takes \( y_{m}(t) \) from a reference model as input and tries to adjust the controller output \(v(t)\). The adjustment mechanism used by <a class="el" href="group__qpid.html">qPID</a> is the enhanced MIT-rule approach, which adapts a feed-forward gain by the error between the system \( y(t) \) and a reference model \( y_{m}(t) \), therefore is the so-called Gradient approach.</p>
+<center> \( e_{m}(t) = y(t) - y_{m}(t)\)</center><center> \( \delta(t) = -\gamma \frac{ e_{m}(t) y_{m}(t) }{ \beta + y_{m}^{2}(t) } \) </center><p >where \(\gamma(t)\) is the adaptation gain and \(\beta(t)\) is introduced to remove the problem of the possible division by zero if \(y_{m}^{2}(t) \) gets too small.</p>
+<p >The MRAC adaptation is then computed by integrating the \(\delta(t)\) term as follows:</p>
+<center> \( \psi(t) = \int [ \delta(t) + c(t) ] dt \) </center><p >This method can be used to adapt to slower changes but can become unstable for abrupt changes to the system. Therefore, this implementation uses a so called modified MRAC (M-MRAC) where the adaptation is later added to a PID controller, being the MRAC the additive loop.</p>
+<p >Abrupt changes to the system are absorbed by the PID controller, while the change of the dynamics will still be handled by the MIT gain \(\psi(t)\). This results in the equation of the control function presented at the beginning of this section.</p>
+<p >To use the additive MRAC, you should first instantiate a reference model and then, enable the MRAC by using the <a class="el" href="group__qpid.html#gace4705569152c216c12b482267eb834f">qPID_SetMRAC()</a> API. Here, you must provide a pointer to the output of the reference model and the adaptation gain \(\gamma(t)\)</p>
+<h2><a class="anchor" id="qpid_ex2"></a>
+Example: Speed control with PID controller with an additive MRAC:</h2>
+<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;stdio.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;stdlib.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &quot;freertos/FreeRTOS.h&quot;</span></div>
+<div class="line"><span class="preprocessor">#include &quot;freertos/task.h&quot;</span></div>
+<div class="line"><span class="preprocessor">#include &quot;bsp.h&quot;</span></div>
+<div class="line"><span class="preprocessor">#include &quot;qpid.h&quot;</span></div>
+<div class="line"><span class="preprocessor">#include &quot;qltisys.h&quot;</span> <span class="comment">//to create the reference model</span></div>
+<div class="line"> </div>
+<div class="line"><span class="preprocessor">#define REF_MODEL_ORDER   ( 1 )</span></div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">const</span> TickType_t dt = 50; <span class="comment">//50mS time-step</span></div>
+<div class="line"><span class="keywordtype">void</span> xTaskPIDspeedControl( <span class="keywordtype">void</span> *arg );</div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">void</span> xTaskPIDspeedControl( <span class="keywordtype">void</span> *arg )</div>
+<div class="line">{</div>
+<div class="line">    <a class="code hl_struct" href="structq_p_i_d__controller__t.html">qPID_controller_t</a> *controller = (<a class="code hl_struct" href="structq_p_i_d__controller__t.html">qPID_controller_t</a> *)arg;</div>
+<div class="line">    <a class="code hl_struct" href="structq_l_t_i_sys__t.html">qLTISys_t</a> ref_model;</div>
+<div class="line">    <span class="keywordtype">float</span> num[ REF_MODEL_ORDER+1 ] = { 0.0f, 1.0f, };</div>
+<div class="line">    <span class="keywordtype">float</span> den[ REF_MODEL_ORDER+1 ] = { 3.0f, 1.0f, };</div>
+<div class="line">    <span class="keywordtype">float</span> processMeasurement;</div>
+<div class="line">    <span class="keywordtype">float</span> SetPoint = 300.0f; <span class="comment">// desired motor speed 300rpm</span></div>
+<div class="line">    <span class="keywordtype">float</span> refmodel_output = 0.0f;</div>
+<div class="line">    <span class="keywordtype">float</span> controlOutput = 0.0f;</div>
+<div class="line"> </div>
+<div class="line">    <a class="code hl_function" href="group__qltisys.html#ga62e08fd5775f0d1b9f0347ee69e5833e">qLTISys_Setup</a>( &amp;ref_model, num, den, x, 0, REF_MODEL_ORDER+1, (<span class="keywordtype">float</span>)dt/1000.0f ) );</div>
+<div class="line">    <a class="code hl_function" href="group__qpid.html#gace4705569152c216c12b482267eb834f">qPID_SetMRAC</a>( controller, &amp;refmodel_output, 0.01f );</div>
+<div class="line">    <span class="keywordflow">for</span> ( ;; ) {</div>
+<div class="line">        refmodel_output = <a class="code hl_function" href="group__qltisys.html#ga036826af288f92730a8ab5edb66647a9">qLTISys_Excite</a>( &amp;ref_model, controlOutput );</div>
+<div class="line">        processMeasurement = BSP_ScaletoSpeed ( BSP_AnalogRead( BSP_AI_SPEED_CHANNEL ) );</div>
+<div class="line">        controlOutput = <a class="code hl_function" href="group__qpid.html#ga35578d503547dbd39bf8647700c66eb5">qPID_Control</a>( controller, SetPoint, processMeasurement );</div>
+<div class="line">        BSP_PWMSet( BSP_AO_SPEED_PWM_CHANNEL, BSP_ScaletoPWM( controlOutput ) );</div>
+<div class="line">        vTaskDelay( dt / portTICK_RATE_MS) ;</div>
+<div class="line">    }</div>
+<div class="line">}</div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">int</span> main( <span class="keywordtype">int</span> argc, <span class="keywordtype">char</span> *argv[] ) </div>
+<div class="line">{</div>
+<div class="line">    <a class="code hl_struct" href="structq_p_i_d__controller__t.html">qPID_controller_t</a> speedControl;</div>
+<div class="line">    <span class="keywordtype">int</span> ret;</div>
+<div class="line">    </div>
+<div class="line">    BSP_SystemInit( );</div>
+<div class="line">    ret = <a class="code hl_function" href="group__qpid.html#gaec33f4b01047504ebeea758bc7ce6798">qPID_Setup</a>( &amp;speedControl, 1, 0.1, 0, (<span class="keywordtype">float</span>)dt/1000.0f );</div>
+<div class="line">    <span class="keywordflow">if</span> ( 0 == ret ) {</div>
+<div class="line">        puts( <span class="stringliteral">&quot;ERROR: Cant configure PID controller&quot;</span> );</div>
+<div class="line">    }</div>
+<div class="line">    <a class="code hl_function" href="group__qpid.html#ga8b40b9e975519f12ea9d1e2baf2f4bf9">qPID_SetSaturation</a>( &amp;speedControl, 0.0f, 100.0f );</div>
+<div class="line">    <span class="comment">// Create the task that handles the speed control at the defined rate</span></div>
+<div class="line">    xTaskCreate( xTaskPIDspeedControl, <span class="stringliteral">&quot;speedControl&quot;</span>, 1024, &amp;speedControl, configMAX_PRIORITIES - 1 ,NULL );</div>
+<div class="line">    vTaskStartScheduler();</div>
+<div class="line">    <span class="keywordflow">for</span>( ;; );</div>
+<div class="line">    <span class="keywordflow">return</span> EXIT_SUCCESS;</div>
+<div class="line">}</div>
+<div class="ttc" id="agroup__qltisys_html_ga036826af288f92730a8ab5edb66647a9"><div class="ttname"><a href="group__qltisys.html#ga036826af288f92730a8ab5edb66647a9">qLTISys_Excite</a></div><div class="ttdeci">float qLTISys_Excite(qLTISys_t *const sys, float u)</div><div class="ttdoc">Drives the LTI system recursively using the input signal provided.</div><div class="ttdef"><b>Definition:</b> qltisys.c:60</div></div>
+<div class="ttc" id="agroup__qltisys_html_ga62e08fd5775f0d1b9f0347ee69e5833e"><div class="ttname"><a href="group__qltisys.html#ga62e08fd5775f0d1b9f0347ee69e5833e">qLTISys_Setup</a></div><div class="ttdeci">int qLTISys_Setup(qLTISys_t *const sys, float *num, float *den, void *x, const size_t nb, const size_t na, const float dt)</div><div class="ttdoc">Setup and initialize an instance of a LTI system.</div><div class="ttdef"><b>Definition:</b> qltisys.c:128</div></div>
+<div class="ttc" id="agroup__qpid_html_gace4705569152c216c12b482267eb834f"><div class="ttname"><a href="group__qpid.html#gace4705569152c216c12b482267eb834f">qPID_SetMRAC</a></div><div class="ttdeci">int qPID_SetMRAC(qPID_controller_t *const c, const float *modelRef, const float gamma)</div><div class="ttdoc">Enable the additive MRAC(Model Reference Adaptive Control) feature.</div><div class="ttdef"><b>Definition:</b> qpid.c:181</div></div>
+<div class="ttc" id="astructq_l_t_i_sys__t_html"><div class="ttname"><a href="structq_l_t_i_sys__t.html">qLTISys_t</a></div><div class="ttdoc">A LTI system object.</div><div class="ttdef"><b>Definition:</b> qltisys.h:53</div></div>
+</div><!-- fragment --><h1><a class="anchor" id="qpid_autotune"></a>
+Autotunning</h1>
+<p >Autotuning can eliminate much of the trial and error of a manual tuning approach, especially if you do not have a lot of loop tuning experience. Performing the autotuning procedure will get the tuning parameters close to their optimal values, but additional manual tuning may be required to get the tuning parameters to their optimal values.</p>
+<p >The Autotune feature for the controller will only run for a limited amount of time after it gets enabled. In other words, autotuning does not run continuously during operation. Whenever there is a substantial change in the process dynamics, the tuning process will need to be repeated in order to derive new gains required for optimal control.</p>
+<p >Autotunning is performed by using the following recursive algorithm:</p>
+<center> \( L(t) = \frac{ P(t-1)\phi }{ \lambda + \phi^{T}P(t-1)\phi } \)</center><center> \(\theta(t) = \theta(t-1) + L[ y(t) - \phi^{T}\theta(t) ] \)</center><center> \( P(t) = \lambda^{-1}[ I - L(t)+\phi^{T}]P(t-1) \)</center><center> \( \theta(t) = \begin{bmatrix} \theta_{1}(t) &amp; \theta_{2}(t) \end{bmatrix}^T \) and \( \phi(t) = \begin{bmatrix} -y(t-1) &amp; u(t-1) \end{bmatrix}^T \)</center><center> \( g(t) = \frac{ (1 - \mu)\theta_{2}(t) }{ 1 + \theta_{1} } + \mu g(t-1) \)</center><center> \( \tau(t) = \frac{ ( \mu - 1 )dt }{ ln( |\theta_{1}| ) } + \mu \tau(t-1) \)</center><center> \( K_{c}(t) = \alpha \frac{ r_{2} \tau(t) }{ g(t)dt } \)</center><center> \( K_{i}(t) = \alpha \frac{ g(t)[ 0.54 + 0.33r_{1} ] }{ r_{2}dt } \)</center><center> \( K_{c}(t) = \alpha \frac{ K_{c}(t)dt }{ r_{2} } \) </center><p >where \( r_{1} = dt/\tau(t) \) and \( r_{2} = 1.35 + 0.25r_{1} \)</p>
+<p >and the remaining parameters \(\mu\), \(\alpha\), \(\lambda\) are internally computed for best performance.</p>
+<h2><a class="anchor" id="qpid_autotune_usage"></a>
+Autotunning Usage</h2>
+<p >In order to use the autotuner, you must first instantiate the <a class="el" href="structq_p_i_d___auto_tunning__t.html">qPID_AutoTunning_t</a> object and bind it to a previously configured PID controller by using the <a class="el" href="group__qpid.html#ga1dc553b9a08e94605eef62b6f794f6e6">qPID_BindAutoTunning()</a>.</p>
+<p >After this, you can enable auto tuning via <a class="el" href="group__qpid.html#gaa7e6a680ce09aafcd299c4ec4c6cd107">qPID_EnableAutoTunning()</a> for a defined number of intervals. When the autotune ends, the resulting PID gains will be applied to the bounded controller.</p>
+<h2><a class="anchor" id="qpid_ex3"></a>
+Example: Speed control with PID controller and autotunning:</h2>
+<p >This example takes avantage of the FreeRTOS task notifications to enable the autotunningm when a rising-edge is detected on a certain digital input. Autotuning is enabled for 5 sec. Note that the setpoint is briefly modified during this process to stimulate the process. Upon completion, the setpoint is restored to its original value.</p>
+<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;stdio.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;stdlib.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &quot;freertos/FreeRTOS.h&quot;</span></div>
+<div class="line"><span class="preprocessor">#include &quot;freertos/task.h&quot;</span></div>
+<div class="line"><span class="preprocessor">#include &quot;bsp.h&quot;</span></div>
+<div class="line"><span class="preprocessor">#include &quot;qpid.h&quot;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="preprocessor">#define REF_MODEL_ORDER   ( 1 )</span></div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">const</span> TickType_t dt = 50; <span class="comment">//50mS time-step</span></div>
+<div class="line"><span class="keywordtype">void</span> xTaskPIDspeedControl( <span class="keywordtype">void</span> *arg );</div>
+<div class="line">TaskHandle_t pid_task;</div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">void</span> gpio_Int_Handler( <span class="keywordtype">void</span> ) </div>
+<div class="line">{</div>
+<div class="line">    BaseType_t xHigherPriorityTaskWoken = pdFALSE;</div>
+<div class="line"> </div>
+<div class="line">    vTaskNotifyGiveFromISR( pid_task, &amp;xHigherPriorityTaskWoken);</div>
+<div class="line">    portYIELD_FROM_ISR(xHigherPriorityTaskWoken);</div>
+<div class="line">    HAL_GPIO_ClearStatusFlag();</div>
+<div class="line">}</div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">void</span> xTaskPIDspeedControl( <span class="keywordtype">void</span> *arg )</div>
+<div class="line">{</div>
+<div class="line">    <a class="code hl_struct" href="structq_p_i_d__controller__t.html">qPID_controller_t</a> *controller = (<a class="code hl_struct" href="structq_p_i_d__controller__t.html">qPID_controller_t</a> *)arg;</div>
+<div class="line">    <span class="keywordtype">float</span> processMeasurement;</div>
+<div class="line">    <span class="keywordtype">float</span> SetPoint = 300.0f; <span class="comment">// desired motor speed 300rpm</span></div>
+<div class="line">    <span class="keywordtype">float</span> tmpSetPoint = 320.0f;</div>
+<div class="line">    <span class="keywordtype">float</span> *p_setpoint  = &amp;SetPoint;  </div>
+<div class="line">    <span class="keywordtype">float</span> refmodel_output = 0.0f;</div>
+<div class="line">    <span class="keywordtype">float</span> controlOutput = 0.0f;</div>
+<div class="line">    uint32_t notification_autotune_enable;</div>
+<div class="line"> </div>
+<div class="line">    <a class="code hl_function" href="group__qltisys.html#ga62e08fd5775f0d1b9f0347ee69e5833e">qLTISys_Setup</a>( &amp;ref_model, num, den, x, 0, REF_MODEL_ORDER+1, (<span class="keywordtype">float</span>)dt/1000.0f ) );</div>
+<div class="line">    <a class="code hl_function" href="group__qpid.html#gace4705569152c216c12b482267eb834f">qPID_SetMRAC</a>( controller, &amp;refmodel_output, 0.01f );</div>
+<div class="line">    <span class="keywordflow">for</span> ( ;; ) {</div>
+<div class="line">        notification_autotune_enable = ulTaskNotifyTake( pdTRUE, 0 ); <span class="comment">// dont wait</span></div>
+<div class="line">        <span class="keywordflow">if</span> ( notification_autotune_enable ) {</div>
+<div class="line">            p_setpoint = &amp;tmpSetPoint; </div>
+<div class="line">            <a class="code hl_function" href="group__qpid.html#gaa7e6a680ce09aafcd299c4ec4c6cd107">qPID_EnableAutoTunning</a>( controller, 100 ); <span class="comment">//enable for 5 seconds ( 100*50mS )</span></div>
+<div class="line">        }</div>
+<div class="line">        <span class="keywordflow">if</span> ( <a class="code hl_function" href="group__qpid.html#gab124780b727b07bd32eb61ff802ec7a4">qPID_AutoTunningComplete</a>( controller) ) {</div>
+<div class="line">            p_setpoint = &amp;SetPoint;</div>
+<div class="line">            <a class="code hl_function" href="group__qpid.html#gaa7e6a680ce09aafcd299c4ec4c6cd107">qPID_EnableAutoTunning</a>( controller, 0uL ); <span class="comment">//disable</span></div>
+<div class="line">        }</div>
+<div class="line">        processMeasurement = BSP_ScaletoSpeed ( BSP_AnalogRead( BSP_AI_SPEED_CHANNEL ) );</div>
+<div class="line">        controlOutput = <a class="code hl_function" href="group__qpid.html#ga35578d503547dbd39bf8647700c66eb5">qPID_Control</a>( controller, *p_setpoint, processMeasurement );</div>
+<div class="line">        BSP_PWMSet( BSP_AO_SPEED_PWM_CHANNEL, BSP_ScaletoPWM( controlOutput ) ); </div>
+<div class="line">        vTaskDelay( dt / portTICK_RATE_MS) ;</div>
+<div class="line">    }</div>
+<div class="line">}</div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">int</span> main( <span class="keywordtype">int</span> argc, <span class="keywordtype">char</span> *argv[] ) </div>
+<div class="line">{</div>
+<div class="line">    <a class="code hl_struct" href="structq_p_i_d__controller__t.html">qPID_controller_t</a> speedControl;</div>
+<div class="line">    <a class="code hl_struct" href="structq_p_i_d___auto_tunning__t.html">qPID_AutoTunning_t</a> at;</div>
+<div class="line">    <span class="keywordtype">int</span> ret;</div>
+<div class="line">    </div>
+<div class="line">    BSP_SystemInit( );</div>
+<div class="line">    HAL_GPIO_Enable( GPIO12, GPIO_INPUT );</div>
+<div class="line">    HAL_GPIO_SetInterruptMode( GPIO12, RISING_EDGE );</div>
+<div class="line">    HAL_GPIO_EnableInterrupts( );</div>
+<div class="line">    ret = <a class="code hl_function" href="group__qpid.html#gaec33f4b01047504ebeea758bc7ce6798">qPID_Setup</a>( &amp;speedControl, 1, 0.1, 0, (<span class="keywordtype">float</span>)dt/1000.0f );</div>
+<div class="line">    <span class="keywordflow">if</span> ( 0 == ret ) {</div>
+<div class="line">        puts( <span class="stringliteral">&quot;ERROR: Cant configure PID controller&quot;</span> );</div>
+<div class="line">    }</div>
+<div class="line">    <a class="code hl_function" href="group__qpid.html#ga8b40b9e975519f12ea9d1e2baf2f4bf9">qPID_SetSaturation</a>( &amp;speedControl, 0.0f, 100.0f );</div>
+<div class="line">    <a class="code hl_function" href="group__qpid.html#ga1dc553b9a08e94605eef62b6f794f6e6">qPID_BindAutoTunning</a>( &amp;speedControl, &amp;at );</div>
+<div class="line">    <span class="comment">// Create the task that handles the speed control at the defined rate</span></div>
+<div class="line">    xTaskCreate( xTaskPIDspeedControl, <span class="stringliteral">&quot;speedControl&quot;</span>, 1024, &amp;speedControl, configMAX_PRIORITIES - 1 , &amp;pid_task );</div>
+<div class="line">    vTaskStartScheduler();</div>
+<div class="line">    <span class="keywordflow">for</span>( ;; );</div>
+<div class="line">    <span class="keywordflow">return</span> EXIT_SUCCESS;</div>
+<div class="line">}</div>
+<div class="ttc" id="agroup__qpid_html_ga1dc553b9a08e94605eef62b6f794f6e6"><div class="ttname"><a href="group__qpid.html#ga1dc553b9a08e94605eef62b6f794f6e6">qPID_BindAutoTunning</a></div><div class="ttdeci">int qPID_BindAutoTunning(qPID_controller_t *const c, qPID_AutoTunning_t *const at)</div><div class="ttdoc">Binds the specified instance to enable the PID controller auto tuning algorithm.</div><div class="ttdef"><b>Definition:</b> qpid.c:243</div></div>
+<div class="ttc" id="agroup__qpid_html_gaa7e6a680ce09aafcd299c4ec4c6cd107"><div class="ttname"><a href="group__qpid.html#gaa7e6a680ce09aafcd299c4ec4c6cd107">qPID_EnableAutoTunning</a></div><div class="ttdeci">int qPID_EnableAutoTunning(qPID_controller_t *const c, const uint32_t tEnable)</div><div class="ttdoc">Set the number of time steps where the auto tuner algorithm will modify the controller gains.</div><div class="ttdef"><b>Definition:</b> qpid.c:294</div></div>
+<div class="ttc" id="agroup__qpid_html_gab124780b727b07bd32eb61ff802ec7a4"><div class="ttname"><a href="group__qpid.html#gab124780b727b07bd32eb61ff802ec7a4">qPID_AutoTunningComplete</a></div><div class="ttdeci">int qPID_AutoTunningComplete(const qPID_controller_t *const c)</div><div class="ttdoc">Verifies that the auto tuning process has finished with new gains set on the controller.</div><div class="ttdef"><b>Definition:</b> qpid.c:360</div></div>
+<div class="ttc" id="astructq_p_i_d___auto_tunning__t_html"><div class="ttname"><a href="structq_p_i_d___auto_tunning__t.html">qPID_AutoTunning_t</a></div><div class="ttdoc">A PID Auto-tunning object.</div><div class="ttdef"><b>Definition:</b> qpid.h:42</div></div>
+</div><!-- fragment --> </div></div><!-- contents -->
+</div><!-- PageDoc -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="index.html">qLibs</a></li>
+    <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.2 </li>
+  </ul>
+</div>
+</body>
+</html>

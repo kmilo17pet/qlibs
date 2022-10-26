@@ -249,5 +249,5 @@ var NAVTREEINDEX0 =
 "index.html":[0],
 "modules.html":[1],
 "pages.html":[],
-"qbitfield_desc.html":[0,4]
+"qbitfield_desc.html":[0,5]
 };
