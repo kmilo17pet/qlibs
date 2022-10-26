@@ -6,7 +6,7 @@
 * various disruptions. The controller compares the measured process variable  
 * \f$ y(t)\f$ and a desired Setpoint \f$ r(t)\f$ (desired outcome). Based on 
 * that comparison, the controller calculates the Proportional, Integral and 
-* Derivative terms and adds them to obtain the output signal \f$ u(t) \f that 
+* Derivative terms and adds them to obtain the output signal \f$ u(t) \f$ that 
 * attempts to minimize the error. This output signal is then used to command
 * the Final Control Element (e.g an actuator) that is in charge of operating 
 * the process.
