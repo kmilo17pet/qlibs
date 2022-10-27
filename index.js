@@ -39,7 +39,7 @@ var index =
       [ "Evaluating a Fuzzy Inference System", "qfis_desc.html#qfis_eval", null ],
       [ "Code generation", "qfis_desc.html#qfis_codegen", null ]
     ] ],
-    [ "Closed-loop PID Controller", "qpid_desc.html", [
+    [ "PID Controller", "qpid_desc.html", [
       [ "PID Controller approach", "qpid_desc.html#qpid_approach", null ],
       [ "Manual Mode", "qpid_desc.html#qpid_maninput", null ],
       [ "Creating a PID Controller", "qpid_desc.html#qpid_create", null ],

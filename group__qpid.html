@@ -159,12 +159,23 @@ Enumerations</h2></td></tr>
  }</td></tr>
 <tr class="memdesc:ga05a79879807411fa30d5f21816030f5d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enumeration with the operational modes for the PID controller.  <a href="group__qpid.html#ga05a79879807411fa30d5f21816030f5d">More...</a><br /></td></tr>
 <tr class="separator:ga05a79879807411fa30d5f21816030f5d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga071f36d4c926098483e9eeae6659ff38"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qpid.html#ga071f36d4c926098483e9eeae6659ff38">qPID_Direction_t</a> { <a class="el" href="group__qpid.html#gga071f36d4c926098483e9eeae6659ff38aed37b89d36623ac6048fca0b03df9347">qPID_Forward</a>
+, <a class="el" href="group__qpid.html#gga071f36d4c926098483e9eeae6659ff38a19bbc9656b592470dd2b8b841c748b38">qPID_Backward</a>
+ }</td></tr>
+<tr class="memdesc:ga071f36d4c926098483e9eeae6659ff38"><td class="mdescLeft">&#160;</td><td class="mdescRight">Direction modes of the PID controller.  <a href="group__qpid.html#ga071f36d4c926098483e9eeae6659ff38">More...</a><br /></td></tr>
+<tr class="separator:ga071f36d4c926098483e9eeae6659ff38"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:gaec33f4b01047504ebeea758bc7ce6798"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qpid.html#gaec33f4b01047504ebeea758bc7ce6798">qPID_Setup</a> (<a class="el" href="structq_p_i_d__controller__t.html">qPID_controller_t</a> *const c, const float kc, const float ki, const float kd, const float dt)</td></tr>
 <tr class="memdesc:gaec33f4b01047504ebeea758bc7ce6798"><td class="mdescLeft">&#160;</td><td class="mdescRight">Setup and initialize the PID controller instance.  <a href="group__qpid.html#gaec33f4b01047504ebeea758bc7ce6798">More...</a><br /></td></tr>
 <tr class="separator:gaec33f4b01047504ebeea758bc7ce6798"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga025ba7ce96822bb00c89ae82374da987"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qpid.html#ga025ba7ce96822bb00c89ae82374da987">qPID_SetDirection</a> (<a class="el" href="structq_p_i_d__controller__t.html">qPID_controller_t</a> *const c, const <a class="el" href="group__qpid.html#ga071f36d4c926098483e9eeae6659ff38">qPID_Direction_t</a> d)</td></tr>
+<tr class="memdesc:ga025ba7ce96822bb00c89ae82374da987"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the PID control action direction.  <a href="group__qpid.html#ga025ba7ce96822bb00c89ae82374da987">More...</a><br /></td></tr>
+<tr class="separator:ga025ba7ce96822bb00c89ae82374da987"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga43c41e2ce278cd3d25238a4888e77ebe"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qpid.html#ga43c41e2ce278cd3d25238a4888e77ebe">qPID_SetParams</a> (<a class="el" href="structq_p_i_d__controller__t.html">qPID_controller_t</a> *const c, const float kc, const float ti, const float td)</td></tr>
+<tr class="memdesc:ga43c41e2ce278cd3d25238a4888e77ebe"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set/Change the PID controller gains by using the [Kc, Ti Td ] triplet.  <a href="group__qpid.html#ga43c41e2ce278cd3d25238a4888e77ebe">More...</a><br /></td></tr>
+<tr class="separator:ga43c41e2ce278cd3d25238a4888e77ebe"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gae753554e76bdfd3cf58e56b35739336b"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qpid.html#gae753554e76bdfd3cf58e56b35739336b">qPID_SetGains</a> (<a class="el" href="structq_p_i_d__controller__t.html">qPID_controller_t</a> *const c, const float kc, const float ki, const float kd)</td></tr>
 <tr class="memdesc:gae753554e76bdfd3cf58e56b35739336b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set/Change the PID controller gains.  <a href="group__qpid.html#gae753554e76bdfd3cf58e56b35739336b">More...</a><br /></td></tr>
 <tr class="separator:gae753554e76bdfd3cf58e56b35739336b"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -219,8 +230,30 @@ Functions</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <p >API for the qPID Controller library. </p>
-<p >For a brief description of this module, please read <a class="el" href="qpid_desc.html">Closed-loop PID Controller</a> </p>
+<p >For a brief description of this module, please read <a class="el" href="qpid_desc.html">PID Controller</a> </p>
 <h2 class="groupheader">Enumeration Type Documentation</h2>
+<a id="ga071f36d4c926098483e9eeae6659ff38" name="ga071f36d4c926098483e9eeae6659ff38"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga071f36d4c926098483e9eeae6659ff38">&#9670;&nbsp;</a></span>qPID_Direction_t</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="group__qpid.html#ga071f36d4c926098483e9eeae6659ff38">qPID_Direction_t</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Direction modes of the PID controller. </p>
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="gga071f36d4c926098483e9eeae6659ff38aed37b89d36623ac6048fca0b03df9347" name="gga071f36d4c926098483e9eeae6659ff38aed37b89d36623ac6048fca0b03df9347"></a>qPID_Forward&#160;</td><td class="fielddoc"><p >Forward control action </p>
+</td></tr>
+<tr><td class="fieldname"><a id="gga071f36d4c926098483e9eeae6659ff38a19bbc9656b592470dd2b8b841c748b38" name="gga071f36d4c926098483e9eeae6659ff38a19bbc9656b592470dd2b8b841c748b38"></a>qPID_Backward&#160;</td><td class="fielddoc"><p >Reverse the control action </p>
+</td></tr>
+</table>
+
+</div>
+</div>
 <a id="ga05a79879807411fa30d5f21816030f5d" name="ga05a79879807411fa30d5f21816030f5d"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ga05a79879807411fa30d5f21816030f5d">&#9670;&nbsp;</a></span>qPID_Mode_t</h2>
 
@@ -552,6 +585,44 @@ Functions</h2></td></tr>
 
 </div>
 </div>
+<a id="ga025ba7ce96822bb00c89ae82374da987" name="ga025ba7ce96822bb00c89ae82374da987"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga025ba7ce96822bb00c89ae82374da987">&#9670;&nbsp;</a></span>qPID_SetDirection()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int qPID_SetDirection </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structq_p_i_d__controller__t.html">qPID_controller_t</a> *const&#160;</td>
+          <td class="paramname"><em>c</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="group__qpid.html#ga071f36d4c926098483e9eeae6659ff38">qPID_Direction_t</a>&#160;</td>
+          <td class="paramname"><em>d</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Set the PID control action direction. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">c</td><td>A pointer to the PID controller instance. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">d</td><td>Desired output direction. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>1 on success, otherwise return 0. </dd></dl>
+
+</div>
+</div>
 <a id="gaf980666f6b788ecbee633cb534811f61" name="gaf980666f6b788ecbee633cb534811f61"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#gaf980666f6b788ecbee633cb534811f61">&#9670;&nbsp;</a></span>qPID_SetEpsilon()</h2>
 
@@ -842,6 +913,58 @@ Functions</h2></td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">c</td><td>A pointer to the PID controller instance. </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">modelRef</td><td>A pointer to the output of the model reference. </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">gamma</td><td>Adjustable parameter to indicate the adaptation speed. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>1 on success, otherwise return 0. </dd></dl>
+
+</div>
+</div>
+<a id="ga43c41e2ce278cd3d25238a4888e77ebe" name="ga43c41e2ce278cd3d25238a4888e77ebe"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga43c41e2ce278cd3d25238a4888e77ebe">&#9670;&nbsp;</a></span>qPID_SetParams()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int qPID_SetParams </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structq_p_i_d__controller__t.html">qPID_controller_t</a> *const&#160;</td>
+          <td class="paramname"><em>c</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const float&#160;</td>
+          <td class="paramname"><em>kc</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const float&#160;</td>
+          <td class="paramname"><em>ti</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const float&#160;</td>
+          <td class="paramname"><em>td</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Set/Change the PID controller gains by using the [Kc, Ti Td ] triplet. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">c</td><td>A pointer to the PID controller instance. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">kc</td><td>Proportional Gain. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">ti</td><td>Integral time. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">td</td><td>Derivative time. </td></tr>
   </table>
   </dd>
 </dl>
