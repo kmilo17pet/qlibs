@@ -1,7 +1,7 @@
 /*!
  * @file qpid.h
  * @author J. Camilo Gomez C.
- * @version 1.13
+ * @version 1.14
  * @note This file is part of the qLibs distribution.
  * @brief API to control systems using the PID algorithm. This controller
  * features anti-windup, tracking mode, and derivative filter.
@@ -32,6 +32,15 @@ extern "C" {
         qPID_Automatic, /*!< Fully operational closed-loop PID controller */
         qPID_Manual     /*!< Open-loop with manual input*/
     } qPID_Mode_t;
+
+
+    /**
+    * @brief Direction modes of the PID controller
+    */
+    typedef enum {
+        qPID_Forward,   /*!< Forward control action */
+        qPID_Backward   /*!< Reverse the control action*/
+    } qPID_Direction_t;
 
     /**
     * @brief A PID Auto-tunning object
@@ -74,6 +83,7 @@ extern "C" {
         qPID_AutoTunning_t *adapt;
         qNumA_IntegrationMethod_t integrate;
         qPID_Mode_t mode;
+        qPID_Direction_t dir;
         uint8_t init, dKick;
         /*! @endcond  */
     } qPID_controller_t;
@@ -92,6 +102,29 @@ extern "C" {
                     const float ki,
                     const float kd,
                     const float dt );
+
+    /**
+    * @brief Set the PID control action direction.
+    * @param[in] c A pointer to the PID controller instance.
+    * @param[in] d Desired output direction.
+    * @return 1 on success, otherwise return 0.
+    */
+    int qPID_SetDirection( qPID_controller_t * const c,
+                        const qPID_Direction_t d );
+
+    /**
+    * @brief Set/Change the PID controller gains by using the [Kc, Ti Td ] 
+    * triplet.
+    * @param[in] c A pointer to the PID controller instance.
+    * @param[in] kc Proportional Gain.
+    * @param[in] ti Integral time.
+    * @param[in] td Derivative time.
+    * @return 1 on success, otherwise return 0.
+    */
+    int qPID_SetParams( qPID_controller_t * const c,
+                        const float kc,
+                        const float ti,
+                        const float td );
 
     /**
     * @brief Set/Change the PID controller gains.

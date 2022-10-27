@@ -37,7 +37,39 @@ int qPID_Setup( qPID_controller_t * const c,
         (void)qPID_SetManualInput( c, 0.0f );
         (void)qPID_SetExtraGains( c, 1.0f, 1.0f );
         (void)qPID_RemoveDerivativeKick( c, 1u );
+        (void)qPID_SetDirection( c, qPID_Forward );
         retValue = qPID_Reset( c );
+    }
+
+    return retValue;
+
+}
+/*============================================================================*/
+int qPID_SetDirection( qPID_controller_t * const c,
+                       const qPID_Direction_t d )
+{
+    int retValue = 0;
+
+    if ( ( NULL != c ) && ( 0u != c->init ) ) {
+        c->dir = d;
+        retValue = 1;
+    }
+
+    return retValue;
+}
+/*============================================================================*/
+int qPID_SetParams( qPID_controller_t * const c,
+                    const float kc,
+                    const float ti,
+                    const float td )
+{
+    int retValue = 0;
+
+    if ( ( NULL != c ) && ( 0u != c->init ) ) {
+        c->kc = kc;
+        c->ki = kc/ti;
+        c->kd = kc*td;
+        retValue = 1;
     }
 
     return retValue;
@@ -59,6 +91,7 @@ int qPID_SetGains( qPID_controller_t * const c,
 
     return retValue;
 }
+
 /*============================================================================*/
 int qPID_SetExtraGains( qPID_controller_t * const c,
                         const float kw,
@@ -202,26 +235,35 @@ float qPID_Control( qPID_controller_t * const c,
     float u = w;
 
     if ( ( NULL != c ) && ( 0u != c->init ) ) {
-        float e, v, de, ie, bt, sw;
+        float e, v, de, ie, bt, sw, kc, ki, kd;
+
+        kc = c->kc;
+        ki = c->ki;
+        kd = c->kd;
+        if ( qPID_Backward == c->dir ) {
+            kc = ( kc > 0.0f ) ? -kc : kc;
+            ki = ( ki > 0.0f ) ? -ki : ki;
+            kd = ( kd > 0.0f ) ? -kd : kd;
+        }
 
         e = w - y;
-        if ( fabs( e ) <= ( c->epsilon ) ) {
+        if ( fabs( e ) <= c->epsilon ) {
             e = 0.0f;
         }
         /*integral with anti-windup*/
         ie = c->integrate( &c->c_state,  e + c->u1, c->dt );
-        de = qNumA_Derivative( &c->c_state, ( 1u == c->dKick ) ? -y : e, c->dt  );
+        de = qNumA_Derivative( &c->c_state, ( 1u == c->dKick ) ? -y : e, c->dt );
         c->D = de + ( c->beta*( c->D - de ) ); /*derivative filtering*/
-        v  = ( c->kc*e ) + ( c->ki*ie ) + ( c->kd*c->D ); /*compute PID action*/
+        v  = ( kc*e ) + ( ki*ie ) + ( kd*c->D ); /*compute PID action*/
 
         if ( NULL != c->yr ) {
             /*MRAC additive controller using the modified MIT rule*/
             float theta = 0.0f;
-            if ( ( c->u1*c->u1 ) <= c->epsilon ) { /*additive anti-windup*/
+            if ( fabs( c->u1 ) <= c->epsilon ) { /*additive anti-windup*/
                 const float em = y - c->yr[ 0 ];
                 const float delta = -c->gamma*em*c->yr[ 0 ]/
                                     ( c->alfa + ( c->yr[ 0 ]*c->yr[ 0 ] ) );
-                theta = c->integrate( &c->m_state, delta + c->u1, c->dt );
+                theta = c->integrate( &c->m_state, delta /*+ c->u1*/, c->dt );
             }
             v += w*theta;
         }

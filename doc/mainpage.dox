@@ -19,7 +19,7 @@
 *        -# Mamdani
 *        -# Sugeno
 *        -# Tsukamoto
-* - @subpage qpid_desc "qPID : Close-Loop PID Controller"
+* - @subpage qpid_desc "qPID : PID Controller"
 *        -# Derivative filter
 *        -# Anti-windup
 *        -# Tracking mode

@@ -1,4 +1,4 @@
-/*! @page qpid_desc Closed-loop PID Controller
+/*! @page qpid_desc PID Controller
 * @tableofcontents
 * A Proportional Integral Derivative (PID) controller is an automatically 
 * optimized and accurate control system responsible for ensuring that a 
