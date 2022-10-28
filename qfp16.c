@@ -96,12 +96,15 @@ int qFP16_SettingsSet( qFP16_Settings_t * const instance,
 {
     int retValue = 0;
 
-    if ( ( NULL != instance ) && ( NULL != &fp_default ) && ( max > min ) && ( rounding <= 1u ) && ( saturate <= 1u ) ) {
+    if ( ( NULL != instance ) && ( max > min ) && ( rounding <= 1u ) && ( saturate <= 1u ) ) {
         instance->min = min;
         instance->max = max;
         instance->rounding = rounding;
         instance->saturate = saturate;
         retValue = 1;
+    }
+    else {
+        (void)fp_default;
     }
 
     return retValue;

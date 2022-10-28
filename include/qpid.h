@@ -73,7 +73,7 @@ extern "C" {
     typedef struct
     {
         /*! @cond  */
-        float kc, ki, kd, dt, min, max, epsilon, kw, kt, D, u1, beta;
+        float kc, ki, kd, kr, dt, min, max, epsilon, kw, kt, D, u1, beta;
         float m, mInput;
         const float *yr;
         float alfa, gamma; /*MRAC additive controller parameters*/
@@ -194,6 +194,17 @@ extern "C" {
     */
     int qPID_SetDerivativeFilter( qPID_controller_t * const c,
                                   const float beta );
+
+    /**
+    * @brief Set the PID Reference(Set-Point) Weighting. This value is used in
+    * order to avoid the increase of the rise time due to the smoothing of the 
+    * reference signal applied to the closed-loop system
+    * @param[in] c A pointer to the PID controller instance.
+    * @param[in] b The reference weight value [ 0 < b <= 1 ].
+    * @return 1 on success, otherwise return 0.
+    */
+    int qPID_SetReferenceWeighting( qPID_controller_t * const c,
+                                    const float b );
 
     /**
     * @brief Set the PID manual input mode. This value will be used

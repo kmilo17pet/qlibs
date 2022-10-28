@@ -38,6 +38,7 @@ int qPID_Setup( qPID_controller_t * const c,
         (void)qPID_SetExtraGains( c, 1.0f, 1.0f );
         (void)qPID_RemoveDerivativeKick( c, 1u );
         (void)qPID_SetDirection( c, qPID_Forward );
+        (void)qPID_SetReferenceWeighting( c, 1.0f );
         retValue = qPID_Reset( c );
     }
 
@@ -198,6 +199,19 @@ int qPID_SetMode( qPID_controller_t * const c,
     return retValue;
 }
 /*============================================================================*/
+int qPID_SetReferenceWeighting( qPID_controller_t * const c,
+                                const float b )
+{
+    int retValue = 0;
+
+    if ( ( NULL != c ) && ( 0u != c->init ) ) {
+        c->kr = qPID_Sat( b, 0.0f, 1.0f );
+        retValue = 1;
+    }
+
+    return retValue;
+}
+/*============================================================================*/
 int qPID_SetManualInput( qPID_controller_t * const c,
                          const float manualInput )
 {
@@ -254,7 +268,7 @@ float qPID_Control( qPID_controller_t * const c,
         ie = c->integrate( &c->c_state,  e + c->u1, c->dt );
         de = qNumA_Derivative( &c->c_state, ( 1u == c->dKick ) ? -y : e, c->dt );
         c->D = de + ( c->beta*( c->D - de ) ); /*derivative filtering*/
-        v  = ( kc*e ) + ( ki*ie ) + ( kd*c->D ); /*compute PID action*/
+        v  = ( kc*( ( c->kr*w ) - y ) ) + ( ki*ie ) + ( kd*c->D ); /*compute PID action*/
 
         if ( NULL != c->yr ) {
             /*MRAC additive controller using the modified MIT rule*/
