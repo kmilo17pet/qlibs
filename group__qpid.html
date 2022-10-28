@@ -197,6 +197,9 @@ Functions</h2></td></tr>
 <tr class="memitem:gaa6b1cdfe6594c3296d1ef3ea4b3ab3fa"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qpid.html#gaa6b1cdfe6594c3296d1ef3ea4b3ab3fa">qPID_SetDerivativeFilter</a> (<a class="el" href="structq_p_i_d__controller__t.html">qPID_controller_t</a> *const c, const float beta)</td></tr>
 <tr class="memdesc:gaa6b1cdfe6594c3296d1ef3ea4b3ab3fa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the tunning parameter for the derivative filter.  <a href="group__qpid.html#gaa6b1cdfe6594c3296d1ef3ea4b3ab3fa">More...</a><br /></td></tr>
 <tr class="separator:gaa6b1cdfe6594c3296d1ef3ea4b3ab3fa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaeb640fd8ef151b1950cd77b56030beee"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qpid.html#gaeb640fd8ef151b1950cd77b56030beee">qPID_SetReferenceWeighting</a> (<a class="el" href="structq_p_i_d__controller__t.html">qPID_controller_t</a> *const c, const float b)</td></tr>
+<tr class="memdesc:gaeb640fd8ef151b1950cd77b56030beee"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the PID Reference(Set-Point) Weighting. This value is used in order to avoid the increase of the rise time due to the smoothing of the reference signal applied to the closed-loop system.  <a href="group__qpid.html#gaeb640fd8ef151b1950cd77b56030beee">More...</a><br /></td></tr>
+<tr class="separator:gaeb640fd8ef151b1950cd77b56030beee"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga54344a365234b2315f928ff17a6ab14a"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qpid.html#ga54344a365234b2315f928ff17a6ab14a">qPID_SetManualInput</a> (<a class="el" href="structq_p_i_d__controller__t.html">qPID_controller_t</a> *const c, const float manualInput)</td></tr>
 <tr class="memdesc:ga54344a365234b2315f928ff17a6ab14a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the PID manual input mode. This value will be used as the manual input when the controller it set into the <a class="el" href="group__qpid.html#gga05a79879807411fa30d5f21816030f5da0cc4e1987e0c9ff009774cbd63e75edb">qPID_Manual</a> mode. Bumpless-transfer is guaranteed.  <a href="group__qpid.html#ga54344a365234b2315f928ff17a6ab14a">More...</a><br /></td></tr>
 <tr class="separator:ga54344a365234b2315f928ff17a6ab14a"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -965,6 +968,44 @@ Functions</h2></td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">kc</td><td>Proportional Gain. </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">ti</td><td>Integral time. </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">td</td><td>Derivative time. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>1 on success, otherwise return 0. </dd></dl>
+
+</div>
+</div>
+<a id="gaeb640fd8ef151b1950cd77b56030beee" name="gaeb640fd8ef151b1950cd77b56030beee"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gaeb640fd8ef151b1950cd77b56030beee">&#9670;&nbsp;</a></span>qPID_SetReferenceWeighting()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int qPID_SetReferenceWeighting </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structq_p_i_d__controller__t.html">qPID_controller_t</a> *const&#160;</td>
+          <td class="paramname"><em>c</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const float&#160;</td>
+          <td class="paramname"><em>b</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Set the PID Reference(Set-Point) Weighting. This value is used in order to avoid the increase of the rise time due to the smoothing of the reference signal applied to the closed-loop system. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">c</td><td>A pointer to the PID controller instance. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">b</td><td>The reference weight value [ 0 &lt; b &lt;= 1 ]. </td></tr>
   </table>
   </dd>
 </dl>

@@ -28,6 +28,7 @@ var group__qpid =
     [ "qPID_SetMode", "group__qpid.html#gac09383b81a52097e06214cbc16999c4d", null ],
     [ "qPID_SetMRAC", "group__qpid.html#gace4705569152c216c12b482267eb834f", null ],
     [ "qPID_SetParams", "group__qpid.html#ga43c41e2ce278cd3d25238a4888e77ebe", null ],
+    [ "qPID_SetReferenceWeighting", "group__qpid.html#gaeb640fd8ef151b1950cd77b56030beee", null ],
     [ "qPID_SetSaturation", "group__qpid.html#ga8b40b9e975519f12ea9d1e2baf2f4bf9", null ],
     [ "qPID_SetSeries", "group__qpid.html#ga5a6fba7e7945f72a0060215e0ad44c3c", null ],
     [ "qPID_Setup", "group__qpid.html#gaec33f4b01047504ebeea758bc7ce6798", null ]
