@@ -16,7 +16,6 @@ var group__qpid =
     [ "qPID_BindAutoTunning", "group__qpid.html#ga1dc553b9a08e94605eef62b6f794f6e6", null ],
     [ "qPID_Control", "group__qpid.html#ga35578d503547dbd39bf8647700c66eb5", null ],
     [ "qPID_EnableAutoTunning", "group__qpid.html#gaa7e6a680ce09aafcd299c4ec4c6cd107", null ],
-    [ "qPID_RemoveDerivativeKick", "group__qpid.html#ga1ac68bcfbb438deb2569fb111122b562", null ],
     [ "qPID_Reset", "group__qpid.html#ga529fc13e912b855918346ebe3807c1b1", null ],
     [ "qPID_SetDerivativeFilter", "group__qpid.html#gaa6b1cdfe6594c3296d1ef3ea4b3ab3fa", null ],
     [ "qPID_SetDirection", "group__qpid.html#ga025ba7ce96822bb00c89ae82374da987", null ],
@@ -28,7 +27,7 @@ var group__qpid =
     [ "qPID_SetMode", "group__qpid.html#gac09383b81a52097e06214cbc16999c4d", null ],
     [ "qPID_SetMRAC", "group__qpid.html#gace4705569152c216c12b482267eb834f", null ],
     [ "qPID_SetParams", "group__qpid.html#ga43c41e2ce278cd3d25238a4888e77ebe", null ],
-    [ "qPID_SetReferenceWeighting", "group__qpid.html#gaeb640fd8ef151b1950cd77b56030beee", null ],
+    [ "qPID_SetReferenceWeighting", "group__qpid.html#ga9f48262417f9c5f9385e21d819dfb4ed", null ],
     [ "qPID_SetSaturation", "group__qpid.html#ga8b40b9e975519f12ea9d1e2baf2f4bf9", null ],
     [ "qPID_SetSeries", "group__qpid.html#ga5a6fba7e7945f72a0060215e0ad44c3c", null ],
     [ "qPID_Setup", "group__qpid.html#gaec33f4b01047504ebeea758bc7ce6798", null ]

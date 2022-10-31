@@ -197,9 +197,9 @@ Functions</h2></td></tr>
 <tr class="memitem:gaa6b1cdfe6594c3296d1ef3ea4b3ab3fa"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qpid.html#gaa6b1cdfe6594c3296d1ef3ea4b3ab3fa">qPID_SetDerivativeFilter</a> (<a class="el" href="structq_p_i_d__controller__t.html">qPID_controller_t</a> *const c, const float beta)</td></tr>
 <tr class="memdesc:gaa6b1cdfe6594c3296d1ef3ea4b3ab3fa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the tunning parameter for the derivative filter.  <a href="group__qpid.html#gaa6b1cdfe6594c3296d1ef3ea4b3ab3fa">More...</a><br /></td></tr>
 <tr class="separator:gaa6b1cdfe6594c3296d1ef3ea4b3ab3fa"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaeb640fd8ef151b1950cd77b56030beee"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qpid.html#gaeb640fd8ef151b1950cd77b56030beee">qPID_SetReferenceWeighting</a> (<a class="el" href="structq_p_i_d__controller__t.html">qPID_controller_t</a> *const c, const float b)</td></tr>
-<tr class="memdesc:gaeb640fd8ef151b1950cd77b56030beee"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the PID Reference(Set-Point) Weighting. This value is used in order to avoid the increase of the rise time due to the smoothing of the reference signal applied to the closed-loop system.  <a href="group__qpid.html#gaeb640fd8ef151b1950cd77b56030beee">More...</a><br /></td></tr>
-<tr class="separator:gaeb640fd8ef151b1950cd77b56030beee"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga9f48262417f9c5f9385e21d819dfb4ed"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qpid.html#ga9f48262417f9c5f9385e21d819dfb4ed">qPID_SetReferenceWeighting</a> (<a class="el" href="structq_p_i_d__controller__t.html">qPID_controller_t</a> *const c, const float gb, const float gc)</td></tr>
+<tr class="memdesc:ga9f48262417f9c5f9385e21d819dfb4ed"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the PID Reference(Set-Point) Weighting. This value is used in order to avoid the increase of the rise time due to the smoothing of the reference signal applied to the closed-loop system.  <a href="group__qpid.html#ga9f48262417f9c5f9385e21d819dfb4ed">More...</a><br /></td></tr>
+<tr class="separator:ga9f48262417f9c5f9385e21d819dfb4ed"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga54344a365234b2315f928ff17a6ab14a"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qpid.html#ga54344a365234b2315f928ff17a6ab14a">qPID_SetManualInput</a> (<a class="el" href="structq_p_i_d__controller__t.html">qPID_controller_t</a> *const c, const float manualInput)</td></tr>
 <tr class="memdesc:ga54344a365234b2315f928ff17a6ab14a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the PID manual input mode. This value will be used as the manual input when the controller it set into the <a class="el" href="group__qpid.html#gga05a79879807411fa30d5f21816030f5da0cc4e1987e0c9ff009774cbd63e75edb">qPID_Manual</a> mode. Bumpless-transfer is guaranteed.  <a href="group__qpid.html#ga54344a365234b2315f928ff17a6ab14a">More...</a><br /></td></tr>
 <tr class="separator:ga54344a365234b2315f928ff17a6ab14a"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -215,9 +215,6 @@ Functions</h2></td></tr>
 <tr class="memitem:ga1dc553b9a08e94605eef62b6f794f6e6"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qpid.html#ga1dc553b9a08e94605eef62b6f794f6e6">qPID_BindAutoTunning</a> (<a class="el" href="structq_p_i_d__controller__t.html">qPID_controller_t</a> *const c, <a class="el" href="structq_p_i_d___auto_tunning__t.html">qPID_AutoTunning_t</a> *const at)</td></tr>
 <tr class="memdesc:ga1dc553b9a08e94605eef62b6f794f6e6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Binds the specified instance to enable the PID controller auto tuning algorithm.  <a href="group__qpid.html#ga1dc553b9a08e94605eef62b6f794f6e6">More...</a><br /></td></tr>
 <tr class="separator:ga1dc553b9a08e94605eef62b6f794f6e6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga1ac68bcfbb438deb2569fb111122b562"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qpid.html#ga1ac68bcfbb438deb2569fb111122b562">qPID_RemoveDerivativeKick</a> (<a class="el" href="structq_p_i_d__controller__t.html">qPID_controller_t</a> *const c, const uint32_t tEnable)</td></tr>
-<tr class="memdesc:ga1ac68bcfbb438deb2569fb111122b562"><td class="mdescLeft">&#160;</td><td class="mdescRight">Feature to eliminate the phenomena called Derivative Kick.  <a href="group__qpid.html#ga1ac68bcfbb438deb2569fb111122b562">More...</a><br /></td></tr>
-<tr class="separator:ga1ac68bcfbb438deb2569fb111122b562"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gaa7e6a680ce09aafcd299c4ec4c6cd107"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qpid.html#gaa7e6a680ce09aafcd299c4ec4c6cd107">qPID_EnableAutoTunning</a> (<a class="el" href="structq_p_i_d__controller__t.html">qPID_controller_t</a> *const c, const uint32_t tEnable)</td></tr>
 <tr class="memdesc:gaa7e6a680ce09aafcd299c4ec4c6cd107"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the number of time steps where the auto tuner algorithm will modify the controller gains.  <a href="group__qpid.html#gaa7e6a680ce09aafcd299c4ec4c6cd107">More...</a><br /></td></tr>
 <tr class="separator:gaa7e6a680ce09aafcd299c4ec4c6cd107"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -478,44 +475,6 @@ Functions</h2></td></tr>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">c</td><td>A pointer to the PID controller instance. </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">tEnable</td><td>The number of time steps. To keep the auto tuner enabled indefinitely pass <a class="el" href="group__qpid.html#gab5476062cacdea0be922e73585dc5aa2" title="Macro to keep the auto-tuner enabled indefinitely.">QPID_AUTOTUNNING_UNDEFINED</a> as argument. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>1 on success, otherwise return 0. </dd></dl>
-
-</div>
-</div>
-<a id="ga1ac68bcfbb438deb2569fb111122b562" name="ga1ac68bcfbb438deb2569fb111122b562"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga1ac68bcfbb438deb2569fb111122b562">&#9670;&nbsp;</a></span>qPID_RemoveDerivativeKick()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int qPID_RemoveDerivativeKick </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="structq_p_i_d__controller__t.html">qPID_controller_t</a> *const&#160;</td>
-          <td class="paramname"><em>c</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const uint32_t&#160;</td>
-          <td class="paramname"><em>tEnable</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Feature to eliminate the phenomena called Derivative Kick. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">c</td><td>A pointer to the PID controller instance. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">tEnable</td><td>The value to enable(1u) or disable(0u) this feature. </td></tr>
   </table>
   </dd>
 </dl>
@@ -975,8 +934,8 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="gaeb640fd8ef151b1950cd77b56030beee" name="gaeb640fd8ef151b1950cd77b56030beee"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#gaeb640fd8ef151b1950cd77b56030beee">&#9670;&nbsp;</a></span>qPID_SetReferenceWeighting()</h2>
+<a id="ga9f48262417f9c5f9385e21d819dfb4ed" name="ga9f48262417f9c5f9385e21d819dfb4ed"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga9f48262417f9c5f9385e21d819dfb4ed">&#9670;&nbsp;</a></span>qPID_SetReferenceWeighting()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -991,7 +950,13 @@ Functions</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">const float&#160;</td>
-          <td class="paramname"><em>b</em>&#160;</td>
+          <td class="paramname"><em>gb</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const float&#160;</td>
+          <td class="paramname"><em>gc</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -1002,10 +967,12 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Set the PID Reference(Set-Point) Weighting. This value is used in order to avoid the increase of the rise time due to the smoothing of the reference signal applied to the closed-loop system. </p>
+<dl class="section note"><dt>Note</dt><dd>A value close to zero en <em>gc</em> can be used to eliminate the reduce the effect of the phenomena called Derivative Kick </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">c</td><td>A pointer to the PID controller instance. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">b</td><td>The reference weight value [ 0 &lt; b &lt;= 1 ]. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">gb</td><td>The reference weight value for the proportional element. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">gc</td><td>The reference weight value for the derivative element. </td></tr>
   </table>
   </dd>
 </dl>
