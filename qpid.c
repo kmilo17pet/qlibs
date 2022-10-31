@@ -36,9 +36,8 @@ int qPID_Setup( qPID_controller_t * const c,
         (void)qPID_SetMode( c, qPID_Automatic );
         (void)qPID_SetManualInput( c, 0.0f );
         (void)qPID_SetExtraGains( c, 1.0f, 1.0f );
-        (void)qPID_RemoveDerivativeKick( c, 1u );
         (void)qPID_SetDirection( c, qPID_Forward );
-        (void)qPID_SetReferenceWeighting( c, 1.0f );
+        (void)qPID_SetReferenceWeighting( c, 1.0f, 0.0f );
         retValue = qPID_Reset( c );
     }
 
@@ -200,12 +199,14 @@ int qPID_SetMode( qPID_controller_t * const c,
 }
 /*============================================================================*/
 int qPID_SetReferenceWeighting( qPID_controller_t * const c,
-                                const float b )
+                                const float gb,
+                                const float gc )
 {
     int retValue = 0;
 
     if ( ( NULL != c ) && ( 0u != c->init ) ) {
-        c->kr = qPID_Sat( b, 0.0f, 1.0f );
+        c->b = qPID_Sat( gb, 0.0f, 1.0f );
+        c->c = qPID_Sat( gc, 0.0f, 1.0f );
         retValue = 1;
     }
 
@@ -266,9 +267,9 @@ float qPID_Control( qPID_controller_t * const c,
         }
         /*integral with anti-windup*/
         ie = c->integrate( &c->c_state,  e + c->u1, c->dt );
-        de = qNumA_Derivative( &c->c_state, ( 1u == c->dKick ) ? -y : e, c->dt );
+        de = qNumA_Derivative( &c->c_state, ( ( c->c*w ) - y ) , c->dt );
         c->D = de + ( c->beta*( c->D - de ) ); /*derivative filtering*/
-        v  = ( kc*( ( c->kr*w ) - y ) ) + ( ki*ie ) + ( kd*c->D ); /*compute PID action*/
+        v  = ( kc*( ( c->b*w ) - y ) ) + ( ki*ie ) + ( kd*c->D ); /*compute PID action*/
 
         if ( NULL != c->yr ) {
             /*MRAC additive controller using the modified MIT rule*/
@@ -328,19 +329,6 @@ int qPID_BindAutoTunning( qPID_controller_t * const c,
         else {
             c->adapt = NULL;
         }
-        retValue = 1;
-    }
-
-    return retValue;
-}
-/*============================================================================*/
-int qPID_RemoveDerivativeKick( qPID_controller_t * const c,
-                               const uint32_t tEnable )
-{
-    int retValue = 0;
-
-    if ( NULL != c ) {
-        c->dKick = ( 0uL != tEnable )? 1u : 0u;
         retValue = 1;
     }
 

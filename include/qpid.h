@@ -1,7 +1,7 @@
 /*!
  * @file qpid.h
  * @author J. Camilo Gomez C.
- * @version 1.14
+ * @version 1.15
  * @note This file is part of the qLibs distribution.
  * @brief API to control systems using the PID algorithm. This controller
  * features anti-windup, tracking mode, and derivative filter.
@@ -73,7 +73,7 @@ extern "C" {
     typedef struct
     {
         /*! @cond  */
-        float kc, ki, kd, kr, dt, min, max, epsilon, kw, kt, D, u1, beta;
+        float kc, ki, kd, b, c, dt, min, max, epsilon, kw, kt, D, u1, beta;
         float m, mInput;
         const float *yr;
         float alfa, gamma; /*MRAC additive controller parameters*/
@@ -84,7 +84,7 @@ extern "C" {
         qNumA_IntegrationMethod_t integrate;
         qPID_Mode_t mode;
         qPID_Direction_t dir;
-        uint8_t init, dKick;
+        uint8_t init;
         /*! @endcond  */
     } qPID_controller_t;
 
@@ -199,12 +199,16 @@ extern "C" {
     * @brief Set the PID Reference(Set-Point) Weighting. This value is used in
     * order to avoid the increase of the rise time due to the smoothing of the 
     * reference signal applied to the closed-loop system
+    * @note A value close to zero en @a gc can be used to eliminate the 
+    * reduce the effect of the phenomena called Derivative Kick
     * @param[in] c A pointer to the PID controller instance.
-    * @param[in] b The reference weight value [ 0 < b <= 1 ].
+    * @param[in] gb The reference weight value for the proportional element.
+    * @param[in] gc The reference weight value for the derivative element.
     * @return 1 on success, otherwise return 0.
     */
     int qPID_SetReferenceWeighting( qPID_controller_t * const c,
-                                    const float b );
+                                    const float gb,
+                                    const float gc );
 
     /**
     * @brief Set the PID manual input mode. This value will be used
@@ -268,15 +272,6 @@ extern "C" {
     */
     int qPID_BindAutoTunning( qPID_controller_t * const c,
                               qPID_AutoTunning_t * const at );
-
-    /**
-    * @brief Feature to eliminate the phenomena called Derivative Kick
-    * @param[in] c A pointer to the PID controller instance.
-    * @param[in] tEnable The value to enable(1u) or disable(0u) this feature.
-    * @return 1 on success, otherwise return 0.
-    */
-    int qPID_RemoveDerivativeKick( qPID_controller_t * const c,
-                                   const uint32_t tEnable );
 
     /**
     * @brief Set the number of time steps where the auto tuner algorithm will
