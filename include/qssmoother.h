@@ -19,7 +19,7 @@ extern "C" {
     #include <math.h>
     #include "qtdl.h"
 
-    /** @addtogroup qssmoother qSSMoother :  Filters to smooth noisy signals
+    /** @addtogroup qssmoother qSSMoother : Filters to smooth noisy signals
     * @brief API for the qSSmoother library
     *  @{
     */
