@@ -140,59 +140,51 @@ $(document).ready(function(){initNavTree('qtypegeneric_8h_source.html',''); init
 <div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="preprocessor">    #include &lt;stdbool.h&gt;</span></div>
 <div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span> </div>
 <div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span> </div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>    <span class="keyword">typedef</span> int (*qTypeGeneric_CompareFcn_t)( <span class="keyword">const</span> <span class="keywordtype">void</span> *, <span class="keyword">const</span> <span class="keywordtype">void</span> *, <span class="keywordtype">void</span> * );</div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span> </div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="group__qtypegeneric.html#ga0e38aca8648c9d20c08d6fd90a4d7a0f">qTypeGeneric_Swap</a>( <span class="keywordtype">void</span> *x,</div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>                            <span class="keywordtype">void</span> *y,</div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>                            <span class="keywordtype">size_t</span> n );</div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span> </div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="group__qtypegeneric.html#ga83693af97ce728270f657d818c980dc5">qTypeGeneric_Sort</a>( <span class="keywordtype">void</span> * <span class="keyword">const</span> pbase,</div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>                            <span class="keywordtype">size_t</span> n,</div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>                            <span class="keywordtype">size_t</span> size,</div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>                            qTypeGeneric_CompareFcn_t cmp,</div>
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>                            <span class="keywordtype">void</span> *arg );</div>
-<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span> </div>
-<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="group__qtypegeneric.html#gaee90f107286281c0ab4630e2dc130c91">qTypeGeneric_Reverse</a>( <span class="keywordtype">void</span> * <span class="keyword">const</span> pbase,</div>
-<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>                               <span class="keyword">const</span> <span class="keywordtype">size_t</span> size,</div>
-<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>                               <span class="keyword">const</span> <span class="keywordtype">size_t</span> init,</div>
-<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>                               <span class="keyword">const</span> <span class="keywordtype">size_t</span> end );</div>
-<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span> </div>
-<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="group__qtypegeneric.html#gad29bd039b0697138bcb05eecab1fae29">qTypeGeneric_Rotate</a>( <span class="keywordtype">void</span> * <span class="keyword">const</span> pbase,</div>
-<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>                              <span class="keyword">const</span> <span class="keywordtype">size_t</span> size,</div>
-<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>                              <span class="keyword">const</span> <span class="keywordtype">size_t</span> n,</div>
-<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>                              <span class="keyword">const</span> <span class="keywordtype">int</span> k );</div>
-<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span> </div>
-<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>    <span class="keywordtype">void</span>* <a class="code hl_function" href="group__qtypegeneric.html#ga1a01bce1922bbfb580323e72a5cc0a57">qTypeGeneric_Set</a>( <span class="keywordtype">void</span> * <span class="keyword">const</span> pbase,</div>
-<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>                            <span class="keyword">const</span> <span class="keywordtype">size_t</span> size,</div>
-<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>                            <span class="keyword">const</span> <span class="keywordtype">size_t</span> n,</div>
-<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>                            <span class="keyword">const</span> <span class="keywordtype">void</span> * <span class="keyword">const</span> ref );</div>
-<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span> </div>
-<div class="line"><a id="l00150" name="l00150"></a><span class="lineno">  150</span>    <span class="keywordtype">void</span>* <a class="code hl_function" href="group__qtypegeneric.html#ga1751bcf57fa73f56532d3f05dd6e7d81">qTypeGeneric_LSearch</a>( <span class="keyword">const</span> <span class="keywordtype">void</span> *key,</div>
-<div class="line"><a id="l00151" name="l00151"></a><span class="lineno">  151</span>                                <span class="keyword">const</span> <span class="keywordtype">void</span> *pbase,</div>
-<div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span>                                <span class="keyword">const</span> <span class="keywordtype">size_t</span> n,</div>
-<div class="line"><a id="l00153" name="l00153"></a><span class="lineno">  153</span>                                <span class="keyword">const</span> <span class="keywordtype">size_t</span> size,</div>
-<div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span>                                qTypeGeneric_CompareFcn_t compar,</div>
-<div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span>                                <span class="keywordtype">void</span> *arg );</div>
-<div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span> </div>
-<div class="line"><a id="l00192" name="l00192"></a><span class="lineno">  192</span>    <span class="keywordtype">void</span>* <a class="code hl_function" href="group__qtypegeneric.html#ga666f3f9121864dffb3cde3e161b30053">qTypeGeneric_BSearch</a>( <span class="keyword">const</span> <span class="keywordtype">void</span> *key,</div>
-<div class="line"><a id="l00193" name="l00193"></a><span class="lineno">  193</span>                                <span class="keyword">const</span> <span class="keywordtype">void</span> *pbase,</div>
-<div class="line"><a id="l00194" name="l00194"></a><span class="lineno">  194</span>                                <span class="keyword">const</span> <span class="keywordtype">size_t</span> n,</div>
-<div class="line"><a id="l00195" name="l00195"></a><span class="lineno">  195</span>                                <span class="keyword">const</span> <span class="keywordtype">size_t</span> size,</div>
-<div class="line"><a id="l00196" name="l00196"></a><span class="lineno">  196</span>                                qTypeGeneric_CompareFcn_t compar,</div>
-<div class="line"><a id="l00197" name="l00197"></a><span class="lineno">  197</span>                                <span class="keywordtype">void</span> *arg );</div>
-<div class="line"><a id="l00198" name="l00198"></a><span class="lineno">  198</span> </div>
-<div class="line"><a id="l00201" name="l00201"></a><span class="lineno">  201</span><span class="preprocessor">#ifdef __cplusplus</span></div>
-<div class="line"><a id="l00202" name="l00202"></a><span class="lineno">  202</span>}</div>
-<div class="line"><a id="l00203" name="l00203"></a><span class="lineno">  203</span><span class="preprocessor">#endif</span></div>
-<div class="line"><a id="l00204" name="l00204"></a><span class="lineno">  204</span> </div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>    <span class="keyword">typedef</span> int (*qTypeGeneric_CompareFcn_t)( <span class="keyword">const</span> <span class="keywordtype">void</span> *, <span class="keyword">const</span> <span class="keywordtype">void</span> *, <span class="keywordtype">void</span> * );</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>    <span class="keywordtype">void</span> qTypeGeneric_Swap( <span class="keywordtype">void</span> *x,</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>                            <span class="keywordtype">void</span> *y,</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>                            <span class="keywordtype">size_t</span> n );</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span> </div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>    <span class="keywordtype">void</span> qTypeGeneric_Sort( <span class="keywordtype">void</span> * <span class="keyword">const</span> pbase,</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>                            <span class="keywordtype">size_t</span> n,</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>                            <span class="keywordtype">size_t</span> size,</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>                            qTypeGeneric_CompareFcn_t cmp,</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>                            <span class="keywordtype">void</span> *arg );</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span> </div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>    <span class="keywordtype">void</span> qTypeGeneric_Reverse( <span class="keywordtype">void</span> * <span class="keyword">const</span> pbase,</div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>                               <span class="keyword">const</span> <span class="keywordtype">size_t</span> size,</div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>                               <span class="keyword">const</span> <span class="keywordtype">size_t</span> init,</div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>                               <span class="keyword">const</span> <span class="keywordtype">size_t</span> end );</div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span> </div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>    <span class="keywordtype">void</span> qTypeGeneric_Rotate( <span class="keywordtype">void</span> * <span class="keyword">const</span> pbase,</div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>                              <span class="keyword">const</span> <span class="keywordtype">size_t</span> size,</div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>                              <span class="keyword">const</span> <span class="keywordtype">size_t</span> n,</div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>                              <span class="keyword">const</span> <span class="keywordtype">int</span> k );</div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span> </div>
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>    <span class="keywordtype">void</span>* qTypeGeneric_Set( <span class="keywordtype">void</span> * <span class="keyword">const</span> pbase,</div>
+<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>                            <span class="keyword">const</span> <span class="keywordtype">size_t</span> size,</div>
+<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>                            <span class="keyword">const</span> <span class="keywordtype">size_t</span> n,</div>
+<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span>                            <span class="keyword">const</span> <span class="keywordtype">void</span> * <span class="keyword">const</span> ref );</div>
+<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span> </div>
+<div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span>    <span class="keywordtype">void</span>* qTypeGeneric_LSearch( <span class="keyword">const</span> <span class="keywordtype">void</span> *key,</div>
+<div class="line"><a id="l00153" name="l00153"></a><span class="lineno">  153</span>                                <span class="keyword">const</span> <span class="keywordtype">void</span> *pbase,</div>
+<div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span>                                <span class="keyword">const</span> <span class="keywordtype">size_t</span> n,</div>
+<div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span>                                <span class="keyword">const</span> <span class="keywordtype">size_t</span> size,</div>
+<div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span>                                qTypeGeneric_CompareFcn_t compar,</div>
+<div class="line"><a id="l00157" name="l00157"></a><span class="lineno">  157</span>                                <span class="keywordtype">void</span> *arg );</div>
+<div class="line"><a id="l00158" name="l00158"></a><span class="lineno">  158</span> </div>
+<div class="line"><a id="l00194" name="l00194"></a><span class="lineno">  194</span>    <span class="keywordtype">void</span>* qTypeGeneric_BSearch( <span class="keyword">const</span> <span class="keywordtype">void</span> *key,</div>
+<div class="line"><a id="l00195" name="l00195"></a><span class="lineno">  195</span>                                <span class="keyword">const</span> <span class="keywordtype">void</span> *pbase,</div>
+<div class="line"><a id="l00196" name="l00196"></a><span class="lineno">  196</span>                                <span class="keyword">const</span> <span class="keywordtype">size_t</span> n,</div>
+<div class="line"><a id="l00197" name="l00197"></a><span class="lineno">  197</span>                                <span class="keyword">const</span> <span class="keywordtype">size_t</span> size,</div>
+<div class="line"><a id="l00198" name="l00198"></a><span class="lineno">  198</span>                                qTypeGeneric_CompareFcn_t compar,</div>
+<div class="line"><a id="l00199" name="l00199"></a><span class="lineno">  199</span>                                <span class="keywordtype">void</span> *arg );</div>
+<div class="line"><a id="l00200" name="l00200"></a><span class="lineno">  200</span> </div>
+<div class="line"><a id="l00203" name="l00203"></a><span class="lineno">  203</span><span class="preprocessor">#ifdef __cplusplus</span></div>
+<div class="line"><a id="l00204" name="l00204"></a><span class="lineno">  204</span>}</div>
 <div class="line"><a id="l00205" name="l00205"></a><span class="lineno">  205</span><span class="preprocessor">#endif</span></div>
-<div class="ttc" id="agroup__qtypegeneric_html_ga0e38aca8648c9d20c08d6fd90a4d7a0f"><div class="ttname"><a href="group__qtypegeneric.html#ga0e38aca8648c9d20c08d6fd90a4d7a0f">qTypeGeneric_Swap</a></div><div class="ttdeci">void qTypeGeneric_Swap(void *x, void *y, size_t n)</div><div class="ttdoc">Swaps the data pointed by b x and y.</div><div class="ttdef"><b>Definition:</b> qtypegeneric.c:16</div></div>
-<div class="ttc" id="agroup__qtypegeneric_html_ga1751bcf57fa73f56532d3f05dd6e7d81"><div class="ttname"><a href="group__qtypegeneric.html#ga1751bcf57fa73f56532d3f05dd6e7d81">qTypeGeneric_LSearch</a></div><div class="ttdeci">void * qTypeGeneric_LSearch(const void *key, const void *pbase, const size_t n, const size_t size, qTypeGeneric_CompareFcn_t compar, void *arg)</div><div class="ttdoc">Performs a linear search over an array of n elements pointed to by pbase for a member that matches th...</div><div class="ttdef"><b>Definition:</b> qtypegeneric.c:243</div></div>
-<div class="ttc" id="agroup__qtypegeneric_html_ga1a01bce1922bbfb580323e72a5cc0a57"><div class="ttname"><a href="group__qtypegeneric.html#ga1a01bce1922bbfb580323e72a5cc0a57">qTypeGeneric_Set</a></div><div class="ttdeci">void * qTypeGeneric_Set(void *const pbase, const size_t size, const size_t n, const void *const ref)</div><div class="ttdoc">Set the data pointed by ref to every element of the array pointed by pbase. The array contains n elem...</div><div class="ttdef"><b>Definition:</b> qtypegeneric.c:223</div></div>
-<div class="ttc" id="agroup__qtypegeneric_html_ga666f3f9121864dffb3cde3e161b30053"><div class="ttname"><a href="group__qtypegeneric.html#ga666f3f9121864dffb3cde3e161b30053">qTypeGeneric_BSearch</a></div><div class="ttdeci">void * qTypeGeneric_BSearch(const void *key, const void *pbase, const size_t n, const size_t size, qTypeGeneric_CompareFcn_t compar, void *arg)</div><div class="ttdoc">Performs a binary search over an array of n elements pointed to by pbase for a member that matches th...</div><div class="ttdef"><b>Definition:</b> qtypegeneric.c:268</div></div>
-<div class="ttc" id="agroup__qtypegeneric_html_ga83693af97ce728270f657d818c980dc5"><div class="ttname"><a href="group__qtypegeneric.html#ga83693af97ce728270f657d818c980dc5">qTypeGeneric_Sort</a></div><div class="ttdeci">void qTypeGeneric_Sort(void *const pbase, size_t n, size_t size, qTypeGeneric_CompareFcn_t cmp, void *arg)</div><div class="ttdoc">Sorts the given array pointed to by pbase in ascending order. The array contains n elements of size b...</div><div class="ttdef"><b>Definition:</b> qtypegeneric.c:42</div></div>
-<div class="ttc" id="agroup__qtypegeneric_html_gad29bd039b0697138bcb05eecab1fae29"><div class="ttname"><a href="group__qtypegeneric.html#gad29bd039b0697138bcb05eecab1fae29">qTypeGeneric_Rotate</a></div><div class="ttdeci">void qTypeGeneric_Rotate(void *const pbase, const size_t size, const size_t n, const int k)</div><div class="ttdoc">Rotates k elements of the array pointed to by pbase. The array contains n elements of size bytes....</div><div class="ttdef"><b>Definition:</b> qtypegeneric.c:198</div></div>
-<div class="ttc" id="agroup__qtypegeneric_html_gaee90f107286281c0ab4630e2dc130c91"><div class="ttname"><a href="group__qtypegeneric.html#gaee90f107286281c0ab4630e2dc130c91">qTypeGeneric_Reverse</a></div><div class="ttdeci">void qTypeGeneric_Reverse(void *const pbase, const size_t size, const size_t init, const size_t end)</div><div class="ttdoc">Reverse the given array pointed to by pbase. Operation takes place on the portion of the array that s...</div><div class="ttdef"><b>Definition:</b> qtypegeneric.c:180</div></div>
+<div class="line"><a id="l00206" name="l00206"></a><span class="lineno">  206</span> </div>
+<div class="line"><a id="l00207" name="l00207"></a><span class="lineno">  207</span><span class="preprocessor">#endif</span></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

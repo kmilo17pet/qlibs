@@ -156,7 +156,7 @@ Enumerations</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:ga3e1b25582cc0a2e76eed516dcf16931a"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qvfloat.html#ga3e1b25582cc0a2e76eed516dcf16931a">qVFloat_Operate</a> (float *const dst, <a class="el" href="group__qvfloat.html#gaa2afe87cb0916aa0883fc01716b4e290">qVFloat_Operation_t</a> o, const float a, const float *const x, const float b, const float *const y, const size_t n)</td></tr>
-<tr class="memdesc:ga3e1b25582cc0a2e76eed516dcf16931a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes the 1D-vector operation specified by the &lt;o&gt; argument. dst = a*x (&lt;o&gt;) b*y or dst = a*x (&lt;o&gt;) b if the <em>y</em> argument is <code>NULL</code>.  <a href="group__qvfloat.html#ga3e1b25582cc0a2e76eed516dcf16931a">More...</a><br /></td></tr>
+<tr class="memdesc:ga3e1b25582cc0a2e76eed516dcf16931a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes the 1D-vector operation specified by the &lt;o&gt; argument. <code>dst = a*x (&lt;o&gt;) b*y</code> or <code>dst = a*x (&lt;o&gt;) b</code> if the <em>y</em> argument is <code>NULL</code>.  <a href="group__qvfloat.html#ga3e1b25582cc0a2e76eed516dcf16931a">More...</a><br /></td></tr>
 <tr class="separator:ga3e1b25582cc0a2e76eed516dcf16931a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gafdb5a868d29d975967569e04439332d6"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qvfloat.html#gafdb5a868d29d975967569e04439332d6">qVFloat_ApplyFx</a> (float *dst, float(*fx1)(float), float(*fx2)(float, float), float *const x, float *const y, const float a, const float b, const size_t n)</td></tr>
 <tr class="memdesc:gafdb5a868d29d975967569e04439332d6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Apply one the supplied function ( <em>fx1</em> or <em>fx2</em> ) to the input vector(s).  <a href="group__qvfloat.html#gafdb5a868d29d975967569e04439332d6">More...</a><br /></td></tr>
@@ -175,7 +175,7 @@ Functions</h2></td></tr>
 <tr class="separator:ga693c013aef32b0a05961ad59ad6a496f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga3e38b9b0dee2b36557cae2ca63e0fcf9"><td class="memItemLeft" align="right" valign="top">float *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qvfloat.html#ga3e38b9b0dee2b36557cae2ca63e0fcf9">qVFloat_LinSpace</a> (float *const dst, const float x1, const float x2, const size_t n)</td></tr>
 <tr class="memdesc:ga3e38b9b0dee2b36557cae2ca63e0fcf9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate linearly spaced vector of <br  />
- points. The spacing between the points is <code></code>(x2-x1)/(n-1)  <a href="group__qvfloat.html#ga3e38b9b0dee2b36557cae2ca63e0fcf9">More...</a><br /></td></tr>
+ points. The spacing between the points is <code> (x2-x1)/(n-1) </code>  <a href="group__qvfloat.html#ga3e38b9b0dee2b36557cae2ca63e0fcf9">More...</a><br /></td></tr>
 <tr class="separator:ga3e38b9b0dee2b36557cae2ca63e0fcf9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga6bbe96fe3aeac64d51830c0c8327beb8"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qvfloat.html#ga6bbe96fe3aeac64d51830c0c8327beb8">qVFloat_Distance</a> (const float *const x, const float *const y, const size_t n)</td></tr>
 <tr class="memdesc:ga6bbe96fe3aeac64d51830c0c8327beb8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the Euclidean distance between vectors <em>x</em> and <em></em>.  <a href="group__qvfloat.html#ga6bbe96fe3aeac64d51830c0c8327beb8">More...</a><br /></td></tr>
@@ -285,9 +285,9 @@ Functions</h2></td></tr>
 
 <p>Apply one the supplied function ( <em>fx1</em> or <em>fx2</em> ) to the input vector(s). </p>
 <ul>
-<li>dst = a*fx1( x ) if <em>fx2</em> is <code>NULL</code> </li>
-<li>dst = a*fx2( x, y ) if <em>fx1</em> is <code>NULL</code> </li>
-<li>dst = a*fx2( x, b ) if <em>fx1</em> and <em>y</em> are <code>NULL</code> <dl class="section note"><dt>Note</dt><dd>If <em>y</em> or <em>dst</em> are used, they must have the same length as <em>x</em>. </dd></dl>
+<li><code>dst = a*fx1( x ) </code> if <em>fx2</em> is <code>NULL</code> </li>
+<li><code>dst = a*fx2( x, y ) </code> if <em>fx1</em> is <code>NULL</code> </li>
+<li><code>dst = a*fx2( x, b ) </code> if <em>fx1</em> and <em>y</em> are <code>NULL</code> <dl class="section note"><dt>Note</dt><dd>If <em>y</em> or <em>dst</em> are used, they must have the same length as <em>x</em>. </dd></dl>
 <dl class="section remark"><dt>Remarks</dt><dd>If both function are supplied, only <em>fx1</em> will be applied </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
@@ -437,7 +437,7 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Generate linearly spaced vector of <br  />
- points. The spacing between the points is <code></code>(x2-x1)/(n-1) </p>
+ points. The spacing between the points is <code> (x2-x1)/(n-1) </code> </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[out]</td><td class="paramname">dst</td><td>The pointer to the destination vector where the result will be stored. </td></tr>
@@ -602,15 +602,15 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Computes the 1D-vector operation specified by the &lt;o&gt; argument. dst = a*x (&lt;o&gt;) b*y or dst = a*x (&lt;o&gt;) b if the <em>y</em> argument is <code>NULL</code>. </p>
+<p>Computes the 1D-vector operation specified by the &lt;o&gt; argument. <code>dst = a*x (&lt;o&gt;) b*y</code> or <code>dst = a*x (&lt;o&gt;) b</code> if the <em>y</em> argument is <code>NULL</code>. </p>
 <dl class="section note"><dt>Note</dt><dd>If <em>y</em> or <em>dst</em> are used, they must have the same length as <em>x</em>. </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[out]</td><td class="paramname">dst</td><td>The pointer to the destination array where the result will be stored. To ignore pass <code>NULL</code> as argument. </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">o</td><td>The desired operation to perform on vectors. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">a</td><td>Value to scale the vector @ x. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">a</td><td>Value to scale the vector <em>x</em>. </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">x</td><td>A vector as an 1D float array </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">b</td><td>Value to scale the vector @ y. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">b</td><td>Value to scale the vector <em>y</em>. </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">y</td><td>A vector as an 1D float array. To ignore pass <code>NULL</code> as argument. </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">n</td><td>The number of elements of vector <em>x</em> and <em>y</em> </td></tr>
   </table>
@@ -853,7 +853,7 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Returns a sorted version of unsorted vector pointed by <em>src</em> with the elements arranged in ascending or descending order according the value or <em>dir</em>. </p>
-<dl class="section note"><dt>Note</dt><dd>This function is a wrapper to <a class="el" href="group__qtypegeneric.html#ga83693af97ce728270f657d818c980dc5" title="Sorts the given array pointed to by pbase in ascending order. The array contains n elements of size b...">qTypeGeneric_Sort()</a> </dd></dl>
+<dl class="section note"><dt>Note</dt><dd>This function is a wrapper to qTypeGeneric_Sort() </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[out]</td><td class="paramname">dst</td><td>The pointer to the destination vector where the result will be stored. To ignore pass <code>NULL</code> as argument. </td></tr>

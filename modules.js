@@ -9,6 +9,6 @@ var modules =
     [ "qRMS", "group__qrms.html", "group__qrms" ],
     [ "qCRC", "group__qcrc.html", "group__qcrc" ],
     [ "qTDL", "group__qtdl.html", "group__qtdl" ],
-    [ "Type generics", "group__qtypegeneric.html", "group__qtypegeneric" ],
+    [ "Type generics", "group__qtypegeneric.html", null ],
     [ "FVector", "group__qvfloat.html", "group__qvfloat" ]
 ];
