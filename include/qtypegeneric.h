@@ -23,7 +23,9 @@ extern "C" {
     *  @{
     */
 
+    /** @cond*/
     typedef int (*qTypeGeneric_CompareFcn_t)( const void *, const void *, void * );
+    /** @endcond */
 
     /**
     * @brief Swaps the data pointed by b @a x and @a y
@@ -58,7 +60,7 @@ extern "C" {
     * consistent results when called for the same objects, regardless of their 
     * positions in the array.
     * @param[in] arg Additional information (e.g., collating sequence), passed
-    * to comp as the third argument
+    * to @c cmp as the third argument
     * @return none.
     */
     void qTypeGeneric_Sort( void * const pbase,
@@ -145,7 +147,7 @@ extern "C" {
     * @param[in] arg Additional information (e.g., collating sequence), passed
     * to @a compar as the third argument
     * @return This function returns a pointer to an entry in the array that 
-    * matches the search key. If key is not found, a @a NULL pointer is returned.
+    * matches the search key. If key is not found, a @c NULL pointer is returned.
     */
     void* qTypeGeneric_LSearch( const void *key,
                                 const void *pbase,
@@ -187,7 +189,7 @@ extern "C" {
     * @param[in] arg Additional information (e.g., collating sequence), passed
     * to @a compar as the third argument
     * @return This function returns a pointer to an entry in the array that 
-    * matches the search key. If key is not found, a @a NULL pointer is returned.
+    * matches the search key. If key is not found, a @c NULL pointer is returned.
     */
     void* qTypeGeneric_BSearch( const void *key,
                                 const void *pbase,

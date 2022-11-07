@@ -55,14 +55,15 @@ extern "C" {
 
     /**
     * @brief Computes the 1D-vector operation specified by the <o> argument.
-    * dst = a*x (<o>) b*y or dst = a*x (<o>) b if the @a y argument is @c NULL.
+    * <tt>dst = a*x (<o>) b*y</tt> or <tt>dst = a*x (<o>) b</tt> if the @a y 
+    * argument is @c NULL.
     * @note If @a y or @a dst are used, they must have the same length as @a x.
     * @param[out] dst The pointer to the destination array where the result
     * will be stored. To ignore pass @c NULL as argument.
     * @param[in] o The desired operation to perform on vectors.
-    * @param[in] a Value to scale the vector @ x.
+    * @param[in] a Value to scale the vector @a x.
     * @param[in] x A vector as an 1D float array
-    * @param[in] b Value to scale the vector @ y.
+    * @param[in] b Value to scale the vector @a y.
     * @param[in] y A vector as an 1D float array. To ignore pass @c NULL as
     * argument.
     * @param[in] n The number of elements of vector @a x and @a y
@@ -79,9 +80,9 @@ extern "C" {
     /**
     * @brief Apply one the supplied function ( @a fx1 or @a fx2 ) to the input 
     * vector(s).
-    * - dst = a*fx1( x )  if @a fx2 is @c NULL
-    * - dst = a*fx2( x, y ) if @a fx1 is @c NULL
-    * - dst = a*fx2( x, b ) if @a fx1 and @a y are @c NULL
+    * - <tt>dst = a*fx1( x ) </tt> if @a fx2 is @c NULL
+    * - <tt>dst = a*fx2( x, y ) </tt> if @a fx1 is @c NULL
+    * - <tt>dst = a*fx2( x, b ) </tt> if @a fx1 and @a y are @c NULL
     * @note If @a y or @a dst are used, they must have the same length as @a x. 
     * @remark If both function are supplied, only @a fx1 will be applied
     * @param[out] dst The pointer to the destination vector where the result
@@ -171,7 +172,7 @@ extern "C" {
 
     /**
     * @brief Generate linearly spaced vector of @n points.  The spacing between 
-    * the points is @c (x2-x1)/(n-1)
+    * the points is <tt> (x2-x1)/(n-1) </tt>
     * @param[out] dst The pointer to the destination vector where the result
     * will be stored.
     * @param[in] x1 Point interval
