@@ -8,5 +8,7 @@ var modules =
     [ "qBitField", "group__qbitfield.html", "group__qbitfield" ],
     [ "qRMS", "group__qrms.html", "group__qrms" ],
     [ "qCRC", "group__qcrc.html", "group__qcrc" ],
-    [ "qTDL", "group__qtdl.html", "group__qtdl" ]
+    [ "qTDL", "group__qtdl.html", "group__qtdl" ],
+    [ "Type generics", "group__qtypegeneric.html", "group__qtypegeneric" ],
+    [ "FVector", "group__qvfloat.html", "group__qvfloat" ]
 ];

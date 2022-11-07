@@ -1,0 +1,267 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.2"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<!-- BEGIN opengraph metadata -->
+<meta property="og:title" content="Doxygen Awesome" />
+<meta property="og:image" content="https://repository-images.githubusercontent.com/348492097/4f16df80-88fb-11eb-9d31-4015ff22c452" />
+<meta property="og:description" content="Custom CSS theme for doxygen html-documentation with lots of customization parameters." />
+<meta property="og:url" content="https://jothepro.github.io/doxygen-awesome-css/" />
+<!-- END opengraph metadata -->
+<!-- BEGIN twitter metadata -->
+<meta name="twitter:image:src" content="https://repository-images.githubusercontent.com/348492097/4f16df80-88fb-11eb-9d31-4015ff22c452" />
+<meta name="twitter:title" content="Doxygen Awesome" />
+<meta name="twitter:description" content="Custom CSS theme for doxygen html-documentation with lots of customization parameters." />
+<!-- END twitter metadata -->
+<title>API Reference: qvfloat.h Source File</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link rel="icon" type="image/svg+xml" href="logo.drawio.svg"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="doxygen-awesome-darkmode-toggle.js"></script>
+<script type="text/javascript" src="doxygen-awesome-fragment-copy-button.js"></script>
+<script type="text/javascript" src="doxygen-awesome-paragraph-link.js"></script>
+<script type="text/javascript" src="doxygen-awesome-interactive-toc.js"></script>
+<script type="text/javascript" src="toggle-alternative-theme.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeFragmentCopyButton.init()
+    DoxygenAwesomeDarkModeToggle.init()
+    DoxygenAwesomeParagraphLink.init()
+    DoxygenAwesomeInteractiveToc.init()
+</script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  extensions: ["tex2jax.js"],
+  jax: ["input/TeX","output/HTML-CSS"],
+});
+</script>
+<script type="text/javascript" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
+<link href="custom.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only-darkmode-toggle.css" rel="stylesheet" type="text/css"/>
+<link href="custom-alternative.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<!-- https://tholman.com/github-corners/ -->
+<a href="https://github.com/jothepro/doxygen-awesome-css" class="github-corner" title="View source on GitHub" target="_blank">
+    <svg viewBox="0 0 250 250" width="40" height="40" style="position: absolute; top: 0; border: 0; right: 0; z-index: 99;" aria-hidden="true">
+    <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="qlibs_logo.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">API Reference
+   &#160;<span id="projectnumber">v1.2</span>
+   </div>
+   <div id="projectbrief">A collection of useful libraries for embedded systems</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generated by Doxygen 1.9.2 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search",'Search','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Search');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('qvfloat_8h_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">qvfloat.h</div></div>
+</div><!--header-->
+<div class="contents">
+<div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span> </div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#ifndef QVFLOAT_H</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#define QVFLOAT_H</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span> </div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#ifdef __cplusplus</span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="keyword">extern</span> <span class="stringliteral">&quot;C&quot;</span> {</div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span> </div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="preprocessor">    #include &lt;stdlib.h&gt;</span></div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="preprocessor">    #include &lt;stdbool.h&gt;</span></div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span> </div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span> </div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno"><a class="line" href="group__qvfloat.html#gaa2afe87cb0916aa0883fc01716b4e290">   28</a></span>    <span class="keyword">typedef</span> <span class="keyword">enum</span> {</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno"><a class="line" href="group__qvfloat.html#ggaa2afe87cb0916aa0883fc01716b4e290ae720f7e2a050b51ab22962debb7803d6">   29</a></span>        <a class="code hl_enumvalue" href="group__qvfloat.html#ggaa2afe87cb0916aa0883fc01716b4e290ae720f7e2a050b51ab22962debb7803d6">VFLOAT_ADD</a> = 0,     </div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno"><a class="line" href="group__qvfloat.html#ggaa2afe87cb0916aa0883fc01716b4e290ac0e3daed50388574d02d2a9f462ab1fa">   30</a></span>        <a class="code hl_enumvalue" href="group__qvfloat.html#ggaa2afe87cb0916aa0883fc01716b4e290ac0e3daed50388574d02d2a9f462ab1fa">VFLOAT_MUL</a>,         </div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>        <a class="code hl_enumvalue" href="group__qvfloat.html#ggaa2afe87cb0916aa0883fc01716b4e290a3203df95f69d65e61f2cc4059c83506a">VFLOAT_DIV</a>          </div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno"><a class="line" href="group__qvfloat.html#ggaa2afe87cb0916aa0883fc01716b4e290a3203df95f69d65e61f2cc4059c83506a">   32</a></span>    } <a class="code hl_enumeration" href="group__qvfloat.html#gaa2afe87cb0916aa0883fc01716b4e290">qVFloat_Operation_t</a>;</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span> </div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno"><a class="line" href="structq_v_float___moment__t.html">   37</a></span>    <span class="keyword">typedef</span> <span class="keyword">struct </span>{</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno"><a class="line" href="structq_v_float___moment__t.html#a976925cd66ff0dcd419628463f580f1c">   38</a></span>        <span class="keywordtype">float</span> <a class="code hl_variable" href="structq_v_float___moment__t.html#a976925cd66ff0dcd419628463f580f1c">mean</a>;         </div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno"><a class="line" href="structq_v_float___moment__t.html#add526a623d2cc6f5e59cb55677ce6dcf">   39</a></span>        <span class="keywordtype">float</span> <a class="code hl_variable" href="structq_v_float___moment__t.html#add526a623d2cc6f5e59cb55677ce6dcf">avgDev</a>;       </div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno"><a class="line" href="structq_v_float___moment__t.html#a3fece870eef8f58dddf6fb3ad701e686">   40</a></span>        <span class="keywordtype">float</span> <a class="code hl_variable" href="structq_v_float___moment__t.html#a3fece870eef8f58dddf6fb3ad701e686">stdDev</a>;       </div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno"><a class="line" href="structq_v_float___moment__t.html#a591f963594328579761e552ed671ac18">   41</a></span>        <span class="keywordtype">float</span> <a class="code hl_variable" href="structq_v_float___moment__t.html#a591f963594328579761e552ed671ac18">var</a>;          </div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno"><a class="line" href="structq_v_float___moment__t.html#a34387130c20d29c152b516a7905556e2">   42</a></span>        <span class="keywordtype">float</span> <a class="code hl_variable" href="structq_v_float___moment__t.html#a34387130c20d29c152b516a7905556e2">skew</a>;         </div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno"><a class="line" href="structq_v_float___moment__t.html#a81cdc83f0bb44b4f187edfbffc614fbc">   43</a></span>        <span class="keywordtype">float</span> <a class="code hl_variable" href="structq_v_float___moment__t.html#a81cdc83f0bb44b4f187edfbffc614fbc">curt</a>;         </div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>    } <a class="code hl_struct" href="structq_v_float___moment__t.html">qVFloat_Moment_t</a>;</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span> </div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno"><a class="line" href="structq_v_float___min_max__t.html">   49</a></span>    <span class="keyword">typedef</span> <span class="keyword">struct </span>{</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno"><a class="line" href="structq_v_float___min_max__t.html#ad2e88d75f808e6d4e78d48bceb10c336">   50</a></span>        <span class="keywordtype">float</span> <a class="code hl_variable" href="structq_v_float___min_max__t.html#ad2e88d75f808e6d4e78d48bceb10c336">min</a>;          </div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno"><a class="line" href="structq_v_float___min_max__t.html#a306b5ca364bf842a8ff5bbfc0b4d4a4b">   51</a></span>        <span class="keywordtype">float</span> <a class="code hl_variable" href="structq_v_float___min_max__t.html#a306b5ca364bf842a8ff5bbfc0b4d4a4b">max</a>;          </div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno"><a class="line" href="structq_v_float___min_max__t.html#ad8e77cc37f4deba019975957ef8818eb">   52</a></span>        <span class="keywordtype">size_t</span> <a class="code hl_variable" href="structq_v_float___min_max__t.html#ad8e77cc37f4deba019975957ef8818eb">index_min</a>;   </div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno"><a class="line" href="structq_v_float___min_max__t.html#a9fe67a83c9646d9abdf6a70b53de7b4f">   53</a></span>        <span class="keywordtype">size_t</span> <a class="code hl_variable" href="structq_v_float___min_max__t.html#a9fe67a83c9646d9abdf6a70b53de7b4f">index_max</a>;   </div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>    } <a class="code hl_struct" href="structq_v_float___min_max__t.html">qVFloat_MinMax_t</a>;</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span> </div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>    <span class="keywordtype">float</span> <a class="code hl_function" href="group__qvfloat.html#ga3e1b25582cc0a2e76eed516dcf16931a">qVFloat_Operate</a>( <span class="keywordtype">float</span> * <span class="keyword">const</span> dst,</div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>                           <a class="code hl_enumeration" href="group__qvfloat.html#gaa2afe87cb0916aa0883fc01716b4e290">qVFloat_Operation_t</a> o,</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>                           <span class="keyword">const</span> <span class="keywordtype">float</span> a,</div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>                           <span class="keyword">const</span> <span class="keywordtype">float</span> * <span class="keyword">const</span> x,</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>                           <span class="keyword">const</span> <span class="keywordtype">float</span> b,</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>                           <span class="keyword">const</span> <span class="keywordtype">float</span> * <span class="keyword">const</span> y,</div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>                           <span class="keyword">const</span> <span class="keywordtype">size_t</span> n );</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span> </div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>    <span class="keywordtype">float</span> <a class="code hl_function" href="group__qvfloat.html#gafdb5a868d29d975967569e04439332d6">qVFloat_ApplyFx</a>( <span class="keywordtype">float</span> *dst,</div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>                           <span class="keywordtype">float</span> (*fx1)(<span class="keywordtype">float</span>),</div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>                           <span class="keywordtype">float</span> (*fx2)(<span class="keywordtype">float</span>, <span class="keywordtype">float</span>),</div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>                           <span class="keywordtype">float</span> * <span class="keyword">const</span> x,</div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>                           <span class="keywordtype">float</span> * <span class="keyword">const</span> y,</div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>                           <span class="keyword">const</span> <span class="keywordtype">float</span> a,</div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>                           <span class="keyword">const</span> <span class="keywordtype">float</span> b,</div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>                           <span class="keyword">const</span> <span class="keywordtype">size_t</span> n );</div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span> </div>
+<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span>    <span class="keywordtype">int</span> <a class="code hl_function" href="group__qvfloat.html#ga4018bc8317f61d994c24f2309194bc8f">qVFloat_Moment</a>( <a class="code hl_struct" href="structq_v_float___moment__t.html">qVFloat_Moment_t</a> * <span class="keyword">const</span> m,</div>
+<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span>                        <span class="keyword">const</span> <span class="keywordtype">float</span> * <span class="keyword">const</span> x,</div>
+<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span>                        <span class="keyword">const</span> <span class="keywordtype">size_t</span> n );</div>
+<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span> </div>
+<div class="line"><a id="l00142" name="l00142"></a><span class="lineno">  142</span>    <span class="keywordtype">float</span>* <a class="code hl_function" href="group__qvfloat.html#ga036851b5e48780ec7345b0fbbd91c78e">qVFloat_Set</a>( <span class="keywordtype">float</span> * <span class="keyword">const</span> x,</div>
+<div class="line"><a id="l00143" name="l00143"></a><span class="lineno">  143</span>                        <span class="keyword">const</span> <span class="keywordtype">float</span> c,</div>
+<div class="line"><a id="l00144" name="l00144"></a><span class="lineno">  144</span>                        <span class="keyword">const</span> <span class="keywordtype">size_t</span> n );</div>
+<div class="line"><a id="l00145" name="l00145"></a><span class="lineno">  145</span> </div>
+<div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span>    <span class="keywordtype">float</span>* <a class="code hl_function" href="group__qvfloat.html#gaaf90b5f8e3213f580eed03138af494be">qVFloat_Copy</a>( <span class="keywordtype">float</span> * <span class="keyword">const</span> dst,</div>
+<div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span>                         <span class="keyword">const</span> <span class="keywordtype">float</span> * <span class="keyword">const</span> src,</div>
+<div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span>                         <span class="keyword">const</span> <span class="keywordtype">size_t</span> n );</div>
+<div class="line"><a id="l00157" name="l00157"></a><span class="lineno">  157</span> </div>
+<div class="line"><a id="l00168" name="l00168"></a><span class="lineno">  168</span>    <span class="keywordtype">float</span> <a class="code hl_function" href="group__qvfloat.html#ga693c013aef32b0a05961ad59ad6a496f">qVFloat_PolyVal</a>( <span class="keyword">const</span> <span class="keywordtype">float</span> * <span class="keyword">const</span> p,</div>
+<div class="line"><a id="l00169" name="l00169"></a><span class="lineno">  169</span>                           <span class="keyword">const</span> <span class="keywordtype">float</span> x,</div>
+<div class="line"><a id="l00170" name="l00170"></a><span class="lineno">  170</span>                           <span class="keywordtype">size_t</span> n );</div>
+<div class="line"><a id="l00171" name="l00171"></a><span class="lineno">  171</span> </div>
+<div class="line"><a id="l00182" name="l00182"></a><span class="lineno">  182</span>    <span class="keywordtype">float</span>* <a class="code hl_function" href="group__qvfloat.html#ga3e38b9b0dee2b36557cae2ca63e0fcf9">qVFloat_LinSpace</a>( <span class="keywordtype">float</span> * <span class="keyword">const</span> dst,</div>
+<div class="line"><a id="l00183" name="l00183"></a><span class="lineno">  183</span>                             <span class="keyword">const</span> <span class="keywordtype">float</span> x1,</div>
+<div class="line"><a id="l00184" name="l00184"></a><span class="lineno">  184</span>                             <span class="keyword">const</span> <span class="keywordtype">float</span> x2,</div>
+<div class="line"><a id="l00185" name="l00185"></a><span class="lineno">  185</span>                             <span class="keyword">const</span> <span class="keywordtype">size_t</span> n );</div>
+<div class="line"><a id="l00186" name="l00186"></a><span class="lineno">  186</span> </div>
+<div class="line"><a id="l00194" name="l00194"></a><span class="lineno">  194</span>    <span class="keywordtype">float</span> <a class="code hl_function" href="group__qvfloat.html#ga6bbe96fe3aeac64d51830c0c8327beb8">qVFloat_Distance</a>( <span class="keyword">const</span> <span class="keywordtype">float</span> * <span class="keyword">const</span> x,</div>
+<div class="line"><a id="l00195" name="l00195"></a><span class="lineno">  195</span>                            <span class="keyword">const</span> <span class="keywordtype">float</span> * <span class="keyword">const</span> y,</div>
+<div class="line"><a id="l00196" name="l00196"></a><span class="lineno">  196</span>                            <span class="keyword">const</span> <span class="keywordtype">size_t</span> n );</div>
+<div class="line"><a id="l00208" name="l00208"></a><span class="lineno">  208</span>    <span class="keywordtype">float</span>* <a class="code hl_function" href="group__qvfloat.html#ga727a9263d3a8e08e9191174a1f39e5e5">qVFloat_Reverse</a>( <span class="keywordtype">float</span> * <span class="keyword">const</span> dst,</div>
+<div class="line"><a id="l00209" name="l00209"></a><span class="lineno">  209</span>                            <span class="keywordtype">float</span> * <span class="keyword">const</span> src,</div>
+<div class="line"><a id="l00210" name="l00210"></a><span class="lineno">  210</span>                            <span class="keyword">const</span> <span class="keywordtype">size_t</span> low,</div>
+<div class="line"><a id="l00211" name="l00211"></a><span class="lineno">  211</span>                            <span class="keyword">const</span> <span class="keywordtype">size_t</span> high );</div>
+<div class="line"><a id="l00212" name="l00212"></a><span class="lineno">  212</span> </div>
+<div class="line"><a id="l00223" name="l00223"></a><span class="lineno">  223</span>    <span class="keywordtype">float</span>* <a class="code hl_function" href="group__qvfloat.html#ga046df81550124b61d57064d719c26bbf">qVFloat_Rotate</a>( <span class="keywordtype">float</span> * <span class="keyword">const</span> dst,</div>
+<div class="line"><a id="l00224" name="l00224"></a><span class="lineno">  224</span>                           <span class="keywordtype">float</span> * <span class="keyword">const</span> src,</div>
+<div class="line"><a id="l00225" name="l00225"></a><span class="lineno">  225</span>                           <span class="keyword">const</span> <span class="keywordtype">int</span> k,</div>
+<div class="line"><a id="l00226" name="l00226"></a><span class="lineno">  226</span>                           <span class="keyword">const</span> <span class="keywordtype">size_t</span> n );</div>
+<div class="line"><a id="l00227" name="l00227"></a><span class="lineno">  227</span> </div>
+<div class="line"><a id="l00235" name="l00235"></a><span class="lineno">  235</span>    <span class="keywordtype">int</span> <a class="code hl_function" href="group__qvfloat.html#gaedd577aa1ea4b41c9b150aebcadd4e84">qVFloat_MinMax</a>( <a class="code hl_struct" href="structq_v_float___min_max__t.html">qVFloat_MinMax_t</a> * <span class="keyword">const</span> o,</div>
+<div class="line"><a id="l00236" name="l00236"></a><span class="lineno">  236</span>                        <span class="keyword">const</span> <span class="keywordtype">float</span> * <span class="keyword">const</span> x,</div>
+<div class="line"><a id="l00237" name="l00237"></a><span class="lineno">  237</span>                        <span class="keyword">const</span> <span class="keywordtype">size_t</span> n );</div>
+<div class="line"><a id="l00238" name="l00238"></a><span class="lineno">  238</span> </div>
+<div class="line"><a id="l00251" name="l00251"></a><span class="lineno">  251</span>    <span class="keywordtype">float</span>* <a class="code hl_function" href="group__qvfloat.html#ga8e637330022169296dda47d7e3a89f8c">qVFloat_Sort</a>( <span class="keywordtype">float</span> * <span class="keyword">const</span> dst,</div>
+<div class="line"><a id="l00252" name="l00252"></a><span class="lineno">  252</span>                         <span class="keywordtype">float</span> * <span class="keyword">const</span> src,</div>
+<div class="line"><a id="l00253" name="l00253"></a><span class="lineno">  253</span>                         <span class="keyword">const</span> <span class="keywordtype">bool</span> dir,</div>
+<div class="line"><a id="l00254" name="l00254"></a><span class="lineno">  254</span>                         <span class="keywordtype">size_t</span> n );</div>
+<div class="line"><a id="l00255" name="l00255"></a><span class="lineno">  255</span> </div>
+<div class="line"><a id="l00258" name="l00258"></a><span class="lineno">  258</span><span class="preprocessor">#ifdef __cplusplus</span></div>
+<div class="line"><a id="l00259" name="l00259"></a><span class="lineno">  259</span>}</div>
+<div class="line"><a id="l00260" name="l00260"></a><span class="lineno">  260</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00261" name="l00261"></a><span class="lineno">  261</span> </div>
+<div class="line"><a id="l00262" name="l00262"></a><span class="lineno">  262</span><span class="preprocessor">#endif</span></div>
+<div class="ttc" id="agroup__qvfloat_html_ga036851b5e48780ec7345b0fbbd91c78e"><div class="ttname"><a href="group__qvfloat.html#ga036851b5e48780ec7345b0fbbd91c78e">qVFloat_Set</a></div><div class="ttdeci">float * qVFloat_Set(float *const x, const float c, const size_t n)</div><div class="ttdoc">Set the value given on c to all the elements of the vector pointed by x.</div><div class="ttdef"><b>Definition:</b> qvfloat.c:308</div></div>
+<div class="ttc" id="agroup__qvfloat_html_ga046df81550124b61d57064d719c26bbf"><div class="ttname"><a href="group__qvfloat.html#ga046df81550124b61d57064d719c26bbf">qVFloat_Rotate</a></div><div class="ttdeci">float * qVFloat_Rotate(float *const dst, float *const src, const int k, const size_t n)</div><div class="ttdoc">Rotates the elements of vector pointed by src the number of places and in the direction indicated by ...</div><div class="ttdef"><b>Definition:</b> qvfloat.c:397</div></div>
+<div class="ttc" id="agroup__qvfloat_html_ga3e1b25582cc0a2e76eed516dcf16931a"><div class="ttname"><a href="group__qvfloat.html#ga3e1b25582cc0a2e76eed516dcf16931a">qVFloat_Operate</a></div><div class="ttdeci">float qVFloat_Operate(float *const dst, qVFloat_Operation_t o, const float a, const float *const x, const float b, const float *const y, const size_t n)</div><div class="ttdoc">Computes the 1D-vector operation specified by the &lt;o&gt; argument. dst = a*x (&lt;o&gt;) b*y or dst = a*x (&lt;o&gt;...</div><div class="ttdef"><b>Definition:</b> qvfloat.c:189</div></div>
+<div class="ttc" id="agroup__qvfloat_html_ga3e38b9b0dee2b36557cae2ca63e0fcf9"><div class="ttname"><a href="group__qvfloat.html#ga3e38b9b0dee2b36557cae2ca63e0fcf9">qVFloat_LinSpace</a></div><div class="ttdeci">float * qVFloat_LinSpace(float *const dst, const float x1, const float x2, const size_t n)</div><div class="ttdoc">Generate linearly spaced vector of   points. The spacing between the points is (x2-x1)/(n-1)</div><div class="ttdef"><b>Definition:</b> qvfloat.c:346</div></div>
+<div class="ttc" id="agroup__qvfloat_html_ga4018bc8317f61d994c24f2309194bc8f"><div class="ttname"><a href="group__qvfloat.html#ga4018bc8317f61d994c24f2309194bc8f">qVFloat_Moment</a></div><div class="ttdeci">int qVFloat_Moment(qVFloat_Moment_t *const m, const float *const x, const size_t n)</div><div class="ttdoc">Computes the moment of a distribution for a given set of data including : Mean, Variance,...</div><div class="ttdef"><b>Definition:</b> qvfloat.c:261</div></div>
+<div class="ttc" id="agroup__qvfloat_html_ga693c013aef32b0a05961ad59ad6a496f"><div class="ttname"><a href="group__qvfloat.html#ga693c013aef32b0a05961ad59ad6a496f">qVFloat_PolyVal</a></div><div class="ttdeci">float qVFloat_PolyVal(const float *const p, const float x, size_t n)</div><div class="ttdoc">Takes the input vector p as a polynomial p and evaluates it for x. The argument p is a vector of leng...</div><div class="ttdef"><b>Definition:</b> qvfloat.c:330</div></div>
+<div class="ttc" id="agroup__qvfloat_html_ga6bbe96fe3aeac64d51830c0c8327beb8"><div class="ttname"><a href="group__qvfloat.html#ga6bbe96fe3aeac64d51830c0c8327beb8">qVFloat_Distance</a></div><div class="ttdeci">float qVFloat_Distance(const float *const x, const float *const y, const size_t n)</div><div class="ttdoc">Returns the Euclidean distance between vectors x and .</div><div class="ttdef"><b>Definition:</b> qvfloat.c:362</div></div>
+<div class="ttc" id="agroup__qvfloat_html_ga727a9263d3a8e08e9191174a1f39e5e5"><div class="ttname"><a href="group__qvfloat.html#ga727a9263d3a8e08e9191174a1f39e5e5">qVFloat_Reverse</a></div><div class="ttdeci">float * qVFloat_Reverse(float *const dst, float *const src, const size_t low, const size_t high)</div><div class="ttdoc">Reverse the given vector pointed by src. Operation takes place on the portion of the vector that star...</div><div class="ttdef"><b>Definition:</b> qvfloat.c:382</div></div>
+<div class="ttc" id="agroup__qvfloat_html_ga8e637330022169296dda47d7e3a89f8c"><div class="ttname"><a href="group__qvfloat.html#ga8e637330022169296dda47d7e3a89f8c">qVFloat_Sort</a></div><div class="ttdeci">float * qVFloat_Sort(float *const dst, float *const src, const bool dir, size_t n)</div><div class="ttdoc">Returns a sorted version of unsorted vector pointed by src with the elements arranged in ascending or...</div><div class="ttdef"><b>Definition:</b> qvfloat.c:482</div></div>
+<div class="ttc" id="agroup__qvfloat_html_gaa2afe87cb0916aa0883fc01716b4e290"><div class="ttname"><a href="group__qvfloat.html#gaa2afe87cb0916aa0883fc01716b4e290">qVFloat_Operation_t</a></div><div class="ttdeci">qVFloat_Operation_t</div><div class="ttdoc">Supported operators on vectors.</div><div class="ttdef"><b>Definition:</b> qvfloat.h:28</div></div>
+<div class="ttc" id="agroup__qvfloat_html_gaaf90b5f8e3213f580eed03138af494be"><div class="ttname"><a href="group__qvfloat.html#gaaf90b5f8e3213f580eed03138af494be">qVFloat_Copy</a></div><div class="ttdeci">float * qVFloat_Copy(float *const dst, const float *const src, const size_t n)</div><div class="ttdoc">Copies all the values on vector pointed by src to the vector pointed by dst.</div><div class="ttdef"><b>Definition:</b> qvfloat.c:321</div></div>
+<div class="ttc" id="agroup__qvfloat_html_gaedd577aa1ea4b41c9b150aebcadd4e84"><div class="ttname"><a href="group__qvfloat.html#gaedd577aa1ea4b41c9b150aebcadd4e84">qVFloat_MinMax</a></div><div class="ttdeci">int qVFloat_MinMax(qVFloat_MinMax_t *const o, const float *const x, const size_t n)</div><div class="ttdoc">Find the smallest and largest elements of vector pointed by x.</div><div class="ttdef"><b>Definition:</b> qvfloat.c:412</div></div>
+<div class="ttc" id="agroup__qvfloat_html_gafdb5a868d29d975967569e04439332d6"><div class="ttname"><a href="group__qvfloat.html#gafdb5a868d29d975967569e04439332d6">qVFloat_ApplyFx</a></div><div class="ttdeci">float qVFloat_ApplyFx(float *dst, float(*fx1)(float), float(*fx2)(float, float), float *const x, float *const y, const float a, const float b, const size_t n)</div><div class="ttdoc">Apply one the supplied function ( fx1 or fx2 ) to the input vector(s).</div><div class="ttdef"><b>Definition:</b> qvfloat.c:217</div></div>
+<div class="ttc" id="agroup__qvfloat_html_ggaa2afe87cb0916aa0883fc01716b4e290a3203df95f69d65e61f2cc4059c83506a"><div class="ttname"><a href="group__qvfloat.html#ggaa2afe87cb0916aa0883fc01716b4e290a3203df95f69d65e61f2cc4059c83506a">VFLOAT_DIV</a></div><div class="ttdeci">@ VFLOAT_DIV</div><div class="ttdef"><b>Definition:</b> qvfloat.h:31</div></div>
+<div class="ttc" id="agroup__qvfloat_html_ggaa2afe87cb0916aa0883fc01716b4e290ac0e3daed50388574d02d2a9f462ab1fa"><div class="ttname"><a href="group__qvfloat.html#ggaa2afe87cb0916aa0883fc01716b4e290ac0e3daed50388574d02d2a9f462ab1fa">VFLOAT_MUL</a></div><div class="ttdeci">@ VFLOAT_MUL</div><div class="ttdef"><b>Definition:</b> qvfloat.h:30</div></div>
+<div class="ttc" id="agroup__qvfloat_html_ggaa2afe87cb0916aa0883fc01716b4e290ae720f7e2a050b51ab22962debb7803d6"><div class="ttname"><a href="group__qvfloat.html#ggaa2afe87cb0916aa0883fc01716b4e290ae720f7e2a050b51ab22962debb7803d6">VFLOAT_ADD</a></div><div class="ttdeci">@ VFLOAT_ADD</div><div class="ttdef"><b>Definition:</b> qvfloat.h:29</div></div>
+<div class="ttc" id="astructq_v_float___min_max__t_html"><div class="ttname"><a href="structq_v_float___min_max__t.html">qVFloat_MinMax_t</a></div><div class="ttdoc">Metrics returned by qVFloat_MinMax()</div><div class="ttdef"><b>Definition:</b> qvfloat.h:49</div></div>
+<div class="ttc" id="astructq_v_float___min_max__t_html_a306b5ca364bf842a8ff5bbfc0b4d4a4b"><div class="ttname"><a href="structq_v_float___min_max__t.html#a306b5ca364bf842a8ff5bbfc0b4d4a4b">qVFloat_MinMax_t::max</a></div><div class="ttdeci">float max</div><div class="ttdef"><b>Definition:</b> qvfloat.h:51</div></div>
+<div class="ttc" id="astructq_v_float___min_max__t_html_a9fe67a83c9646d9abdf6a70b53de7b4f"><div class="ttname"><a href="structq_v_float___min_max__t.html#a9fe67a83c9646d9abdf6a70b53de7b4f">qVFloat_MinMax_t::index_max</a></div><div class="ttdeci">size_t index_max</div><div class="ttdef"><b>Definition:</b> qvfloat.h:53</div></div>
+<div class="ttc" id="astructq_v_float___min_max__t_html_ad2e88d75f808e6d4e78d48bceb10c336"><div class="ttname"><a href="structq_v_float___min_max__t.html#ad2e88d75f808e6d4e78d48bceb10c336">qVFloat_MinMax_t::min</a></div><div class="ttdeci">float min</div><div class="ttdef"><b>Definition:</b> qvfloat.h:50</div></div>
+<div class="ttc" id="astructq_v_float___min_max__t_html_ad8e77cc37f4deba019975957ef8818eb"><div class="ttname"><a href="structq_v_float___min_max__t.html#ad8e77cc37f4deba019975957ef8818eb">qVFloat_MinMax_t::index_min</a></div><div class="ttdeci">size_t index_min</div><div class="ttdef"><b>Definition:</b> qvfloat.h:52</div></div>
+<div class="ttc" id="astructq_v_float___moment__t_html"><div class="ttname"><a href="structq_v_float___moment__t.html">qVFloat_Moment_t</a></div><div class="ttdoc">Metrics returned by qVFloat_Moment()</div><div class="ttdef"><b>Definition:</b> qvfloat.h:37</div></div>
+<div class="ttc" id="astructq_v_float___moment__t_html_a34387130c20d29c152b516a7905556e2"><div class="ttname"><a href="structq_v_float___moment__t.html#a34387130c20d29c152b516a7905556e2">qVFloat_Moment_t::skew</a></div><div class="ttdeci">float skew</div><div class="ttdef"><b>Definition:</b> qvfloat.h:42</div></div>
+<div class="ttc" id="astructq_v_float___moment__t_html_a3fece870eef8f58dddf6fb3ad701e686"><div class="ttname"><a href="structq_v_float___moment__t.html#a3fece870eef8f58dddf6fb3ad701e686">qVFloat_Moment_t::stdDev</a></div><div class="ttdeci">float stdDev</div><div class="ttdef"><b>Definition:</b> qvfloat.h:40</div></div>
+<div class="ttc" id="astructq_v_float___moment__t_html_a591f963594328579761e552ed671ac18"><div class="ttname"><a href="structq_v_float___moment__t.html#a591f963594328579761e552ed671ac18">qVFloat_Moment_t::var</a></div><div class="ttdeci">float var</div><div class="ttdef"><b>Definition:</b> qvfloat.h:41</div></div>
+<div class="ttc" id="astructq_v_float___moment__t_html_a81cdc83f0bb44b4f187edfbffc614fbc"><div class="ttname"><a href="structq_v_float___moment__t.html#a81cdc83f0bb44b4f187edfbffc614fbc">qVFloat_Moment_t::curt</a></div><div class="ttdeci">float curt</div><div class="ttdef"><b>Definition:</b> qvfloat.h:43</div></div>
+<div class="ttc" id="astructq_v_float___moment__t_html_a976925cd66ff0dcd419628463f580f1c"><div class="ttname"><a href="structq_v_float___moment__t.html#a976925cd66ff0dcd419628463f580f1c">qVFloat_Moment_t::mean</a></div><div class="ttdeci">float mean</div><div class="ttdef"><b>Definition:</b> qvfloat.h:38</div></div>
+<div class="ttc" id="astructq_v_float___moment__t_html_add526a623d2cc6f5e59cb55677ce6dcf"><div class="ttname"><a href="structq_v_float___moment__t.html#add526a623d2cc6f5e59cb55677ce6dcf">qVFloat_Moment_t::avgDev</a></div><div class="ttdeci">float avgDev</div><div class="ttdef"><b>Definition:</b> qvfloat.h:39</div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><b>qvfloat.h</b></li>
+    <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.2 </li>
+  </ul>
+</div>
+</body>
+</html>

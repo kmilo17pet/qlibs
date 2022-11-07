@@ -2,6 +2,8 @@ var NAVTREEINDEX0 =
 {
 "annotated.html":[2,0],
 "classes.html":[2,1],
+"functions.html":[2,2,0],
+"functions_vars.html":[2,2,1],
 "group__qbitfield.html":[1,5],
 "group__qbitfield.html#ga0522c031406f6eeb60b6308af7d5a8f9":[1,5,1],
 "group__qbitfield.html#ga6697a4787931f494396902a1431afc46":[1,5,4],
@@ -247,7 +249,5 @@ var NAVTREEINDEX0 =
 "group__qtdl.html#ga61100799bf5b0462619232bd193b6dd0":[1,8,2],
 "group__qtdl.html#ga8d4370666d88c000b47bd1e57f7bc94a":[1,8,3],
 "group__qtdl.html#gab73b19546e902544a42f883d69b2dc70":[1,8,6],
-"group__qtdl.html#gacda558896c7587ba171b7573106bb590":[1,8,4],
-"group__qtdl.html#gae2d9e557abd1ff695c30a57dab77c8e4":[1,8,5],
-"group__qtdl.html#gaed881a3cca92f5fe621176cea73110cd":[1,8,1]
+"group__qtdl.html#gacda558896c7587ba171b7573106bb590":[1,8,4]
 };
