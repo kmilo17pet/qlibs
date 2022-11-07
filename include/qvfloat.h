@@ -17,7 +17,7 @@ extern "C" {
     #include <stdbool.h>
 
 
-    /** @addtogroup  qvfloat FVector
+    /** @addtogroup  qvfloat qFVector
     * @brief Floating-point vector(1D-Array) operations
     *  @{
     */
@@ -80,9 +80,9 @@ extern "C" {
     /**
     * @brief Apply one the supplied function ( @a fx1 or @a fx2 ) to the input 
     * vector(s).
-    * - <tt>dst = a*fx1( x ) </tt> if @a fx2 is @c NULL
-    * - <tt>dst = a*fx2( x, y ) </tt> if @a fx1 is @c NULL
-    * - <tt>dst = a*fx2( x, b ) </tt> if @a fx1 and @a y are @c NULL
+    * - <tt>dst = a*fx1( x )</tt> if @a fx2 is @c NULL
+    * - <tt>dst = a*fx2( x, y )</tt> if @a fx1 is @c NULL
+    * - <tt>dst = a*fx2( x, b )</tt> if @a fx1 and @a y are @c NULL
     * @note If @a y or @a dst are used, they must have the same length as @a x. 
     * @remark If both function are supplied, only @a fx1 will be applied
     * @param[out] dst The pointer to the destination vector where the result

@@ -18,14 +18,14 @@ extern "C" {
     #include <stdbool.h>
 
 
-    /** @addtogroup  qtypegeneric Type generics
+    /** @addtogroup  qtypegeneric qTypeGeneric
     * @brief Type-generic utilities
     *  @{
     */
 
-    /** @cond*/
+    /*! @cond  */
     typedef int (*qTypeGeneric_CompareFcn_t)( const void *, const void *, void * );
-    /** @endcond */
+    /*! @endcond  */
 
     /**
     * @brief Swaps the data pointed by b @a x and @a y
