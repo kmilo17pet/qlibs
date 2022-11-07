@@ -156,7 +156,7 @@ Enumerations</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:ga3e1b25582cc0a2e76eed516dcf16931a"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qvfloat.html#ga3e1b25582cc0a2e76eed516dcf16931a">qVFloat_Operate</a> (float *const dst, <a class="el" href="group__qvfloat.html#gaa2afe87cb0916aa0883fc01716b4e290">qVFloat_Operation_t</a> o, const float a, const float *const x, const float b, const float *const y, const size_t n)</td></tr>
-<tr class="memdesc:ga3e1b25582cc0a2e76eed516dcf16931a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes the 1D-vector operation specified by the &lt;o&gt; argument. <code>dst = a*x (&lt;o&gt;) b*y</code> or <code>dst = a*x (&lt;o&gt;) b</code> if the <em>y</em> argument is <code>NULL</code>.  <a href="group__qvfloat.html#ga3e1b25582cc0a2e76eed516dcf16931a">More...</a><br /></td></tr>
+<tr class="memdesc:ga3e1b25582cc0a2e76eed516dcf16931a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes one of the following 1D-vector operation :  <a href="group__qvfloat.html#ga3e1b25582cc0a2e76eed516dcf16931a">More...</a><br /></td></tr>
 <tr class="separator:ga3e1b25582cc0a2e76eed516dcf16931a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gafdb5a868d29d975967569e04439332d6"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qvfloat.html#gafdb5a868d29d975967569e04439332d6">qVFloat_ApplyFx</a> (float *dst, float(*fx1)(float), float(*fx2)(float, float), float *const x, float *const y, const float a, const float b, const size_t n)</td></tr>
 <tr class="memdesc:gafdb5a868d29d975967569e04439332d6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Apply one the supplied function ( <em>fx1</em> or <em>fx2</em> ) to the input vector(s).  <a href="group__qvfloat.html#gafdb5a868d29d975967569e04439332d6">More...</a><br /></td></tr>
@@ -292,8 +292,10 @@ Functions</h2></td></tr>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[out]</td><td class="paramname">dst</td><td>The pointer to the destination vector where the result will be stored. To ignore pass <code>NULL</code> as argument. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">fx1</td><td>The function with one argument to be applied to every element of <em>x</em>. To ignore pass <code>NULL</code> as argument. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">fx2</td><td>The function with two arguments to be applied to every element of <em>x</em> or/and <em>y</em>. To ignore pass <code>NULL</code> as argument. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">fx1</td><td>Function that will be applied to each element of <em>x</em>. This function will only take one parameter and should have the following signature: <div class="fragment"><div class="line"><span class="keywordtype">float</span> fx1( <span class="keywordtype">float</span> p );</div>
+</div><!-- fragment --> To ignore pass <code>NULL</code> as argument. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">fx2</td><td>Function that will be applied to each element of <em>x</em>. This function will take 2 parameters and should have the following signature: <div class="fragment"><div class="line"><span class="keywordtype">float</span> fx1( <span class="keywordtype">float</span> p1, <span class="keywordtype">float</span> p2 );</div>
+</div><!-- fragment --> To ignore pass <code>NULL</code> as argument. </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">x</td><td>A vector as an 1D float array </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">y</td><td>A vector as an 1D float array. To ignore pass <code>NULL</code> as argument. </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">a</td><td>A value to scale the result of <em>fx1</em> and <em>fx2</em>. </td></tr>
@@ -602,12 +604,22 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Computes the 1D-vector operation specified by the &lt;o&gt; argument. <code>dst = a*x (&lt;o&gt;) b*y</code> or <code>dst = a*x (&lt;o&gt;) b</code> if the <em>y</em> argument is <code>NULL</code>. </p>
-<dl class="section note"><dt>Note</dt><dd>If <em>y</em> or <em>dst</em> are used, they must have the same length as <em>x</em>. </dd></dl>
+<p>Computes one of the following 1D-vector operation : </p>
+<ul>
+<li><code>dst = a*x (&lt;o&gt;) b*y</code> if both <em>x</em> and <em>y</em> are supplied.</li>
+<li><code>dst = a*x (&lt;o&gt;) b</code> if the <em>y</em> argument is <code>NULL</code>. Where <code>(&lt;o&gt;)</code> corresponds to the operator that will be applied <dl class="section note"><dt>Note</dt><dd>If <em>y</em> or <em>dst</em> are used, they must have the same length as <em>x</em>. </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[out]</td><td class="paramname">dst</td><td>The pointer to the destination array where the result will be stored. To ignore pass <code>NULL</code> as argument. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">o</td><td>The desired operation to perform on vectors. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">o</td><td>The desired operator, should be one of the following:</td></tr>
+  </table>
+  </dd>
+</dl>
+</li>
+<li><a class="el" href="group__qvfloat.html#ggaa2afe87cb0916aa0883fc01716b4e290ae720f7e2a050b51ab22962debb7803d6">VFLOAT_ADD</a> : Addition</li>
+<li><a class="el" href="group__qvfloat.html#ggaa2afe87cb0916aa0883fc01716b4e290ac0e3daed50388574d02d2a9f462ab1fa">VFLOAT_MUL</a> : Multiplication</li>
+<li><a class="el" href="group__qvfloat.html#ggaa2afe87cb0916aa0883fc01716b4e290a3203df95f69d65e61f2cc4059c83506a">VFLOAT_DIV</a> : Division <dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">a</td><td>Value to scale the vector <em>x</em>. </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">x</td><td>A vector as an 1D float array </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">b</td><td>Value to scale the vector <em>y</em>. </td></tr>
@@ -617,6 +629,8 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The sum of all elements on <em>dst</em> after the operation. </dd></dl>
+</li>
+</ul>
 
 </div>
 </div>
@@ -704,10 +718,11 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Reverse the given vector pointed by <em>src</em>. Operation takes place on the portion of the vector that starts at position <em>init</em> to position <em>end</em>. </p>
+<dl class="section remark"><dt>Remarks</dt><dd>If the <em>dst</em> argument is ignored, the operation will take place over the <em>src</em> argument itself. </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[out]</td><td class="paramname">dst</td><td>The pointer to the destination vector where the result will be stored. To ignore pass <code>NULL</code> as argument. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">src</td><td>The input vector to reverse. </td></tr>
+    <tr><td class="paramdir">[in,out]</td><td class="paramname">src</td><td>The input vector to reverse. </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">init</td><td>Position of the first element. </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">end</td><td>Position of the last element. </td></tr>
   </table>
@@ -756,10 +771,11 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Rotates the elements of vector pointed by <em>src</em> the number of places and in the direction indicated by <em>k</em>. </p>
+<dl class="section remark"><dt>Remarks</dt><dd>If the <em>dst</em> argument is ignored, the operation will take place over the <em>src</em> argument itself. </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[out]</td><td class="paramname">dst</td><td>The pointer to the destination vector where the result will be stored. To ignore pass <code>NULL</code> as argument. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">src</td><td>The input vector to rotate. </td></tr>
+    <tr><td class="paramdir">[in,out]</td><td class="paramname">src</td><td>The input vector to rotate. </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">k</td><td>Position of the first element. </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">n</td><td>Number of elements of the vector </td></tr>
   </table>
@@ -854,10 +870,11 @@ Functions</h2></td></tr>
 
 <p>Returns a sorted version of unsorted vector pointed by <em>src</em> with the elements arranged in ascending or descending order according the value or <em>dir</em>. </p>
 <dl class="section note"><dt>Note</dt><dd>This function is a wrapper to <a class="el" href="group__qtypegeneric.html#ga83693af97ce728270f657d818c980dc5" title="Sorts the given array pointed to by pbase in ascending order. The array contains n elements of size b...">qTypeGeneric_Sort()</a> </dd></dl>
+<dl class="section remark"><dt>Remarks</dt><dd>If the <em>dst</em> argument is ignored, the operation will take place over the <em>src</em> argument itself. </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[out]</td><td class="paramname">dst</td><td>The pointer to the destination vector where the result will be stored. To ignore pass <code>NULL</code> as argument. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">src</td><td>The input vector to rotate. </td></tr>
+    <tr><td class="paramdir">[in,out]</td><td class="paramname">src</td><td>The input vector to rotate. </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">dir</td><td>Pass false to sort in ascending order, otherwise pass true. </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">n</td><td>Number of elements of the vector </td></tr>
   </table>
