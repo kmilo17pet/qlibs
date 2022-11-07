@@ -113,7 +113,7 @@ extern "C" {
                             const void * const ref );
 
     /**
-    * @brief Performs a linear search over an array of @var{nmemb} elements 
+    * @brief Performs a linear search over an array of @a n elements 
     * pointed to by @a pbase for a member that matches the object pointed to 
     * by @a key.
     * The size of each member is specified by @a size. The array contents
@@ -155,7 +155,7 @@ extern "C" {
                                 void *arg );
 
     /**
-    * @brief Performs a binary search over an array of @var{n} elements 
+    * @brief Performs a binary search over an array of @a n elements 
     * pointed to by @a pbase for a member that matches the object pointed to 
     * by @a key.
     * The size of each member is specified by @a size. The array contents
