@@ -55,9 +55,10 @@ extern "C" {
 
     /**
     * @brief Computes one of the following 1D-vector operation :
-    * - <tt>dst = a*x (<o>) b*y</tt> if both @a x and @a y are supplied.
-    * - <tt>dst = a*x (<o>) b</tt> if the @a y argument is @c NULL.
-    * Where <tt>(<o>)</tt> corresponds to the operator that will be applied
+    * - <tt>dst = a*x <o> b*y</tt> if both @a x and @a y are supplied.
+    * - <tt>dst = a*x <o> b</tt> if the @a y argument is @c NULL.
+    * 
+    * Here, <tt><o></tt> corresponds to the operator that will be applied
     * @note If @a y or @a dst are used, they must have the same length as @a x.
     * @param[out] dst The pointer to the destination array where the result
     * will be stored. To ignore pass @c NULL as argument.
@@ -92,13 +93,13 @@ extern "C" {
     * @param[out] dst The pointer to the destination vector where the result
     * will be stored. To ignore pass @c NULL as argument.
     * @param[in] fx1 Function that will be applied to each element of @a x. This
-    * function will only take one parameter and should have the following signature:
+    * function should take one parameter following this signature:
     * @code{.c}
     * float fx1( float p );
     * @endcode
     * To ignore pass @c NULL as argument.
     * @param[in] fx2 Function that will be applied to each element of @a x. This
-    * function will take 2 parameters and should have the following signature:
+    * function should take 2 parameters following this signature:
     * @code{.c}
     * float fx1( float p1, float p2 );
     * @endcode
