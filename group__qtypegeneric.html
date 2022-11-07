@@ -16,7 +16,7 @@
 <meta name="twitter:title" content="Doxygen Awesome" />
 <meta name="twitter:description" content="Custom CSS theme for doxygen html-documentation with lots of customization parameters." />
 <!-- END twitter metadata -->
-<title>API Reference: Type generics</title>
+<title>API Reference: qTypeGeneric</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <link rel="icon" type="image/svg+xml" href="logo.drawio.svg"/>
 <script type="text/javascript" src="jquery.js"></script>
@@ -124,13 +124,438 @@ $(document).ready(function(){initNavTree('group__qtypegeneric.html',''); initRes
 </div>
 
 <div class="header">
-  <div class="headertitle"><div class="title">Type generics</div></div>
+  <div class="summary">
+<a href="#func-members">Functions</a>  </div>
+  <div class="headertitle"><div class="title">qTypeGeneric</div></div>
 </div><!--header-->
 <div class="contents">
 
 <p>Type-generic utilities.  
-</p>
+<a href="#details">More...</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
+Functions</h2></td></tr>
+<tr class="memitem:ga0e38aca8648c9d20c08d6fd90a4d7a0f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qtypegeneric.html#ga0e38aca8648c9d20c08d6fd90a4d7a0f">qTypeGeneric_Swap</a> (void *x, void *y, size_t n)</td></tr>
+<tr class="memdesc:ga0e38aca8648c9d20c08d6fd90a4d7a0f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Swaps the data pointed by b <em>x</em> and <em>y</em>.  <a href="group__qtypegeneric.html#ga0e38aca8648c9d20c08d6fd90a4d7a0f">More...</a><br /></td></tr>
+<tr class="separator:ga0e38aca8648c9d20c08d6fd90a4d7a0f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga83693af97ce728270f657d818c980dc5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qtypegeneric.html#ga83693af97ce728270f657d818c980dc5">qTypeGeneric_Sort</a> (void *const pbase, size_t n, size_t size, qTypeGeneric_CompareFcn_t cmp, void *arg)</td></tr>
+<tr class="memdesc:ga83693af97ce728270f657d818c980dc5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sorts the given array pointed to by <em>pbase</em> in ascending order. The array contains <em>n</em> elements of <em>size</em> bytes. Function pointed to by <em>cmp</em> is used for object comparison.  <a href="group__qtypegeneric.html#ga83693af97ce728270f657d818c980dc5">More...</a><br /></td></tr>
+<tr class="separator:ga83693af97ce728270f657d818c980dc5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaee90f107286281c0ab4630e2dc130c91"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qtypegeneric.html#gaee90f107286281c0ab4630e2dc130c91">qTypeGeneric_Reverse</a> (void *const pbase, const size_t size, const size_t init, const size_t end)</td></tr>
+<tr class="memdesc:gaee90f107286281c0ab4630e2dc130c91"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reverse the given array pointed to by <em>pbase</em>. Operation takes place on the portion of the array that starts at position <em>init</em> to position <em>end</em>.  <a href="group__qtypegeneric.html#gaee90f107286281c0ab4630e2dc130c91">More...</a><br /></td></tr>
+<tr class="separator:gaee90f107286281c0ab4630e2dc130c91"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gad29bd039b0697138bcb05eecab1fae29"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qtypegeneric.html#gad29bd039b0697138bcb05eecab1fae29">qTypeGeneric_Rotate</a> (void *const pbase, const size_t size, const size_t n, const int k)</td></tr>
+<tr class="memdesc:gad29bd039b0697138bcb05eecab1fae29"><td class="mdescLeft">&#160;</td><td class="mdescRight">Rotates <em>k</em> elements of the array pointed to by <em>pbase</em>. The array contains <em>n</em> elements of <em>size</em> bytes. Rotation direction is determined by the sign of <em>k</em>, the means a positive value performs a right-rotation and a negative value a left-rotation.  <a href="group__qtypegeneric.html#gad29bd039b0697138bcb05eecab1fae29">More...</a><br /></td></tr>
+<tr class="separator:gad29bd039b0697138bcb05eecab1fae29"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga1a01bce1922bbfb580323e72a5cc0a57"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qtypegeneric.html#ga1a01bce1922bbfb580323e72a5cc0a57">qTypeGeneric_Set</a> (void *const pbase, const size_t size, const size_t n, const void *const ref)</td></tr>
+<tr class="memdesc:ga1a01bce1922bbfb580323e72a5cc0a57"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the data pointed by <em>ref</em> to every element of the array pointed by <em>pbase</em>. The array contains <em>n</em> elements of <em>size</em> bytes.  <a href="group__qtypegeneric.html#ga1a01bce1922bbfb580323e72a5cc0a57">More...</a><br /></td></tr>
+<tr class="separator:ga1a01bce1922bbfb580323e72a5cc0a57"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga1751bcf57fa73f56532d3f05dd6e7d81"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qtypegeneric.html#ga1751bcf57fa73f56532d3f05dd6e7d81">qTypeGeneric_LSearch</a> (const void *key, const void *pbase, const size_t n, const size_t size, qTypeGeneric_CompareFcn_t compar, void *arg)</td></tr>
+<tr class="memdesc:ga1751bcf57fa73f56532d3f05dd6e7d81"><td class="mdescLeft">&#160;</td><td class="mdescRight">Performs a linear search over an array of <em>n</em> elements pointed to by <em>pbase</em> for a member that matches the object pointed to by <em>key</em>. The size of each member is specified by <em>size</em>. The array contents should be sorted in ascending order according to the <em>compar</em> comparison function. This routine should take two arguments pointing to the <em>key</em> and to an array member, in that order, and should return an integer less than, equal to, or greater than zero if the <em>key</em> object is respectively less than, matching, or greater than the array member.  <a href="group__qtypegeneric.html#ga1751bcf57fa73f56532d3f05dd6e7d81">More...</a><br /></td></tr>
+<tr class="separator:ga1751bcf57fa73f56532d3f05dd6e7d81"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga666f3f9121864dffb3cde3e161b30053"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qtypegeneric.html#ga666f3f9121864dffb3cde3e161b30053">qTypeGeneric_BSearch</a> (const void *key, const void *pbase, const size_t n, const size_t size, qTypeGeneric_CompareFcn_t compar, void *arg)</td></tr>
+<tr class="memdesc:ga666f3f9121864dffb3cde3e161b30053"><td class="mdescLeft">&#160;</td><td class="mdescRight">Performs a binary search over an array of <em>n</em> elements pointed to by <em>pbase</em> for a member that matches the object pointed to by <em>key</em>. The size of each member is specified by <em>size</em>. The array contents should be sorted in ascending order according to the <em>compar</em> comparison function. This routine should take two arguments pointing to the <em>key</em> and to an array member, in that order, and should return an integer less than, equal to, or greater than zero if the <em>key</em> object is respectively less than, matching, or greater than the array member.  <a href="group__qtypegeneric.html#ga666f3f9121864dffb3cde3e161b30053">More...</a><br /></td></tr>
+<tr class="separator:ga666f3f9121864dffb3cde3e161b30053"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <p >Type-generic utilities. </p>
+<h2 class="groupheader">Function Documentation</h2>
+<a id="ga666f3f9121864dffb3cde3e161b30053" name="ga666f3f9121864dffb3cde3e161b30053"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga666f3f9121864dffb3cde3e161b30053">&#9670;&nbsp;</a></span>qTypeGeneric_BSearch()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void * qTypeGeneric_BSearch </td>
+          <td>(</td>
+          <td class="paramtype">const void *&#160;</td>
+          <td class="paramname"><em>key</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const void *&#160;</td>
+          <td class="paramname"><em>pbase</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const size_t&#160;</td>
+          <td class="paramname"><em>n</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const size_t&#160;</td>
+          <td class="paramname"><em>size</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">qTypeGeneric_CompareFcn_t&#160;</td>
+          <td class="paramname"><em>compar</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>arg</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Performs a binary search over an array of <em>n</em> elements pointed to by <em>pbase</em> for a member that matches the object pointed to by <em>key</em>. The size of each member is specified by <em>size</em>. The array contents should be sorted in ascending order according to the <em>compar</em> comparison function. This routine should take two arguments pointing to the <em>key</em> and to an array member, in that order, and should return an integer less than, equal to, or greater than zero if the <em>key</em> object is respectively less than, matching, or greater than the array member. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">key</td><td>This is the pointer to the object that serves as key for the search, type-casted as a void*. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">pbase</td><td>This is the pointer to the first object of the array where the search is performed, type-casted as a void*. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">n</td><td>This is the number of elements in the array pointed by base. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">size</td><td>This is the size in bytes of each element in the array. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">cmp</td><td>This is the function that compares two elements. The signature of the comparison function should be equivalent to the following: <div class="fragment"><div class="line"><span class="keywordtype">int</span> cmp( <span class="keyword">const</span> <span class="keywordtype">void</span> *a, <span class="keyword">const</span> <span class="keywordtype">void</span> *b, <span class="keywordtype">void</span> *arg );</div>
+</div><!-- fragment -->. Comparison function which returns ​a negative integer value if the first argument is less than the second, a positive integer value if the first argument is greater than the second and zero if the arguments are equivalent. <em>key</em> is passed as the first argument, an element from the array as the second. The function must not modify the objects passed to it and must return consistent results when called for the same objects, regardless of their positions in the array. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">arg</td><td>Additional information (e.g., collating sequence), passed to <em>compar</em> as the third argument </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>This function returns a pointer to an entry in the array that matches the search key. If key is not found, a <code>NULL</code> pointer is returned. </dd></dl>
+
+</div>
+</div>
+<a id="ga1751bcf57fa73f56532d3f05dd6e7d81" name="ga1751bcf57fa73f56532d3f05dd6e7d81"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga1751bcf57fa73f56532d3f05dd6e7d81">&#9670;&nbsp;</a></span>qTypeGeneric_LSearch()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void * qTypeGeneric_LSearch </td>
+          <td>(</td>
+          <td class="paramtype">const void *&#160;</td>
+          <td class="paramname"><em>key</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const void *&#160;</td>
+          <td class="paramname"><em>pbase</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const size_t&#160;</td>
+          <td class="paramname"><em>n</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const size_t&#160;</td>
+          <td class="paramname"><em>size</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">qTypeGeneric_CompareFcn_t&#160;</td>
+          <td class="paramname"><em>compar</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>arg</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Performs a linear search over an array of <em>n</em> elements pointed to by <em>pbase</em> for a member that matches the object pointed to by <em>key</em>. The size of each member is specified by <em>size</em>. The array contents should be sorted in ascending order according to the <em>compar</em> comparison function. This routine should take two arguments pointing to the <em>key</em> and to an array member, in that order, and should return an integer less than, equal to, or greater than zero if the <em>key</em> object is respectively less than, matching, or greater than the array member. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">key</td><td>This is the pointer to the object that serves as key for the search, type-casted as a void*. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">pbase</td><td>This is the pointer to the first object of the array where the search is performed, type-casted as a void*. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">n</td><td>This is the number of elements in the array pointed by base. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">size</td><td>This is the size in bytes of each element in the array. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">cmp</td><td>This is the function that compares two elements. The signature of the comparison function should be equivalent to the following: <div class="fragment"><div class="line"><span class="keywordtype">int</span> cmp( <span class="keyword">const</span> <span class="keywordtype">void</span> *a, <span class="keyword">const</span> <span class="keywordtype">void</span> *b, <span class="keywordtype">void</span> *arg );</div>
+</div><!-- fragment -->. Comparison function which returns ​a negative integer value if the first argument is less than the second, a positive integer value if the first argument is greater than the second and zero if the arguments are equivalent. <em>key</em> is passed as the first argument, an element from the array as the second. The function must not modify the objects passed to it and must return consistent results when called for the same objects, regardless of their positions in the array. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">arg</td><td>Additional information (e.g., collating sequence), passed to <em>compar</em> as the third argument </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>This function returns a pointer to an entry in the array that matches the search key. If key is not found, a <code>NULL</code> pointer is returned. </dd></dl>
+
+</div>
+</div>
+<a id="gaee90f107286281c0ab4630e2dc130c91" name="gaee90f107286281c0ab4630e2dc130c91"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gaee90f107286281c0ab4630e2dc130c91">&#9670;&nbsp;</a></span>qTypeGeneric_Reverse()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void qTypeGeneric_Reverse </td>
+          <td>(</td>
+          <td class="paramtype">void *const&#160;</td>
+          <td class="paramname"><em>pbase</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const size_t&#160;</td>
+          <td class="paramname"><em>size</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const size_t&#160;</td>
+          <td class="paramname"><em>init</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const size_t&#160;</td>
+          <td class="paramname"><em>end</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Reverse the given array pointed to by <em>pbase</em>. Operation takes place on the portion of the array that starts at position <em>init</em> to position <em>end</em>. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in,out]</td><td class="paramname">pbase</td><td>Pointer to the array to reverse. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">size</td><td>Size of each element in the array in bytes </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">init</td><td>Position of the first element. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">end</td><td>Position of the last element. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>none. </dd></dl>
+
+</div>
+</div>
+<a id="gad29bd039b0697138bcb05eecab1fae29" name="gad29bd039b0697138bcb05eecab1fae29"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gad29bd039b0697138bcb05eecab1fae29">&#9670;&nbsp;</a></span>qTypeGeneric_Rotate()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void qTypeGeneric_Rotate </td>
+          <td>(</td>
+          <td class="paramtype">void *const&#160;</td>
+          <td class="paramname"><em>pbase</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const size_t&#160;</td>
+          <td class="paramname"><em>size</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const size_t&#160;</td>
+          <td class="paramname"><em>n</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const int&#160;</td>
+          <td class="paramname"><em>k</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Rotates <em>k</em> elements of the array pointed to by <em>pbase</em>. The array contains <em>n</em> elements of <em>size</em> bytes. Rotation direction is determined by the sign of <em>k</em>, the means a positive value performs a right-rotation and a negative value a left-rotation. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in,out]</td><td class="paramname">pbase</td><td>Pointer to the array to reverse. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">size</td><td>Size of each element in the array in bytes </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">n</td><td>Number of elements in the array. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">k</td><td>Positions to rotate. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>none. </dd></dl>
+
+</div>
+</div>
+<a id="ga1a01bce1922bbfb580323e72a5cc0a57" name="ga1a01bce1922bbfb580323e72a5cc0a57"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga1a01bce1922bbfb580323e72a5cc0a57">&#9670;&nbsp;</a></span>qTypeGeneric_Set()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void * qTypeGeneric_Set </td>
+          <td>(</td>
+          <td class="paramtype">void *const&#160;</td>
+          <td class="paramname"><em>pbase</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const size_t&#160;</td>
+          <td class="paramname"><em>size</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const size_t&#160;</td>
+          <td class="paramname"><em>n</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const void *const&#160;</td>
+          <td class="paramname"><em>ref</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Set the data pointed by <em>ref</em> to every element of the array pointed by <em>pbase</em>. The array contains <em>n</em> elements of <em>size</em> bytes. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in,out]</td><td class="paramname">pbase</td><td>Pointer to the array to reverse. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">size</td><td>Size of each element in the array in bytes </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">n</td><td>Number of elements in the array. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">ref</td><td>Pointer to the value to be set. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>This function returns a pointer to the memory area <em>pbase</em> </dd></dl>
+
+</div>
+</div>
+<a id="ga83693af97ce728270f657d818c980dc5" name="ga83693af97ce728270f657d818c980dc5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga83693af97ce728270f657d818c980dc5">&#9670;&nbsp;</a></span>qTypeGeneric_Sort()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void qTypeGeneric_Sort </td>
+          <td>(</td>
+          <td class="paramtype">void *const&#160;</td>
+          <td class="paramname"><em>pbase</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>n</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>size</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">qTypeGeneric_CompareFcn_t&#160;</td>
+          <td class="paramname"><em>cmp</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>arg</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Sorts the given array pointed to by <em>pbase</em> in ascending order. The array contains <em>n</em> elements of <em>size</em> bytes. Function pointed to by <em>cmp</em> is used for object comparison. </p>
+<dl class="section remark"><dt>Remarks</dt><dd>This algorithm uses a non-recursive variant of the quicksort algorithm. </dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in,out]</td><td class="paramname">pbase</td><td>Pointer to the array to sort. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">n</td><td>Number of elements in the array. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">size</td><td>size of each element in the array in bytes </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">cmp</td><td>Comparison function which returns ​a negative integer value if the first argument is less than the second, a positive integer value if the first argument is greater than the second and zero if the arguments are equivalent. The signature of the comparison function should be equivalent to the following: <div class="fragment"><div class="line"><span class="keywordtype">int</span> cmp( <span class="keyword">const</span> <span class="keywordtype">void</span> *a, <span class="keyword">const</span> <span class="keywordtype">void</span> *b, <span class="keywordtype">void</span> *arg );</div>
+</div><!-- fragment --> The function must not modify the objects passed to it and must return consistent results when called for the same objects, regardless of their positions in the array. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">arg</td><td>Additional information (e.g., collating sequence), passed to <code>cmp</code> as the third argument </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>none. </dd></dl>
+
+</div>
+</div>
+<a id="ga0e38aca8648c9d20c08d6fd90a4d7a0f" name="ga0e38aca8648c9d20c08d6fd90a4d7a0f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga0e38aca8648c9d20c08d6fd90a4d7a0f">&#9670;&nbsp;</a></span>qTypeGeneric_Swap()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void qTypeGeneric_Swap </td>
+          <td>(</td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>y</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>n</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Swaps the data pointed by b <em>x</em> and <em>y</em>. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in,out]</td><td class="paramname">x</td><td>Pointer to first element. </td></tr>
+    <tr><td class="paramdir">[in,out]</td><td class="paramname">x</td><td>Pointer to the second element. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">size</td><td>The size of the data to be swapped. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>none. </dd></dl>
+
+</div>
+</div>
 </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

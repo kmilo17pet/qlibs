@@ -16,7 +16,7 @@
 <meta name="twitter:title" content="Doxygen Awesome" />
 <meta name="twitter:description" content="Custom CSS theme for doxygen html-documentation with lots of customization parameters." />
 <!-- END twitter metadata -->
-<title>API Reference: FVector</title>
+<title>API Reference: qFVector</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <link rel="icon" type="image/svg+xml" href="logo.drawio.svg"/>
 <script type="text/javascript" src="jquery.js"></script>
@@ -128,7 +128,7 @@ $(document).ready(function(){initNavTree('group__qvfloat.html',''); initResizabl
 <a href="#nested-classes">Data Structures</a> &#124;
 <a href="#enum-members">Enumerations</a> &#124;
 <a href="#func-members">Functions</a>  </div>
-  <div class="headertitle"><div class="title">FVector</div></div>
+  <div class="headertitle"><div class="title">qFVector</div></div>
 </div><!--header-->
 <div class="contents">
 
@@ -285,9 +285,9 @@ Functions</h2></td></tr>
 
 <p>Apply one the supplied function ( <em>fx1</em> or <em>fx2</em> ) to the input vector(s). </p>
 <ul>
-<li><code>dst = a*fx1( x ) </code> if <em>fx2</em> is <code>NULL</code> </li>
-<li><code>dst = a*fx2( x, y ) </code> if <em>fx1</em> is <code>NULL</code> </li>
-<li><code>dst = a*fx2( x, b ) </code> if <em>fx1</em> and <em>y</em> are <code>NULL</code> <dl class="section note"><dt>Note</dt><dd>If <em>y</em> or <em>dst</em> are used, they must have the same length as <em>x</em>. </dd></dl>
+<li><code>dst = a*fx1( x )</code> if <em>fx2</em> is <code>NULL</code> </li>
+<li><code>dst = a*fx2( x, y )</code> if <em>fx1</em> is <code>NULL</code> </li>
+<li><code>dst = a*fx2( x, b )</code> if <em>fx1</em> and <em>y</em> are <code>NULL</code> <dl class="section note"><dt>Note</dt><dd>If <em>y</em> or <em>dst</em> are used, they must have the same length as <em>x</em>. </dd></dl>
 <dl class="section remark"><dt>Remarks</dt><dd>If both function are supplied, only <em>fx1</em> will be applied </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
@@ -853,7 +853,7 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Returns a sorted version of unsorted vector pointed by <em>src</em> with the elements arranged in ascending or descending order according the value or <em>dir</em>. </p>
-<dl class="section note"><dt>Note</dt><dd>This function is a wrapper to qTypeGeneric_Sort() </dd></dl>
+<dl class="section note"><dt>Note</dt><dd>This function is a wrapper to <a class="el" href="group__qtypegeneric.html#ga83693af97ce728270f657d818c980dc5" title="Sorts the given array pointed to by pbase in ascending order. The array contains n elements of size b...">qTypeGeneric_Sort()</a> </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[out]</td><td class="paramname">dst</td><td>The pointer to the destination vector where the result will be stored. To ignore pass <code>NULL</code> as argument. </td></tr>
