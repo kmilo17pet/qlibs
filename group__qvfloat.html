@@ -292,9 +292,9 @@ Functions</h2></td></tr>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[out]</td><td class="paramname">dst</td><td>The pointer to the destination vector where the result will be stored. To ignore pass <code>NULL</code> as argument. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">fx1</td><td>Function that will be applied to each element of <em>x</em>. This function will only take one parameter and should have the following signature: <div class="fragment"><div class="line"><span class="keywordtype">float</span> fx1( <span class="keywordtype">float</span> p );</div>
+    <tr><td class="paramdir">[in]</td><td class="paramname">fx1</td><td>Function that will be applied to each element of <em>x</em>. This function should take one parameter following this signature: <div class="fragment"><div class="line"><span class="keywordtype">float</span> fx1( <span class="keywordtype">float</span> p );</div>
 </div><!-- fragment --> To ignore pass <code>NULL</code> as argument. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">fx2</td><td>Function that will be applied to each element of <em>x</em>. This function will take 2 parameters and should have the following signature: <div class="fragment"><div class="line"><span class="keywordtype">float</span> fx1( <span class="keywordtype">float</span> p1, <span class="keywordtype">float</span> p2 );</div>
+    <tr><td class="paramdir">[in]</td><td class="paramname">fx2</td><td>Function that will be applied to each element of <em>x</em>. This function should take 2 parameters following this signature: <div class="fragment"><div class="line"><span class="keywordtype">float</span> fx1( <span class="keywordtype">float</span> p1, <span class="keywordtype">float</span> p2 );</div>
 </div><!-- fragment --> To ignore pass <code>NULL</code> as argument. </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">x</td><td>A vector as an 1D float array </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">y</td><td>A vector as an 1D float array. To ignore pass <code>NULL</code> as argument. </td></tr>
@@ -606,20 +606,19 @@ Functions</h2></td></tr>
 
 <p>Computes one of the following 1D-vector operation : </p>
 <ul>
-<li><code>dst = a*x (&lt;o&gt;) b*y</code> if both <em>x</em> and <em>y</em> are supplied.</li>
-<li><code>dst = a*x (&lt;o&gt;) b</code> if the <em>y</em> argument is <code>NULL</code>. Where <code>(&lt;o&gt;)</code> corresponds to the operator that will be applied <dl class="section note"><dt>Note</dt><dd>If <em>y</em> or <em>dst</em> are used, they must have the same length as <em>x</em>. </dd></dl>
+<li><code>dst = a*x &lt;o&gt; b*y</code> if both <em>x</em> and <em>y</em> are supplied.</li>
+<li><code>dst = a*x &lt;o&gt; b</code> if the <em>y</em> argument is <code>NULL</code>.</li>
+</ul>
+<p >Here, <code>&lt;o&gt;</code> corresponds to the operator that will be applied </p><dl class="section note"><dt>Note</dt><dd>If <em>y</em> or <em>dst</em> are used, they must have the same length as <em>x</em>. </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[out]</td><td class="paramname">dst</td><td>The pointer to the destination array where the result will be stored. To ignore pass <code>NULL</code> as argument. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">o</td><td>The desired operator, should be one of the following:</td></tr>
-  </table>
-  </dd>
-</dl>
-</li>
+    <tr><td class="paramdir">[in]</td><td class="paramname">o</td><td>The desired operator, should be one of the following:<ul>
 <li><a class="el" href="group__qvfloat.html#ggaa2afe87cb0916aa0883fc01716b4e290ae720f7e2a050b51ab22962debb7803d6">VFLOAT_ADD</a> : Addition</li>
 <li><a class="el" href="group__qvfloat.html#ggaa2afe87cb0916aa0883fc01716b4e290ac0e3daed50388574d02d2a9f462ab1fa">VFLOAT_MUL</a> : Multiplication</li>
-<li><a class="el" href="group__qvfloat.html#ggaa2afe87cb0916aa0883fc01716b4e290a3203df95f69d65e61f2cc4059c83506a">VFLOAT_DIV</a> : Division <dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
+<li><a class="el" href="group__qvfloat.html#ggaa2afe87cb0916aa0883fc01716b4e290a3203df95f69d65e61f2cc4059c83506a">VFLOAT_DIV</a> : Division </li>
+</ul>
+</td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">a</td><td>Value to scale the vector <em>x</em>. </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">x</td><td>A vector as an 1D float array </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">b</td><td>Value to scale the vector <em>y</em>. </td></tr>
@@ -629,8 +628,6 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The sum of all elements on <em>dst</em> after the operation. </dd></dl>
-</li>
-</ul>
 
 </div>
 </div>
