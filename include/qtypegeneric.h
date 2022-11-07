@@ -125,17 +125,17 @@ extern "C" {
     * integer less than, equal to, or greater than zero if the @a key object
     * is respectively less than, matching, or greater than the array member.
     * @param[in] key This is the pointer to the object that serves as key for 
-    * the search, type-casted as a void*.
+    * the search, type-casted as a @c void*.
     * @param[in] pbase This is the pointer to the first object of the array 
-    * where the search is performed, type-casted as a void*.
+    * where the search is performed, type-casted as a @c void*.
     * @param[in] n This is the number of elements in the array pointed by base.
     * @param[in] size This is the size in bytes of each element in the array.
-    * @param[in] cmp This is the function that compares two elements.
+    * @param[in] compar This is the function that compares two elements.
     * The signature of the comparison function should be equivalent to the 
     * following:
     * @code{.c}
-    *  int cmp( const void *a, const void *b, void *arg );
-    * @endcode.
+    *  int compar( const void *a, const void *b, void *arg );
+    * @endcode
     * Comparison function which returns ​a negative integer value if the first 
     * argument is less than the second, a positive integer value if the first 
     * argument is greater than the second and zero if the arguments are 
@@ -167,17 +167,17 @@ extern "C" {
     * integer less than, equal to, or greater than zero if the @a key object
     * is respectively less than, matching, or greater than the array member.
     * @param[in] key This is the pointer to the object that serves as key for 
-    * the search, type-casted as a void*.
+    * the search, type-casted as a @c void*.
     * @param[in] pbase This is the pointer to the first object of the array 
-    * where the search is performed, type-casted as a void*.
+    * where the search is performed, type-casted as a @c void*.
     * @param[in] n This is the number of elements in the array pointed by base.
     * @param[in] size This is the size in bytes of each element in the array.
-    * @param[in] cmp This is the function that compares two elements.
+    * @param[in] compar This is the function that compares two elements.
     * The signature of the comparison function should be equivalent to the 
     * following:
     * @code{.c}
-    *  int cmp( const void *a, const void *b, void *arg );
-    * @endcode.
+    *  int compar( const void *a, const void *b, void *arg );
+    * @endcode
     * Comparison function which returns ​a negative integer value if the first 
     * argument is less than the second, a positive integer value if the first 
     * argument is greater than the second and zero if the arguments are 

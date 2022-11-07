@@ -54,13 +54,17 @@ extern "C" {
     } qVFloat_MinMax_t;
 
     /**
-    * @brief Computes the 1D-vector operation specified by the <o> argument.
-    * <tt>dst = a*x (<o>) b*y</tt> or <tt>dst = a*x (<o>) b</tt> if the @a y 
-    * argument is @c NULL.
+    * @brief Computes one of the following 1D-vector operation :
+    * - <tt>dst = a*x (<o>) b*y</tt> if both @a x and @a y are supplied.
+    * - <tt>dst = a*x (<o>) b</tt> if the @a y argument is @c NULL.
+    * Where <tt>(<o>)</tt> corresponds to the operator that will be applied
     * @note If @a y or @a dst are used, they must have the same length as @a x.
     * @param[out] dst The pointer to the destination array where the result
     * will be stored. To ignore pass @c NULL as argument.
-    * @param[in] o The desired operation to perform on vectors.
+    * @param[in] o The desired operator, should be one of the following:
+    * - ::VFLOAT_ADD : Addition
+    * - ::VFLOAT_MUL : Multiplication
+    * - ::VFLOAT_DIV : Division
     * @param[in] a Value to scale the vector @a x.
     * @param[in] x A vector as an 1D float array
     * @param[in] b Value to scale the vector @a y.
@@ -87,10 +91,18 @@ extern "C" {
     * @remark If both function are supplied, only @a fx1 will be applied
     * @param[out] dst The pointer to the destination vector where the result
     * will be stored. To ignore pass @c NULL as argument.
-    * @param[in] fx1 The function with one argument to be applied to every 
-    * element of @a x. To ignore pass @c NULL as argument.
-    * @param[in] fx2 The function with two arguments to be applied to every 
-    * element of @a x or/and @a y. To ignore pass @c NULL as argument.
+    * @param[in] fx1 Function that will be applied to each element of @a x. This
+    * function will only take one parameter and should have the following signature:
+    * @code{.c}
+    * float fx1( float p );
+    * @endcode
+    * To ignore pass @c NULL as argument.
+    * @param[in] fx2 Function that will be applied to each element of @a x. This
+    * function will take 2 parameters and should have the following signature:
+    * @code{.c}
+    * float fx1( float p1, float p2 );
+    * @endcode
+    * To ignore pass @c NULL as argument.
     * @param[in] x A vector as an 1D float array
     * @param[in] y A vector as an 1D float array. To ignore pass @c NULL as
     * argument.
@@ -199,9 +211,11 @@ extern "C" {
     * @brief Reverse the given vector pointed by @a src. Operation takes place 
     * on the portion of the vector that starts at position @a init to position
     * @a end.
+    * @remark If the @a dst argument is ignored, the operation will take place
+    * over the @a src argument itself.
     * @param[out] dst The pointer to the destination vector where the result
     * will be stored. To ignore pass @c NULL as argument.
-    * @param[in] src The input vector to reverse.
+    * @param[in,out] src The input vector to reverse.
     * @param[in] init Position of the first element.
     * @param[in] end Position of the last element.
     * @return A pointer to the reversed vector.
@@ -214,9 +228,11 @@ extern "C" {
     /**
     * @brief Rotates the elements of vector pointed by @a src the number of 
     * places and in the direction indicated by @a k.
+    * @remark If the @a dst argument is ignored, the operation will take place
+    * over the @a src argument itself.
     * @param[out] dst The pointer to the destination vector where the result
     * will be stored. To ignore pass @c NULL as argument.
-    * @param[in] src The input vector to rotate.
+    * @param[in,out] src The input vector to rotate.
     * @param[in] k Position of the first element.
     * @param[in] n Number of elements of the vector 
     * @return A pointer to the rotated vector.
@@ -242,9 +258,11 @@ extern "C" {
     * the elements arranged in ascending or descending order according the value
     * or @a dir.
     * @note This function is a wrapper to qTypeGeneric_Sort()
+    * @remark If the @a dst argument is ignored, the operation will take place
+    * over the @a src argument itself.
     * @param[out] dst The pointer to the destination vector where the result
     * will be stored. To ignore pass @c NULL as argument.
-    * @param[in] src The input vector to rotate.
+    * @param[in,out] src The input vector to rotate.
     * @param[in] dir Pass false to sort in ascending order, otherwise pass true.
     * @param[in] n Number of elements of the vector 
     * @return A pointer to the sorted vector.
