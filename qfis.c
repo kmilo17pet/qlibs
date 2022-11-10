@@ -5,6 +5,7 @@
  **/
 
 #include "qfis.h"
+#include "qfmathex.h"
 #include <math.h>
 #include <stdbool.h>
 
@@ -130,8 +131,6 @@ static float qFIS_DeFuzz_WtAverage( qFIS_Output_t * const o,
 static float qFIS_DeFuzz_WtSum( qFIS_Output_t * const o,
                                 const qFIS_DeFuzzState_t stage );
 static void qFIS_Aggregate( qFIS_t * const f );
-static bool qFIS_Equal( const float a,
-                        const float b );
 
 #define QFIS_INFERENCE_ERROR         ( 0u )
 
@@ -983,7 +982,7 @@ static float qFIS_TSigMF( const qFIS_IO_Base_t * const in,
 
     a = p[ 0 ]; /*slope*/
     b = p[ 1 ]; /*inflection*/
-    if ( qFIS_Equal( x, 1.0f ) ) {
+    if ( qFMathEx_Equal( x, 1.0f ) ) {
         if ( a >= 0.0f ) {
             y = max;
         }
@@ -991,7 +990,7 @@ static float qFIS_TSigMF( const qFIS_IO_Base_t * const in,
             y = min;
         }
     }
-    else if ( qFIS_Equal( x, 0.0f ) ) {
+    else if ( qFMathEx_Equal( x, 0.0f ) ) {
         if ( a >= 0.0f ) {
             y = min;
         }
@@ -1129,7 +1128,7 @@ static float qFIS_LinSMF( const qFIS_IO_Base_t * const in,
             y = ( x - a )/( b - a );
         }
     }
-    else if ( qFIS_Equal( a, b ) ) {
+    else if ( qFMathEx_Equal( a, b ) ) {
         y = ( x < a ) ? 0.0f : 1.0f;
     }
     else {
@@ -1160,7 +1159,7 @@ static float qFIS_LinZMF( const qFIS_IO_Base_t * const in,
             y = ( a - x )/( a - b );
         }
     }
-    else if ( qFIS_Equal( a, b ) ) {
+    else if ( qFMathEx_Equal( a, b ) ) {
         y = ( x < a ) ? 1.0f : 0.0f;
     }
     else {
@@ -1208,7 +1207,7 @@ static float qFIS_SingletonMF( const qFIS_IO_Base_t * const in,
     float x = in[ 0 ].value;
     (void)n;
 
-    return ( qFIS_Equal( x, p[ 0 ] ) )? 1.0f : 0.0f;
+    return ( qFMathEx_Equal( x, p[ 0 ] ) ) ? 1.0f : 0.0f;
 }
 /*============================================================================*/
 static float qFIS_ConcaveMF( const qFIS_IO_Base_t * const in,
@@ -1381,25 +1380,8 @@ static float qFIS_Bound( float y,
                          const float yMin,
                          const float yMax )
 {
-    if ( 1 == (int)isnan( y ) ) {
-        y = yMin;
-    }
-    else {
-        if ( y < yMin ) {
-            y = yMin;
-        }
-
-        if ( y > yMax ) {
-            y = yMax;
-        }
-    }
+    (void)qFMathEx_InRangeCoerce( &y, yMin, yMax );
 
     return y;
-}
-/*============================================================================*/
-static bool qFIS_Equal( const float a,
-                        const float b )
-{
-    return ( fabsf( a - b ) <= FLT_MIN );
 }
 /*============================================================================*/

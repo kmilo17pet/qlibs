@@ -36,7 +36,7 @@ extern "C" {
         QSSMOOTHER_TYPE_MOR2,       /*!< Moving Outliers Removal ( O(1) time by using a TDL )*/
         QSSMOOTHER_TYPE_GMWF,       /*!< Gaussian Filter*/
         QSSMOOTHER_TYPE_KLMN,       /*!< Kalman Filter*/
-        QSSMOOTHER_TYPE_EXPW,       /*!< Exponential weighting filter*/
+        QSSMOOTHER_TYPE_EXPW        /*!< Exponential weighting filter*/
     } qSSmoother_Type_t;
 
     /*! @cond  */

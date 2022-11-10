@@ -34,8 +34,8 @@ extern "C" {
     * @param[in] size The size of the data to be swapped.
     * @return none.
     */
-    void qTypeGeneric_Swap( void *x,
-                            void *y,
+    void qTypeGeneric_Swap( void * const x,
+                            void * const y,
                             size_t n );
 
     /**

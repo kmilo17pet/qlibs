@@ -27,7 +27,7 @@ extern "C" {
     typedef enum {
         QCRC8 = 0,      /*!< 8-Bit Cyclic Redundancy Check*/
         QCRC16,         /*!< 16-Bit Cyclic Redundancy Check*/
-        QCRC32,         /*!< 32-Bit Cyclic Redundancy Check*/
+        QCRC32          /*!< 32-Bit Cyclic Redundancy Check*/
     } qCRC_Mode_t;
 
     /**

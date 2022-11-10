@@ -1,6 +1,6 @@
 #include "qvfloat.h"
 #include "qtypegeneric.h"
-#include "qfloatextra.h"
+#include "qfmathex.h"
 #include <string.h>
 #include <math.h>
 
@@ -66,12 +66,12 @@ static int qVFloat_CmpDes( const void *a,
 
 /*============================================================================*/
 static float qVFloat_VV_Add( float **dst,
-                           float **pOut,
-                           const float a,
-                           const float * const x,
-                           const float b,
-                           const float * const y,
-                           size_t n )
+                             float **pOut,
+                             const float a,
+                             const float * const x,
+                             const float b,
+                             const float * const y,
+                             size_t n )
 {
     size_t i;
     float s = 0.0f;
@@ -95,7 +95,7 @@ static float qVFloat_kV_Add( float **dst,
     size_t i;
     float s = 0.0f;
 
-    for ( i = 0u; i < n ; ++i ) {
+    for ( i = 0u ; i < n ; ++i ) {
         pOut[ 0 ][ 0 ] = ( a*x[ i ] ) + b;
         s += pOut[ 0 ][ 0 ];
         dst[ 0 ]++;
@@ -116,7 +116,7 @@ static float qVFloat_VV_Mul( float **dst,
     float s = 0.0f;
     const float k = a*b;
 
-    for ( i = 0u; i < n ; ++i ) {
+    for ( i = 0u ; i < n ; ++i ) {
         pOut[ 0 ][ 0 ] = k*x[ i ]*y[ i ];
         s += pOut[ 0 ][ 0 ];
         dst[ 0 ]++;
@@ -136,7 +136,7 @@ static float qVFloat_kV_Mul( float **dst,
     float s = 0.0f;
     const float k = a*b;
 
-    for ( i = 0u; i < n ; ++i ) {
+    for ( i = 0u ; i < n ; ++i ) {
         pOut[ 0 ][ 0 ] = k*x[ i ];
         s += pOut[ 0 ][ 0 ];
         dst[ 0 ]++;
@@ -157,7 +157,7 @@ static float qVFloat_VV_Div( float **dst,
     float s = 0.0f;
     const float k = a/b;
 
-    for ( i = 0u; i < n ; ++i ) {
+    for ( i = 0u ; i < n ; ++i ) {
         pOut[ 0 ][ 0 ] = ( k*x[ i ] )/y[ i ];
         s += pOut[ 0 ][ 0 ];
         dst[ 0 ]++;
@@ -177,7 +177,7 @@ static float qVFloat_kV_Div( float **dst,
     float s = 0.0f;
     const float k = a/b;
 
-    for ( i = 0u; i < n ; ++i ) {
+    for ( i = 0u ; i < n ; ++i ) {
         pOut[ 0 ][ 0 ] =  k*x[ i ];
         s += pOut[ 0 ][ 0 ];
         dst[ 0 ]++;
@@ -195,11 +195,11 @@ float qVFloat_Operate( float * dst,
                        const size_t n )
 {
     static qVFloat_VVFcn_t vv_fcn[ 3 ] = {
-                                        &qVFloat_VV_Add, &qVFloat_VV_Mul, &qVFloat_VV_Div
-                                       };
+                                         &qVFloat_VV_Add, &qVFloat_VV_Mul, &qVFloat_VV_Div
+                                         };
     static qVFloat_kVFcn_t kv_fcn[ 3 ] = {
-                                       &qVFloat_kV_Add, &qVFloat_kV_Mul, &qVFloat_kV_Div
-                                       };
+                                         &qVFloat_kV_Add, &qVFloat_kV_Mul, &qVFloat_kV_Div
+                                         };
     float retVal = 0.0f;
 
     if ( ( NULL != x ) && ( n > 0u ) ) {
@@ -229,7 +229,7 @@ float qVFloat_ApplyFx( float *dst,
     float **ppt = ( NULL == dst ) ? &pt : &dst;
 
     if ( NULL != fx1 ) {
-        for ( i = 0u; i < n ; ++i ) {
+        for ( i = 0u ; i < n ; ++i ) {
             ppt[ 0 ][ 0 ] = a*fx1( x[ i ] );
             s += ppt[ 0 ][ 0 ];
             dst++;
@@ -263,20 +263,18 @@ int qVFloat_Moment( qVFloat_Moment_t * const m,
                     const size_t n )
 {
     int retVal = 0;
-    size_t j;
-    float ep = 0.0f, s, p;
-    /*cstat -CERT-FLP36-C*/  
-    const float l = (float)n;
-    /*cstat +CERT-FLP36-C*/
-    
+
     if ( n > 1u ) {
+        size_t j;
+        float ep = 0.0f, s = 0.0f, p;
+        /*cstat -CERT-FLP36-C*/
+        const float l = (float)n;
+        /*cstat +CERT-FLP36-C*/
         (void)memset( m, 0, sizeof(qVFloat_Moment_t) );
-        s = 0.0f;
         for ( j = 1u ; j <= n ; ++j ) {
             s += x[ j ];
         }
         m->mean = s/l;
-        
         for ( j = 1u ; j <= n ; ++j ) {
             s = x[ j ] - m->mean;
             m->avgDev += fabsf( s );
@@ -292,7 +290,7 @@ int qVFloat_Moment( qVFloat_Moment_t * const m,
         /*cstat -MISRAC2012-Dir-4.11_b -CERT-FLP34-C*/
         m->stdDev =  ( m->var >= 0.0f ) ? sqrtf( m->var ) : NAN;
         /*cstat +MISRAC2012-Dir-4.11_b*/
-        if ( false == qFloat_Equal( 0.0f, m->var ) ) {
+        if ( false == qFMathEx_Equal( 0.0f, m->var ) ) {
             m->skew /= ( ( m->curt )/( l*m->var*m->var ) ) - 3.0f;
         }
         else {
@@ -311,7 +309,7 @@ float* qVFloat_Set( float * const x,
 {
     size_t i;
 
-    for ( i = 0u; i < n ; ++i ) {
+    for ( i = 0u ; i < n ; ++i ) {
         x[ i ] = c;
     }
 
@@ -368,7 +366,7 @@ float qVFloat_Distance( const float * const x,
 
     if ( ( NULL != x ) && ( NULL != y ) ) {
         for ( i = 0u ; i < n ; ++i ) {
-            tmp = x[ i ] - y[ i ]; 
+            tmp = x[ i ] - y[ i ];
             s += tmp*tmp;
         }
         /*cstat -MISRAC2012-Dir-4.11_b*/
@@ -414,7 +412,8 @@ int qVFloat_MinMax( qVFloat_MinMax_t * const o,
                     const size_t n )
 {
     int retVal = 0;
-    if ( ( NULL != x) && ( NULL != o) && ( n > 0u ) ) {
+
+    if ( ( NULL != x ) && ( NULL != o ) && ( n > 0u ) ) {
         if ( 1u == n ) {
             o->min = x[ 0 ];
             o->max = x[ 0 ];
@@ -442,7 +441,7 @@ int qVFloat_MinMax( qVFloat_MinMax_t * const o,
                     o->max = x[ i ];
                     o->index_max = i;
                 }
-                else if ( x[ i ] < o->min) {
+                else if ( x[ i ] < o->min ) {
                     o->min = x[ i ];
                     o->index_min = i;
                 }
@@ -488,7 +487,7 @@ float* qVFloat_Sort( float * const dst,
 
     if ( ( src != NULL ) && ( n > 0u ) ) {
         v = ( NULL != dst ) ? qVFloat_Copy( dst, src, n ) : src;
-        qTypeGeneric_Sort( v, n, sizeof(float), (dir) ? &qVFloat_CmpAsc : &qVFloat_CmpDes, NULL );
+        qTypeGeneric_Sort( v, n, sizeof(float), ( dir ) ? &qVFloat_CmpAsc : &qVFloat_CmpDes, NULL );
     }
 
     return v;

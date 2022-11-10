@@ -13,12 +13,12 @@ static void qTypeGeneric_SortStackPush( qTypeGeneric_SortStackNode_t **top,
                                         uint8_t *high );
 
 /*============================================================================*/
-void qTypeGeneric_Swap( void *x,
-                        void *y,
+void qTypeGeneric_Swap( void * const x,
+                        void * const y,
                         size_t n )
 {
     /*cstat -MISRAC2012-Rule-11.5 -CERT-EXP36-C_b*/
-    uint8_t *a = (uint8_t*)x, *b = (uint8_t*)y;
+    uint8_t * const a = (uint8_t * const)x, *b = (uint8_t * const)y;
     /*cstat +MISRAC2012-Rule-11.5 +CERT-EXP36-C_b*/
     size_t i = 0u, j = 0u;
     do {
@@ -51,21 +51,17 @@ void qTypeGeneric_Sort( void * const pbase,
         /*cstat -MISRAC2012-Rule-11.5 -CERT-EXP36-C_b*/
         uint8_t *base_ptr = (uint8_t *)pbase;
         /*cstat +MISRAC2012-Rule-11.5 +CERT-EXP36-C_b*/
-        uint8_t *const end_ptr = &base_ptr[ size*( n - 1u ) ];
-        uint8_t *tmp_ptr = base_ptr;
+        uint8_t * const end_ptr = &base_ptr[ size*( n - 1u ) ];
+        uint8_t *tmp_ptr = base_ptr, *run_ptr;
         uint8_t *thresh = ( end_ptr < ( base_ptr + max_thresh) ) ? end_ptr : ( base_ptr + max_thresh ) ;
-        uint8_t *run_ptr;
-        
+
         if ( n > 4u ) {
-            uint8_t *lo = base_ptr;
-            uint8_t *hi = &lo[ size*( n - 1u ) ];
-            qTypeGeneric_SortStackNode_t stack[ 8u*sizeof(size_t) ];
-            qTypeGeneric_SortStackNode_t *top = stack;
+            uint8_t *lo = base_ptr, *hi = &lo[ size*( n - 1u ) ];
+            qTypeGeneric_SortStackNode_t stack[ 8u*sizeof(size_t) ], *top = stack;
 
             qTypeGeneric_SortStackPush( &top, NULL, NULL );
             while ( stack < top ) {
-                uint8_t *left_ptr;
-                uint8_t *right_ptr;
+                uint8_t *left_ptr, *right_ptr;
                 /*cstat -ATH-div-0-unchk-param -CERT-INT33-C_h*/
                 uint8_t *mid = &lo[ size*( ( (size_t)(hi - lo)/size ) >> 1u ) ];
                 /*cstat +ATH-div-0-unchk-param +CERT-INT33-C_h*/
@@ -73,7 +69,7 @@ void qTypeGeneric_Sort( void * const pbase,
                     qTypeGeneric_Swap( mid, lo, size );
                 }
                 if ( cmp( hi, mid, arg ) < 0 ) {
-                    qTypeGeneric_Swap (mid, hi, size);
+                    qTypeGeneric_Swap( mid, hi, size );
                 }
                 else {
                     goto jump_over;
@@ -94,7 +90,7 @@ void qTypeGeneric_Sort( void * const pbase,
                     }
 
                     if ( left_ptr < right_ptr ) {
-                        qTypeGeneric_Swap (left_ptr, right_ptr, size);
+                        qTypeGeneric_Swap( left_ptr, right_ptr, size );
                         if ( mid == left_ptr ) {
                             mid = right_ptr;
                         }
@@ -119,8 +115,7 @@ void qTypeGeneric_Sort( void * const pbase,
 
                 if ( (size_t)( right_ptr - lo ) <= max_thresh ) {
                     if ( (size_t)( hi - left_ptr ) <= max_thresh ) {
-                        /*POP form the stack*/
-                        --top;
+                        --top; /*POP form the stack*/
                         lo = top->lo;
                         hi = top->hi;
                     }
@@ -142,7 +137,6 @@ void qTypeGeneric_Sort( void * const pbase,
             }
         }
 
-
         for ( run_ptr = tmp_ptr + size ; run_ptr <= thresh ; run_ptr += size ) {
             if ( cmp( run_ptr, tmp_ptr, arg ) < 0 ) {
                 tmp_ptr = run_ptr;
@@ -153,18 +147,16 @@ void qTypeGeneric_Sort( void * const pbase,
             qTypeGeneric_Swap( tmp_ptr, base_ptr, size );
         }
         run_ptr = base_ptr + size;
-        while ( (run_ptr += size ) <= end_ptr) {
+        while ( (run_ptr += size ) <= end_ptr ) {
             tmp_ptr = run_ptr - size;
             while ( cmp( run_ptr, tmp_ptr, arg ) < 0 ) {
                 tmp_ptr -= size;
             }
             tmp_ptr += size;
             if ( tmp_ptr != run_ptr ) {
-                uint8_t *tra;
-                tra = run_ptr + size;
+                uint8_t *tra = run_ptr + size;
                 while ( --tra >= run_ptr ) {
-                    uint8_t c = *tra;
-                    uint8_t *hi =tra, *lo = tra;
+                    uint8_t c = *tra, *hi = tra, *lo = tra;
                     while ( (lo -= size) >= tmp_ptr ) {
                         *hi = *lo;
                         hi = lo;

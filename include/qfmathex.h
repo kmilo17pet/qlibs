@@ -1,9 +1,9 @@
 /*!
  * @file qfloatextra.h
  * @author J. Camilo Gomez C.
- * @version 1.01
+ * @version 1.02
  * @note This file is part of the qLibs distribution.
- * @brief Extra utility for for floats
+ * @brief Extra floating-point math and analysis functions
  **/
 
 #ifndef QFLOATEXTRA_H
@@ -27,11 +27,11 @@ extern "C" {
     * @param[in] yMax Output maximum value for range
     * @return The scaled value in range @a yMin and @a yMax.
     */
-    float qFloat_MapMinMax( const float x,
-                            const float xMin,
-                            const float xMax,
-                            const float yMin,
-                            const float yMax );
+    float qFMathEx_MapMinMax( const float x,
+                              const float xMin,
+                              const float xMax,
+                              const float yMin,
+                              const float yMax );
     /**
     * @brief Determines if the value pointed by @a x falls within a range 
     * specified by the upper limit and lower limit inputs and coerces the value
@@ -42,9 +42,9 @@ extern "C" {
     * @return true when the value falls within the specified range, otherwise 
     * false
     */
-    bool qFloat_InRangeCoerce( float * const x,
-                               const float lowerL,
-                               const float upperL );
+    bool qFMathEx_InRangeCoerce( float * const x,
+                                 const float lowerL,
+                                 const float upperL );
 
     /**
     * @brief Determines if the value pointed by @a x falls within a range 
@@ -56,9 +56,20 @@ extern "C" {
     * @return true when the value falls within the specified range, otherwise 
     * false
     */
-    bool qFloat_Equal( const float a,
-                       const float b );
+    bool qFMathEx_Equal( const float a,
+                         const float b );
 
+    bool qFMathEx_InPolygon( const float x,
+                             const float y,
+                             const float * const px,
+                             const float * const py,
+                             const size_t p );
+
+    bool qFMathEx_isInsideCircle( const float x,
+                                  const float y,
+                                  const float cx,
+                                  const float cy,
+                                  const float r );
 
 #ifdef __cplusplus
 }

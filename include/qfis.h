@@ -1,7 +1,7 @@
 /*!
  * @file qfis.h
  * @author J. Camilo Gomez C.
- * @version 1.4.3
+ * @version 1.4.4
  * @note This file is part of the qLibs distribution.
  * @brief Fuzzy Inference System (FIS) Engine
  **/
@@ -111,7 +111,7 @@ extern "C" {
     typedef enum {
         DeFuzz_Init,
         DeFuzz_Compute,
-        DeFuzz_End,
+        DeFuzz_End
     } qFIS_DeFuzzState_t;
         /*! @endcond  */
 
@@ -211,7 +211,6 @@ extern "C" {
         float (*aggregate)( const float a, const float b );
         size_t (*inferenceState)( struct _qFIS_s * const f, size_t i );
         size_t (*aggregationState)( struct _qFIS_s * const f, size_t i );
-        //void (*typeDeFuzz)( struct _qFIS_s * const f );
         qFIS_DeFuzz_Fcn_t deFuzz;
         float *ruleWeight;
         float *wi;
