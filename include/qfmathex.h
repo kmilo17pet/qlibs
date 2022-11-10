@@ -65,14 +65,23 @@ extern "C" {
                                  const float upperL );
 
     /**
-    * @brief Determines if the value pointed by @a x falls within a range 
-    * specified by the upper limit and lower limit inputs and coerces the value
-    * to fall within the range.
-    * @param[in,out] x Input
-    * @param[in] lowerL Lower limit.
-    * @param[in] upperL Upper limit.
-    * @return true when the value falls within the specified range, otherwise 
-    * false
+    * @brief Determines if the parameters given as single-precision 
+    * floating-point values are approximately equal.
+    * @param[in] a Input to be compared.
+    * @param[in] b Input to be compared.
+    * @param[in] tol Tolerance
+    * @return true when both values are approximately equal.
+    */
+    bool qFMathEx_AlmostEqual( const float a,
+                               const float b,
+                               const float tol );
+
+    /**
+    * @brief Determines if the parameters given as single-precision 
+    * floating-point values are equal.
+    * @param[in] a Input to be compared.
+    * @param[in] b Input to be compared.
+    * @return true when both values are equal.
     */
     bool qFMathEx_Equal( const float a,
                          const float b );

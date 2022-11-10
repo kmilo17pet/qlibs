@@ -45,10 +45,17 @@ bool qFMathEx_InRangeCoerce( float * const x,
     return retVal;
 }
 /*============================================================================*/
+bool qFMathEx_AlmostEqual( const float a,
+                           const float b,
+                           const float tol )
+{
+    return ( fabsf( a - b ) <= fabsf( tol ) );
+}
+/*============================================================================*/
 bool qFMathEx_Equal( const float a,
                      const float b )
 {
-    return ( fabsf( a - b ) <= FLT_MIN );
+    return qFMathEx_AlmostEqual( a, b, FLT_MIN );
 }
 /*============================================================================*/
 bool qFMathEx_InPolygon( const float x,
