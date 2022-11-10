@@ -1,5 +1,6 @@
 var NAVTREEINDEX1 =
 {
+"group__qssmoother.html#gga8953f71916f57517edbe8cab4d7ee639ac2598cbedb9a3b3b663f3f887be4a342":[1,1,9,2],
 "group__qssmoother.html#gga8953f71916f57517edbe8cab4d7ee639ad4c3e7ec5b54fc155c6a84381f8e29f8":[1,1,9,4],
 "group__qssmoother.html#gga8953f71916f57517edbe8cab4d7ee639ad67f57dd9afcfa9a0a6803aa92a616ea":[1,1,9,0],
 "group__qtdl.html":[1,9],

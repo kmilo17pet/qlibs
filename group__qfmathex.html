@@ -144,8 +144,11 @@ Functions</h2></td></tr>
 <tr class="memitem:gab5f157ae639a33b93941d6ea19ac2bf7"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qfmathex.html#gab5f157ae639a33b93941d6ea19ac2bf7">qFMathEx_InRangeCoerce</a> (float *const x, const float lowerL, const float upperL)</td></tr>
 <tr class="memdesc:gab5f157ae639a33b93941d6ea19ac2bf7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Determines if the value pointed by <em>x</em> falls within a range specified by the upper limit and lower limit inputs and coerces the value to fall within the range.  <a href="group__qfmathex.html#gab5f157ae639a33b93941d6ea19ac2bf7">More...</a><br /></td></tr>
 <tr class="separator:gab5f157ae639a33b93941d6ea19ac2bf7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gae980e8180a56a84223c4b3119bc3f97f"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qfmathex.html#gae980e8180a56a84223c4b3119bc3f97f">qFMathEx_AlmostEqual</a> (const float a, const float b, const float tol)</td></tr>
+<tr class="memdesc:gae980e8180a56a84223c4b3119bc3f97f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Determines if the parameters given as single-precision floating-point values are approximately equal.  <a href="group__qfmathex.html#gae980e8180a56a84223c4b3119bc3f97f">More...</a><br /></td></tr>
+<tr class="separator:gae980e8180a56a84223c4b3119bc3f97f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gaf150c21a5e07dd3060f045fce8f62c2d"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qfmathex.html#gaf150c21a5e07dd3060f045fce8f62c2d">qFMathEx_Equal</a> (const float a, const float b)</td></tr>
-<tr class="memdesc:gaf150c21a5e07dd3060f045fce8f62c2d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Determines if the value pointed by <em>x</em> falls within a range specified by the upper limit and lower limit inputs and coerces the value to fall within the range.  <a href="group__qfmathex.html#gaf150c21a5e07dd3060f045fce8f62c2d">More...</a><br /></td></tr>
+<tr class="memdesc:gaf150c21a5e07dd3060f045fce8f62c2d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Determines if the parameters given as single-precision floating-point values are equal.  <a href="group__qfmathex.html#gaf150c21a5e07dd3060f045fce8f62c2d">More...</a><br /></td></tr>
 <tr class="separator:gaf150c21a5e07dd3060f045fce8f62c2d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga356e167519af5c88ae69e523c00f04f3"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qfmathex.html#ga356e167519af5c88ae69e523c00f04f3">qFMathEx_InPolygon</a> (const float x, const float y, const float *const px, const float *const py, const size_t p)</td></tr>
 <tr class="memdesc:ga356e167519af5c88ae69e523c00f04f3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Determines if the point at ( <em>x</em>, <em>y</em>) is inside the polygon given by the set of points on <em>px</em> and <em>py</em>.  <a href="group__qfmathex.html#ga356e167519af5c88ae69e523c00f04f3">More...</a><br /></td></tr>
@@ -157,6 +160,51 @@ Functions</h2></td></tr>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <p >Extra floating-point math and analysis functions. </p>
 <h2 class="groupheader">Function Documentation</h2>
+<a id="gae980e8180a56a84223c4b3119bc3f97f" name="gae980e8180a56a84223c4b3119bc3f97f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gae980e8180a56a84223c4b3119bc3f97f">&#9670;&nbsp;</a></span>qFMathEx_AlmostEqual()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool qFMathEx_AlmostEqual </td>
+          <td>(</td>
+          <td class="paramtype">const float&#160;</td>
+          <td class="paramname"><em>a</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const float&#160;</td>
+          <td class="paramname"><em>b</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const float&#160;</td>
+          <td class="paramname"><em>tol</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Determines if the parameters given as single-precision floating-point values are approximately equal. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">a</td><td>Input to be compared. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">b</td><td>Input to be compared. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">tol</td><td>Tolerance </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>true when both values are approximately equal. </dd></dl>
+
+</div>
+</div>
 <a id="gaf150c21a5e07dd3060f045fce8f62c2d" name="gaf150c21a5e07dd3060f045fce8f62c2d"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#gaf150c21a5e07dd3060f045fce8f62c2d">&#9670;&nbsp;</a></span>qFMathEx_Equal()</h2>
 
@@ -183,16 +231,15 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Determines if the value pointed by <em>x</em> falls within a range specified by the upper limit and lower limit inputs and coerces the value to fall within the range. </p>
+<p>Determines if the parameters given as single-precision floating-point values are equal. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in,out]</td><td class="paramname">x</td><td>Input </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">lowerL</td><td>Lower limit. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">upperL</td><td>Upper limit. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">a</td><td>Input to be compared. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">b</td><td>Input to be compared. </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>true when the value falls within the specified range, otherwise false </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>true when both values are equal. </dd></dl>
 
 </div>
 </div>

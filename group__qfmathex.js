@@ -1,5 +1,6 @@
 var group__qfmathex =
 [
+    [ "qFMathEx_AlmostEqual", "group__qfmathex.html#gae980e8180a56a84223c4b3119bc3f97f", null ],
     [ "qFMathEx_Equal", "group__qfmathex.html#gaf150c21a5e07dd3060f045fce8f62c2d", null ],
     [ "qFMathEx_InPolygon", "group__qfmathex.html#ga356e167519af5c88ae69e523c00f04f3", null ],
     [ "qFMathEx_InRangeCoerce", "group__qfmathex.html#gab5f157ae639a33b93941d6ea19ac2bf7", null ],
