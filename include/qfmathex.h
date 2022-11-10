@@ -6,8 +6,8 @@
  * @brief Extra floating-point math and analysis functions
  **/
 
-#ifndef QFLOATEXTRA_H
-#define QFLOATEXTRA_H
+#ifndef QFMATHEX_H
+#define QFMATHEX_H
 
 #ifdef __cplusplus
 extern "C" {
@@ -17,14 +17,14 @@ extern "C" {
     #include <stdint.h>
     #include <stdbool.h>
 
-    /** @addtogroup  qfmathex Extra floating-point math
+    /** @addtogroup  qfmathex qFMathEx
     * @brief Extra floating-point math and analysis functions
     *  @{
     */
 
      /**
     * @brief Scales the given input @a x in value range given by  @a xMin and 
-    * @a xMax in value range specified by the @a yMin and @a yMax.
+    * @a xMax to value range specified by the @a yMin and @a yMax.
     * @param[in] x Input
     * @param[in] xMin Input minimum value for range
     * @param[in] xMax Input maximum  value for range
@@ -37,6 +37,19 @@ extern "C" {
                               const float xMax,
                               const float yMin,
                               const float yMax );
+
+     /**
+    * @brief Normalize the given input @a x in value range given by @a xMin and 
+    * @a xMax to value range between 0 and 1.
+    * @param[in] x Input
+    * @param[in] xMin Input minimum value for range
+    * @param[in] xMax Input maximum  value for range
+    * @return The scaled value in range [0 - 1].
+    */
+    float qFMathEx_Normalize( const float x,
+                              const float xMin,
+                              const float xMax );
+
     /**
     * @brief Determines if the value pointed by @a x falls within a range 
     * specified by the upper limit and lower limit inputs and coerces the value

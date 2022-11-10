@@ -25,6 +25,7 @@ extern "C" {
 
     /*! @cond  */
     typedef int (*qTypeGeneric_CompareFcn_t)( const void *, const void *, void * );
+    typedef int (*qTypeGeneric_ForEachFcn_t)( int, void *, void * );
     /*! @endcond  */
 
     /**
@@ -116,19 +117,20 @@ extern "C" {
 
     /**
     * @brief Performs a linear search over an array of @a n elements 
-    * pointed to by @a pbase for a member that matches the object pointed to 
+    * pointed to by @a pbase for an element that matches the object pointed to 
     * by @a key.
-    * The size of each member is specified by @a size. The array contents
+    * The size of each element is specified by @a size. The array contents
     * should be sorted in ascending order according to the @a compar
     * comparison function. This routine should take two arguments pointing to
-    * the @a key and to an array member, in that order, and should return an
+    * the @a key and to an array element, in that order, and should return an
     * integer less than, equal to, or greater than zero if the @a key object
-    * is respectively less than, matching, or greater than the array member.
+    * is respectively less than, matching, or greater than the array element.
     * @param[in] key This is the pointer to the object that serves as key for 
     * the search, type-casted as a @c void*.
     * @param[in] pbase This is the pointer to the first object of the array 
     * where the search is performed, type-casted as a @c void*.
-    * @param[in] n This is the number of elements in the array pointed by base.
+    * @param[in] n This is the number of elements in the array pointed by 
+    * @a pbase.
     * @param[in] size This is the size in bytes of each element in the array.
     * @param[in] compar This is the function that compares two elements.
     * The signature of the comparison function should be equivalent to the 
@@ -158,19 +160,20 @@ extern "C" {
 
     /**
     * @brief Performs a binary search over an array of @a n elements 
-    * pointed to by @a pbase for a member that matches the object pointed to 
+    * pointed to by @a pbase for an element that matches the object pointed to 
     * by @a key.
-    * The size of each member is specified by @a size. The array contents
+    * The size of each element is specified by @a size. The array contents
     * should be sorted in ascending order according to the @a compar
     * comparison function. This routine should take two arguments pointing to
-    * the @a key and to an array member, in that order, and should return an
+    * the @a key and to an array element, in that order, and should return an
     * integer less than, equal to, or greater than zero if the @a key object
-    * is respectively less than, matching, or greater than the array member.
+    * is respectively less than, matching, or greater than the array element.
     * @param[in] key This is the pointer to the object that serves as key for 
     * the search, type-casted as a @c void*.
     * @param[in] pbase This is the pointer to the first object of the array 
     * where the search is performed, type-casted as a @c void*.
-    * @param[in] n This is the number of elements in the array pointed by base.
+    * @param[in] n This is the number of elements in the array pointed by 
+    * @a base.
     * @param[in] size This is the size in bytes of each element in the array.
     * @param[in] compar This is the function that compares two elements.
     * The signature of the comparison function should be equivalent to the 
@@ -197,6 +200,42 @@ extern "C" {
                                 const size_t size,
                                 qTypeGeneric_CompareFcn_t compar,
                                 void *arg );
+    /**
+    * @brief Iterates @a n elements of the array pointed to by @a pbase 
+    * The size of each element is specified by @a size. Every element should be
+    * handled by function @a f. The iteration loop can be aborted by returning 1.
+    * @param[in] pbase This is the pointer to the first object of the array 
+    * type-casted as a @c void*.
+    * @param[in] n This is the number of elements in the array pointed by 
+    * @a pbase.
+    * @param[in] size This is the size in bytes of each element in the array.
+    * @param[in] f The function that will handle each element of the array
+    * The signature of this handling function should be equivalent to the 
+    * following:
+    * @code{.c}
+    * int compar( int i, void *element, void *arg );
+    * @endcode
+    * The argument @a i is used to keep track of the iteration in which the loop
+    * is.
+    * - <tt>i < 0</tt> Loop its a about to start (pre-loop invocation). The 
+    * @a element argument at this stage its passed as @c NULL and should not be 
+    * dereferenced.
+    * - <tt>[ 0 <= i < n ]</tt> Loop its iterating and the @a element argument 
+    * is pointing to the array at index @a i.
+    * - <tt>i == n</tt> Loop has ended (pos-loop invocation). The @a element 
+    * argument at this stage its passed as @c NULL and should not be dereferenced.
+    * @param[in] dir Pass @c true to iterate the array backwards.
+    * @param[in] arg Additional information (e.g., collating sequence), passed
+    * to @a f as the third argument
+    * @return This function returns 1 if the iteration loop is aborted otherwise
+    * returns 0.
+    */
+    int qTypeGeneric_ForEach( void *pbase,
+                              const size_t size,
+                              const size_t n,
+                              qTypeGeneric_ForEachFcn_t f,
+                              const bool dir,
+                              void *arg );
 
     /** @}*/
 

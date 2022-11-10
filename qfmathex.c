@@ -5,13 +5,20 @@
 #include <string.h>
 
 /*============================================================================*/
+float qFMathEx_Normalize( const float x,
+                          const float xMin,
+                          const float xMax )
+{
+    return ( x - xMin )/( xMax - xMin );
+}
+/*============================================================================*/
 float qFMathEx_MapMinMax( const float x,
                           const float xMin,
                           const float xMax,
                           const float yMin,
                           const float yMax )
 {
-    return ( ( ( ( yMax - yMin )*( x - xMin ) )/( xMax - xMin ) ) + yMin );
+    return ( ( yMax - yMin )*qFMathEx_Normalize( x, xMin, xMax ) ) + yMin;
 }
 /*============================================================================*/
 bool qFMathEx_InRangeCoerce( float * const x,

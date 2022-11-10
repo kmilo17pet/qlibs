@@ -293,3 +293,44 @@ void* qTypeGeneric_BSearch( const void *key,
     return retVal;
 }
 /*============================================================================*/
+int qTypeGeneric_ForEach( void *pbase,
+                          const size_t size,
+                          const size_t n,
+                          qTypeGeneric_ForEachFcn_t f,
+                          const bool dir,
+                          void *arg )
+{
+    int retVal = 0;
+
+    if ( ( NULL != pbase ) && ( NULL != f ) && ( n > 0u ) ) {
+        /*cstat -MISRAC2012-Rule-11.5 -CERT-EXP36-C_b*/
+        uint8_t *element, *pb = (uint8_t *)pbase;
+        /*cstat +MISRAC2012-Rule-11.5 +CERT-EXP36-C_b*/
+        size_t i;
+        if ( 1 != f( -1, NULL, arg ) ) {
+            if ( false == dir ) {
+                for ( i = 0u ; i < n ; ++i ) {
+                    element = &pb[ i*size ];
+                    retVal = f( (int)i , element, arg );
+                    if ( 1 == retVal ) {
+                        break;
+                    }
+                }
+            }
+            else {
+                i = n;
+                while ( i-- > 0u ) {
+                    element = &pb[ i*size ];
+                    retVal = f( (int)i, element, arg );
+                    if ( 1 == retVal ) {
+                        break;
+                    }
+                }
+            }
+        }
+        (void)f( (int)n, NULL, arg );
+    }
+
+    return retVal;
+}
+/*============================================================================*/
