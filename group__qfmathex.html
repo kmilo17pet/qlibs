@@ -16,7 +16,7 @@
 <meta name="twitter:title" content="Doxygen Awesome" />
 <meta name="twitter:description" content="Custom CSS theme for doxygen html-documentation with lots of customization parameters." />
 <!-- END twitter metadata -->
-<title>API Reference: Extra floating-point math</title>
+<title>API Reference: qFMathEx</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <link rel="icon" type="image/svg+xml" href="logo.drawio.svg"/>
 <script type="text/javascript" src="jquery.js"></script>
@@ -126,7 +126,7 @@ $(document).ready(function(){initNavTree('group__qfmathex.html',''); initResizab
 <div class="header">
   <div class="summary">
 <a href="#func-members">Functions</a>  </div>
-  <div class="headertitle"><div class="title">Extra floating-point math</div></div>
+  <div class="headertitle"><div class="title">qFMathEx</div></div>
 </div><!--header-->
 <div class="contents">
 
@@ -136,8 +136,11 @@ $(document).ready(function(){initNavTree('group__qfmathex.html',''); initResizab
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:ga7d4e92698443fb7cd7ffea9a80ce6a8a"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qfmathex.html#ga7d4e92698443fb7cd7ffea9a80ce6a8a">qFMathEx_MapMinMax</a> (const float x, const float xMin, const float xMax, const float yMin, const float yMax)</td></tr>
-<tr class="memdesc:ga7d4e92698443fb7cd7ffea9a80ce6a8a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Scales the given input <em>x</em> in value range given by <em>xMin</em> and <em>xMax</em> in value range specified by the <em>yMin</em> and <em>yMax</em>.  <a href="group__qfmathex.html#ga7d4e92698443fb7cd7ffea9a80ce6a8a">More...</a><br /></td></tr>
+<tr class="memdesc:ga7d4e92698443fb7cd7ffea9a80ce6a8a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Scales the given input <em>x</em> in value range given by <em>xMin</em> and <em>xMax</em> to value range specified by the <em>yMin</em> and <em>yMax</em>.  <a href="group__qfmathex.html#ga7d4e92698443fb7cd7ffea9a80ce6a8a">More...</a><br /></td></tr>
 <tr class="separator:ga7d4e92698443fb7cd7ffea9a80ce6a8a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga76557a4ab6617add0f0e4c7a75aada8e"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qfmathex.html#ga76557a4ab6617add0f0e4c7a75aada8e">qFMathEx_Normalize</a> (const float x, const float xMin, const float xMax)</td></tr>
+<tr class="memdesc:ga76557a4ab6617add0f0e4c7a75aada8e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Normalize the given input <em>x</em> in value range given by <em>xMin</em> and <em>xMax</em> to value range between 0 and 1.  <a href="group__qfmathex.html#ga76557a4ab6617add0f0e4c7a75aada8e">More...</a><br /></td></tr>
+<tr class="separator:ga76557a4ab6617add0f0e4c7a75aada8e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gab5f157ae639a33b93941d6ea19ac2bf7"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qfmathex.html#gab5f157ae639a33b93941d6ea19ac2bf7">qFMathEx_InRangeCoerce</a> (float *const x, const float lowerL, const float upperL)</td></tr>
 <tr class="memdesc:gab5f157ae639a33b93941d6ea19ac2bf7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Determines if the value pointed by <em>x</em> falls within a range specified by the upper limit and lower limit inputs and coerces the value to fall within the range.  <a href="group__qfmathex.html#gab5f157ae639a33b93941d6ea19ac2bf7">More...</a><br /></td></tr>
 <tr class="separator:gab5f157ae639a33b93941d6ea19ac2bf7"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -400,7 +403,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Scales the given input <em>x</em> in value range given by <em>xMin</em> and <em>xMax</em> in value range specified by the <em>yMin</em> and <em>yMax</em>. </p>
+<p>Scales the given input <em>x</em> in value range given by <em>xMin</em> and <em>xMax</em> to value range specified by the <em>yMin</em> and <em>yMax</em>. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">x</td><td>Input </td></tr>
@@ -412,6 +415,51 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The scaled value in range <em>yMin</em> and <em>yMax</em>. </dd></dl>
+
+</div>
+</div>
+<a id="ga76557a4ab6617add0f0e4c7a75aada8e" name="ga76557a4ab6617add0f0e4c7a75aada8e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga76557a4ab6617add0f0e4c7a75aada8e">&#9670;&nbsp;</a></span>qFMathEx_Normalize()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float qFMathEx_Normalize </td>
+          <td>(</td>
+          <td class="paramtype">const float&#160;</td>
+          <td class="paramname"><em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const float&#160;</td>
+          <td class="paramname"><em>xMin</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const float&#160;</td>
+          <td class="paramname"><em>xMax</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Normalize the given input <em>x</em> in value range given by <em>xMin</em> and <em>xMax</em> to value range between 0 and 1. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">x</td><td>Input </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">xMin</td><td>Input minimum value for range </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">xMax</td><td>Input maximum value for range </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The scaled value in range [0 - 1]. </dd></dl>
 
 </div>
 </div>

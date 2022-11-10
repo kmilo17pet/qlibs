@@ -151,11 +151,14 @@ Functions</h2></td></tr>
 <tr class="memdesc:ga1a01bce1922bbfb580323e72a5cc0a57"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the data pointed by <em>ref</em> to every element of the array pointed by <em>pbase</em>. The array contains <em>n</em> elements of <em>size</em> bytes.  <a href="group__qtypegeneric.html#ga1a01bce1922bbfb580323e72a5cc0a57">More...</a><br /></td></tr>
 <tr class="separator:ga1a01bce1922bbfb580323e72a5cc0a57"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga1751bcf57fa73f56532d3f05dd6e7d81"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qtypegeneric.html#ga1751bcf57fa73f56532d3f05dd6e7d81">qTypeGeneric_LSearch</a> (const void *key, const void *pbase, const size_t n, const size_t size, qTypeGeneric_CompareFcn_t compar, void *arg)</td></tr>
-<tr class="memdesc:ga1751bcf57fa73f56532d3f05dd6e7d81"><td class="mdescLeft">&#160;</td><td class="mdescRight">Performs a linear search over an array of <em>n</em> elements pointed to by <em>pbase</em> for a member that matches the object pointed to by <em>key</em>. The size of each member is specified by <em>size</em>. The array contents should be sorted in ascending order according to the <em>compar</em> comparison function. This routine should take two arguments pointing to the <em>key</em> and to an array member, in that order, and should return an integer less than, equal to, or greater than zero if the <em>key</em> object is respectively less than, matching, or greater than the array member.  <a href="group__qtypegeneric.html#ga1751bcf57fa73f56532d3f05dd6e7d81">More...</a><br /></td></tr>
+<tr class="memdesc:ga1751bcf57fa73f56532d3f05dd6e7d81"><td class="mdescLeft">&#160;</td><td class="mdescRight">Performs a linear search over an array of <em>n</em> elements pointed to by <em>pbase</em> for an element that matches the object pointed to by <em>key</em>. The size of each element is specified by <em>size</em>. The array contents should be sorted in ascending order according to the <em>compar</em> comparison function. This routine should take two arguments pointing to the <em>key</em> and to an array element, in that order, and should return an integer less than, equal to, or greater than zero if the <em>key</em> object is respectively less than, matching, or greater than the array element.  <a href="group__qtypegeneric.html#ga1751bcf57fa73f56532d3f05dd6e7d81">More...</a><br /></td></tr>
 <tr class="separator:ga1751bcf57fa73f56532d3f05dd6e7d81"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga666f3f9121864dffb3cde3e161b30053"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qtypegeneric.html#ga666f3f9121864dffb3cde3e161b30053">qTypeGeneric_BSearch</a> (const void *key, const void *pbase, const size_t n, const size_t size, qTypeGeneric_CompareFcn_t compar, void *arg)</td></tr>
-<tr class="memdesc:ga666f3f9121864dffb3cde3e161b30053"><td class="mdescLeft">&#160;</td><td class="mdescRight">Performs a binary search over an array of <em>n</em> elements pointed to by <em>pbase</em> for a member that matches the object pointed to by <em>key</em>. The size of each member is specified by <em>size</em>. The array contents should be sorted in ascending order according to the <em>compar</em> comparison function. This routine should take two arguments pointing to the <em>key</em> and to an array member, in that order, and should return an integer less than, equal to, or greater than zero if the <em>key</em> object is respectively less than, matching, or greater than the array member.  <a href="group__qtypegeneric.html#ga666f3f9121864dffb3cde3e161b30053">More...</a><br /></td></tr>
+<tr class="memdesc:ga666f3f9121864dffb3cde3e161b30053"><td class="mdescLeft">&#160;</td><td class="mdescRight">Performs a binary search over an array of <em>n</em> elements pointed to by <em>pbase</em> for an element that matches the object pointed to by <em>key</em>. The size of each element is specified by <em>size</em>. The array contents should be sorted in ascending order according to the <em>compar</em> comparison function. This routine should take two arguments pointing to the <em>key</em> and to an array element, in that order, and should return an integer less than, equal to, or greater than zero if the <em>key</em> object is respectively less than, matching, or greater than the array element.  <a href="group__qtypegeneric.html#ga666f3f9121864dffb3cde3e161b30053">More...</a><br /></td></tr>
 <tr class="separator:ga666f3f9121864dffb3cde3e161b30053"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gac0e6ffa2fb0170bee593b945466b2306"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qtypegeneric.html#gac0e6ffa2fb0170bee593b945466b2306">qTypeGeneric_ForEach</a> (void *pbase, const size_t size, const size_t n, qTypeGeneric_ForEachFcn_t f, const bool dir, void *arg)</td></tr>
+<tr class="memdesc:gac0e6ffa2fb0170bee593b945466b2306"><td class="mdescLeft">&#160;</td><td class="mdescRight">Iterates <em>n</em> elements of the array pointed to by <em>pbase</em> The size of each element is specified by <em>size</em>. Every element should be handled by function <em>f</em>. The iteration loop can be aborted by returning 1.  <a href="group__qtypegeneric.html#gac0e6ffa2fb0170bee593b945466b2306">More...</a><br /></td></tr>
+<tr class="separator:gac0e6ffa2fb0170bee593b945466b2306"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <p >Type-generic utilities. </p>
@@ -210,12 +213,12 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Performs a binary search over an array of <em>n</em> elements pointed to by <em>pbase</em> for a member that matches the object pointed to by <em>key</em>. The size of each member is specified by <em>size</em>. The array contents should be sorted in ascending order according to the <em>compar</em> comparison function. This routine should take two arguments pointing to the <em>key</em> and to an array member, in that order, and should return an integer less than, equal to, or greater than zero if the <em>key</em> object is respectively less than, matching, or greater than the array member. </p>
+<p>Performs a binary search over an array of <em>n</em> elements pointed to by <em>pbase</em> for an element that matches the object pointed to by <em>key</em>. The size of each element is specified by <em>size</em>. The array contents should be sorted in ascending order according to the <em>compar</em> comparison function. This routine should take two arguments pointing to the <em>key</em> and to an array element, in that order, and should return an integer less than, equal to, or greater than zero if the <em>key</em> object is respectively less than, matching, or greater than the array element. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">key</td><td>This is the pointer to the object that serves as key for the search, type-casted as a <code>void*</code>. </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">pbase</td><td>This is the pointer to the first object of the array where the search is performed, type-casted as a <code>void*</code>. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">n</td><td>This is the number of elements in the array pointed by base. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">n</td><td>This is the number of elements in the array pointed by <em>base</em>. </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">size</td><td>This is the size in bytes of each element in the array. </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">compar</td><td>This is the function that compares two elements. The signature of the comparison function should be equivalent to the following: <div class="fragment"><div class="line"><span class="keywordtype">int</span> compar( <span class="keyword">const</span> <span class="keywordtype">void</span> *a, <span class="keyword">const</span> <span class="keywordtype">void</span> *b, <span class="keywordtype">void</span> *arg );</div>
 </div><!-- fragment --> Comparison function which returns ​a negative integer value if the first argument is less than the second, a positive integer value if the first argument is greater than the second and zero if the arguments are equivalent. <em>key</em> is passed as the first argument, an element from the array as the second. The function must not modify the objects passed to it and must return consistent results when called for the same objects, regardless of their positions in the array. </td></tr>
@@ -224,6 +227,78 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>This function returns a pointer to an entry in the array that matches the search key. If key is not found, a <code>NULL</code> pointer is returned. </dd></dl>
+
+</div>
+</div>
+<a id="gac0e6ffa2fb0170bee593b945466b2306" name="gac0e6ffa2fb0170bee593b945466b2306"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gac0e6ffa2fb0170bee593b945466b2306">&#9670;&nbsp;</a></span>qTypeGeneric_ForEach()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int qTypeGeneric_ForEach </td>
+          <td>(</td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>pbase</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const size_t&#160;</td>
+          <td class="paramname"><em>size</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const size_t&#160;</td>
+          <td class="paramname"><em>n</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">qTypeGeneric_ForEachFcn_t&#160;</td>
+          <td class="paramname"><em>f</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const bool&#160;</td>
+          <td class="paramname"><em>dir</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>arg</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Iterates <em>n</em> elements of the array pointed to by <em>pbase</em> The size of each element is specified by <em>size</em>. Every element should be handled by function <em>f</em>. The iteration loop can be aborted by returning 1. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">pbase</td><td>This is the pointer to the first object of the array type-casted as a <code>void*</code>. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">n</td><td>This is the number of elements in the array pointed by <em>pbase</em>. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">size</td><td>This is the size in bytes of each element in the array. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">f</td><td>The function that will handle each element of the array The signature of this handling function should be equivalent to the following: <div class="fragment"><div class="line"><span class="keywordtype">int</span> compar( <span class="keywordtype">int</span> i, <span class="keywordtype">void</span> *element, <span class="keywordtype">void</span> *arg );</div>
+</div><!-- fragment --> The argument <em>i</em> is used to keep track of the iteration in which the loop is.<ul>
+<li><code>i &lt; 0</code> Loop its a about to start (pre-loop invocation). The <em>element</em> argument at this stage its passed as <code>NULL</code> and should not be dereferenced.</li>
+<li><code>[ 0 &lt;= i &lt; n ]</code> Loop its iterating and the <em>element</em> argument is pointing to the array at index <em>i</em>.</li>
+<li><code>i == n</code> Loop has ended (pos-loop invocation). The <em>element</em> argument at this stage its passed as <code>NULL</code> and should not be dereferenced. </li>
+</ul>
+</td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">dir</td><td>Pass <code>true</code> to iterate the array backwards. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">arg</td><td>Additional information (e.g., collating sequence), passed to <em>f</em> as the third argument </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>This function returns 1 if the iteration loop is aborted otherwise returns 0. </dd></dl>
 
 </div>
 </div>
@@ -277,12 +352,12 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Performs a linear search over an array of <em>n</em> elements pointed to by <em>pbase</em> for a member that matches the object pointed to by <em>key</em>. The size of each member is specified by <em>size</em>. The array contents should be sorted in ascending order according to the <em>compar</em> comparison function. This routine should take two arguments pointing to the <em>key</em> and to an array member, in that order, and should return an integer less than, equal to, or greater than zero if the <em>key</em> object is respectively less than, matching, or greater than the array member. </p>
+<p>Performs a linear search over an array of <em>n</em> elements pointed to by <em>pbase</em> for an element that matches the object pointed to by <em>key</em>. The size of each element is specified by <em>size</em>. The array contents should be sorted in ascending order according to the <em>compar</em> comparison function. This routine should take two arguments pointing to the <em>key</em> and to an array element, in that order, and should return an integer less than, equal to, or greater than zero if the <em>key</em> object is respectively less than, matching, or greater than the array element. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">key</td><td>This is the pointer to the object that serves as key for the search, type-casted as a <code>void*</code>. </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">pbase</td><td>This is the pointer to the first object of the array where the search is performed, type-casted as a <code>void*</code>. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">n</td><td>This is the number of elements in the array pointed by base. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">n</td><td>This is the number of elements in the array pointed by <em>pbase</em>. </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">size</td><td>This is the size in bytes of each element in the array. </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">compar</td><td>This is the function that compares two elements. The signature of the comparison function should be equivalent to the following: <div class="fragment"><div class="line"><span class="keywordtype">int</span> compar( <span class="keyword">const</span> <span class="keywordtype">void</span> *a, <span class="keyword">const</span> <span class="keywordtype">void</span> *b, <span class="keywordtype">void</span> *arg );</div>
 </div><!-- fragment --> Comparison function which returns ​a negative integer value if the first argument is less than the second, a positive integer value if the first argument is greater than the second and zero if the arguments are equivalent. <em>key</em> is passed as the first argument, an element from the array as the second. The function must not modify the objects passed to it and must return consistent results when called for the same objects, regardless of their positions in the array. </td></tr>
