@@ -4,7 +4,7 @@
 [![CodeInspectorScore](https://api.codiga.io/project/27197/score/svg)](https://app.codiga.io/project/27197/dashboard)
 [![CodeInspectorGrade](https://api.codiga.io/project/27197/status/svg)](https://app.codiga.io/project/27197/dashboard)
 [![Softacheck](https://softacheck.com/app/repository/kmilo17pet/qlibs/badge)](https://softacheck.com/app/repository/kmilo17pet/qlibs/issues)
-[![Documentation](https://softacheck.com/app/repository/kmilo17pet/qlibs/documentation/badge)](https://softacheck.com/app/docs/kmilo17pet/qlibs/)
+[![documentation](https://github.com/kmilo17pet/qlibs/actions/workflows/doxygen_gen.yml/badge.svg)](https://kmilo17pet.github.io/qlibs/)
 [![GitHub release (latest by date)](https://img.shields.io/github/v/release/kmilo17pet/qlibs?logo=webpack)](https://github.com/kmilo17pet/qlibs/releases)
 [![MISRAC2012](https://img.shields.io/badge/MISRAC2012-Compliant-blue.svg?logo=c)](https://en.wikipedia.org/wiki/MISRA_C)
 [![CERT](https://img.shields.io/badge/CERT-Compliant-blue.svg?logo=c)](https://wiki.sei.cmu.edu/confluence/display/seccode/SEI+CERT+Coding+Standards)
@@ -57,5 +57,6 @@ Below is the list of the modules provided and their features:
 - qBitField: A bit-field manipulation library
 - qTDL : Tapped Delay Line in O(1). 
 - qRMS : Recursive Root Mean Square(RMS) calculation of a signal.
+- Additional utilities for vectors and single-precision floating-point
 
 
