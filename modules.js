@@ -8,6 +8,7 @@ var modules =
     [ "qBitField", "group__qbitfield.html", "group__qbitfield" ],
     [ "qRMS", "group__qrms.html", "group__qrms" ],
     [ "qCRC", "group__qcrc.html", "group__qcrc" ],
+    [ "Extra floating-point math", "group__qfmathex.html", "group__qfmathex" ],
     [ "qTDL", "group__qtdl.html", "group__qtdl" ],
     [ "qTypeGeneric", "group__qtypegeneric.html", "group__qtypegeneric" ],
     [ "qFVector", "group__qvfloat.html", "group__qvfloat" ]
