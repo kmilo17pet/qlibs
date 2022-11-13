@@ -223,9 +223,6 @@ Macros</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:gae19db8abc20830d930d0a645b817b9e0"><td class="memItemLeft" align="right" valign="top"><a id="gae19db8abc20830d930d0a645b817b9e0" name="gae19db8abc20830d930d0a645b817b9e0"></a>
-float&#160;</td><td class="memItemRight" valign="bottom"><b>_qFFMath_GetAbnormal</b> (const int i)</td></tr>
-<tr class="separator:gae19db8abc20830d930d0a645b817b9e0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga7b01789f96475748103b2c993bbf2f84"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qffmath.html#ga7b01789f96475748103b2c993bbf2f84">qFFMath_FPClassify</a> (const float f)</td></tr>
 <tr class="memdesc:ga7b01789f96475748103b2c993bbf2f84"><td class="mdescLeft">&#160;</td><td class="mdescRight">Categorizes the floating-point number <em>x</em>. This function determines whether its argument is a normal floating-point number, or one of several special categories of values, including NaN (not a number), infinity, subnormal floating-point values or zero. To determine what category the argument belongs to, compare the return value with the values of the following number classification macros:  <a href="group__qffmath.html#ga7b01789f96475748103b2c993bbf2f84">More...</a><br /></td></tr>
 <tr class="separator:ga7b01789f96475748103b2c993bbf2f84"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -535,6 +532,7 @@ float&#160;</td><td class="memItemRight" valign="bottom"><b>_qFFMath_GetAbnormal
 <p>Computes the arc tangent of y/x using the signs of arguments to determine the correct quadrant. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">y</td><td>The floating point value </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">x</td><td>The floating point value </td></tr>
   </table>
   </dd>
@@ -837,7 +835,7 @@ float&#160;</td><td class="memItemRight" valign="bottom"><b>_qFFMath_GetAbnormal
 <li><a class="el" href="group__qffmath.html#gaa2de5e3056de31aa21943d483839990d" title="Indicates that the value is not representable by the underlying type, positive or negative infinity.">QFFM_FP_INFINITE</a></li>
 <li><a class="el" href="group__qffmath.html#gaea5edf3476336a2d33e5fa669577d369" title="Indicates that the value is not-a-number NaN.">QFFM_FP_NAN</a> <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">x</td><td>The number you want to test. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">f</td><td>The number you want to test. </td></tr>
   </table>
   </dd>
 </dl>
@@ -1131,7 +1129,7 @@ float&#160;</td><td class="memItemRight" valign="bottom"><b>_qFFMath_GetAbnormal
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">b</td><td>Base as floating point value </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">b</td><td>Exponent as floating point value </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">e</td><td>Exponent as floating point value </td></tr>
   </table>
   </dd>
 </dl>

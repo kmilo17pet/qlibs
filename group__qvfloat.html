@@ -178,7 +178,7 @@ Functions</h2></td></tr>
  points. The spacing between the points is <code> (x2-x1)/(n-1) </code>  <a href="group__qvfloat.html#ga3e38b9b0dee2b36557cae2ca63e0fcf9">More...</a><br /></td></tr>
 <tr class="separator:ga3e38b9b0dee2b36557cae2ca63e0fcf9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga6bbe96fe3aeac64d51830c0c8327beb8"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qvfloat.html#ga6bbe96fe3aeac64d51830c0c8327beb8">qVFloat_Distance</a> (const float *const x, const float *const y, const size_t n)</td></tr>
-<tr class="memdesc:ga6bbe96fe3aeac64d51830c0c8327beb8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the Euclidean distance between vectors <em>x</em> and <em></em>.  <a href="group__qvfloat.html#ga6bbe96fe3aeac64d51830c0c8327beb8">More...</a><br /></td></tr>
+<tr class="memdesc:ga6bbe96fe3aeac64d51830c0c8327beb8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the Euclidean distance between vectors <em>x</em> and <em>y</em>.  <a href="group__qvfloat.html#ga6bbe96fe3aeac64d51830c0c8327beb8">More...</a><br /></td></tr>
 <tr class="separator:ga6bbe96fe3aeac64d51830c0c8327beb8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga727a9263d3a8e08e9191174a1f39e5e5"><td class="memItemLeft" align="right" valign="top">float *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qvfloat.html#ga727a9263d3a8e08e9191174a1f39e5e5">qVFloat_Reverse</a> (float *const dst, float *const src, const size_t low, const size_t high)</td></tr>
 <tr class="memdesc:ga727a9263d3a8e08e9191174a1f39e5e5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reverse the given vector pointed by <em>src</em>. Operation takes place on the portion of the vector that starts at position <em>init</em> to position <em>end</em>.  <a href="group__qvfloat.html#ga727a9263d3a8e08e9191174a1f39e5e5">More...</a><br /></td></tr>
@@ -346,7 +346,7 @@ Functions</h2></td></tr>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">dst</td><td>Pointer to the destination vector </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">c</td><td>Pointer to the source vector </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">src</td><td>Pointer to the source vector </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">n</td><td>Number of elements of the vector </td></tr>
   </table>
   </dd>
@@ -387,7 +387,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Returns the Euclidean distance between vectors <em>x</em> and <em></em>. </p>
+<p>Returns the Euclidean distance between vectors <em>x</em> and <em>y</em>. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">x</td><td>Pointer to the input vector. </td></tr>
@@ -534,17 +534,12 @@ Functions</h2></td></tr>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[out]</td><td class="paramname">m</td><td>A structure of type <a class="el" href="structq_v_float___moment__t.html" title="Metrics returned by qVFloat_Moment()">qVFloat_Moment_t</a> where the metrics will be stored. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">fx1</td><td>The function with one argument to be applied to every element of <em>x</em>. To ignore pass <code>NULL</code> as argument. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">fx2</td><td>The function with two arguments to be applied to every element of <em>x</em> or/and <em>y</em>. To ignore pass <code>NULL</code> as argument. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">x</td><td>A vector as an 1D float array </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">y</td><td>A vector as an 1D float array. To ignore pass <code>NULL</code> as argument. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">a</td><td>A value to scale the result of <em>fx1</em> and <em>fx2</em>. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">b</td><td>An scalar value used as second argument on <em>fx2</em> if <em>y</em> is ignored. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">x</td><td>A vector of data as an 1D float array </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">n</td><td>The number of elements of vectors <em>x</em> and <em>y</em> </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>The sum of all elements on <em>dst</em> after the operation. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>1 on success, otherwise returns 0. </dd></dl>
 
 </div>
 </div>
@@ -606,10 +601,10 @@ Functions</h2></td></tr>
 
 <p>Computes one of the following 1D-vector operation : </p>
 <ul>
-<li><code>dst = a*x &lt;o&gt; b*y</code> if both <em>x</em> and <em>y</em> are supplied.</li>
-<li><code>dst = a*x &lt;o&gt; b</code> if the <em>y</em> argument is <code>NULL</code>.</li>
+<li><code>dst = a*x [o] b*y</code> if both <em>x</em> and <em>y</em> are supplied.</li>
+<li><code>dst = a*x [o] b</code> if the <em>y</em> argument is <code>NULL</code>.</li>
 </ul>
-<p >Here, <code>&lt;o&gt;</code> corresponds to the operator that will be applied </p><dl class="section note"><dt>Note</dt><dd>If <em>y</em> or <em>dst</em> are used, they must have the same length as <em>x</em>. </dd></dl>
+<p >Here, <code>[o]</code> corresponds to the operator that will be applied </p><dl class="section note"><dt>Note</dt><dd>If <em>y</em> or <em>dst</em> are used, they must have the same length as <em>x</em>. </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[out]</td><td class="paramname">dst</td><td>The pointer to the destination array where the result will be stored. To ignore pass <code>NULL</code> as argument. </td></tr>
@@ -720,8 +715,8 @@ Functions</h2></td></tr>
   <table class="params">
     <tr><td class="paramdir">[out]</td><td class="paramname">dst</td><td>The pointer to the destination vector where the result will be stored. To ignore pass <code>NULL</code> as argument. </td></tr>
     <tr><td class="paramdir">[in,out]</td><td class="paramname">src</td><td>The input vector to reverse. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">init</td><td>Position of the first element. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">end</td><td>Position of the last element. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">low</td><td>Position of the first element. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">high</td><td>Position of the last element. </td></tr>
   </table>
   </dd>
 </dl>

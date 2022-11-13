@@ -21,7 +21,6 @@ var annotated_dup =
     [ "qSSmoother_MWM1_t", "structq_s_smoother___m_w_m1__t.html", null ],
     [ "qSSmoother_MWM2_t", "structq_s_smoother___m_w_m2__t.html", null ],
     [ "qTDL_t", "structq_t_d_l__t.html", null ],
-    [ "qTypeGeneric_SortStackNode_t", "structq_type_generic___sort_stack_node__t.html", null ],
     [ "qVFloat_MinMax_t", "structq_v_float___min_max__t.html", "structq_v_float___min_max__t" ],
     [ "qVFloat_Moment_t", "structq_v_float___moment__t.html", "structq_v_float___moment__t" ]
 ];

@@ -21,7 +21,6 @@ var searchData=
   ['qssmoother_5fmwm1_5ft_18',['qSSmoother_MWM1_t',['../structq_s_smoother___m_w_m1__t.html',1,'']]],
   ['qssmoother_5fmwm2_5ft_19',['qSSmoother_MWM2_t',['../structq_s_smoother___m_w_m2__t.html',1,'']]],
   ['qtdl_5ft_20',['qTDL_t',['../structq_t_d_l__t.html',1,'']]],
-  ['qtypegeneric_5fsortstacknode_5ft_21',['qTypeGeneric_SortStackNode_t',['../structq_type_generic___sort_stack_node__t.html',1,'']]],
-  ['qvfloat_5fminmax_5ft_22',['qVFloat_MinMax_t',['../structq_v_float___min_max__t.html',1,'']]],
-  ['qvfloat_5fmoment_5ft_23',['qVFloat_Moment_t',['../structq_v_float___moment__t.html',1,'']]]
+  ['qvfloat_5fminmax_5ft_21',['qVFloat_MinMax_t',['../structq_v_float___min_max__t.html',1,'']]],
+  ['qvfloat_5fmoment_5ft_22',['qVFloat_Moment_t',['../structq_v_float___moment__t.html',1,'']]]
 ];

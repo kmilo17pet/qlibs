@@ -186,7 +186,6 @@ var NAVTREEINDEX1 =
 "structq_s_smoother___m_w_m1__t.html":[1,1,2],
 "structq_s_smoother___m_w_m2__t.html":[1,1,3],
 "structq_t_d_l__t.html":[1,10,0],
-"structq_type_generic___sort_stack_node__t.html":[2,0,21],
 "structq_v_float___min_max__t.html":[1,12,1],
 "structq_v_float___min_max__t.html#a306b5ca364bf842a8ff5bbfc0b4d4a4b":[1,12,1,2],
 "structq_v_float___min_max__t.html#a9fe67a83c9646d9abdf6a70b53de7b4f":[1,12,1,0],
