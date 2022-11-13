@@ -6,25 +6,30 @@
 
 #include "qfis.h"
 #include "qfmathex.h"
-
 #include <stdbool.h>
 
-#if ( 1 == QFIS_USE_STD_MATH )
+#if ( 1 == QLIBS_USE_STD_MATH )
     #include <math.h>
-    #define QFIS_ABS_FCN        fabsf
-    #define QFIS_COS_FCN        cosf
-    #define QFIS_POW_FCN        powf
-    #define QFIS_EXP_FCN        expf
-    #define QFIS_LOG_FCN        logf
-    #define QFIS_SQRT_FCN       sqrtf
+    #define QLIB_ABS        fabsf
+    #define QLIB_COS        cosf
+    #define QLIB_POW        powf
+    #define QLIB_EXP        expf
+    #define QLIB_LOG        logf
+    #define QLIB_SQRT       sqrtf
+    #define QLIB_ISNAN      isnan
+    #define QLIB_ISINF      isinf
+    #define QLIB_NAN        NAN
 #else
     #include "qffmath.h"
-    #define QFIS_ABS_FCN        qFFMath_Abs
-    #define QFIS_COS_FCN        qFFMath_Cos
-    #define QFIS_POW_FCN        qFFMath_Pow
-    #define QFIS_EXP_FCN        qFFMath_Exp
-    #define QFIS_LOG_FCN        qFFMath_Log
-    #define QFIS_SQRT_FCN       qFFMath_Sqrt
+    #define QLIB_ABS        qFFMath_Abs
+    #define QLIB_COS        qFFMath_Cos
+    #define QLIB_POW        qFFMath_Pow
+    #define QLIB_EXP        qFFMath_Exp
+    #define QLIB_LOG        qFFMath_Log
+    #define QLIB_SQRT       qFFMath_Sqrt
+    #define QLIB_ISNAN      qFFMath_IsNaN
+    #define QLIB_ISINF      qFFMath_IsInf
+    #define QLIB_NAN        QFFM_NAN
 #endif
 
 
@@ -942,7 +947,7 @@ static float qFIS_GBellMF( const qFIS_IO_Base_t * const in,
     b = p[ 1 ];
     c = p[ 2 ];
     
-    return ( 1.0f/( 1.0f + QFIS_POW_FCN( QFIS_ABS_FCN( ( x - c )/a ) , 2.0f*b ) ) );
+    return ( 1.0f/( 1.0f + QLIB_POW( QLIB_ABS( ( x - c )/a ) , 2.0f*b ) ) );
 }
 /*============================================================================*/
 static float qFIS_GaussMF( const qFIS_IO_Base_t * const in,
@@ -957,7 +962,7 @@ static float qFIS_GaussMF( const qFIS_IO_Base_t * const in,
     c = p[ 1 ];
     tmp = ( x - c )/a;
 
-    return QFIS_EXP_FCN( -0.5f*tmp*tmp );
+    return QLIB_EXP( -0.5f*tmp*tmp );
 }
 /*============================================================================*/
 static float qFIS_Gauss2MF( const qFIS_IO_Base_t * const in,
@@ -986,7 +991,7 @@ static float qFIS_SigMF( const qFIS_IO_Base_t * const in,
     a = p[ 0 ];
     b = p[ 1 ];
 
-    return 1.0f/( 1.0f + QFIS_EXP_FCN( -a*( x - b ) ) );
+    return 1.0f/( 1.0f + QLIB_EXP( -a*( x - b ) ) );
 }
 /*============================================================================*/
 static float qFIS_TSigMF( const qFIS_IO_Base_t * const in,
@@ -1019,7 +1024,7 @@ static float qFIS_TSigMF( const qFIS_IO_Base_t * const in,
     }
     else {
         /*cstat -MISRAC2012-Dir-4.11_a*/
-        y = b - ( QFIS_LOG_FCN( ( 1.0f/x ) - 1.0f )/a );
+        y = b - ( QLIB_LOG( ( 1.0f/x ) - 1.0f )/a );
         /*cstat +MISRAC2012-Dir-4.11_a*/
     }
 
@@ -1030,14 +1035,14 @@ static float qFIS_DSigMF( const qFIS_IO_Base_t * const in,
                           const float *p,
                           const size_t n )
 {
-    return QFIS_ABS_FCN( qFIS_SigMF( in , p, n ) - qFIS_SigMF( in , &p[ 2 ], n ) );
+    return QLIB_ABS( qFIS_SigMF( in , p, n ) - qFIS_SigMF( in , &p[ 2 ], n ) );
 }
 /*============================================================================*/
 static float qFIS_PSigMF( const qFIS_IO_Base_t * const in,
                           const float *p,
                           const size_t n )
 {
-    return QFIS_ABS_FCN( qFIS_SigMF( in , p, n )*qFIS_SigMF( in , &p[ 2 ], n ) );
+    return QLIB_ABS( qFIS_SigMF( in , p, n )*qFIS_SigMF( in , &p[ 2 ], n ) );
 }
 /*============================================================================*/
 static float qFIS_SMF( const qFIS_IO_Base_t * const in,
@@ -1085,14 +1090,14 @@ static float qFIS_TSMF( const qFIS_IO_Base_t * const in,
     diff = b - a;
     diff = 0.5f*diff*diff;
     /*cstat -MISRAC2012-Dir-4.11_a -MISRAC2012-Dir-4.11_b*/
-    ta = a + QFIS_SQRT_FCN( x*diff );
+    ta = a + QLIB_SQRT( x*diff );
     tmp.value = ta;
     ma = qFIS_SMF( &tmp, p, n );
-    tb = b + QFIS_SQRT_FCN( -( x - 1.0f )*diff );
+    tb = b + QLIB_SQRT( -( x - 1.0f )*diff );
     tmp.value = tb;
     mb = qFIS_SMF( &tmp, p, n );
     /*cstat +MISRAC2012-Dir-4.11_a +MISRAC2012-Dir-4.11_b*/
-    return  ( QFIS_ABS_FCN( x - ma ) < QFIS_ABS_FCN( x - mb ) ) ? ta : tb;
+    return  ( QLIB_ABS( x - ma ) < QLIB_ABS( x - mb ) ) ? ta : tb;
 }
 /*============================================================================*/
 static float qFIS_ZMF( const qFIS_IO_Base_t * const in,
@@ -1202,21 +1207,21 @@ static float qFIS_TZMF( const qFIS_IO_Base_t * const in,
     diff = b - a;
     diff = 0.5f*diff*diff;
     /*cstat -MISRAC2012-Dir-4.11_a -MISRAC2012-Dir-4.11_b*/
-    ta = a + QFIS_SQRT_FCN( -( x - 1.0f )*diff );
+    ta = a + QLIB_SQRT( -( x - 1.0f )*diff );
     tmp.value = ta;
     ma = qFIS_SMF( &tmp, p, n );
-    tb = b + QFIS_SQRT_FCN( x*diff );
+    tb = b + QLIB_SQRT( x*diff );
     tmp.value = tb;
     mb = qFIS_SMF( &tmp, p, n );
     /*cstat +MISRAC2012-Dir-4.11_a +MISRAC2012-Dir-4.11_b*/
-    return  ( QFIS_ABS_FCN( x - ma ) < QFIS_ABS_FCN( x - mb ) ) ? ta : tb;
+    return  ( QLIB_ABS( x - ma ) < QLIB_ABS( x - mb ) ) ? ta : tb;
 }
 /*============================================================================*/
 static float qFIS_PiMF( const qFIS_IO_Base_t * const in,
                         const float *p,
                         const size_t n )
 {
-    return QFIS_ABS_FCN( qFIS_SMF( in , p, n )*qFIS_ZMF( in , &p[ 2 ], n ) );
+    return QLIB_ABS( qFIS_SMF( in , p, n )*qFIS_ZMF( in , &p[ 2 ], n ) );
 }
 /*============================================================================*/
 static float qFIS_SingletonMF( const qFIS_IO_Base_t * const in,
@@ -1275,7 +1280,7 @@ static float qFIS_SpikeMF( const qFIS_IO_Base_t * const in,
     w = p[ 0 ];
     c = p[ 1 ];
 
-    return QFIS_EXP_FCN( -QFIS_ABS_FCN( 10.0f*( x - c )/w ) );
+    return QLIB_EXP( -QLIB_ABS( 10.0f*( x - c )/w ) );
 }
 /*============================================================================*/
 static float qFIS_TLinSMF( const qFIS_IO_Base_t * const in,
@@ -1335,7 +1340,7 @@ static float qFIS_CosineMF( const qFIS_IO_Base_t * const in,
         y = 0.0f;
     }
     else {
-        y = 0.5f*( 1.0f + QFIS_COS_FCN( 2.0f/w*pi*( x - c) ) );
+        y = 0.5f*( 1.0f + QLIB_COS( 2.0f/w*pi*( x - c) ) );
     }
 
     return y;

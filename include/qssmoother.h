@@ -1,7 +1,7 @@
 /*!
  * @file qssmoother.h
  * @author J. Camilo Gomez C.
- * @version 1.06
+ * @version 1.07
  * @note This file is part of the qLibs distribution.
  * @brief API to smooth noisy signals.
  **/
@@ -15,8 +15,6 @@ extern "C" {
 
     #include <stdlib.h>
     #include <stdint.h>
-    #include <float.h>
-    #include <math.h>
     #include "qtdl.h"
 
     /** @addtogroup qssmoother qSSMoother : Filters to smooth noisy signals

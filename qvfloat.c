@@ -2,7 +2,31 @@
 #include "qtypegeneric.h"
 #include "qfmathex.h"
 #include <string.h>
-#include <math.h>
+
+#if ( 1 == QLIBS_USE_STD_MATH )
+    #include <math.h>
+    #define QLIB_ABS        fabsf
+    #define QLIB_COS        cosf
+    #define QLIB_POW        powf
+    #define QLIB_EXP        expf
+    #define QLIB_LOG        logf
+    #define QLIB_SQRT       sqrtf
+    #define QLIB_ISNAN      isnan
+    #define QLIB_ISINF      isinf
+    #define QLIB_NAN        NAN
+#else
+    #include "qffmath.h"
+    #define QLIB_ABS        qFFMath_Abs
+    #define QLIB_COS        qFFMath_Cos
+    #define QLIB_POW        qFFMath_Pow
+    #define QLIB_EXP        qFFMath_Exp
+    #define QLIB_LOG        qFFMath_Log
+    #define QLIB_SQRT       qFFMath_Sqrt
+    #define QLIB_ISNAN      qFFMath_IsNaN
+    #define QLIB_ISINF      qFFMath_IsInf
+    #define QLIB_NAN        QFFM_NAN
+#endif
+
 
 typedef float (*qVFloat_VVFcn_t)( float **dst,
                                   float **pOut,
@@ -277,7 +301,7 @@ int qVFloat_Moment( qVFloat_Moment_t * const m,
         m->mean = s/l;
         for ( j = 1u ; j <= n ; ++j ) {
             s = x[ j ] - m->mean;
-            m->avgDev += fabsf( s );
+            m->avgDev += QLIB_ABS( s );
             p = s*s;
             m->var += p;
             p *= s;
@@ -288,13 +312,13 @@ int qVFloat_Moment( qVFloat_Moment_t * const m,
         m->avgDev /= l;
         m->var = ( m->var - ( ( ep*ep )/l ) )/( l - 1.0f );
         /*cstat -MISRAC2012-Dir-4.11_b -CERT-FLP34-C*/
-        m->stdDev =  ( m->var >= 0.0f ) ? sqrtf( m->var ) : NAN;
+        m->stdDev =  ( m->var >= 0.0f ) ? QLIB_SQRT( m->var ) : QLIB_NAN;
         /*cstat +MISRAC2012-Dir-4.11_b*/
         if ( false == qFMathEx_Equal( 0.0f, m->var ) ) {
             m->skew /= ( ( m->curt )/( l*m->var*m->var ) ) - 3.0f;
         }
         else {
-            m->skew = NAN;
+            m->skew = QLIB_NAN;
         }
         /*cstat +CERT-FLP34-C*/
         retVal = 1;
@@ -334,7 +358,7 @@ float qVFloat_PolyVal( const float * const p,
 
     for ( i = 0u ; i < n ; ++i ) {
         /*cstat -CERT-FLP36-C*/
-        fx += p[ n - i - 1u ]*powf( x, (float)i );
+        fx += p[ n - i - 1u ]*QLIB_POW( x, (float)i );
         /*cstat +CERT-FLP36-C*/
     }
 
@@ -370,7 +394,7 @@ float qVFloat_Distance( const float * const x,
             s += tmp*tmp;
         }
         /*cstat -MISRAC2012-Dir-4.11_b*/
-        s = sqrtf( s ); /*always positive*/
+        s = QLIB_SQRT( s ); /*always positive*/
         /*cstat +MISRAC2012-Dir-4.11_b*/
     }
     

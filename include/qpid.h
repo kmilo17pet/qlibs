@@ -1,7 +1,7 @@
 /*!
  * @file qpid.h
  * @author J. Camilo Gomez C.
- * @version 1.15
+ * @version 1.16
  * @note This file is part of the qLibs distribution.
  * @brief API to control systems using the PID algorithm. This controller
  * features anti-windup, tracking mode, and derivative filter.
@@ -15,9 +15,7 @@ extern "C" {
 #endif
 
     #include <stdlib.h>
-    #include <float.h>
     #include <stdint.h>
-    #include <math.h>
     #include "qnuma.h"
 
     /** @addtogroup  qpid Closed Loop PID Controller library

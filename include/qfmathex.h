@@ -1,7 +1,7 @@
 /*!
- * @file qfloatextra.h
+ * @file qfmathex.h
  * @author J. Camilo Gomez C.
- * @version 1.02
+ * @version 1.03
  * @note This file is part of the qLibs distribution.
  * @brief Extra floating-point math and analysis functions
  **/

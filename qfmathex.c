@@ -1,8 +1,26 @@
 #include "qfmathex.h"
 #include <float.h>
-#include <math.h>
 #include <limits.h>
 #include <string.h>
+
+#if ( 1 == QLIBS_USE_STD_MATH )
+    #include <math.h>
+    #define QLIB_ABS        fabsf
+    #define QLIB_ISNAN      isnan
+    #define QLIB_ISINF      isinf
+    #define QLIB_NAN        NAN
+    #define QLIB_MAX        fmaxf
+    #define QLIB_MIN        fminf
+#else
+    #include "qffmath.h"
+    #define QLIB_ABS        qFFMath_Abs
+    #define QLIB_SQRT       qFFMath_Sqrt
+    #define QLIB_ISNAN      qFFMath_IsNaN
+    #define QLIB_ISINF      qFFMath_IsInf
+    #define QLIB_NAN        QFFM_NAN
+    #define QLIB_MAX        qFFMath_Max
+    #define QLIB_MIN        qFFMath_Min
+#endif
 
 /*============================================================================*/
 float qFMathEx_Normalize( const float x,
@@ -27,7 +45,7 @@ bool qFMathEx_InRangeCoerce( float * const x,
 {
     bool retVal = false;
 
-    if ( 1 == (int)isnan( x[ 0 ] ) ) {
+    if ( 1 == (int)QLIB_ISNAN( x[ 0 ] ) ) {
         x[ 0 ] = lowerL;
     }
     else {
@@ -49,7 +67,7 @@ bool qFMathEx_AlmostEqual( const float a,
                            const float b,
                            const float tol )
 {
-    return ( fabsf( a - b ) <= fabsf( tol ) );
+    return ( QLIB_ABS( a - b ) <= QLIB_ABS( tol ) );
 }
 /*============================================================================*/
 bool qFMathEx_Equal( const float a,
@@ -69,10 +87,10 @@ bool qFMathEx_InPolygon( const float x,
     float max_y = py[ 0 ], max_x = px[ 0 ], min_y = py[ 0 ], min_x = px[ 0 ];
 
     for ( i = 0u ; i < p ; ++i ) {
-        max_y = fmaxf( py[ i ], max_y );
-        max_x = fmaxf( px[ i ], max_x );
-        min_y = fminf( py[ i ], min_y );
-        min_x = fminf( px[ i ], min_x );
+        max_y = QLIB_MAX( py[ i ], max_y );
+        max_x = QLIB_MAX( px[ i ], max_x );
+        min_y = QLIB_MIN( py[ i ], min_y );
+        min_x = QLIB_MIN( px[ i ], min_x );
     }
 
     if ( ( y >= min_y ) && ( y <= max_y ) && ( x >= min_x ) && ( x <= max_x ) ) {

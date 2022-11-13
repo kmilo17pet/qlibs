@@ -3,6 +3,12 @@
         "algorithm": "c",
         "qffmath.h": "c",
         "float.h": "c",
-        "functional": "c"
+        "functional": "c",
+        "math.h": "c",
+        "qfis.h": "c",
+        "qpid.h": "c",
+        "qltisys.h": "c",
+        "cmath": "c",
+        "string.h": "c"
     }
 }

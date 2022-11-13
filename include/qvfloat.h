@@ -1,7 +1,7 @@
 /*!
  * @file qvfloat.h
  * @author J. Camilo Gomez C.
- * @version 1.04
+ * @version 1.05
  * @note This file is part of the qLibs distribution.
  * @brief Floating-point Vector(1D-Array) operations
  **/

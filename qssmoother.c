@@ -7,6 +7,30 @@
 #include "qssmoother.h"
 #include "qltisys.h"
 
+#if ( 1 == QLIBS_USE_STD_MATH )
+    #include <math.h>
+    #define QLIB_ABS        fabsf
+    #define QLIB_COS        cosf
+    #define QLIB_POW        powf
+    #define QLIB_EXP        expf
+    #define QLIB_LOG        logf
+    #define QLIB_SQRT       sqrtf
+    #define QLIB_ISNAN      isnan
+    #define QLIB_ISINF      isinf
+    #define QLIB_NAN        NAN
+#else
+    #include "qffmath.h"
+    #define QLIB_ABS        qFFMath_Abs
+    #define QLIB_COS        qFFMath_Cos
+    #define QLIB_POW        qFFMath_Pow
+    #define QLIB_EXP        qFFMath_Exp
+    #define QLIB_LOG        qFFMath_Log
+    #define QLIB_SQRT       qFFMath_Sqrt
+    #define QLIB_ISNAN      qFFMath_IsNaN
+    #define QLIB_ISINF      qFFMath_IsInf
+    #define QLIB_NAN        QFFM_NAN
+#endif
+
 /*! @cond  */
 struct qSmoother_Vtbl_s
 {
@@ -141,7 +165,7 @@ static int qSSmoother_Setup_LPF2( _qSSmoother_t * const f,
         float aa, p1, r;
         aa = alpha*alpha;
         /*cstat -MISRAC2012-Dir-4.11_b*/
-        p1 = sqrtf( 2.0f*alpha ); /*arg always positive*/
+        p1 = QLIB_SQRT( 2.0f*alpha ); /*arg always positive*/
         /*cstat +MISRAC2012-Dir-4.11_b*/
         r = 1.0f + p1 + aa;
         s->k = aa/r;
@@ -266,7 +290,7 @@ static int qSSmoother_Setup_GMWF( _qSSmoother_t * const f,
         for ( i = 0u ; i < ws ; ++i ) {
             float d = (float)i - l; /*symmetry*/
             d -= center;
-            kernel[ i ] =  expf( -( d*d )/r );
+            kernel[ i ] =  QLIB_EXP( -( d*d )/r );
             sum += kernel[ i ];
         }
         /*cstat +CERT-FLP36-C +MISRAC2012-Rule-10.8*/

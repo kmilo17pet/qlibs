@@ -5,6 +5,31 @@
  **/
 
 #include "qpid.h"
+#include <float.h>
+
+#if ( 1 == QLIBS_USE_STD_MATH )
+    #include <math.h>
+    #define QLIB_ABS        fabsf
+    #define QLIB_COS        cosf
+    #define QLIB_POW        powf
+    #define QLIB_EXP        expf
+    #define QLIB_LOG        logf
+    #define QLIB_SQRT       sqrtf
+    #define QLIB_ISNAN      isnan
+    #define QLIB_ISINF      isinf
+    #define QLIB_NAN        NAN
+#else
+    #include "qffmath.h"
+    #define QLIB_ABS        qFFMath_Abs
+    #define QLIB_COS        qFFMath_Cos
+    #define QLIB_POW        qFFMath_Pow
+    #define QLIB_EXP        qFFMath_Exp
+    #define QLIB_LOG        qFFMath_Log
+    #define QLIB_SQRT       qFFMath_Sqrt
+    #define QLIB_ISNAN      qFFMath_IsNaN
+    #define QLIB_ISINF      qFFMath_IsInf
+    #define QLIB_NAN        QFFM_NAN
+#endif
 
 static float qPID_Sat( float x,
                        const float min,
@@ -262,7 +287,7 @@ float qPID_Control( qPID_controller_t * const c,
         }
 
         e = w - y;
-        if ( fabs( e ) <= c->epsilon ) {
+        if ( QLIB_ABS( e ) <= c->epsilon ) {
             e = 0.0f;
         }
         /*integral with anti-windup*/
@@ -274,7 +299,7 @@ float qPID_Control( qPID_controller_t * const c,
         if ( NULL != c->yr ) {
             /*MRAC additive controller using the modified MIT rule*/
             float theta = 0.0f;
-            if ( fabs( c->u1 ) <= c->epsilon ) { /*additive anti-windup*/
+            if ( QLIB_ABS( c->u1 ) <= c->epsilon ) { /*additive anti-windup*/
                 const float em = y - c->yr[ 0 ];
                 const float delta = -c->gamma*em*c->yr[ 0 ]/
                                     ( c->alfa + ( c->yr[ 0 ]*c->yr[ 0 ] ) );
@@ -321,7 +346,7 @@ int qPID_BindAutoTunning( qPID_controller_t * const c,
             at->mu = 0.95f;
             k = c->kc/0.9f;
             T = ( 0.27f*k )/c->ki;
-            at->a1 = -expf( -c->dt/T );
+            at->a1 = -QLIB_EXP( -c->dt/T );
             at->b1 = k*( 1.0f + at->a1 );
             at->speed = 0.25f;
             at->it = QPID_AUTOTUNNING_UNDEFINED;
@@ -386,7 +411,7 @@ static void qPID_AdaptGains( qPID_controller_t *c,
     k = s->b1/( 1.0f + s->a1 );
     tmp1 = ( s->a1 < 0.0f ) ? -s->a1 : s->a1;
     /*cstat -MISRAC2012-Dir-4.11_a -MISRAC2012-Rule-13.5*/
-    tao = -c->dt/logf( tmp1 ); /*ok, passing absolute value*/
+    tao = -c->dt/QLIB_LOG( tmp1 ); /*ok, passing absolute value*/
     if ( ( 0 != qPID_ATCheck( tao ) ) && ( 0 != qPID_ATCheck( k ) ) && ( s->it > 0uL ) ) {
     /*cstat +MISRAC2012-Dir-4.11_a +MISRAC2012-Rule-13.5*/
         s->k = k + ( s->mu*( s->k - k ) );
@@ -457,7 +482,7 @@ static float qPID_Sat( float x,
 static int qPID_ATCheck( const float x )
 {
     /*cstat -MISRAC2012-Rule-13.5 -MISRAC2012-Rule-10.3*/
-    return ( 0 == (int)isnan( x ) ) && ( x > 0.0f ) && ( 0 == (int)isinf( x ) );
+    return ( 0 == (int)QLIB_ISNAN( x ) ) && ( x > 0.0f ) && ( 0 == (int)QLIB_ISINF( x ) );
     /*cstat +MISRAC2012-Rule-13.5 +MISRAC2012-Rule-10.3*/
 }
 /*============================================================================*/

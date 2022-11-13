@@ -1,7 +1,7 @@
 /*!
  * @file qffmath.h
  * @author J. Camilo Gomez C.
- * @version 1.01
+ * @version 1.02
  * @note This file is part of the qLibs distribution.
  * @brief Fast floating-point math library for applications where speed is more 
  * important than accuracy
@@ -406,6 +406,24 @@ extern "C" {
     * returned.
     */ 
     float qFFMath_Erfc( float x );
+
+    /**
+    * @brief  Returns the larger of two floating point arguments.
+    * @param[in] x The floating point value
+    * @param[in] y The floating point value
+    * @return If successful, returns the larger of two floating point values
+    */ 
+    float qFFMath_Max( float x,
+                       float y );
+
+    /**
+    * @brief  Returns the smaller  of two floating point arguments.
+    * @param[in] x The floating point value
+    * @param[in] y The floating point value
+    * @return If successful, returns the smaller of two floating point values
+    */ 
+    float qFFMath_Min( float x,
+                       float y );
 
     /** @}*/
 
