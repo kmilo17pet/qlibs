@@ -32,7 +32,7 @@ extern "C" {
     * @brief Swaps the data pointed by b @a x and @a y
     * @param[in,out] x Pointer to data to be swapped.
     * @param[in,out] y Pointer to data to be swapped.
-    * @param[in] size The size of the data to be swapped.
+    * @param[in] n The size of the data to be swapped.
     * @return none.
     */
     void qTypeGeneric_Swap( void * const x,

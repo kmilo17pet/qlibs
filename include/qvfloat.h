@@ -55,10 +55,10 @@ extern "C" {
 
     /**
     * @brief Computes one of the following 1D-vector operation :
-    * - <tt>dst = a*x <o> b*y</tt> if both @a x and @a y are supplied.
-    * - <tt>dst = a*x <o> b</tt> if the @a y argument is @c NULL.
+    * - <tt>dst = a*x [o] b*y</tt> if both @a x and @a y are supplied.
+    * - <tt>dst = a*x [o] b</tt> if the @a y argument is @c NULL.
     * 
-    * Here, <tt><o></tt> corresponds to the operator that will be applied
+    * Here, <tt>[o]</tt> corresponds to the operator that will be applied
     * @note If @a y or @a dst are used, they must have the same length as @a x.
     * @param[out] dst The pointer to the destination array where the result
     * will be stored. To ignore pass @c NULL as argument.
@@ -128,18 +128,9 @@ extern "C" {
     * skewness and kurtosis.
     * @param[out] m A structure of type qVFloat_Moment_t where the metrics will
     * be stored.
-    * @param[in] fx1 The function with one argument to be applied to every 
-    * element of @a x. To ignore pass @c NULL as argument.
-    * @param[in] fx2 The function with two arguments to be applied to every 
-    * element of @a x or/and @a y. To ignore pass @c NULL as argument.
-    * @param[in] x A vector as an 1D float array
-    * @param[in] y A vector as an 1D float array. To ignore pass @c NULL as
-    * argument.
-    * @param[in] a A value to scale the result of @a fx1 and @a fx2.
-    * @param[in] b An scalar value used as second argument on @a fx2 if @a y
-    * is ignored.
+    * @param[in] x A vector of data as an 1D float array
     * @param[in] n The number of elements of vectors @a x and @a y
-    * @return The sum of all elements on @a dst after the operation.
+    * @return 1 on success, otherwise returns 0.
     */
     int qVFloat_Moment( qVFloat_Moment_t * const m,
                         const float * const x,
@@ -161,7 +152,7 @@ extern "C" {
     * @brief Copies all the values on vector pointed by @a src to the vector 
     * pointed by @a dst.
     * @param[in] dst Pointer to the destination vector
-    * @param[in] c Pointer to the source vector 
+    * @param[in] src Pointer to the source vector 
     * @param[in] n Number of elements of the vector 
     * @return A pointer to the vector, same as @dst.
     */
@@ -199,7 +190,7 @@ extern "C" {
                              const size_t n );
 
     /**
-    * @brief Returns the Euclidean distance between vectors @a x and @a 
+    * @brief Returns the Euclidean distance between vectors @a x and @a y
     * @param[in] x Pointer to the input vector.
     * @param[in] y Pointer to the input vector 
     * @param[in] n Number of elements of the vector 
@@ -217,8 +208,8 @@ extern "C" {
     * @param[out] dst The pointer to the destination vector where the result
     * will be stored. To ignore pass @c NULL as argument.
     * @param[in,out] src The input vector to reverse.
-    * @param[in] init Position of the first element.
-    * @param[in] end Position of the last element.
+    * @param[in] low Position of the first element.
+    * @param[in] high Position of the last element.
     * @return A pointer to the reversed vector.
     */
     float* qVFloat_Reverse( float * const dst,

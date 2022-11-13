@@ -107,13 +107,13 @@ extern "C" {
         Tsukamoto           /*!< Mamdani inference system. The output of each rule its a fuzzy logic set represented with a monotonic membership function.*/
     } qFIS_Type_t;
 
-        /*! @cond  */
+    /*! @cond  */
     typedef enum {
         DeFuzz_Init,
         DeFuzz_Compute,
         DeFuzz_End
     } qFIS_DeFuzzState_t;
-        /*! @endcond  */
+    /*! @endcond  */
 
     /*! @cond  */
     typedef struct

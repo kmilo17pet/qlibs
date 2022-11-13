@@ -22,7 +22,9 @@ extern "C" {
     *  @{
     */
 
+    /*! @cond  */
     float _qFFMath_GetAbnormal( const int i );
+    /*! @endcond  */
 
     /** @brief The base of natural logarithms ( e ) given as a single-precision floating-point number*/
     #define QFFM_E          ( 2.7182818284590452354f )
@@ -86,7 +88,7 @@ extern "C" {
     * - #QFFM_FP_NORMAL
     * - #QFFM_FP_INFINITE
     * - #QFFM_FP_NAN
-    * @param[in] x The number you want to test.
+    * @param[in] f The number you want to test.
     * @return One of #QFFM_FP_INFINITE, #QFFM_FP_NAN, #QFFM_FP_NORMAL, 
     * #QFFM_FP_SUBNORMAL, or #QFFM_FP_ZERO, specifying the category of @a x.
     */
@@ -265,6 +267,7 @@ extern "C" {
     /**
     * @brief Computes the arc tangent of y/x using the signs of arguments to 
     * determine the correct quadrant.
+    * @param[in] y The floating point value
     * @param[in] x The floating point value
     * @return If no errors occur, the arc tangent of y/x (arctan(y/x)) in the 
     * range [-pi ; +pi] radians, is returned. If a domain error occurs, a NAN 
@@ -330,7 +333,7 @@ extern "C" {
     /**
     * @brief Computes the value of @a b raised to the power @a e.
     * @param[in] b Base as floating point value
-    * @param[in] b Exponent as floating point value
+    * @param[in] e Exponent as floating point value
     * @return If no errors occur, @a b raised to the power of @a e (b^e) is 
     * returned. If a domain error occurs, a NAN value is returned. If a pole 
     * error or a range error due to overflow occurs, (+/-)QFFM_HUGE_VAL is 

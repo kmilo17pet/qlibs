@@ -4,9 +4,11 @@
 #include <limits.h>
 #include <string.h>
 
+/*! @cond  */
 typedef struct {
     uint8_t *lo, *hi;
 } qTypeGeneric_SortStackNode_t;
+/*! @endcond  */
 
 static void qTypeGeneric_SortStackPush( qTypeGeneric_SortStackNode_t **top,
                                         uint8_t *low,
