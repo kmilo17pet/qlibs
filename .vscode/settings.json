@@ -1,5 +1,8 @@
 {
     "files.associations": {
-        "algorithm": "c"
+        "algorithm": "c",
+        "qffmath.h": "c",
+        "float.h": "c",
+        "functional": "c"
     }
 }
