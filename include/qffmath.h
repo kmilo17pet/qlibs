@@ -16,7 +16,7 @@ extern "C" {
 
     #include <stdbool.h>
 
-    /** @addtogroup  qfmathex qFFMath
+    /** @addtogroup  qffmath qFFMath
     * @brief Fast floating-point math library for applications where speed is 
     * more important than accuracy
     *  @{
