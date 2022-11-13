@@ -2,8 +2,8 @@ var searchData=
 [
   ['qbitfield_0',['qBitField',['../group__qbitfield.html',1,'']]],
   ['qcrc_1',['qCRC',['../group__qcrc.html',1,'']]],
-  ['qfis_2',['qFIS',['../group__qfis.html',1,'']]],
-  ['qfmathex_3',['qFMathEx',['../group__qfmathex.html',1,'']]],
+  ['qffmath_2',['qFFMath',['../group__qfmathex.html',1,'']]],
+  ['qfis_3',['qFIS',['../group__qfis.html',1,'']]],
   ['qfp16_4',['qFP16',['../group__qfp16.html',1,'']]],
   ['qfvector_5',['qFVector',['../group__qvfloat.html',1,'']]],
   ['qltisys_6',['qLTISys',['../group__qltisys.html',1,'']]],
