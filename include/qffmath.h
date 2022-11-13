@@ -1,7 +1,7 @@
 /*!
  * @file qffmath.h
  * @author J. Camilo Gomez C.
- * @version 1.02
+ * @version 1.03
  * @note This file is part of the qLibs distribution.
  * @brief Fast floating-point math library for applications where speed is more 
  * important than accuracy
@@ -154,6 +154,22 @@ extern "C" {
     * returned. If a domain error occurs NAN is returned
     */
     float qFFMath_RSqrt( float x );
+
+    /**
+    * @brief Computes the cubic-root of @a x
+    * @param[in] x The floating point value
+    * @return  If no errors occur, cubic root of @a x, is returned. If a domain
+    * error occurs NAN is returned
+    */
+    float qFFMath_Cbrt( float x );
+
+    /**
+    * @brief Computes the reciprocal cubic-root of @a x denoted as 1/cbrt(x)
+    * @param[in] x The floating point value
+    * @return  If no errors occur, the reciprocal cubic root of @a x, is 
+    * returned. If a domain error occurs NAN is returned
+    */
+    float qFFMath_RCbrt( float x );
 
     /**
     * @brief Computes the nearest integer value to @a x (in floating-point 
@@ -417,7 +433,7 @@ extern "C" {
                        float y );
 
     /**
-    * @brief  Returns the smaller  of two floating point arguments.
+    * @brief  Returns the smaller of two floating point arguments.
     * @param[in] x The floating point value
     * @param[in] y The floating point value
     * @return If successful, returns the smaller of two floating point values

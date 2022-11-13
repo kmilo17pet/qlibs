@@ -128,6 +128,64 @@ float qFFMath_RSqrt( float x )
     return retVal;
 }
 /*============================================================================*/
+float qFFMath_Cbrt( float x )
+{
+    uint32_t i = 0u;
+    float y = 0.0f, c, d;
+    float k1 = 1.752319676f;
+    float k2 = 1.2509524245f;
+    float k3 = 0.5093818292f;
+
+    bool neg = false;
+    if ( x < 0.0f ) {
+        x = -x;
+        neg = true;
+    }
+    
+    cast_float_to_uint32( i, x );
+    i = 0x548C2B4Bu - ( i/3u );
+    cast_uint32_to_float( y, i );
+    c = x*y*y*y;
+    y = y*( k1 - ( c*( k2 - ( k3*c ) ) ) );
+
+    d = x*y*y;
+    c = 1.0f - ( d*y );
+    y = d*( 1.0f + ( 0.333333333333f*c ) );
+    return ( neg )? -y : y;
+}
+/*============================================================================*/
+float qFFMath_RCbrt( float x )
+{
+    float retVal;
+
+    if ( QFFM_FP_ZERO == qFFMath_FPClassify( x ) ) {
+        retVal = QFFM_INFINITY;
+    }
+    else {
+        uint32_t i = 0u;
+        float y = 0.0f, c;
+        float k1 = 1.752319676f;
+        float k2 = 1.2509524245f;
+        float k3 = 0.5093818292f;
+        bool neg = false;
+
+        if ( x < 0.0f ) {
+            x = -x;
+            neg = true;
+        }
+        cast_float_to_uint32( i, x );
+        i = 0x548C2B4Bu - ( i/3u );
+        cast_uint32_to_float( y, i );
+        c = x*y*y*y;
+        y = y*( k1 - ( c*( k2 - ( k3*c ) ) ) );
+        c = 1.0f - ( x*y*y*y );
+        y = y*( 1.0f + ( 0.333333333333f*c ) );
+        retVal = ( neg )? -y : y;
+    }
+
+    return retVal;
+}
+/*============================================================================*/
 float qFFMath_Round( float x )
 {
     x += 12582912.0f;
