@@ -118,6 +118,8 @@ extern "C" {
                                   const float cy,
                                   const float r );
 
+    /** @}*/
+
 #ifdef __cplusplus
 }
 #endif

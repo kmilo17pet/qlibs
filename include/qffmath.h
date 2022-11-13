@@ -16,6 +16,12 @@ extern "C" {
 
     #include <stdbool.h>
 
+    /** @addtogroup  qfmathex qFFMath
+    * @brief Fast floating-point math library for applications where speed is 
+    * more important than accuracy
+    *  @{
+    */
+
     float _qFFMath_GetAbnormal( const int i );
 
     /** @brief The base of natural logarithms ( e ) given as a single-precision floating-point number*/
@@ -397,6 +403,8 @@ extern "C" {
     * returned.
     */ 
     float qFFMath_Erfc( float x );
+
+    /** @}*/
 
 #ifdef __cplusplus
 }
