@@ -136,40 +136,39 @@ $(document).ready(function(){initNavTree('qrms_8h_source.html',''); initResizabl
 <div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="preprocessor">#endif</span></div>
 <div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span> </div>
 <div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><span class="preprocessor">    #include &lt;stdlib.h&gt;</span></div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span><span class="preprocessor">    #include &lt;stdint.h&gt;</span></div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span><span class="preprocessor">    #include &lt;string.h&gt;</span></div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span><span class="preprocessor">    #include &quot;qssmoother.h&quot;</span></div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span> </div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno"><a class="line" href="structq_r_m_s__t.html">   30</a></span>    <span class="keyword">typedef</span> <span class="keyword">struct</span></div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>    {</div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>        <a class="code hl_struct" href="structq_s_smoother___e_x_p_w__t.html">qSSmoother_EXPW_t</a> f1;</div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>        <a class="code hl_struct" href="structq_s_smoother___m_w_m2__t.html">qSSmoother_MWM2_t</a> f2;</div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>        <a class="code hl_struct" href="structq_s_smoother___l_p_f1__t.html">qSSmoother_LPF1_t</a> f3;</div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>    } <a class="code hl_struct" href="structq_r_m_s__t.html">qRMS_t</a>;</div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span> </div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>    <span class="keywordtype">int</span> <a class="code hl_function" href="group__qrms.html#ga80e0418be06004723a434361846a57c5">qRMS_Setup</a>( <a class="code hl_struct" href="structq_r_m_s__t.html">qRMS_t</a> * <span class="keyword">const</span> q,</div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>                    <span class="keywordtype">float</span> * <span class="keyword">const</span> window,</div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>                    <span class="keyword">const</span> <span class="keywordtype">size_t</span> wsize );</div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span> </div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>    <span class="keywordtype">float</span> <a class="code hl_function" href="group__qrms.html#ga9bfeb8d905357aec3741ad2bcf795ecd">qRMS_Update</a>( <a class="code hl_struct" href="structq_r_m_s__t.html">qRMS_t</a> * <span class="keyword">const</span> q,</div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>                       <span class="keyword">const</span> <span class="keywordtype">float</span> x );</div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span> </div>
-<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>    <span class="keywordtype">int</span> <a class="code hl_function" href="group__qrms.html#ga766f2425c97ae288538af32bdc82c9f8">qRMS_SetParams</a>( <a class="code hl_struct" href="structq_r_m_s__t.html">qRMS_t</a> * <span class="keyword">const</span> q,</div>
-<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>                        <span class="keyword">const</span> <span class="keywordtype">float</span> lambda,</div>
-<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>                        <span class="keyword">const</span> <span class="keywordtype">float</span> alpha );</div>
-<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span> </div>
-<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span><span class="preprocessor">#ifdef __cplusplus</span></div>
-<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>}</div>
-<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span><span class="preprocessor">#endif</span></div>
-<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span> </div>
-<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span><span class="preprocessor">#endif</span></div>
-<div class="ttc" id="agroup__qrms_html_ga766f2425c97ae288538af32bdc82c9f8"><div class="ttname"><a href="group__qrms.html#ga766f2425c97ae288538af32bdc82c9f8">qRMS_SetParams</a></div><div class="ttdeci">int qRMS_SetParams(qRMS_t *const q, const float lambda, const float alpha)</div><div class="ttdoc">Change the recursive parameters for the moving RMS estimator.</div><div class="ttdef"><b>Definition:</b> qrms.c:44</div></div>
-<div class="ttc" id="agroup__qrms_html_ga80e0418be06004723a434361846a57c5"><div class="ttname"><a href="group__qrms.html#ga80e0418be06004723a434361846a57c5">qRMS_Setup</a></div><div class="ttdeci">int qRMS_Setup(qRMS_t *const q, float *const window, const size_t wsize)</div><div class="ttdoc">Initialize the RMS instance by setting the default optimal parameters.</div><div class="ttdef"><b>Definition:</b> qrms.c:13</div></div>
-<div class="ttc" id="agroup__qrms_html_ga9bfeb8d905357aec3741ad2bcf795ecd"><div class="ttname"><a href="group__qrms.html#ga9bfeb8d905357aec3741ad2bcf795ecd">qRMS_Update</a></div><div class="ttdeci">float qRMS_Update(qRMS_t *const q, const float x)</div><div class="ttdoc">Computes the moving root mean square (RMS) of the input signal. The object uses both the exponential ...</div><div class="ttdef"><b>Definition:</b> qrms.c:30</div></div>
-<div class="ttc" id="astructq_r_m_s__t_html"><div class="ttname"><a href="structq_r_m_s__t.html">qRMS_t</a></div><div class="ttdoc">RMS calculator instance.</div><div class="ttdef"><b>Definition:</b> qrms.h:31</div></div>
-<div class="ttc" id="astructq_s_smoother___e_x_p_w__t_html"><div class="ttname"><a href="structq_s_smoother___e_x_p_w__t.html">qSSmoother_EXPW_t</a></div><div class="ttdoc">An Exponential weighting filter.</div><div class="ttdef"><b>Definition:</b> qssmoother.h:143</div></div>
-<div class="ttc" id="astructq_s_smoother___l_p_f1__t_html"><div class="ttname"><a href="structq_s_smoother___l_p_f1__t.html">qSSmoother_LPF1_t</a></div><div class="ttdoc">A 1st order Low-Pass Filter.</div><div class="ttdef"><b>Definition:</b> qssmoother.h:56</div></div>
-<div class="ttc" id="astructq_s_smoother___m_w_m2__t_html"><div class="ttname"><a href="structq_s_smoother___m_w_m2__t.html">qSSmoother_MWM2_t</a></div><div class="ttdoc">A Moving Window Median filter.</div><div class="ttdef"><b>Definition:</b> qssmoother.h:93</div></div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span><span class="preprocessor">    #include &quot;qssmoother.h&quot;</span></div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span> </div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span> </div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno"><a class="line" href="structq_r_m_s__t.html">   29</a></span>    <span class="keyword">typedef</span> <span class="keyword">struct</span></div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>    {</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>        <a class="code hl_struct" href="structq_s_smoother___e_x_p_w__t.html">qSSmoother_EXPW_t</a> f1;</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>        <a class="code hl_struct" href="structq_s_smoother___m_w_m2__t.html">qSSmoother_MWM2_t</a> f2;</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>        <a class="code hl_struct" href="structq_s_smoother___l_p_f1__t.html">qSSmoother_LPF1_t</a> f3;</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>    } <a class="code hl_struct" href="structq_r_m_s__t.html">qRMS_t</a>;</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span> </div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>    <span class="keywordtype">int</span> <a class="code hl_function" href="group__qrms.html#ga80e0418be06004723a434361846a57c5">qRMS_Setup</a>( <a class="code hl_struct" href="structq_r_m_s__t.html">qRMS_t</a> * <span class="keyword">const</span> q,</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>                    <span class="keywordtype">float</span> * <span class="keyword">const</span> window,</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>                    <span class="keyword">const</span> <span class="keywordtype">size_t</span> wsize );</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span> </div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>    <span class="keywordtype">float</span> <a class="code hl_function" href="group__qrms.html#ga9bfeb8d905357aec3741ad2bcf795ecd">qRMS_Update</a>( <a class="code hl_struct" href="structq_r_m_s__t.html">qRMS_t</a> * <span class="keyword">const</span> q,</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>                       <span class="keyword">const</span> <span class="keywordtype">float</span> x );</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span> </div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>    <span class="keywordtype">int</span> <a class="code hl_function" href="group__qrms.html#ga766f2425c97ae288538af32bdc82c9f8">qRMS_SetParams</a>( <a class="code hl_struct" href="structq_r_m_s__t.html">qRMS_t</a> * <span class="keyword">const</span> q,</div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>                        <span class="keyword">const</span> <span class="keywordtype">float</span> lambda,</div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>                        <span class="keyword">const</span> <span class="keywordtype">float</span> alpha );</div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span> </div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span><span class="preprocessor">#ifdef __cplusplus</span></div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>}</div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span> </div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span><span class="preprocessor">#endif</span></div>
+<div class="ttc" id="agroup__qrms_html_ga766f2425c97ae288538af32bdc82c9f8"><div class="ttname"><a href="group__qrms.html#ga766f2425c97ae288538af32bdc82c9f8">qRMS_SetParams</a></div><div class="ttdeci">int qRMS_SetParams(qRMS_t *const q, const float lambda, const float alpha)</div><div class="ttdoc">Change the recursive parameters for the moving RMS estimator.</div><div class="ttdef"><b>Definition:</b> qrms.c:42</div></div>
+<div class="ttc" id="agroup__qrms_html_ga80e0418be06004723a434361846a57c5"><div class="ttname"><a href="group__qrms.html#ga80e0418be06004723a434361846a57c5">qRMS_Setup</a></div><div class="ttdeci">int qRMS_Setup(qRMS_t *const q, float *const window, const size_t wsize)</div><div class="ttdoc">Initialize the RMS instance by setting the default optimal parameters.</div><div class="ttdef"><b>Definition:</b> qrms.c:11</div></div>
+<div class="ttc" id="agroup__qrms_html_ga9bfeb8d905357aec3741ad2bcf795ecd"><div class="ttname"><a href="group__qrms.html#ga9bfeb8d905357aec3741ad2bcf795ecd">qRMS_Update</a></div><div class="ttdeci">float qRMS_Update(qRMS_t *const q, const float x)</div><div class="ttdoc">Computes the moving root mean square (RMS) of the input signal. The object uses both the exponential ...</div><div class="ttdef"><b>Definition:</b> qrms.c:28</div></div>
+<div class="ttc" id="astructq_r_m_s__t_html"><div class="ttname"><a href="structq_r_m_s__t.html">qRMS_t</a></div><div class="ttdoc">RMS calculator instance.</div><div class="ttdef"><b>Definition:</b> qrms.h:30</div></div>
+<div class="ttc" id="astructq_s_smoother___e_x_p_w__t_html"><div class="ttname"><a href="structq_s_smoother___e_x_p_w__t.html">qSSmoother_EXPW_t</a></div><div class="ttdoc">An Exponential weighting filter.</div><div class="ttdef"><b>Definition:</b> qssmoother.h:141</div></div>
+<div class="ttc" id="astructq_s_smoother___l_p_f1__t_html"><div class="ttname"><a href="structq_s_smoother___l_p_f1__t.html">qSSmoother_LPF1_t</a></div><div class="ttdoc">A 1st order Low-Pass Filter.</div><div class="ttdef"><b>Definition:</b> qssmoother.h:54</div></div>
+<div class="ttc" id="astructq_s_smoother___m_w_m2__t_html"><div class="ttname"><a href="structq_s_smoother___m_w_m2__t.html">qSSmoother_MWM2_t</a></div><div class="ttdoc">A Moving Window Median filter.</div><div class="ttdef"><b>Definition:</b> qssmoother.h:91</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

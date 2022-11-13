@@ -1,5 +1,7 @@
 var NAVTREEINDEX1 =
 {
+"group__qfp16.html#gacab3f07113a318c16cf3e120f0e727e4":[1,0,6],
+"group__qfp16.html#gad12f9293c13418cbb5f226b864b4bf17":[1,0,41],
 "group__qfp16.html#gad4f5059f7c7b77add35285e4f59347dd":[1,0,26],
 "group__qfp16.html#gada307d7f470251e389d815b79b642ff2":[1,0,13],
 "group__qfp16.html#gada9cfddd2e972f9ab43f975858f0ee83":[1,0,40],
@@ -96,8 +98,8 @@ var NAVTREEINDEX1 =
 "group__qvfloat.html#ggaa2afe87cb0916aa0883fc01716b4e290a3203df95f69d65e61f2cc4059c83506a":[1,12,2,2],
 "group__qvfloat.html#ggaa2afe87cb0916aa0883fc01716b4e290ac0e3daed50388574d02d2a9f462ab1fa":[1,12,2,1],
 "group__qvfloat.html#ggaa2afe87cb0916aa0883fc01716b4e290ae720f7e2a050b51ab22962debb7803d6":[1,12,2,0],
-"index.html":[0],
 "index.html":[],
+"index.html":[0],
 "modules.html":[1],
 "pages.html":[],
 "qbitfield_desc.html":[0,5],

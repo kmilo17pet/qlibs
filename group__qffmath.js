@@ -47,6 +47,8 @@ var group__qffmath =
     [ "qFFMath_Log", "group__qffmath.html#ga50db357eda1adee82e49eb48e844e84f", null ],
     [ "qFFMath_Log10", "group__qffmath.html#ga0eedc763d692fb924551007ba54b1923", null ],
     [ "qFFMath_Log2", "group__qffmath.html#ga9b5ee4a5dfb079414e33e753d85a42e2", null ],
+    [ "qFFMath_Max", "group__qffmath.html#gae396ce63ea627ca6561157268ce8ce71", null ],
+    [ "qFFMath_Min", "group__qffmath.html#ga57117515508f88c507e7fcf277447535", null ],
     [ "qFFMath_Mod", "group__qffmath.html#ga4e5d061aada4c15811a6a68e56c390e8", null ],
     [ "qFFMath_Pow", "group__qffmath.html#ga8a02fbecef5cb2aed855894be51a6333", null ],
     [ "qFFMath_Recip", "group__qffmath.html#ga7b2e3356e6e92eb9474f7c3b12bd8431", null ],

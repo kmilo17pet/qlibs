@@ -337,6 +337,12 @@ Functions</h2></td></tr>
 <tr class="memitem:gaba9770c27c5451711486eb3a1528d65e"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qffmath.html#gaba9770c27c5451711486eb3a1528d65e">qFFMath_Erfc</a> (float x)</td></tr>
 <tr class="memdesc:gaba9770c27c5451711486eb3a1528d65e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes the complementary error function of <em>x</em>.  <a href="group__qffmath.html#gaba9770c27c5451711486eb3a1528d65e">More...</a><br /></td></tr>
 <tr class="separator:gaba9770c27c5451711486eb3a1528d65e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gae396ce63ea627ca6561157268ce8ce71"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qffmath.html#gae396ce63ea627ca6561157268ce8ce71">qFFMath_Max</a> (float x, float y)</td></tr>
+<tr class="memdesc:gae396ce63ea627ca6561157268ce8ce71"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the larger of two floating point arguments.  <a href="group__qffmath.html#gae396ce63ea627ca6561157268ce8ce71">More...</a><br /></td></tr>
+<tr class="separator:gae396ce63ea627ca6561157268ce8ce71"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga57117515508f88c507e7fcf277447535"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qffmath.html#ga57117515508f88c507e7fcf277447535">qFFMath_Min</a> (float x, float y)</td></tr>
+<tr class="memdesc:ga57117515508f88c507e7fcf277447535"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the smaller of two floating point arguments.  <a href="group__qffmath.html#ga57117515508f88c507e7fcf277447535">More...</a><br /></td></tr>
+<tr class="separator:ga57117515508f88c507e7fcf277447535"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <p >Fast floating-point math library for applications where speed is more important than accuracy. </p>
@@ -1058,6 +1064,82 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>If no errors occur, the base-2 logarithm of <em>x</em> (log_2(x)) is returned. If a domain error occurs, an NAN value is returned. If a pole error occurs, -QFFM_HUGE_VAL is returned. </dd></dl>
+
+</div>
+</div>
+<a id="gae396ce63ea627ca6561157268ce8ce71" name="gae396ce63ea627ca6561157268ce8ce71"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gae396ce63ea627ca6561157268ce8ce71">&#9670;&nbsp;</a></span>qFFMath_Max()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float qFFMath_Max </td>
+          <td>(</td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>y</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Returns the larger of two floating point arguments. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">x</td><td>The floating point value </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">y</td><td>The floating point value </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>If successful, returns the larger of two floating point values </dd></dl>
+
+</div>
+</div>
+<a id="ga57117515508f88c507e7fcf277447535" name="ga57117515508f88c507e7fcf277447535"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga57117515508f88c507e7fcf277447535">&#9670;&nbsp;</a></span>qFFMath_Min()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float qFFMath_Min </td>
+          <td>(</td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>y</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Returns the smaller of two floating point arguments. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">x</td><td>The floating point value </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">y</td><td>The floating point value </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>If successful, returns the smaller of two floating point values </dd></dl>
 
 </div>
 </div>
