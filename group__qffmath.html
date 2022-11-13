@@ -250,6 +250,12 @@ Functions</h2></td></tr>
 <tr class="memitem:ga1fafc28aa5de68c10c734dd66a225501"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qffmath.html#ga1fafc28aa5de68c10c734dd66a225501">qFFMath_RSqrt</a> (float x)</td></tr>
 <tr class="memdesc:ga1fafc28aa5de68c10c734dd66a225501"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes the reciprocal square-root of <em>x</em> denoted as 1/sqrt(x)  <a href="group__qffmath.html#ga1fafc28aa5de68c10c734dd66a225501">More...</a><br /></td></tr>
 <tr class="separator:ga1fafc28aa5de68c10c734dd66a225501"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaf71623a9cab8e24d7ca92cb6b006f655"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qffmath.html#gaf71623a9cab8e24d7ca92cb6b006f655">qFFMath_Cbrt</a> (float x)</td></tr>
+<tr class="memdesc:gaf71623a9cab8e24d7ca92cb6b006f655"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes the cubic-root of <em>x</em>.  <a href="group__qffmath.html#gaf71623a9cab8e24d7ca92cb6b006f655">More...</a><br /></td></tr>
+<tr class="separator:gaf71623a9cab8e24d7ca92cb6b006f655"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaaf55c2d6fe345051221b7efa110d8070"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qffmath.html#gaaf55c2d6fe345051221b7efa110d8070">qFFMath_RCbrt</a> (float x)</td></tr>
+<tr class="memdesc:gaaf55c2d6fe345051221b7efa110d8070"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes the reciprocal cubic-root of <em>x</em> denoted as 1/cbrt(x)  <a href="group__qffmath.html#gaaf55c2d6fe345051221b7efa110d8070">More...</a><br /></td></tr>
+<tr class="separator:gaaf55c2d6fe345051221b7efa110d8070"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gad9320c80badf1240fc42ac4ef918e166"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qffmath.html#gad9320c80badf1240fc42ac4ef918e166">qFFMath_Round</a> (float x)</td></tr>
 <tr class="memdesc:gad9320c80badf1240fc42ac4ef918e166"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes the nearest integer value to <em>x</em> (in floating-point format), rounding halfway cases away from zero.  <a href="group__qffmath.html#gad9320c80badf1240fc42ac4ef918e166">More...</a><br /></td></tr>
 <tr class="separator:gad9320c80badf1240fc42ac4ef918e166"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -571,6 +577,33 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>If no errors occur, the inverse hyperbolic tangent of <em>x</em> (tanh^-1(x)) is returned. If a domain error occurs, an NAN value is returned. If a pole error occurs, (+/-)QFFM_HUGE_VAL is returned. </dd></dl>
+
+</div>
+</div>
+<a id="gaf71623a9cab8e24d7ca92cb6b006f655" name="gaf71623a9cab8e24d7ca92cb6b006f655"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gaf71623a9cab8e24d7ca92cb6b006f655">&#9670;&nbsp;</a></span>qFFMath_Cbrt()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float qFFMath_Cbrt </td>
+          <td>(</td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>x</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Computes the cubic-root of <em>x</em>. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">x</td><td>The floating point value </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>If no errors occur, cubic root of <em>x</em>, is returned. If a domain error occurs NAN is returned </dd></dl>
 
 </div>
 </div>
@@ -1216,6 +1249,33 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>If no errors occur, <em>b</em> raised to the power of <em>e</em> (b^e) is returned. If a domain error occurs, a NAN value is returned. If a pole error or a range error due to overflow occurs, (+/-)QFFM_HUGE_VAL is returned. </dd></dl>
+
+</div>
+</div>
+<a id="gaaf55c2d6fe345051221b7efa110d8070" name="gaaf55c2d6fe345051221b7efa110d8070"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gaaf55c2d6fe345051221b7efa110d8070">&#9670;&nbsp;</a></span>qFFMath_RCbrt()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float qFFMath_RCbrt </td>
+          <td>(</td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>x</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Computes the reciprocal cubic-root of <em>x</em> denoted as 1/cbrt(x) </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">x</td><td>The floating point value </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>If no errors occur, the reciprocal cubic root of <em>x</em>, is returned. If a domain error occurs NAN is returned </dd></dl>
 
 </div>
 </div>
