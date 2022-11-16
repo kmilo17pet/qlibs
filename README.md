@@ -57,6 +57,8 @@ Below is the list of the modules provided and their features:
 - qBitField: A bit-field manipulation library
 - qTDL : Tapped Delay Line in O(1). 
 - qRMS : Recursive Root Mean Square(RMS) calculation of a signal.
-- Additional utilities for vectors and single-precision floating-point
+- Type-generic array operations
+- Single precision floating-point vector(1D-Array) operations
+- Fast single precision floating-point math
 
 
