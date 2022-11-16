@@ -1,3 +1,5 @@
+#ifndef QLIBS_USE_STD_MATH
+
 #include "qffmath.h"
 #include <stdint.h>
 #include <string.h>
@@ -91,6 +93,9 @@ float qFFMath_Sqrt( float x )
 
     if ( x < 0.0f ) {
         retVal = QFFM_NAN;
+    }
+    else if ( QFFM_FP_ZERO == qFFMath_FPClassify( x ) ) {
+        retVal = 0.0f;
     }
     else {
         uint32_t y = 0u;
@@ -424,3 +429,4 @@ float qFFMath_Min( float x,
     return ( x < y ) ? x : y;
 }
 /*============================================================================*/
+#endif /*#ifndef QLIBS_USE_STD_MATH*/

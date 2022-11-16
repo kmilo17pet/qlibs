@@ -5,6 +5,7 @@
  **/
 
 #include "qltisys.h"
+#include <float.h>
 
 static float qLTISys_DiscreteUpdate( qLTISys_t * const sys,
                                      const float u );

@@ -4,6 +4,7 @@
  * @note This file is part of the qTools distribution.
  **/
 #include "qbitfield.h"
+#include <string.h>
 
 static const size_t qBitField_LBit = (size_t)( sizeof(uint32_t) * 8uL );
 

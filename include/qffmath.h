@@ -1,7 +1,7 @@
 /*!
  * @file qffmath.h
  * @author J. Camilo Gomez C.
- * @version 1.03
+ * @version 1.04
  * @note This file is part of the qLibs distribution.
  * @brief Fast floating-point math library for applications where speed is more 
  * important than accuracy
@@ -14,7 +14,37 @@
 extern "C" {
 #endif
 
+#ifdef QLIBS_USE_STD_MATH
+    /*! @cond  */
+    #include <math.h.h>
+    #define QLIB_ABS        fabsf
+    #define QLIB_COS        cosf
+    #define QLIB_POW        powf
+    #define QLIB_EXP        expf
+    #define QLIB_LOG        logf
+    #define QLIB_SQRT       sqrtf
+    #define QLIB_ISNAN      isnan
+    #define QLIB_ISINF      isinf
+    #define QLIB_MAX        fmaxf
+    #define QLIB_MIN        fminf
+    #define QLIB_NAN        NAN
+    /*! @endcond  */
+#else
     #include <stdbool.h>
+
+    /*! @cond  */
+    #define QLIB_ABS        qFFMath_Abs
+    #define QLIB_COS        qFFMath_Cos
+    #define QLIB_POW        qFFMath_Pow
+    #define QLIB_EXP        qFFMath_Exp
+    #define QLIB_LOG        qFFMath_Log
+    #define QLIB_SQRT       qFFMath_Sqrt
+    #define QLIB_ISNAN      qFFMath_IsNaN
+    #define QLIB_ISINF      qFFMath_IsInf
+    #define QLIB_MAX        qFFMath_Max
+    #define QLIB_MIN        qFFMath_Min
+    #define QLIB_NAN        QFFM_NAN
+    /*! @endcond  */
 
     /** @addtogroup  qffmath qFFMath
     * @brief Fast floating-point math library for applications where speed is 
@@ -442,6 +472,8 @@ extern "C" {
                        float y );
 
     /** @}*/
+
+#endif /*#ifdef QLIBS_USE_STD_MATH*/
 
 #ifdef __cplusplus
 }

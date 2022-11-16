@@ -1,26 +1,8 @@
 #include "qfmathex.h"
+#include "qffmath.h"
 #include <float.h>
 #include <limits.h>
 #include <string.h>
-
-#if ( 1 == QLIBS_USE_STD_MATH )
-    #include <math.h>
-    #define QLIB_ABS        fabsf
-    #define QLIB_ISNAN      isnan
-    #define QLIB_ISINF      isinf
-    #define QLIB_NAN        NAN
-    #define QLIB_MAX        fmaxf
-    #define QLIB_MIN        fminf
-#else
-    #include "qffmath.h"
-    #define QLIB_ABS        qFFMath_Abs
-    #define QLIB_SQRT       qFFMath_Sqrt
-    #define QLIB_ISNAN      qFFMath_IsNaN
-    #define QLIB_ISINF      qFFMath_IsInf
-    #define QLIB_NAN        QFFM_NAN
-    #define QLIB_MAX        qFFMath_Max
-    #define QLIB_MIN        qFFMath_Min
-#endif
 
 /*============================================================================*/
 float qFMathEx_Normalize( const float x,

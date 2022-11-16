@@ -14,7 +14,6 @@ extern "C" {
 #endif
 
     #include <stdlib.h>
-    #include <float.h>
     #include <stdint.h>
     #include <limits.h>
 

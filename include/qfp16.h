@@ -15,7 +15,6 @@ extern "C" {
 
     #include <stdint.h>
     #include <stdlib.h>
-    #include <ctype.h>
 
     /** @addtogroup qfp16 Q16.16 Fixed-point math
     * @brief API for the qFP16 Fixed-point math library

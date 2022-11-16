@@ -6,32 +6,8 @@
 
 #include "qfis.h"
 #include "qfmathex.h"
+#include "qffmath.h"
 #include <stdbool.h>
-
-#if ( 1 == QLIBS_USE_STD_MATH )
-    #include <math.h>
-    #define QLIB_ABS        fabsf
-    #define QLIB_COS        cosf
-    #define QLIB_POW        powf
-    #define QLIB_EXP        expf
-    #define QLIB_LOG        logf
-    #define QLIB_SQRT       sqrtf
-    #define QLIB_ISNAN      isnan
-    #define QLIB_ISINF      isinf
-    #define QLIB_NAN        NAN
-#else
-    #include "qffmath.h"
-    #define QLIB_ABS        qFFMath_Abs
-    #define QLIB_COS        qFFMath_Cos
-    #define QLIB_POW        qFFMath_Pow
-    #define QLIB_EXP        qFFMath_Exp
-    #define QLIB_LOG        qFFMath_Log
-    #define QLIB_SQRT       qFFMath_Sqrt
-    #define QLIB_ISNAN      qFFMath_IsNaN
-    #define QLIB_ISINF      qFFMath_IsInf
-    #define QLIB_NAN        QFFM_NAN
-#endif
-
 
 typedef float (*qFIS_FuzzyOperator_t)( const float a, const float b );
 

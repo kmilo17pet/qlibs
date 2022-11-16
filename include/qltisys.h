@@ -15,7 +15,6 @@ extern "C" {
 
     #include <stdlib.h>
     #include <stdint.h>
-    #include <float.h>
     #include "qtdl.h"
     #include "qnuma.h"
 

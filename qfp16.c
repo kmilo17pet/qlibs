@@ -5,6 +5,7 @@
  **/
 
 #include "qfp16.h"
+#include <ctype.h>
 
 /*used only for internal operations*/
 /*! @cond  */
