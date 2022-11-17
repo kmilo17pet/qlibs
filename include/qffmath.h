@@ -28,6 +28,8 @@ extern "C" {
     #define QLIB_MAX        fmaxf
     #define QLIB_MIN        fminf
     #define QLIB_NAN        NAN
+    #define QLIB_MOD        fmodf
+    #define QLIB_ROUND      roundf
     /*! @endcond  */
 #else
     #include <stdbool.h>
@@ -44,6 +46,8 @@ extern "C" {
     #define QLIB_MAX        qFFMath_Max
     #define QLIB_MIN        qFFMath_Min
     #define QLIB_NAN        QFFM_NAN
+    #define QLIB_FMOD       qFFMath_Mod
+    #define QLIB_ROUND      qFFMath_Round
     /*! @endcond  */
 
     /** @addtogroup  qffmath qFFMath

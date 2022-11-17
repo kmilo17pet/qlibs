@@ -9,6 +9,7 @@
         "qpid.h": "c",
         "qltisys.h": "c",
         "cmath": "c",
-        "string.h": "c"
+        "string.h": "c",
+        "random": "c"
     }
 }

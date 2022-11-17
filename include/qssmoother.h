@@ -34,7 +34,8 @@ extern "C" {
         QSSMOOTHER_TYPE_MOR2,       /*!< Moving Outliers Removal ( O(1) time by using a TDL )*/
         QSSMOOTHER_TYPE_GMWF,       /*!< Gaussian Filter*/
         QSSMOOTHER_TYPE_KLMN,       /*!< Kalman Filter*/
-        QSSMOOTHER_TYPE_EXPW        /*!< Exponential weighting filter*/
+        QSSMOOTHER_TYPE_EXPW,       /*!< Exponential weighting filter*/
+        QSSMOOTHER_TYPE_DESF,       /*!< Double Exponential Smoother*/
     } qSSmoother_Type_t;
 
     /*! @cond  */
@@ -161,6 +162,18 @@ extern "C" {
         float gain;
         /*! @endcond  */
     } qSSmoother_KLMN_t;
+
+    /**
+    * @brief Double exponential smoothing (Holt’s Method)
+    */
+    typedef struct
+    {
+        /*! @cond  */
+        _qSSmoother_t f;
+        float alpha, beta;
+        float lt, bt, n;
+        /*! @endcond  */
+    } qSSmoother_DESF_t;
 
     /**
     * @brief Check if the smoother filter is initialized.

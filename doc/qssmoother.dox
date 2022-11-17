@@ -1,11 +1,15 @@
 /*! @page qssmoother_desc Filters for signal smoothing
 * @tableofcontents
-*  Smoothing is how we discover important patterns in a signal while leaving
-*  out things that are unimportant (i.e. noise). This smoothing is accomplished 
-*  through the use of filtering. The goal of smoothing is to produce slow changes 
-*  in value so that it's easier to see trends in our signal.
-*  @a qLibs provides a collection of smoothing filters to improve our signals,
-*  the @ref qssmoother module.
+*  In many applications with embedded systems, you will end up measuring some 
+*  signal. After being captured, the sample is often "noised". Then it becomes 
+*  desirable to apply a "smoothing filter" to the measured data to "clear" the 
+*  signal from such noises in order to reconstruct the original underlying 
+*  function. A smoothing filter attenuates undesired components of the signal 
+*  typically at higher frequencies, causing slow changes in values so that it's 
+*  easier to see trends in our signal. Because performing this operation can be
+*  a complex and time-consuming task, qLibs provides the @ref qssmoother module,
+*  which includes a collection of the most-common and efficient smoothing 
+*  filters to perform this operation on our signals as simply as possible.
 *
 *  Below is the list of filters supported by @ref qssmoother :
 *  
