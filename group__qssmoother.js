@@ -9,6 +9,7 @@ var group__qssmoother =
     [ "qSSmoother_GMWF_t", "structq_s_smoother___g_m_w_f__t.html", null ],
     [ "qSSmoother_EXPW_t", "structq_s_smoother___e_x_p_w__t.html", null ],
     [ "qSSmoother_KLMN_t", "structq_s_smoother___k_l_m_n__t.html", null ],
+    [ "qSSmoother_DESF_t", "structq_s_smoother___d_e_s_f__t.html", null ],
     [ "qSSmoother_Type_t", "group__qssmoother.html#ga8953f71916f57517edbe8cab4d7ee639", [
       [ "QSSMOOTHER_TYPE_LPF1", "group__qssmoother.html#gga8953f71916f57517edbe8cab4d7ee639ad67f57dd9afcfa9a0a6803aa92a616ea", null ],
       [ "QSSMOOTHER_TYPE_LPF2", "group__qssmoother.html#gga8953f71916f57517edbe8cab4d7ee639a3247b5a5622c33af6599c5dfef9f1796", null ],
@@ -18,7 +19,8 @@ var group__qssmoother =
       [ "QSSMOOTHER_TYPE_MOR2", "group__qssmoother.html#gga8953f71916f57517edbe8cab4d7ee639a5679bf69e01eed679eec13883af3d117", null ],
       [ "QSSMOOTHER_TYPE_GMWF", "group__qssmoother.html#gga8953f71916f57517edbe8cab4d7ee639a0f072f41aec7b912c7e49bf897a0d87b", null ],
       [ "QSSMOOTHER_TYPE_KLMN", "group__qssmoother.html#gga8953f71916f57517edbe8cab4d7ee639ab3aa23be42e760981dfeb0dcce302b11", null ],
-      [ "QSSMOOTHER_TYPE_EXPW", "group__qssmoother.html#gga8953f71916f57517edbe8cab4d7ee639a3113bceea7e0aed76fd9885b0bdaf135", null ]
+      [ "QSSMOOTHER_TYPE_EXPW", "group__qssmoother.html#gga8953f71916f57517edbe8cab4d7ee639a3113bceea7e0aed76fd9885b0bdaf135", null ],
+      [ "QSSMOOTHER_TYPE_DESF", "group__qssmoother.html#gga8953f71916f57517edbe8cab4d7ee639a242ede17585988be7022454771ede9dc", null ]
     ] ],
     [ "qSSmoother_IsInitialized", "group__qssmoother.html#ga85027474c3ee4e70a2c34318fd22ac36", null ],
     [ "qSSmoother_Perform", "group__qssmoother.html#ga4b35d70416b5b24e1d894ac0c8b316eb", null ],

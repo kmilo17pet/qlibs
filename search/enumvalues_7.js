@@ -17,13 +17,14 @@ var searchData=
   ['qpid_5fbackward_14',['qPID_Backward',['../group__qpid.html#gga071f36d4c926098483e9eeae6659ff38a19bbc9656b592470dd2b8b841c748b38',1,'qpid.h']]],
   ['qpid_5fforward_15',['qPID_Forward',['../group__qpid.html#gga071f36d4c926098483e9eeae6659ff38aed37b89d36623ac6048fca0b03df9347',1,'qpid.h']]],
   ['qpid_5fmanual_16',['qPID_Manual',['../group__qpid.html#gga05a79879807411fa30d5f21816030f5da0cc4e1987e0c9ff009774cbd63e75edb',1,'qpid.h']]],
-  ['qssmoother_5ftype_5fexpw_17',['QSSMOOTHER_TYPE_EXPW',['../group__qssmoother.html#gga8953f71916f57517edbe8cab4d7ee639a3113bceea7e0aed76fd9885b0bdaf135',1,'qssmoother.h']]],
-  ['qssmoother_5ftype_5fgmwf_18',['QSSMOOTHER_TYPE_GMWF',['../group__qssmoother.html#gga8953f71916f57517edbe8cab4d7ee639a0f072f41aec7b912c7e49bf897a0d87b',1,'qssmoother.h']]],
-  ['qssmoother_5ftype_5fklmn_19',['QSSMOOTHER_TYPE_KLMN',['../group__qssmoother.html#gga8953f71916f57517edbe8cab4d7ee639ab3aa23be42e760981dfeb0dcce302b11',1,'qssmoother.h']]],
-  ['qssmoother_5ftype_5flpf1_20',['QSSMOOTHER_TYPE_LPF1',['../group__qssmoother.html#gga8953f71916f57517edbe8cab4d7ee639ad67f57dd9afcfa9a0a6803aa92a616ea',1,'qssmoother.h']]],
-  ['qssmoother_5ftype_5flpf2_21',['QSSMOOTHER_TYPE_LPF2',['../group__qssmoother.html#gga8953f71916f57517edbe8cab4d7ee639a3247b5a5622c33af6599c5dfef9f1796',1,'qssmoother.h']]],
-  ['qssmoother_5ftype_5fmor1_22',['QSSMOOTHER_TYPE_MOR1',['../group__qssmoother.html#gga8953f71916f57517edbe8cab4d7ee639ad4c3e7ec5b54fc155c6a84381f8e29f8',1,'qssmoother.h']]],
-  ['qssmoother_5ftype_5fmor2_23',['QSSMOOTHER_TYPE_MOR2',['../group__qssmoother.html#gga8953f71916f57517edbe8cab4d7ee639a5679bf69e01eed679eec13883af3d117',1,'qssmoother.h']]],
-  ['qssmoother_5ftype_5fmwm1_24',['QSSMOOTHER_TYPE_MWM1',['../group__qssmoother.html#gga8953f71916f57517edbe8cab4d7ee639ac2598cbedb9a3b3b663f3f887be4a342',1,'qssmoother.h']]],
-  ['qssmoother_5ftype_5fmwm2_25',['QSSMOOTHER_TYPE_MWM2',['../group__qssmoother.html#gga8953f71916f57517edbe8cab4d7ee639a2663b7f579b7bf0e1706bf8b441b1500',1,'qssmoother.h']]]
+  ['qssmoother_5ftype_5fdesf_17',['QSSMOOTHER_TYPE_DESF',['../group__qssmoother.html#gga8953f71916f57517edbe8cab4d7ee639a242ede17585988be7022454771ede9dc',1,'qssmoother.h']]],
+  ['qssmoother_5ftype_5fexpw_18',['QSSMOOTHER_TYPE_EXPW',['../group__qssmoother.html#gga8953f71916f57517edbe8cab4d7ee639a3113bceea7e0aed76fd9885b0bdaf135',1,'qssmoother.h']]],
+  ['qssmoother_5ftype_5fgmwf_19',['QSSMOOTHER_TYPE_GMWF',['../group__qssmoother.html#gga8953f71916f57517edbe8cab4d7ee639a0f072f41aec7b912c7e49bf897a0d87b',1,'qssmoother.h']]],
+  ['qssmoother_5ftype_5fklmn_20',['QSSMOOTHER_TYPE_KLMN',['../group__qssmoother.html#gga8953f71916f57517edbe8cab4d7ee639ab3aa23be42e760981dfeb0dcce302b11',1,'qssmoother.h']]],
+  ['qssmoother_5ftype_5flpf1_21',['QSSMOOTHER_TYPE_LPF1',['../group__qssmoother.html#gga8953f71916f57517edbe8cab4d7ee639ad67f57dd9afcfa9a0a6803aa92a616ea',1,'qssmoother.h']]],
+  ['qssmoother_5ftype_5flpf2_22',['QSSMOOTHER_TYPE_LPF2',['../group__qssmoother.html#gga8953f71916f57517edbe8cab4d7ee639a3247b5a5622c33af6599c5dfef9f1796',1,'qssmoother.h']]],
+  ['qssmoother_5ftype_5fmor1_23',['QSSMOOTHER_TYPE_MOR1',['../group__qssmoother.html#gga8953f71916f57517edbe8cab4d7ee639ad4c3e7ec5b54fc155c6a84381f8e29f8',1,'qssmoother.h']]],
+  ['qssmoother_5ftype_5fmor2_24',['QSSMOOTHER_TYPE_MOR2',['../group__qssmoother.html#gga8953f71916f57517edbe8cab4d7ee639a5679bf69e01eed679eec13883af3d117',1,'qssmoother.h']]],
+  ['qssmoother_5ftype_5fmwm1_25',['QSSMOOTHER_TYPE_MWM1',['../group__qssmoother.html#gga8953f71916f57517edbe8cab4d7ee639ac2598cbedb9a3b3b663f3f887be4a342',1,'qssmoother.h']]],
+  ['qssmoother_5ftype_5fmwm2_26',['QSSMOOTHER_TYPE_MWM2',['../group__qssmoother.html#gga8953f71916f57517edbe8cab4d7ee639a2663b7f579b7bf0e1706bf8b441b1500',1,'qssmoother.h']]]
 ];
