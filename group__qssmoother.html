@@ -167,6 +167,9 @@ Data Structures</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structq_s_smoother___d_e_s_f__t.html">qSSmoother_DESF_t</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Double exponential smoothing (Holt’s Method)  <a href="structq_s_smoother___d_e_s_f__t.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structq_s_smoother___a_l_n_f__t.html">qSSmoother_ALNF_t</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adaptive Filter LMS.  <a href="structq_s_smoother___a_l_n_f__t.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="enum-members" name="enum-members"></a>
 Enumerations</h2></td></tr>
@@ -183,6 +186,7 @@ Enumerations</h2></td></tr>
 , <br />
 &#160;&#160;<a class="el" href="group__qssmoother.html#gga8953f71916f57517edbe8cab4d7ee639a3113bceea7e0aed76fd9885b0bdaf135">QSSMOOTHER_TYPE_EXPW</a>
 , <a class="el" href="group__qssmoother.html#gga8953f71916f57517edbe8cab4d7ee639a242ede17585988be7022454771ede9dc">QSSMOOTHER_TYPE_DESF</a>
+, <a class="el" href="group__qssmoother.html#gga8953f71916f57517edbe8cab4d7ee639a6689dab6b5ddc50577edfa29bf0415f1">QSSMOOTHER_TYPE_ALNF</a>
 <br />
  }</td></tr>
 <tr class="memdesc:ga8953f71916f57517edbe8cab4d7ee639"><td class="mdescLeft">&#160;</td><td class="mdescRight">Supported Filters by the qSSmoother library.  <a href="group__qssmoother.html#ga8953f71916f57517edbe8cab4d7ee639">More...</a><br /></td></tr>
@@ -240,6 +244,8 @@ Functions</h2></td></tr>
 <tr><td class="fieldname"><a id="gga8953f71916f57517edbe8cab4d7ee639a3113bceea7e0aed76fd9885b0bdaf135" name="gga8953f71916f57517edbe8cab4d7ee639a3113bceea7e0aed76fd9885b0bdaf135"></a>QSSMOOTHER_TYPE_EXPW&#160;</td><td class="fielddoc"><p >Exponential weighting filter </p>
 </td></tr>
 <tr><td class="fieldname"><a id="gga8953f71916f57517edbe8cab4d7ee639a242ede17585988be7022454771ede9dc" name="gga8953f71916f57517edbe8cab4d7ee639a242ede17585988be7022454771ede9dc"></a>QSSMOOTHER_TYPE_DESF&#160;</td><td class="fielddoc"><p >Double Exponential Smoother </p>
+</td></tr>
+<tr><td class="fieldname"><a id="gga8953f71916f57517edbe8cab4d7ee639a6689dab6b5ddc50577edfa29bf0415f1" name="gga8953f71916f57517edbe8cab4d7ee639a6689dab6b5ddc50577edfa29bf0415f1"></a>QSSMOOTHER_TYPE_ALNF&#160;</td><td class="fielddoc"><p >Adaptive Noise Cancellation </p>
 </td></tr>
 </table>
 
@@ -401,6 +407,8 @@ Functions</h2></td></tr>
 <li><a class="el" href="group__qssmoother.html#gga8953f71916f57517edbe8cab4d7ee639a0f072f41aec7b912c7e49bf897a0d87b">QSSMOOTHER_TYPE_GMWF</a></li>
 <li><a class="el" href="group__qssmoother.html#gga8953f71916f57517edbe8cab4d7ee639ab3aa23be42e760981dfeb0dcce302b11">QSSMOOTHER_TYPE_KLMN</a></li>
 <li><a class="el" href="group__qssmoother.html#gga8953f71916f57517edbe8cab4d7ee639a3113bceea7e0aed76fd9885b0bdaf135">QSSMOOTHER_TYPE_EXPW</a></li>
+<li><a class="el" href="group__qssmoother.html#gga8953f71916f57517edbe8cab4d7ee639a242ede17585988be7022454771ede9dc">QSSMOOTHER_TYPE_DESF</a></li>
+<li><a class="el" href="group__qssmoother.html#gga8953f71916f57517edbe8cab4d7ee639a6689dab6b5ddc50577edfa29bf0415f1">QSSMOOTHER_TYPE_ALNF</a></li>
 </ul>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
@@ -417,6 +425,8 @@ Functions</h2></td></tr>
 <p >if <a class="el" href="group__qssmoother.html#gga8953f71916f57517edbe8cab4d7ee639a0f072f41aec7b912c7e49bf897a0d87b">QSSMOOTHER_TYPE_GMWF</a>, an array with two values. The first element with the Standard deviation [ <em>sigma</em> &gt; 0 ]. The second element with the offset of the gaussian center. [ 0 &lt; @ offset &lt; ( <em>wsize</em> - 1 ) ].</p>
 <p >if <a class="el" href="group__qssmoother.html#gga8953f71916f57517edbe8cab4d7ee639ab3aa23be42e760981dfeb0dcce302b11">QSSMOOTHER_TYPE_KLMN</a>, an array with three values. The first element with the initial estimated error covariance. The second element with the process(predict) noise covariance. The third element with the measure noise convariance</p>
 <p >if <a class="el" href="group__qssmoother.html#gga8953f71916f57517edbe8cab4d7ee639a3113bceea7e0aed76fd9885b0bdaf135">QSSMOOTHER_TYPE_EXPW</a>, a pointer to a value between [ 0 &lt; <em>lambda</em> &lt; 1 ] that represents the forgetting factor.</p>
+<p >if <a class="el" href="group__qssmoother.html#gga8953f71916f57517edbe8cab4d7ee639a242ede17585988be7022454771ede9dc">QSSMOOTHER_TYPE_DESF</a>, an array with three values. The first element [ 0 &lt; <em>alpha</em> &lt; 1 ] that represents the weight for the level, the second, [ 0 &lt; <em>beta</em> &lt; 1 ] weight for the trend. The third element with the number of step for the forecast, should be an integer value greater or equal to zero.</p>
+<p >if <a class="el" href="group__qssmoother.html#gga8953f71916f57517edbe8cab4d7ee639a6689dab6b5ddc50577edfa29bf0415f1">QSSMOOTHER_TYPE_ALNF</a>, an array with two values. The first element with learning rate [ 0 &lt; <em>alpha</em> &lt; 1 ]. The second element with the momentum [ 0 &lt; <em>mu</em> &lt; 1 ].</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">window</td><td>The filter window and coefficients. Depends of the type selected:</td></tr>
@@ -432,6 +442,8 @@ Functions</h2></td></tr>
 <p >if <a class="el" href="group__qssmoother.html#gga8953f71916f57517edbe8cab4d7ee639a0f072f41aec7b912c7e49bf897a0d87b">QSSMOOTHER_TYPE_GMWF</a>, An array of 2* <em>wsize</em> to hold both, the window and the gaussian kernel coefficients.</p>
 <p >if <a class="el" href="group__qssmoother.html#gga8953f71916f57517edbe8cab4d7ee639ab3aa23be42e760981dfeb0dcce302b11">QSSMOOTHER_TYPE_KLMN</a>, can be ignored. Pass <code>NULL</code> as argument.</p>
 <p >if <a class="el" href="group__qssmoother.html#gga8953f71916f57517edbe8cab4d7ee639a3113bceea7e0aed76fd9885b0bdaf135">QSSMOOTHER_TYPE_EXPW</a>, can be ignored. Pass <code>NULL</code> as argument.</p>
+<p >if <a class="el" href="group__qssmoother.html#gga8953f71916f57517edbe8cab4d7ee639a242ede17585988be7022454771ede9dc">QSSMOOTHER_TYPE_DESF</a>, can be ignored. Pass <code>NULL</code> as argument.</p>
+<p >if <a class="el" href="group__qssmoother.html#gga8953f71916f57517edbe8cab4d7ee639a6689dab6b5ddc50577edfa29bf0415f1">QSSMOOTHER_TYPE_ALNF</a>, An array of 2* <em>wsize</em> elements when momentum is set to zero, otherwise an array of 3* <em>wsize</em> elements.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">wsize</td><td>If used, the number of elements in <em>window</em>, otherwise pass 0uL as argument. </td></tr>

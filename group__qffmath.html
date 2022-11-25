@@ -349,6 +349,18 @@ Functions</h2></td></tr>
 <tr class="memitem:ga57117515508f88c507e7fcf277447535"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qffmath.html#ga57117515508f88c507e7fcf277447535">qFFMath_Min</a> (float x, float y)</td></tr>
 <tr class="memdesc:ga57117515508f88c507e7fcf277447535"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the smaller of two floating point arguments.  <a href="group__qffmath.html#ga57117515508f88c507e7fcf277447535">More...</a><br /></td></tr>
 <tr class="separator:ga57117515508f88c507e7fcf277447535"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga6a7be77f5bd53aebb31a5dd9ad496aa6"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qffmath.html#ga6a7be77f5bd53aebb31a5dd9ad496aa6">qFFMath_RExp</a> (float x, int32_t *pw2)</td></tr>
+<tr class="memdesc:ga6a7be77f5bd53aebb31a5dd9ad496aa6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Decomposes given floating point value x into a normalized fraction and an integral power of two.  <a href="group__qffmath.html#ga6a7be77f5bd53aebb31a5dd9ad496aa6">More...</a><br /></td></tr>
+<tr class="separator:ga6a7be77f5bd53aebb31a5dd9ad496aa6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gac8b7ff5f354fed857a69a464976f24c8"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qffmath.html#gac8b7ff5f354fed857a69a464976f24c8">qFFMath_LDExp</a> (float x, int32_t pw2)</td></tr>
+<tr class="memdesc:gac8b7ff5f354fed857a69a464976f24c8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Multiplies a floating point value x by the number 2 raised to the pw2 power.  <a href="group__qffmath.html#gac8b7ff5f354fed857a69a464976f24c8">More...</a><br /></td></tr>
+<tr class="separator:gac8b7ff5f354fed857a69a464976f24c8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga9222484196d71d6a017288e68e7564c9"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qffmath.html#ga9222484196d71d6a017288e68e7564c9">qFFMath_Hypot</a> (float x, float y)</td></tr>
+<tr class="memdesc:ga9222484196d71d6a017288e68e7564c9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes the square root of the sum of the squares of x and y, without undue overflow or underflow at intermediate stages of the computation.  <a href="group__qffmath.html#ga9222484196d71d6a017288e68e7564c9">More...</a><br /></td></tr>
+<tr class="separator:ga9222484196d71d6a017288e68e7564c9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga13316cf4164c7b60f38464e57b9982a7"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qffmath.html#ga13316cf4164c7b60f38464e57b9982a7">qFFMath_NextAfter</a> (float x, float y)</td></tr>
+<tr class="memdesc:ga13316cf4164c7b60f38464e57b9982a7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the next representable value of <em>x</em> in the direction of <em>y</em>. If <em>x</em> equals to <em>y</em>, <em>y</em> is returned.  <a href="group__qffmath.html#ga13316cf4164c7b60f38464e57b9982a7">More...</a><br /></td></tr>
+<tr class="separator:ga13316cf4164c7b60f38464e57b9982a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <p >Fast floating-point math library for applications where speed is more important than accuracy. </p>
@@ -911,6 +923,44 @@ Functions</h2></td></tr>
 
 </div>
 </div>
+<a id="ga9222484196d71d6a017288e68e7564c9" name="ga9222484196d71d6a017288e68e7564c9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga9222484196d71d6a017288e68e7564c9">&#9670;&nbsp;</a></span>qFFMath_Hypot()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float qFFMath_Hypot </td>
+          <td>(</td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>y</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Computes the square root of the sum of the squares of x and y, without undue overflow or underflow at intermediate stages of the computation. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">x</td><td>The floating point value </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">y</td><td>The floating point value </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>If no errors occur, the hypotenuse of a right-angled triangle, sqrt( x^2 + y^2), is returned. If a range error due to overflow occurs, +QFFM_INFINITY is returned. If a range error due to underflow occurs, the correct result (after rounding) is returned. </dd></dl>
+
+</div>
+</div>
 <a id="gae40165c366d406564138b2206d08ee13" name="gae40165c366d406564138b2206d08ee13"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#gae40165c366d406564138b2206d08ee13">&#9670;&nbsp;</a></span>qFFMath_IsFinite()</h2>
 
@@ -1016,6 +1066,44 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>true if <em>x</em> has a normal value, false otherwise </dd></dl>
+
+</div>
+</div>
+<a id="gac8b7ff5f354fed857a69a464976f24c8" name="gac8b7ff5f354fed857a69a464976f24c8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gac8b7ff5f354fed857a69a464976f24c8">&#9670;&nbsp;</a></span>qFFMath_LDExp()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float qFFMath_LDExp </td>
+          <td>(</td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int32_t&#160;</td>
+          <td class="paramname"><em>pw2</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Multiplies a floating point value x by the number 2 raised to the pw2 power. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">x</td><td>The floating point value </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">pw2</td><td>Integer value </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>If no errors occur, x multiplied by 2 to the power of pw2 (x×2^exp) is returned. If a range error due to overflow occurs, ±QFFM_INFINITY is returned. If a range error due to underflow occurs, the correct result (after rounding) is returned. </dd></dl>
 
 </div>
 </div>
@@ -1214,6 +1302,44 @@ Functions</h2></td></tr>
 
 </div>
 </div>
+<a id="ga13316cf4164c7b60f38464e57b9982a7" name="ga13316cf4164c7b60f38464e57b9982a7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga13316cf4164c7b60f38464e57b9982a7">&#9670;&nbsp;</a></span>qFFMath_NextAfter()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float qFFMath_NextAfter </td>
+          <td>(</td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>y</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Returns the next representable value of <em>x</em> in the direction of <em>y</em>. If <em>x</em> equals to <em>y</em>, <em>y</em> is returned. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">x</td><td>The floating point value </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">y</td><td>The floating point value </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>If no errors occur, the next representable value of <em>x</em> in the direction of <em>y</em> is returned. If <em>x</em> equals <em>y</em>, then <em>yis</em> returned. If a range error due to overflow occurs, ±QFFM_INFINITY is returned (with the same sign as <em>x</em>). If a range error occurs due to underflow, the correct result is returned. </dd></dl>
+
+</div>
+</div>
 <a id="ga8a02fbecef5cb2aed855894be51a6333" name="ga8a02fbecef5cb2aed855894be51a6333"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ga8a02fbecef5cb2aed855894be51a6333">&#9670;&nbsp;</a></span>qFFMath_Pow()</h2>
 
@@ -1341,6 +1467,44 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>If successful, returns the IEEE floating-point remainder of the division x/y. If a domain error occurs, an NAN value is returned. </dd></dl>
+
+</div>
+</div>
+<a id="ga6a7be77f5bd53aebb31a5dd9ad496aa6" name="ga6a7be77f5bd53aebb31a5dd9ad496aa6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga6a7be77f5bd53aebb31a5dd9ad496aa6">&#9670;&nbsp;</a></span>qFFMath_RExp()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float qFFMath_RExp </td>
+          <td>(</td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int32_t *&#160;</td>
+          <td class="paramname"><em>pw2</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Decomposes given floating point value x into a normalized fraction and an integral power of two. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">x</td><td>The floating point value </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">pw2</td><td>Pointer to integer value to store the exponent to </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>If x is zero, returns zero and stores zero in *pw2. Otherwise (if x is not zero), if no errors occur, returns the value y in the range (-1;-0.5], [0.5; 1) and stores an integer value in *pw2 such that y×2^(pw2) = x. If the value to be stored in *pw2 is outside the range of int, the behavior is unspecified. If arg is not a floating-point number, the behavior is unspecified. </dd></dl>
 
 </div>
 </div>

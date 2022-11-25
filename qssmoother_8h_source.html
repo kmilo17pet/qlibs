@@ -150,131 +150,142 @@ $(document).ready(function(){initNavTree('qssmoother_8h_source.html',''); initRe
 <div class="line"><a id="l00036" name="l00036"></a><span class="lineno"><a class="line" href="group__qssmoother.html#gga8953f71916f57517edbe8cab4d7ee639ab3aa23be42e760981dfeb0dcce302b11">   36</a></span>        <a class="code hl_enumvalue" href="group__qssmoother.html#gga8953f71916f57517edbe8cab4d7ee639ab3aa23be42e760981dfeb0dcce302b11">QSSMOOTHER_TYPE_KLMN</a>,       </div>
 <div class="line"><a id="l00037" name="l00037"></a><span class="lineno"><a class="line" href="group__qssmoother.html#gga8953f71916f57517edbe8cab4d7ee639a3113bceea7e0aed76fd9885b0bdaf135">   37</a></span>        <a class="code hl_enumvalue" href="group__qssmoother.html#gga8953f71916f57517edbe8cab4d7ee639a3113bceea7e0aed76fd9885b0bdaf135">QSSMOOTHER_TYPE_EXPW</a>,       </div>
 <div class="line"><a id="l00038" name="l00038"></a><span class="lineno"><a class="line" href="group__qssmoother.html#gga8953f71916f57517edbe8cab4d7ee639a242ede17585988be7022454771ede9dc">   38</a></span>        <a class="code hl_enumvalue" href="group__qssmoother.html#gga8953f71916f57517edbe8cab4d7ee639a242ede17585988be7022454771ede9dc">QSSMOOTHER_TYPE_DESF</a>,       </div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>    } <a class="code hl_enumeration" href="group__qssmoother.html#ga8953f71916f57517edbe8cab4d7ee639">qSSmoother_Type_t</a>;</div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span> </div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span><span class="preprocessor">    #define qSSmootherPtr_t  void</span></div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>    <span class="comment">/*abstract class*/</span></div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>    <span class="keyword">typedef</span> <span class="keyword">struct </span>_qSSmoother_s</div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>    {</div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>        <span class="keywordtype">void</span> *vt;</div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>        uint8_t init;</div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>    } _qSSmoother_t;</div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno"><a class="line" href="structq_s_smoother___l_p_f1__t.html">   54</a></span>    <span class="keyword">typedef</span> <span class="keyword">struct</span></div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>    {</div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>        _qSSmoother_t f;</div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>        <span class="keywordtype">float</span> alpha, y1;</div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>    } <a class="code hl_struct" href="structq_s_smoother___l_p_f1__t.html">qSSmoother_LPF1_t</a>;</div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span> </div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno"><a class="line" href="structq_s_smoother___l_p_f2__t.html">   65</a></span>    <span class="keyword">typedef</span> <span class="keyword">struct</span></div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>    {</div>
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>        _qSSmoother_t f;</div>
-<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>        <span class="keywordtype">float</span> y1, y2, x1, x2;</div>
-<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>        <span class="keywordtype">float</span> k, a1, a2, b1;</div>
-<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>    } <a class="code hl_struct" href="structq_s_smoother___l_p_f2__t.html">qSSmoother_LPF2_t</a>;</div>
-<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span> </div>
-<div class="line"><a id="l00078" name="l00078"></a><span class="lineno"><a class="line" href="structq_s_smoother___m_w_m1__t.html">   78</a></span>    <span class="keyword">typedef</span> <span class="keyword">struct</span></div>
-<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>    {</div>
-<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>        _qSSmoother_t f;</div>
-<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>        <span class="keywordtype">float</span> *w;</div>
-<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>        <span class="keywordtype">size_t</span> wsize;</div>
-<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>    } <a class="code hl_struct" href="structq_s_smoother___m_w_m1__t.html">qSSmoother_MWM1_t</a>;</div>
-<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span> </div>
-<div class="line"><a id="l00091" name="l00091"></a><span class="lineno"><a class="line" href="structq_s_smoother___m_w_m2__t.html">   91</a></span>    <span class="keyword">typedef</span> <span class="keyword">struct</span></div>
-<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>    {</div>
-<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>        _qSSmoother_t f;</div>
-<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>        <a class="code hl_struct" href="structq_t_d_l__t.html">qTDL_t</a> tdl;</div>
-<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>        <span class="keywordtype">float</span> sum;</div>
-<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>    } <a class="code hl_struct" href="structq_s_smoother___m_w_m2__t.html">qSSmoother_MWM2_t</a>;</div>
-<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span> </div>
-<div class="line"><a id="l00104" name="l00104"></a><span class="lineno"><a class="line" href="structq_s_smoother___m_o_r1__t.html">  104</a></span>    <span class="keyword">typedef</span> <span class="keyword">struct</span></div>
-<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>    {</div>
-<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>        _qSSmoother_t f;</div>
-<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>        <span class="keywordtype">float</span> *w, m, alpha;</div>
-<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>        <span class="keywordtype">size_t</span> wsize;</div>
-<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>    } <a class="code hl_struct" href="structq_s_smoother___m_o_r1__t.html">qSSmoother_MOR1_t</a>;</div>
-<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span> </div>
-<div class="line"><a id="l00117" name="l00117"></a><span class="lineno"><a class="line" href="structq_s_smoother___m_o_r2__t.html">  117</a></span>    <span class="keyword">typedef</span> <span class="keyword">struct</span></div>
-<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span>    {</div>
-<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span>        _qSSmoother_t f;</div>
-<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span>        <a class="code hl_struct" href="structq_t_d_l__t.html">qTDL_t</a> tdl;</div>
-<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span>        <span class="keywordtype">float</span> sum, m, alpha;</div>
-<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span>    } <a class="code hl_struct" href="structq_s_smoother___m_o_r2__t.html">qSSmoother_MOR2_t</a>;</div>
-<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span> </div>
-<div class="line"><a id="l00129" name="l00129"></a><span class="lineno"><a class="line" href="structq_s_smoother___g_m_w_f__t.html">  129</a></span>    <span class="keyword">typedef</span> <span class="keyword">struct</span></div>
-<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span>    {</div>
-<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span>        _qSSmoother_t f;</div>
-<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span>        <span class="keywordtype">float</span> *w, *k;</div>
-<div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span>        <span class="keywordtype">size_t</span> wsize;</div>
-<div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span>    } <a class="code hl_struct" href="structq_s_smoother___g_m_w_f__t.html">qSSmoother_GMWF_t</a>;</div>
-<div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span> </div>
-<div class="line"><a id="l00141" name="l00141"></a><span class="lineno"><a class="line" href="structq_s_smoother___e_x_p_w__t.html">  141</a></span>    <span class="keyword">typedef</span> <span class="keyword">struct</span></div>
-<div class="line"><a id="l00142" name="l00142"></a><span class="lineno">  142</span>    {</div>
-<div class="line"><a id="l00144" name="l00144"></a><span class="lineno">  144</span>        _qSSmoother_t f;</div>
-<div class="line"><a id="l00145" name="l00145"></a><span class="lineno">  145</span>        <span class="keywordtype">float</span> lambda, m, w;</div>
-<div class="line"><a id="l00147" name="l00147"></a><span class="lineno">  147</span>    } <a class="code hl_struct" href="structq_s_smoother___e_x_p_w__t.html">qSSmoother_EXPW_t</a>;</div>
-<div class="line"><a id="l00148" name="l00148"></a><span class="lineno">  148</span> </div>
-<div class="line"><a id="l00152" name="l00152"></a><span class="lineno"><a class="line" href="structq_s_smoother___k_l_m_n__t.html">  152</a></span>    <span class="keyword">typedef</span> <span class="keyword">struct</span></div>
-<div class="line"><a id="l00153" name="l00153"></a><span class="lineno">  153</span>    {</div>
-<div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span>        _qSSmoother_t f;</div>
-<div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span>        <span class="keywordtype">float</span> x;  <span class="comment">/* state */</span></div>
-<div class="line"><a id="l00157" name="l00157"></a><span class="lineno">  157</span>        <span class="keywordtype">float</span> A;  <span class="comment">/* x(n)=A*x(n-1)+u(n),u(n)~N(0,q) */</span></div>
-<div class="line"><a id="l00158" name="l00158"></a><span class="lineno">  158</span>        <span class="keywordtype">float</span> H;  <span class="comment">/* z(n)=H*x(n)+w(n),w(n)~N(0,r) */</span></div>
-<div class="line"><a id="l00159" name="l00159"></a><span class="lineno">  159</span>        <span class="keywordtype">float</span> q;  <span class="comment">/* process(predict) noise covariance */</span></div>
-<div class="line"><a id="l00160" name="l00160"></a><span class="lineno">  160</span>        <span class="keywordtype">float</span> r;  <span class="comment">/* measure noise covariance */</span></div>
-<div class="line"><a id="l00161" name="l00161"></a><span class="lineno">  161</span>        <span class="keywordtype">float</span> p;  <span class="comment">/* estimated error covariance */</span></div>
-<div class="line"><a id="l00162" name="l00162"></a><span class="lineno">  162</span>        <span class="keywordtype">float</span> gain;</div>
-<div class="line"><a id="l00164" name="l00164"></a><span class="lineno">  164</span>    } <a class="code hl_struct" href="structq_s_smoother___k_l_m_n__t.html">qSSmoother_KLMN_t</a>;</div>
-<div class="line"><a id="l00165" name="l00165"></a><span class="lineno">  165</span> </div>
-<div class="line"><a id="l00169" name="l00169"></a><span class="lineno"><a class="line" href="structq_s_smoother___d_e_s_f__t.html">  169</a></span>    <span class="keyword">typedef</span> <span class="keyword">struct</span></div>
-<div class="line"><a id="l00170" name="l00170"></a><span class="lineno">  170</span>    {</div>
-<div class="line"><a id="l00172" name="l00172"></a><span class="lineno">  172</span>        _qSSmoother_t f;</div>
-<div class="line"><a id="l00173" name="l00173"></a><span class="lineno">  173</span>        <span class="keywordtype">float</span> alpha, beta;</div>
-<div class="line"><a id="l00174" name="l00174"></a><span class="lineno">  174</span>        <span class="keywordtype">float</span> lt, bt, n;</div>
-<div class="line"><a id="l00176" name="l00176"></a><span class="lineno">  176</span>    } <a class="code hl_struct" href="structq_s_smoother___d_e_s_f__t.html">qSSmoother_DESF_t</a>;</div>
-<div class="line"><a id="l00177" name="l00177"></a><span class="lineno">  177</span> </div>
-<div class="line"><a id="l00183" name="l00183"></a><span class="lineno">  183</span>    <span class="keywordtype">int</span> <a class="code hl_function" href="group__qssmoother.html#ga85027474c3ee4e70a2c34318fd22ac36">qSSmoother_IsInitialized</a>( <span class="keyword">const</span> qSSmootherPtr_t * <span class="keyword">const</span> s );</div>
-<div class="line"><a id="l00184" name="l00184"></a><span class="lineno">  184</span> </div>
-<div class="line"><a id="l00190" name="l00190"></a><span class="lineno">  190</span>    <span class="keywordtype">int</span> <a class="code hl_function" href="group__qssmoother.html#ga519a77705c811934bdd3f886dfdf160a">qSSmoother_Reset</a>( qSSmootherPtr_t * <span class="keyword">const</span> s );</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno"><a class="line" href="group__qssmoother.html#gga8953f71916f57517edbe8cab4d7ee639a6689dab6b5ddc50577edfa29bf0415f1">   39</a></span>        <a class="code hl_enumvalue" href="group__qssmoother.html#gga8953f71916f57517edbe8cab4d7ee639a6689dab6b5ddc50577edfa29bf0415f1">QSSMOOTHER_TYPE_ALNF</a>,       </div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>    } <a class="code hl_enumeration" href="group__qssmoother.html#ga8953f71916f57517edbe8cab4d7ee639">qSSmoother_Type_t</a>;</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span> </div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span><span class="preprocessor">    #define qSSmootherPtr_t  void</span></div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>    <span class="comment">/*abstract class*/</span></div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>    <span class="keyword">typedef</span> <span class="keyword">struct </span>_qSSmoother_s</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>    {</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>        <span class="keywordtype">void</span> *vt;</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>        uint8_t init;</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>    } _qSSmoother_t;</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno"><a class="line" href="structq_s_smoother___l_p_f1__t.html">   55</a></span>    <span class="keyword">typedef</span> <span class="keyword">struct</span></div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>    {</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>        _qSSmoother_t f;</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>        <span class="keywordtype">float</span> alpha, y1;</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>    } <a class="code hl_struct" href="structq_s_smoother___l_p_f1__t.html">qSSmoother_LPF1_t</a>;</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span> </div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno"><a class="line" href="structq_s_smoother___l_p_f2__t.html">   66</a></span>    <span class="keyword">typedef</span> <span class="keyword">struct</span></div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>    {</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>        _qSSmoother_t f;</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>        <span class="keywordtype">float</span> y1, y2, x1, x2;</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>        <span class="keywordtype">float</span> k, a1, a2, b1;</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>    } <a class="code hl_struct" href="structq_s_smoother___l_p_f2__t.html">qSSmoother_LPF2_t</a>;</div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span> </div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno"><a class="line" href="structq_s_smoother___m_w_m1__t.html">   79</a></span>    <span class="keyword">typedef</span> <span class="keyword">struct</span></div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>    {</div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>        _qSSmoother_t f;</div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>        <span class="keywordtype">float</span> *w;</div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>        <span class="keywordtype">size_t</span> wsize;</div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>    } <a class="code hl_struct" href="structq_s_smoother___m_w_m1__t.html">qSSmoother_MWM1_t</a>;</div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span> </div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno"><a class="line" href="structq_s_smoother___m_w_m2__t.html">   92</a></span>    <span class="keyword">typedef</span> <span class="keyword">struct</span></div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>    {</div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>        _qSSmoother_t f;</div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>        <a class="code hl_struct" href="structq_t_d_l__t.html">qTDL_t</a> tdl;</div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>        <span class="keywordtype">float</span> sum;</div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>    } <a class="code hl_struct" href="structq_s_smoother___m_w_m2__t.html">qSSmoother_MWM2_t</a>;</div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span> </div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno"><a class="line" href="structq_s_smoother___m_o_r1__t.html">  105</a></span>    <span class="keyword">typedef</span> <span class="keyword">struct</span></div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>    {</div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>        _qSSmoother_t f;</div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>        <span class="keywordtype">float</span> *w, m, alpha;</div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>        <span class="keywordtype">size_t</span> wsize;</div>
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>    } <a class="code hl_struct" href="structq_s_smoother___m_o_r1__t.html">qSSmoother_MOR1_t</a>;</div>
+<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span> </div>
+<div class="line"><a id="l00118" name="l00118"></a><span class="lineno"><a class="line" href="structq_s_smoother___m_o_r2__t.html">  118</a></span>    <span class="keyword">typedef</span> <span class="keyword">struct</span></div>
+<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span>    {</div>
+<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span>        _qSSmoother_t f;</div>
+<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span>        <a class="code hl_struct" href="structq_t_d_l__t.html">qTDL_t</a> tdl;</div>
+<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span>        <span class="keywordtype">float</span> sum, m, alpha;</div>
+<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span>    } <a class="code hl_struct" href="structq_s_smoother___m_o_r2__t.html">qSSmoother_MOR2_t</a>;</div>
+<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span> </div>
+<div class="line"><a id="l00130" name="l00130"></a><span class="lineno"><a class="line" href="structq_s_smoother___g_m_w_f__t.html">  130</a></span>    <span class="keyword">typedef</span> <span class="keyword">struct</span></div>
+<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span>    {</div>
+<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span>        _qSSmoother_t f;</div>
+<div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span>        <span class="keywordtype">float</span> *w, *k;</div>
+<div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span>        <span class="keywordtype">size_t</span> wsize;</div>
+<div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span>    } <a class="code hl_struct" href="structq_s_smoother___g_m_w_f__t.html">qSSmoother_GMWF_t</a>;</div>
+<div class="line"><a id="l00138" name="l00138"></a><span class="lineno">  138</span> </div>
+<div class="line"><a id="l00142" name="l00142"></a><span class="lineno"><a class="line" href="structq_s_smoother___e_x_p_w__t.html">  142</a></span>    <span class="keyword">typedef</span> <span class="keyword">struct</span></div>
+<div class="line"><a id="l00143" name="l00143"></a><span class="lineno">  143</span>    {</div>
+<div class="line"><a id="l00145" name="l00145"></a><span class="lineno">  145</span>        _qSSmoother_t f;</div>
+<div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span>        <span class="keywordtype">float</span> lambda, m, w;</div>
+<div class="line"><a id="l00148" name="l00148"></a><span class="lineno">  148</span>    } <a class="code hl_struct" href="structq_s_smoother___e_x_p_w__t.html">qSSmoother_EXPW_t</a>;</div>
+<div class="line"><a id="l00149" name="l00149"></a><span class="lineno">  149</span> </div>
+<div class="line"><a id="l00153" name="l00153"></a><span class="lineno"><a class="line" href="structq_s_smoother___k_l_m_n__t.html">  153</a></span>    <span class="keyword">typedef</span> <span class="keyword">struct</span></div>
+<div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span>    {</div>
+<div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span>        _qSSmoother_t f;</div>
+<div class="line"><a id="l00157" name="l00157"></a><span class="lineno">  157</span>        <span class="keywordtype">float</span> x;  <span class="comment">/* state */</span></div>
+<div class="line"><a id="l00158" name="l00158"></a><span class="lineno">  158</span>        <span class="keywordtype">float</span> A;  <span class="comment">/* x(n)=A*x(n-1)+u(n),u(n)~N(0,q) */</span></div>
+<div class="line"><a id="l00159" name="l00159"></a><span class="lineno">  159</span>        <span class="keywordtype">float</span> H;  <span class="comment">/* z(n)=H*x(n)+w(n),w(n)~N(0,r) */</span></div>
+<div class="line"><a id="l00160" name="l00160"></a><span class="lineno">  160</span>        <span class="keywordtype">float</span> q;  <span class="comment">/* process(predict) noise covariance */</span></div>
+<div class="line"><a id="l00161" name="l00161"></a><span class="lineno">  161</span>        <span class="keywordtype">float</span> r;  <span class="comment">/* measure noise covariance */</span></div>
+<div class="line"><a id="l00162" name="l00162"></a><span class="lineno">  162</span>        <span class="keywordtype">float</span> p;  <span class="comment">/* estimated error covariance */</span></div>
+<div class="line"><a id="l00163" name="l00163"></a><span class="lineno">  163</span>        <span class="keywordtype">float</span> gain;</div>
+<div class="line"><a id="l00165" name="l00165"></a><span class="lineno">  165</span>    } <a class="code hl_struct" href="structq_s_smoother___k_l_m_n__t.html">qSSmoother_KLMN_t</a>;</div>
+<div class="line"><a id="l00166" name="l00166"></a><span class="lineno">  166</span> </div>
+<div class="line"><a id="l00170" name="l00170"></a><span class="lineno"><a class="line" href="structq_s_smoother___d_e_s_f__t.html">  170</a></span>    <span class="keyword">typedef</span> <span class="keyword">struct</span></div>
+<div class="line"><a id="l00171" name="l00171"></a><span class="lineno">  171</span>    {</div>
+<div class="line"><a id="l00173" name="l00173"></a><span class="lineno">  173</span>        _qSSmoother_t f;</div>
+<div class="line"><a id="l00174" name="l00174"></a><span class="lineno">  174</span>        <span class="keywordtype">float</span> alpha, beta;</div>
+<div class="line"><a id="l00175" name="l00175"></a><span class="lineno">  175</span>        <span class="keywordtype">float</span> lt, bt, n;</div>
+<div class="line"><a id="l00177" name="l00177"></a><span class="lineno">  177</span>    } <a class="code hl_struct" href="structq_s_smoother___d_e_s_f__t.html">qSSmoother_DESF_t</a>;</div>
+<div class="line"><a id="l00178" name="l00178"></a><span class="lineno">  178</span> </div>
+<div class="line"><a id="l00182" name="l00182"></a><span class="lineno"><a class="line" href="structq_s_smoother___a_l_n_f__t.html">  182</a></span>    <span class="keyword">typedef</span> <span class="keyword">struct</span></div>
+<div class="line"><a id="l00183" name="l00183"></a><span class="lineno">  183</span>    {</div>
+<div class="line"><a id="l00185" name="l00185"></a><span class="lineno">  185</span>        _qSSmoother_t f;</div>
+<div class="line"><a id="l00186" name="l00186"></a><span class="lineno">  186</span>        <span class="keywordtype">float</span> alpha, mu;</div>
+<div class="line"><a id="l00187" name="l00187"></a><span class="lineno">  187</span>        <span class="keywordtype">float</span> *w, *w_1, *x;</div>
+<div class="line"><a id="l00188" name="l00188"></a><span class="lineno">  188</span>        <span class="keywordtype">size_t</span> n;</div>
+<div class="line"><a id="l00190" name="l00190"></a><span class="lineno">  190</span>    } <a class="code hl_struct" href="structq_s_smoother___a_l_n_f__t.html">qSSmoother_ALNF_t</a>;</div>
 <div class="line"><a id="l00191" name="l00191"></a><span class="lineno">  191</span> </div>
-<div class="line"><a id="l00199" name="l00199"></a><span class="lineno">  199</span>    <span class="keywordtype">float</span> <a class="code hl_function" href="group__qssmoother.html#ga4b35d70416b5b24e1d894ac0c8b316eb">qSSmoother_Perform</a>( qSSmootherPtr_t * <span class="keyword">const</span> s,</div>
-<div class="line"><a id="l00200" name="l00200"></a><span class="lineno">  200</span>                              <span class="keyword">const</span> <span class="keywordtype">float</span> x );</div>
-<div class="line"><a id="l00201" name="l00201"></a><span class="lineno">  201</span> </div>
-<div class="line"><a id="l00277" name="l00277"></a><span class="lineno">  277</span>    <span class="keywordtype">int</span> <a class="code hl_function" href="group__qssmoother.html#gae494958fd1353a8cd956e35abd6641f7">qSSmoother_Setup</a>( qSSmootherPtr_t * <span class="keyword">const</span> s,</div>
-<div class="line"><a id="l00278" name="l00278"></a><span class="lineno">  278</span>                          <span class="keyword">const</span> <a class="code hl_enumeration" href="group__qssmoother.html#ga8953f71916f57517edbe8cab4d7ee639">qSSmoother_Type_t</a> type,</div>
-<div class="line"><a id="l00279" name="l00279"></a><span class="lineno">  279</span>                          <span class="keyword">const</span> <span class="keywordtype">float</span> * <span class="keyword">const</span> param,</div>
-<div class="line"><a id="l00280" name="l00280"></a><span class="lineno">  280</span>                          <span class="keywordtype">float</span> *window,</div>
-<div class="line"><a id="l00281" name="l00281"></a><span class="lineno">  281</span>                          <span class="keyword">const</span> <span class="keywordtype">size_t</span> wsize );</div>
-<div class="line"><a id="l00282" name="l00282"></a><span class="lineno">  282</span> </div>
-<div class="line"><a id="l00285" name="l00285"></a><span class="lineno">  285</span><span class="preprocessor">#ifdef __cplusplus</span></div>
-<div class="line"><a id="l00286" name="l00286"></a><span class="lineno">  286</span>}</div>
-<div class="line"><a id="l00287" name="l00287"></a><span class="lineno">  287</span><span class="preprocessor">#endif</span></div>
-<div class="line"><a id="l00288" name="l00288"></a><span class="lineno">  288</span> </div>
-<div class="line"><a id="l00289" name="l00289"></a><span class="lineno">  289</span><span class="preprocessor">#endif</span></div>
-<div class="ttc" id="agroup__qssmoother_html_ga4b35d70416b5b24e1d894ac0c8b316eb"><div class="ttname"><a href="group__qssmoother.html#ga4b35d70416b5b24e1d894ac0c8b316eb">qSSmoother_Perform</a></div><div class="ttdeci">float qSSmoother_Perform(qSSmootherPtr_t *const s, const float x)</div><div class="ttdoc">Perform the smooth operation recursively for the input signal x.</div><div class="ttdef"><b>Definition:</b> qssmoother.c:408</div></div>
-<div class="ttc" id="agroup__qssmoother_html_ga519a77705c811934bdd3f886dfdf160a"><div class="ttname"><a href="group__qssmoother.html#ga519a77705c811934bdd3f886dfdf160a">qSSmoother_Reset</a></div><div class="ttdeci">int qSSmoother_Reset(qSSmootherPtr_t *const s)</div><div class="ttdoc">Reset the the smoother filter.</div><div class="ttdef"><b>Definition:</b> qssmoother.c:393</div></div>
-<div class="ttc" id="agroup__qssmoother_html_ga85027474c3ee4e70a2c34318fd22ac36"><div class="ttname"><a href="group__qssmoother.html#ga85027474c3ee4e70a2c34318fd22ac36">qSSmoother_IsInitialized</a></div><div class="ttdeci">int qSSmoother_IsInitialized(const qSSmootherPtr_t *const s)</div><div class="ttdoc">Check if the smoother filter is initialized.</div><div class="ttdef"><b>Definition:</b> qssmoother.c:379</div></div>
+<div class="line"><a id="l00197" name="l00197"></a><span class="lineno">  197</span>    <span class="keywordtype">int</span> <a class="code hl_function" href="group__qssmoother.html#ga85027474c3ee4e70a2c34318fd22ac36">qSSmoother_IsInitialized</a>( <span class="keyword">const</span> qSSmootherPtr_t * <span class="keyword">const</span> s );</div>
+<div class="line"><a id="l00198" name="l00198"></a><span class="lineno">  198</span> </div>
+<div class="line"><a id="l00204" name="l00204"></a><span class="lineno">  204</span>    <span class="keywordtype">int</span> <a class="code hl_function" href="group__qssmoother.html#ga519a77705c811934bdd3f886dfdf160a">qSSmoother_Reset</a>( qSSmootherPtr_t * <span class="keyword">const</span> s );</div>
+<div class="line"><a id="l00205" name="l00205"></a><span class="lineno">  205</span> </div>
+<div class="line"><a id="l00213" name="l00213"></a><span class="lineno">  213</span>    <span class="keywordtype">float</span> <a class="code hl_function" href="group__qssmoother.html#ga4b35d70416b5b24e1d894ac0c8b316eb">qSSmoother_Perform</a>( qSSmootherPtr_t * <span class="keyword">const</span> s,</div>
+<div class="line"><a id="l00214" name="l00214"></a><span class="lineno">  214</span>                              <span class="keyword">const</span> <span class="keywordtype">float</span> x );</div>
+<div class="line"><a id="l00215" name="l00215"></a><span class="lineno">  215</span> </div>
+<div class="line"><a id="l00310" name="l00310"></a><span class="lineno">  310</span>    <span class="keywordtype">int</span> <a class="code hl_function" href="group__qssmoother.html#gae494958fd1353a8cd956e35abd6641f7">qSSmoother_Setup</a>( qSSmootherPtr_t * <span class="keyword">const</span> s,</div>
+<div class="line"><a id="l00311" name="l00311"></a><span class="lineno">  311</span>                          <span class="keyword">const</span> <a class="code hl_enumeration" href="group__qssmoother.html#ga8953f71916f57517edbe8cab4d7ee639">qSSmoother_Type_t</a> type,</div>
+<div class="line"><a id="l00312" name="l00312"></a><span class="lineno">  312</span>                          <span class="keyword">const</span> <span class="keywordtype">float</span> * <span class="keyword">const</span> param,</div>
+<div class="line"><a id="l00313" name="l00313"></a><span class="lineno">  313</span>                          <span class="keywordtype">float</span> *window,</div>
+<div class="line"><a id="l00314" name="l00314"></a><span class="lineno">  314</span>                          <span class="keyword">const</span> <span class="keywordtype">size_t</span> wsize );</div>
+<div class="line"><a id="l00315" name="l00315"></a><span class="lineno">  315</span> </div>
+<div class="line"><a id="l00318" name="l00318"></a><span class="lineno">  318</span><span class="preprocessor">#ifdef __cplusplus</span></div>
+<div class="line"><a id="l00319" name="l00319"></a><span class="lineno">  319</span>}</div>
+<div class="line"><a id="l00320" name="l00320"></a><span class="lineno">  320</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00321" name="l00321"></a><span class="lineno">  321</span> </div>
+<div class="line"><a id="l00322" name="l00322"></a><span class="lineno">  322</span><span class="preprocessor">#endif</span></div>
+<div class="ttc" id="agroup__qssmoother_html_ga4b35d70416b5b24e1d894ac0c8b316eb"><div class="ttname"><a href="group__qssmoother.html#ga4b35d70416b5b24e1d894ac0c8b316eb">qSSmoother_Perform</a></div><div class="ttdeci">float qSSmoother_Perform(qSSmootherPtr_t *const s, const float x)</div><div class="ttdoc">Perform the smooth operation recursively for the input signal x.</div><div class="ttdef"><b>Definition:</b> qssmoother.c:439</div></div>
+<div class="ttc" id="agroup__qssmoother_html_ga519a77705c811934bdd3f886dfdf160a"><div class="ttname"><a href="group__qssmoother.html#ga519a77705c811934bdd3f886dfdf160a">qSSmoother_Reset</a></div><div class="ttdeci">int qSSmoother_Reset(qSSmootherPtr_t *const s)</div><div class="ttdoc">Reset the the smoother filter.</div><div class="ttdef"><b>Definition:</b> qssmoother.c:424</div></div>
+<div class="ttc" id="agroup__qssmoother_html_ga85027474c3ee4e70a2c34318fd22ac36"><div class="ttname"><a href="group__qssmoother.html#ga85027474c3ee4e70a2c34318fd22ac36">qSSmoother_IsInitialized</a></div><div class="ttdeci">int qSSmoother_IsInitialized(const qSSmootherPtr_t *const s)</div><div class="ttdoc">Check if the smoother filter is initialized.</div><div class="ttdef"><b>Definition:</b> qssmoother.c:410</div></div>
 <div class="ttc" id="agroup__qssmoother_html_ga8953f71916f57517edbe8cab4d7ee639"><div class="ttname"><a href="group__qssmoother.html#ga8953f71916f57517edbe8cab4d7ee639">qSSmoother_Type_t</a></div><div class="ttdeci">qSSmoother_Type_t</div><div class="ttdoc">Supported Filters by the qSSmoother library.</div><div class="ttdef"><b>Definition:</b> qssmoother.h:28</div></div>
-<div class="ttc" id="agroup__qssmoother_html_gae494958fd1353a8cd956e35abd6641f7"><div class="ttname"><a href="group__qssmoother.html#gae494958fd1353a8cd956e35abd6641f7">qSSmoother_Setup</a></div><div class="ttdeci">int qSSmoother_Setup(qSSmootherPtr_t *const s, const qSSmoother_Type_t type, const float *const param, float *window, const size_t wsize)</div><div class="ttdoc">Setup an initialize smoother filter.</div><div class="ttdef"><b>Definition:</b> qssmoother.c:84</div></div>
+<div class="ttc" id="agroup__qssmoother_html_gae494958fd1353a8cd956e35abd6641f7"><div class="ttname"><a href="group__qssmoother.html#gae494958fd1353a8cd956e35abd6641f7">qSSmoother_Setup</a></div><div class="ttdeci">int qSSmoother_Setup(qSSmootherPtr_t *const s, const qSSmoother_Type_t type, const float *const param, float *window, const size_t wsize)</div><div class="ttdoc">Setup an initialize smoother filter.</div><div class="ttdef"><b>Definition:</b> qssmoother.c:89</div></div>
 <div class="ttc" id="agroup__qssmoother_html_gga8953f71916f57517edbe8cab4d7ee639a0f072f41aec7b912c7e49bf897a0d87b"><div class="ttname"><a href="group__qssmoother.html#gga8953f71916f57517edbe8cab4d7ee639a0f072f41aec7b912c7e49bf897a0d87b">QSSMOOTHER_TYPE_GMWF</a></div><div class="ttdeci">@ QSSMOOTHER_TYPE_GMWF</div><div class="ttdef"><b>Definition:</b> qssmoother.h:35</div></div>
 <div class="ttc" id="agroup__qssmoother_html_gga8953f71916f57517edbe8cab4d7ee639a242ede17585988be7022454771ede9dc"><div class="ttname"><a href="group__qssmoother.html#gga8953f71916f57517edbe8cab4d7ee639a242ede17585988be7022454771ede9dc">QSSMOOTHER_TYPE_DESF</a></div><div class="ttdeci">@ QSSMOOTHER_TYPE_DESF</div><div class="ttdef"><b>Definition:</b> qssmoother.h:38</div></div>
 <div class="ttc" id="agroup__qssmoother_html_gga8953f71916f57517edbe8cab4d7ee639a2663b7f579b7bf0e1706bf8b441b1500"><div class="ttname"><a href="group__qssmoother.html#gga8953f71916f57517edbe8cab4d7ee639a2663b7f579b7bf0e1706bf8b441b1500">QSSMOOTHER_TYPE_MWM2</a></div><div class="ttdeci">@ QSSMOOTHER_TYPE_MWM2</div><div class="ttdef"><b>Definition:</b> qssmoother.h:32</div></div>
 <div class="ttc" id="agroup__qssmoother_html_gga8953f71916f57517edbe8cab4d7ee639a3113bceea7e0aed76fd9885b0bdaf135"><div class="ttname"><a href="group__qssmoother.html#gga8953f71916f57517edbe8cab4d7ee639a3113bceea7e0aed76fd9885b0bdaf135">QSSMOOTHER_TYPE_EXPW</a></div><div class="ttdeci">@ QSSMOOTHER_TYPE_EXPW</div><div class="ttdef"><b>Definition:</b> qssmoother.h:37</div></div>
 <div class="ttc" id="agroup__qssmoother_html_gga8953f71916f57517edbe8cab4d7ee639a3247b5a5622c33af6599c5dfef9f1796"><div class="ttname"><a href="group__qssmoother.html#gga8953f71916f57517edbe8cab4d7ee639a3247b5a5622c33af6599c5dfef9f1796">QSSMOOTHER_TYPE_LPF2</a></div><div class="ttdeci">@ QSSMOOTHER_TYPE_LPF2</div><div class="ttdef"><b>Definition:</b> qssmoother.h:30</div></div>
 <div class="ttc" id="agroup__qssmoother_html_gga8953f71916f57517edbe8cab4d7ee639a5679bf69e01eed679eec13883af3d117"><div class="ttname"><a href="group__qssmoother.html#gga8953f71916f57517edbe8cab4d7ee639a5679bf69e01eed679eec13883af3d117">QSSMOOTHER_TYPE_MOR2</a></div><div class="ttdeci">@ QSSMOOTHER_TYPE_MOR2</div><div class="ttdef"><b>Definition:</b> qssmoother.h:34</div></div>
+<div class="ttc" id="agroup__qssmoother_html_gga8953f71916f57517edbe8cab4d7ee639a6689dab6b5ddc50577edfa29bf0415f1"><div class="ttname"><a href="group__qssmoother.html#gga8953f71916f57517edbe8cab4d7ee639a6689dab6b5ddc50577edfa29bf0415f1">QSSMOOTHER_TYPE_ALNF</a></div><div class="ttdeci">@ QSSMOOTHER_TYPE_ALNF</div><div class="ttdef"><b>Definition:</b> qssmoother.h:39</div></div>
 <div class="ttc" id="agroup__qssmoother_html_gga8953f71916f57517edbe8cab4d7ee639ab3aa23be42e760981dfeb0dcce302b11"><div class="ttname"><a href="group__qssmoother.html#gga8953f71916f57517edbe8cab4d7ee639ab3aa23be42e760981dfeb0dcce302b11">QSSMOOTHER_TYPE_KLMN</a></div><div class="ttdeci">@ QSSMOOTHER_TYPE_KLMN</div><div class="ttdef"><b>Definition:</b> qssmoother.h:36</div></div>
 <div class="ttc" id="agroup__qssmoother_html_gga8953f71916f57517edbe8cab4d7ee639ac2598cbedb9a3b3b663f3f887be4a342"><div class="ttname"><a href="group__qssmoother.html#gga8953f71916f57517edbe8cab4d7ee639ac2598cbedb9a3b3b663f3f887be4a342">QSSMOOTHER_TYPE_MWM1</a></div><div class="ttdeci">@ QSSMOOTHER_TYPE_MWM1</div><div class="ttdef"><b>Definition:</b> qssmoother.h:31</div></div>
 <div class="ttc" id="agroup__qssmoother_html_gga8953f71916f57517edbe8cab4d7ee639ad4c3e7ec5b54fc155c6a84381f8e29f8"><div class="ttname"><a href="group__qssmoother.html#gga8953f71916f57517edbe8cab4d7ee639ad4c3e7ec5b54fc155c6a84381f8e29f8">QSSMOOTHER_TYPE_MOR1</a></div><div class="ttdeci">@ QSSMOOTHER_TYPE_MOR1</div><div class="ttdef"><b>Definition:</b> qssmoother.h:33</div></div>
 <div class="ttc" id="agroup__qssmoother_html_gga8953f71916f57517edbe8cab4d7ee639ad67f57dd9afcfa9a0a6803aa92a616ea"><div class="ttname"><a href="group__qssmoother.html#gga8953f71916f57517edbe8cab4d7ee639ad67f57dd9afcfa9a0a6803aa92a616ea">QSSMOOTHER_TYPE_LPF1</a></div><div class="ttdeci">@ QSSMOOTHER_TYPE_LPF1</div><div class="ttdef"><b>Definition:</b> qssmoother.h:29</div></div>
-<div class="ttc" id="astructq_s_smoother___d_e_s_f__t_html"><div class="ttname"><a href="structq_s_smoother___d_e_s_f__t.html">qSSmoother_DESF_t</a></div><div class="ttdoc">Double exponential smoothing (Holt’s Method)</div><div class="ttdef"><b>Definition:</b> qssmoother.h:170</div></div>
-<div class="ttc" id="astructq_s_smoother___e_x_p_w__t_html"><div class="ttname"><a href="structq_s_smoother___e_x_p_w__t.html">qSSmoother_EXPW_t</a></div><div class="ttdoc">An Exponential weighting filter.</div><div class="ttdef"><b>Definition:</b> qssmoother.h:142</div></div>
-<div class="ttc" id="astructq_s_smoother___g_m_w_f__t_html"><div class="ttname"><a href="structq_s_smoother___g_m_w_f__t.html">qSSmoother_GMWF_t</a></div><div class="ttdoc">A Gaussian filter.</div><div class="ttdef"><b>Definition:</b> qssmoother.h:130</div></div>
-<div class="ttc" id="astructq_s_smoother___k_l_m_n__t_html"><div class="ttname"><a href="structq_s_smoother___k_l_m_n__t.html">qSSmoother_KLMN_t</a></div><div class="ttdoc">A scalar Kalman filter.</div><div class="ttdef"><b>Definition:</b> qssmoother.h:153</div></div>
-<div class="ttc" id="astructq_s_smoother___l_p_f1__t_html"><div class="ttname"><a href="structq_s_smoother___l_p_f1__t.html">qSSmoother_LPF1_t</a></div><div class="ttdoc">A 1st order Low-Pass Filter.</div><div class="ttdef"><b>Definition:</b> qssmoother.h:55</div></div>
-<div class="ttc" id="astructq_s_smoother___l_p_f2__t_html"><div class="ttname"><a href="structq_s_smoother___l_p_f2__t.html">qSSmoother_LPF2_t</a></div><div class="ttdoc">A 2nd order Low-Pass Filter.</div><div class="ttdef"><b>Definition:</b> qssmoother.h:66</div></div>
-<div class="ttc" id="astructq_s_smoother___m_o_r1__t_html"><div class="ttname"><a href="structq_s_smoother___m_o_r1__t.html">qSSmoother_MOR1_t</a></div><div class="ttdoc">A Moving Outlier Removal filter.</div><div class="ttdef"><b>Definition:</b> qssmoother.h:105</div></div>
-<div class="ttc" id="astructq_s_smoother___m_o_r2__t_html"><div class="ttname"><a href="structq_s_smoother___m_o_r2__t.html">qSSmoother_MOR2_t</a></div><div class="ttdoc">A Moving Outlier Removal filter.</div><div class="ttdef"><b>Definition:</b> qssmoother.h:118</div></div>
-<div class="ttc" id="astructq_s_smoother___m_w_m1__t_html"><div class="ttname"><a href="structq_s_smoother___m_w_m1__t.html">qSSmoother_MWM1_t</a></div><div class="ttdoc">A Moving Window Median filter.</div><div class="ttdef"><b>Definition:</b> qssmoother.h:79</div></div>
-<div class="ttc" id="astructq_s_smoother___m_w_m2__t_html"><div class="ttname"><a href="structq_s_smoother___m_w_m2__t.html">qSSmoother_MWM2_t</a></div><div class="ttdoc">A Moving Window Median filter.</div><div class="ttdef"><b>Definition:</b> qssmoother.h:92</div></div>
+<div class="ttc" id="astructq_s_smoother___a_l_n_f__t_html"><div class="ttname"><a href="structq_s_smoother___a_l_n_f__t.html">qSSmoother_ALNF_t</a></div><div class="ttdoc">Adaptive Filter LMS.</div><div class="ttdef"><b>Definition:</b> qssmoother.h:183</div></div>
+<div class="ttc" id="astructq_s_smoother___d_e_s_f__t_html"><div class="ttname"><a href="structq_s_smoother___d_e_s_f__t.html">qSSmoother_DESF_t</a></div><div class="ttdoc">Double exponential smoothing (Holt’s Method)</div><div class="ttdef"><b>Definition:</b> qssmoother.h:171</div></div>
+<div class="ttc" id="astructq_s_smoother___e_x_p_w__t_html"><div class="ttname"><a href="structq_s_smoother___e_x_p_w__t.html">qSSmoother_EXPW_t</a></div><div class="ttdoc">An Exponential weighting filter.</div><div class="ttdef"><b>Definition:</b> qssmoother.h:143</div></div>
+<div class="ttc" id="astructq_s_smoother___g_m_w_f__t_html"><div class="ttname"><a href="structq_s_smoother___g_m_w_f__t.html">qSSmoother_GMWF_t</a></div><div class="ttdoc">A Gaussian filter.</div><div class="ttdef"><b>Definition:</b> qssmoother.h:131</div></div>
+<div class="ttc" id="astructq_s_smoother___k_l_m_n__t_html"><div class="ttname"><a href="structq_s_smoother___k_l_m_n__t.html">qSSmoother_KLMN_t</a></div><div class="ttdoc">A scalar Kalman filter.</div><div class="ttdef"><b>Definition:</b> qssmoother.h:154</div></div>
+<div class="ttc" id="astructq_s_smoother___l_p_f1__t_html"><div class="ttname"><a href="structq_s_smoother___l_p_f1__t.html">qSSmoother_LPF1_t</a></div><div class="ttdoc">A 1st order Low-Pass Filter.</div><div class="ttdef"><b>Definition:</b> qssmoother.h:56</div></div>
+<div class="ttc" id="astructq_s_smoother___l_p_f2__t_html"><div class="ttname"><a href="structq_s_smoother___l_p_f2__t.html">qSSmoother_LPF2_t</a></div><div class="ttdoc">A 2nd order Low-Pass Filter.</div><div class="ttdef"><b>Definition:</b> qssmoother.h:67</div></div>
+<div class="ttc" id="astructq_s_smoother___m_o_r1__t_html"><div class="ttname"><a href="structq_s_smoother___m_o_r1__t.html">qSSmoother_MOR1_t</a></div><div class="ttdoc">A Moving Outlier Removal filter.</div><div class="ttdef"><b>Definition:</b> qssmoother.h:106</div></div>
+<div class="ttc" id="astructq_s_smoother___m_o_r2__t_html"><div class="ttname"><a href="structq_s_smoother___m_o_r2__t.html">qSSmoother_MOR2_t</a></div><div class="ttdoc">A Moving Outlier Removal filter.</div><div class="ttdef"><b>Definition:</b> qssmoother.h:119</div></div>
+<div class="ttc" id="astructq_s_smoother___m_w_m1__t_html"><div class="ttname"><a href="structq_s_smoother___m_w_m1__t.html">qSSmoother_MWM1_t</a></div><div class="ttdoc">A Moving Window Median filter.</div><div class="ttdef"><b>Definition:</b> qssmoother.h:80</div></div>
+<div class="ttc" id="astructq_s_smoother___m_w_m2__t_html"><div class="ttname"><a href="structq_s_smoother___m_w_m2__t.html">qSSmoother_MWM2_t</a></div><div class="ttdoc">A Moving Window Median filter.</div><div class="ttdef"><b>Definition:</b> qssmoother.h:93</div></div>
 <div class="ttc" id="astructq_t_d_l__t_html"><div class="ttname"><a href="structq_t_d_l__t.html">qTDL_t</a></div><div class="ttdoc">A Tapped Delay Line (TDL) object.</div><div class="ttdef"><b>Definition:</b> qtdl.h:35</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->

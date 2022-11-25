@@ -11,6 +11,7 @@ var annotated_dup =
     [ "qPID_AutoTunning_t", "structq_p_i_d___auto_tunning__t.html", null ],
     [ "qPID_controller_t", "structq_p_i_d__controller__t.html", null ],
     [ "qRMS_t", "structq_r_m_s__t.html", null ],
+    [ "qSSmoother_ALNF_t", "structq_s_smoother___a_l_n_f__t.html", null ],
     [ "qSSmoother_DESF_t", "structq_s_smoother___d_e_s_f__t.html", null ],
     [ "qSSmoother_EXPW_t", "structq_s_smoother___e_x_p_w__t.html", null ],
     [ "qSSmoother_GMWF_t", "structq_s_smoother___g_m_w_f__t.html", null ],
