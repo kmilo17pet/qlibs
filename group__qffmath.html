@@ -227,7 +227,7 @@ Functions</h2></td></tr>
 <tr class="memdesc:ga7b01789f96475748103b2c993bbf2f84"><td class="mdescLeft">&#160;</td><td class="mdescRight">Categorizes the floating-point number <em>x</em>. This function determines whether its argument is a normal floating-point number, or one of several special categories of values, including NaN (not a number), infinity, subnormal floating-point values or zero. To determine what category the argument belongs to, compare the return value with the any of the following number classification macros:  <a href="group__qffmath.html#ga7b01789f96475748103b2c993bbf2f84">More...</a><br /></td></tr>
 <tr class="separator:ga7b01789f96475748103b2c993bbf2f84"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga04d45ab540e3853b4c265aa7f9cc367c"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qffmath.html#ga04d45ab540e3853b4c265aa7f9cc367c">qFFMath_IsNaN</a> (const float x)</td></tr>
-<tr class="memdesc:ga04d45ab540e3853b4c265aa7f9cc367c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Determine if <em>x</em> is Not-A-Number (NAN).  <a href="group__qffmath.html#ga04d45ab540e3853b4c265aa7f9cc367c">More...</a><br /></td></tr>
+<tr class="memdesc:ga04d45ab540e3853b4c265aa7f9cc367c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Determine if <em>x</em> is Not-A-Number (NaN) aka <a class="el" href="group__qffmath.html#gab0601df0bad5639c13e1371ade3de732" title="Not a Number (NaN) given as a single-precision floating-point number.">QFFM_NAN</a>.  <a href="group__qffmath.html#ga04d45ab540e3853b4c265aa7f9cc367c">More...</a><br /></td></tr>
 <tr class="separator:ga04d45ab540e3853b4c265aa7f9cc367c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gace27313ac4f649e84e8e2a02724adc21"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qffmath.html#gace27313ac4f649e84e8e2a02724adc21">qFFMath_IsInf</a> (const float x)</td></tr>
 <tr class="memdesc:gace27313ac4f649e84e8e2a02724adc21"><td class="mdescLeft">&#160;</td><td class="mdescRight">Determine if <em>x</em> is Infinity.  <a href="group__qffmath.html#gace27313ac4f649e84e8e2a02724adc21">More...</a><br /></td></tr>
@@ -236,25 +236,25 @@ Functions</h2></td></tr>
 <tr class="memdesc:gae40165c366d406564138b2206d08ee13"><td class="mdescLeft">&#160;</td><td class="mdescRight">Determines if the given floating point number <em>x</em> has finite value i.e. it is normal, subnormal or zero, but not infinite or NaN.  <a href="group__qffmath.html#gae40165c366d406564138b2206d08ee13">More...</a><br /></td></tr>
 <tr class="separator:gae40165c366d406564138b2206d08ee13"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga98398820e147567bd42857276f8f4902"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qffmath.html#ga98398820e147567bd42857276f8f4902">qFFMath_IsNormal</a> (const float x)</td></tr>
-<tr class="memdesc:ga98398820e147567bd42857276f8f4902"><td class="mdescLeft">&#160;</td><td class="mdescRight">Determines if the given floating point number <em>x</em> is normal, i.e. is neither zero, subnormal, infinite, nor NaN.  <a href="group__qffmath.html#ga98398820e147567bd42857276f8f4902">More...</a><br /></td></tr>
+<tr class="memdesc:ga98398820e147567bd42857276f8f4902"><td class="mdescLeft">&#160;</td><td class="mdescRight">Determines if the given floating point number <em>x</em> is normal, i.e. is neither zero, subnormal, infinite, or NaN.  <a href="group__qffmath.html#ga98398820e147567bd42857276f8f4902">More...</a><br /></td></tr>
 <tr class="separator:ga98398820e147567bd42857276f8f4902"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gac5c625958e08165a849a10dba10ed8c2"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qffmath.html#gac5c625958e08165a849a10dba10ed8c2">qFFMath_Abs</a> (float x)</td></tr>
 <tr class="memdesc:gac5c625958e08165a849a10dba10ed8c2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes the absolute value of a floating point value <em>x</em>.  <a href="group__qffmath.html#gac5c625958e08165a849a10dba10ed8c2">More...</a><br /></td></tr>
 <tr class="separator:gac5c625958e08165a849a10dba10ed8c2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga7b2e3356e6e92eb9474f7c3b12bd8431"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qffmath.html#ga7b2e3356e6e92eb9474f7c3b12bd8431">qFFMath_Recip</a> (float x)</td></tr>
-<tr class="memdesc:ga7b2e3356e6e92eb9474f7c3b12bd8431"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes the multiplicative inverse or reciprocal for the value <em>x</em>, denoted by <code>1/x</code> or <code>x^</code>(−1)  <a href="group__qffmath.html#ga7b2e3356e6e92eb9474f7c3b12bd8431">More...</a><br /></td></tr>
+<tr class="memdesc:ga7b2e3356e6e92eb9474f7c3b12bd8431"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes the multiplicative inverse or reciprocal for the value <em>x</em>, denoted by <code>1/x</code> or <code>x^(−1)</code>  <a href="group__qffmath.html#ga7b2e3356e6e92eb9474f7c3b12bd8431">More...</a><br /></td></tr>
 <tr class="separator:ga7b2e3356e6e92eb9474f7c3b12bd8431"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gae0d3f4fab730ab57f6b8c9c9ec38763a"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qffmath.html#gae0d3f4fab730ab57f6b8c9c9ec38763a">qFFMath_Sqrt</a> (float x)</td></tr>
 <tr class="memdesc:gae0d3f4fab730ab57f6b8c9c9ec38763a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes the square-root of <em>x</em>.  <a href="group__qffmath.html#gae0d3f4fab730ab57f6b8c9c9ec38763a">More...</a><br /></td></tr>
 <tr class="separator:gae0d3f4fab730ab57f6b8c9c9ec38763a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga1fafc28aa5de68c10c734dd66a225501"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qffmath.html#ga1fafc28aa5de68c10c734dd66a225501">qFFMath_RSqrt</a> (float x)</td></tr>
-<tr class="memdesc:ga1fafc28aa5de68c10c734dd66a225501"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes the reciprocal square-root of <em>x</em> denoted as <code>1/sqrt</code>(x)  <a href="group__qffmath.html#ga1fafc28aa5de68c10c734dd66a225501">More...</a><br /></td></tr>
+<tr class="memdesc:ga1fafc28aa5de68c10c734dd66a225501"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes the reciprocal square-root of <em>x</em> denoted as <code>1/sqrt(x)</code>  <a href="group__qffmath.html#ga1fafc28aa5de68c10c734dd66a225501">More...</a><br /></td></tr>
 <tr class="separator:ga1fafc28aa5de68c10c734dd66a225501"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gaf71623a9cab8e24d7ca92cb6b006f655"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qffmath.html#gaf71623a9cab8e24d7ca92cb6b006f655">qFFMath_Cbrt</a> (float x)</td></tr>
 <tr class="memdesc:gaf71623a9cab8e24d7ca92cb6b006f655"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes the cubic-root of <em>x</em>.  <a href="group__qffmath.html#gaf71623a9cab8e24d7ca92cb6b006f655">More...</a><br /></td></tr>
 <tr class="separator:gaf71623a9cab8e24d7ca92cb6b006f655"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gaaf55c2d6fe345051221b7efa110d8070"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qffmath.html#gaaf55c2d6fe345051221b7efa110d8070">qFFMath_RCbrt</a> (float x)</td></tr>
-<tr class="memdesc:gaaf55c2d6fe345051221b7efa110d8070"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes the reciprocal cubic-root of <em>x</em> denoted as <code>1/cbrt</code>(x)  <a href="group__qffmath.html#gaaf55c2d6fe345051221b7efa110d8070">More...</a><br /></td></tr>
+<tr class="memdesc:gaaf55c2d6fe345051221b7efa110d8070"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes the reciprocal cubic-root of <em>x</em> denoted as <code>1/cbrt(x)</code>  <a href="group__qffmath.html#gaaf55c2d6fe345051221b7efa110d8070">More...</a><br /></td></tr>
 <tr class="separator:gaaf55c2d6fe345051221b7efa110d8070"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gad9320c80badf1240fc42ac4ef918e166"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qffmath.html#gad9320c80badf1240fc42ac4ef918e166">qFFMath_Round</a> (float x)</td></tr>
 <tr class="memdesc:gad9320c80badf1240fc42ac4ef918e166"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes the nearest integer value to <em>x</em> (in floating-point format), rounding halfway cases away from zero.  <a href="group__qffmath.html#gad9320c80badf1240fc42ac4ef918e166">More...</a><br /></td></tr>
@@ -415,7 +415,7 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>If no errors occur, the arc cosine of <em>x</em> <code>arccos(x)</code> in the range [0 ; pi]. is returned.If a domain error occurs, a NAN value is returned. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>If no errors occur, the arc cosine of <em>x</em> <code>arccos(x)</code> in the range [0 ; pi]. is returned.If a domain error occurs, a <a class="el" href="group__qffmath.html#gab0601df0bad5639c13e1371ade3de732" title="Not a Number (NaN) given as a single-precision floating-point number.">QFFM_NAN</a> value is returned. </dd></dl>
 
 </div>
 </div>
@@ -469,7 +469,7 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>If no errors occur, the arc sine of <em>x</em> <code>arcsin(x)</code> in the range [-pi/2 ; pi/2]. is returned.If a domain error occurs, a NAN value is returned. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>If no errors occur, the arc sine of <em>x</em> <code>arcsin(x)</code> in the range [-pi/2 ; pi/2]. is returned.If a domain error occurs, a <a class="el" href="group__qffmath.html#gab0601df0bad5639c13e1371ade3de732" title="Not a Number (NaN) given as a single-precision floating-point number.">QFFM_NAN</a> value is returned. </dd></dl>
 
 </div>
 </div>
@@ -496,7 +496,7 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>If no errors occur, the inverse hyperbolic sine of <em>x</em> <code>sinh^-1</code>(x) is returned. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>If no errors occur, the inverse hyperbolic sine of <em>x</em> <code>sinh^-1(x)</code> is returned. </dd></dl>
 
 </div>
 </div>
@@ -523,7 +523,7 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>If no errors occur, the arc sine of <em>x</em> <code>arctan(x)</code> in the range [-pi/2 ; pi/2]. is returned.If a domain error occurs, a NAN value is returned. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>If no errors occur, the arc sine of <em>x</em> <code>arctan(x)</code> in the range [-pi/2 ; pi/2]. is returned.If a domain error occurs, a <a class="el" href="group__qffmath.html#gab0601df0bad5639c13e1371ade3de732" title="Not a Number (NaN) given as a single-precision floating-point number.">QFFM_NAN</a> value is returned. </dd></dl>
 
 </div>
 </div>
@@ -561,7 +561,7 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>If no errors occur, the arc tangent of y/x <code>arctan</code>(y/x) in the range [-pi ; +pi] radians, is returned. If a domain error occurs, a NAN value is returned. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>If no errors occur, the arc tangent of <code>y/x</code> <code>arctan(y/x)</code> in the range [-pi ; +pi] radians, is returned. If a domain error occurs, a <a class="el" href="group__qffmath.html#gab0601df0bad5639c13e1371ade3de732" title="Not a Number (NaN) given as a single-precision floating-point number.">QFFM_NAN</a> value is returned. </dd></dl>
 
 </div>
 </div>
@@ -588,7 +588,7 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>If no errors occur, the inverse hyperbolic tangent of <em>x</em> <code>tanh^-1</code>(x) is returned. If a domain error occurs, an NAN value is returned. If a pole error occurs, ±::QFFM_INFINITY is returned. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>If no errors occur, the inverse hyperbolic tangent of <em>x</em> <code>tanh^-1(x)</code> is returned. If a domain error occurs, a <a class="el" href="group__qffmath.html#gab0601df0bad5639c13e1371ade3de732" title="Not a Number (NaN) given as a single-precision floating-point number.">QFFM_NAN</a> value is returned. If a pole error occurs, ± <a class="el" href="group__qffmath.html#ga51988161a7fb44a6badf2221f0be792f" title="Positive infinity given as a single-precision floating-point number.">QFFM_INFINITY</a> is returned. </dd></dl>
 
 </div>
 </div>
@@ -615,7 +615,7 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>If no errors occur, cubic root of <em>x</em>, is returned. If a domain error occurs NAN is returned </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>If no errors occur, cubic root of <em>x</em>, is returned. If a domain error occurs <a class="el" href="group__qffmath.html#gab0601df0bad5639c13e1371ade3de732" title="Not a Number (NaN) given as a single-precision floating-point number.">QFFM_NAN</a> is returned </dd></dl>
 
 </div>
 </div>
@@ -669,7 +669,7 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>If no errors occur, the cosine of <em>x</em> <code>cos(x)</code> in the range [-1 ; +1], is returned. If a domain error occurs, a NAN value is returned. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>If no errors occur, the cosine of <em>x</em> <code>cos(x)</code> in the range [-1 ; +1], is returned. If a domain error occurs, a <a class="el" href="group__qffmath.html#gab0601df0bad5639c13e1371ade3de732" title="Not a Number (NaN) given as a single-precision floating-point number.">QFFM_NAN</a> value is returned. </dd></dl>
 
 </div>
 </div>
@@ -696,7 +696,7 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>If no errors occur, the hyperbolic cosine of <em>x</em> <code>cosh(x)</code> is returned. If a range error occurs, a <a class="el" href="group__qffmath.html#ga51988161a7fb44a6badf2221f0be792f" title="Positive infinity given as a single-precision floating-point number.">QFFM_INFINITY</a> is value is returned. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>If no errors occur, the hyperbolic cosine of <em>x</em> <code>cosh(x)</code> is returned. If a range error occurs, a <a class="el" href="group__qffmath.html#ga51988161a7fb44a6badf2221f0be792f" title="Positive infinity given as a single-precision floating-point number.">QFFM_INFINITY</a> value is returned. </dd></dl>
 
 </div>
 </div>
@@ -777,7 +777,7 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>If no errors occur, the base-e exponential of <em>x</em> <code>e^</code>(x) is returned. If a range error due to overflow occurs, +<a class="el" href="group__qffmath.html#ga51988161a7fb44a6badf2221f0be792f" title="Positive infinity given as a single-precision floating-point number.">QFFM_INFINITY</a> is returned. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>If no errors occur, the base-e exponential of <em>x</em> <code>e^(x)</code> is returned. If a range error due to overflow occurs, +<a class="el" href="group__qffmath.html#ga51988161a7fb44a6badf2221f0be792f" title="Positive infinity given as a single-precision floating-point number.">QFFM_INFINITY</a> is returned. </dd></dl>
 
 </div>
 </div>
@@ -804,7 +804,7 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>If no errors occur, the base-e exponential of <em>x</em> <code>10^</code>(x) is returned. If a range error due to overflow occurs, ±::QFFM_INFINITY or NAN is returned. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>If no errors occur, the base-e exponential of <em>x</em> <code>10^(x)</code> is returned. If a range error due to overflow occurs, ± <a class="el" href="group__qffmath.html#ga51988161a7fb44a6badf2221f0be792f" title="Positive infinity given as a single-precision floating-point number.">QFFM_INFINITY</a> or NAN is returned. </dd></dl>
 
 </div>
 </div>
@@ -831,7 +831,7 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>If no errors occur, the base-2 exponential of n (2^x) is returned. If a range error due to overflow occurs, <a class="el" href="group__qffmath.html#ga51988161a7fb44a6badf2221f0be792f" title="Positive infinity given as a single-precision floating-point number.">QFFM_INFINITY</a> is returned. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>If no errors occur, the base-2 exponential of <em>x</em> <code>2^x</code> is returned. If a range error due to overflow occurs, <a class="el" href="group__qffmath.html#ga51988161a7fb44a6badf2221f0be792f" title="Positive infinity given as a single-precision floating-point number.">QFFM_INFINITY</a> is returned. </dd></dl>
 
 </div>
 </div>
@@ -957,7 +957,7 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>If no errors occur, the hypotenuse of a right-angled triangle, <code>sqrt</code>(x^2+y^2), is returned. If a range error due to overflow occurs, +<a class="el" href="group__qffmath.html#ga51988161a7fb44a6badf2221f0be792f" title="Positive infinity given as a single-precision floating-point number.">QFFM_INFINITY</a> is returned. If a range error due to underflow occurs, the correct result (after rounding) is returned. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>If no errors occur, the hypotenuse of a right-angled triangle, <code>sqrt(x^2 + y^2)</code>, is returned. If a range error due to overflow occurs, +<a class="el" href="group__qffmath.html#ga51988161a7fb44a6badf2221f0be792f" title="Positive infinity given as a single-precision floating-point number.">QFFM_INFINITY</a> is returned. If a range error due to underflow occurs, the correct result (after rounding) is returned. </dd></dl>
 
 </div>
 </div>
@@ -1031,14 +1031,14 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Determine if <em>x</em> is Not-A-Number (NAN). </p>
+<p>Determine if <em>x</em> is Not-A-Number (NaN) aka <a class="el" href="group__qffmath.html#gab0601df0bad5639c13e1371ade3de732" title="Not a Number (NaN) given as a single-precision floating-point number.">QFFM_NAN</a>. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">x</td><td>The number you want to test. </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>true if the value of <em>x</em> is NAN, otherwise returns false. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>true if the value of <em>x</em> is (NaN) aka <a class="el" href="group__qffmath.html#gab0601df0bad5639c13e1371ade3de732" title="Not a Number (NaN) given as a single-precision floating-point number.">QFFM_NAN</a>, otherwise returns false. </dd></dl>
 
 </div>
 </div>
@@ -1058,7 +1058,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Determines if the given floating point number <em>x</em> is normal, i.e. is neither zero, subnormal, infinite, nor NaN. </p>
+<p>Determines if the given floating point number <em>x</em> is normal, i.e. is neither zero, subnormal, infinite, or NaN. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">x</td><td>The number you want to test. </td></tr>
@@ -1103,7 +1103,7 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>If no errors occur, <em>x</em> multiplied by 2 to the power of <em>pw2</em> @ac x×2^pwd is returned. If a range error due to overflow occurs, ±::QFFM_INFINITY is returned. If a range error due to underflow occurs, the correct result (after rounding) is returned. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>If no errors occur, <em>x</em> multiplied by 2 to the power of <em>pw2</em> <code>x×2^pwd</code> is returned. If a range error due to overflow occurs, ± <a class="el" href="group__qffmath.html#ga51988161a7fb44a6badf2221f0be792f" title="Positive infinity given as a single-precision floating-point number.">QFFM_INFINITY</a> is returned. If a range error due to underflow occurs, the correct result (after rounding) is returned. </dd></dl>
 
 </div>
 </div>
@@ -1130,7 +1130,7 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>If no errors occur, the natural (base-e) logarithm of <em>x</em> <code>ln(x)</code> is returned. If a domain error occurs, a NAN value is returned. If a pole error occurs, -<a class="el" href="group__qffmath.html#ga51988161a7fb44a6badf2221f0be792f" title="Positive infinity given as a single-precision floating-point number.">QFFM_INFINITY</a> is returned. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>If no errors occur, the natural (base-e) logarithm of <em>x</em> <code>ln(x)</code> is returned. If a domain error occurs, a <a class="el" href="group__qffmath.html#gab0601df0bad5639c13e1371ade3de732" title="Not a Number (NaN) given as a single-precision floating-point number.">QFFM_NAN</a> value is returned. If a pole error occurs, -<a class="el" href="group__qffmath.html#ga51988161a7fb44a6badf2221f0be792f" title="Positive infinity given as a single-precision floating-point number.">QFFM_INFINITY</a> is returned. </dd></dl>
 
 </div>
 </div>
@@ -1157,7 +1157,7 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>If no errors occur, the common (base-10) logarithm of <em>x</em> <code>log_10(x)</code> is returned. If a domain error occurs, a NAN value is returned. If a pole error occurs, -<a class="el" href="group__qffmath.html#ga51988161a7fb44a6badf2221f0be792f" title="Positive infinity given as a single-precision floating-point number.">QFFM_INFINITY</a> is returned. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>If no errors occur, the common (base-10) logarithm of <em>x</em> <code>log_10(x)</code> is returned. If a domain error occurs, a <a class="el" href="group__qffmath.html#gab0601df0bad5639c13e1371ade3de732" title="Not a Number (NaN) given as a single-precision floating-point number.">QFFM_NAN</a> value is returned. If a pole error occurs, -<a class="el" href="group__qffmath.html#ga51988161a7fb44a6badf2221f0be792f" title="Positive infinity given as a single-precision floating-point number.">QFFM_INFINITY</a> is returned. </dd></dl>
 
 </div>
 </div>
@@ -1184,7 +1184,7 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>If no errors occur, the base-2 logarithm of <em>x</em> <code>log_2(x)</code> is returned. If a domain error occurs, an NAN value is returned. If a pole error occurs, -<a class="el" href="group__qffmath.html#ga51988161a7fb44a6badf2221f0be792f" title="Positive infinity given as a single-precision floating-point number.">QFFM_INFINITY</a> is returned. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>If no errors occur, the base-2 logarithm of <em>x</em> <code>log_2(x)</code> is returned. If a domain error occurs, a <a class="el" href="group__qffmath.html#gab0601df0bad5639c13e1371ade3de732" title="Not a Number (NaN) given as a single-precision floating-point number.">QFFM_NAN</a> value is returned. If a pole error occurs, -<a class="el" href="group__qffmath.html#ga51988161a7fb44a6badf2221f0be792f" title="Positive infinity given as a single-precision floating-point number.">QFFM_INFINITY</a> is returned. </dd></dl>
 
 </div>
 </div>
@@ -1298,7 +1298,7 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>If successful, returns the floating-point remainder of the division <code>x/y</code>. If a domain error occurs, an NAN value is returned. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>If successful, returns the floating-point remainder of the division <code>x/y</code>. If a domain error occurs, a <a class="el" href="group__qffmath.html#gab0601df0bad5639c13e1371ade3de732" title="Not a Number (NaN) given as a single-precision floating-point number.">QFFM_NAN</a> value is returned. </dd></dl>
 
 </div>
 </div>
@@ -1336,7 +1336,7 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>If no errors occur, the next representable value of <em>x</em> in the direction of <em>y</em> is returned. If <em>x</em> equals <em>y</em>, then <em>yis</em> returned. If a range error due to overflow occurs, ±::QFFM_INFINITY is returned (with the same sign as <em>x</em>). If a range error occurs due to underflow, the correct result is returned. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>If no errors occur, the next representable value of <em>x</em> in the direction of <em>y</em> is returned. If <em>x</em> equals <em>y</em>, then <em>yis</em> returned. If a range error due to overflow occurs, ± <a class="el" href="group__qffmath.html#ga51988161a7fb44a6badf2221f0be792f" title="Positive infinity given as a single-precision floating-point number.">QFFM_INFINITY</a> is returned (with the same sign as <em>x</em>). If a range error occurs due to underflow, the correct result is returned. </dd></dl>
 
 </div>
 </div>
@@ -1374,7 +1374,7 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>If no errors occur, <em>b</em> raised to the power of <em>e</em> <code>b^e</code> is returned. If a domain error occurs, a NAN value is returned. If a pole error or a range error due to overflow occurs, ±::QFFM_INFINITY is returned. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>If no errors occur, <em>b</em> raised to the power of <em>e</em> <code>b^e</code> is returned. If a domain error occurs, a <a class="el" href="group__qffmath.html#gab0601df0bad5639c13e1371ade3de732" title="Not a Number (NaN) given as a single-precision floating-point number.">QFFM_NAN</a> value is returned. If a pole error or a range error due to overflow occurs, ± <a class="el" href="group__qffmath.html#ga51988161a7fb44a6badf2221f0be792f" title="Positive infinity given as a single-precision floating-point number.">QFFM_INFINITY</a> is returned. </dd></dl>
 
 </div>
 </div>
@@ -1394,14 +1394,14 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Computes the reciprocal cubic-root of <em>x</em> denoted as <code>1/cbrt</code>(x) </p>
+<p>Computes the reciprocal cubic-root of <em>x</em> denoted as <code>1/cbrt(x)</code> </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">x</td><td>The floating point value </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>If no errors occur, the reciprocal cubic root of <em>x</em>, is returned. If a domain error occurs NAN is returned </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>If no errors occur, the reciprocal cubic root of <em>x</em>, is returned. If a domain error occurs <a class="el" href="group__qffmath.html#gab0601df0bad5639c13e1371ade3de732" title="Not a Number (NaN) given as a single-precision floating-point number.">QFFM_NAN</a> is returned </dd></dl>
 
 </div>
 </div>
@@ -1421,7 +1421,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Computes the multiplicative inverse or reciprocal for the value <em>x</em>, denoted by <code>1/x</code> or <code>x^</code>(−1) </p>
+<p>Computes the multiplicative inverse or reciprocal for the value <em>x</em>, denoted by <code>1/x</code> or <code>x^(−1)</code> </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">x</td><td>The floating point value </td></tr>
@@ -1466,7 +1466,7 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>If successful, returns the IEEE floating-point remainder of the division <code>x/y</code>. If a domain error occurs, an NAN value is returned. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>If successful, returns the IEEE floating-point remainder of the division <code>x/y</code>. If a domain error occurs, a <a class="el" href="group__qffmath.html#gab0601df0bad5639c13e1371ade3de732" title="Not a Number (NaN) given as a single-precision floating-point number.">QFFM_NAN</a> value is returned. </dd></dl>
 
 </div>
 </div>
@@ -1504,7 +1504,7 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>If <em>x</em> is zero, returns zero and stores zero in <em>pw2</em>. Otherwise (if <em>x</em> is not zero), if no errors occur, returns the value <em>y</em> in the range (-1;-0.5], [0.5; 1) and stores an integer value in <em>pw2</em> such that <code>y×2^</code>(pw2)=x . If the value to be stored in <em>pw2</em> is outside the range of an <code>int</code>, the behavior is unspecified. If <em>x</em> is not a floating-point number, the behavior is unspecified. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>If <em>x</em> is zero, returns zero and stores zero in <em>pw2</em>. Otherwise (if <em>x</em> is not zero), if no errors occur, returns the value <em>y</em> in the range (-1;-0.5], [0.5; 1) and stores an integer value in <em>pw2</em> such that <code>y×2^(pw2) = x</code> . If the value to be stored in <em>pw2</em> is outside the range of an <code>int</code>, the behavior is unspecified. If <em>x</em> is not a floating-point number, the behavior is unspecified. </dd></dl>
 
 </div>
 </div>
@@ -1551,14 +1551,14 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Computes the reciprocal square-root of <em>x</em> denoted as <code>1/sqrt</code>(x) </p>
+<p>Computes the reciprocal square-root of <em>x</em> denoted as <code>1/sqrt(x)</code> </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">x</td><td>The floating point value </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>If no errors occur, the reciprocal square root of <em>x</em>, is returned. If a domain error occurs NAN is returned </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>If no errors occur, the reciprocal square root of <em>x</em>, is returned. If a domain error occurs <a class="el" href="group__qffmath.html#gab0601df0bad5639c13e1371ade3de732" title="Not a Number (NaN) given as a single-precision floating-point number.">QFFM_NAN</a> is returned </dd></dl>
 
 </div>
 </div>
@@ -1585,7 +1585,7 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>If no errors occur, the sine of <em>x</em> <code>sin(x)</code> in the range [-1 ; +1], is returned. If a domain error occurs, a NAN value is returned. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>If no errors occur, the sine of <em>x</em> <code>sin(x)</code> in the range [-1 ; +1], is returned. If a domain error occurs, a <a class="el" href="group__qffmath.html#gab0601df0bad5639c13e1371ade3de732" title="Not a Number (NaN) given as a single-precision floating-point number.">QFFM_NAN</a> value is returned. </dd></dl>
 
 </div>
 </div>
@@ -1612,7 +1612,7 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>If no errors occur, the hyperbolic sine of <em>x</em> <code>sinh(x)</code> is returned. If a range error occurs, a ±::QFFM_INFINITY is value is returned. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>If no errors occur, the hyperbolic sine of <em>x</em> <code>sinh(x)</code> is returned. If a range error occurs, a ± <a class="el" href="group__qffmath.html#ga51988161a7fb44a6badf2221f0be792f" title="Positive infinity given as a single-precision floating-point number.">QFFM_INFINITY</a> is value is returned. </dd></dl>
 
 </div>
 </div>
@@ -1639,7 +1639,7 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>If no errors occur, square root of <em>x</em>, is returned. If a domain error occurs NAN is returned </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>If no errors occur, square root of <em>x</em>, is returned. If a domain error occurs <a class="el" href="group__qffmath.html#gab0601df0bad5639c13e1371ade3de732" title="Not a Number (NaN) given as a single-precision floating-point number.">QFFM_NAN</a> is returned </dd></dl>
 
 </div>
 </div>
@@ -1666,7 +1666,7 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>If no errors occur, the tangent of <em>x</em> <code>tan(x)</code> is returned. If a domain error occurs, a NAN value is returned. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>If no errors occur, the tangent of <em>x</em> <code>tan(x)</code> is returned. If a domain error occurs, a <a class="el" href="group__qffmath.html#gab0601df0bad5639c13e1371ade3de732" title="Not a Number (NaN) given as a single-precision floating-point number.">QFFM_NAN</a> value is returned. </dd></dl>
 
 </div>
 </div>
