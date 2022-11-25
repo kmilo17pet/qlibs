@@ -1,7 +1,7 @@
 /*!
  * @file qffmath.h
  * @author J. Camilo Gomez C.
- * @version 1.04
+ * @version 1.05
  * @note This file is part of the qLibs distribution.
  * @brief Fast floating-point math library for applications where speed is more 
  * important than accuracy
@@ -13,6 +13,8 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
+
+    #include <stdint.h>
 
 #ifdef QLIBS_USE_STD_MATH
     /*! @cond  */
@@ -446,7 +448,7 @@ extern "C" {
     * @brief Computes the error function of @a x.
     * @param[in] x The floating point value
     * @return If no errors occur, value the error function is returned.
-    */ 
+    */
     float qFFMath_Erf( float x );
 
     /**
@@ -454,7 +456,7 @@ extern "C" {
     * @param[in] x The floating point value
     * @return If no errors occur, value the complementary error function is 
     * returned.
-    */ 
+    */
     float qFFMath_Erfc( float x );
 
     /**
@@ -462,7 +464,7 @@ extern "C" {
     * @param[in] x The floating point value
     * @param[in] y The floating point value
     * @return If successful, returns the larger of two floating point values
-    */ 
+    */
     float qFFMath_Max( float x,
                        float y );
 
@@ -471,9 +473,65 @@ extern "C" {
     * @param[in] x The floating point value
     * @param[in] y The floating point value
     * @return If successful, returns the smaller of two floating point values
-    */ 
+    */
     float qFFMath_Min( float x,
                        float y );
+
+    /**
+    * @brief Decomposes given floating point value x into a normalized fraction
+    * and an integral power of two.
+    * @param[in] x The floating point value
+    * @param[in] pw2 Pointer to integer value to store the exponent to
+    * @return If x is zero, returns zero and stores zero in *pw2. Otherwise 
+    * (if x is not zero), if no errors occur, returns the value y in the range
+    * (-1;-0.5], [0.5; 1) and stores an integer value in *pw2 such that 
+    * y×2^(pw2) = x. If the value to be stored in *pw2 is outside the range of 
+    * int, the behavior is unspecified. If arg is not a floating-point number, 
+    * the behavior is unspecified.
+    */
+    float qFFMath_RExp( float x,
+                        int32_t *pw2 );
+
+    /**
+    * @brief Multiplies a floating point value x by the number 2 raised to 
+    * the pw2 power.
+    * @param[in] x The floating point value
+    * @param[in] pw2 Integer value
+    * @return If no errors occur, x multiplied by 2 to the power of pw2 
+    * (x×2^exp) is returned. If a range error due to overflow occurs, 
+    * ±QFFM_INFINITY is returned. If a range error due to underflow occurs, the 
+    * correct result (after rounding) is returned.
+    */
+    float qFFMath_LDExp( float x,
+                         int32_t pw2 );
+
+    /**
+    * @brief Computes the square root of the sum of the squares of x and y,
+    * without undue overflow or underflow at intermediate stages of the 
+    * computation.
+    * @param[in] x The floating point value
+    * @param[in] y The floating point value
+    * @return If no errors occur, the hypotenuse of a right-angled triangle, 
+    * sqrt( x^2 + y^2), is returned. If a range error due to overflow occurs, 
+    * +QFFM_INFINITY is returned. If a range error due to underflow occurs, 
+    * the correct result (after rounding) is returned.
+    */
+    float qFFMath_Hypot( float x,
+                         float y );
+
+    /**
+    * @brief Returns the next representable value of @a x in the direction of
+    * @a y. If @a x equals to @a y, @a y is returned.
+    * @param[in] x The floating point value
+    * @param[in] y The floating point value
+    * @return If no errors occur, the next representable value of @a x in the 
+    * direction of @a y is returned. If @a x equals @a y, then @a yis returned.
+    * If a range error due to overflow occurs, ±QFFM_INFINITY is returned (with
+    * the same sign as @a x). If a range error occurs due to underflow, the 
+    * correct result is returned.
+    */
+    float qFFMath_NextAfter( float x,
+                             float y );
 
     /** @}*/
 

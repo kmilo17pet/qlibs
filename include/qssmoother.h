@@ -1,7 +1,7 @@
 /*!
  * @file qssmoother.h
  * @author J. Camilo Gomez C.
- * @version 1.07
+ * @version 1.09
  * @note This file is part of the qLibs distribution.
  * @brief API to smooth noisy signals.
  **/
@@ -36,6 +36,7 @@ extern "C" {
         QSSMOOTHER_TYPE_KLMN,       /*!< Kalman Filter*/
         QSSMOOTHER_TYPE_EXPW,       /*!< Exponential weighting filter*/
         QSSMOOTHER_TYPE_DESF,       /*!< Double Exponential Smoother*/
+        QSSMOOTHER_TYPE_ALNF,       /*!< Adaptive Noise Cancellation*/
     } qSSmoother_Type_t;
 
     /*! @cond  */
@@ -176,6 +177,19 @@ extern "C" {
     } qSSmoother_DESF_t;
 
     /**
+    * @brief Adaptive Filter LMS
+    */
+    typedef struct
+    {
+        /*! @cond  */
+        _qSSmoother_t f;
+        float alpha, mu;
+        float *w, *w_1, *x;
+        size_t n;
+        /*! @endcond  */
+    } qSSmoother_ALNF_t;
+
+    /**
     * @brief Check if the smoother filter is initialized.
     * @param[in] s A pointer to the signal smoother instance.
     * @return 1 if the smoother has been initialized, otherwise return 0.
@@ -222,6 +236,10 @@ extern "C" {
     *
     * - ::QSSMOOTHER_TYPE_EXPW
     *
+    * - ::QSSMOOTHER_TYPE_DESF
+    *
+    * - ::QSSMOOTHER_TYPE_ALNF
+    *
     * @param[in] param The smoother parameters. Depends of the type selected:
     *
     * if ::QSSMOOTHER_TYPE_LPF1 a pointer to a value between  [ 0 < @a alpha < 1 ]
@@ -248,6 +266,16 @@ extern "C" {
     * if ::QSSMOOTHER_TYPE_EXPW, a pointer to a value between [ 0 < @a lambda < 1 ]
     * that represents the forgetting factor.
     *
+    * if ::QSSMOOTHER_TYPE_DESF, an array with three values. The first element 
+    * [ 0 < @a alpha < 1 ] that represents the weight for the level, the second,
+    * [ 0 < @a beta < 1 ] weight for the trend. The third element with the number
+    * of step for the forecast, should be an integer value greater or equal to 
+    * zero.
+    * 
+    * if ::QSSMOOTHER_TYPE_ALNF, an array with two values. The first element
+    * with learning rate [ 0 < @a alpha < 1 ]. The second element with the
+    * momentum [ 0 < @a mu < 1 ].
+    * 
     * @param[in] window The filter window and coefficients. Depends of the type
     * selected:
     *
@@ -269,6 +297,11 @@ extern "C" {
     * if ::QSSMOOTHER_TYPE_KLMN, can be ignored. Pass @c NULL as argument.
     *
     * if ::QSSMOOTHER_TYPE_EXPW, can be ignored. Pass @c NULL as argument.
+    *
+    * if ::QSSMOOTHER_TYPE_DESF, can be ignored. Pass @c NULL as argument.
+    *
+    * if ::QSSMOOTHER_TYPE_ALNF, An array of 2* @a wsize elements when momentum
+    * is set to zero, otherwise an array of 3* @a wsize elements.
     *
     * @param[in] wsize If used, the number of elements in @a window, otherwise
     * pass 0uL as argument.

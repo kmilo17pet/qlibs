@@ -5,8 +5,8 @@
 #include <string.h>
 #include <float.h>
 
-#define cast_float_to_uint32( i, f )    (void)memcpy( &i, &f, sizeof(float) )
-#define cast_uint32_to_float( f, i )    (void)memcpy( &f, &i, sizeof(float) )
+#define cast_reinterpret( dst, src, dst_type )                              \
+(void)memcpy( &dst, &src, sizeof(dst_type) )                                \
 
 /*============================================================================*/
 float _qFFMath_GetAbnormal( const int i )
@@ -28,7 +28,7 @@ int qFFMath_FPClassify( const float f )
     uint32_t u = 0u;
     int retVal;
 
-    cast_float_to_uint32( u, f );
+    cast_reinterpret( u, f, uint32_t );
     u &= 0x7FFFFFFFu;
 
     if ( 0u == u ) {
@@ -80,9 +80,9 @@ float qFFMath_Recip( float x )
     uint32_t y = 0u;
     float z = 0.0f;
 
-    cast_float_to_uint32( y, x );
+    cast_reinterpret( y, x, uint32_t );
     y = 0x7EF311C7u - y;
-    cast_uint32_to_float( z, y );
+    cast_reinterpret( z, y, float );
     
     return z*( 2.0f - ( x*z ) );
 }
@@ -101,9 +101,9 @@ float qFFMath_Sqrt( float x )
         uint32_t y = 0u;
         float z = 0.0f;
 
-        cast_float_to_uint32( y, x );
+        cast_reinterpret( y, x, uint32_t );
         y = ( ( y - 0x00800000u ) >> 1u ) + 0x20000000u;
-        cast_uint32_to_float( z, y );
+        cast_reinterpret( z, y, float );
         retVal = ( ( x/z ) + z ) * 0.5f;
     }
 
@@ -124,9 +124,9 @@ float qFFMath_RSqrt( float x )
         uint32_t y = 0u;
         float z = 0.5f*x;
 
-        cast_float_to_uint32( y, x );
+        cast_reinterpret( y, x, uint32_t );
         y = 0x5F375A86u - ( y >> 1u );
-        cast_uint32_to_float( x, y );
+        cast_reinterpret( x, y, float );
         retVal = x*( 1.5f - ( z*x*x ) );
     }
 
@@ -147,9 +147,9 @@ float qFFMath_Cbrt( float x )
         neg = true;
     }
     
-    cast_float_to_uint32( i, x );
+    cast_reinterpret( i, x, uint32_t );
     i = 0x548C2B4Bu - ( i/3u );
-    cast_uint32_to_float( y, i );
+    cast_reinterpret( y, i, float );
     c = x*y*y*y;
     y = y*( k1 - ( c*( k2 - ( k3*c ) ) ) );
 
@@ -178,9 +178,9 @@ float qFFMath_RCbrt( float x )
             x = -x;
             neg = true;
         }
-        cast_float_to_uint32( i, x );
+        cast_reinterpret( i, x, uint32_t );
         i = 0x548C2B4Bu - ( i/3u );
-        cast_uint32_to_float( y, i );
+        cast_reinterpret( y, i, float );
         c = x*y*y*y;
         y = y*( k1 - ( c*( k2 - ( k3*c ) ) ) );
         c = 1.0f - ( x*y*y*y );
@@ -302,7 +302,7 @@ float qFFMath_Exp2( float x )
         x += 127.0f - (float)exponent;
         /*cstat +CERT-FLP36-C*/
         exponent <<= 23u;
-        cast_float_to_uint32( y, exponent );
+        cast_reinterpret( y, exponent, float );
         x *= ( x*0.339766027f ) + 0.660233972f;
         retVal = y*( x + 1.0f );
     }
@@ -323,14 +323,14 @@ float qFFMath_Log2( float x )
     else {
         uint32_t y = 0u, y2;
 
-        cast_float_to_uint32( y, x );
+        cast_reinterpret( y, x, uint32_t );
         y2 = y;
         y >>= 23u;
         /*cstat -CERT-FLP36-C*/
         retVal = (float)y;
         /*cstat +CERT-FLP36-C*/
         y = ( y2 & 0x007FFFFFu ) | 0x3F800000u;
-        cast_uint32_to_float( x, y );
+        cast_reinterpret( x, y, float );
         retVal += -128.0f + ( x*( ( -0.333333333f*x ) + 2.0f ) ) - 0.666666666f;
     }
 
@@ -427,6 +427,107 @@ float qFFMath_Min( float x,
                    float y )
 {
     return ( x < y ) ? x : y;
+}
+/*============================================================================*/
+float qFFMath_RExp( float x,
+                    int32_t *pw2 )
+{
+    uint32_t lu = 0u, iu;
+    int32_t i = 0;
+    
+
+    cast_reinterpret( lu, x, uint32_t );
+    iu  = ( lu >> 23u ) & 0x000000FFu;  /* Find the exponent (power of 2) */
+    cast_reinterpret( i, iu, int32_t );
+    i -= 0x7E;
+    pw2[ 0 ] = (int)i;
+    lu &= 0x807FFFFFu; /* strip all exponent bits */
+    lu |= 0x3F000000u; /* mantissa between 0.5 and 1 */
+    cast_reinterpret( x, lu, float );
+    return x;
+}
+/*============================================================================*/
+float qFFMath_LDExp( float x,
+                     int32_t pw2 )
+{
+    uint32_t lu = 0u, eu;
+    int32_t e = 0;
+
+    cast_reinterpret( lu, x, uint32_t );
+    eu = ( lu >> 23u ) & 0x000000FFu;
+    cast_reinterpret( e, eu, int32_t );
+    e += pw2;
+    cast_reinterpret( eu, e, uint32_t );
+    lu = ( ( eu & 0xFFu ) << 23u ) | ( lu & 0x807FFFFFu );
+    cast_reinterpret( x, lu, float );
+
+    return x;
+}
+/*============================================================================*/
+float qFFMath_Hypot( float x,
+                     float y )
+{
+    float retVal;
+    /*cstat -MISRAC2012-Rule-13.5*/ 
+    if ( qFFMath_IsFinite( x ) && qFFMath_IsFinite( y ) ) {
+        float a, b, an, bn;;
+        int32_t e = 0;
+
+        if ( x >= y ) {
+            a = x;
+            b = y;
+        }
+        else {
+            a = y;
+            b = x;
+        }
+        /* Write a = an * 2^e, b = bn * 2^e with 0 <= bn <= an < 1.*/
+        an = qFFMath_RExp( a, &e );
+        bn = qFFMath_LDExp( b, -e );
+        retVal = qFFMath_Sqrt( ( an*an ) + ( bn*bn ) );
+        retVal = qFFMath_LDExp( retVal, e );
+    }
+    else {
+        retVal = ( qFFMath_IsInf( x ) || qFFMath_IsInf( y ) ) ? QFFM_INFINITY
+                                                              : QFFM_NAN;
+    }
+    /*cstat +MISRAC2012-Rule-13.5*/
+    return retVal;
+}
+/*============================================================================*/
+float qFFMath_NextAfter( float x,
+                         float y )
+{
+    float retVal;
+    uint32_t ax, ay;
+    uint32_t uxi = 0u, uyi = 0u;
+
+    cast_reinterpret( uxi, x, uint32_t );
+    cast_reinterpret( uyi, y, uint32_t );
+    /*cstat -MISRAC2012-Rule-13.5*/ 
+    if ( qFFMath_IsNaN( x ) || qFFMath_IsNaN( y ) ) {
+    /*cstat +MISRAC2012-Rule-13.5*/ 
+        retVal = QFFM_NAN;
+    }
+    else if ( uxi == uyi ) {
+        retVal = y;
+    }
+    else {
+        ax = uxi & 0x7FFFFFFFu;
+        ay = uyi & 0x7FFFFFFFu;
+        if ( 0u == ax ) {
+            uxi = ( 0u == ay ) ? uyi : ( ( uyi & 0x80000000u ) | 1u );
+        }
+        else if ( ( ax > ay ) || ( 0 != ( ( uxi^uyi ) & 0x80000000u ) ) ) {
+            uxi--;
+        }
+        else {
+            uxi++;
+        }
+        cast_reinterpret( retVal, uxi, float );
+    }
+
+    return retVal;
 }
 /*============================================================================*/
 #endif /*#ifndef QLIBS_USE_STD_MATH*/

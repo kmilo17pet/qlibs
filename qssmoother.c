@@ -59,6 +59,10 @@ static int qSSmoother_Setup_DESF( _qSSmoother_t * const f,
                                   const float * const param,
                                   float *window,
                                   const size_t wsize );
+static int qSSmoother_Setup_ALNF( _qSSmoother_t * const f,
+                                  const float * const param,
+                                  float *window,
+                                  const size_t wsize );
 static float qSSmoother_Filter_LPF1( _qSSmoother_t * const f,
                                      const float x );
 static float qSSmoother_Filter_LPF2( _qSSmoother_t * const f,
@@ -79,7 +83,8 @@ static float qSSmoother_Filter_EXPW( _qSSmoother_t * const f,
                                      const float x );
 static float qSSmoother_Filter_DESF( _qSSmoother_t * const f,
                                      const float x );
-
+static float qSSmoother_Filter_ALNF( _qSSmoother_t * const f,
+                                     const float x );
 /*============================================================================*/
 int qSSmoother_Setup( qSSmootherPtr_t * const s,
                       const qSSmoother_Type_t type,
@@ -98,6 +103,7 @@ int qSSmoother_Setup( qSSmootherPtr_t * const s,
         { &qSSmoother_Filter_KLMN, &qSSmoother_Setup_KLMN },
         { &qSSmoother_Filter_EXPW, &qSSmoother_Setup_EXPW },
         { &qSSmoother_Filter_DESF, &qSSmoother_Setup_DESF },
+        { &qSSmoother_Filter_ALNF, &qSSmoother_Setup_ALNF },
     };
     int retValue = 0;
     const size_t maxTypes = sizeof(qSmoother_Vtbl)/sizeof(qSmoother_Vtbl[ 0 ] );
@@ -365,6 +371,31 @@ static int qSSmoother_Setup_DESF( _qSSmoother_t * const f,
     return retValue;
 }
 /*============================================================================*/
+static int qSSmoother_Setup_ALNF( _qSSmoother_t * const f,
+                                  const float * const param,
+                                  float *window,
+                                  const size_t wsize )
+{
+    int retValue = 0;
+    float a = param[ 0 ];
+    float m = param[ 1 ];
+
+    if ( ( NULL != window ) && ( wsize > 0u ) && ( a > 0.0f ) && ( a < 1.0f ) && ( m > 0.0f ) && ( m < 1.0f ) ) {
+        /*cstat -MISRAC2012-Rule-11.3 -CERT-EXP39-C_d -CERT-EXP36-C_a*/
+        qSSmoother_ALNF_t * const s = (qSSmoother_ALNF_t* const)f;
+        /*cstat +MISRAC2012-Rule-11.3 +CERT-EXP39-C_d +CERT-EXP36-C_a*/
+        s->alpha = a;
+        s->mu = m;
+        s->x = window;
+        s->w = &window[ wsize ];
+        s->w_1 = ( s->mu > 0.0f ) ? &window[ 2u*wsize ] : NULL;
+        s->n = wsize;
+        retValue = qSSmoother_Reset( s );
+    }
+
+    return retValue;
+}
+/*============================================================================*/
 static void qSSmoother_WindowSet( float *w,
                                   const size_t wsize,
                                   const float x )
@@ -610,8 +641,9 @@ static float qSSmoother_Filter_DESF( _qSSmoother_t * const f,
 {
     /*cstat -CERT-EXP36-C_a -MISRAC2012-Rule-11.3 -CERT-EXP39-C_d*/
     qSSmoother_DESF_t * const s = (qSSmoother_DESF_t* const)f;
-    float lt_1;
     /*cstat +CERT-EXP36-C_a +MISRAC2012-Rule-11.3 +CERT-EXP39-C_d*/
+    float lt_1;
+
     if ( 1u == f->init ) {
         s->lt = x;
         s->bt = x;
@@ -621,5 +653,45 @@ static float qSSmoother_Filter_DESF( _qSSmoother_t * const f,
     s->lt = ( ( 1.0f - s->alpha)*lt_1 ) + ( s->alpha*x ); /*level*/
     s->bt = ( ( 1.0f - s->beta )*s->bt ) + ( s->beta*( s->lt - lt_1 ) ); /*trend*/
     return s->lt + ( s->n*s->bt ); /*model/forecast*/
+}
+/*============================================================================*/
+static float qSSmoother_Filter_ALNF( _qSSmoother_t * const f,
+                                     const float x )
+{
+    /*cstat -CERT-EXP36-C_a -MISRAC2012-Rule-11.3 -CERT-EXP39-C_d*/
+    qSSmoother_ALNF_t * const s = (qSSmoother_ALNF_t* const)f;
+    /*cstat +CERT-EXP36-C_a +MISRAC2012-Rule-11.3 +CERT-EXP39-C_d*/
+    float xe;
+    size_t i;
+
+    if ( 1u == f->init ) {
+        /*cstat -CERT-FLP36-C*/
+        float np = 1.0f/(float)s->n;
+        /*cstat +CERT-FLP36-C*/
+        qSSmoother_WindowSet( s->x, s->n, x );
+        qSSmoother_WindowSet( s->w, s->n, np );
+        if ( NULL != s->w_1 ) {
+            qSSmoother_WindowSet( s->w_1, s->n, np );
+        }
+        f->init = 0u;
+    }
+    xe = qLTISys_DiscreteFIRUpdate( s->x, s->w, s->n, x );
+    if ( NULL != s->w_1 ) {
+        float *w_1 = &s->w[ s->n ];
+
+        for ( i = 0u ; i < s->n ; ++i ) {
+            float w = s->w[ i ],  w1 = w_1[ i ];
+ 
+            s->w[ i ] += ( s->alpha*( x - xe )*s->x[ i ] ) + ( s->mu*( w - w1 ) );
+            w_1[ i ] = w;
+        }
+    }
+    else {
+        for ( i = 0u ; i < s->n ; ++i ) {
+            s->w[ i ] += s->alpha*( x - xe )*s->x[ i ];
+        }
+    }
+
+    return xe;
 }
 /*============================================================================*/
