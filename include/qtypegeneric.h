@@ -201,7 +201,7 @@ extern "C" {
                                 qTypeGeneric_CompareFcn_t compar,
                                 void *arg );
     /**
-    * @brief Iterates @a n elements of the array pointed to by @a pbase 
+    * @brief Iterates @a n elements of the array pointed to by @a pbase.
     * The size of each element is specified by @a size. Every element should be
     * handled by function @a f. The iteration loop can be aborted by returning 1.
     * @param[in] pbase This is the pointer to the first object of the array 
@@ -213,7 +213,7 @@ extern "C" {
     * The signature of this handling function should be equivalent to the 
     * following:
     * @code{.c}
-    * int compar( int i, void *element, void *arg );
+    * int iterFcn( int i, void *element, void *arg );
     * @endcode
     * The argument @a i is used to keep track of the iteration in which the loop
     * is.

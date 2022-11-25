@@ -256,7 +256,7 @@ extern "C" {
     *
     * if ::QSSMOOTHER_TYPE_GMWF, an array with two values. The first element
     * with the Standard deviation [ @a sigma > 0 ]. The second element with the
-    * offset of the gaussian center. [ 0 < @ offset < ( @a wsize - 1 ) ].
+    * offset of the gaussian center. [ 0 < @a offset < ( @a wsize - 1 ) ].
     *
     * if ::QSSMOOTHER_TYPE_KLMN, an array with three values. The first element
     * with the initial estimated error covariance. The second element with the

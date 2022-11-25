@@ -118,7 +118,7 @@ extern "C" {
     * of several special categories of values, including NaN (not a number), 
     * infinity, subnormal floating-point values or zero. To determine what 
     * category the argument belongs to, compare the return value with the 
-    * values of the following number classification macros:
+    * any of the following number classification macros:
     * - #QFFM_FP_ZERO
     * - #QFFM_FP_SUBNORMAL
     * - #QFFM_FP_NORMAL
@@ -140,7 +140,7 @@ extern "C" {
     /**
     * @brief Determine if @a x is Infinity.
     * @param[in] x The number you want to test.
-    * @return true if the value of @a x is (+/-)Infinity, otherwise returns false.
+    * @return true if the value of @a x is ±Infinity, otherwise returns false.
     */
     bool qFFMath_IsInf( const float x );
 
@@ -169,24 +169,24 @@ extern "C" {
 
     /**
     * @brief Computes the multiplicative inverse or reciprocal for the value 
-    * @ ax, denoted by 1/x or x^(−1)
+    * @a x, denoted by @c 1/x or @c x^(−1)
     * @param[in] x The floating point value
-    * @return  The reciprocal value of @a x
+    * @return The reciprocal value of @a x
     */
     float qFFMath_Recip( float x );
 
     /**
     * @brief Computes the square-root of @a x
     * @param[in] x The floating point value
-    * @return  If no errors occur, square root of @a x, is returned. If a domain
+    * @return If no errors occur, square root of @a x, is returned. If a domain
     * error occurs NAN is returned
     */
     float qFFMath_Sqrt( float x );
 
     /**
-    * @brief Computes the reciprocal square-root of @a x denoted as 1/sqrt(x)
+    * @brief Computes the reciprocal square-root of @a x denoted as @c 1/sqrt(x)
     * @param[in] x The floating point value
-    * @return  If no errors occur, the reciprocal square root of @a x, is 
+    * @return If no errors occur, the reciprocal square root of @a x, is 
     * returned. If a domain error occurs NAN is returned
     */
     float qFFMath_RSqrt( float x );
@@ -194,15 +194,15 @@ extern "C" {
     /**
     * @brief Computes the cubic-root of @a x
     * @param[in] x The floating point value
-    * @return  If no errors occur, cubic root of @a x, is returned. If a domain
+    * @return If no errors occur, cubic root of @a x, is returned. If a domain
     * error occurs NAN is returned
     */
     float qFFMath_Cbrt( float x );
 
     /**
-    * @brief Computes the reciprocal cubic-root of @a x denoted as 1/cbrt(x)
+    * @brief Computes the reciprocal cubic-root of @a x denoted as @c 1/cbrt(x)
     * @param[in] x The floating point value
-    * @return  If no errors occur, the reciprocal cubic root of @a x, is 
+    * @return If no errors occur, the reciprocal cubic root of @a x, is 
     * returned. If a domain error occurs NAN is returned
     */
     float qFFMath_RCbrt( float x );
@@ -247,21 +247,22 @@ extern "C" {
 
     /**
     * @brief Computes the IEEE remainder of the floating point division 
-    * operation x/y
+    * operation @c x/y
     * @param[in] x The floating point value
     * @param[in] y The floating point value
     * @return If successful, returns the IEEE floating-point remainder of the 
-    * division x/y. If a domain error occurs, an NAN value is returned.
+    * division @c x/y. If a domain error occurs, an NAN value is returned.
     */
     float qFFMath_Remainder( float x,
                              float y );
 
     /**
-    * @brief Computes the floating-point remainder of the division operation x/y
+    * @brief Computes the floating-point remainder of the division operation 
+    * @c x/y
     * @param[in] x The floating point value
     * @param[in] y The floating point value
     * @return If successful, returns the floating-point remainder of the 
-    * division x/y. If a domain error occurs, an NAN value is returned.
+    * division @c x/y. If a domain error occurs, an NAN value is returned.
     */
     float qFFMath_Mod( float x,
                        float y );
@@ -269,50 +270,51 @@ extern "C" {
     /**
     * @brief Computes the sine of @a x (measured in radians).
     * @param[in] x The floating point value
-    * @return If no errors occur, the sine of @a x (sin(x)) in the range 
-    * [-1 ; +1], is returned. If a domain error occurs, a NAN value is returned 
+    * @return If no errors occur, the sine of @a x @c sin(x) in the range 
+    * [-1 ; +1], is returned. If a domain error occurs, a NAN value is returned.
     */
     float qFFMath_Sin( float x );
 
     /**
     * @brief Computes the cosine of @a x (measured in radians).
     * @param[in] x The floating point value
-    * @return If no errors occur, the cosine of @a x (cos(x)) in the range 
-    * [-1 ; +1], is returned. If a domain error occurs, a NAN value is returned 
+    * @return If no errors occur, the cosine of @a x @c cos(x) in the range 
+    * [-1 ; +1], is returned. If a domain error occurs, a NAN value is returned.
     */
     float qFFMath_Cos( float x );
 
     /**
     * @brief Computes the tangent of @a x (measured in radians).
     * @param[in] x The floating point value
-    * @return If no errors occur, the tangent of @a x (tan(x)) is returned. If 
-    * a domain error occurs, a NAN value is returned 
+    * @return If no errors occur, the tangent of @a x @c tan(x) is returned. If 
+    * a domain error occurs, a NAN value is returned.
     */
     float qFFMath_Tan( float x );
 
     /**
     * @brief Computes the principal value of the arc sine of @a x.
     * @param[in] x The floating point value
-    * @return If no errors occur, the arc sine of @a x (arcsin(x)) in the range
+    * @return If no errors occur, the arc sine of @a x @c arcsin(x) in the range
     * [-pi/2 ; pi/2]. is returned.If a domain error occurs, a NAN value is 
-    * returned 
+    * returned.
     */
     float qFFMath_ASin( float x );
 
     /**
     * @brief Computes the principal value of the arc cosine of @a x.
     * @param[in] x The floating point value
-    * @return If no errors occur, the arc cosine of @a x (arccos(x)) in the range
-    * [0 ; pi]. is returned.If a domain error occurs, a NAN value is  returned 
+    * @return If no errors occur, the arc cosine of @a x @c arccos(x) in the 
+    * range [0 ; pi]. is returned.If a domain error occurs, a NAN value is 
+    * returned.
     */
     float qFFMath_ACos( float x );
 
     /**
     * @brief Computes the principal value of the arc tangent of @a x.
     * @param[in] x The floating point value
-    * @return If no errors occur, the arc sine of @a x (arctan(x)) in the range
+    * @return If no errors occur, the arc sine of @a x @c arctan(x) in the range
     * [-pi/2 ; pi/2]. is returned.If a domain error occurs, a NAN value is 
-    * returned 
+    * returned.
     */
     float qFFMath_ATan( float x );
 
@@ -321,9 +323,9 @@ extern "C" {
     * determine the correct quadrant.
     * @param[in] y The floating point value
     * @param[in] x The floating point value
-    * @return If no errors occur, the arc tangent of y/x (arctan(y/x)) in the 
+    * @return If no errors occur, the arc tangent of y/x @c arctan(y/x) in the 
     * range [-pi ; +pi] radians, is returned. If a domain error occurs, a NAN 
-    * value is returned 
+    * value is returned.
     */
     float qFFMath_ATan2( float y,
                          float x );
@@ -332,16 +334,16 @@ extern "C" {
     * @brief Computes 2 raised to the given power @a x.
     * @param[in] x The floating point value
     * @return If no errors occur, the base-2 exponential of n (2^x) is returned.
-    * If a range error due to overflow occurs, QFFM_HUGE_VAL is returned.
+    * If a range error due to overflow occurs, #QFFM_INFINITY is returned.
     */
     float qFFMath_Exp2( float x );
 
     /**
     * @brief Computes the base 2 logarithm of @a x.
     * @param[in] x The floating point value
-    * @return If no errors occur, the base-2 logarithm of @a x (log_2(x)) is 
+    * @return If no errors occur, the base-2 logarithm of @a x @c log_2(x) is 
     * returned. If a domain error occurs, an NAN value is returned. If a pole 
-    * error occurs, -QFFM_HUGE_VAL is returned.
+    * error occurs, -#QFFM_INFINITY is returned.
     */
     float qFFMath_Log2( float x );
 
@@ -349,8 +351,8 @@ extern "C" {
     * @brief Computes the e (Euler's number, 2.7182818) raised to the given
     * power @a x.
     * @param[in] x The floating point value
-    * @return If no errors occur, the base-e exponential of @a x (e^(x)) is 
-    * returned. If a range error due to overflow occurs, +QFFM_HUGE_VAL is 
+    * @return If no errors occur, the base-e exponential of @a x @c e^(x) is 
+    * returned. If a range error due to overflow occurs, +#QFFM_INFINITY is 
     * returned.
     */
     float qFFMath_Exp( float x );
@@ -358,8 +360,8 @@ extern "C" {
     /**
     * @brief Computes the value of 10 raised to the power of @a x.
     * @param[in] x The floating point value
-    * @return If no errors occur, the base-e exponential of @a x (e^(x)) is 
-    * returned. If a range error due to overflow occurs, (+/-)QFFM_HUGE_VAL or
+    * @return If no errors occur, the base-e exponential of @a x @c 10^(x) is 
+    * returned. If a range error due to overflow occurs, ±#QFFM_INFINITY or
     * NAN is returned.
     */
     float qFFMath_Exp10( float x );
@@ -367,9 +369,9 @@ extern "C" {
     /**
     * @brief Computes the natural (base e) logarithm of @a x.
     * @param[in] x The floating point value
-    * @return If no errors occur, the natural (base-e) logarithm of @a x (ln(x))
-    * is returned. If a domain error occurs, a NAN value is returned. If a pole
-    * error occurs, -QFFM_HUGE_VAL is returned.
+    * @return If no errors occur, the natural (base-e) logarithm of @a x 
+    * @c ln(x) is returned. If a domain error occurs, a NAN value is returned. 
+    * If a pole error occurs, -#QFFM_INFINITY is returned.
     */
     float qFFMath_Log( float x );
 
@@ -377,8 +379,8 @@ extern "C" {
     * @brief Computes the common (base-10) logarithm of @a x.
     * @param[in] x The floating point value
     * @return If no errors occur, the common (base-10) logarithm of @a x 
-    * (log_10(x)) is returned. If a domain error occurs, a NAN value is returned.
-    * If a pole error occurs, -QFFM_HUGE_VAL is returned.
+    * @c log_10(x) is returned. If a domain error occurs, a NAN value is returned.
+    * If a pole error occurs, -#QFFM_INFINITY is returned.
     */
     float qFFMath_Log10( float x );
 
@@ -386,9 +388,9 @@ extern "C" {
     * @brief Computes the value of @a b raised to the power @a e.
     * @param[in] b Base as floating point value
     * @param[in] e Exponent as floating point value
-    * @return If no errors occur, @a b raised to the power of @a e (b^e) is 
+    * @return If no errors occur, @a b raised to the power of @a e @c b^e is 
     * returned. If a domain error occurs, a NAN value is returned. If a pole 
-    * error or a range error due to overflow occurs, (+/-)QFFM_HUGE_VAL is 
+    * error or a range error due to overflow occurs, ±#QFFM_INFINITY is 
     * returned.
     */
     float qFFMath_Pow( float b,
@@ -397,25 +399,25 @@ extern "C" {
     /**
     * @brief Computes hyperbolic sine of @a x.
     * @param[in] x The floating point value
-    * @return If no errors occur, the hyperbolic sine of @a x (sinh(x)) is 
-    * returned. If a range error occurs, a (+/-)QFFM_HUGE_VAL is value is 
-    * returned 
+    * @return If no errors occur, the hyperbolic sine of @a x @c sinh(x) is 
+    * returned. If a range error occurs, a ±#QFFM_INFINITY is value is 
+    * returned.
     */
     float qFFMath_Sinh( float x );
 
     /**
     * @brief Computes hyperbolic cosine of @a x.
     * @param[in] x The floating point value
-    * @return If no errors occur, the hyperbolic cosine of @a x (cosh(x)) is 
-    * returned. If a range error occurs, a QFFM_HUGE_VAL is value is returned 
+    * @return If no errors occur, the hyperbolic cosine of @a x @c cosh(x) is 
+    * returned. If a range error occurs, a #QFFM_INFINITY is value is returned.
     */
     float qFFMath_Cosh( float x );
 
     /**
     * @brief Computes hyperbolic tangent of @a x.
     * @param[in] x The floating point value
-    * @return If no errors occur, the hyperbolic tangent of @a x (tanh(x)) is 
-    * returned. 
+    * @return If no errors occur, the hyperbolic tangent of @a x @c tanh(x) is 
+    * returned.
     */
     float qFFMath_Tanh( float x );
 
@@ -423,7 +425,7 @@ extern "C" {
     * @brief Computes the inverse hyperbolic sine of @a x.
     * @param[in] x The floating point value
     * @return If no errors occur, the inverse hyperbolic sine of @a x 
-    * (sinh^-1(x)) is returned.
+    * @c sinh^-1(x) is returned.
     */
     float qFFMath_ASinh( float x );
 
@@ -431,7 +433,7 @@ extern "C" {
     * @brief Computes the inverse hyperbolic cosine of @a x.
     * @param[in] x The floating point value
     * @return If no errors occur, the inverse hyperbolic cosine of @a x 
-    * (cosh^-1(x)) is returned.
+    * @c cosh^-1(x) is returned.
     */
     float qFFMath_ACosh( float x );
 
@@ -439,8 +441,8 @@ extern "C" {
     * @brief Computes the inverse hyperbolic tangent of @a x.
     * @param[in] x The floating point value
     * @return If no errors occur, the inverse hyperbolic tangent of @a x 
-    * (tanh^-1(x)) is returned. If a domain error occurs, an NAN value is 
-    * returned. If a pole error occurs, (+/-)QFFM_HUGE_VAL is returned.
+    * @c tanh^-1(x) is returned. If a domain error occurs, an NAN value is 
+    * returned. If a pole error occurs, ±#QFFM_INFINITY is returned.
     */
     float qFFMath_ATanh( float x );
 
@@ -478,42 +480,42 @@ extern "C" {
                        float y );
 
     /**
-    * @brief Decomposes given floating point value x into a normalized fraction
-    * and an integral power of two.
+    * @brief Decomposes given floating point value @a x into a normalized 
+    * fraction and an integral power of two.
     * @param[in] x The floating point value
     * @param[in] pw2 Pointer to integer value to store the exponent to
-    * @return If x is zero, returns zero and stores zero in *pw2. Otherwise 
-    * (if x is not zero), if no errors occur, returns the value y in the range
-    * (-1;-0.5], [0.5; 1) and stores an integer value in *pw2 such that 
-    * y×2^(pw2) = x. If the value to be stored in *pw2 is outside the range of 
-    * int, the behavior is unspecified. If arg is not a floating-point number, 
-    * the behavior is unspecified.
+    * @return If @a x is zero, returns zero and stores zero in @a pw2. Otherwise 
+    * (if @a x is not zero), if no errors occur, returns the value @a y in the 
+    * range (-1;-0.5], [0.5; 1) and stores an integer value in @a pw2 such that 
+    * @c y×2^(pw2)=x . If the value to be stored in @a pw2 is outside the range 
+    * of an @c int, the behavior is unspecified. If @a x is not a floating-point
+    * number, the behavior is unspecified.
     */
     float qFFMath_RExp( float x,
                         int32_t *pw2 );
 
     /**
-    * @brief Multiplies a floating point value x by the number 2 raised to 
-    * the pw2 power.
+    * @brief Multiplies a floating point value @a x by the number 2 raised to 
+    * the @a pw2 power.
     * @param[in] x The floating point value
     * @param[in] pw2 Integer value
-    * @return If no errors occur, x multiplied by 2 to the power of pw2 
-    * (x×2^exp) is returned. If a range error due to overflow occurs, 
-    * ±QFFM_INFINITY is returned. If a range error due to underflow occurs, the 
+    * @return If no errors occur, @a x multiplied by 2 to the power of @a pw2 
+    * @ac x×2^pwd is returned. If a range error due to overflow occurs, 
+    * ±#QFFM_INFINITY is returned. If a range error due to underflow occurs, the 
     * correct result (after rounding) is returned.
     */
     float qFFMath_LDExp( float x,
                          int32_t pw2 );
 
     /**
-    * @brief Computes the square root of the sum of the squares of x and y,
+    * @brief Computes the square root of the sum of the squares of @a x and @a y,
     * without undue overflow or underflow at intermediate stages of the 
     * computation.
     * @param[in] x The floating point value
     * @param[in] y The floating point value
     * @return If no errors occur, the hypotenuse of a right-angled triangle, 
-    * sqrt( x^2 + y^2), is returned. If a range error due to overflow occurs, 
-    * +QFFM_INFINITY is returned. If a range error due to underflow occurs, 
+    * @c sqrt(x^2+y^2), is returned. If a range error due to overflow occurs, 
+    * +#QFFM_INFINITY is returned. If a range error due to underflow occurs, 
     * the correct result (after rounding) is returned.
     */
     float qFFMath_Hypot( float x,
@@ -526,7 +528,7 @@ extern "C" {
     * @param[in] y The floating point value
     * @return If no errors occur, the next representable value of @a x in the 
     * direction of @a y is returned. If @a x equals @a y, then @a yis returned.
-    * If a range error due to overflow occurs, ±QFFM_INFINITY is returned (with
+    * If a range error due to overflow occurs, ±#QFFM_INFINITY is returned (with
     * the same sign as @a x). If a range error occurs due to underflow, the 
     * correct result is returned.
     */

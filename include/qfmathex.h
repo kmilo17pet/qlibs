@@ -86,8 +86,8 @@ extern "C" {
                          const float b );
 
     /**
-    * @brief Determines if the point at ( @a x, @a y) is inside the polygon given
-    * by the set of points on  @a px and @a py.
+    * @brief Determines if the point at ( @a x, @a y ) is inside the polygon
+    * given by the set of points on  @a px and @a py.
     * @param[in] x Point x-coordinate
     * @param[in] y Point y-coordinate 
     * @param[in] px x-coordinate points of the polygon 
