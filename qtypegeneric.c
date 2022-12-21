@@ -1,3 +1,9 @@
+/*!
+ * @file qtypegeneric.c
+ * @author J. Camilo Gomez C.
+ * @note This file is part of the qLibs distribution.
+ **/
+
 #include "qtypegeneric.h"
 #include <float.h>
 #include <math.h>

@@ -1,9 +1,14 @@
+/*!
+ * @file qvfloat.c
+ * @author J. Camilo Gomez C.
+ * @note This file is part of the qLibs distribution.
+ **/
+
 #include "qvfloat.h"
 #include "qtypegeneric.h"
 #include "qfmathex.h"
 #include "qffmath.h"
 #include <string.h>
-
 
 typedef float (*qVFloat_VVFcn_t)( float **dst,
                                   float **pOut,

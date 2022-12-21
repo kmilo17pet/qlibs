@@ -1,3 +1,9 @@
+/*!
+ * @file qfmathex.c
+ * @author J. Camilo Gomez C.
+ * @note This file is part of the qLibs distribution.
+ **/
+
 #include "qfmathex.h"
 #include "qffmath.h"
 #include <float.h>

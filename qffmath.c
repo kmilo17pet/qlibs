@@ -1,3 +1,9 @@
+/*!
+ * @file qffmath.c
+ * @author J. Camilo Gomez C.
+ * @note This file is part of the qLibs distribution.
+ **/
+
 #ifndef QLIBS_USE_STD_MATH
 
 #include "qffmath.h"

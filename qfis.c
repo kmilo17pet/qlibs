@@ -1,7 +1,7 @@
 /*!
  * @file qfis.c
  * @author J. Camilo Gomez C.
- * @note This file is part of the qTools distribution.
+ * @note This file is part of the qLibs distribution.
  **/
 
 #include "qfis.h"

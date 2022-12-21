@@ -439,7 +439,7 @@ extern "C" {
     * @brief Computes the inverse hyperbolic cosine of @a x.
     * @param[in] x The floating point value
     * @return If no errors occur, the inverse hyperbolic cosine of @a x 
-    * @c cosh^-1(x) is returned.
+    * <tt>cosh^-1(x)</tt> is returned.
     */
     float qFFMath_ACosh( float x );
 
