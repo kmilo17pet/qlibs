@@ -10,7 +10,11 @@
 # This file is part of the qLibs distribution.
 
 cmake_minimum_required( VERSION 3.2 )
-project( qlibs VERSION 1.2.4 DESCRIPTION "An open-source OS for small embedded applications")
+project( qlibs 
+         VERSION 1.2.4 
+         DESCRIPTION "A collection of useful libraries for embedded systems"
+         LANGUAGES C
+       )
 
 add_library( ${PROJECT_NAME}
              qbitfield.c
