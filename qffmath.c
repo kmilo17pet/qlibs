@@ -14,6 +14,7 @@
 #define cast_reinterpret( dst, src, dst_type )                              \
 (void)memcpy( &dst, &src, sizeof(dst_type) )                                \
 
+static float qFFMath_CalcCbrt( float x , bool r );
 /*============================================================================*/
 float _qFFMath_GetAbnormal( const int i )
 {
@@ -139,15 +140,13 @@ float qFFMath_RSqrt( float x )
     return retVal;
 }
 /*============================================================================*/
-float qFFMath_Cbrt( float x )
+static float qFFMath_CalcCbrt( float x , bool r )
 {
+    float retVal, y = 0.0f, c, d;
+    const float k[ 3 ] = { 1.752319676f, 1.2509524245f, 0.5093818292f };
     uint32_t i = 0u;
-    float y = 0.0f, c, d;
-    float k1 = 1.752319676f;
-    float k2 = 1.2509524245f;
-    float k3 = 0.5093818292f;
-
     bool neg = false;
+
     if ( x < 0.0f ) {
         x = -x;
         neg = true;
@@ -157,44 +156,24 @@ float qFFMath_Cbrt( float x )
     i = 0x548C2B4Bu - ( i/3u );
     cast_reinterpret( y, i, float );
     c = x*y*y*y;
-    y = y*( k1 - ( c*( k2 - ( k3*c ) ) ) );
+    y = y*( k[ 0 ] - ( c*( k[ 1 ] - ( k[ 2 ]*c ) ) ) );
 
     d = x*y*y;
     c = 1.0f - ( d*y );
-    y = d*( 1.0f + ( 0.333333333333f*c ) );
-    return ( neg )? -y : y;
+    retVal = 1.0f + ( 0.333333333333f*c );
+    retVal *= ( r ) ? y : d;
+    return ( neg )? -retVal : retVal;
+}
+/*============================================================================*/
+float qFFMath_Cbrt( float x )
+{
+    return qFFMath_CalcCbrt( x, false );
 }
 /*============================================================================*/
 float qFFMath_RCbrt( float x )
 {
-    float retVal;
-
-    if ( QFFM_FP_ZERO == qFFMath_FPClassify( x ) ) {
-        retVal = QFFM_INFINITY;
-    }
-    else {
-        uint32_t i = 0u;
-        float y = 0.0f, c;
-        float k1 = 1.752319676f;
-        float k2 = 1.2509524245f;
-        float k3 = 0.5093818292f;
-        bool neg = false;
-
-        if ( x < 0.0f ) {
-            x = -x;
-            neg = true;
-        }
-        cast_reinterpret( i, x, uint32_t );
-        i = 0x548C2B4Bu - ( i/3u );
-        cast_reinterpret( y, i, float );
-        c = x*y*y*y;
-        y = y*( k1 - ( c*( k2 - ( k3*c ) ) ) );
-        c = 1.0f - ( x*y*y*y );
-        y = y*( 1.0f + ( 0.333333333333f*c ) );
-        retVal = ( neg )? -y : y;
-    }
-
-    return retVal;
+    return ( QFFM_FP_ZERO == qFFMath_FPClassify( x ) ) ? QFFM_INFINITY
+                                                       : qFFMath_CalcCbrt( x, true );
 }
 /*============================================================================*/
 float qFFMath_Round( float x )
@@ -242,16 +221,18 @@ float qFFMath_Mod( float x,
 float qFFMath_Sin( float x )
 {
     float y;
-    x *= -0.318309886f;
+
+    x *= -QFFM_1_PI;
     y = x + 25165824.0f;
     x -= y - 25165824.0f;
     x *= qFFMath_Abs( x ) - 1.0f;
+
     return x*( ( 3.5841304553896f*qFFMath_Abs( x ) ) + 3.1039673861526f );
 }
 /*============================================================================*/
 float qFFMath_Cos( float x )
 {
-    return qFFMath_Sin( x + 1.570796327f );
+    return qFFMath_Sin( x + QFFM_PI_2 );
 }
 /*============================================================================*/
 float qFFMath_Tan( float x )
@@ -267,7 +248,7 @@ float qFFMath_ASin( float x )
 /*============================================================================*/
 float qFFMath_ACos( float x )
 {
-    return 1.570796327f - qFFMath_ASin( x );
+    return QFFM_PI_2 - qFFMath_ASin( x );
 }
 /*============================================================================*/
 float qFFMath_ATan( float x )
@@ -276,16 +257,18 @@ float qFFMath_ATan( float x )
 
     x /= qFFMath_Abs( x ) + 1.0f;
     abs_x = qFFMath_Abs( x );
+
     return x*( ( abs_x*( ( -1.45667498914f*abs_x ) + 2.18501248371f ) ) + 0.842458832225f );
 }
 /*============================================================================*/
 float qFFMath_ATan2( float y, float x )
 {
-    float t;
-    float f;
-    t = 3.141592653f - ( ( y < 0.0f ) ? 6.283185307f : 0.0f );
+    float t, f;
+
+    t = QFFM_PI - ( ( y < 0.0f ) ? 6.283185307f : 0.0f );
     f = ( qFFMath_Abs( x ) <= FLT_MIN ) ? 1.0f : 0.0f;
     y = qFFMath_ATan( y/( x + f ) ) + ( ( x < 0.0f ) ? t : 0.0f );
+
     return y + ( f*( ( 0.5f*t ) - y ) );
 }
 /*============================================================================*/
@@ -345,7 +328,7 @@ float qFFMath_Log2( float x )
 /*============================================================================*/
 float qFFMath_Exp( float x )
 {
-    return qFFMath_Exp2( 1.442695041f*x );
+    return qFFMath_Exp2( QFFM_LOG2E*x );
 }
 /*============================================================================*/
 float qFFMath_Exp10( float x )
@@ -355,7 +338,7 @@ float qFFMath_Exp10( float x )
 /*============================================================================*/
 float qFFMath_Log( float x )
 {
-    return 0.693147181f*qFFMath_Log2(x);
+    return QFFM_LN2*qFFMath_Log2(x);
 }
 /*============================================================================*/
 float qFFMath_Log10( float x )
@@ -440,7 +423,6 @@ float qFFMath_RExp( float x,
 {
     uint32_t lu = 0u, iu;
     int32_t i = 0;
-    
 
     cast_reinterpret( lu, x, uint32_t );
     iu  = ( lu >> 23u ) & 0x000000FFu;  /* Find the exponent (power of 2) */
@@ -450,6 +432,7 @@ float qFFMath_RExp( float x,
     lu &= 0x807FFFFFu; /* strip all exponent bits */
     lu |= 0x3F000000u; /* mantissa between 0.5 and 1 */
     cast_reinterpret( x, lu, float );
+
     return x;
 }
 /*============================================================================*/
@@ -505,8 +488,7 @@ float qFFMath_NextAfter( float x,
                          float y )
 {
     float retVal;
-    uint32_t ax, ay;
-    uint32_t uxi = 0u, uyi = 0u;
+    uint32_t ax, ay, uxi = 0u, uyi = 0u;
 
     cast_reinterpret( uxi, x, uint32_t );
     cast_reinterpret( uyi, y, uint32_t );
