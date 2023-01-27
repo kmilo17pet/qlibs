@@ -211,7 +211,7 @@ Defuzzification Methods</h1>
 <dl class="section note"><dt>Note</dt><dd>The defuzzification method is selected by default when setting up the FIS instance with <a class="el" href="group__qfis.html#gaae3433474a516fbf41e0e406fe41410b" title="Setup and initialize the FIS instance.">qFIS_Setup()</a>. However, the user can later change the default method using the <a class="el" href="group__qfis.html#ga77c1447bb727d37d75a20d8d8f9f85fb" title="Change the default de-Fuzzification method of the FIS instance.">qFIS_SetDeFuzzMethod()</a> function.</dd></dl>
 <h1><a class="anchor" id="qfis_buildfis"></a>
 Building a Mamdani FIS</h1>
-<p >To carry the FIS building process in a more friendly way, we are going to explain it with a particular example. This example goal is to solve the tipping problem, and its described as follows:</p>
+<p >To carry the FIS building process in a more friendly way, we are going to explain it with a particular example. This goal is to solve the tipping problem that its described as follows:</p>
 <p >Given a number from 0 through 10 that represents the quality of service at a restaurant, where 10 is excellent, and another number from 0 through 10 that represents the quality of the food, where 10 is delicious, what should the tip be? Tipping behavior varies depending on local traditions and personal preferences. In this example, the problem is based on tipping as it is typically practiced in the United States. An average tip for a meal in the US is 15%. A generous tip could be as high as 25% and a cheap tip could be 5%.</p>
 <p >The actual amount of the tip can vary depending on the quality of the service and food. For this problem, tipping behavior is defined using the following three rules.</p>
 <ol type="1">
@@ -260,7 +260,8 @@ Building a Mamdani FIS</h1>
 <div class="fragment"><div class="line"><span class="comment">// FIS Object</span></div>
 <div class="line"><span class="keyword">static</span> <a class="code hl_struct" href="structq_f_i_s__t.html">qFIS_t</a> tipper;</div>
 <div class="line"><span class="comment">// I/O Fuzzy Objects</span></div>
-<div class="line"><span class="keyword">static</span> qFIS_IO_t tipper_inputs[2], tipper_outputs[1];</div>
+<div class="line"><span class="keyword">static</span> <a class="code hl_struct" href="structq_f_i_s___input__t.html">qFIS_Input_t</a> tipper_inputs[ 2 ];</div>
+<div class="line"><span class="keyword">static</span> <a class="code hl_struct" href="structq_f_i_s___output__t.html">qFIS_Output_t</a> tipper_outputs[ 1 ];</div>
 <div class="line"><span class="comment">// I/O Membership Objects</span></div>
 <div class="line"><span class="keyword">static</span> <a class="code hl_struct" href="structq_f_i_s___m_f__t.html">qFIS_MF_t</a> MFin[5], MFout[3];</div>
 <div class="line"><span class="comment">// I/O Names</span></div>
@@ -269,7 +270,9 @@ Building a Mamdani FIS</h1>
 <div class="line"><span class="comment">// I/O Membership functions tags</span></div>
 <div class="line"><span class="keyword">enum</span> { service_poor, service_good, service_excellent, food_rancid, food_delicious};</div>
 <div class="line"><span class="keyword">enum</span> { tip_cheap, tip_average, tip_generous};</div>
+<div class="ttc" id="astructq_f_i_s___input__t_html"><div class="ttname"><a href="structq_f_i_s___input__t.html">qFIS_Input_t</a></div><div class="ttdoc">A FIS Input object.</div><div class="ttdef"><b>Definition:</b> qfis.h:130</div></div>
 <div class="ttc" id="astructq_f_i_s___m_f__t_html"><div class="ttname"><a href="structq_f_i_s___m_f__t.html">qFIS_MF_t</a></div><div class="ttdoc">A FIS Membership Function.</div><div class="ttdef"><b>Definition:</b> qfis.h:161</div></div>
+<div class="ttc" id="astructq_f_i_s___output__t_html"><div class="ttname"><a href="structq_f_i_s___output__t.html">qFIS_Output_t</a></div><div class="ttdoc">A FIS Output object.</div><div class="ttdef"><b>Definition:</b> qfis.h:142</div></div>
 <div class="ttc" id="astructq_f_i_s__t_html"><div class="ttname"><a href="structq_f_i_s__t.html">qFIS_t</a></div><div class="ttdoc">A FIS(Fuzzy Inference System) object.</div><div class="ttdef"><b>Definition:</b> qfis.h:202</div></div>
 </div><!-- fragment --><dl class="section attention"><dt>Attention</dt><dd>Please note that all tag names are unique.</dd></dl>
 <p>Then, we will define the rules of the fuzzy system using the previously defined tags. Rules should be defined as an array of type <a class="el" href="group__qfis.html#ga07efc356794273b23e2d469e8e4d882e">qFIS_Rules_t</a> and the contents should be rules constructed with the provided statements:</p>
@@ -429,8 +432,6 @@ Evaluating a Fuzzy Inference System</h1>
 <div class="ttc" id="agroup__qfis_html_ga74cf29a2008f1169fab3b56635a4c620"><div class="ttname"><a href="group__qfis.html#ga74cf29a2008f1169fab3b56635a4c620">qFIS_DeFuzzify</a></div><div class="ttdeci">int qFIS_DeFuzzify(qFIS_t *const f)</div><div class="ttdoc">Perform the de-Fuzzification operation to compute the crisp outputs.</div><div class="ttdef"><b>Definition:</b> qfis.c:775</div></div>
 <div class="ttc" id="agroup__qfis_html_gadc51ab655860a45c7ecb535c7a6c0b52"><div class="ttname"><a href="group__qfis.html#gadc51ab655860a45c7ecb535c7a6c0b52">qFIS_SetInput</a></div><div class="ttdeci">int qFIS_SetInput(qFIS_Input_t *const v, const qFIS_Tag_t t, const float value)</div><div class="ttdoc">Set a crisp value of the input with the specified tag.</div><div class="ttdef"><b>Definition:</b> qfis.c:304</div></div>
 <div class="ttc" id="agroup__qfis_html_gafeb90b7b41ef3c5b25d12bf6a2adb6e5"><div class="ttname"><a href="group__qfis.html#gafeb90b7b41ef3c5b25d12bf6a2adb6e5">qFIS_Fuzzify</a></div><div class="ttdeci">int qFIS_Fuzzify(qFIS_t *const f)</div><div class="ttdoc">Perform the fuzzification operation over the crisp inputs on the requested FIS object.</div><div class="ttdef"><b>Definition:</b> qfis.c:418</div></div>
-<div class="ttc" id="astructq_f_i_s___input__t_html"><div class="ttname"><a href="structq_f_i_s___input__t.html">qFIS_Input_t</a></div><div class="ttdoc">A FIS Input object.</div><div class="ttdef"><b>Definition:</b> qfis.h:130</div></div>
-<div class="ttc" id="astructq_f_i_s___output__t_html"><div class="ttname"><a href="structq_f_i_s___output__t.html">qFIS_Output_t</a></div><div class="ttdoc">A FIS Output object.</div><div class="ttdef"><b>Definition:</b> qfis.h:142</div></div>
 </div><!-- fragment --><h1><a class="anchor" id="qfis_codegen"></a>
 Code generation</h1>
 <p >Building a fuzzy system in code can become tedious, especially when you want to tune membership function parameters, where it would be appropriate to have a graphical tool that reflects the changes made by each tweak.</p>
