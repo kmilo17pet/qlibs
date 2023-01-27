@@ -167,8 +167,8 @@
 * @section qfis_buildfis Building a Mamdani FIS
 *
 * To carry the FIS building process in a more friendly way, we are going to explain 
-* it with a particular example. This example goal is to solve the tipping problem, 
-* and its described as follows:
+* it with a particular example. This goal is to solve the tipping problem that 
+* its described as follows:
 *
 * Given a number from 0 through 10 that represents the quality of service at a 
 * restaurant, where 10 is excellent, and another number from 0 through 10 that 
@@ -243,7 +243,8 @@
 *  // FIS Object
 *  static qFIS_t tipper;
 *  // I/O Fuzzy Objects
-*  static qFIS_IO_t tipper_inputs[2], tipper_outputs[1];
+*  static qFIS_Input_t tipper_inputs[ 2 ];
+*  static qFIS_Output_t tipper_outputs[ 1 ];
 *  // I/O Membership Objects
 *  static qFIS_MF_t MFin[5], MFout[3];
 *  // I/O Names
