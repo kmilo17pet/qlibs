@@ -208,14 +208,14 @@ extern "C" {
     * @param[out] dst The pointer to the destination vector where the result
     * will be stored. To ignore pass @c NULL as argument.
     * @param[in,out] src The input vector to reverse.
-    * @param[in] low Position of the first element.
-    * @param[in] high Position of the last element.
+    * @param[in] init Position of the first element.
+    * @param[in] end Position of the last element.
     * @return A pointer to the reversed vector.
     */
     float* qVFloat_Reverse( float * const dst,
                             float * const src,
-                            const size_t low,
-                            const size_t high );
+                            const size_t init,
+                            const size_t end );
 
     /**
     * @brief Rotates the elements of vector pointed by @a src the number of 

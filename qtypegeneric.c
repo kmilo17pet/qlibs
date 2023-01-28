@@ -225,13 +225,14 @@ void* qTypeGeneric_Set( void * const pbase,
                         const size_t n,
                         const void * const ref )
 {
-    size_t i;
     /*cstat -MISRAC2012-Rule-11.5 -CERT-EXP36-C_b*/
     uint8_t *p = (uint8_t*)pbase;
     /*cstat +MISRAC2012-Rule-11.5 +CERT-EXP36-C_b*/
     void *retVal = NULL;
 
     if ( ( NULL != pbase ) && ( size > 0u ) && ( n > 0u ) && ( NULL != ref ) ) {
+        size_t i;
+
         for ( i = 0u ; i < n ; i++ ) {
             retVal = memcpy( &p[ size*i ], ref, size );
         }

@@ -1059,7 +1059,7 @@ static float qFIS_TSMF( const qFIS_IO_Base_t * const in,
     float diff, a, b, ta, tb, ma, mb;
     float x = in[ 0 ].value;
     (void)n;
-    qFIS_IO_Base_t tmp;
+    qFIS_IO_Base_t tmp = { 0.0f, 0.0f, 0.0f };
 
     a = p[ 0 ]; /*start*/
     b = p[ 1 ]; /*end*/
@@ -1176,7 +1176,7 @@ static float qFIS_TZMF( const qFIS_IO_Base_t * const in,
     float diff, a, b, ta, tb, ma, mb;
     float x = in[ 0 ].value;
     (void)n;
-    qFIS_IO_Base_t tmp;
+    qFIS_IO_Base_t tmp = { 0.0f, 0.0f, 0.0f };
 
     a = p[ 0 ]; /*start*/
     b = p[ 1 ]; /*end*/

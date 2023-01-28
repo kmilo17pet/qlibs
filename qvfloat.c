@@ -348,16 +348,16 @@ float qVFloat_PolyVal( const float * const p,
 }
 /*============================================================================*/
 float* qVFloat_LinSpace( float * const dst,
-                         const float xInit,
-                         const float xEnd,
+                         const float x1,
+                         const float x2,
                          const size_t n )
 {
     /*cstat -CERT-FLP36-C -MISRAC2012-Rule-10.8*/
-    float step = ( xEnd - xInit )/(float)( n - 1u );
+    float step = ( x2 - x1 )/(float)( n - 1u );
     size_t i;
 
     for ( i = 0u ; i < n ; ++i ) {
-        dst[ i ] = xInit + ( (float)i*step );
+        dst[ i ] = x1 + ( (float)i*step );
     }
     /*cstat +CERT-FLP36-C +MISRAC2012-Rule-10.8*/
     return dst;
@@ -367,10 +367,12 @@ float qVFloat_Distance( const float * const x,
                         const float * const y,
                         const size_t n )
 {
-    size_t i;
-    float s = 0.0f, tmp;
+    float s = 0.0f;
 
     if ( ( NULL != x ) && ( NULL != y ) ) {
+        size_t i;
+        float tmp;
+
         for ( i = 0u ; i < n ; ++i ) {
             tmp = x[ i ] - y[ i ];
             s += tmp*tmp;
