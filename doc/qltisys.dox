@@ -1,10 +1,11 @@
 /*! @page qltisys_desc Recursive LTI Systems Evaluation by transfer functions.
 * @tableofcontents
-* \ref qltisys is a class to evaluate real-valued transfer function SISO models. 
-* In a nutshell, a transfer function is a model that describes the frequency-dependent 
-* response of a linear time-invariant system and can be either continuous-time 
-* or discrete-time. This means that you can use qLTISys both to simulate dynamic
-* systems and to easily implement filters, compensators, or controllers.
+* \ref qltisys  is a class that evaluates single-input, single-output (SISO)
+* transfer function models in real-valued systems.
+* A transfer function is a model that describes the frequency-dependent response
+* of a linear time-invariant system, and this class can handle both continuous-time
+* and discrete-time systems. \ref qltisys can be used for simulating dynamic
+* systems and implementing filters, compensators, or controllers.
 *
 * @section qltisys_cont Continous-time transfer functions
 *
@@ -18,11 +19,11 @@
 * \f$ N(s) \f$ and \f$ D(s) \f$ are the numerator and denominator polynomials in
 * descending powers of \f$s\f$, respectively.
 *
-* To instantiate a continuous transfer function, you should define a variable 
-* of type \ref qLTISys_t, two arrays of N+1 elements with the coefficients of the 
+* To instantiate a continuous transfer function, you should define a variable
+* of type \ref qLTISys_t, two arrays of N+1 elements with the coefficients of the
 * polynomials for both, numerator and denominator, and finally, an array of type
 * \ref qLTISys_ContinuosX_t with the N initial states of the system.
-* Then, you can call \ref qLTISys_Setup() to construct the system and set initial 
+* Then, you can call \ref qLTISys_Setup() to construct the system and set initial
 * conditions. Subsequently,  you can evaluate the system with a given input-signal
 * by just calling \ref qLTISys_Excite(). 
 *
@@ -64,18 +65,18 @@
 *
 * @section qltisys_disc Discrete-time transfer functions
 *
-* The z-transform is used in discrete-time systems to deal with the relationship 
-* between an input signal \f$ u(t) \f$ and an output signal \f$ y(t) \f$ , so the 
-* transfer function is similarly written as \f$ G(z^{-1}) \f$  and is often 
+* The z-transform is used in discrete-time systems to deal with the relationship
+* between an input signal \f$ u(t) \f$ and an output signal \f$ y(t) \f$ , so the
+* transfer function is similarly written as \f$ G(z^{-1}) \f$  and is often
 * referred to as the pulse-transfer function.
 *
 *  \f$ G(z^{-1}) = \frac{N(z^{-1})}{D(z^{-1})} = \frac{ b_{0} + b_{1}z^{-1} + b_{2}z^{-2} + ... +  b_{m}z^{-m} }{ 1 + a_{1}z^{-1} + a_{2}z^{-2} + ... +  a_{n}z^{-n} } \f$ 
 
 * Discrete systems are instantiated in a similar way to continuous systems,
 * but there are some differences. Initial states are defined by using the
-* \ref qLTISys_DiscreteX_t type. The size of polynomials can vary according to 
+* \ref qLTISys_DiscreteX_t type. The size of polynomials can vary according to
 * their order, and you should pass the \ref #QLTISYS_DISCRETE directive on \ref
-* qLTISys_Setup() in order to differentiate the system when it is being evaluated. 
+* qLTISys_Setup() in order to differentiate the system when it is being evaluated.
 * Please take a look at the following example:
 * 
 * @subsection qltisys_ex2 Example: Evaluate the given discrete transfer function

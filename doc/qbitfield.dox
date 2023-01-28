@@ -1,13 +1,13 @@
 /*! @page qbitfield_desc Bit-Field manipulation library
 * @tableofcontents
-* \ref qbitfield bitfield is a library of functions for creating and manipulate
-* bit fields (or bit arrays), i.e. series of zeroes and ones spread across an 
-* array of storage units (unsigned long integers).
+* \ref qbitfield is a library of functions for creating and manipulate
+* bit fields also known as bit arrays. These are series of zeroes and ones
+* spread across an array of storage units, such as unsigned long integers.
 *
 * @section qbitfield_structure Structure
 * 
 * Bit arrays are stored in data structures of type \ref qBitField_t. This structure
-* has two elements: an array of unsigned long integers called @c field for storing the 
+* has two elements: an array of unsigned long integers called @c field for storing the
 * bits and an integer @c size for storing the number of bits in the array. 
 *
 *

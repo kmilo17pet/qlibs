@@ -1,19 +1,19 @@
 /*! @page qfis_desc Fuzzy Inference System Engine
 * @tableofcontents
-* A Fuzzy Inference System (FIS) is key component of any fuzzy logic system. It 
-* uses fuzzy set theory, IF-THEN rules and fuzzy reasoning process to find the 
+* A Fuzzy Inference System (FIS) is key component of any fuzzy logic system. It
+* uses fuzzy set theory, IF-THEN rules and fuzzy reasoning process to find the
 * output corresponding to crisp inputs. Predicates in IF-THEN rules are connected
 * using and or or logical connectives.
 *
-* Fuzzy inference works by sending any process's crisp input to the fuzzifier, 
+* Fuzzy inference works by sending any process's crisp input to the fuzzifier,
 * which applies a fuzzy membership function and maps the actual readings into 
 * fuzzy values. The inference engine applies fuzzy rules from the knowledge base
-* and produces the fuzzy output. This output can not be used directly in any 
-* process or system. It needs to be mapped into the original domain. For this, 
-* the defuzzifier is used, which is the inverse process of fuzzification. It 
+* and produces the fuzzy output. This output can not be used directly in any
+* process or system. It needs to be mapped into the original domain. For this,
+* the defuzzifier is used, which is the inverse process of fuzzification. It
 * converts the fuzzy output into crisp output, which can be fed to the process.
 *
-* The \ref qfis Fuzzy Inference System engine provides an API for building and 
+* The \ref qfis Fuzzy Inference System engine provides an API for building and
 * evaluation of type-1 fuzzy logic inference systems. 
 * 
 * The types of inferences supported by qFIS are listed in the \ref qFIS_Type_t
@@ -21,16 +21,16 @@
 *
 * @section qfis_mamdani Mamdani
 *
-* In a Mamdani system, the output of each rule is a fuzzy set. Since Mamdani 
-* systems have more intuitive and easier to understand rule bases, they are 
+* In a Mamdani system, the output of each rule is a fuzzy set. Since Mamdani
+* systems have more intuitive and easier to understand rule bases, they are
 * well-suited to expert system applications where the rules are created
 * from human expert knowledge. 
 *
 * The output of each rule is a fuzzy set derived from the output membership
 * function and the implication method of the FIS. These output fuzzy sets are
-* combined into a single fuzzy set using the aggregation method of the FIS. 
+* combined into a single fuzzy set using the aggregation method of the FIS.
 * Then, to compute a final crisp output value, the combined output fuzzy set is
-* defuzzified using one of the methods described in Defuzzification Methods. 
+* defuzzified using one of the methods described in Defuzzification Methods.
 * To specificy a FIS of this type use the ::Mamdani enum definition when calling
 * qFIS_Setup().
 *
@@ -54,19 +54,19 @@
 *
 * Sugeno fuzzy inference, also referred to as Takagi-Sugeno-Kang fuzzy inference,
 * uses singleton output membership functions that are either constant or a linear
-* function of the input values. The defuzzification process for a Sugeno system 
-* is more computationally efficient compared to that of a Mamdani system, since 
-* it uses a weighted average or weighted sum of a few data points rather than 
+* function of the input values. The defuzzification process for a Sugeno system
+* is more computationally efficient compared to that of a Mamdani system, since
+* it uses a weighted average or weighted sum of a few data points rather than
 * computing the centroid of a two-dimensional area.
 *
 * Each rule generates two values:
 *
-* \f$u_i\f$ Rule output level, which is either a constant value or a linear 
+* \f$u_i\f$ Rule output level, which is either a constant value or a linear
 * function of the input values.
 *
 * and \f$w_i\f$, the rule firing strength, that is determined by the rule antecedent
 * 
-* The output of each rule is the weighted output level, which is the product of 
+* The output of each rule is the weighted output level, which is the product of
 * \f$w_i\f$ and \f$u_i\f$.
 * 
 * The final output of the system is the weighted average/sum over all rule outputs:
@@ -100,17 +100,17 @@
 *
 * @section qfis_tsukamoto Tsukamoto
 *
-* In the Tsukamoto inference system, the consequent of each fuzzy if-then rule 
-* is represented by a fuzzy set with a monotonical membership function, As a result, 
-* the inferred output of each rule is defined as a crisp value induced by the 
+* In the Tsukamoto inference system, the consequent of each fuzzy if-then rule
+* is represented by a fuzzy set with a monotonical membership function, As a result,
+* the inferred output of each rule is defined as a crisp value induced by the
 * rule's firing strength. 
 *
 * The overall output is taken as the weighted average of each rule's output.
-* Since each rule infers a crisp output, the Tsukamoto fuzzy model aggregates 
-* each rule's output by the method of weighted average and thus avoids the 
+* Since each rule infers a crisp output, the Tsukamoto fuzzy model aggregates
+* each rule's output by the method of weighted average and thus avoids the
 * time-consuming process of defuzzification.
 *
-* To specificy a FIS of this type, use the ::Tsukamoto enum definition when 
+* To specificy a FIS of this type, use the ::Tsukamoto enum definition when
 * calling qFIS_Setup().
 *
 * <center>
@@ -134,11 +134,11 @@
 * qFIS supports five different methods, as listed in the \ref qFIS_DeFuzz_Method_t type
 * for computing a single crisp output value for such a fuzzy set.
 *
-*  -# ::centroid (default): this method applies only to ::Mamdani systems and returns the 
-* center of gravity of the fuzzy set along the x-axis. If you think of the area 
-* as a plate with uniform thickness and density, the centroid is the point along 
-* the x-axis about which the fuzzy set would balance. The centroid is computed 
-* using the following formula, where \f$\mu(x)\f$ is the membership value for 
+*  -# ::centroid (default): this method applies only to ::Mamdani systems and returns the
+* center of gravity of the fuzzy set along the x-axis. If you think of the area
+* as a plate with uniform thickness and density, the centroid is the point along
+* the x-axis about which the fuzzy set would balance. The centroid is computed
+* using the following formula, where \f$\mu(x)\f$ is the membership value for
 * point \f$x_i\f$ in the universe of discourse.
 *
 *
@@ -157,7 +157,7 @@
 *  -# ::wtaver (default): Weighted average of all rule outputs. this method applies only 
 * for ::Sugeno and ::Tsukamoto systems.
 *
-*  -# ::wtsum:  Weighted sum of all rule outputs. This method applies only for 
+*  -# ::wtsum:  Weighted sum of all rule outputs. This method applies only for
 * ::Sugeno and ::Tsukamoto systems.
 *
 * @note The defuzzification method is selected by default when setting up the 
@@ -166,20 +166,20 @@
 *
 * @section qfis_buildfis Building a Mamdani FIS
 *
-* To carry the FIS building process in a more friendly way, we are going to explain 
-* it with a particular example. This goal is to solve the tipping problem that 
-* its described as follows:
+* To carry the FIS building process in a more friendly manner, we will explain
+* it using a specific example. The goal is to solve the tipping problem, which
+* is described as follows:
 *
-* Given a number from 0 through 10 that represents the quality of service at a 
-* restaurant, where 10 is excellent, and another number from 0 through 10 that 
+* Given a number from 0 through 10 that represents the quality of service at a
+* restaurant, where 10 is excellent, and another number from 0 through 10 that
 * represents the quality of the food, where 10 is delicious, what should the tip be?
-* Tipping behavior varies depending on local traditions and personal preferences. 
-* In this example, the problem is based on tipping as it is typically practiced 
-* in the United States. An average tip for a meal in the US is 15%. A generous 
+* Tipping behavior varies depending on local traditions and personal preferences.
+* In this example, the problem is based on tipping as it is typically practiced
+* in the United States. An average tip for a meal in the US is 15%. A generous
 * tip could be as high as 25% and a cheap tip could be 5%.
 *
 * The actual amount of the tip can vary depending on the quality of the service
-* and food.  For this problem, tipping behavior is defined using the following 
+* and food.  For this problem, tipping behavior is defined using the following
 * three rules.
 *
 * -# <tt> IF the service IS poor OR the food IS rancid, THEN the tip IS cheap. </tt>
@@ -235,8 +235,8 @@
 * </center>
 *
 * To build the fuzzy system, you must first instantiate an abstract object of
-* type \ref qFIS_t that represents the fuzzy inference system, then the input and 
-* output vectors, fuzzy set vectors for inputs and outputs, and enumerations with 
+* type \ref qFIS_t that represents the fuzzy inference system, then the input and
+* output vectors, fuzzy set vectors for inputs and outputs, and enumerations with
 * the tags for all of them. Let's take a look :
 *
 *  @code{.c}
@@ -444,15 +444,15 @@
 *
 * @section qfis_codegen Code generation
 *
-* Building a fuzzy system in code can become tedious, especially when you want 
-* to tune membership function parameters, where it would be appropriate to have 
-* a graphical tool that reflects the changes made by each tweak.
+* Building a fuzzy system in code can become tedious, especially when you want
+* to tune membership function parameters. It would be appropriate to have a
+* graphical tool that reflects the changes made by each tweak.
 *
-* Although the qFIS engine does not provide such a tool, a well-known tool can
-* be used to build the fuzzy system and generate qFIS-compatible C code. The 
-* tool we are talking about is MATLAB's Fuzzy Logic Toolbox and qLibs provides
-* a MATLAB command that can be used to take a fis object generated that tool
-* and generate C code based on the qFIS engine.
+* Although the qFIS engine does not provide such a tool, a well-known tool,
+* MATLAB's Fuzzy Logic Toolbox, can be used to build the fuzzy system and
+* generate qFIS-compatible C code. qLibs provides a MATLAB command that can be
+* used to take a fis object generated by that tool and generate C code based
+* on the qFIS engine.
 *
 * Download the C-Code generator here: 
 *

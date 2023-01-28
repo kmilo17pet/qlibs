@@ -1,25 +1,22 @@
 /*! @page qssmoother_desc Filters for signal smoothing
 * @tableofcontents
-*  In many applications with embedded systems, you will end up measuring some 
-*  signal. After being captured, the sample is often "noised". Then it becomes 
-*  desirable to apply a "smoothing filter" to the measured data to "clear" the 
-*  signal from such noises in order to reconstruct the original underlying 
-*  function. A smoothing filter attenuates undesired components of the signal 
-*  typically at higher frequencies, causing slow changes in values so that it's 
-*  easier to see trends in our signal. Because performing this operation can be
-*  a complex and time-consuming task, qLibs provides the @ref qssmoother module,
-*  which includes a collection of the most-common and efficient smoothing 
-*  filters to perform this operation on our signals as simply as possible.
+*  In many embedded systems applications, signals are captured and may be
+*  subject to "noise." To reconstruct the original signal, a "smoothing filter"
+*  is applied to "clear" the signal of this noise. The filter attenuates high
+*  frequency components and emphasizes slow changes in values, making trends
+*  easier to discern. The qLibs library offers the qSSMoother module, which
+* includes a collection of commonly used and efficient smoothing filters for
+* easy signal processing.
 *
 *  Below is the list of filters supported by @ref qssmoother :
 *  
 *  @section qssmoother_lpf1 First Order Low Pass Filter
 *  
-*  A first order low-pass filter is a filter that passes signals with a frequency
-*  lower than a selected cutoff frequency and attenuates signals with frequencies 
-*  higher than the cutoff frequency. Low-pass filters provide a smoother form of a 
-*  signal, removing the short-term fluctuations and leaving the longer-term trend.
-*  The discrete-time ecuation of this filter is defined as follows, where \f$w\f$ 
+*  A first-order low-pass filter passes signals with a frequency lower than a
+*  chosen cutoff frequency and reduces signals with frequencies higher than the
+*  cutoff. This results in a smoother signal by removing short-term fluctuations
+*  and highlighting longer-term trends.
+*  The discrete-time ecuation of this filter is defined as follows, where \f$w\f$
 *  is the cut-off frequency given in \f$rad/seg\f$
 *
 *  The difference-ecuation of the output of this filter is given by:
@@ -48,9 +45,9 @@
 *  @section qssmoother_lpf2 Second Order Low Pass Filter
 *  
 *  This filter has similar properties to the 1st order low pass filter. The main
-*  difference between a 1st and 2nd order low pass filter is that the stop 
-*  band roll-off will be twice the 1st order filters at 40dB/decade (12dB/octave)
-*  as the operating frequency increases above the cut-off frequency \f$w\f$.
+*  difference is that the stop band roll-off will be twice the 1st order filters
+*  at 40dB/decade (12dB/octave) as the operating frequency increases above the
+*  cut-off frequency \f$w\f$.
 *
 *  The difference-ecuation of the output of this filter is given by:
 *
@@ -81,15 +78,15 @@
 *
 *  @section qssmoother_mwm1 Moving Window Median Filter O(n) 
 *  
-*  This is a form of low-pass filter that computes the moving median of the input signal
-*  over time. The object uses the sliding window method to compute the moving 
-*  median. In this method, a window of a specified length is moved, sample by 
-*  sample, and the object computes the median of the data in the window.
+*  This low-pass filter calculates the moving median of the input signal over
+*  time using the sliding window method. A window of a specified length is moved
+*  sample by sample and the median of the data in the window is computed.
 *
-*  The output for each input sample is the median of the current sample and the 
-*  \f$N - 1\f$ previous samples. \f$N\f$ is the length of the window in samples.
-*  To compute the first \f$N - 1\f$ outputs, when the window does not have enough
-*  data yet, the algorithm fills the window with the first current sample.
+*  ach output for each input sample is the median of the current sample and the
+*  previous \f$N - 1\f$ samples. \f$N\f$ represents the length of the window in
+*  samples
+*  To compute the first \f$N - 1\f$ outputs, he algorithm fills the window with
+*  the first current sample when there is not enough data yet.
 *
 *  The difference-ecuation of the output of this filter is given by:
 *
@@ -114,20 +111,20 @@
 *
 *  @section qssmoother_mwm2 Moving Window Median Filter O(1) 
 *  
-*  This filter has the same principle as described in the previous filter. The 
-*  big difference here is the way the sliding window is treated. The window is 
-*  considered as a TDL (Tapped Delay Line) based on a circular queue. 
-*  This type of structure has a line of delays with \f$N - 1\f$ taps, and each tap 
-*  extracts the signal at some fixed integer delay relative to the input. 
+*  This filter operates on the same principle as the previous filter. The main
+*  difference is the treatment of the sliding window, which is implemented as a
+*  TDL (Tapped Delay Line) using a circular queue.
+*  This structure has \f$N - 1\f$ taps in a line of delays, each tap extracts
+*  the signal at a fixed integer delay relative to the input.
 *
 *  The circular queue approach prevents the shift of all the \f$N - 1\f$ samples
 *  stored in the sliding-window.
 *
 *  @remark
-*  This implementation comes with a huge benefit in terms of performance because 
-*  the time complexity is constant \f$O(1)\f$ , compared to the previous filter, 
-*  where the time complexity grows in direct proportion to the size of the window.
-*  Use this kind of filter when you need to consider large sliding windows.
+*  This implementation offers a significant performance benefit as it has a
+*  constant time complexity of \f$O(1)\f$ , compared to the previous filter
+*  where time complexity grows proportionally to the size of the window. Use
+*  this filter when dealing with large sliding windows.
 *
 *  @subsection qssmoother_ex4 Example: Setting up a moving window median filter:
 *  @code{.c}
@@ -146,10 +143,10 @@
 *
 *  @section qssmoother_mor1 Moving Outlier Removal Filter O(n) 
 *  
-*  This filter is used to detect and remove outliers in the input signal. For 
-*  each sample of input signal, the filter computes the median of the moving 
-*  window. If a new incoming sample deviates from the median by a specified 
-*  margin \f$\alpha\f$, it is replaced by the moving median \f$\overline{m(k)} \f$. 
+*  This filter detects and removes outliers in the input signal by computing the
+*  median of a moving window for each sample. If a new incoming sample deviates
+*  from the median by a specified margin \f$\alpha\f$, it is replaced by the
+*  moving median \f$\overline{m(k)} \f$.
 *
 *  This filter uses the following criteria for outlier removal:
 *
@@ -208,12 +205,12 @@
 *
 *  <center> \f$ w(n)=e^{\frac{1}{2}( \alpha\frac{ n }{ (L-1)/2} )^2}  = e^{-n^{2}/2\sigma^2 }\f$ </center>
 *
-*  were \f$ -(L-1)/2 \leq n \leq (L-1)/2 \f$ and \f$\alpha\f$ is inversely proportional 
-*  to the standard deviation, \f$\sigma\f$, of a Gaussian random variable. The exact 
-*  correspondence with the standard deviation of a Gaussian probability density 
+*  were \f$ -(L-1)/2 \leq n \leq (L-1)/2 \f$ and \f$\alpha\f$ is inversely proportional
+*  to the standard deviation, \f$\sigma\f$, of a Gaussian random variable. The exact
+*  correspondence with the standard deviation of a Gaussian probability density
 *  function is \f$  \sigma = (L – 1)/(2\alpha)\f$ .
 *
-*  This filter has a time complexity of \f$O(n)\f$ 
+*  This filter has a time complexity of \f$O(n)\f$
 *
 *  @subsection qssmoother_ex7 Example: setting up a gaussian filter:
 *  @code{.c}
@@ -235,24 +232,19 @@
 *
 *  @section qssmoother_expw Exponential Weighting filter 
 *
-*  The algorithm of this filter computes a weighting factor and  applies it to the input 
-*  signal recursively. As the age of the data increases, the magnitude of the 
-*  weighting factor decreases exponentially and never reaches zero. In other words,
-*  the recent data has more influence on the statistic at the current sample than
-*  the older data.
+*  This filter uses a weighting factor that is computed and applied to the input
+*  signal in a recursive manner. The weighting factor decreases exponentially as
+*  the age of the data increases, but never reaches zero, meaning more recent
+*  data has more influence on the current sample than older data
 *
 *  The value of the forgetting factor \f$\lambda\f$ determines the rate of change
-*  of the weighting factor. A forgetting factor of 0.9 gives more weight to the
-*  older data than a forgetting factor of 0.1. To give more weight to the 
-*  recent data, move the forgetting factor closer to 0. For detecting small 
-*  shifts in rapidly varying data, a smaller value (below 0.5) is more suitable. 
-*  A forgetting factor of 1.0 indicates infinite memory. All the previous samples
-*  are given equal weight. The optimal value for the forgetting factor depends
-*  on the data stream.
+*  of the weighting factor. A smaller value (below 0.5) gives more weight to
+*  recent data, while a value of 1.0 indicates infinite memory. The optimal
+*  value for the forgetting factor depends on the data stream.
 *
-*  The moving average algorithm updates the weight and computes the moving 
+*  The moving average algorithm updates the weight and computes the moving
 *  average recursively for each data sample that comes in by using the following
-*  recursive equations.
+*  recursive equations:
 *
 *     <center> \f$ w(t) = \lambda w(t-1) + 1  \f$ </center>
 *
@@ -275,8 +267,8 @@
 *
 *  The Kalman Filter is an efficient optimal estimator that provides a recursive
 *  computational methodology for get the state of a signal from measurements
-*  that are typically noisy, while providing an estimate of the uncertainty of 
-*  the estimate. Here, the scalar or one-dimensional version is provided 
+*  that are typically noisy, while providing an estimate of the uncertainty of
+*  the estimate. Here, the scalar or one-dimensional version is provided
 *  and only three design parameters are required, the initial covariance \f$P(0)\f$,
 *  the signal noise covariance \f$Q\f$ and the measurement uncertainty \f$r\f$.
 * 
@@ -300,9 +292,9 @@
 *
 *  Where
 * 
-*  \f$A\f$ is the state transition model, \f$H\f$ the observation model, \f$x(k)\f$ 
-*  the filter output (state estimation), \f$P(k)\f$ the covariance of the predicted 
-*  state, \f$u(k)\f$ the signal measurement and \f$K(k)\f$ the kalman gain. 
+*  \f$A\f$ is the state transition model, \f$H\f$ the observation model, \f$x(k)\f$
+*  the filter output (state estimation), \f$P(k)\f$ the covariance of the predicted
+*  state, \f$u(k)\f$ the signal measurement and \f$K(k)\f$ the kalman gain.
 *  
 *  @subsection qssmoother_ex9 Example: setting up a scalar kalman filter:
 *  @code{.c}
@@ -319,14 +311,14 @@
 *
 *  @section qssmoother_ex10 Example of signal smoothing
 *
-*  The example below is a rough draft of how a smoothing filter might be used. 
-*  The example consists of smoothing a speed sensor signal using a Gaussian 
-*  filter to improve quality and remove noise from it. The filter is initially 
-*  configured by defining the instance and design parameters before  being 
-*  evaluated. To execute the filter, a task is launched at a sampling rate of 
-*  100mS. In this routine, the signal is sampled and the filter is executed. 
-*  The enhanced signal is then properly processed without having to worry about 
-*  noise and disturbances.
+*  The following is an example of how a smoothing filter can be implemented. In
+*  this scenario, a Gaussian filter is used to smooth a speed sensor signal,
+*  reducing noise and improving overall signal quality. The filter is set up by
+*  defining the necessary parameters and instantiating the filter. The filter is
+*  then executed at a sampling rate of 100 milliseconds. This process involves
+*  sampling the signal and running it through the filter, resulting in a cleaned
+*  and enhanced signal that can be further processed without the need to account
+*  for noise and disturbances.
 *
 *  @code{.c}
 *  #include <stdio.h>

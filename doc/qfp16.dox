@@ -1,9 +1,8 @@
 /*! @page qfp16_desc Fixed-Point Q16.16 library
 * @tableofcontents
-* qLibs provide \ref qfp16 , which is a small fixed point number library 
-* designed for embedded use. 
-* It implements all of your favorite transcendental functions, plus only the 
-* best basic operators, selected for your calculating pleasure. 
+* qFP16 is a compact fixed-point number library intended for use in embedded
+* systems. It includes a variety of transcendental functions and essential
+* operators, carefully chosen for optimal performance.
 *
 * The format is a signed @c Q16.16, which is good enough for most purposes.
 *
@@ -30,10 +29,10 @@
 * - \ref qFP16_IntToFP() Simply multiplies a by @c qFP16.one=65536
 * - \ref qFP16_FPToInt() Divides by \ref qFP16_t and rounds to nearest integer.
 * - \ref qFP16_FloatToFP() Multiplies by \ref qFP16_t and rounds to nearest value.
-* - \ref qFP16_FPToFloat() Divides by qFP16.one. Rounding is according to the 
+* - \ref qFP16_FPToFloat() Divides by qFP16.one. Rounding is according to the
 * current floating point mode
 * - \ref qFP16_DoubleToFP()  Multiplies by \ref qFP16 and rounds to nearest value.
-* - \ref qFP16_FPToDouble() Divides by qFP16.one. All \ref qFP16_t values fit into 
+* - \ref qFP16_FPToDouble() Divides by qFP16.one. All \ref qFP16_t values fit into
 * a double, so no rounding happens.
 * - \ref qFP16_FPToA()  Converts from \ref qFP16_t to string.
 * - \ref qFP16_AToFP()  Converts from string to \ref qFP16_t.
@@ -54,13 +53,13 @@
 * Roots, exponents & similar.
 *
 * - \ref qFP16_Sqrt()  Square root. Performs rounding and is accurate to \ref qFP16 limits.
-* - \ref qFP16_Exp()   Exponential function using power series approximation. 
-* Accuracy depends on range, worst case +-40 absolute for negative inputs and 
+* - \ref qFP16_Exp()   Exponential function using power series approximation.
+* Accuracy depends on range, worst case +-40 absolute for negative inputs and
 * +-0.003% for positive inputs. Average error is +-1 for neg and +-0.0003% for pos.
 * - \ref qFP16_Log()  Natural logarithm using Newton approximation and \ref qFP16_Exp().
 * Worst case error +-3 absolute, average error less than 1 unit.
 * - \ref qFP16_Log2()  Logarithm base 2.
-* - \ref qFP16_IPow()  Computes the integer-power of a \ref qFP16_t number 
+* - \ref qFP16_IPow()  Computes the integer-power of a \ref qFP16_t number
 * - \ref qFP16_Pow()  Modulo
 *
 *

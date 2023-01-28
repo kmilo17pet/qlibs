@@ -3,7 +3,6 @@
 [![Codacy Badge](https://app.codacy.com/project/badge/Grade/14d566939d2e4d4181088cc1c6666fa3)](https://www.codacy.com/gh/kmilo17pet/qTools/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=kmilo17pet/qTools&amp;utm_campaign=Badge_Grade)
 [![CodeInspectorScore](https://api.codiga.io/project/27197/score/svg)](https://app.codiga.io/project/27197/dashboard)
 [![CodeInspectorGrade](https://api.codiga.io/project/27197/status/svg)](https://app.codiga.io/project/27197/dashboard)
-[![Softacheck](https://softacheck.com/app/repository/kmilo17pet/qlibs/badge)](https://softacheck.com/app/repository/kmilo17pet/qlibs/issues)
 [![documentation](https://github.com/kmilo17pet/qlibs/actions/workflows/doxygen_gen.yml/badge.svg)](https://kmilo17pet.github.io/qlibs/)
 [![GitHub release (latest by date)](https://img.shields.io/github/v/release/kmilo17pet/qlibs?logo=webpack)](https://github.com/kmilo17pet/qlibs/releases)
 [![MISRAC2012](https://img.shields.io/badge/MISRAC2012-Compliant-blue.svg?logo=c)](https://en.wikipedia.org/wiki/MISRA_C)
