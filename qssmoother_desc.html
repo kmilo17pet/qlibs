@@ -158,11 +158,11 @@ $(document).ready(function(){initNavTree('qssmoother_desc.html',''); initResizab
 <li class="level1"><a href="#qssmoother_ex10">Example of signal smoothing</a></li>
 </ul>
 </div>
-<div class="textblock"><p >In many applications with embedded systems, you will end up measuring some signal. After being captured, the sample is often "noised". Then it becomes desirable to apply a "smoothing filter" to the measured data to "clear" the signal from such noises in order to reconstruct the original underlying function. A smoothing filter attenuates undesired components of the signal typically at higher frequencies, causing slow changes in values so that it's easier to see trends in our signal. Because performing this operation can be a complex and time-consuming task, qLibs provides the <a class="el" href="group__qssmoother.html">qSSMoother</a> module, which includes a collection of the most-common and efficient smoothing filters to perform this operation on our signals as simply as possible.</p>
+<div class="textblock"><p >In many embedded systems applications, signals are captured and may be subject to "noise." To reconstruct the original signal, a "smoothing filter" is applied to "clear" the signal of this noise. The filter attenuates high frequency components and emphasizes slow changes in values, making trends easier to discern. The qLibs library offers the qSSMoother module, which includes a collection of commonly used and efficient smoothing filters for easy signal processing.</p>
 <p >Below is the list of filters supported by <a class="el" href="group__qssmoother.html">qSSMoother</a> :</p>
 <h1><a class="anchor" id="qssmoother_lpf1"></a>
 First Order Low Pass Filter</h1>
-<p >A first order low-pass filter is a filter that passes signals with a frequency lower than a selected cutoff frequency and attenuates signals with frequencies higher than the cutoff frequency. Low-pass filters provide a smoother form of a signal, removing the short-term fluctuations and leaving the longer-term trend. The discrete-time ecuation of this filter is defined as follows, where \(w\) is the cut-off frequency given in \(rad/seg\)</p>
+<p >A first-order low-pass filter passes signals with a frequency lower than a chosen cutoff frequency and reduces signals with frequencies higher than the cutoff. This results in a smoother signal by removing short-term fluctuations and highlighting longer-term trends. The discrete-time ecuation of this filter is defined as follows, where \(w\) is the cut-off frequency given in \(rad/seg\)</p>
 <p >The difference-ecuation of the output of this filter is given by:</p>
 <center> \(y(t)=x(t)+\alpha[y(t-1)+x(t)]\) </center><p >where,</p>
 <center> \(\alpha=e^{-T_{m}w}\) </center><center> \( 0 &lt; \alpha &lt; 1\) </center><h2><a class="anchor" id="qssmoother_ex1"></a>
@@ -180,7 +180,7 @@ Example: setting up a 1st order low-pass filter:</h2>
 <div class="ttc" id="astructq_s_smoother___l_p_f1__t_html"><div class="ttname"><a href="structq_s_smoother___l_p_f1__t.html">qSSmoother_LPF1_t</a></div><div class="ttdoc">A 1st order Low-Pass Filter.</div><div class="ttdef"><b>Definition:</b> qssmoother.h:56</div></div>
 </div><!-- fragment --><h1><a class="anchor" id="qssmoother_lpf2"></a>
 Second Order Low Pass Filter</h1>
-<p >This filter has similar properties to the 1st order low pass filter. The main difference between a 1st and 2nd order low pass filter is that the stop band roll-off will be twice the 1st order filters at 40dB/decade (12dB/octave) as the operating frequency increases above the cut-off frequency \(w\).</p>
+<p >This filter has similar properties to the 1st order low pass filter. The main difference is that the stop band roll-off will be twice the 1st order filters at 40dB/decade (12dB/octave) as the operating frequency increases above the cut-off frequency \(w\).</p>
 <p >The difference-ecuation of the output of this filter is given by:</p>
 <center> \(y(t)=kx(t)+b_{1}x(t-1)+kx(t-2)-a_{1}y(t-1)-a_{2}y(t-2)\) </center><p >where,</p>
 <center> \( 0 &lt; \alpha &lt; 1\)</center><center> \(p=\sqrt{2\alpha}\), \(r=1+p+\alpha^{2}\), \(k=\frac{\alpha^{2}}{r}\)</center><center> \(a_1=\frac{ 2(\alpha^{2}-1)}{r}\), \(a_2=\frac{ 1-p+\alpha^{2} }{r}\), \(b_1=2k\) </center><h2><a class="anchor" id="qssmoother_ex2"></a>
@@ -197,8 +197,8 @@ Example: setting up a 2nd order low-pass filter:</h2>
 <div class="ttc" id="astructq_s_smoother___l_p_f2__t_html"><div class="ttname"><a href="structq_s_smoother___l_p_f2__t.html">qSSmoother_LPF2_t</a></div><div class="ttdoc">A 2nd order Low-Pass Filter.</div><div class="ttdef"><b>Definition:</b> qssmoother.h:67</div></div>
 </div><!-- fragment --><h1><a class="anchor" id="qssmoother_mwm1"></a>
 Moving Window Median Filter O(n)</h1>
-<p >This is a form of low-pass filter that computes the moving median of the input signal over time. The object uses the sliding window method to compute the moving median. In this method, a window of a specified length is moved, sample by sample, and the object computes the median of the data in the window.</p>
-<p >The output for each input sample is the median of the current sample and the \(N - 1\) previous samples. \(N\) is the length of the window in samples. To compute the first \(N - 1\) outputs, when the window does not have enough data yet, the algorithm fills the window with the first current sample.</p>
+<p >This low-pass filter calculates the moving median of the input signal over time using the sliding window method. A window of a specified length is moved sample by sample and the median of the data in the window is computed.</p>
+<p >ach output for each input sample is the median of the current sample and the previous \(N - 1\) samples. \(N\) represents the length of the window in samples To compute the first \(N - 1\) outputs, he algorithm fills the window with the first current sample when there is not enough data yet.</p>
 <p >The difference-ecuation of the output of this filter is given by:</p>
 <center> \( \frac{1}{N}\sum_{i=0}^{N-1}y(t-i)=\frac{1}{N}[ y(t) + y(t-1) + ... + y(t-N-1) ] \) </center><p >This filter has a time complexity of \(O(n)\)</p>
 <h2><a class="anchor" id="qssmoother_ex3"></a>
@@ -217,9 +217,9 @@ Example: setting up a moving window median filter:</h2>
 <div class="ttc" id="astructq_s_smoother___m_w_m1__t_html"><div class="ttname"><a href="structq_s_smoother___m_w_m1__t.html">qSSmoother_MWM1_t</a></div><div class="ttdoc">A Moving Window Median filter.</div><div class="ttdef"><b>Definition:</b> qssmoother.h:80</div></div>
 </div><!-- fragment --><h1><a class="anchor" id="qssmoother_mwm2"></a>
 Moving Window Median Filter O(1)</h1>
-<p >This filter has the same principle as described in the previous filter. The big difference here is the way the sliding window is treated. The window is considered as a TDL (Tapped Delay Line) based on a circular queue. This type of structure has a line of delays with \(N - 1\) taps, and each tap extracts the signal at some fixed integer delay relative to the input.</p>
+<p >This filter operates on the same principle as the previous filter. The main difference is the treatment of the sliding window, which is implemented as a TDL (Tapped Delay Line) using a circular queue. This structure has \(N - 1\) taps in a line of delays, each tap extracts the signal at a fixed integer delay relative to the input.</p>
 <p >The circular queue approach prevents the shift of all the \(N - 1\) samples stored in the sliding-window.</p>
-<dl class="section remark"><dt>Remarks</dt><dd>This implementation comes with a huge benefit in terms of performance because the time complexity is constant \(O(1)\) , compared to the previous filter, where the time complexity grows in direct proportion to the size of the window. Use this kind of filter when you need to consider large sliding windows.</dd></dl>
+<dl class="section remark"><dt>Remarks</dt><dd>This implementation offers a significant performance benefit as it has a constant time complexity of \(O(1)\) , compared to the previous filter where time complexity grows proportionally to the size of the window. Use this filter when dealing with large sliding windows.</dd></dl>
 <h2><a class="anchor" id="qssmoother_ex4"></a>
 Example: Setting up a moving window median filter:</h2>
 <div class="fragment"><div class="line"><span class="preprocessor">#define N_MWM     ( 150u )</span></div>
@@ -235,7 +235,7 @@ Example: Setting up a moving window median filter:</h2>
 <div class="ttc" id="astructq_s_smoother___m_w_m2__t_html"><div class="ttname"><a href="structq_s_smoother___m_w_m2__t.html">qSSmoother_MWM2_t</a></div><div class="ttdoc">A Moving Window Median filter.</div><div class="ttdef"><b>Definition:</b> qssmoother.h:93</div></div>
 </div><!-- fragment --><h1><a class="anchor" id="qssmoother_mor1"></a>
 Moving Outlier Removal Filter O(n)</h1>
-<p >This filter is used to detect and remove outliers in the input signal. For each sample of input signal, the filter computes the median of the moving window. If a new incoming sample deviates from the median by a specified margin \(\alpha\), it is replaced by the moving median \(\overline{m(k)} \).</p>
+<p >This filter detects and removes outliers in the input signal by computing the median of a moving window for each sample. If a new incoming sample deviates from the median by a specified margin \(\alpha\), it is replaced by the moving median \(\overline{m(k)} \).</p>
 <p >This filter uses the following criteria for outlier removal:</p>
 <center> \( y(k) = \overline{m(k)} \rightarrow \text{if} \rightarrow | \overline{m(k)} - x(k) | &gt; \alpha|\overline{m(k)}| \)</center><center> \( \text{else}=x(k) \) </center><p >This filter has a time complexity of \(O(n)\)</p>
 <h2><a class="anchor" id="qssmoother_ex5"></a>
@@ -296,9 +296,9 @@ Example: setting up a gaussian filter:</h2>
 <div class="ttc" id="astructq_s_smoother___g_m_w_f__t_html"><div class="ttname"><a href="structq_s_smoother___g_m_w_f__t.html">qSSmoother_GMWF_t</a></div><div class="ttdoc">A Gaussian filter.</div><div class="ttdef"><b>Definition:</b> qssmoother.h:131</div></div>
 </div><!-- fragment --><h1><a class="anchor" id="qssmoother_expw"></a>
 Exponential Weighting filter</h1>
-<p >The algorithm of this filter computes a weighting factor and applies it to the input signal recursively. As the age of the data increases, the magnitude of the weighting factor decreases exponentially and never reaches zero. In other words, the recent data has more influence on the statistic at the current sample than the older data.</p>
-<p >The value of the forgetting factor \(\lambda\) determines the rate of change of the weighting factor. A forgetting factor of 0.9 gives more weight to the older data than a forgetting factor of 0.1. To give more weight to the recent data, move the forgetting factor closer to 0. For detecting small shifts in rapidly varying data, a smaller value (below 0.5) is more suitable. A forgetting factor of 1.0 indicates infinite memory. All the previous samples are given equal weight. The optimal value for the forgetting factor depends on the data stream.</p>
-<p >The moving average algorithm updates the weight and computes the moving average recursively for each data sample that comes in by using the following recursive equations.</p>
+<p >This filter uses a weighting factor that is computed and applied to the input signal in a recursive manner. The weighting factor decreases exponentially as the age of the data increases, but never reaches zero, meaning more recent data has more influence on the current sample than older data</p>
+<p >The value of the forgetting factor \(\lambda\) determines the rate of change of the weighting factor. A smaller value (below 0.5) gives more weight to recent data, while a value of 1.0 indicates infinite memory. The optimal value for the forgetting factor depends on the data stream.</p>
+<p >The moving average algorithm updates the weight and computes the moving average recursively for each data sample that comes in by using the following recursive equations:</p>
 <center> \( w(t) = \lambda w(t-1) + 1 \) </center><center> \( y(t) = ( 1-\frac{1}{w(t)} )y(t-1) + \frac{1}{w(t)}x(t)\) </center><h2><a class="anchor" id="qssmoother_ex8"></a>
 Example: setting up an exponential weighting filter:</h2>
 <div class="fragment"><div class="line"><a class="code hl_struct" href="structq_s_smoother___e_x_p_w__t.html">qSSmoother_EXPW_t</a>  smoother; </div>
@@ -334,7 +334,7 @@ Example: setting up a scalar kalman filter:</h2>
 <div class="ttc" id="astructq_s_smoother___k_l_m_n__t_html"><div class="ttname"><a href="structq_s_smoother___k_l_m_n__t.html">qSSmoother_KLMN_t</a></div><div class="ttdoc">A scalar Kalman filter.</div><div class="ttdef"><b>Definition:</b> qssmoother.h:154</div></div>
 </div><!-- fragment --><h1><a class="anchor" id="qssmoother_ex10"></a>
 Example of signal smoothing</h1>
-<p >The example below is a rough draft of how a smoothing filter might be used. The example consists of smoothing a speed sensor signal using a Gaussian filter to improve quality and remove noise from it. The filter is initially configured by defining the instance and design parameters before being evaluated. To execute the filter, a task is launched at a sampling rate of 100mS. In this routine, the signal is sampled and the filter is executed. The enhanced signal is then properly processed without having to worry about noise and disturbances.</p>
+<p >The following is an example of how a smoothing filter can be implemented. In this scenario, a Gaussian filter is used to smooth a speed sensor signal, reducing noise and improving overall signal quality. The filter is set up by defining the necessary parameters and instantiating the filter. The filter is then executed at a sampling rate of 100 milliseconds. This process involves sampling the signal and running it through the filter, resulting in a cleaned and enhanced signal that can be further processed without the need to account for noise and disturbances.</p>
 <div class="fragment"><div class="line"><span class="preprocessor">#include &lt;stdio.h&gt;</span></div>
 <div class="line"><span class="preprocessor">#include &lt;stdlib.h&gt;</span></div>
 <div class="line"><span class="preprocessor">#include &quot;freertos/FreeRTOS.h&quot;</span></div>
