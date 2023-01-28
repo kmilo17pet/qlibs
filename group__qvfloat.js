@@ -27,7 +27,7 @@ var group__qvfloat =
     [ "qVFloat_Moment", "group__qvfloat.html#ga4018bc8317f61d994c24f2309194bc8f", null ],
     [ "qVFloat_Operate", "group__qvfloat.html#ga3e1b25582cc0a2e76eed516dcf16931a", null ],
     [ "qVFloat_PolyVal", "group__qvfloat.html#ga693c013aef32b0a05961ad59ad6a496f", null ],
-    [ "qVFloat_Reverse", "group__qvfloat.html#ga727a9263d3a8e08e9191174a1f39e5e5", null ],
+    [ "qVFloat_Reverse", "group__qvfloat.html#ga7938e3654d44633afbd0f3ccff98c821", null ],
     [ "qVFloat_Rotate", "group__qvfloat.html#ga046df81550124b61d57064d719c26bbf", null ],
     [ "qVFloat_Set", "group__qvfloat.html#ga036851b5e48780ec7345b0fbbd91c78e", null ],
     [ "qVFloat_Sort", "group__qvfloat.html#ga8e637330022169296dda47d7e3a89f8c", null ]

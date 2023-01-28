@@ -97,7 +97,7 @@ var NAVTREEINDEX1 =
 "group__qvfloat.html#ga4018bc8317f61d994c24f2309194bc8f":[1,12,8],
 "group__qvfloat.html#ga693c013aef32b0a05961ad59ad6a496f":[1,12,10],
 "group__qvfloat.html#ga6bbe96fe3aeac64d51830c0c8327beb8":[1,12,5],
-"group__qvfloat.html#ga727a9263d3a8e08e9191174a1f39e5e5":[1,12,11],
+"group__qvfloat.html#ga7938e3654d44633afbd0f3ccff98c821":[1,12,11],
 "group__qvfloat.html#ga8e637330022169296dda47d7e3a89f8c":[1,12,14],
 "group__qvfloat.html#gaa2afe87cb0916aa0883fc01716b4e290":[1,12,2],
 "group__qvfloat.html#gaaf90b5f8e3213f580eed03138af494be":[1,12,4],

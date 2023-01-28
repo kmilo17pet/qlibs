@@ -180,9 +180,9 @@ Functions</h2></td></tr>
 <tr class="memitem:ga6bbe96fe3aeac64d51830c0c8327beb8"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qvfloat.html#ga6bbe96fe3aeac64d51830c0c8327beb8">qVFloat_Distance</a> (const float *const x, const float *const y, const size_t n)</td></tr>
 <tr class="memdesc:ga6bbe96fe3aeac64d51830c0c8327beb8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the Euclidean distance between vectors <em>x</em> and <em>y</em>.  <a href="group__qvfloat.html#ga6bbe96fe3aeac64d51830c0c8327beb8">More...</a><br /></td></tr>
 <tr class="separator:ga6bbe96fe3aeac64d51830c0c8327beb8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga727a9263d3a8e08e9191174a1f39e5e5"><td class="memItemLeft" align="right" valign="top">float *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qvfloat.html#ga727a9263d3a8e08e9191174a1f39e5e5">qVFloat_Reverse</a> (float *const dst, float *const src, const size_t low, const size_t high)</td></tr>
-<tr class="memdesc:ga727a9263d3a8e08e9191174a1f39e5e5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reverse the given vector pointed by <em>src</em>. Operation takes place on the portion of the vector that starts at position <em>init</em> to position <em>end</em>.  <a href="group__qvfloat.html#ga727a9263d3a8e08e9191174a1f39e5e5">More...</a><br /></td></tr>
-<tr class="separator:ga727a9263d3a8e08e9191174a1f39e5e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga7938e3654d44633afbd0f3ccff98c821"><td class="memItemLeft" align="right" valign="top">float *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qvfloat.html#ga7938e3654d44633afbd0f3ccff98c821">qVFloat_Reverse</a> (float *const dst, float *const src, const size_t init, const size_t end)</td></tr>
+<tr class="memdesc:ga7938e3654d44633afbd0f3ccff98c821"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reverse the given vector pointed by <em>src</em>. Operation takes place on the portion of the vector that starts at position <em>init</em> to position <em>end</em>.  <a href="group__qvfloat.html#ga7938e3654d44633afbd0f3ccff98c821">More...</a><br /></td></tr>
+<tr class="separator:ga7938e3654d44633afbd0f3ccff98c821"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga046df81550124b61d57064d719c26bbf"><td class="memItemLeft" align="right" valign="top">float *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qvfloat.html#ga046df81550124b61d57064d719c26bbf">qVFloat_Rotate</a> (float *const dst, float *const src, const int k, const size_t n)</td></tr>
 <tr class="memdesc:ga046df81550124b61d57064d719c26bbf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Rotates the elements of vector pointed by <em>src</em> the number of places and in the direction indicated by <em>k</em>.  <a href="group__qvfloat.html#ga046df81550124b61d57064d719c26bbf">More...</a><br /></td></tr>
 <tr class="separator:ga046df81550124b61d57064d719c26bbf"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -671,8 +671,8 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="ga727a9263d3a8e08e9191174a1f39e5e5" name="ga727a9263d3a8e08e9191174a1f39e5e5"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga727a9263d3a8e08e9191174a1f39e5e5">&#9670;&nbsp;</a></span>qVFloat_Reverse()</h2>
+<a id="ga7938e3654d44633afbd0f3ccff98c821" name="ga7938e3654d44633afbd0f3ccff98c821"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga7938e3654d44633afbd0f3ccff98c821">&#9670;&nbsp;</a></span>qVFloat_Reverse()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -693,13 +693,13 @@ Functions</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">const size_t&#160;</td>
-          <td class="paramname"><em>low</em>, </td>
+          <td class="paramname"><em>init</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">const size_t&#160;</td>
-          <td class="paramname"><em>high</em>&#160;</td>
+          <td class="paramname"><em>end</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -715,8 +715,8 @@ Functions</h2></td></tr>
   <table class="params">
     <tr><td class="paramdir">[out]</td><td class="paramname">dst</td><td>The pointer to the destination vector where the result will be stored. To ignore pass <code>NULL</code> as argument. </td></tr>
     <tr><td class="paramdir">[in,out]</td><td class="paramname">src</td><td>The input vector to reverse. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">low</td><td>Position of the first element. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">high</td><td>Position of the last element. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">init</td><td>Position of the first element. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">end</td><td>Position of the last element. </td></tr>
   </table>
   </dd>
 </dl>
