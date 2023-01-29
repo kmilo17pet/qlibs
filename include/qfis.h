@@ -142,9 +142,9 @@ extern "C" {
     {
         /*! @cond  */
         qFIS_IO_Base_t b;
-        float res, x, y, data[ 4 ];
         void *owner;
         float *xag, *yag;
+        float res, x, y, data[ 4 ];
         /*! @endcond  */
     } qFIS_Output_t;
 

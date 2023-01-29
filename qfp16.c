@@ -290,7 +290,7 @@ qFP16_t qFP16_Div( const qFP16_t x,
     qFP16_t retValue = fp->min;
 
     if ( 0 != y ) {
-        uint32_t xRem, xDiv, bit = 0x10000uL;
+        uint32_t xRem, xDiv, bit = 0x10000u;
 
         xRem = (uint32_t)( ( x >= 0 ) ? x : -x );
         xDiv = (uint32_t)( ( y >= 0 ) ? y : -y );
@@ -301,11 +301,11 @@ qFP16_t qFP16_Div( const qFP16_t x,
         }
         retValue = qFP16.overflow;
         /*cstat -MISRAC2012-Rule-14.3_a*/
-        if ( 0uL != bit ) { /*MISRAC2012-Rule-14.3_a false positive*/
+        if ( 0u != bit ) { /*MISRAC2012-Rule-14.3_a false positive*/
         /*cstat +MISRAC2012-Rule-14.3_a*/
-            uint32_t quotient = 0uL;
+            uint32_t quotient = 0u;
 
-            if ( 0uL != ( xDiv & 0x80000000uL ) ) {
+            if ( 0u != ( xDiv & 0x80000000u ) ) {
                 if ( xRem >= xDiv ) {
                     quotient |= bit;
                     xRem -= xDiv;
@@ -314,7 +314,7 @@ qFP16_t qFP16_Div( const qFP16_t x,
                 bit >>= 1;
             }
 
-            while ( ( 0uL != bit ) && ( 0uL != xRem ) ) {
+            while ( ( 0u != bit ) && ( 0u != xRem ) ) {
                 if ( xRem >= xDiv ) {
                     quotient |= bit;
                     xRem -= xDiv;
@@ -330,7 +330,7 @@ qFP16_t qFP16_Div( const qFP16_t x,
 
             retValue = (qFP16_t)quotient;
 
-            if ( 0uL != ( (uint32_t)( x ^ y ) & intern.overflow_mask ) ) {
+            if ( 0u != ( (uint32_t)( x ^ y ) & intern.overflow_mask ) ) {
                 if ( quotient == (uint32_t)fp->min ) {
                     retValue = qFP16.overflow;
                 }
@@ -365,8 +365,8 @@ qFP16_t qFP16_Sqrt( qFP16_t x )
         uint8_t n;
 
         retValue = 0;
-        bit = ( 0 != ( x & (qFP16_t)0xFFF00000uL ) ) ? (uint32_t)( 1 << 30 )
-                                                     : (uint32_t)( 1 << 18 );
+        bit = ( 0 != ( x & (qFP16_t)0xFFF00000u ) ) ? (uint32_t)( 1u << 30u )
+                                                    : (uint32_t)( 1u << 18u );
         while ( bit > (uint32_t)x ) {
             bit >>= 2;
         }

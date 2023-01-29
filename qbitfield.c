@@ -208,7 +208,7 @@ uint32_t qBitField_ReadUINTn( const qBitField_t * const b,
                               const size_t index,
                               size_t xBits )
 {
-    uint32_t retValue = 0uL;
+    uint32_t retValue = 0u;
 
     if ( ( NULL != b ) && ( xBits <= 32u ) ) {
         if ( 1u == xBits ) {
@@ -263,6 +263,7 @@ float qBitField_ReadFloat( const qBitField_t * const b,
 
     if ( NULL != b ) {
         uint32_t rval;
+
         rval = qBitField_Read_uint32( b, index );
         (void)memcpy( &retValue, &rval, sizeof(float) );
     }
@@ -277,7 +278,8 @@ int qBitField_WriteFloat( qBitField_t * const b,
     int retValue = 0;
 
     if ( NULL != b ) {
-        uint32_t fval = 0uL;
+        uint32_t fval = 0u;
+
         (void)memcpy( &fval, &value, sizeof(float) );
         qBitField_Write_uint32( b, index, fval );
         retValue = 1;

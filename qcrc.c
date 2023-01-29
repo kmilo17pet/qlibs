@@ -38,7 +38,7 @@ uint32_t qCRCx( const qCRC_Mode_t mode,
                 const uint8_t refOut,
                 uint32_t xorOut )
 {
-    uint32_t crc = 0uL;
+    uint32_t crc = 0u;
     /*cstat -ATH-cmp-unsign-pos*/
     if ( ( NULL != pData ) && ( length > 0u ) && ( mode >= QCRC8 ) && ( mode <= QCRC32 ) ) {
     /*cstat +ATH-cmp-unsign-pos*/
@@ -50,8 +50,8 @@ uint32_t qCRCx( const qCRC_Mode_t mode,
         uint8_t const * const msg = pData;
         /*cstat +MISRAC2012-Rule-11.5 +CERT-EXP36-C_b*/
         const uint32_t wd1 = (uint32_t)width - 8u;
-        const uint32_t topBit = 1uL << ( width - 1uL );
-        const uint32_t bitMask = ( 0xFFFFFFFFuL >> ( 32uL - width ) );
+        const uint32_t topBit = (uint32_t)1u << ( width - 1u );
+        const uint32_t bitMask = ( 0xFFFFFFFFu >> ( 32u - width ) );
         poly &= bitMask;
         xorOut &= bitMask;
         crc = init;

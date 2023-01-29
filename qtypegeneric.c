@@ -315,8 +315,9 @@ int qTypeGeneric_ForEach( void *pbase,
         /*cstat -MISRAC2012-Rule-11.5 -CERT-EXP36-C_b*/
         uint8_t *element, *pb = (uint8_t *)pbase;
         /*cstat +MISRAC2012-Rule-11.5 +CERT-EXP36-C_b*/
-        size_t i;
         if ( 1 != f( -1, NULL, arg ) ) {
+            size_t i;
+
             if ( false == dir ) {
                 for ( i = 0u ; i < n ; ++i ) {
                     element = &pb[ i*size ];
