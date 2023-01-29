@@ -327,6 +327,7 @@ float* qVFloat_Copy( float * const dst,
                      const size_t n )
 {
     /*cstat -MISRAC2012-Rule-11.5 -CERT-EXP36-C_b*/
+    /*cppcheck-suppress misra-c2012-11.5 */
     return (float*)memcpy( dst, src, n*sizeof(float) );
     /*cstat +MISRAC2012-Rule-11.5 +CERT-EXP36-C_b*/
 }
@@ -469,7 +470,9 @@ static int qVFloat_CmpAsc( const void *a,
                            void *arg )
 {
     /*cstat -MISRAC2012-Rule-11.5 -CERT-EXP36-C_b -MISRAC2012-Rule-10.1_R3*/
+    /*cppcheck-suppress misra-c2012-11.5 */
     const float *fa = (const float*)a;
+    /*cppcheck-suppress misra-c2012-11.5 */
     const float *fb = (const float*)b;
     (void)arg;
     return ( (int)( fa[ 0 ] > fb[ 0 ] ) ) - ( (int)( fa[ 0 ] < fb[ 0 ] ) );
@@ -479,7 +482,9 @@ static int qVFloat_CmpDes( const void *a,
                            const void *b,
                            void *arg )
 {
+    /*cppcheck-suppress misra-c2012-11.5 */
     const float *fa = (const float*)a;
+    /*cppcheck-suppress misra-c2012-11.5 */
     const float *fb = (const float*)b;
     (void)arg;
     return (int)( fa[ 0 ] < fb[ 0 ] ) - (int)( fa[ 0 ] > fb[ 0 ] );

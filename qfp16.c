@@ -37,9 +37,9 @@ static const struct _qFP16_intern_s intern = {
     /*f_4_pi*/          83443,
     /*one_fp16_f*/      0.0000152587890625f,
     /*one_fp16_d*/      0.0000152587890625,
-    /*overflow_mask*/   0x80000000uL,
-    /*fraction_mask*/   0x0000FFFFuL,
-    /*integer_mask*/    0xFFFF0000uL
+    /*overflow_mask*/   0x80000000u,
+    /*fraction_mask*/   0x0000FFFFu,
+    /*integer_mask*/    0xFFFF0000u
 };
 
 const struct _qFP16_const_s qFP16 = {
@@ -375,7 +375,7 @@ qFP16_t qFP16_Sqrt( qFP16_t x )
             while ( 0u != bit ) {
                 if ( x >= (qFP16_t)( (uint32_t)retValue + bit ) ) {
                     x -= (qFP16_t)( (uint32_t)retValue + bit );
-                    retValue = (qFP16_t)( ( (uint32_t)retValue >> 1uL ) + bit );
+                    retValue = (qFP16_t)( ( (uint32_t)retValue >> 1u ) + bit );
                 }
                 else {
                     retValue = ( retValue >> 1 );
@@ -762,7 +762,7 @@ qFP16_t qFP16_Pow( const qFP16_t x,
 {
     qFP16_t retValue = qFP16.overflow;
 
-    if ( ( 0uL == ( (uint32_t)y & intern.fraction_mask ) ) && ( y > 0 ) ) {
+    if ( ( 0u == ( (uint32_t)y & intern.fraction_mask ) ) && ( y > 0 ) ) {
         /*handle integer exponent explicitly*/
         retValue = qFP16_IPow( x, y );
     }
@@ -798,7 +798,7 @@ char* qFP16_FPToA( const qFP16_t num,
         str[ 8 ] = '\0';
     }
     else {
-        const uint32_t iScales[ 6 ] = { 1uL, 10uL, 100uL, 1000uL, 10000uL, 100000uL };
+        const uint32_t iScales[ 6 ] = { 1u, 10u, 100u, 1000u, 10000u, 100000u };
         uint32_t uValue, fPart, scale;
         int32_t iPart;
 
@@ -837,7 +837,7 @@ char* qFP16_FPToA( const qFP16_t num,
 qFP16_t qFP16_AToFP( const char *s )
 {
     uint8_t neg;
-    uint32_t iPart = 0uL, fPart = 0uL, scale = 1uL, digit;
+    uint32_t iPart = 0u, fPart = 0u, scale = 1u, digit;
     int32_t count = 0;
     qFP16_t retValue = qFP16.overflow;
     int point_seen = 0, overflow = 0;
@@ -869,8 +869,8 @@ qFP16_t qFP16_AToFP( const char *s )
                 iPart += digit;
                 ++count;
                 overflow = (int)( ( 0 == count ) || ( count > 5 ) ||
-                                  ( iPart > 32768uL ) ||
-                                  ( ( 0u == neg ) && ( iPart > 32767uL ) ) );
+                                  ( iPart > 32768u ) ||
+                                  ( ( 0u == neg ) && ( iPart > 32767u ) ) );
                 if ( 1 == overflow ) {
                     break;
                 }
@@ -894,8 +894,8 @@ static uint32_t qFP16_OverflowCheck( uint32_t res,
                                      const uint32_t x,
                                      const uint32_t y )
 {
-    if ( ( 0uL == ( ( x ^ y ) & intern.overflow_mask ) ) &&
-         ( 0uL != ( ( x ^ res ) & intern.overflow_mask ) ) ) {
+    if ( ( 0u == ( ( x ^ y ) & intern.overflow_mask ) ) &&
+         ( 0u != ( ( x ^ res ) & intern.overflow_mask ) ) ) {
         res = (uint32_t)qFP16.overflow;
     }
 

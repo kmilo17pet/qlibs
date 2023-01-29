@@ -147,6 +147,7 @@ int qLTISys_Setup( qLTISys_t * const sys,
             sys->n = ( na > nb ) ? na : nb;
             sys->sysUpdate = &qLTISys_DiscreteUpdate;
             /*cstat -MISRAC2012-Rule-11.5 -CERT-EXP36-C_b*/
+            /*cppcheck-suppress misra-c2012-11.5 */
             sys->xd = (float*)x;
             /*cstat +MISRAC2012-Rule-11.5 +CERT-EXP36-C_b*/
             sys->xc = NULL;
@@ -157,6 +158,7 @@ int qLTISys_Setup( qLTISys_t * const sys,
             sys->nb = sys->n;
             sys->sysUpdate = &qLTISys_ContinuosUpdate;
             /*cstat -MISRAC2012-Rule-11.5 -CERT-EXP36-C_b*/
+            /*cppcheck-suppress misra-c2012-11.5 */
             sys->xc = (qNumA_state_t*)x;
             /*cstat +MISRAC2012-Rule-11.5 +CERT-EXP36-C_b*/
             sys->xd = NULL;

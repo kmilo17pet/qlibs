@@ -250,7 +250,7 @@ int qFIS_Setup( qFIS_t * const f,
         f->deFuzz = ( Mamdani == t ) ? &qFIS_DeFuzz_Centroid
                                      : &qFIS_DeFuzz_WtAverage;
         f->ruleWeight = NULL;
-        for ( i = 0 ; i < f->nOutputs ; ++i ) {
+        for ( i = 0u ; i < f->nOutputs ; ++i ) {
             /*cstat -CERT-FLP36-C*/
             f->output[ i ].res = ( f->output[ i ].b.max - f->output[ i ].b.min )/(float)f->nPoints;
             /*cstat +CERT-FLP36-C*/
@@ -377,6 +377,7 @@ int qFIS_StoreAggregatedRegion( qFIS_Output_t * const o,
 
     if ( ( NULL != o ) && ( t >= 0 ) && ( NULL != x ) && ( NULL != y ) ) {
         /*cstat -MISRAC2012-Rule-11.5 -CERT-EXP36-C_b*/
+        /*cppcheck-suppress misra-c2012-11.5 */
         qFIS_t *f = (qFIS_t *)o[ t ].owner;
         /*cstat +MISRAC2012-Rule-11.5 +CERT-EXP36-C_b*/
         if ( n >= f->nPoints ) {
@@ -636,6 +637,7 @@ static float qFIS_DeFuzz_Bisector( qFIS_Output_t * const o,
         case DeFuzz_End:
             o->data[ 1 ] = 0.0f;
             /*cstat -MISRAC2012-Rule-11.5 -CERT-EXP36-C_b*/
+            /*cppcheck-suppress misra-c2012-11.5 */
             f = (qFIS_t *)o->owner;
             /*cstat +MISRAC2012-Rule-11.5 +CERT-EXP36-C_b*/
             for ( k = 0u ; k < f->nPoints ; ++k ) {

@@ -26,6 +26,7 @@ void qTypeGeneric_Swap( void * const x,
                         size_t n )
 {
     /*cstat -MISRAC2012-Rule-11.5 -CERT-EXP36-C_b*/
+    /*cppcheck-suppress misra-c2012-11.5 */
     uint8_t * const a = (uint8_t * const)x, *b = (uint8_t * const)y;
     /*cstat +MISRAC2012-Rule-11.5 +CERT-EXP36-C_b*/
     size_t i = 0u, j = 0u;
@@ -57,6 +58,7 @@ void qTypeGeneric_Sort( void * const pbase,
     if ( ( NULL != pbase ) && ( size > 0u ) && ( n > 0u ) && ( NULL != cmp ) ) {
         const size_t max_thresh = 4u*size;
         /*cstat -MISRAC2012-Rule-11.5 -CERT-EXP36-C_b*/
+        /*cppcheck-suppress misra-c2012-11.5 */
         uint8_t *base_ptr = (uint8_t *)pbase;
         /*cstat +MISRAC2012-Rule-11.5 +CERT-EXP36-C_b*/
         uint8_t * const end_ptr = &base_ptr[ size*( n - 1u ) ];
@@ -185,6 +187,7 @@ void qTypeGeneric_Reverse( void * const pbase,
     if ( ( NULL != pbase ) && ( size > 0u ) && ( end > init ) ) {
         size_t s = size*init, e = size*end;
         /*cstat -MISRAC2012-Rule-11.5 -CERT-EXP36-C_b*/
+        /*cppcheck-suppress misra-c2012-11.5 */
         uint8_t *v = (uint8_t*)pbase;
         /*cstat +MISRAC2012-Rule-11.5 +CERT-EXP36-C_b*/
         while( s < e ) {
@@ -226,6 +229,7 @@ void* qTypeGeneric_Set( void * const pbase,
                         const void * const ref )
 {
     /*cstat -MISRAC2012-Rule-11.5 -CERT-EXP36-C_b*/
+    /*cppcheck-suppress misra-c2012-11.5 */
     uint8_t *p = (uint8_t*)pbase;
     /*cstat +MISRAC2012-Rule-11.5 +CERT-EXP36-C_b*/
     void *retVal = NULL;
@@ -249,6 +253,7 @@ void* qTypeGeneric_LSearch( const void *key,
                             void *arg )
 {
     /*cstat -MISRAC2012-Rule-11.5 -CERT-EXP36-C_b*/
+    /*cppcheck-suppress misra-c2012-11.5 */
     const uint8_t *element, *pb = (const uint8_t *)pbase;
     /*cstat +MISRAC2012-Rule-11.5 +CERT-EXP36-C_b*/
     void* retVal = NULL;
@@ -274,6 +279,7 @@ void* qTypeGeneric_BSearch( const void *key,
                             void *arg )
 {
     /*cstat -MISRAC2012-Rule-11.5 -CERT-EXP36-C_b*/
+    /*cppcheck-suppress misra-c2012-11.5 */
     const uint8_t *base = (const uint8_t *)pbase;
     /*cstat +MISRAC2012-Rule-11.5 +CERT-EXP36-C_b*/
     int cmp;
@@ -313,6 +319,7 @@ int qTypeGeneric_ForEach( void *pbase,
 
     if ( ( NULL != pbase ) && ( NULL != f ) && ( n > 0u ) ) {
         /*cstat -MISRAC2012-Rule-11.5 -CERT-EXP36-C_b*/
+        /*cppcheck-suppress misra-c2012-11.5 */
         uint8_t *element, *pb = (uint8_t *)pbase;
         /*cstat +MISRAC2012-Rule-11.5 +CERT-EXP36-C_b*/
         if ( 1 != f( -1, NULL, arg ) ) {

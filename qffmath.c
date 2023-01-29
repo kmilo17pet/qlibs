@@ -506,7 +506,7 @@ float qFFMath_NextAfter( float x,
         if ( 0u == ax ) {
             uxi = ( 0u == ay ) ? uyi : ( ( uyi & 0x80000000u ) | 1u );
         }
-        else if ( ( ax > ay ) || ( 0 != ( ( uxi^uyi ) & 0x80000000u ) ) ) {
+        else if ( ( ax > ay ) || ( 0u != ( ( uxi^uyi ) & 0x80000000u ) ) ) {
             uxi--;
         }
         else {

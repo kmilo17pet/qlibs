@@ -110,6 +110,7 @@ int qSSmoother_Setup( qSSmootherPtr_t * const s,
 
     if ( ( s != NULL ) && ( (size_t)type < maxTypes ) ) {
         /*cstat -MISRAC2012-Rule-11.5 -CERT-EXP36-C_b*/
+        /*cppcheck-suppress misra-c2012-11.5 */
         _qSSmoother_t * const self = (_qSSmoother_t* const)s;
         self->vt = &qSmoother_Vtbl[ type ];
         retValue = qSmoother_Vtbl[ type ].setup( s, param, window, wsize );
@@ -413,6 +414,7 @@ int qSSmoother_IsInitialized( const qSSmootherPtr_t * const s )
 
     if ( NULL != s ) {
         /*cstat -MISRAC2012-Rule-11.5 -CERT-EXP36-C_b*/
+        /*cppcheck-suppress misra-c2012-11.5 */
         const _qSSmoother_t * const f = (const _qSSmoother_t* const)s;
         /*cstat +MISRAC2012-Rule-11.5 +CERT-EXP36-C_b*/
         retValue = (int)( NULL != f->vt );
@@ -427,6 +429,7 @@ int qSSmoother_Reset( qSSmootherPtr_t * const s )
 
     if ( NULL != s ) {
         /*cstat -MISRAC2012-Rule-11.5 -CERT-EXP36-C_b*/
+        /*cppcheck-suppress misra-c2012-11.5 */
         _qSSmoother_t * const f = (_qSSmoother_t* const)s;
         /*cstat +MISRAC2012-Rule-11.5 +CERT-EXP36-C_b*/
         f->init = 1u;
@@ -443,6 +446,7 @@ float qSSmoother_Perform( qSSmootherPtr_t * const s,
 
     if ( NULL != s ) {
         /*cstat -MISRAC2012-Rule-11.5 -CERT-EXP36-C_b*/
+        /*cppcheck-suppress misra-c2012-11.5 */
         _qSSmoother_t * const f = (_qSSmoother_t* const)s;
         struct qSmoother_Vtbl_s *vt = f->vt;
         /*cstat +MISRAC2012-Rule-11.5 +CERT-EXP36-C_b*/
