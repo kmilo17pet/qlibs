@@ -409,6 +409,7 @@ int qPID_AutoTunningComplete( const qPID_controller_t * const c )
 
     if ( NULL != c ) {
         if ( NULL != c->adapt ) {
+            /*cppcheck-suppress misra-c2012-10.6 */
             retVal = ( ( 0uL == c->adapt->it ) && ( c->adapt->it != QPID_AUTOTUNNING_UNDEFINED ) ) ? 1 : 0;
         }
     }

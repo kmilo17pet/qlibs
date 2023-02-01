@@ -378,8 +378,7 @@ qFP16_t qFP16_Sqrt( qFP16_t x )
 
         retValue = 0;
         /*cppcheck-suppress [ cert-INT31-c, misra-c2012-12.2 ]*/
-        bit = ( 0 != ( x & (qFP16_t)4293918720 ) ) ? (uint32_t)( 1u << 30u )
-                                                   : (uint32_t)( 1u << 18u );
+        bit = ( 0 != ( x & (qFP16_t)4293918720 ) ) ? ( 1u << 30u ) : ( 1u << 18u );
         while ( bit > (uint32_t)x ) {
             bit >>= 2u;
         }
@@ -405,12 +404,14 @@ qFP16_t qFP16_Sqrt( qFP16_t x )
                     x -= retValue;
                     /*cppcheck-suppress misra-c2012-10.1 */
                     x = ( x << 16 ) - qFP16.one_half;
+                    /*cppcheck-suppress misra-c2012-10.1 */
                     retValue = ( retValue << 16 ) + qFP16.one_half;
                 }
                 else {
                     x <<= 16;
                     retValue <<= 16;
                 }
+                /*cppcheck-suppress misra-c2012-10.6 */
                 bit = 1u << 14u;
             }
         }
@@ -863,7 +864,7 @@ qFP16_t qFP16_AToFP( const char *s )
     uint32_t iPart = 0u, fPart = 0u, scale = 1u, digit;
     int32_t count = 0;
     qFP16_t retValue = qFP16.overflow;
-    bool point_seen = false, overflow = false;
+    bool point_seen = false, overflow = false, badchr = false;
     char c;
 
     /*cstat -MISRAC2012-Dir-4.11_h*/
@@ -882,7 +883,7 @@ qFP16_t qFP16_AToFP( const char *s )
         }
         else if ( 0 != isdigit( (int)c ) ) {
             digit = (uint32_t)c - (uint32_t)'0';
-            if ( 1 == point_seen ) { /* Decode the fractional part */
+            if ( point_seen ) { /* Decode the fractional part */
                 scale *= 10u;
                 fPart *= 10u;
                 fPart += digit;
@@ -897,14 +898,14 @@ qFP16_t qFP16_AToFP( const char *s )
             }
         }
         else {
-            overflow = true;
+            badchr = true;
         }
-        if ( overflow ) {
+        if ( overflow || badchr ) {
             break;
         }
         s++;
     }
-    if ( 0 == overflow ) {
+    if ( false == overflow ) {
         /*cppcheck-suppress misra-c2012-10.1 */
         retValue = (qFP16_t)iPart << 16;
         retValue += qFP16_Div( (qFP16_t)fPart, (qFP16_t)scale );
@@ -952,6 +953,7 @@ static qFP16_t qFP16_log2i( qFP16_t x )
     }
 
     if ( 0 == x ) {
+        /*cppcheck-suppress misra-c2012-10.1 */
         retValue = retValue << 16;
     }
     else {

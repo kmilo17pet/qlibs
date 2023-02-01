@@ -120,6 +120,7 @@ int qLTISys_IsInitialized( const qLTISys_t * const sys )
     int retValue = 0;
 
     if ( NULL != sys ) {
+        /*cppcheck-suppress misra-c2012-10.6 */
         retValue = ( ( NULL != sys->sysUpdate ) && ( ( NULL != sys->xc ) || ( NULL != sys->xd  ) ) ) ? 1 : 0;
     }
 
