@@ -251,6 +251,7 @@ int qFIS_Setup( qFIS_t * const f,
         retVal += qFIS_SetParameter( f, qFIS_OR, qFIS_MAX );
         retVal += qFIS_SetParameter( f, qFIS_Implication, qFIS_MIN );
         retVal += qFIS_SetParameter( f, qFIS_Aggregation, qFIS_MAX );
+        /*cppcheck-suppress misra-c2012-10.6 */
         retVal = ( 5 == retVal ) ? 1 : 0;
         f->deFuzz = ( Mamdani == t ) ? &qFIS_DeFuzz_Centroid
                                      : &qFIS_DeFuzz_WtAverage;

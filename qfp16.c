@@ -128,9 +128,11 @@ int qFP16_FPToInt( const qFP16_t x )
 
     if ( 1u == fp->rounding ) {
         if ( x >= 0 ) {
+            /*cppcheck-suppress misra-c2012-10.1 */
             retValue = ( x + ( qFP16.one >> 1 ) ) / qFP16.one;
         }
         else {
+            /*cppcheck-suppress misra-c2012-10.1 */
             retValue = ( x - ( qFP16.one >> 1 ) ) / qFP16.one;
         }
     }
@@ -202,6 +204,7 @@ qFP16_t qFP16_Abs( const qFP16_t x )
 /*============================================================================*/
 qFP16_t qFP16_Floor( const qFP16_t x )
 {
+    /*cppcheck-suppress misra-c2012-10.8 */
     return (qFP16_t)( (uint32_t)x & intern.integer_mask );
 }
 /*============================================================================*/
@@ -249,21 +252,27 @@ qFP16_t qFP16_Mul( const qFP16_t x,
     int32_t a, c, ac, adcb, mulH;
     uint32_t b, d, bd, tmp, mulL;
     /*cstat -MISRAC2012-Rule-10.3*/
+    /*cppcheck-suppress misra-c2012-10.1 */
     a = ( x >> 16 );
+    /*cppcheck-suppress misra-c2012-10.1 */
     c = ( y >> 16 );
     b = ( x & 0xFFFF );
     d = ( y & 0xFFFF );
     /*cstat +MISRAC2012-Rule-10.3*/
     ac = a*c;
+    /*cppcheck-suppress misra-c2012-10.8 */
     adcb = (int32_t)( ( (uint32_t)a*d ) + ( (uint32_t)c*b ) );
     bd = b*d;
+    /*cppcheck-suppress misra-c2012-10.1 */
     mulH = ac + ( adcb >> 16 );
     tmp = (uint32_t)adcb << 16;
     mulL = bd + tmp;
     if ( mulL < bd ) {
         ++mulH;
     }
+    /*cppcheck-suppress misra-c2012-10.6 */
     a = ( mulH < 0 ) ? -1 : 0;
+    /*cppcheck-suppress misra-c2012-10.1 */
     if ( a == ( mulH >> 15 ) ) {
         if ( 1u == fp->rounding ) {
             uint32_t tmp2;
@@ -274,10 +283,12 @@ qFP16_t qFP16_Mul( const qFP16_t x,
             if ( mulL > tmp2 ) {
                 --mulH;
             }
+            /*cppcheck-suppress misra-c2012-10.1 */
             retValue = (qFP16_t)( mulH << 16 ) | (qFP16_t)( mulL >> 16 );
             retValue += 1;
         }
         else {
+            /*cppcheck-suppress misra-c2012-10.1 */
             retValue = (qFP16_t)( mulH << 16 ) | (qFP16_t)( mulL >> 16 );
         }
     }
@@ -330,7 +341,7 @@ qFP16_t qFP16_Div( const qFP16_t x,
             }
 
             retValue = (qFP16_t)quotient;
-
+            /*cppcheck-suppress misra-c2012-10.8 */
             if ( 0u != ( (uint32_t)( x ^ y ) & intern.overflow_mask ) ) {
                 if ( quotient == (uint32_t)fp->min ) {
                     retValue = qFP16.overflow;
@@ -366,27 +377,33 @@ qFP16_t qFP16_Sqrt( qFP16_t x )
         uint8_t n;
 
         retValue = 0;
+        /*cppcheck-suppress misra-c2012-12.2 */
         bit = ( 0 != ( x & (qFP16_t)4293918720 ) ) ? (uint32_t)( 1u << 30u )
-                                                    : (uint32_t)( 1u << 18u );
+                                                   : (uint32_t)( 1u << 18u );
         while ( bit > (uint32_t)x ) {
-            bit >>= 2;
+            bit >>= 2u;
         }
 
         for ( n = 0u ; n < 2u ; ++n ) {
             while ( 0u != bit ) {
+                /*cppcheck-suppress misra-c2012-10.8 */
                 if ( x >= (qFP16_t)( (uint32_t)retValue + bit ) ) {
+                    /*cppcheck-suppress misra-c2012-10.8 */
                     x -= (qFP16_t)( (uint32_t)retValue + bit );
+                    /*cppcheck-suppress misra-c2012-10.8 */
                     retValue = (qFP16_t)( ( (uint32_t)retValue >> 1u ) + bit );
                 }
                 else {
+                    /*cppcheck-suppress misra-c2012-10.1 */
                     retValue = ( retValue >> 1 );
                 }
-                bit >>= 2;
+                bit >>= 2u;
             }
 
             if ( 0u == n ) {
                 if ( x > 65535 ) {
                     x -= retValue;
+                    /*cppcheck-suppress misra-c2012-10.1 */
                     x = ( x << 16 ) - qFP16.one_half;
                     retValue = ( retValue << 16 ) + qFP16.one_half;
                 }
@@ -394,7 +411,7 @@ qFP16_t qFP16_Sqrt( qFP16_t x )
                     x <<= 16;
                     retValue <<= 16;
                 }
-                bit = 1 << 14;
+                bit = 1u << 14u;
             }
         }
     }
@@ -594,7 +611,7 @@ qFP16_t qFP16_Atan2( const qFP16_t y,
     const qFP16_t QFP16_0_981689 = 0x0000FB50;
     const qFP16_t QFP16_0_196289 = 0x00003240;
     static const qFP16_t f_3pi_div_4 = 154415; /*3*pi/4*/
-
+    /*cppcheck-suppress misra-c2012-10.1 */
     mask = ( y >> ( sizeof(qFP16_t)*7u ) );
     absY = ( y + mask ) ^ mask;
     if ( x >= 0 ) {
@@ -655,6 +672,7 @@ qFP16_t qFP16_Cosh( qFP16_t x )
         enx = qFP16_Exp( -x );
         if ( ( qFP16.overflow != epx ) && ( qFP16.overflow != enx ) ) {
             retValue = epx + enx;
+            /*cppcheck-suppress misra-c2012-10.1 */
             retValue = ( retValue >> 1 );
         }
     }
@@ -681,6 +699,7 @@ qFP16_t qFP16_Sinh( qFP16_t x )
         enx = qFP16_Exp( -x );
         if ( ( qFP16.overflow != epx ) && ( qFP16.overflow != enx ) ) {
             retValue = epx - enx;
+            /*cppcheck-suppress misra-c2012-10.1 */
             retValue = ( retValue >> 1 );
         }
     }
@@ -741,6 +760,7 @@ qFP16_t qFP16_IPow( const qFP16_t x,
     int32_t i;
 
     retValue = qFP16.one;
+    /*cppcheck-suppress misra-c2012-10.1 */
     n = y >> 16;
     if ( 0 == n ) {
         retValue = qFP16.one;
@@ -885,6 +905,7 @@ qFP16_t qFP16_AToFP( const char *s )
         s++;
     }
     if ( 0 == overflow ) {
+        /*cppcheck-suppress misra-c2012-10.1 */
         retValue = (qFP16_t)iPart << 16;
         retValue += qFP16_Div( (qFP16_t)fPart, (qFP16_t)scale );
         retValue = ( 1u == neg ) ? -retValue : retValue;
@@ -910,9 +931,11 @@ static qFP16_t qFP16_rs( const qFP16_t x )
     qFP16_t retValue;
 
     if ( 1u == fp->rounding ) {
+        /*cppcheck-suppress misra-c2012-10.1 */
         retValue = ( x >> 1u ) + ( x & 1 );
     }
     else {
+        /*cppcheck-suppress misra-c2012-10.1 */
         retValue = x >> 1;
     }
 

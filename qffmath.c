@@ -37,6 +37,7 @@ int qFFMath_FPClassify( const float f )
     uint32_t u = 0u;
     int retVal;
 
+    /*cppcheck-suppress misra-c2012-21.15 */
     cast_reinterpret( u, f, uint32_t );
     u &= 0x7FFFFFFFu;
 
