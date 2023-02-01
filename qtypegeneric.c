@@ -83,7 +83,8 @@ void qTypeGeneric_Sort( void * const pbase,
                     qTypeGeneric_Swap( mid, hi, size );
                 }
                 else {
-                    goto jump_over;
+                    /*cppcheck-suppress misra-c2012-15.1 */
+                    goto jump_over; /*MISRAC deviation allowed*/
                 }
                 if ( cmp( mid, lo, arg ) < 0 ) {
                     qTypeGeneric_Swap( mid, lo, size );

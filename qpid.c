@@ -409,9 +409,7 @@ int qPID_AutoTunningComplete( const qPID_controller_t * const c )
 
     if ( NULL != c ) {
         if ( NULL != c->adapt ) {
-            retVal = ( ( 0uL == c->adapt->it ) &&
-                       ( c->adapt->it != QPID_AUTOTUNNING_UNDEFINED )
-                     ) ? 1 : 0;
+            retVal = ( ( 0uL == c->adapt->it ) && ( c->adapt->it != QPID_AUTOTUNNING_UNDEFINED ) ) ? 1 : 0;
         }
     }
 

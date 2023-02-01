@@ -377,7 +377,7 @@ qFP16_t qFP16_Sqrt( qFP16_t x )
         uint8_t n;
 
         retValue = 0;
-        /*cppcheck-suppress misra-c2012-12.2 */
+        /*cppcheck-suppress [ cert-INT31-c, misra-c2012-12.2 ]*/
         bit = ( 0 != ( x & (qFP16_t)4293918720 ) ) ? (uint32_t)( 1u << 30u )
                                                    : (uint32_t)( 1u << 18u );
         while ( bit > (uint32_t)x ) {
@@ -458,7 +458,7 @@ qFP16_t qFP16_Exp( qFP16_t x )
             }
         }
 
-        if ( 1u == isNegative ) {
+        if ( isNegative ) {
             retValue = qFP16_Div( qFP16.one, retValue );
         }
     }
@@ -863,7 +863,7 @@ qFP16_t qFP16_AToFP( const char *s )
     uint32_t iPart = 0u, fPart = 0u, scale = 1u, digit;
     int32_t count = 0;
     qFP16_t retValue = qFP16.overflow;
-    int point_seen = 0, overflow = 0;
+    bool point_seen = false, overflow = false;
     char c;
 
     /*cstat -MISRAC2012-Dir-4.11_h*/
@@ -878,7 +878,7 @@ qFP16_t qFP16_AToFP( const char *s )
 
     for ( c = s[ 0 ] ; '\0' != c ; c = s[ 0 ] ) {
         if ( '.' == c ) {
-            point_seen = 1;
+            point_seen = true;
         }
         else if ( 0 != isdigit( (int)c ) ) {
             digit = (uint32_t)c - (uint32_t)'0';
@@ -893,13 +893,13 @@ qFP16_t qFP16_AToFP( const char *s )
                 ++count;
                 overflow = ( ( 0 == count ) || ( count > 5 ) ||
                              ( iPart > 32768u ) ||
-                             ( ( 0u == neg ) && ( iPart > 32767u ) ) ) ? 1 : 0;
-                if ( 1 == overflow ) {
-                    break;
-                }
+                             ( ( 0u == neg ) && ( iPart > 32767u ) ) );
             }
         }
         else {
+            overflow = true;
+        }
+        if ( overflow ) {
             break;
         }
         s++;
