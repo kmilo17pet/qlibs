@@ -200,9 +200,11 @@ float qVFloat_Operate( float * dst,
                        const float * const y,
                        const size_t n )
 {
+    /*cppcheck-suppress variableScope */
     static qVFloat_VVFcn_t vv_fcn[ 3 ] = {
                                          &qVFloat_VV_Add, &qVFloat_VV_Mul, &qVFloat_VV_Div
                                          };
+    /*cppcheck-suppress variableScope */
     static qVFloat_kVFcn_t kv_fcn[ 3 ] = {
                                          &qVFloat_kV_Add, &qVFloat_kV_Mul, &qVFloat_kV_Div
                                          };

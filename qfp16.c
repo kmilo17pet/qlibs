@@ -18,8 +18,7 @@ struct _qFP16_intern_s
     f_3,                    /* [ 3 ] */
     f_16,                   /* [ -16 ] */
     f_100,                  /* [ 100 ] */
-    f_6_5,                  /* [ 6.5 ] */
-    f_4_pi;                 /* [ 4/pi ] */
+    f_6_5;                  /* [ 6.5 ] */
     const float one_fp16_f; /* [ 1/65536 ] */
     const double one_fp16_d;/* [ 1/65536 ] */
     const uint32_t
@@ -35,7 +34,6 @@ static const struct _qFP16_intern_s intern = {
     /*f_16*/            1048576,
     /*f_100*/           6553600,
     /*f_6_5*/           425984,
-    /*f_4_pi*/          83443,
     /*one_fp16_f*/      0.0000152587890625f,
     /*one_fp16_d*/      0.0000152587890625,
     /*overflow_mask*/   0x80000000u,
@@ -377,7 +375,7 @@ qFP16_t qFP16_Sqrt( qFP16_t x )
         uint8_t n;
 
         retValue = 0;
-        /*cppcheck-suppress [ cert-INT31-c, misra-c2012-12.2 ]*/
+        /*cppcheck-suppress [ cert-INT31-c, misra-c2012-12.2, misra-c2012-12.1  ]*/
         bit = ( 0 != ( x & (qFP16_t)4293918720 ) ) ? ( 1u << 30u ) : ( 1u << 18u );
         while ( bit > (uint32_t)x ) {
             bit >>= 2u;
@@ -411,7 +409,7 @@ qFP16_t qFP16_Sqrt( qFP16_t x )
                     x <<= 16;
                     retValue <<= 16;
                 }
-                /*cppcheck-suppress misra-c2012-10.6 */
+                /*cppcheck-suppress [ misra-c2012-10.6, misra-c2012-12.2 ] */
                 bit = 1u << 14u;
             }
         }
