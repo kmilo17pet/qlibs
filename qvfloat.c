@@ -272,7 +272,7 @@ int qVFloat_Moment( qVFloat_Moment_t * const m,
 
     if ( n > 1u ) {
         size_t j;
-        float ep = 0.0f, s = 0.0f, p;
+        float ep = 0.0f, s = 0.0f;
         /*cstat -CERT-FLP36-C*/
         const float l = (float)n;
         /*cstat +CERT-FLP36-C*/
@@ -282,7 +282,10 @@ int qVFloat_Moment( qVFloat_Moment_t * const m,
         }
         m->mean = s/l;
         for ( j = 1u ; j <= n ; ++j ) {
+            float p;
+
             s = x[ j ] - m->mean;
+            ep += s;
             m->avgDev += QLIB_ABS( s );
             p = s*s;
             m->var += p;
@@ -354,6 +357,7 @@ float* qVFloat_LinSpace( float * const dst,
                          const size_t n )
 {
     /*cstat -CERT-FLP36-C -MISRAC2012-Rule-10.8*/
+    /*cppcheck-suppress misra-c2012-10.8 */
     float step = ( x2 - x1 )/(float)( n - 1u );
     size_t i;
 
@@ -372,10 +376,10 @@ float qVFloat_Distance( const float * const x,
 
     if ( ( NULL != x ) && ( NULL != y ) ) {
         size_t i;
-        float tmp;
 
         for ( i = 0u ; i < n ; ++i ) {
-            tmp = x[ i ] - y[ i ];
+            float tmp = x[ i ] - y[ i ];
+
             s += tmp*tmp;
         }
         /*cstat -MISRAC2012-Dir-4.11_b*/
@@ -475,6 +479,7 @@ static int qVFloat_CmpAsc( const void *a,
     /*cppcheck-suppress misra-c2012-11.5 */
     const float *fb = (const float*)b;
     (void)arg;
+    /*cppcheck-suppress misra-c2012-10.5 */
     return ( (int)( fa[ 0 ] > fb[ 0 ] ) ) - ( (int)( fa[ 0 ] < fb[ 0 ] ) );
 }
 /*============================================================================*/
@@ -487,6 +492,7 @@ static int qVFloat_CmpDes( const void *a,
     /*cppcheck-suppress misra-c2012-11.5 */
     const float *fb = (const float*)b;
     (void)arg;
+    /*cppcheck-suppress misra-c2012-10.5 */
     return (int)( fa[ 0 ] < fb[ 0 ] ) - (int)( fa[ 0 ] > fb[ 0 ] );
     /*cstat +MISRAC2012-Rule-11.5 +CERT-EXP36-C_b +MISRAC2012-Rule-10.1_R3*/
 }

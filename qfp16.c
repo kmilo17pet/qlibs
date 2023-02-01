@@ -365,7 +365,7 @@ qFP16_t qFP16_Sqrt( qFP16_t x )
         uint8_t n;
 
         retValue = 0;
-        bit = ( 0 != ( x & (qFP16_t)0xFFF00000u ) ) ? (uint32_t)( 1u << 30u )
+        bit = ( 0 != ( x & (qFP16_t)4293918720 ) ) ? (uint32_t)( 1u << 30u )
                                                     : (uint32_t)( 1u << 18u );
         while ( bit > (uint32_t)x ) {
             bit >>= 2;
@@ -454,7 +454,7 @@ qFP16_t qFP16_Log( qFP16_t x )
     static const qFP16_t e4 = 3578144; /*e^4*/
 
     if ( x > 0 ) {
-        qFP16_t guess = intern.f_2, delta, e;
+        qFP16_t guess = intern.f_2, delta;
         int scaling = 0, count = 0;
 
         while ( x > intern.f_100 ) {
@@ -463,12 +463,13 @@ qFP16_t qFP16_Log( qFP16_t x )
         }
 
         while ( x < qFP16.one ) {
-            x = qFP16_Mul(x, e4 );
+            x = qFP16_Mul( x, e4 );
             scaling -= 4;
         }
 
         do {
-            e = qFP16_Exp( guess );
+            qFP16_t e = qFP16_Exp( guess );
+
             delta = qFP16_Div( x - e , e );
 
             if ( delta > intern.f_3 ) {
@@ -714,12 +715,13 @@ qFP16_t qFP16_Polyval( const qFP16_t * const p,
                        const size_t n,
                        const qFP16_t x )
 {
-    qFP16_t fx, tmp;
+    qFP16_t fx;
     size_t i;
     /*polynomial evaluation using Horner's method*/
     fx = p[ 0 ];
     for ( i = 1u ; i < n ; ++i ) {
-        tmp = qFP16_Mul( fx, x );
+        qFP16_t tmp = qFP16_Mul( fx, x );
+
         if ( qFP16.overflow == tmp ) {
             fx = qFP16.overflow;
             break;

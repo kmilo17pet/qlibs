@@ -120,7 +120,7 @@ int qLTISys_IsInitialized( const qLTISys_t * const sys )
     int retValue = 0;
 
     if ( NULL != sys ) {
-        retValue = (int)( ( NULL != sys->sysUpdate ) && ( ( NULL != sys->xc ) || ( NULL != sys->xd  ) ) );
+        retValue = ( ( NULL != sys->sysUpdate ) && ( ( NULL != sys->xc ) || ( NULL != sys->xd  ) ) ) ? 1 : 0;
     }
 
     return retValue;

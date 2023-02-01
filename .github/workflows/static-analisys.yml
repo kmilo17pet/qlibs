@@ -26,7 +26,7 @@ jobs:
     - name: CERT checks 
       run: cppcheck --addon=cert.py --inline-suppr --inconclusive --std=c99 ./ -I ./include --output-file=./sa_results/cert.txt --suppress=missingIncludeSystem --suppress=unmatchedSuppression:{}
     - name: MISRA checks 
-      run: cppcheck --addon=./check/misra.json --inline-suppr --inconclusive --std=c99 ./ -I ./include --output-file=./sa_results/misra.txt --suppress=missingIncludeSystem --suppress=unmatchedSuppression:{} --suppress=misra-c2012-21.15
+      run: cppcheck --addon=./check/misra.json --inline-suppr --inconclusive --std=c99 ./ -I ./include --output-file=./sa_results/misra.txt --suppress=missingIncludeSystem --suppress=unmatchedSuppression:{}
     - uses: actions/upload-artifact@v3
       with:
         name: Static_Analisys_Results

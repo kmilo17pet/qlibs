@@ -149,24 +149,28 @@ int qFIS_SetParameter( qFIS_t * const f,
         switch ( p ) {
             case qFIS_Implication:
                 if ( x <= qFIS_PROD ) {
+                    /*cppcheck-suppress misra-c2012-11.1 */
                     f->implicate = method[ x ];
                     retVal = 1;
                 }
                 break;
             case qFIS_Aggregation:
                 if ( ( x >= qFIS_MAX ) && ( x <= qFIS_SUM ) ) {
+                    /*cppcheck-suppress misra-c2012-11.1 */
                     f->aggregate = method[ x ];
                     retVal = 1;
                 }
                 break;
             case qFIS_AND:
                 if ( x <= qFIS_PROD ) {
+                    /*cppcheck-suppress misra-c2012-11.1 */
                     f->andOp = method[ x ];
                     retVal = 1;
                 }
                 break;
             case qFIS_OR:
                 if ( ( x >= qFIS_MAX ) && ( x <= qFIS_PROBOR ) ) {
+                    /*cppcheck-suppress misra-c2012-11.1 */
                     f->orOp = method[ x ];
                     retVal = 1;
                 }
@@ -203,6 +207,7 @@ int qFIS_SetDeFuzzMethod( qFIS_t * const f,
         if ( ( ( Mamdani == f->type ) && ( m <= som ) ) ||
              ( ( Sugeno == f->type ) && ( m >= wtaver ) && ( m <= wtsum ) ) ||
              ( ( Tsukamoto == f->type ) && ( wtaver == m ) )) {
+            /*cppcheck-suppress misra-c2012-11.1 */
             f->deFuzz = method[ m ];
             retVal = 1;
         }
@@ -398,6 +403,7 @@ static void qFIS_EvalInputMFs( qFIS_t * const f )
     for ( i = 0 ; i < f->nMFInputs ; ++i ) {
         mf = &f->inMF[ i ];
         /*cstat -MISRAC2012-Rule-11.3 -CERT-EXP39-C_d*/
+        /*cppcheck-suppress misra-c2012-11.3 */
         mf->fx = mf->h*mf->shape( (qFIS_IO_Base_t*)&f->input[ mf->index ],
                                   mf->points,
                                   1u );
@@ -432,7 +438,7 @@ int qFIS_Fuzzify( qFIS_t * const f )
 static float qFIS_ParseFuzzValue( qFIS_MF_t * const mfIO,
                                   qFIS_Rules_t index )
 {
-    uint8_t neg = (uint8_t)( index < 0 );
+    uint8_t neg = ( index < 0 ) ? 1u : 0u ;
     float y;
 
     if ( 0u != neg ) {
@@ -441,6 +447,7 @@ static float qFIS_ParseFuzzValue( qFIS_MF_t * const mfIO,
     /*cstat -CERT-INT32-C_a*/
     y = qFIS_Bound( mfIO[ index - 1 ].fx, 0.0f, 1.0f );
     /*cstat +CERT-INT32-C_a*/
+    /*cppcheck-suppress misra-c2012-12.1 */
     y = ( 0u != neg ) ? ( 1.0f - y ) : y ;
 
     return y;
@@ -552,14 +559,17 @@ static size_t qFIS_InferenceConsequent( struct _qFIS_s * const f,
         if ( Mamdani == f->type ) {
             float v;
             /*cstat -MISRAC2012-Rule-11.3 -CERT-EXP39-C_d*/
+            /*cppcheck-suppress misra-c2012-11.3 */
             v = m->h*m->shape( (qFIS_IO_Base_t*)o, m->points, 1u );
             /*cstat +MISRAC2012-Rule-11.3 +CERT-EXP39-C_d*/
+            /*cppcheck-suppress misra-c2012-12.1 */
             v = ( 1u == neg )? ( 1.0f - v ) : v;
             o->y = f->aggregate( o->y, f->implicate( f->wi[ f->ruleCount ], v ) );
         }
         else { /* Sugeno and Tsukamoto*/
             float zi;
             /*cstat -MISRAC2012-Rule-11.3 -CERT-EXP39-C_d*/
+            /*cppcheck-suppress misra-c2012-11.3 */
             zi = m->shape( (qFIS_IO_Base_t*)f->input, m->points, f->nInputs );
             /*cstat +MISRAC2012-Rule-11.3 +CERT-EXP39-C_d*/
             o->data[ 0 ] += zi*f->wi[ f->ruleCount ];

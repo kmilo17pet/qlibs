@@ -47,6 +47,7 @@ uint32_t qCRCx( const qCRC_Mode_t mode,
         const uint32_t widthValues[ 3 ] = { 8uL, 16uL, 32uL };
         const uint32_t width = widthValues[ mode ];
         /*cstat -MISRAC2012-Rule-11.5 -CERT-EXP36-C_b*/
+        /*cppcheck-suppress misra-c2012-11.5 */
         uint8_t const * const msg = pData;
         /*cstat +MISRAC2012-Rule-11.5 +CERT-EXP36-C_b*/
         const uint32_t wd1 = (uint32_t)width - 8u;

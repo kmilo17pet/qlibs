@@ -247,7 +247,7 @@ int qBitField_WriteUINTn( qBitField_t * const b,
             w = qBitField_Read_uint32( b, index );
             value &= qBitField_SafeMask( 0xFFFFFFFFu, 32u, xBits );
             /*cstat -ATH-overflow*/
-            mask = (uint32_t)0xFFFFFFFFu << xBits;
+            mask = (uint32_t)0xFFFFFFFFu << (uint32_t)xBits;
             /*cstat +ATH-overflow*/
             qBitField_Write_uint32( b, index, qBitField_MaskMerge( w, value, mask ) );
         }

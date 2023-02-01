@@ -130,6 +130,7 @@ static int qSSmoother_Setup_LPF1( _qSSmoother_t * const f,
 
     if ( ( alpha > 0.0f ) && ( alpha < 1.0f ) ) {
         /*cstat -MISRAC2012-Rule-11.3 -CERT-EXP39-C_d -CERT-EXP36-C_a*/
+        /*cppcheck-suppress misra-c2012-11.3 */
         qSSmoother_LPF1_t * const s = (qSSmoother_LPF1_t* const)f;
         /*cstat +MISRAC2012-Rule-11.3 +CERT-EXP39-C_d +CERT-EXP36-C_a*/
         s->alpha = alpha;
@@ -151,6 +152,7 @@ static int qSSmoother_Setup_LPF2( _qSSmoother_t * const f,
 
     if ( ( alpha > 0.0f ) && ( alpha < 1.0f ) ) {
         /*cstat -MISRAC2012-Rule-11.3 -CERT-EXP39-C_d -CERT-EXP36-C_a*/
+        /*cppcheck-suppress misra-c2012-11.3 */
         qSSmoother_LPF2_t * const s = (qSSmoother_LPF2_t* const)f;
         /*cstat +MISRAC2012-Rule-11.3 +CERT-EXP39-C_d +CERT-EXP36-C_a*/
         float aa, p1, r;
@@ -180,6 +182,7 @@ static int qSSmoother_Setup_MWM1( _qSSmoother_t * const f,
 
     if ( ( NULL != window ) && ( wsize > 0u ) ) {
         /*cstat -MISRAC2012-Rule-11.3 -CERT-EXP39-C_d -CERT-EXP36-C_a*/
+        /*cppcheck-suppress misra-c2012-11.3 */
         qSSmoother_MWM1_t * const s = (qSSmoother_MWM1_t* const)f;
         /*cstat +MISRAC2012-Rule-11.3 +CERT-EXP39-C_d +CERT-EXP36-C_a*/
         s->w = window;
@@ -200,6 +203,7 @@ static int qSSmoother_Setup_MWM2( _qSSmoother_t * const f,
 
     if ( ( NULL != window ) && ( wsize > 0u ) ) {
         /*cstat -MISRAC2012-Rule-11.3 -CERT-EXP39-C_d -CERT-EXP36-C_a*/
+        /*cppcheck-suppress misra-c2012-11.3 */
         qSSmoother_MWM2_t * const s = (qSSmoother_MWM2_t* const)f;
         /*cstat +MISRAC2012-Rule-11.3 +CERT-EXP39-C_d +CERT-EXP36-C_a*/
         qTDL_Setup( &s->tdl, window, wsize, 0.0f );
@@ -221,6 +225,7 @@ static int qSSmoother_Setup_MOR1( _qSSmoother_t * const f,
 
     if ( ( NULL != window ) && ( wsize > 0u ) && ( a > 0.0f ) && ( a < 1.0f ) ) {
         /*cstat -MISRAC2012-Rule-11.3 -CERT-EXP39-C_d -CERT-EXP36-C_a*/
+        /*cppcheck-suppress misra-c2012-11.3 */
         qSSmoother_MOR1_t * const s = (qSSmoother_MOR1_t* const)f;
         /*cstat +MISRAC2012-Rule-11.3 +CERT-EXP39-C_d +CERT-EXP36-C_a*/
         s->w = window;
@@ -242,6 +247,7 @@ static int qSSmoother_Setup_MOR2( _qSSmoother_t * const f,
 
     if ( ( NULL != window ) && ( wsize > 0u ) && ( q > 0.0f ) && ( q < 1.0f ) ) {
         /*cstat -MISRAC2012-Rule-11.3 -CERT-EXP39-C_d -CERT-EXP36-C_a*/
+        /*cppcheck-suppress misra-c2012-11.3 */
         qSSmoother_MOR2_t * const s = (qSSmoother_MOR2_t* const)f;
         /*cstat +MISRAC2012-Rule-11.3 +CERT-EXP39-C_d +CERT-EXP36-C_a*/
         s->alpha  = q;
@@ -268,6 +274,7 @@ static int qSSmoother_Setup_GMWF( _qSSmoother_t * const f,
 
     if ( ( NULL != window ) && ( wsize > 0u ) && ( c < ws ) && ( sg > 0.0f ) ) {
         /*cstat -MISRAC2012-Rule-11.3 -CERT-EXP39-C_d -CERT-EXP36-C_a*/
+        /*cppcheck-suppress misra-c2012-11.3 */
         qSSmoother_GMWF_t * const s = (qSSmoother_GMWF_t* const)f;
         /*cstat +MISRAC2012-Rule-11.3 +CERT-EXP39-C_d +CERT-EXP36-C_a*/
         float *kernel = &window[ ws ];
@@ -275,6 +282,7 @@ static int qSSmoother_Setup_GMWF( _qSSmoother_t * const f,
         size_t i;
         float l, center;
         /*cstat -CERT-FLP36-C -MISRAC2012-Rule-10.8*/
+        /*cppcheck-suppress misra-c2012-10.8 */
         l = (float)( wsize - 1u )/2.0f;
         center = (float)c - l;
         r = 2.0f*sg*sg;
@@ -309,6 +317,7 @@ static int qSSmoother_Setup_KLMN( _qSSmoother_t * const f,
 
     if ( ( p > 0.0f ) && ( q > 0.0f ) && ( r > 0.0f ) ) {
         /*cstat -MISRAC2012-Rule-11.3 -CERT-EXP39-C_d -CERT-EXP36-C_a*/
+        /*cppcheck-suppress misra-c2012-11.3 */
         qSSmoother_KLMN_t * const s = (qSSmoother_KLMN_t* const)f;
         /*cstat +MISRAC2012-Rule-11.3 +CERT-EXP39-C_d +CERT-EXP36-C_a*/
         s->p = p;
@@ -334,6 +343,7 @@ static int qSSmoother_Setup_EXPW( _qSSmoother_t * const f,
 
     if ( ( lambda > 0.0f ) && ( lambda < 1.0f ) ) {
         /*cstat -MISRAC2012-Rule-11.3 -CERT-EXP39-C_d -CERT-EXP36-C_a*/
+        /*cppcheck-suppress misra-c2012-11.3 */
         qSSmoother_EXPW_t * const s = (qSSmoother_EXPW_t* const)f;
         /*cstat +MISRAC2012-Rule-11.3 +CERT-EXP39-C_d +CERT-EXP36-C_a*/
         s->lambda = lambda;
@@ -359,6 +369,7 @@ static int qSSmoother_Setup_DESF( _qSSmoother_t * const f,
 
     if ( ( n >= 0.0f ) && ( a > 0.0f ) && ( a < 1.0f ) && ( b > 0.0f ) && ( b < 1.0f ) ) {
         /*cstat -MISRAC2012-Rule-11.3 -CERT-EXP39-C_d -CERT-EXP36-C_a*/
+        /*cppcheck-suppress misra-c2012-11.3 */
         qSSmoother_DESF_t * const s = (qSSmoother_DESF_t* const)f;
         /*cstat +MISRAC2012-Rule-11.3 +CERT-EXP39-C_d +CERT-EXP36-C_a*/
         s->alpha = a;
@@ -383,6 +394,7 @@ static int qSSmoother_Setup_ALNF( _qSSmoother_t * const f,
 
     if ( ( NULL != window ) && ( wsize > 0u ) && ( a > 0.0f ) && ( a < 1.0f ) && ( m > 0.0f ) && ( m < 1.0f ) ) {
         /*cstat -MISRAC2012-Rule-11.3 -CERT-EXP39-C_d -CERT-EXP36-C_a*/
+        /*cppcheck-suppress misra-c2012-11.3 */
         qSSmoother_ALNF_t * const s = (qSSmoother_ALNF_t* const)f;
         /*cstat +MISRAC2012-Rule-11.3 +CERT-EXP39-C_d +CERT-EXP36-C_a*/
         s->alpha = a;
@@ -417,7 +429,7 @@ int qSSmoother_IsInitialized( const qSSmootherPtr_t * const s )
         /*cppcheck-suppress misra-c2012-11.5 */
         const _qSSmoother_t * const f = (const _qSSmoother_t* const)s;
         /*cstat +MISRAC2012-Rule-11.5 +CERT-EXP36-C_b*/
-        retValue = (int)( NULL != f->vt );
+        retValue = ( NULL != f->vt ) ? 1 : 0;
     }
 
     return retValue;
@@ -463,6 +475,7 @@ static float qSSmoother_Filter_LPF1( _qSSmoother_t * const f,
 {
     float y;
     /*cstat -CERT-EXP36-C_a -MISRAC2012-Rule-11.3 -CERT-EXP39-C_d*/
+    /*cppcheck-suppress misra-c2012-11.3 */
     qSSmoother_LPF1_t * const s = (qSSmoother_LPF1_t* const)f;
     /*cstat +CERT-EXP36-C_a +MISRAC2012-Rule-11.3 +CERT-EXP39-C_d*/
     if ( 1u == f->init ) {
@@ -480,6 +493,7 @@ static float qSSmoother_Filter_LPF2( _qSSmoother_t * const f,
 {
     float y;
     /*cstat -CERT-EXP36-C_a -MISRAC2012-Rule-11.3 -CERT-EXP39-C_d*/
+    /*cppcheck-suppress misra-c2012-11.3 */
     qSSmoother_LPF2_t * const s = (qSSmoother_LPF2_t* const)f;
     /*cstat +CERT-EXP36-C_a +MISRAC2012-Rule-11.3 +CERT-EXP39-C_d*/
     if ( 1u == f->init ) {
@@ -503,6 +517,7 @@ static float qSSmoother_Filter_MWM1( _qSSmoother_t * const f,
                                      const float x )
 {
     /*cstat -CERT-EXP36-C_a -MISRAC2012-Rule-11.3 -CERT-EXP39-C_d*/
+    /*cppcheck-suppress misra-c2012-11.3 */
     qSSmoother_MWM1_t * const s = (qSSmoother_MWM1_t* const)f;
     /*cstat +CERT-EXP36-C_a +MISRAC2012-Rule-11.3 +CERT-EXP39-C_d*/
     if ( 1u == f->init ) {
@@ -518,6 +533,7 @@ static float qSSmoother_Filter_MWM2( _qSSmoother_t * const f,
                                      const float x )
 {
     /*cstat -CERT-EXP36-C_a -MISRAC2012-Rule-11.3 -CERT-EXP39-C_d -CERT-FLP36-C*/
+    /*cppcheck-suppress misra-c2012-11.3 */
     qSSmoother_MWM2_t * const s = (qSSmoother_MWM2_t* const)f;
     float wsize = (float)s->tdl.itemCount;
     /*cstat +CERT-EXP36-C_a +MISRAC2012-Rule-11.3 +CERT-EXP39-C_d +CERT-FLP36-C*/
@@ -537,6 +553,7 @@ static float qSSmoother_Filter_MOR1( _qSSmoother_t * const f,
 {
     float m;
     /*cstat -CERT-EXP36-C_a -MISRAC2012-Rule-11.3 -CERT-EXP39-C_d*/
+    /*cppcheck-suppress misra-c2012-11.3 */
     qSSmoother_MOR1_t * const s = (qSSmoother_MOR1_t* const)f;
     /*cstat +CERT-EXP36-C_a +MISRAC2012-Rule-11.3 +CERT-EXP39-C_d*/
     if ( 1u == f->init ) {
@@ -561,6 +578,7 @@ static float qSSmoother_Filter_MOR2( _qSSmoother_t * const f,
                                      const float x )
 {
     /*cstat -CERT-EXP36-C_a -MISRAC2012-Rule-11.3 -CERT-EXP39-C_d -CERT-FLP36-C*/
+    /*cppcheck-suppress misra-c2012-11.3 */
     qSSmoother_MOR2_t * const s = (qSSmoother_MOR2_t* const)f;
     float wsize = (float)s->tdl.itemCount;
     float xx = x;
@@ -586,6 +604,7 @@ static float qSSmoother_Filter_GMWF( _qSSmoother_t * const f,
                                      const float x )
 {
     /*cstat -CERT-EXP36-C_a -MISRAC2012-Rule-11.3 -CERT-EXP39-C_d*/
+    /*cppcheck-suppress misra-c2012-11.3 */
     qSSmoother_GMWF_t * const s = (qSSmoother_GMWF_t* const)f;
     /*cstat +CERT-EXP36-C_a +MISRAC2012-Rule-11.3 +CERT-EXP39-C_d*/
 
@@ -601,6 +620,7 @@ static float qSSmoother_Filter_KLMN( _qSSmoother_t * const f,
                                      const float x )
 {
     /*cstat -CERT-EXP36-C_a -MISRAC2012-Rule-11.3 -CERT-EXP39-C_d*/
+    /*cppcheck-suppress misra-c2012-11.3 */
     qSSmoother_KLMN_t * const s = (qSSmoother_KLMN_t* const)f;
     /*cstat +CERT-EXP36-C_a +MISRAC2012-Rule-11.3 +CERT-EXP39-C_d*/
     float pH;
@@ -624,6 +644,7 @@ static float qSSmoother_Filter_EXPW( _qSSmoother_t * const f,
                                      const float x )
 {
     /*cstat -CERT-EXP36-C_a -MISRAC2012-Rule-11.3 -CERT-EXP39-C_d*/
+    /*cppcheck-suppress misra-c2012-11.3 */
     qSSmoother_EXPW_t * const s = (qSSmoother_EXPW_t* const)f;
     /*cstat +CERT-EXP36-C_a +MISRAC2012-Rule-11.3 +CERT-EXP39-C_d*/
     float iw;
@@ -644,6 +665,7 @@ static float qSSmoother_Filter_DESF( _qSSmoother_t * const f,
                                      const float x )
 {
     /*cstat -CERT-EXP36-C_a -MISRAC2012-Rule-11.3 -CERT-EXP39-C_d*/
+    /*cppcheck-suppress misra-c2012-11.3 */
     qSSmoother_DESF_t * const s = (qSSmoother_DESF_t* const)f;
     /*cstat +CERT-EXP36-C_a +MISRAC2012-Rule-11.3 +CERT-EXP39-C_d*/
     float lt_1;
@@ -663,6 +685,7 @@ static float qSSmoother_Filter_ALNF( _qSSmoother_t * const f,
                                      const float x )
 {
     /*cstat -CERT-EXP36-C_a -MISRAC2012-Rule-11.3 -CERT-EXP39-C_d*/
+    /*cppcheck-suppress misra-c2012-11.3 */
     qSSmoother_ALNF_t * const s = (qSSmoother_ALNF_t* const)f;
     /*cstat +CERT-EXP36-C_a +MISRAC2012-Rule-11.3 +CERT-EXP39-C_d*/
     float xe;

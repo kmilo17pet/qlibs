@@ -73,6 +73,7 @@ void qTypeGeneric_Sort( void * const pbase,
             while ( stack < top ) {
                 uint8_t *left_ptr, *right_ptr;
                 /*cstat -ATH-div-0-unchk-param -CERT-INT33-C_h*/
+                /*cppcheck-suppress misra-c2012-10.8 */
                 uint8_t *mid = &lo[ size*( ( (size_t)(hi - lo)/size ) >> 1u ) ];
                 /*cstat +ATH-div-0-unchk-param +CERT-INT33-C_h*/
                 if ( cmp( mid, lo, arg ) < 0 ) {
@@ -93,9 +94,11 @@ void qTypeGeneric_Sort( void * const pbase,
                 right_ptr = hi - size;
                 do {
                     while ( cmp( left_ptr, mid, arg ) < 0 ) {
+                        /*cppcheck-suppress misra-c2012-10.3 */
                         left_ptr += size;
                     }
                     while ( cmp( mid, right_ptr, arg ) < 0 ) {
+                        /*cppcheck-suppress misra-c2012-10.3 */
                         right_ptr -= size;
                     }
 
@@ -110,11 +113,15 @@ void qTypeGeneric_Sort( void * const pbase,
                         else {
                             /*nothing to do here*/
                         }
+                        /*cppcheck-suppress misra-c2012-10.3 */
                         left_ptr += size;
+                        /*cppcheck-suppress misra-c2012-10.3 */
                         right_ptr -= size;
                     }
                     else if ( left_ptr == right_ptr ) {
+                        /*cppcheck-suppress misra-c2012-10.3 */
                         left_ptr += size;
+                        /*cppcheck-suppress misra-c2012-10.3 */
                         right_ptr -= size;
                         break;
                     }
@@ -123,7 +130,9 @@ void qTypeGeneric_Sort( void * const pbase,
                     }
                 } while (left_ptr <= right_ptr);
 
+                /*cppcheck-suppress misra-c2012-10.8 */
                 if ( (size_t)( right_ptr - lo ) <= max_thresh ) {
+                    /*cppcheck-suppress misra-c2012-10.8 */
                     if ( (size_t)( hi - left_ptr ) <= max_thresh ) {
                         --top; /*POP form the stack*/
                         lo = top->lo;
@@ -133,6 +142,7 @@ void qTypeGeneric_Sort( void * const pbase,
                         lo = left_ptr;
                     }
                 }
+                /*cppcheck-suppress misra-c2012-10.8 */
                 else if ( (size_t)( hi - left_ptr ) <= max_thresh ) {
                     hi = right_ptr;
                 }
@@ -146,7 +156,7 @@ void qTypeGeneric_Sort( void * const pbase,
                 }
             }
         }
-
+        /*cppcheck-suppress misra-c2012-10.3 */
         for ( run_ptr = tmp_ptr + size ; run_ptr <= thresh ; run_ptr += size ) {
             if ( cmp( run_ptr, tmp_ptr, arg ) < 0 ) {
                 tmp_ptr = run_ptr;
@@ -157,16 +167,20 @@ void qTypeGeneric_Sort( void * const pbase,
             qTypeGeneric_Swap( tmp_ptr, base_ptr, size );
         }
         run_ptr = base_ptr + size;
+        /*cppcheck-suppress misra-c2012-10.3 */
         while ( (run_ptr += size ) <= end_ptr ) {
             tmp_ptr = run_ptr - size;
             while ( cmp( run_ptr, tmp_ptr, arg ) < 0 ) {
+                /*cppcheck-suppress misra-c2012-10.3 */
                 tmp_ptr -= size;
             }
+            /*cppcheck-suppress misra-c2012-10.3 */
             tmp_ptr += size;
             if ( tmp_ptr != run_ptr ) {
                 uint8_t *tra = run_ptr + size;
                 while ( --tra >= run_ptr ) {
                     uint8_t c = *tra, *hi = tra, *lo = tra;
+                    /*cppcheck-suppress misra-c2012-10.3 */
                     while ( (lo -= size) >= tmp_ptr ) {
                         *hi = *lo;
                         hi = lo;
@@ -263,6 +277,7 @@ void* qTypeGeneric_LSearch( const void *key,
         element = &pb[ i*size ];
         if ( 0 == compar( key, element, arg) ) {
             /*cstat -MISRAC2012-Rule-11.8*/
+            /*cppcheck-suppress [ misra-c2012-11.8, cert-EXP05-C ]*/
             retVal = (void*)element;
             /*cstat +MISRAC2012-Rule-11.8*/
             break;
@@ -292,6 +307,7 @@ void* qTypeGeneric_BSearch( const void *key,
         cmp = compar( key, p, arg );
         if ( 0 == cmp ) {
             /*cstat -MISRAC2012-Rule-11.8*/
+            /*cppcheck-suppress [ misra-c2012-11.8, cert-EXP05-C ]*/
             retVal = (void *)p;
             /*cstat +MISRAC2012-Rule-11.8*/
             break;
@@ -320,10 +336,11 @@ int qTypeGeneric_ForEach( void *pbase,
     if ( ( NULL != pbase ) && ( NULL != f ) && ( n > 0u ) ) {
         /*cstat -MISRAC2012-Rule-11.5 -CERT-EXP36-C_b*/
         /*cppcheck-suppress misra-c2012-11.5 */
-        uint8_t *element, *pb = (uint8_t *)pbase;
+        uint8_t *pb = (uint8_t *)pbase;
         /*cstat +MISRAC2012-Rule-11.5 +CERT-EXP36-C_b*/
         if ( 1 != f( -1, NULL, arg ) ) {
             size_t i;
+            uint8_t *element;
 
             if ( false == dir ) {
                 for ( i = 0u ; i < n ; ++i ) {
