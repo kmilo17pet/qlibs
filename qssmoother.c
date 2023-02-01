@@ -460,6 +460,7 @@ float qSSmoother_Perform( qSSmootherPtr_t * const s,
         /*cstat -MISRAC2012-Rule-11.5 -CERT-EXP36-C_b*/
         /*cppcheck-suppress misra-c2012-11.5 */
         _qSSmoother_t * const f = (_qSSmoother_t* const)s;
+        /*cppcheck-suppress misra-c2012-11.5 */
         struct qSmoother_Vtbl_s *vt = f->vt;
         /*cstat +MISRAC2012-Rule-11.5 +CERT-EXP36-C_b*/
         if ( NULL != vt->perform ) {

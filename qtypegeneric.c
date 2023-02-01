@@ -268,13 +268,14 @@ void* qTypeGeneric_LSearch( const void *key,
 {
     /*cstat -MISRAC2012-Rule-11.5 -CERT-EXP36-C_b*/
     /*cppcheck-suppress misra-c2012-11.5 */
-    const uint8_t *element, *pb = (const uint8_t *)pbase;
+    const uint8_t *pb = (const uint8_t *)pbase;
     /*cstat +MISRAC2012-Rule-11.5 +CERT-EXP36-C_b*/
     void* retVal = NULL;
     size_t i;
 
     for ( i = 0u ; i < n ; ++i ) {
-        element = &pb[ i*size ];
+        const uint8_t *element = &pb[ i*size ];
+
         if ( 0 == compar( key, element, arg) ) {
             /*cstat -MISRAC2012-Rule-11.8*/
             /*cppcheck-suppress [ misra-c2012-11.8, cert-EXP05-C ]*/
@@ -297,12 +298,13 @@ void* qTypeGeneric_BSearch( const void *key,
     /*cppcheck-suppress misra-c2012-11.5 */
     const uint8_t *base = (const uint8_t *)pbase;
     /*cstat +MISRAC2012-Rule-11.5 +CERT-EXP36-C_b*/
-    int cmp;
     size_t lim  = n;
     const uint8_t *p;
     void *retVal = NULL;
 
     while ( 0u != lim ) {
+        int cmp;
+
         p = &base[ ( lim >> 1u )*size ];
         cmp = compar( key, p, arg );
         if ( 0 == cmp ) {

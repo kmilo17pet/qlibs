@@ -6,6 +6,7 @@
 
 #include "qfp16.h"
 #include <ctype.h>
+#include <stdbool.h>
 
 /*used only for internal operations*/
 /*! @cond  */
@@ -407,7 +408,7 @@ qFP16_t qFP16_Sqrt( qFP16_t x )
 qFP16_t qFP16_Exp( qFP16_t x )
 {
     qFP16_t retValue, term;
-    uint8_t isNegative;
+    bool isNegative;
     int i;
 
     if ( 0 == x ) {
@@ -423,8 +424,8 @@ qFP16_t qFP16_Exp( qFP16_t x )
         retValue = 0;
     }
     else {
-        isNegative = (uint8_t)( x < 0 );
-        if ( 1u == isNegative ) {
+        isNegative = ( x < 0 );
+        if ( isNegative ) {
             x = -x;
         }
 
@@ -850,7 +851,7 @@ qFP16_t qFP16_AToFP( const char *s )
         s++; /*discard whitespaces*/
     }
 
-    neg = (uint8_t)( '-' == *s );
+    neg = ( '-' == *s ) ? 1u : 0u;
     if ( ( '+' == *s ) || ( '-' == *s ) ) {
         s++; /*move to the next sign*/
     }
@@ -870,9 +871,9 @@ qFP16_t qFP16_AToFP( const char *s )
                 iPart *= 10u;
                 iPart += digit;
                 ++count;
-                overflow = (int)( ( 0 == count ) || ( count > 5 ) ||
-                                  ( iPart > 32768u ) ||
-                                  ( ( 0u == neg ) && ( iPart > 32767u ) ) );
+                overflow = ( ( 0 == count ) || ( count > 5 ) ||
+                             ( iPart > 32768u ) ||
+                             ( ( 0u == neg ) && ( iPart > 32767u ) ) ) ? 1 : 0;
                 if ( 1 == overflow ) {
                     break;
                 }

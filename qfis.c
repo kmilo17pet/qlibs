@@ -360,6 +360,7 @@ int qFIS_SetMF( qFIS_MF_t * const m,
             m[ mf ].shape = custom_mf; /*user-defined membership function*/
         }
         else {
+            /*cppcheck-suppress misra-c2012-11.1 */
             m[ mf ].shape = fShape[ s ];
         }
         m[ mf ].index = (size_t)io;

@@ -11,6 +11,7 @@
 #include <string.h>
 #include <float.h>
 
+/*cppcheck-suppress misra-c2012-20.7 */
 #define cast_reinterpret( dst, src, dst_type )                              \
 (void)memcpy( &dst, &src, sizeof(dst_type) )                                \
 
@@ -23,6 +24,7 @@ float _qFFMath_GetAbnormal( const int i )
     static bool init = true;
     
     if ( init ) {
+        /*cppcheck-suppress misra-c2012-21.15 */
         (void)memcpy( f_ab, u_ab, sizeof(f_ab) );
         init = false;
     }
@@ -87,8 +89,10 @@ float qFFMath_Recip( float x )
     uint32_t y = 0u;
     float z = 0.0f;
 
+    /*cppcheck-suppress misra-c2012-21.15 */
     cast_reinterpret( y, x, uint32_t );
     y = 0x7EF311C7u - y;
+    /*cppcheck-suppress misra-c2012-21.15 */
     cast_reinterpret( z, y, float );
     
     return z*( 2.0f - ( x*z ) );
@@ -107,9 +111,10 @@ float qFFMath_Sqrt( float x )
     else {
         uint32_t y = 0u;
         float z = 0.0f;
-
+        /*cppcheck-suppress misra-c2012-21.15 */
         cast_reinterpret( y, x, uint32_t );
         y = ( ( y - 0x00800000u ) >> 1u ) + 0x20000000u;
+        /*cppcheck-suppress misra-c2012-21.15 */
         cast_reinterpret( z, y, float );
         retVal = ( ( x/z ) + z ) * 0.5f;
     }
@@ -130,9 +135,10 @@ float qFFMath_RSqrt( float x )
     else {
         uint32_t y = 0u;
         float z = 0.5f*x;
-
+        /*cppcheck-suppress misra-c2012-21.15 */
         cast_reinterpret( y, x, uint32_t );
         y = 0x5F375A86u - ( y >> 1u );
+        /*cppcheck-suppress misra-c2012-21.15 */
         cast_reinterpret( x, y, float );
         retVal = x*( 1.5f - ( z*x*x ) );
     }
@@ -151,9 +157,10 @@ static float qFFMath_CalcCbrt( float x , bool r )
         x = -x;
         neg = true;
     }
-    
+    /*cppcheck-suppress misra-c2012-21.15 */
     cast_reinterpret( i, x, uint32_t );
     i = 0x548C2B4Bu - ( i/3u );
+    /*cppcheck-suppress misra-c2012-21.15 */
     cast_reinterpret( y, i, float );
     c = x*y*y*y;
     y = y*( k[ 0 ] - ( c*( k[ 1 ] - ( k[ 2 ]*c ) ) ) );
@@ -291,6 +298,7 @@ float qFFMath_Exp2( float x )
         x += 127.0f - (float)exponent;
         /*cstat +CERT-FLP36-C*/
         exponent <<= 23u;
+        /*cppcheck-suppress misra-c2012-21.15 */
         cast_reinterpret( y, exponent, float );
         x *= ( x*0.339766027f ) + 0.660233972f;
         retVal = y*( x + 1.0f );
@@ -311,7 +319,7 @@ float qFFMath_Log2( float x )
     }
     else {
         uint32_t y = 0u, y2;
-
+        /*cppcheck-suppress misra-c2012-21.15 */
         cast_reinterpret( y, x, uint32_t );
         y2 = y;
         y >>= 23u;
@@ -319,6 +327,7 @@ float qFFMath_Log2( float x )
         retVal = (float)y;
         /*cstat +CERT-FLP36-C*/
         y = ( y2 & 0x007FFFFFu ) | 0x3F800000u;
+        /*cppcheck-suppress misra-c2012-21.15 */
         cast_reinterpret( x, y, float );
         retVal += -128.0f + ( x*( ( -0.333333333f*x ) + 2.0f ) ) - 0.666666666f;
     }
@@ -423,14 +432,16 @@ float qFFMath_RExp( float x,
 {
     uint32_t lu = 0u, iu;
     int32_t i = 0;
-
+    /*cppcheck-suppress misra-c2012-21.15 */
     cast_reinterpret( lu, x, uint32_t );
     iu  = ( lu >> 23u ) & 0x000000FFu;  /* Find the exponent (power of 2) */
+    /*cppcheck-suppress misra-c2012-21.15 */
     cast_reinterpret( i, iu, int32_t );
     i -= 0x7E;
     pw2[ 0 ] = (int)i;
     lu &= 0x807FFFFFu; /* strip all exponent bits */
     lu |= 0x3F000000u; /* mantissa between 0.5 and 1 */
+    /*cppcheck-suppress misra-c2012-21.15 */
     cast_reinterpret( x, lu, float );
 
     return x;
@@ -441,13 +452,16 @@ float qFFMath_LDExp( float x,
 {
     uint32_t lu = 0u, eu;
     int32_t e = 0;
-
+    /*cppcheck-suppress misra-c2012-21.15 */
     cast_reinterpret( lu, x, uint32_t );
     eu = ( lu >> 23u ) & 0x000000FFu;
+    /*cppcheck-suppress misra-c2012-21.15 */
     cast_reinterpret( e, eu, int32_t );
     e += pw2;
+    /*cppcheck-suppress misra-c2012-21.15 */
     cast_reinterpret( eu, e, uint32_t );
     lu = ( ( eu & 0xFFu ) << 23u ) | ( lu & 0x807FFFFFu );
+    /*cppcheck-suppress misra-c2012-21.15 */
     cast_reinterpret( x, lu, float );
 
     return x;
@@ -489,8 +503,9 @@ float qFFMath_NextAfter( float x,
 {
     float retVal;
     uint32_t ax, ay, uxi = 0u, uyi = 0u;
-
+    /*cppcheck-suppress misra-c2012-21.15 */
     cast_reinterpret( uxi, x, uint32_t );
+    /*cppcheck-suppress misra-c2012-21.15 */
     cast_reinterpret( uyi, y, uint32_t );
     /*cstat -MISRAC2012-Rule-13.5*/ 
     if ( qFFMath_IsNaN( x ) || qFFMath_IsNaN( y ) ) {
@@ -512,6 +527,7 @@ float qFFMath_NextAfter( float x,
         else {
             uxi++;
         }
+        /*cppcheck-suppress misra-c2012-21.15 */
         cast_reinterpret( retVal, uxi, float );
     }
 

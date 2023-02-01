@@ -20,6 +20,7 @@ static uint32_t qCRCx_Reflect( uint32_t xData,
         /*if the LSB bit is set, set the reflection of it*/
         if ( 0u != ( xData & 0x01u ) ) {
             /*cstat -MISRAC2012-Rule-10.8 -ATH-shift-bounds -MISRAC2012-Rule-12.2 -CERT-INT34-C_b*/
+            /*cppcheck-suppress misra-c2012-10.8 */
             r |= (uint32_t)( 1u << ( ( nBits - 1u ) - xBit ) );
             /*cstat +MISRAC2012-Rule-10.8 +ATH-shift-bounds +MISRAC2012-Rule-12.2 +CERT-INT34-C_b*/
         }

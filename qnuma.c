@@ -6,6 +6,7 @@
 
 #include "qnuma.h"
 
+/*cppcheck-suppress misra-c2012-20.7 */
 #define qNumA_Update( x )       (x)->x[ 2 ] = (x)->x[ 1 ];  \
                                 (x)->x[ 1 ] = s             \
 

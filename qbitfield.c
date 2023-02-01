@@ -266,6 +266,7 @@ float qBitField_ReadFloat( const qBitField_t * const b,
         uint32_t rval;
 
         rval = qBitField_Read_uint32( b, index );
+        /*cppcheck-suppress misra-c2012-21.15 */
         (void)memcpy( &retValue, &rval, sizeof(float) );
     }
 
@@ -280,7 +281,7 @@ int qBitField_WriteFloat( qBitField_t * const b,
 
     if ( NULL != b ) {
         uint32_t fval = 0u;
-
+        /*cppcheck-suppress misra-c2012-21.15 */
         (void)memcpy( &fval, &value, sizeof(float) );
         qBitField_Write_uint32( b, index, fval );
         retValue = 1;
