@@ -11,7 +11,7 @@
 
 cmake_minimum_required( VERSION 3.2 )
 project( qlibs 
-         VERSION 1.2.4 
+         VERSION 1.2.5
          DESCRIPTION "A collection of useful libraries for embedded systems"
          LANGUAGES C
        )
