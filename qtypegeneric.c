@@ -5,9 +5,6 @@
  **/
 
 #include "qtypegeneric.h"
-#include <float.h>
-#include <math.h>
-#include <limits.h>
 #include <string.h>
 
 /*! @cond  */
@@ -74,7 +71,7 @@ void qTypeGeneric_Sort( void * const pbase,
                 uint8_t *left_ptr, *right_ptr;
                 /*cstat -ATH-div-0-unchk-param -CERT-INT33-C_h*/
                 /*cppcheck-suppress misra-c2012-10.8 */
-                uint8_t *mid = &lo[ size*( ( (size_t)(hi - lo)/size ) >> 1u ) ];
+                uint8_t *mid = &lo[ size*( ( (size_t)( hi - lo )/size ) >> 1u ) ];
                 /*cstat +ATH-div-0-unchk-param +CERT-INT33-C_h*/
                 if ( cmp( mid, lo, arg ) < 0 ) {
                     qTypeGeneric_Swap( mid, lo, size );

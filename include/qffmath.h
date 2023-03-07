@@ -17,6 +17,8 @@ extern "C" {
     #include <stdint.h>
     #include <stdbool.h>
 
+#define QLIBS_USE_STD_MATH
+
 #ifdef QLIBS_USE_STD_MATH
     /*! @cond  */
     #include <math.h>
@@ -50,8 +52,6 @@ extern "C" {
     #define QLIB_FMOD       qFFMath_Mod
     #define QLIB_ROUND      qFFMath_Round
     /*! @endcond  */
-#endif /*#ifdef QLIBS_USE_STD_MATH*/
-
 
     /** @addtogroup  qffmath qFFMath
     * @brief Fast floating-point math library for applications where speed is 
@@ -541,6 +541,8 @@ extern "C" {
     */
     float qFFMath_NextAfter( float x,
                              float y );
+
+#endif /*#ifdef QLIBS_USE_STD_MATH*/
 
     /** @}*/
 

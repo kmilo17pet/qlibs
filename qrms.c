@@ -31,7 +31,7 @@ float qRMS_Update( qRMS_t * const q,
     float y = 0.0f;
 
     if ( NULL != q ) {
-        y = qFFMath_Sqrt( qSSmoother_Perform( &q->f1, x*x ) );
+        y = QLIB_SQRT( qSSmoother_Perform( &q->f1, x*x ) );
         y = qSSmoother_Perform( &q->f2, y ); /*2nd stage moving-window overlap*/
         y = qSSmoother_Perform( &q->f3, y ); /*3rd stage low-pass filter*/
     }
