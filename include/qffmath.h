@@ -18,7 +18,7 @@ extern "C" {
 
 #ifdef QLIBS_USE_STD_MATH
     /*! @cond  */
-    #include <math.h.h>
+    #include <math.h>
     #define QLIB_ABS        fabsf
     #define QLIB_COS        cosf
     #define QLIB_POW        powf
