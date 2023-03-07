@@ -1,7 +1,7 @@
 /*!
  * @file qffmath.h
  * @author J. Camilo Gomez C.
- * @version 1.05
+ * @version 1.06
  * @note This file is part of the qLibs distribution.
  * @brief Fast floating-point math library for applications where speed is more 
  * important than accuracy
@@ -15,6 +15,7 @@ extern "C" {
 #endif
 
     #include <stdint.h>
+    #include <stdbool.h>
 
 #ifdef QLIBS_USE_STD_MATH
     /*! @cond  */
@@ -34,8 +35,6 @@ extern "C" {
     #define QLIB_ROUND      roundf
     /*! @endcond  */
 #else
-    #include <stdbool.h>
-
     /*! @cond  */
     #define QLIB_ABS        qFFMath_Abs
     #define QLIB_COS        qFFMath_Cos
@@ -51,6 +50,8 @@ extern "C" {
     #define QLIB_FMOD       qFFMath_Mod
     #define QLIB_ROUND      qFFMath_Round
     /*! @endcond  */
+#endif /*#ifdef QLIBS_USE_STD_MATH*/
+
 
     /** @addtogroup  qffmath qFFMath
     * @brief Fast floating-point math library for applications where speed is 
@@ -542,8 +543,6 @@ extern "C" {
                              float y );
 
     /** @}*/
-
-#endif /*#ifdef QLIBS_USE_STD_MATH*/
 
 #ifdef __cplusplus
 }
