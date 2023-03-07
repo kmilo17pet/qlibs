@@ -17,8 +17,6 @@ extern "C" {
     #include <stdint.h>
     #include <stdbool.h>
 
-#define QLIBS_USE_STD_MATH
-
 #ifdef QLIBS_USE_STD_MATH
     /*! @cond  */
     #include <math.h>
