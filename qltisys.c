@@ -127,6 +127,30 @@ int qLTISys_IsInitialized( const qLTISys_t * const sys )
     return retValue;
 }
 /*============================================================================*/
+int qLTISys_SetInitStates( qLTISys_t * const sys, const float * const xi )
+{
+    int retValue = 0;
+
+    if ( 1 == qLTISys_IsInitialized( sys ) ) {
+        size_t i;
+
+        for ( i = 0u; i < sys->n ; ++i ) {
+            const float zero = 0.0f;
+            const float * const iv = ( NULL != xi ) ? &xi[ i ] : &zero;
+
+            if ( sys->dt <= 0.0f ) {
+                sys->xd[ i ] = iv[ 0 ];
+            }
+            else {
+                qNumA_StateInit( sys->xc, iv[ 0 ], iv[ 0 ], iv[ 0 ] );
+            }
+        }
+        retValue = 1;
+    }
+
+    return retValue;
+}
+/*============================================================================*/
 int qLTISys_Setup( qLTISys_t * const sys,
                    float *num,
                    float *den,
@@ -164,6 +188,7 @@ int qLTISys_Setup( qLTISys_t * const sys,
             /*cstat +MISRAC2012-Rule-11.5 +CERT-EXP36-C_b*/
             sys->xd = NULL;
         }
+        (void)qLTISys_SetInitStates( sys, NULL );
         sys->integrate = &qNumA_IntegralTr; /*default integration method*/
         sys->a = &den[ 1 ];
         sys->dt = dt;

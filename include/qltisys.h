@@ -107,6 +107,16 @@ extern "C" {
     int qLTISys_IsInitialized( const qLTISys_t * const sys );
 
     /**
+    * @brief Set the initial states for the given system
+    * @pre System should be previously initialized by using qLTISys_Setup()
+    * @param[in] sys A pointer to the LTI system instance
+    * @param[in] xi An array of n-elements with the initial state values. User
+    * can pass @c NULL as argument to set initial conditions equal to zero.
+    * @return 1 on success, otherwise return 0.
+    */
+    int qLTISys_SetInitStates( qLTISys_t * const sys, const float * const xi );
+
+    /**
     * @brief Setup and initialize an instance of a LTI system.
     * @param[in] sys A pointer to the continuous LTI system instance
     * @param[in,out] num : An array of n+1(if continuous) or nb+1(if discrete)
