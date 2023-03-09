@@ -22,7 +22,7 @@
 * To instantiate a continuous transfer function, you should define a variable
 * of type \ref qLTISys_t, two arrays of N+1 elements with the coefficients of the
 * polynomials for both, numerator and denominator, and finally, an array of type
-* \ref qLTISys_ContinuosX_t with the N initial states of the system.
+* \ref qLTISys_ContinuosX_t to hold the N states of the system.
 * Then, you can call \ref qLTISys_Setup() to construct the system and set initial
 * conditions. Subsequently,  you can evaluate the system with a given input-signal
 * by just calling \ref qLTISys_Excite(). 
@@ -30,7 +30,6 @@
 * @attention
 * The user must ensure that the 
 * evaluation of the system is executed periodically at the required time-step.
-*  
 *
 * @subsection qltisys_ex1 Example: Evaluate the given continous transfer function
 *
@@ -73,8 +72,8 @@
 *  \f$ G(z^{-1}) = \frac{N(z^{-1})}{D(z^{-1})} = \frac{ b_{0} + b_{1}z^{-1} + b_{2}z^{-2} + ... +  b_{m}z^{-m} }{ 1 + a_{1}z^{-1} + a_{2}z^{-2} + ... +  a_{n}z^{-n} } \f$ 
 
 * Discrete systems are instantiated in a similar way to continuous systems,
-* but there are some differences. Initial states are defined by using the
-* \ref qLTISys_DiscreteX_t type. The size of polynomials can vary according to
+* but there are some differences. States are should be stored in an array of type
+* \ref qLTISys_DiscreteX_t. The size of polynomials can vary according to
 * their order, and you should pass the \ref #QLTISYS_DISCRETE directive on \ref
 * qLTISys_Setup() in order to differentiate the system when it is being evaluated.
 * Please take a look at the following example:

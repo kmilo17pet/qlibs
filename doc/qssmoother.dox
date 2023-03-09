@@ -309,62 +309,6 @@
 *  @endcode
 *
 *
-*  @section qssmoother_ex10 Example of signal smoothing
-*
-*  The following is an example of how a smoothing filter can be implemented. In
-*  this scenario, a Gaussian filter is used to smooth a speed sensor signal,
-*  reducing noise and improving overall signal quality. The filter is set up by
-*  defining the necessary parameters and instantiating the filter. The filter is
-*  then executed at a sampling rate of 100 milliseconds. This process involves
-*  sampling the signal and running it through the filter, resulting in a cleaned
-*  and enhanced signal that can be further processed without the need to account
-*  for noise and disturbances.
-*
-*  @code{.c}
-*  #include <stdio.h>
-*  #include <stdlib.h>
-*  #include "freertos/FreeRTOS.h"
-*  #include "freertos/task.h"
-*  #include "bsp.h"
-*  #include "qssmoother.h"
-*  #include "AppSignalProcessing.h"
-*  
-*  #define SMOOTHER_WINDOW_SIZE    ( 10 )
-*  #define SMOOTHER_SAMPLE_TIME    ( 100 )
-*  
-*  void xTaskSignalProcessing( void *arg )
-*  {
-*      qSSmoother_GMWF_t *smoother = (qSSmoother_GMWF_t *)arg;
-*      float noisySignal;
-*      float smoothedSignal;
-*      for ( ;; ) {
-*          noisySignal = BSP_ScaletoSomething( BSP_AnalogRead( BSP_AI_SPEED_CHANNEL ) );
-*          smoothedSignal = qSSmoother_Perform( smoother, noisySignal );
-*          AppSignalProcess( smoothedSignal );
-*          vTaskDelay( SMOOTHER_SAMPLE_TIME / portTICK_RATE_MS ) ;
-*      }
-*  }
-*  
-*  int main( int argc, char *argv[] )
-*  {
-*      qSSmoother_GMWF_t smoother;
-*      float win_kernel[ 2*SMOOTHER_WINDOW_SIZE ]; //storage for the window and the kernel
-*      float params[ 2 ] = { 0.5f, SMOOTHER_WINDOW_SIZE/2.0f }; //sigma and offset
-*      int ret;
-*      
-*      BSP_SystemInit( );
-*      ret = qSSmoother_Setup( &smoother, QSSMOOTHER_TYPE_GMWF, params, win_kernel, sizeof(win_kernel)/sizeof(win_kernel[0]) );
-*      if ( 0 == ret ) {
-*          puts( "ERROR: Cant configure the smoother filter" );
-*      }
-*      xTaskCreate( xTaskSignalProcessing, "signalProcessing", 512, &smoother, 2, NULL );
-*      vTaskStartScheduler();
-*      for( ;; );
-*      return EXIT_SUCCESS;
-*  }
-*  @endcode
-*
-*
 *  @section qssmoother_desf Double Exponential Smoothing
 *
 *  Is a time series forecasting technique used to analyze and predict trends in
@@ -433,5 +377,60 @@
 *  The ecuation also include a momentum term that adds a fraction of the 
 *  previous coefficient update to the current coefficient update. This can help 
 *  to reduce oscillations in the filter output and improve convergence speed.
+*
+*  @section qssmoother_ex10 Example of signal smoothing
+*
+*  The following is an example of how a smoothing filter can be implemented. In
+*  this scenario, a Gaussian filter is used to smooth a speed sensor signal,
+*  reducing noise and improving overall signal quality. The filter is set up by
+*  defining the necessary parameters and instantiating the filter. The filter is
+*  then executed at a sampling rate of 100 milliseconds. This process involves
+*  sampling the signal and running it through the filter, resulting in a cleaned
+*  and enhanced signal that can be further processed without the need to account
+*  for noise and disturbances.
+*
+*  @code{.c}
+*  #include <stdio.h>
+*  #include <stdlib.h>
+*  #include "freertos/FreeRTOS.h"
+*  #include "freertos/task.h"
+*  #include "bsp.h"
+*  #include "qssmoother.h"
+*  #include "AppSignalProcessing.h"
+*  
+*  #define SMOOTHER_WINDOW_SIZE    ( 10 )
+*  #define SMOOTHER_SAMPLE_TIME    ( 100 )
+*  
+*  void xTaskSignalProcessing( void *arg )
+*  {
+*      qSSmoother_GMWF_t *smoother = (qSSmoother_GMWF_t *)arg;
+*      float noisySignal;
+*      float smoothedSignal;
+*      for ( ;; ) {
+*          noisySignal = BSP_ScaletoSomething( BSP_AnalogRead( BSP_AI_SPEED_CHANNEL ) );
+*          smoothedSignal = qSSmoother_Perform( smoother, noisySignal );
+*          AppSignalProcess( smoothedSignal );
+*          vTaskDelay( SMOOTHER_SAMPLE_TIME / portTICK_RATE_MS ) ;
+*      }
+*  }
+*  
+*  int main( int argc, char *argv[] )
+*  {
+*      qSSmoother_GMWF_t smoother;
+*      float win_kernel[ 2*SMOOTHER_WINDOW_SIZE ]; //storage for the window and the kernel
+*      float params[ 2 ] = { 0.5f, SMOOTHER_WINDOW_SIZE/2.0f }; //sigma and offset
+*      int ret;
+*      
+*      BSP_SystemInit( );
+*      ret = qSSmoother_Setup( &smoother, QSSMOOTHER_TYPE_GMWF, params, win_kernel, sizeof(win_kernel)/sizeof(win_kernel[0]) );
+*      if ( 0 == ret ) {
+*          puts( "ERROR: Cant configure the smoother filter" );
+*      }
+*      xTaskCreate( xTaskSignalProcessing, "signalProcessing", 512, &smoother, 2, NULL );
+*      vTaskStartScheduler();
+*      for( ;; );
+*      return EXIT_SUCCESS;
+*  }
+*  @endcode
 *
 */

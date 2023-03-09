@@ -142,6 +142,8 @@ extern "C" {
     * 
     * example 2: \f$ \frac{ b_{0}s^{2}+b_{1}s+b_{2} }{ a_{0}s^{2} + a_{1}s + a_{2} }, na = 3 \f$
     * @note For continuous systems, size of @a num and @a den should be equal.
+    * @remark By default, initial conditions are set to zero. To change the initial
+    * conditions to the desired values, use the qLTISys_SetInitStates() function.
     * @param[in] dt The time-step of the continuos system. For discrete systems
     * pass #QLTISYS_DISCRETE as argument
     * @return 1 on success, otherwise return 0.
