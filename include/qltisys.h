@@ -1,7 +1,7 @@
 /*!
  * @file qltisys.h
  * @author J. Camilo Gomez C.
- * @version 1.08
+ * @version 1.09
  * @note This file is part of the qTools distribution.
  * @brief API to simulate continuous and discrete LTI systems.
  **/

@@ -136,15 +136,16 @@ int qLTISys_SetInitStates( qLTISys_t * const sys, const float * const xi )
 
         for ( i = 0u; i < sys->n ; ++i ) {
             const float zero = 0.0f;
-            const float * const iv = ( NULL != xi ) ? &xi[ i ] : &zero;
+            const float *iv = ( NULL != xi ) ? &xi[ i ] : &zero;
 
             if ( sys->dt <= 0.0f ) {
                 sys->xd[ i ] = iv[ 0 ];
             }
             else {
-                qNumA_StateInit( sys->xc, iv[ 0 ], iv[ 0 ], iv[ 0 ] );
+                qNumA_StateInit( &sys->xc[ i ], iv[ 0 ], iv[ 0 ], iv[ 0 ] );
             }
         }
+
         retValue = 1;
     }
 
@@ -188,10 +189,9 @@ int qLTISys_Setup( qLTISys_t * const sys,
             /*cstat +MISRAC2012-Rule-11.5 +CERT-EXP36-C_b*/
             sys->xd = NULL;
         }
-        (void)qLTISys_SetInitStates( sys, NULL );
+        sys->dt = dt;
         sys->integrate = &qNumA_IntegralTr; /*default integration method*/
         sys->a = &den[ 1 ];
-        sys->dt = dt;
         /*normalize the transfer function coefficients*/
         a0 = den[ 0 ];
         for ( i = 0 ; i < sys->nb ; ++i ) {
@@ -202,6 +202,7 @@ int qLTISys_Setup( qLTISys_t * const sys,
         }
         sys->b0 = num[ 0 ];
         sys->tDelay.head = NULL;
+        (void)qLTISys_SetInitStates( sys, NULL );
         retValue = qLTISys_SetSaturation( sys, -FLT_MAX, FLT_MAX );
     }
 
