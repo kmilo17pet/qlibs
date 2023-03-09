@@ -566,6 +566,7 @@ Functions</h2></td></tr>
 </dl>
 <p>example 1: \( a_{0}+a_{1}z^{-1}+a_{2}z^{-2}+a_{3}z^{-3}, na = 3 \)</p>
 <p>example 2: \( \frac{ b_{0}s^{2}+b_{1}s+b_{2} }{ a_{0}s^{2} + a_{1}s + a_{2} }, na = 3 \) </p><dl class="section note"><dt>Note</dt><dd>For continuous systems, size of <em>num</em> and <em>den</em> should be equal. </dd></dl>
+<dl class="section remark"><dt>Remarks</dt><dd>By default, initial conditions are set to zero. To change the initial conditions to the desired values, use the <a class="el" href="group__qltisys.html#gad1763ef7809bc1c2b3c1ea294f7dd352" title="Set the initial states for the given system.">qLTISys_SetInitStates()</a> function. </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">dt</td><td>The time-step of the continuos system. For discrete systems pass <a class="el" href="group__qltisys.html#ga588d08b5773a218be7efeca9e87ffb8c" title="Macro to specify that the system is time-discrete.">QLTISYS_DISCRETE</a> as argument </td></tr>
