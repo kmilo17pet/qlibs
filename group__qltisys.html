@@ -552,7 +552,7 @@ Functions</h2></td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">sys</td><td>A pointer to the continuous LTI system instance </td></tr>
     <tr><td class="paramdir">[in,out]</td><td class="paramname">num</td><td>: An array of n+1(if continuous) or nb+1(if discrete) elements with the numerator coefficients of the transfer function. Coefficients should be given in descending powers of the n or nb-degree polynomial. Coefficients will be normalized internally. </td></tr>
     <tr><td class="paramdir">[in,out]</td><td class="paramname">den</td><td>An array of n+1(if continuous) or na+1(if discrete) elements with the denominator coefficients of the transfer function. Coefficients should be given in descending powers of the n or nb-degree polynomial. Coefficients will be normalized internally. </td></tr>
-    <tr><td class="paramdir">[in,out]</td><td class="paramname">x</td><td>Initial conditions of the system. For a continuos system, an array of type <a class="el" href="structq_num_a__state__t.html">qNumA_state_t</a> with n elements. For a discrete system, an array of type float with max(na,nb) elements For both cases, the supplied array will be updated on every invocation of <a class="el" href="group__qltisys.html#ga036826af288f92730a8ab5edb66647a9" title="Drives the LTI system recursively using the input signal provided.">qLTISys_Excite()</a>. </td></tr>
+    <tr><td class="paramdir">[in,out]</td><td class="paramname">x</td><td>Initial conditions of the system. For a continuos system, an array of type qLTISys_ContinuosX_t with n elements. For a discrete system, an array of type qLTISys_DiscreteX_t with max(na,nb) elements For both cases, the supplied array will be updated on every invocation of <a class="el" href="group__qltisys.html#ga036826af288f92730a8ab5edb66647a9" title="Drives the LTI system recursively using the input signal provided.">qLTISys_Excite()</a>. </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">nb</td><td>The order of polynomial <em>num</em> + 1 (Only for discrete systems). example: \( b_{0}+b_{1}z^{-1}+b_{2}z^{-2}+b_{3}z^{-3}, nb = 4 \) </td></tr>
   </table>
   </dd>
@@ -566,7 +566,6 @@ Functions</h2></td></tr>
 </dl>
 <p>example 1: \( a_{0}+a_{1}z^{-1}+a_{2}z^{-2}+a_{3}z^{-3}, na = 3 \)</p>
 <p>example 2: \( \frac{ b_{0}s^{2}+b_{1}s+b_{2} }{ a_{0}s^{2} + a_{1}s + a_{2} }, na = 3 \) </p><dl class="section note"><dt>Note</dt><dd>For continuous systems, size of <em>num</em> and <em>den</em> should be equal. </dd></dl>
-<dl class="section remark"><dt>Remarks</dt><dd>By default, initial conditions are set to zero. To change the initial conditions to the desired values, use the <a class="el" href="group__qltisys.html#gad1763ef7809bc1c2b3c1ea294f7dd352" title="Set the initial states for the given system.">qLTISys_SetInitStates()</a> function. </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">dt</td><td>The time-step of the continuos system. For discrete systems pass <a class="el" href="group__qltisys.html#ga588d08b5773a218be7efeca9e87ffb8c" title="Macro to specify that the system is time-discrete.">QLTISYS_DISCRETE</a> as argument </td></tr>
@@ -574,6 +573,7 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>1 on success, otherwise return 0. </dd></dl>
+<dl class="section note"><dt>Note</dt><dd>By default, initial conditions are set to zero. To change the initial conditions to the desired values, use the <a class="el" href="group__qltisys.html#gad1763ef7809bc1c2b3c1ea294f7dd352" title="Set the initial states for the given system.">qLTISys_SetInitStates()</a> function. </dd></dl>
 
 </div>
 </div>
