@@ -28,7 +28,9 @@ var index =
       [ "Scalar Kalman filter", "qssmoother_desc.html#qssmoother_klmn", [
         [ "Example: setting up a scalar kalman filter:", "qssmoother_desc.html#qssmoother_ex9", null ]
       ] ],
-      [ "Example of signal smoothing", "qssmoother_desc.html#qssmoother_ex10", null ]
+      [ "Example of signal smoothing", "qssmoother_desc.html#qssmoother_ex10", null ],
+      [ "Double Exponential Smoothing", "qssmoother_desc.html#qssmoother_desf", null ],
+      [ "Adaptive Linear Filter", "qssmoother_desc.html#qssmoother_alnf", null ]
     ] ],
     [ "Fuzzy Inference System Engine", "qfis_desc.html", [
       [ "Mamdani", "qfis_desc.html#qfis_mamdani", null ],

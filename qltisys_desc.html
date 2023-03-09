@@ -166,7 +166,7 @@ Example: Evaluate the given continous transfer function</h2>
 <div class="line"><a class="code hl_struct" href="structq_l_t_i_sys__t.html">qLTISys_t</a> system;</div>
 <div class="line"><span class="keywordtype">float</span> num[ SYS_ORDER+1 ] = { 0.0f, 2.0f, 3.0f, 6.0f };</div>
 <div class="line"><span class="keywordtype">float</span> den[ SYS_ORDER+1 ] = { 1.0f, 6.0f, 11.0f, 16.0f };</div>
-<div class="line"><a class="code hl_struct" href="structq_num_a__state__t.html">qLTISys_ContinuosX_t</a> x[ SYS_ORDER ] = { { { 0.0f } }, { { 0.0f } },{ { 0.0f } } };</div>
+<div class="line"><a class="code hl_struct" href="structq_num_a__state__t.html">qLTISys_ContinuosX_t</a> x[ SYS_ORDER ];</div>
 <div class="line"> </div>
 <div class="line"><span class="keywordtype">void</span> xTaskSystemSimulate( <span class="keywordtype">void</span> *arg )</div>
 <div class="line">{</div>
@@ -180,7 +180,7 @@ Example: Evaluate the given continous transfer function</h2>
 <div class="line">    }</div>
 <div class="line">}</div>
 <div class="ttc" id="agroup__qltisys_html_ga036826af288f92730a8ab5edb66647a9"><div class="ttname"><a href="group__qltisys.html#ga036826af288f92730a8ab5edb66647a9">qLTISys_Excite</a></div><div class="ttdeci">float qLTISys_Excite(qLTISys_t *const sys, float u)</div><div class="ttdoc">Drives the LTI system recursively using the input signal provided.</div><div class="ttdef"><b>Definition:</b> qltisys.c:61</div></div>
-<div class="ttc" id="agroup__qltisys_html_ga62e08fd5775f0d1b9f0347ee69e5833e"><div class="ttname"><a href="group__qltisys.html#ga62e08fd5775f0d1b9f0347ee69e5833e">qLTISys_Setup</a></div><div class="ttdeci">int qLTISys_Setup(qLTISys_t *const sys, float *num, float *den, void *x, const size_t nb, const size_t na, const float dt)</div><div class="ttdoc">Setup and initialize an instance of a LTI system.</div><div class="ttdef"><b>Definition:</b> qltisys.c:130</div></div>
+<div class="ttc" id="agroup__qltisys_html_ga62e08fd5775f0d1b9f0347ee69e5833e"><div class="ttname"><a href="group__qltisys.html#ga62e08fd5775f0d1b9f0347ee69e5833e">qLTISys_Setup</a></div><div class="ttdeci">int qLTISys_Setup(qLTISys_t *const sys, float *num, float *den, void *x, const size_t nb, const size_t na, const float dt)</div><div class="ttdoc">Setup and initialize an instance of a LTI system.</div><div class="ttdef"><b>Definition:</b> qltisys.c:154</div></div>
 <div class="ttc" id="astructq_l_t_i_sys__t_html"><div class="ttname"><a href="structq_l_t_i_sys__t.html">qLTISys_t</a></div><div class="ttdoc">A LTI system object.</div><div class="ttdef"><b>Definition:</b> qltisys.h:52</div></div>
 <div class="ttc" id="astructq_num_a__state__t_html"><div class="ttname"><a href="structq_num_a__state__t.html">qNumA_state_t</a></div><div class="ttdef"><b>Definition:</b> qnuma.h:17</div></div>
 </div><!-- fragment --><h1><a class="anchor" id="qltisys_disc"></a>
@@ -202,7 +202,7 @@ Example: Evaluate the given discrete transfer function</h2>
 <div class="line"><a class="code hl_struct" href="structq_l_t_i_sys__t.html">qLTISys_t</a> system;</div>
 <div class="line"><span class="keywordtype">float</span> num[ NB ] = { 0.1f, 0.2f, 0.3f };</div>
 <div class="line"><span class="keywordtype">float</span> den[ NA+1 ] = { 1.0f, -0.85f, 0.02f };</div>
-<div class="line"><a class="code hl_typedef" href="group__qltisys.html#gaafd7e1046bb766454450a7ff3fe0aaaa">qLTISys_DiscreteX_t</a> xk[ NB ] = { 0.0f, 0.0f, 0.0f };</div>
+<div class="line"><a class="code hl_typedef" href="group__qltisys.html#gaafd7e1046bb766454450a7ff3fe0aaaa">qLTISys_DiscreteX_t</a> xk[ NB ];</div>
 <div class="line"> </div>
 <div class="line"><span class="keywordtype">void</span> xTaskSystemSimulate( <span class="keywordtype">void</span> *arg )</div>
 <div class="line">{</div>

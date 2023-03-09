@@ -165,6 +165,8 @@ $(document).ready(function(){initNavTree('qssmoother_desc.html',''); initResizab
 </ul>
 </li>
 <li class="level1"><a href="#qssmoother_ex10">Example of signal smoothing</a></li>
+<li class="level1"><a href="#qssmoother_desf">Double Exponential Smoothing</a></li>
+<li class="level1"><a href="#qssmoother_alnf">Adaptive Linear Filter</a></li>
 </ul>
 </div>
 <div class="textblock"><p>In many embedded systems applications, signals are captured and may be subject to "noise." To reconstruct the original signal, a "smoothing filter" is applied to "clear" the signal of this noise. The filter attenuates high frequency components and emphasizes slow changes in values, making trends easier to discern. The qLibs library offers the qSSMoother module, which includes a collection of commonly used and efficient smoothing filters for easy signal processing.</p>
@@ -386,7 +388,22 @@ Example of signal smoothing</h1>
 <div class="line">    <span class="keywordflow">return</span> EXIT_SUCCESS;</div>
 <div class="line">}</div>
 <div class="ttc" id="agroup__qssmoother_html_ga4b35d70416b5b24e1d894ac0c8b316eb"><div class="ttname"><a href="group__qssmoother.html#ga4b35d70416b5b24e1d894ac0c8b316eb">qSSmoother_Perform</a></div><div class="ttdeci">float qSSmoother_Perform(qSSmootherPtr_t *const s, const float x)</div><div class="ttdoc">Perform the smooth operation recursively for the input signal x.</div><div class="ttdef"><b>Definition:</b> qssmoother.c:455</div></div>
-</div><!-- fragment --> </div></div><!-- contents -->
+</div><!-- fragment --><h1><a class="anchor" id="qssmoother_desf"></a>
+Double Exponential Smoothing</h1>
+<p>Is a time series forecasting technique used to analyze and predict trends in data. It is an extension of simple exponential smoothing that incorporates trend information into the forecast.</p>
+<p>The double exponential smoothing filter calculates two smoothing coefficients, one for the level of the series and one for the trend. These coefficients are used to give more weight to recent observations and dampen the effect of older observations. The level and trend are then updated using the following equations:</p>
+<p>Level: </p><center> \( L(t) = \alpha x(t) + ( 1 - \alpha ) [ L(t-1) + T(t-1) ] \) </center><p>Trend: </p><center> \( T(t) = \beta [ L(t-1) + T(t-1) ] + ( 1 - \beta ) T(t-1) \) </center><p>where \(\alpha\) and \(\beta\) are the smoothing coefficients for the level and trend, respectively.</p>
+<p>The double exponential smoothing filter can be used to generate forecasts by extrapolating the level and trend components into the future. The forecast for time \(t+k\) is given by:</p>
+<center> \( F(t+k) = L(t) + kT(t) \) </center><p>Where \(k\) is the number of time periods into the future.</p>
+<p>Overall, double exponential smoothing is a simple but effective technique for forecasting time series data with trends. It can be easily implemented 3 and provides accurate forecasts for short-term predictions. However, it may not perform well for longer-term forecasts or for data with complex seasonal patterns.</p>
+<h1><a class="anchor" id="qssmoother_alnf"></a>
+Adaptive Linear Filter</h1>
+<p>It is a digital filter that adjusts its parameters based on the characteristics of the input signal and the desired output signal.</p>
+<p>The adaptive linear filter works by using an algorithm to iteratively adjust the filter coefficients in response to changes in the input signal \(x(t)\). The algorithm seeks to minimize the difference between the filter output and the desired output, known as the error signal \( e(t)\). This is done by adjusting the filter coefficients \(w_i(t)\) in the direction that reduces the error signal. For this the Least Mean Squares (LMS) algorithm is being used. The LMS algorithm updates the filter coefficients by multiplying the error signal by the input signal and a small step size parameter, and then adding this product to the existing filter coefficients.</p>
+<p>It is particularly useful in situations where the characteristics of the input signal are unknown or change over time, as it can adapt to these changes and continue to provide accurate filtering or modeling.</p>
+<p>One potential drawback of the adaptive linear filter is that it can be computationally intensive, especially if the input signal is large or the filter has many coefficients. Additionally, the performance of the filter can be sensitive to the choice of step size parameter, which must be carefully chosen to balance convergence speed with stability.</p>
+<p>The adaptation rule for every filter coefficient is given given by </p><center> \( \Delta w(t) = \alpha e(t) x(t) + \mu \Delta w(t-1) \) </center><center> \( w(t) = w(t-1)  x(t) + \Delta w(t) \) </center><p>The ecuation also include a momentum term that adds a fraction of the previous coefficient update to the current coefficient update. This can help to reduce oscillations in the filter output and improve convergence speed. </p>
+</div></div><!-- contents -->
 </div><!-- PageDoc -->
 </div><!-- doc-content -->
 <!-- start footer part -->

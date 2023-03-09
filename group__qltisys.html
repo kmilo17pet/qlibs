@@ -183,6 +183,9 @@ Functions</h2></td></tr>
 <tr class="memitem:gaeac56ea4ace324d24cf202197ed2e812"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qltisys.html#gaeac56ea4ace324d24cf202197ed2e812">qLTISys_IsInitialized</a> (const <a class="el" href="structq_l_t_i_sys__t.html">qLTISys_t</a> *const sys)</td></tr>
 <tr class="memdesc:gaeac56ea4ace324d24cf202197ed2e812"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if the LTI system is initialized.  <br /></td></tr>
 <tr class="separator:gaeac56ea4ace324d24cf202197ed2e812"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gad1763ef7809bc1c2b3c1ea294f7dd352"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qltisys.html#gad1763ef7809bc1c2b3c1ea294f7dd352">qLTISys_SetInitStates</a> (<a class="el" href="structq_l_t_i_sys__t.html">qLTISys_t</a> *const sys, const float *const xi)</td></tr>
+<tr class="memdesc:gad1763ef7809bc1c2b3c1ea294f7dd352"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the initial states for the given system.  <br /></td></tr>
+<tr class="separator:gad1763ef7809bc1c2b3c1ea294f7dd352"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga62e08fd5775f0d1b9f0347ee69e5833e"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qltisys.html#ga62e08fd5775f0d1b9f0347ee69e5833e">qLTISys_Setup</a> (<a class="el" href="structq_l_t_i_sys__t.html">qLTISys_t</a> *const sys, float *num, float *den, void *x, const size_t nb, const size_t na, const float dt)</td></tr>
 <tr class="memdesc:ga62e08fd5775f0d1b9f0347ee69e5833e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Setup and initialize an instance of a LTI system.  <br /></td></tr>
 <tr class="separator:ga62e08fd5775f0d1b9f0347ee69e5833e"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -359,6 +362,45 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>1 if the system has been initialized, otherwise return 0. </dd></dl>
+
+</div>
+</div>
+<a id="gad1763ef7809bc1c2b3c1ea294f7dd352" name="gad1763ef7809bc1c2b3c1ea294f7dd352"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gad1763ef7809bc1c2b3c1ea294f7dd352">&#9670;&#160;</a></span>qLTISys_SetInitStates()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int qLTISys_SetInitStates </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structq_l_t_i_sys__t.html">qLTISys_t</a> *const&#160;</td>
+          <td class="paramname"><em>sys</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const float *const&#160;</td>
+          <td class="paramname"><em>xi</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Set the initial states for the given system. </p>
+<dl class="section pre"><dt>Precondition</dt><dd>System should be previously initialized by using <a class="el" href="group__qltisys.html#ga62e08fd5775f0d1b9f0347ee69e5833e" title="Setup and initialize an instance of a LTI system.">qLTISys_Setup()</a> </dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">sys</td><td>A pointer to the LTI system instance </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">xi</td><td>An array of n-elements with the initial state values. User can pass <code>NULL</code> as argument to set initial conditions equal to zero. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>1 on success, otherwise return 0. </dd></dl>
 
 </div>
 </div>
