@@ -1,7 +1,7 @@
 /*!
  * @file qltisys.h
  * @author J. Camilo Gomez C.
- * @version 1.07
+ * @version 1.08
  * @note This file is part of the qTools distribution.
  * @brief API to simulate continuous and discrete LTI systems.
  **/
@@ -128,8 +128,9 @@ extern "C" {
     * Coefficients should be given in descending powers of the n or nb-degree
     * polynomial. Coefficients will be normalized internally.
     * @param[in,out] x Initial conditions of the system. For a continuos system,
-    * an array of type qNumA_state_t with n elements.
-    * For a discrete system, an array of type float with max(na,nb) elements
+    * an array of type qLTISys_ContinuosX_t with n elements.
+    * For a discrete system, an array of type qLTISys_DiscreteX_t with 
+    * max(na,nb) elements
     * For both cases, the supplied array will be updated on every invocation of
     * qLTISys_Excite().
     * @param[in] nb The order of polynomial @a num + 1 (Only for discrete systems).
@@ -142,11 +143,11 @@ extern "C" {
     * 
     * example 2: \f$ \frac{ b_{0}s^{2}+b_{1}s+b_{2} }{ a_{0}s^{2} + a_{1}s + a_{2} }, na = 3 \f$
     * @note For continuous systems, size of @a num and @a den should be equal.
-    * @remark By default, initial conditions are set to zero. To change the initial
-    * conditions to the desired values, use the qLTISys_SetInitStates() function.
     * @param[in] dt The time-step of the continuos system. For discrete systems
     * pass #QLTISYS_DISCRETE as argument
     * @return 1 on success, otherwise return 0.
+    * @note By default, initial conditions are set to zero. To change the initial
+    * conditions to the desired values, use the qLTISys_SetInitStates() function.
     */
     int qLTISys_Setup( qLTISys_t * const sys,
                        float *num,
