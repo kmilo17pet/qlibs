@@ -1,10 +1,10 @@
 /*! @page qrms_desc  Recursive Root Mean Square estimator
 * Real-time digital systems often require the calculation of a root-mean, such
-* as a root-mean square (RMS) level or average magnitude of a complex signal.
+* as a root-mean-square (RMS) level or average magnitude of a complex signal.
 * While averaging can be efficiently implemented by most microprocessors,
 * obtaining an efficient and rapidly converging algorithm is surely a
 * time-consuming task due to the adjustments and optimizations that need to be
-* performed. On the other hand, calculating the square root can be challenging
+* performed. On the other hand, calculating the square root can be challenging,
 * especially with low-cost hardware. If the processor does not have a built-in
 * fast square root function, it must be implemented in software. While this
 * can provide accurate results, it may not be as efficient.

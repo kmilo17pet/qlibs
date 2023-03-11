@@ -23,7 +23,7 @@
 *
 * The calculator \ref qcrc provided here, uses the brute force method. CRC math can 
 * be accomplished in software by shifting the data or shifting the polynomial
-* key, then performing the computations. Supported CRCs includes 8, 16 and 32-bit
+* key, then performing the computations. Supported CRCs include 8, 16 and 32-bit
 * in a generic way, this means that you can specify the polynomial key, the CRC
 * initial value, I/O reflection and XOR the final output value. This generic  
 * approach allows the user to implement any variant of CRC(8,16,32) only by adjusting 

@@ -39,7 +39,7 @@
 * - @subpage qtdl_desc "qTDL : Tapped Delay Line in O(1)"
 * - Type-generic array operations
 * - Single precision floating-point vector(1D-Array) operations
-* - Fast single precision floating-point math
+* - Fast single-precision floating-point math
 */
 
 /**

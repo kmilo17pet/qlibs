@@ -16,10 +16,10 @@
 *  chosen cutoff frequency and reduces signals with frequencies higher than the
 *  cutoff. This results in a smoother signal by removing short-term fluctuations
 *  and highlighting longer-term trends.
-*  The discrete-time ecuation of this filter is defined as follows, where \f$w\f$
+*  The discrete-time equation of this filter is defined as follows, where \f$w\f$
 *  is the cut-off frequency given in \f$rad/seg\f$
 *
-*  The difference-ecuation of the output of this filter is given by:
+*  The difference-equation of the output of this filter is given by:
 *
 *     <center> \f$y(t)=x(t)+\alpha[y(t-1)+x(t)]\f$ </center>
 *
@@ -49,7 +49,7 @@
 *  at 40dB/decade (12dB/octave) as the operating frequency increases above the
 *  cut-off frequency \f$w\f$.
 *
-*  The difference-ecuation of the output of this filter is given by:
+*  The difference-equation of the output of this filter is given by:
 *
 *     <center> \f$y(t)=kx(t)+b_{1}x(t-1)+kx(t-2)-a_{1}y(t-1)-a_{2}y(t-2)\f$ </center>
 *
@@ -82,13 +82,13 @@
 *  time using the sliding window method. A window of a specified length is moved
 *  sample by sample and the median of the data in the window is computed.
 *
-*  ach output for each input sample is the median of the current sample and the
+*  For each input sample, the output is the median of the current sample and the
 *  previous \f$N - 1\f$ samples. \f$N\f$ represents the length of the window in
 *  samples
 *  To compute the first \f$N - 1\f$ outputs, he algorithm fills the window with
 *  the first current sample when there is not enough data yet.
 *
-*  The difference-ecuation of the output of this filter is given by:
+*  The difference-equation of the output of this filter is given by:
 *
 *  <center> \f$ \frac{1}{N}\sum_{i=0}^{N-1}y(t-i)=\frac{1}{N}[ y(t) + y(t-1) + ... + y(t-N-1) ] \f$ </center>
 *
@@ -118,7 +118,7 @@
 *  the signal at a fixed integer delay relative to the input.
 *
 *  The circular queue approach prevents the shift of all the \f$N - 1\f$ samples
-*  stored in the sliding-window.
+*  stored in the sliding window.
 *
 *  @remark
 *  This implementation offers a significant performance benefit as it has a
@@ -266,7 +266,7 @@
 *  @section qssmoother_klmn Scalar Kalman filter 
 *
 *  The Kalman Filter is an efficient optimal estimator that provides a recursive
-*  computational methodology for get the state of a signal from measurements
+*  computational methodology for getting the state of a signal from measurements
 *  that are typically noisy, while providing an estimate of the uncertainty of
 *  the estimate. Here, the scalar or one-dimensional version is provided
 *  and only three design parameters are required, the initial covariance \f$P(0)\f$,
@@ -296,7 +296,7 @@
 *  the filter output (state estimation), \f$P(k)\f$ the covariance of the predicted
 *  state, \f$u(k)\f$ the signal measurement and \f$K(k)\f$ the kalman gain.
 *  
-*  @subsection qssmoother_ex9 Example: setting up a scalar kalman filter:
+*  @subsection qssmoother_ex9 Example: setting up a scalar Kalman filter:
 *  @code{.c}
 *  qSSmoother_KLMN_t  smoother; 
 *  float param[] = { 100.0f, 100.0f, 9.0f }; // [initial covariance, noise covariance, measurement uncertainty]
@@ -354,7 +354,7 @@
 *  The algorithm seeks to minimize the difference between the filter output and
 *  the desired output, known as the error signal \f$ e(t)\f$. This is done by 
 *  adjusting the filter coefficients \f$w_i(t)\f$ in the direction that reduces 
-*  the error signal. For this the Least Mean Squares (LMS) algorithm is being 
+*  the error signal. For this, the Least Mean Squares (LMS) algorithm is being 
 *  used. The LMS algorithm updates the filter coefficients by multiplying the 
 *  error signal by the input signal and a small step size parameter, and then 
 *  adding this product to the existing filter coefficients.
@@ -369,12 +369,12 @@
 *  can be sensitive to the choice of step size parameter, which must be 
 *  carefully chosen to balance convergence speed with stability.
 *
-*  The adaptation rule for every filter coefficient is given given by
+*  The adaptation rule for every filter coefficient is given by
 *  <center> \f$ \Delta w(t) = \alpha e(t) x(t) + \mu \Delta w(t-1) \f$ </center>
 *
 *  <center> \f$ w(t) = w(t-1)  x(t) + \Delta w(t) \f$ </center>
 *
-*  The ecuation also include a momentum term that adds a fraction of the 
+*  The equation also includes a momentum term that adds a fraction of the 
 *  previous coefficient update to the current coefficient update. This can help 
 *  to reduce oscillations in the filter output and improve convergence speed.
 *

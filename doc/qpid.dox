@@ -16,25 +16,25 @@
 * applied to calculate all the past values of error and then integrate them to
 * find out the Integral term. When error is expelled from the system this 
 * integral stops increasing. The derivative is used to predict the expected 
-* error values in future based on the present values. Controlling effect can be
+* error values in the future based on the present values. Controlling effect can be
 * increased if the system has a rapid rate of change, which is also based on 
 * Derivative. Combining all these three operations gives the name Proportional 
 * Integral Derivative (PID) Controller.
 *
 * qLibs provides the \ref qpid implementation, which, apart from the simplified 
-* overview representation of the PID controller, also addresses some practical
+* overview representation of the PID controller, it also addresses some practical
 * issues and includes additional features as listed below:
 * 
 * - Derivative filter
 * - Anti-windup
 * - Bumpless transfer
 * - SetPoint weighting
-* - Auto-tunning
+* - Auto-tuning
 * - Additive MRAC
 *
 * @section qpid_approach PID Controller approach
 *
-* The mathematical model and practical loop uses a direct control action for all
+* The mathematical model and practical loop use a direct control action for all
 * the PID terms, which means an increasing positive error results in an 
 * increasing positive control output correction.
 *
@@ -55,12 +55,12 @@
 * \f$\psi(t)\f$ is the adaptive gain from the additive MRAC (later explained)
 *
 * As shown above, the derivative term \f$f_{d}(t)\f$ is the output of a 
-* low-pass filter who take raw derivative as input.
+* low-pass filter that takes the raw derivative as input.
 *
 * <center> \f$ f_{d}(t) = \text{LPF}[ \frac{de_{c}(t)}{dt} ]\f$  </center>
 *
 * and \f$ c(t)\f$, the saturation feedback for the anti-windup, with \f$K_{w}\f$
-* as the ajustment parameter.
+* as the adjustment parameter.
 *
 * <center> \f$ c(t) = K_{w}[ u(t) - v(t) ] \f$ </center>
 *
@@ -88,7 +88,7 @@
 * and automatic mode. When the system is in manual mode, the control algorithm 
 * produces a control signal that may be different from the manually generated 
 * control signal. It is necessary to make sure that the two outputs coincide at 
-* the time of switching. This is called bumpless transfer and its given by 
+* the time of switching. This is called bumpless transfer and it's given by 
 *
 * <center> \f$ v(t) = \int [ K_{T}m(t) + c(t-1) ]dt\f$ </center>
 *
@@ -112,14 +112,14 @@
 *  @endcode
 *
 *
-*  @section qfpid_usage Usign the controller
+*  @section qfpid_usage Using the controller
 *
 *  The following example illustrates how a PID controller can be used to regulate
 *  the speed of a DC motor. PID control operates on a separate task running
-*  periodically at a rate of 50mS. The speed measurement is being read through
+*  periodically at a rate of 50mS. The speed measurement is read through
 *  an analog input and then scaled to the appropriate units (RPM). The \ref qPID_Control() 
-*  function will be in charge of computing the control action and  updating the internal
-*  states of the controller. Then, the control output gets scaled-back in order to
+*  function will be in charge of computing the control action and updating the internal
+*  states of the controller. Then, the control output gets scaled back in order to
 *  send the control command by using the PWM(Pulse Width Modulation) module. 
 *
 *  @subsection qpid_ex1 Example: Speed control using a PID controller:
@@ -193,7 +193,7 @@
 * <center> \f$ \psi(t) = \int [ \delta(t) + c(t) ] dt \f$ </center>
 *
 * This method can be used to adapt to slower changes but can become unstable for
-* abrupt changes to the system. Therefore, this implementation uses a so called 
+* abrupt changes to the system. Therefore, this implementation uses a so-called 
 * modified MRAC (M-MRAC) where the adaptation is later added to a PID controller, 
 * being the MRAC the additive loop.
 * 
@@ -262,7 +262,7 @@
 *  }
 *  @endcode
 *
-* @section qpid_autotune Autotunning
+* @section qpid_autotune Autotuning
 *
 * Autotuning can eliminate much of the trial and error of a manual tuning 
 * approach, especially if you do not have a lot of loop tuning experience. 
@@ -276,7 +276,7 @@
 * dynamics, the tuning process will need to be repeated in order to derive new 
 * gains required for optimal control.
 *
-* Autotunning is performed by using the following recursive algorithm:
+* Autotuning is performed by using the following recursive algorithm:
 *
 * <center>
 * \f$ L(t) =  \frac{ P(t-1)\phi }{ \lambda + \phi^{T}P(t-1)\phi  } \f$
@@ -304,19 +304,19 @@
 * and the remaining parameters \f$\mu\f$, \f$\alpha\f$, \f$\lambda\f$ are internally
 * computed for best performance.
 *
-* @subsection qpid_autotune_usage Autotunning Usage
+* @subsection qpid_autotune_usage Autotuning Usage
 *
-* In order to use the autotuner, you must first instantiate the \ref qPID_AutoTunning_t
+* In order to use the autotuner, you must first instantiate the \ref qPID_AutoTuning_t
 * object and bind it to a previously configured PID controller by using the 
-* \ref qPID_BindAutoTunning().
+* \ref qPID_BindAutoTuning().
 *
-* After this, you can enable auto tuning via \ref qPID_EnableAutoTunning() 
+* After this, you can enable autotuning via \ref qPID_EnableAutoTuning() 
 * for a defined number of intervals. When the autotune ends, the resulting PID
 * gains will be applied to the bounded controller.
 * 
-* @subsection qpid_ex3 Example: Speed control with PID controller and autotunning:
-* This example takes avantage of the FreeRTOS task notifications to enable the
-* autotunningm when a rising-edge is detected on a certain digital input. Autotuning
+* @subsection qpid_ex3 Example: Speed control with PID controller and autotuning:
+* This example takes advantage of the FreeRTOS task notifications to enable the
+* autotuning when a rising edge is detected on a certain digital input. Autotuning
 * is enabled for 5 sec. Note that the setpoint is briefly modified during this 
 * process to stimulate the process. Upon completion, the setpoint is restored to 
 * its original value.
@@ -361,11 +361,11 @@
 *          notification_autotune_enable = ulTaskNotifyTake( pdTRUE, 0 ); // dont wait
 *          if ( notification_autotune_enable ) {
 *              p_setpoint = &tmpSetPoint; 
-*              qPID_EnableAutoTunning( controller, 100 ); //enable for 5 seconds ( 100*50mS )
+*              qPID_EnableAutoTuning( controller, 100 ); //enable for 5 seconds ( 100*50mS )
 *          }
-*          if ( qPID_AutoTunningComplete( controller) ) {
+*          if ( qPID_AutoTuningComplete( controller) ) {
 *              p_setpoint = &SetPoint;
-*              qPID_EnableAutoTunning( controller, 0uL ); //disable
+*              qPID_EnableAutoTuning( controller, 0uL ); //disable
 *          }
 *          processMeasurement = BSP_ScaletoSpeed ( BSP_AnalogRead( BSP_AI_SPEED_CHANNEL ) );
 *          controlOutput = qPID_Control( controller, *p_setpoint, processMeasurement );
@@ -377,7 +377,7 @@
 *  int main( int argc, char *argv[] ) 
 *  {
 *      qPID_controller_t speedControl;
-*      qPID_AutoTunning_t at;
+*      qPID_AutoTuning_t at;
 *      int ret;
 *      
 *      BSP_SystemInit( );
@@ -389,7 +389,7 @@
 *          puts( "ERROR: Cant configure PID controller" );
 *      }
 *      qPID_SetSaturation( &speedControl, 0.0f, 100.0f );
-*      qPID_BindAutoTunning( &speedControl, &at );
+*      qPID_BindAutoTuning( &speedControl, &at );
 *      // Create the task that handles the speed control at the defined rate
 *      xTaskCreate( xTaskPIDspeedControl, "speedControl", 1024, &speedControl, configMAX_PRIORITIES - 1 , &pid_task );
 *      vTaskStartScheduler();

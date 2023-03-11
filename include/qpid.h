@@ -41,9 +41,9 @@ extern "C" {
     } qPID_Direction_t;
 
     /**
-    * @brief A PID Auto-tunning object
+    * @brief A PID Auto-tuning object
     * @details The instance should be bound to a configured PID controller by
-    * using the qPID_BindAutoTunning() API
+    * using the qPID_BindAutoTuning() API
     */
     typedef struct
     {
@@ -56,12 +56,12 @@ extern "C" {
         float mu, speed;            /*fine adjustments  [ 0 < mu < speed ] [ 0 < speed < 1 ]*/
         uint32_t it;                /*enable time*/
         /*! @endcond  */
-    } qPID_AutoTunning_t;
+    } qPID_AutoTuning_t;
 
     /**
     * @brief Macro to keep the auto-tuner enabled indefinitely
     */
-    #define QPID_AUTOTUNNING_UNDEFINED      ( 0xFFFFFFFEuL )
+    #define QPID_AUTOTUNING_UNDEFINED      ( 0xFFFFFFFEuL )
 
     /**
     * @brief A PID controller object
@@ -78,7 +78,7 @@ extern "C" {
         qNumA_state_t c_state; /*controller integral & derivative state*/
         qNumA_state_t m_state; /*MRAC additive controller state*/
         qNumA_state_t b_state; /*Bumples-transfer state*/
-        qPID_AutoTunning_t *adapt;
+        qPID_AutoTuning_t *adapt;
         qNumA_IntegrationMethod_t integrate;
         qPID_Mode_t mode;
         qPID_Direction_t dir;
@@ -185,9 +185,9 @@ extern "C" {
                          const float eps );
 
     /**
-    * @brief Set the tunning parameter for the derivative filter.
+    * @brief Set the tuning parameter for the derivative filter.
     * @param[in] c A pointer to the PID controller instance.
-    * @param[in] beta The tunning parameter. [ 0 < beta < 1 ]
+    * @param[in] beta The tuning parameter. [ 0 < beta < 1 ]
     * @return 1 on success, otherwise return 0.
     */
     int qPID_SetDerivativeFilter( qPID_controller_t * const c,
@@ -242,8 +242,8 @@ extern "C" {
     * @return 1 on success, otherwise return 0.
     */
     int qPID_SetMRAC( qPID_controller_t * const c,
-                    const float *modelRef,
-                    const float gamma );
+                      const float *modelRef,
+                      const float gamma );
 
     /**
     * @brief Computes the control action for given PID controller instance.
@@ -263,48 +263,48 @@ extern "C" {
     /**
     * @brief Binds the specified instance to enable the PID controller auto
     * tuning algorithm.
-    * @note To unbind the auto-tunning algorithm, pass @c NULL as argument.
+    * @note To unbind the auto-tuning algorithm, pass @c NULL as argument.
     * @param[in] c A pointer to the PID controller instance.
-    * @param[in] at A pointer to the PID auto tunning instance.
+    * @param[in] at A pointer to the PID auto tuning instance.
     * @return 1 on success, otherwise return 0.
     */
-    int qPID_BindAutoTunning( qPID_controller_t * const c,
-                              qPID_AutoTunning_t * const at );
+    int qPID_BindAutoTuning( qPID_controller_t * const c,
+                             qPID_AutoTuning_t * const at );
 
     /**
     * @brief Set the number of time steps where the auto tuner algorithm will
     * modify the controller gains.
-    * @pre Controller must have an qPID_AutoTunning_t object already binded wih
-    * qPID_BindAutoTunning()
-    * @note To disable auto-tunning pass a 0uL value to the @a tEnable argument.
+    * @pre Controller must have an qPID_AutoTuning_t object already binded wih
+    * qPID_BindAutoTuning()
+    * @note To disable auto-tuning pass a 0uL value to the @a tEnable argument.
     * @param[in] c A pointer to the PID controller instance.
     * @param[in] tEnable The number of time steps. To keep the auto tuner
-    * enabled indefinitely pass #QPID_AUTOTUNNING_UNDEFINED as argument.
+    * enabled indefinitely pass #QPID_AUTOTUNING_UNDEFINED as argument.
     * @return 1 on success, otherwise return 0.
     */
-    int qPID_EnableAutoTunning( qPID_controller_t * const c,
-                                const uint32_t tEnable );
+    int qPID_EnableAutoTuning( qPID_controller_t * const c,
+                               const uint32_t tEnable );
 
     /**
     * @brief Verifies that the auto tuning process has finished with new gains 
     * set on the controller
     * @param[in] c A pointer to the PID controller instance.
-    * @return 1 if auto-tunning its complete, otherwise return 0.
+    * @return 1 if auto-tuning its complete, otherwise return 0.
     */
-    int qPID_AutoTunningComplete( const qPID_controller_t * const c );
+    int qPID_AutoTuningComplete( const qPID_controller_t * const c );
 
     /**
-    * @brief Change parameters of the auto-tunning algorithm.
+    * @brief Change parameters of the auto-tuning algorithm.
     * @param[in] c A pointer to the PID controller instance.
     * @param[in] mu Algorithm momentum. [ 0 <= alfa <= 1 ].
     * @param[in] alfa Final controller speed adjustment. [ 0 < alfa <= 1 ].
     * @param[in] lambda Algorithm forgetting factor [ 0.8 <= lambda <= 1 ].
     * @return 1 on success, 0 on failure.
     */
-    int qPID_AutoTunningSetParameters( qPID_controller_t * const c,
-                                       const float mu,
-                                       const float alfa,
-                                       const float lambda );
+    int qPID_AutoTuningSetParameters( qPID_controller_t * const c,
+                                      const float mu,
+                                      const float alfa,
+                                      const float lambda );
     /**
     * @brief Set integration method for the PID controller.
     * @param[in] c A pointer to the PID controller instance.

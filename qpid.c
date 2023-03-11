@@ -299,8 +299,8 @@ float qPID_Control( qPID_controller_t * const c,
     return u;
 }
 /*============================================================================*/
-int qPID_BindAutoTunning( qPID_controller_t * const c,
-                          qPID_AutoTunning_t * const at )
+int qPID_BindAutoTuning( qPID_controller_t * const c,
+                         qPID_AutoTuning_t * const at )
 {
     int retValue = 0;
 
@@ -326,7 +326,7 @@ int qPID_BindAutoTunning( qPID_controller_t * const c,
             at->a1 = -QLIB_EXP( -c->dt/T );
             at->b1 = k*( 1.0f + at->a1 );
             at->speed = 0.25f;
-            at->it = QPID_AUTOTUNNING_UNDEFINED;
+            at->it = QPID_AUTOTUNING_UNDEFINED;
         }
         else {
             c->adapt = NULL;
@@ -337,14 +337,14 @@ int qPID_BindAutoTunning( qPID_controller_t * const c,
     return retValue;
 }
 /*============================================================================*/
-int qPID_EnableAutoTunning( qPID_controller_t * const c,
-                            const uint32_t tEnable )
+int qPID_EnableAutoTuning( qPID_controller_t * const c,
+                           const uint32_t tEnable )
 {
     int retValue = 0;
 
     if ( NULL != c ) {
         if ( NULL != c->adapt ) {
-            c->adapt->it = ( 0uL == tEnable )? QPID_AUTOTUNNING_UNDEFINED : tEnable;
+            c->adapt->it = ( 0uL == tEnable )? QPID_AUTOTUNING_UNDEFINED : tEnable;
             retValue = 1;
         }
     }
@@ -356,7 +356,7 @@ static void qPID_AdaptGains( qPID_controller_t *c,
                              const float u,
                              const float y )
 {
-    qPID_AutoTunning_t *s = c->adapt;
+    qPID_AutoTuning_t *s = c->adapt;
     float error , r, l0, l1;
     float lp00, lp01, lp10, lp11;
     float k, tao, tmp1, tmp2;
@@ -393,7 +393,7 @@ static void qPID_AdaptGains( qPID_controller_t *c,
     /*cstat +MISRAC2012-Dir-4.11_a +MISRAC2012-Rule-13.5*/
         s->k = k + ( s->mu*( s->k - k ) );
         s->tao = tao + ( s->mu*( s->tao - tao ) );
-        if ( ( 0uL == --s->it ) && ( s->it != QPID_AUTOTUNNING_UNDEFINED ) ) {
+        if ( ( 0uL == --s->it ) && ( s->it != QPID_AUTOTUNING_UNDEFINED ) ) {
             tmp1 = c->dt/s->tao;
             tmp2 = ( 1.35f + ( 0.25f*tmp1 ) );
             c->kc = ( s->speed*tmp2*s->tao )/( s->k*c->dt );
@@ -403,24 +403,24 @@ static void qPID_AdaptGains( qPID_controller_t *c,
     }
 }
 /*============================================================================*/
-int qPID_AutoTunningComplete( const qPID_controller_t * const c )
+int qPID_AutoTuningComplete( const qPID_controller_t * const c )
 {
     int retVal = 0;
 
     if ( NULL != c ) {
         if ( NULL != c->adapt ) {
             /*cppcheck-suppress misra-c2012-10.6 */
-            retVal = ( ( 0uL == c->adapt->it ) && ( c->adapt->it != QPID_AUTOTUNNING_UNDEFINED ) ) ? 1 : 0;
+            retVal = ( ( 0uL == c->adapt->it ) && ( c->adapt->it != QPID_AUTOTUNING_UNDEFINED ) ) ? 1 : 0;
         }
     }
 
     return retVal;
 }
 /*============================================================================*/
-int qPID_AutoTunningSetParameters( qPID_controller_t * const c,
-                                   const float mu,
-                                   const float alfa,
-                                   const float lambda )
+int qPID_AutoTuningSetParameters( qPID_controller_t * const c,
+                                  const float mu,
+                                  const float alfa,
+                                  const float lambda )
 {
     int retVal = 0;
 

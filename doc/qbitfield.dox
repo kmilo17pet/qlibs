@@ -1,6 +1,6 @@
 /*! @page qbitfield_desc Bit-Field manipulation library
 * @tableofcontents
-* \ref qbitfield is a library of functions for creating and manipulate
+* \ref qbitfield is a library of functions for creating and manipulating
 * bit fields also known as bit arrays. These are series of zeroes and ones
 * spread across an array of storage units, such as unsigned long integers.
 *
@@ -48,12 +48,12 @@
 *  #include <stdint.h>
 *  #include "qbitfield.h"
 *  
-*  int main( int argc, char *argv[] ) 
+*  int main( int argc, char *argv[] )
 *  {
 *      qBitField_t vPort; // create the bitfield instance
 *      uint8_t vPortArea[ QBITFIELD_SIZE(48) ] = { 0 }; // Create the bitfield storage area to hold 48bits
 *      uint16_t rWord; 
-*      
+*
 *      qBitField_Setup( &vPort, vPortArea, sizeof(vPortArea) );
 *      qBitField_ClearAll( &vPort);
 *      //we are going to write the following value in the bitfield = 0x8177AA55FF88

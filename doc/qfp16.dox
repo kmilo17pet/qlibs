@@ -8,13 +8,13 @@
 *
 * @section qfp16_datatype_limits Datatype limits
 *
-* The maximum representable value is @c 32767.999 985. The minimum value is @c -32768.0.
+* The maximum representable value is @c 32767.999985. The minimum value is @c -32768.0
 *
 * The minimum value is also used to represent @c fp16.overflow for overflow detection,
 * so for some operations it cannot be determined whether it overflowed or the 
 * result was the smallest possible value. In practice, this does not matter much.
 *
-* The smallest unit (machine precision) of the datatype is @c 1/65536=0.000015.
+* The smallest unit (machine precision) of the datatype is @c 1/65536=0.000015259.
 *
 * @section qfp16_functions Fixed-point functions
 *
@@ -30,7 +30,7 @@
 * - \ref qFP16_FPToInt() Divides by \ref qFP16_t and rounds to nearest integer.
 * - \ref qFP16_FloatToFP() Multiplies by \ref qFP16_t and rounds to nearest value.
 * - \ref qFP16_FPToFloat() Divides by qFP16.one. Rounding is according to the
-* current floating point mode
+* current floating-point mode
 * - \ref qFP16_DoubleToFP()  Multiplies by \ref qFP16 and rounds to nearest value.
 * - \ref qFP16_FPToDouble() Divides by qFP16.one. All \ref qFP16_t values fit into
 * a double, so no rounding happens.
