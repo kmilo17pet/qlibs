@@ -154,7 +154,7 @@ extern "C" {
     * @param[in] dst Pointer to the destination vector
     * @param[in] src Pointer to the source vector 
     * @param[in] n Number of elements of the vector 
-    * @return A pointer to the vector, same as @ dst.
+    * @return A pointer to the vector, same as @a dst.
     */
     float* qVFloat_Copy( float * const dst,
                          const float * const src,

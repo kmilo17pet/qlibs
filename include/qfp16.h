@@ -129,7 +129,7 @@ extern "C" {
     qFP16_t qFP16_FloatToFP( const float x );
 
      /**
-    * @brief Returns the fixed-point value @ x converted to float.
+    * @brief Returns the fixed-point value @a x converted to float.
     * @param[in] x The fixed-point(q16.16) value.
     * @return This function returns @a x converted to float.
     */
@@ -143,7 +143,7 @@ extern "C" {
     qFP16_t qFP16_DoubleToFP( const double x );
 
     /**
-    * @brief Returns the fixed-point value @ x converted to double.
+    * @brief Returns the fixed-point value @a x converted to double.
     * @param[in] x The fixed-point(q16.16) value.
     * @return This function returns @a x converted to double.
     */
