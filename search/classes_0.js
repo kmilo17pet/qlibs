@@ -8,7 +8,7 @@ var searchData=
   ['qfp16_5fsettings_5ft_5',['qFP16_Settings_t',['../structq_f_p16___settings__t.html',1,'']]],
   ['qltisys_5ft_6',['qLTISys_t',['../structq_l_t_i_sys__t.html',1,'']]],
   ['qnuma_5fstate_5ft_7',['qNumA_state_t',['../structq_num_a__state__t.html',1,'']]],
-  ['qpid_5fautotunning_5ft_8',['qPID_AutoTunning_t',['../structq_p_i_d___auto_tunning__t.html',1,'']]],
+  ['qpid_5fautotuning_5ft_8',['qPID_AutoTuning_t',['../structq_p_i_d___auto_tuning__t.html',1,'']]],
   ['qpid_5fcontroller_5ft_9',['qPID_controller_t',['../structq_p_i_d__controller__t.html',1,'']]],
   ['qrms_5ft_10',['qRMS_t',['../structq_r_m_s__t.html',1,'']]],
   ['qssmoother_5falnf_5ft_11',['qSSmoother_ALNF_t',['../structq_s_smoother___a_l_n_f__t.html',1,'']]],

@@ -151,9 +151,9 @@ $(document).ready(function(){initNavTree('qfp16_desc.html',''); initResizable();
 <p>The format is a signed <code>Q16.16</code>, which is good enough for most purposes.</p>
 <h1><a class="anchor" id="qfp16_datatype_limits"></a>
 Datatype limits</h1>
-<p>The maximum representable value is <code>32767.999</code> 985. The minimum value is <code>-32768.0</code>.</p>
+<p>The maximum representable value is <code>32767.999985</code>. The minimum value is <code>-32768.0</code> </p>
 <p>The minimum value is also used to represent <code>fp16.overflow</code> for overflow detection, so for some operations it cannot be determined whether it overflowed or the result was the smallest possible value. In practice, this does not matter much.</p>
-<p>The smallest unit (machine precision) of the datatype is <code>1/65536=0.000015</code>.</p>
+<p>The smallest unit (machine precision) of the datatype is <code>1/65536=0.000015259</code>.</p>
 <h1><a class="anchor" id="qfp16_functions"></a>
 Fixed-point functions</h1>
 <p>All the provided functions operate on 32-bit numbers, <a class="el" href="group__qfp16.html#ga1c178e35bab36bb263045df6d93a26e1">qFP16_t</a>, which have 16-bit integer part and 16-bit fractional part.</p>
@@ -164,7 +164,7 @@ Conversion functions</h2>
 <li><a class="el" href="group__qfp16.html#ga8fa3922fde6d48e1bcd3c8719a30c4e6">qFP16_IntToFP()</a> Simply multiplies a by <code>qFP16.one=65536</code> </li>
 <li><a class="el" href="group__qfp16.html#ga4cea2d97fd0599ea67ea75903ab1540c">qFP16_FPToInt()</a> Divides by <a class="el" href="group__qfp16.html#ga1c178e35bab36bb263045df6d93a26e1">qFP16_t</a> and rounds to nearest integer.</li>
 <li><a class="el" href="group__qfp16.html#ga81eb8aafcbe9660fbac4855cacf6cf71">qFP16_FloatToFP()</a> Multiplies by <a class="el" href="group__qfp16.html#ga1c178e35bab36bb263045df6d93a26e1">qFP16_t</a> and rounds to nearest value.</li>
-<li><a class="el" href="group__qfp16.html#gaf666a6462e9e975c10d517bb925886c8">qFP16_FPToFloat()</a> Divides by qFP16.one. Rounding is according to the current floating point mode</li>
+<li><a class="el" href="group__qfp16.html#gaf666a6462e9e975c10d517bb925886c8">qFP16_FPToFloat()</a> Divides by qFP16.one. Rounding is according to the current floating-point mode</li>
 <li><a class="el" href="group__qfp16.html#ga53c7e00384ee53dd655c7f948301a72a">qFP16_DoubleToFP()</a> Multiplies by <a class="el" href="group__qfp16.html#gaa0ae25eb4d075d483c7918007b58d452">qFP16</a> and rounds to nearest value.</li>
 <li><a class="el" href="group__qfp16.html#gab2bc9cb63aa879b0a1af9ae9bca9202a">qFP16_FPToDouble()</a> Divides by qFP16.one. All <a class="el" href="group__qfp16.html#ga1c178e35bab36bb263045df6d93a26e1">qFP16_t</a> values fit into a double, so no rounding happens.</li>
 <li><a class="el" href="group__qfp16.html#ga1980709d72e7d474d7a567c3d6483e98">qFP16_FPToA()</a> Converts from <a class="el" href="group__qfp16.html#ga1c178e35bab36bb263045df6d93a26e1">qFP16_t</a> to string.</li>

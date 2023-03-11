@@ -147,7 +147,7 @@ $(document).ready(function(){initNavTree('qbitfield_desc.html',''); initResizabl
 <li class="level1"><a href="#qbitfield_workingwith">Working with bitfields</a></li>
 </ul>
 </div>
-<div class="textblock"><p><a class="el" href="group__qbitfield.html">qBitField</a> is a library of functions for creating and manipulate bit fields also known as bit arrays. These are series of zeroes and ones spread across an array of storage units, such as unsigned long integers.</p>
+<div class="textblock"><p><a class="el" href="group__qbitfield.html">qBitField</a> is a library of functions for creating and manipulating bit fields also known as bit arrays. These are series of zeroes and ones spread across an array of storage units, such as unsigned long integers.</p>
 <h1><a class="anchor" id="qbitfield_structure"></a>
 Structure</h1>
 <p>Bit arrays are stored in data structures of type <a class="el" href="structq_bit_field__t.html">qBitField_t</a>. This structure has two elements: an array of unsigned long integers called <code>field</code> for storing the bits and an integer <code>size</code> for storing the number of bits in the array.</p>
@@ -190,12 +190,12 @@ Working with bitfields</h1>
 <div class="line"><span class="preprocessor">#include &lt;stdint.h&gt;</span></div>
 <div class="line"><span class="preprocessor">#include &quot;qbitfield.h&quot;</span></div>
 <div class="line"> </div>
-<div class="line"><span class="keywordtype">int</span> main( <span class="keywordtype">int</span> argc, <span class="keywordtype">char</span> *argv[] ) </div>
+<div class="line"><span class="keywordtype">int</span> main( <span class="keywordtype">int</span> argc, <span class="keywordtype">char</span> *argv[] )</div>
 <div class="line">{</div>
 <div class="line">    <a class="code hl_struct" href="structq_bit_field__t.html">qBitField_t</a> vPort; <span class="comment">// create the bitfield instance</span></div>
 <div class="line">    uint8_t vPortArea[ <a class="code hl_define" href="group__qbitfield.html#ga0522c031406f6eeb60b6308af7d5a8f9">QBITFIELD_SIZE</a>(48) ] = { 0 }; <span class="comment">// Create the bitfield storage area to hold 48bits</span></div>
 <div class="line">    uint16_t rWord; </div>
-<div class="line">    </div>
+<div class="line"> </div>
 <div class="line">    <a class="code hl_function" href="group__qbitfield.html#gad44d5e2d7e20c3222d35dadfd4a0db40">qBitField_Setup</a>( &amp;vPort, vPortArea, <span class="keyword">sizeof</span>(vPortArea) );</div>
 <div class="line">    <a class="code hl_function" href="group__qbitfield.html#gaafc179a7c207518c9be5706c51a1f4ec">qBitField_ClearAll</a>( &amp;vPort);</div>
 <div class="line">    <span class="comment">//we are going to write the following value in the bitfield = 0x8177AA55FF88</span></div>

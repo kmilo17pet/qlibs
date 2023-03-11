@@ -26,7 +26,7 @@ var index =
         [ "Example: setting up an exponential weighting filter:", "qssmoother_desc.html#qssmoother_ex8", null ]
       ] ],
       [ "Scalar Kalman filter", "qssmoother_desc.html#qssmoother_klmn", [
-        [ "Example: setting up a scalar kalman filter:", "qssmoother_desc.html#qssmoother_ex9", null ]
+        [ "Example: setting up a scalar Kalman filter:", "qssmoother_desc.html#qssmoother_ex9", null ]
       ] ],
       [ "Double Exponential Smoothing", "qssmoother_desc.html#qssmoother_desf", null ],
       [ "Adaptive Linear Filter", "qssmoother_desc.html#qssmoother_alnf", null ],
@@ -45,20 +45,20 @@ var index =
       [ "PID Controller approach", "qpid_desc.html#qpid_approach", null ],
       [ "Manual Mode", "qpid_desc.html#qpid_maninput", null ],
       [ "Creating a PID Controller", "qpid_desc.html#qpid_create", null ],
-      [ "Usign the controller", "qpid_desc.html#qfpid_usage", [
+      [ "Using the controller", "qpid_desc.html#qfpid_usage", [
         [ "Example: Speed control using a PID controller:", "qpid_desc.html#qpid_ex1", null ]
       ] ],
       [ "Additive MRAC (Model Reference Adaptive Control)", "qpid_desc.html#qpid_mrac", [
         [ "Example: Speed control with PID controller with an additive MRAC:", "qpid_desc.html#qpid_ex2", null ]
       ] ],
-      [ "Autotunning", "qpid_desc.html#qpid_autotune", [
-        [ "Autotunning Usage", "qpid_desc.html#qpid_autotune_usage", null ],
-        [ "Example: Speed control with PID controller and autotunning:", "qpid_desc.html#qpid_ex3", null ]
+      [ "Autotuning", "qpid_desc.html#qpid_autotune", [
+        [ "Autotuning Usage", "qpid_desc.html#qpid_autotune_usage", null ],
+        [ "Example: Speed control with PID controller and autotuning:", "qpid_desc.html#qpid_ex3", null ]
       ] ]
     ] ],
     [ "Recursive LTI Systems Evaluation by transfer functions.", "qltisys_desc.html", [
       [ "Continous-time transfer functions", "qltisys_desc.html#qltisys_cont", [
-        [ "Example: Evaluate the given continous transfer function", "qltisys_desc.html#qltisys_ex1", null ]
+        [ "Example: Evaluate the given continuous transfer function", "qltisys_desc.html#qltisys_ex1", null ]
       ] ],
       [ "Discrete-time transfer functions", "qltisys_desc.html#qltisys_disc", [
         [ "Example: Evaluate the given discrete transfer function", "qltisys_desc.html#qltisys_ex2", null ]

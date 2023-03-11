@@ -1,8 +1,8 @@
 var group__qpid =
 [
-    [ "qPID_AutoTunning_t", "structq_p_i_d___auto_tunning__t.html", null ],
+    [ "qPID_AutoTuning_t", "structq_p_i_d___auto_tuning__t.html", null ],
     [ "qPID_controller_t", "structq_p_i_d__controller__t.html", null ],
-    [ "QPID_AUTOTUNNING_UNDEFINED", "group__qpid.html#gab5476062cacdea0be922e73585dc5aa2", null ],
+    [ "QPID_AUTOTUNING_UNDEFINED", "group__qpid.html#ga3357abb310074b83f5f2b7553f85e82d", null ],
     [ "qPID_Direction_t", "group__qpid.html#ga071f36d4c926098483e9eeae6659ff38", [
       [ "qPID_Forward", "group__qpid.html#gga071f36d4c926098483e9eeae6659ff38aed37b89d36623ac6048fca0b03df9347", null ],
       [ "qPID_Backward", "group__qpid.html#gga071f36d4c926098483e9eeae6659ff38a19bbc9656b592470dd2b8b841c748b38", null ]
@@ -11,11 +11,11 @@ var group__qpid =
       [ "qPID_Automatic", "group__qpid.html#gga05a79879807411fa30d5f21816030f5dad3d742debf8eef2ecff74778254b4cf9", null ],
       [ "qPID_Manual", "group__qpid.html#gga05a79879807411fa30d5f21816030f5da0cc4e1987e0c9ff009774cbd63e75edb", null ]
     ] ],
-    [ "qPID_AutoTunningComplete", "group__qpid.html#gab124780b727b07bd32eb61ff802ec7a4", null ],
-    [ "qPID_AutoTunningSetParameters", "group__qpid.html#gaff5965d8577dfea21abff1f3bc826a7e", null ],
-    [ "qPID_BindAutoTunning", "group__qpid.html#ga1dc553b9a08e94605eef62b6f794f6e6", null ],
+    [ "qPID_AutoTuningComplete", "group__qpid.html#ga3ee1476f0720116362b366ec0bbddc71", null ],
+    [ "qPID_AutoTuningSetParameters", "group__qpid.html#ga72dd200c10860e36458248392f6cda72", null ],
+    [ "qPID_BindAutoTuning", "group__qpid.html#ga8d9d2e1f77505ac5e48b68dab6f6d235", null ],
     [ "qPID_Control", "group__qpid.html#ga35578d503547dbd39bf8647700c66eb5", null ],
-    [ "qPID_EnableAutoTunning", "group__qpid.html#gaa7e6a680ce09aafcd299c4ec4c6cd107", null ],
+    [ "qPID_EnableAutoTuning", "group__qpid.html#ga9435505b4d0409f76074138d72acab87", null ],
     [ "qPID_Reset", "group__qpid.html#ga529fc13e912b855918346ebe3807c1b1", null ],
     [ "qPID_SetDerivativeFilter", "group__qpid.html#gaa6b1cdfe6594c3296d1ef3ea4b3ab3fa", null ],
     [ "qPID_SetDirection", "group__qpid.html#ga025ba7ce96822bb00c89ae82374da987", null ],

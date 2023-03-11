@@ -147,8 +147,8 @@ $(document).ready(function(){initNavTree('group__qpid.html',''); initResizable()
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Data Structures</h2></td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structq_p_i_d___auto_tunning__t.html">qPID_AutoTunning_t</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A PID Auto-tunning object.  <a href="structq_p_i_d___auto_tunning__t.html#details">More...</a><br /></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structq_p_i_d___auto_tuning__t.html">qPID_AutoTuning_t</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A PID Auto-tuning object.  <a href="structq_p_i_d___auto_tuning__t.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structq_p_i_d__controller__t.html">qPID_controller_t</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A PID controller object.  <a href="structq_p_i_d__controller__t.html#details">More...</a><br /></td></tr>
@@ -156,10 +156,10 @@ Data Structures</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
 Macros</h2></td></tr>
-<tr class="memitem:gab5476062cacdea0be922e73585dc5aa2"><td class="memItemLeft" align="right" valign="top"><a id="gab5476062cacdea0be922e73585dc5aa2" name="gab5476062cacdea0be922e73585dc5aa2"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>QPID_AUTOTUNNING_UNDEFINED</b></td></tr>
-<tr class="memdesc:gab5476062cacdea0be922e73585dc5aa2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Macro to keep the auto-tuner enabled indefinitely. <br /></td></tr>
-<tr class="separator:gab5476062cacdea0be922e73585dc5aa2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga3357abb310074b83f5f2b7553f85e82d"><td class="memItemLeft" align="right" valign="top"><a id="ga3357abb310074b83f5f2b7553f85e82d" name="ga3357abb310074b83f5f2b7553f85e82d"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>QPID_AUTOTUNING_UNDEFINED</b></td></tr>
+<tr class="memdesc:ga3357abb310074b83f5f2b7553f85e82d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Macro to keep the auto-tuner enabled indefinitely. <br /></td></tr>
+<tr class="separator:ga3357abb310074b83f5f2b7553f85e82d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="enum-members" name="enum-members"></a>
 Enumerations</h2></td></tr>
@@ -204,7 +204,7 @@ Functions</h2></td></tr>
 <tr class="memdesc:gaf980666f6b788ecbee633cb534811f61"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the minimum value considered as error.  <br /></td></tr>
 <tr class="separator:gaf980666f6b788ecbee633cb534811f61"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gaa6b1cdfe6594c3296d1ef3ea4b3ab3fa"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qpid.html#gaa6b1cdfe6594c3296d1ef3ea4b3ab3fa">qPID_SetDerivativeFilter</a> (<a class="el" href="structq_p_i_d__controller__t.html">qPID_controller_t</a> *const c, const float beta)</td></tr>
-<tr class="memdesc:gaa6b1cdfe6594c3296d1ef3ea4b3ab3fa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the tunning parameter for the derivative filter.  <br /></td></tr>
+<tr class="memdesc:gaa6b1cdfe6594c3296d1ef3ea4b3ab3fa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the tuning parameter for the derivative filter.  <br /></td></tr>
 <tr class="separator:gaa6b1cdfe6594c3296d1ef3ea4b3ab3fa"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga9f48262417f9c5f9385e21d819dfb4ed"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qpid.html#ga9f48262417f9c5f9385e21d819dfb4ed">qPID_SetReferenceWeighting</a> (<a class="el" href="structq_p_i_d__controller__t.html">qPID_controller_t</a> *const c, const float gb, const float gc)</td></tr>
 <tr class="memdesc:ga9f48262417f9c5f9385e21d819dfb4ed"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the PID Reference(Set-Point) Weighting. This value is used in order to avoid the increase of the rise time due to the smoothing of the reference signal applied to the closed-loop system.  <br /></td></tr>
@@ -221,18 +221,18 @@ Functions</h2></td></tr>
 <tr class="memitem:ga35578d503547dbd39bf8647700c66eb5"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qpid.html#ga35578d503547dbd39bf8647700c66eb5">qPID_Control</a> (<a class="el" href="structq_p_i_d__controller__t.html">qPID_controller_t</a> *const c, const float w, const float y)</td></tr>
 <tr class="memdesc:ga35578d503547dbd39bf8647700c66eb5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes the control action for given PID controller instance.  <br /></td></tr>
 <tr class="separator:ga35578d503547dbd39bf8647700c66eb5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga1dc553b9a08e94605eef62b6f794f6e6"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qpid.html#ga1dc553b9a08e94605eef62b6f794f6e6">qPID_BindAutoTunning</a> (<a class="el" href="structq_p_i_d__controller__t.html">qPID_controller_t</a> *const c, <a class="el" href="structq_p_i_d___auto_tunning__t.html">qPID_AutoTunning_t</a> *const at)</td></tr>
-<tr class="memdesc:ga1dc553b9a08e94605eef62b6f794f6e6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Binds the specified instance to enable the PID controller auto tuning algorithm.  <br /></td></tr>
-<tr class="separator:ga1dc553b9a08e94605eef62b6f794f6e6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaa7e6a680ce09aafcd299c4ec4c6cd107"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qpid.html#gaa7e6a680ce09aafcd299c4ec4c6cd107">qPID_EnableAutoTunning</a> (<a class="el" href="structq_p_i_d__controller__t.html">qPID_controller_t</a> *const c, const uint32_t tEnable)</td></tr>
-<tr class="memdesc:gaa7e6a680ce09aafcd299c4ec4c6cd107"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the number of time steps where the auto tuner algorithm will modify the controller gains.  <br /></td></tr>
-<tr class="separator:gaa7e6a680ce09aafcd299c4ec4c6cd107"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gab124780b727b07bd32eb61ff802ec7a4"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qpid.html#gab124780b727b07bd32eb61ff802ec7a4">qPID_AutoTunningComplete</a> (const <a class="el" href="structq_p_i_d__controller__t.html">qPID_controller_t</a> *const c)</td></tr>
-<tr class="memdesc:gab124780b727b07bd32eb61ff802ec7a4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Verifies that the auto tuning process has finished with new gains set on the controller.  <br /></td></tr>
-<tr class="separator:gab124780b727b07bd32eb61ff802ec7a4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaff5965d8577dfea21abff1f3bc826a7e"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qpid.html#gaff5965d8577dfea21abff1f3bc826a7e">qPID_AutoTunningSetParameters</a> (<a class="el" href="structq_p_i_d__controller__t.html">qPID_controller_t</a> *const c, const float mu, const float alfa, const float lambda)</td></tr>
-<tr class="memdesc:gaff5965d8577dfea21abff1f3bc826a7e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Change parameters of the auto-tunning algorithm.  <br /></td></tr>
-<tr class="separator:gaff5965d8577dfea21abff1f3bc826a7e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga8d9d2e1f77505ac5e48b68dab6f6d235"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qpid.html#ga8d9d2e1f77505ac5e48b68dab6f6d235">qPID_BindAutoTuning</a> (<a class="el" href="structq_p_i_d__controller__t.html">qPID_controller_t</a> *const c, <a class="el" href="structq_p_i_d___auto_tuning__t.html">qPID_AutoTuning_t</a> *const at)</td></tr>
+<tr class="memdesc:ga8d9d2e1f77505ac5e48b68dab6f6d235"><td class="mdescLeft">&#160;</td><td class="mdescRight">Binds the specified instance to enable the PID controller auto tuning algorithm.  <br /></td></tr>
+<tr class="separator:ga8d9d2e1f77505ac5e48b68dab6f6d235"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga9435505b4d0409f76074138d72acab87"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qpid.html#ga9435505b4d0409f76074138d72acab87">qPID_EnableAutoTuning</a> (<a class="el" href="structq_p_i_d__controller__t.html">qPID_controller_t</a> *const c, const uint32_t tEnable)</td></tr>
+<tr class="memdesc:ga9435505b4d0409f76074138d72acab87"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the number of time steps where the auto tuner algorithm will modify the controller gains.  <br /></td></tr>
+<tr class="separator:ga9435505b4d0409f76074138d72acab87"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga3ee1476f0720116362b366ec0bbddc71"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qpid.html#ga3ee1476f0720116362b366ec0bbddc71">qPID_AutoTuningComplete</a> (const <a class="el" href="structq_p_i_d__controller__t.html">qPID_controller_t</a> *const c)</td></tr>
+<tr class="memdesc:ga3ee1476f0720116362b366ec0bbddc71"><td class="mdescLeft">&#160;</td><td class="mdescRight">Verifies that the auto tuning process has finished with new gains set on the controller.  <br /></td></tr>
+<tr class="separator:ga3ee1476f0720116362b366ec0bbddc71"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga72dd200c10860e36458248392f6cda72"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qpid.html#ga72dd200c10860e36458248392f6cda72">qPID_AutoTuningSetParameters</a> (<a class="el" href="structq_p_i_d__controller__t.html">qPID_controller_t</a> *const c, const float mu, const float alfa, const float lambda)</td></tr>
+<tr class="memdesc:ga72dd200c10860e36458248392f6cda72"><td class="mdescLeft">&#160;</td><td class="mdescRight">Change parameters of the auto-tuning algorithm.  <br /></td></tr>
+<tr class="separator:ga72dd200c10860e36458248392f6cda72"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gacfa6551f0c64bbf9beb24508532609a4"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qpid.html#gacfa6551f0c64bbf9beb24508532609a4">qPID_SetIntegrationMethod</a> (<a class="el" href="structq_p_i_d__controller__t.html">qPID_controller_t</a> *const c, qNumA_IntegrationMethod_t im)</td></tr>
 <tr class="memdesc:gacfa6551f0c64bbf9beb24508532609a4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set integration method for the PID controller.  <br /></td></tr>
 <tr class="separator:gacfa6551f0c64bbf9beb24508532609a4"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -286,14 +286,14 @@ Functions</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Function Documentation</h2>
-<a id="gab124780b727b07bd32eb61ff802ec7a4" name="gab124780b727b07bd32eb61ff802ec7a4"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#gab124780b727b07bd32eb61ff802ec7a4">&#9670;&#160;</a></span>qPID_AutoTunningComplete()</h2>
+<a id="ga3ee1476f0720116362b366ec0bbddc71" name="ga3ee1476f0720116362b366ec0bbddc71"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga3ee1476f0720116362b366ec0bbddc71">&#9670;&#160;</a></span>qPID_AutoTuningComplete()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int qPID_AutoTunningComplete </td>
+          <td class="memname">int qPID_AutoTuningComplete </td>
           <td>(</td>
           <td class="paramtype">const <a class="el" href="structq_p_i_d__controller__t.html">qPID_controller_t</a> *const&#160;</td>
           <td class="paramname"><em>c</em></td><td>)</td>
@@ -309,18 +309,18 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>1 if auto-tunning its complete, otherwise return 0. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>1 if auto-tuning its complete, otherwise return 0. </dd></dl>
 
 </div>
 </div>
-<a id="gaff5965d8577dfea21abff1f3bc826a7e" name="gaff5965d8577dfea21abff1f3bc826a7e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#gaff5965d8577dfea21abff1f3bc826a7e">&#9670;&#160;</a></span>qPID_AutoTunningSetParameters()</h2>
+<a id="ga72dd200c10860e36458248392f6cda72" name="ga72dd200c10860e36458248392f6cda72"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga72dd200c10860e36458248392f6cda72">&#9670;&#160;</a></span>qPID_AutoTuningSetParameters()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int qPID_AutoTunningSetParameters </td>
+          <td class="memname">int qPID_AutoTuningSetParameters </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="structq_p_i_d__controller__t.html">qPID_controller_t</a> *const&#160;</td>
           <td class="paramname"><em>c</em>, </td>
@@ -351,7 +351,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Change parameters of the auto-tunning algorithm. </p>
+<p>Change parameters of the auto-tuning algorithm. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">c</td><td>A pointer to the PID controller instance. </td></tr>
@@ -365,14 +365,14 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="ga1dc553b9a08e94605eef62b6f794f6e6" name="ga1dc553b9a08e94605eef62b6f794f6e6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga1dc553b9a08e94605eef62b6f794f6e6">&#9670;&#160;</a></span>qPID_BindAutoTunning()</h2>
+<a id="ga8d9d2e1f77505ac5e48b68dab6f6d235" name="ga8d9d2e1f77505ac5e48b68dab6f6d235"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga8d9d2e1f77505ac5e48b68dab6f6d235">&#9670;&#160;</a></span>qPID_BindAutoTuning()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int qPID_BindAutoTunning </td>
+          <td class="memname">int qPID_BindAutoTuning </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="structq_p_i_d__controller__t.html">qPID_controller_t</a> *const&#160;</td>
           <td class="paramname"><em>c</em>, </td>
@@ -380,7 +380,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="structq_p_i_d___auto_tunning__t.html">qPID_AutoTunning_t</a> *const&#160;</td>
+          <td class="paramtype"><a class="el" href="structq_p_i_d___auto_tuning__t.html">qPID_AutoTuning_t</a> *const&#160;</td>
           <td class="paramname"><em>at</em>&#160;</td>
         </tr>
         <tr>
@@ -392,11 +392,11 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Binds the specified instance to enable the PID controller auto tuning algorithm. </p>
-<dl class="section note"><dt>Note</dt><dd>To unbind the auto-tunning algorithm, pass <code>NULL</code> as argument. </dd></dl>
+<dl class="section note"><dt>Note</dt><dd>To unbind the auto-tuning algorithm, pass <code>NULL</code> as argument. </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">c</td><td>A pointer to the PID controller instance. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">at</td><td>A pointer to the PID auto tunning instance. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">at</td><td>A pointer to the PID auto tuning instance. </td></tr>
   </table>
   </dd>
 </dl>
@@ -451,14 +451,14 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="gaa7e6a680ce09aafcd299c4ec4c6cd107" name="gaa7e6a680ce09aafcd299c4ec4c6cd107"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#gaa7e6a680ce09aafcd299c4ec4c6cd107">&#9670;&#160;</a></span>qPID_EnableAutoTunning()</h2>
+<a id="ga9435505b4d0409f76074138d72acab87" name="ga9435505b4d0409f76074138d72acab87"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga9435505b4d0409f76074138d72acab87">&#9670;&#160;</a></span>qPID_EnableAutoTuning()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int qPID_EnableAutoTunning </td>
+          <td class="memname">int qPID_EnableAutoTuning </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="structq_p_i_d__controller__t.html">qPID_controller_t</a> *const&#160;</td>
           <td class="paramname"><em>c</em>, </td>
@@ -478,12 +478,12 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Set the number of time steps where the auto tuner algorithm will modify the controller gains. </p>
-<dl class="section pre"><dt>Precondition</dt><dd>Controller must have an <a class="el" href="structq_p_i_d___auto_tunning__t.html" title="A PID Auto-tunning object.">qPID_AutoTunning_t</a> object already binded wih <a class="el" href="group__qpid.html#ga1dc553b9a08e94605eef62b6f794f6e6" title="Binds the specified instance to enable the PID controller auto tuning algorithm.">qPID_BindAutoTunning()</a> </dd></dl>
-<dl class="section note"><dt>Note</dt><dd>To disable auto-tunning pass a 0uL value to the <em>tEnable</em> argument. </dd></dl>
+<dl class="section pre"><dt>Precondition</dt><dd>Controller must have an <a class="el" href="structq_p_i_d___auto_tuning__t.html" title="A PID Auto-tuning object.">qPID_AutoTuning_t</a> object already binded wih <a class="el" href="group__qpid.html#ga8d9d2e1f77505ac5e48b68dab6f6d235" title="Binds the specified instance to enable the PID controller auto tuning algorithm.">qPID_BindAutoTuning()</a> </dd></dl>
+<dl class="section note"><dt>Note</dt><dd>To disable auto-tuning pass a 0uL value to the <em>tEnable</em> argument. </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">c</td><td>A pointer to the PID controller instance. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">tEnable</td><td>The number of time steps. To keep the auto tuner enabled indefinitely pass <a class="el" href="group__qpid.html#gab5476062cacdea0be922e73585dc5aa2" title="Macro to keep the auto-tuner enabled indefinitely.">QPID_AUTOTUNNING_UNDEFINED</a> as argument. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">tEnable</td><td>The number of time steps. To keep the auto tuner enabled indefinitely pass <a class="el" href="group__qpid.html#ga3357abb310074b83f5f2b7553f85e82d" title="Macro to keep the auto-tuner enabled indefinitely.">QPID_AUTOTUNING_UNDEFINED</a> as argument. </td></tr>
   </table>
   </dd>
 </dl>
@@ -544,11 +544,11 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Set the tunning parameter for the derivative filter. </p>
+<p>Set the tuning parameter for the derivative filter. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">c</td><td>A pointer to the PID controller instance. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">beta</td><td>The tunning parameter. [ 0 &lt; beta &lt; 1 ] </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">beta</td><td>The tuning parameter. [ 0 &lt; beta &lt; 1 ] </td></tr>
   </table>
   </dd>
 </dl>
