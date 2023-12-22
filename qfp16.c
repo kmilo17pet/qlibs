@@ -72,9 +72,6 @@ static qFP16_Settings_t *fp = &fp_default;
 
 /*! @endcond  */
 
-static uint32_t qFP16_OverflowCheck( uint32_t res,
-                                     const uint32_t x,
-                                     const uint32_t y );
 static qFP16_t qFP16_rs( const qFP16_t x );
 static qFP16_t qFP16_log2i( qFP16_t x );
 static char *qFP16_itoa( char *buf,
@@ -226,7 +223,9 @@ qFP16_t qFP16_Add( const qFP16_t X,
     uint32_t retValue;
 
     retValue =  x + y;
-    retValue = qFP16_OverflowCheck( retValue, x, y );
+    if ( ( 0u == ( ( x ^ y ) & intern.overflow_mask ) ) && ( 0u != ( ( x ^ retValue ) & intern.overflow_mask ) ) ) {
+        retValue = (uint32_t)qFP16.overflow;
+    }
 
     return qFP16_Saturate( (qFP16_t)retValue, X, X );
 }
@@ -238,7 +237,9 @@ qFP16_t qFP16_Sub( const qFP16_t X,
     uint32_t retValue;
 
     retValue =  x - y;
-    retValue = qFP16_OverflowCheck( retValue, x, y );
+    if ( ( 0u != ( ( x ^ y ) & intern.overflow_mask ) ) && ( 0u != ( ( x ^ retValue ) & intern.overflow_mask ) ) ) {
+        retValue = (uint32_t)qFP16.overflow;
+    }
 
     return qFP16_Saturate( (qFP16_t)retValue, X, X );
 }
@@ -911,18 +912,6 @@ qFP16_t qFP16_AToFP( const char *s )
     }
     /*cstat +MISRAC2012-Dir-4.11_h*/
     return retValue;
-}
-/*============================================================================*/
-static uint32_t qFP16_OverflowCheck( uint32_t res,
-                                     const uint32_t x,
-                                     const uint32_t y )
-{
-    if ( ( 0u == ( ( x ^ y ) & intern.overflow_mask ) ) &&
-         ( 0u != ( ( x ^ res ) & intern.overflow_mask ) ) ) {
-        res = (uint32_t)qFP16.overflow;
-    }
-
-    return res;
 }
 /*============================================================================*/
 static qFP16_t qFP16_rs( const qFP16_t x )
