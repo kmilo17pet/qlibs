@@ -560,7 +560,7 @@ qFP16_t qFP16_WrapTo180( qFP16_t x )
         while ( x > qFP16.f_180 ) {
             x -= qFP16.f_360;
         }
-        while ( x <= -qFP16.f_pi ) {
+        while ( x <= -qFP16.f_180 ) {
             x += qFP16.f_360;
         }
     }
