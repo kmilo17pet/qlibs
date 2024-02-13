@@ -82,7 +82,7 @@ static float qVFloat_VV_Add( float **dst,
     size_t i;
     float s = 0.0F;
 
-    for ( i = 0u; i < n ; ++i ) {
+    for ( i = 0U; i < n ; ++i ) {
         pOut[ 0 ][ 0 ] = ( a*x[ i ] ) + ( b*y[ i ] );
         s += pOut[ 0 ][ 0 ];
         dst[ 0 ]++;
@@ -101,7 +101,7 @@ static float qVFloat_kV_Add( float **dst,
     size_t i;
     float s = 0.0F;
 
-    for ( i = 0u ; i < n ; ++i ) {
+    for ( i = 0U ; i < n ; ++i ) {
         pOut[ 0 ][ 0 ] = ( a*x[ i ] ) + b;
         s += pOut[ 0 ][ 0 ];
         dst[ 0 ]++;
@@ -122,7 +122,7 @@ static float qVFloat_VV_Mul( float **dst,
     float s = 0.0F;
     const float k = a*b;
 
-    for ( i = 0u ; i < n ; ++i ) {
+    for ( i = 0U ; i < n ; ++i ) {
         pOut[ 0 ][ 0 ] = k*x[ i ]*y[ i ];
         s += pOut[ 0 ][ 0 ];
         dst[ 0 ]++;
@@ -142,7 +142,7 @@ static float qVFloat_kV_Mul( float **dst,
     float s = 0.0F;
     const float k = a*b;
 
-    for ( i = 0u ; i < n ; ++i ) {
+    for ( i = 0U ; i < n ; ++i ) {
         pOut[ 0 ][ 0 ] = k*x[ i ];
         s += pOut[ 0 ][ 0 ];
         dst[ 0 ]++;
@@ -163,7 +163,7 @@ static float qVFloat_VV_Div( float **dst,
     float s = 0.0F;
     const float k = a/b;
 
-    for ( i = 0u ; i < n ; ++i ) {
+    for ( i = 0U ; i < n ; ++i ) {
         pOut[ 0 ][ 0 ] = ( k*x[ i ] )/y[ i ];
         s += pOut[ 0 ][ 0 ];
         dst[ 0 ]++;
@@ -183,7 +183,7 @@ static float qVFloat_kV_Div( float **dst,
     float s = 0.0F;
     const float k = a/b;
 
-    for ( i = 0u ; i < n ; ++i ) {
+    for ( i = 0U ; i < n ; ++i ) {
         pOut[ 0 ][ 0 ] =  k*x[ i ];
         s += pOut[ 0 ][ 0 ];
         dst[ 0 ]++;
@@ -210,7 +210,7 @@ float qVFloat_Operate( float * dst,
                                          };
     float retVal = 0.0F;
 
-    if ( ( NULL != x ) && ( n > 0u ) ) {
+    if ( ( NULL != x ) && ( n > 0U ) ) {
         float t;
         float *pt = &t;
         float **ppt = ( NULL == dst ) ? &pt : &dst;
@@ -239,7 +239,7 @@ float qVFloat_ApplyFx( float *dst,
     float **ppt = ( NULL == dst ) ? &pt : &dst;
 
     if ( NULL != fx1 ) {
-        for ( i = 0u ; i < n ; ++i ) {
+        for ( i = 0U ; i < n ; ++i ) {
             ppt[ 0 ][ 0 ] = a*fx1( x[ i ] );
             s += ppt[ 0 ][ 0 ];
             dst++;
@@ -247,14 +247,14 @@ float qVFloat_ApplyFx( float *dst,
     }
     else if ( NULL != fx2 ) {
         if ( NULL != y ) {
-            for ( i = 0u ; i < n ; ++i ) {
+            for ( i = 0U ; i < n ; ++i ) {
                 ppt[ 0 ][ 0 ]= a*fx2( x[ i ], y[ i ] );
                 s += ppt[ 0 ][ 0 ];
                 dst++;
             }
         }
         else {
-            for ( i = 0u ; i < n ; ++i ) {
+            for ( i = 0U ; i < n ; ++i ) {
                 ppt[ 0 ][ 0 ] = a*fx2( x[ i ], b );
                 s += ppt[ 0 ][ 0 ];
                 dst++;
@@ -377,7 +377,7 @@ float qVFloat_Distance( const float * const x,
                         const float * const y,
                         const size_t n )
 {
-    float s = 0.0f;
+    float s = 0.0F;
 
     if ( ( NULL != x ) && ( NULL != y ) ) {
         size_t i;

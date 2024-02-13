@@ -63,7 +63,7 @@ void qTypeGeneric_Sort( void * const pbase,
         uint8_t *tmp_ptr = base_ptr, *run_ptr;
         uint8_t *thresh = ( end_ptr < ( base_ptr + max_thresh) ) ? end_ptr : ( base_ptr + max_thresh ) ;
 
-        if ( n > 4u ) {
+        if ( n > 4U ) {
             uint8_t *lo = base_ptr, *hi = &lo[ size*( n - 1U ) ];
             qTypeGeneric_SortStackNode_t stack[ 8U*sizeof(size_t) ], *top = stack;
 

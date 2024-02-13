@@ -44,7 +44,7 @@ static float qLTISys_ContinuosUpdate( qLTISys_t * const sys,
         for ( i = ( sys->n - 1U ) ; i >= 1U ; --i ) {
             dx0 += sys->a[ i ]*sys->xc[ i ].x[ 0 ]; /*compute the first derivative*/
             /*integrate to obtain the remaining states*/
-            (void)sys->integrate( &sys->xc[ i ], sys->xc[ i - 1u ].x[ 0 ], sys->dt, true );
+            (void)sys->integrate( &sys->xc[ i ], sys->xc[ i - 1U ].x[ 0 ], sys->dt, true );
             /*compute the first part of the output*/
             y += ( sys->b[ i ] - ( sys->a[ i ]*sys->b0 ) )*sys->xc[ i ].x[ 0 ];
         }

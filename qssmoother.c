@@ -272,7 +272,7 @@ static int qSSmoother_Setup_GMWF( _qSSmoother_t * const f,
     /*cstat -CERT-FLP34-C*/
     const size_t c = (size_t)param[ 1 ];
     /*cstat +CERT-FLP34-C*/
-    const size_t ws = wsize/2u;
+    const size_t ws = wsize/2U;
 
     if ( ( NULL != window ) && ( wsize > 0U ) && ( c < ws ) && ( sg > 0.0F ) ) {
         /*cstat -MISRAC2012-Rule-11.3 -CERT-EXP39-C_d -CERT-EXP36-C_a*/

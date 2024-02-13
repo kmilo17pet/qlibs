@@ -25,7 +25,7 @@ int qPID_Setup( qPID_controller_t * const c,
 {
     int retValue = 0;
 
-    if ( ( NULL != c ) && ( dt > 0.0f ) ) {
+    if ( ( NULL != c ) && ( dt > 0.0F ) ) {
         c->dt = dt;
         c->init = 1U;
         c->adapt = NULL;
@@ -266,7 +266,7 @@ float qPID_Control( qPID_controller_t * const c,
 
         e = w - y;
         if ( QLIB_ABS( e ) <= c->epsilon ) {
-            e = 0.0f;
+            e = 0.0F;
         }
         /*integral with anti-windup*/
         ie = c->integrate( &c->c_state,  e + c->u1, c->dt, false );

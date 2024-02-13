@@ -411,7 +411,7 @@ qFP16_t qFP16_Sqrt( qFP16_t x )
                     retValue <<= 16;
                 }
                 /*cppcheck-suppress [ misra-c2012-10.6, misra-c2012-12.2 ] */
-                bit = 1U << 14u;
+                bit = 1U << 14U;
             }
         }
     }
@@ -612,7 +612,7 @@ qFP16_t qFP16_Atan2( const qFP16_t y,
     const qFP16_t QFP16_0_196289 = 0x00003240;
     static const qFP16_t f_3pi_div_4 = 154415; /*3*pi/4*/
     /*cppcheck-suppress misra-c2012-10.1 */
-    mask = ( y >> ( sizeof(qFP16_t)*7u ) );
+    mask = ( y >> ( sizeof(qFP16_t)*7U ) );
     absY = ( y + mask ) ^ mask;
     if ( x >= 0 ) {
         r = qFP16_Div( ( x - absY ), ( x + absY ) );
