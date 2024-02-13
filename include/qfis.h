@@ -167,26 +167,54 @@ extern "C" {
         /*! @endcond  */
     } qFIS_MF_t;
 
-    /**
-    * @brief Type definition to instantiate a set of fuzzy rules
-    * @details Rules are defined by combining I/O and membership function tags
-    * with the following statements:
-    * 
-    * #QFIS_RULES_BEGIN, #IF, #IS, #IS_NOT, #AND, #OR, #THEN, #END and
-    * #QFIS_RULES_END
-    * 
-    * Example:
-    * @code{.c}
-    * static const qFIS_Rules_t rules[] = { 
-    *     QFIS_RULES_BEGIN
-    *         IF service IS service_poor OR food IS food_rancid THEN tip IS tip_cheap END
-    *         IF service IS service_good THEN tip IS tip_average END
-    *         IF service IS service_excellent OR food IS food_delicious THEN tip IS tip_generous END
-    *     QFIS_RULES_END
-    * };
-    * @endcode
-    */
-    typedef int16_t qFIS_Rules_t;
+    #define FIS_RULE_ITEM_SIZE  1
+
+    #if ( FIS_RULE_ITEM_SIZE == 1 )
+
+        /**
+        * @brief Type definition to instantiate a set of fuzzy rules
+        * @details Rules are defined by combining I/O and membership function tags
+        * with the following statements:
+        *
+        * #QFIS_RULES_BEGIN, #IF, #IS, #IS_NOT, #AND, #OR, #THEN, #END and
+        * #QFIS_RULES_END
+        *
+        * Example:
+        * @code{.c}
+        * static const qFIS_Rules_t rules[] = {
+        *     QFIS_RULES_BEGIN
+        *         IF service IS service_poor OR food IS food_rancid THEN tip IS tip_cheap END
+        *         IF service IS service_good THEN tip IS tip_average END
+        *         IF service IS service_excellent OR food IS food_delicious THEN tip IS tip_generous END
+        *     QFIS_RULES_END
+        * };
+        * @endcode
+        */
+        typedef int8_t qFIS_Rules_t;
+        #define FIS_RULES_MIN_VALUE     INT8_MIN
+    #else
+        /**
+        * @brief Type definition to instantiate a set of fuzzy rules
+        * @details Rules are defined by combining I/O and membership function tags
+        * with the following statements:
+        *
+        * #QFIS_RULES_BEGIN, #IF, #IS, #IS_NOT, #AND, #OR, #THEN, #END and
+        * #QFIS_RULES_END
+        *
+        * Example:
+        * @code{.c}
+        * static const qFIS_Rules_t rules[] = {
+        *     QFIS_RULES_BEGIN
+        *         IF service IS service_poor OR food IS food_rancid THEN tip IS tip_cheap END
+        *         IF service IS service_good THEN tip IS tip_average END
+        *         IF service IS service_excellent OR food IS food_delicious THEN tip IS tip_generous END
+        *     QFIS_RULES_END
+        * };
+        * @endcode
+        */
+        typedef int16_t qFIS_Rules_t;
+        #define FIS_RULES_MIN_VALUE     INT16_MIN
+    #endif
 
     /*! @cond  */
     typedef int qFIS_Tag_t;
@@ -226,10 +254,10 @@ extern "C" {
     } qFIS_t;
 
     /*! @cond  */
-    #define _QFIS_RULES_END         ( INT16_MIN + 1 )
-    #define _QFIS_AND               ( INT16_MIN + 2 )
-    #define _QFIS_OR                ( INT16_MIN + 3 )
-    #define _QFIS_THEN              ( INT16_MIN + 4 )
+    #define _QFIS_RULES_END         ( FIS_RULES_MIN_VALUE + 1 )
+    #define _QFIS_AND               ( FIS_RULES_MIN_VALUE + 2 )
+    #define _QFIS_OR                ( FIS_RULES_MIN_VALUE + 3 )
+    #define _QFIS_THEN              ( FIS_RULES_MIN_VALUE + 4 )
 
     #define _QFIS_IF_STATEMENT      ,
     #define _QFIS_AND_STATEMENT     +1),_QFIS_AND,
@@ -249,33 +277,33 @@ extern "C" {
     * #QFIS_RULES_END declare the end of the FIS rule set.
     * @see #QFIS_RULES_END
     * @warning Only one segment is allowed inside a fuzzy rule set.
-    * @note It must always be used together with a matching #QFIS_RULES_END 
+    * @note It must always be used together with a matching #QFIS_RULES_END
     * statement.
     * Example:
     * @code{.c}
-    * static const qFIS_Rules_t rules[] = { 
+    * static const qFIS_Rules_t rules[] = {
     *     QFIS_RULES_BEGIN
-    *       
+    *
     *     QFIS_RULES_END
     * };
     * @endcode
     */
-    #define QFIS_RULES_BEGIN        ( INT16_MIN )
+    #define QFIS_RULES_BEGIN        ( FIS_RULES_MIN_VALUE )
 
     /**
     * @brief Ends a Fuzzy rule set.
-    * The #QFIS_RULES_END statement is used to finalize the declaration of a 
+    * The #QFIS_RULES_END statement is used to finalize the declaration of a
     * FIS rule set. It should be placed at the end of the rules enumeration.
     * #QFIS_RULES_BEGIN declare the start point of the FIS rule set.
     * @see #QFIS_RULES_BEGIN
     * @warning Only one segment is allowed inside a fuzzy rule set.
-    * @note It must always be used together with a matching #QFIS_RULES_BEGIN 
+    * @note It must always be used together with a matching #QFIS_RULES_BEGIN
     * statement.
     * Example:
     * @code{.c}
-    * static const qFIS_Rules_t rules[] = { 
+    * static const qFIS_Rules_t rules[] = {
     *     QFIS_RULES_BEGIN
-    *       
+    *
     *     QFIS_RULES_END
     * };
     * @endcode
@@ -424,7 +452,7 @@ extern "C" {
     * @note For ::Sugeno FIS, an output membership function should be one of the
     * following: ::constantmf, ::linearmf.
     * @note For ::Tsukamoto FIS, an output membership function should be one the
-    * following monotonic functions : ::tlinsmf, ::tlinzmf, ::tsmf, ::tzmf, 
+    * following monotonic functions : ::tlinsmf, ::tlinzmf, ::tsmf, ::tzmf,
     * ::tconcavemf
     * @note To set a custom user-defined membership function, set this argument
     * as ::custommf and pass a pointer to the desired function on the
@@ -448,9 +476,9 @@ extern "C" {
     /**
     * @brief Set location to store the aggregated region for supplied FIS output
     * @note This feature only applies to Mamdani systems.
-    * @warning Array size of @a x and @a y should be greater or equal to the 
+    * @warning Array size of @a x and @a y should be greater or equal to the
     * number of evaluation points of the FIS instance.
-    * @pre The FIS instance and the output should be previously configured 
+    * @pre The FIS instance and the output should be previously configured
     * initialized with qFIS_Setup() and qFIS_OutputSetup() respectively.
     * @param[in] o An array of type qFIS_Output_t with the FIS outputs.
     * @param[in] t The output tag
@@ -479,7 +507,7 @@ extern "C" {
 
     /**
     * @brief Perform the inference process on the requested FIS object
-    * @pre The instance should have already invoked the fuzzification operation 
+    * @pre The instance should have already invoked the fuzzification operation
     * successfully with qFIS_Fuzzify()
     * @param[in] f A pointer to the Fuzzy Inference System instance.
     * @return 1 on success, otherwise return 0.
@@ -488,7 +516,7 @@ extern "C" {
 
     /**
     * @brief Perform the de-Fuzzification operation to compute the crisp outputs.
-    * @pre The instance should have already invoked the inference process 
+    * @pre The instance should have already invoked the inference process
     * successfully with qFIS_Inference()
     * @note By default, this function, this API uses the Centroid method on
     * ::Mamdani type FIS and weight-average on ::Sugeno type FIS. To change

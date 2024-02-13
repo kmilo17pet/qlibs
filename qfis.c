@@ -466,7 +466,7 @@ static qFIS_FuzzyOperator_t qFIS_GetFuzzOperator( const qFIS_t * const f )
         case _QFIS_OR:
             oper = f->orOp;
             break;
-        default: 
+        default:
             oper = &qFIS_Sum;
             break;
     }
@@ -477,7 +477,7 @@ static qFIS_FuzzyOperator_t qFIS_GetFuzzOperator( const qFIS_t * const f )
 static size_t qFIS_InferenceAntecedent( struct _qFIS_s * const f,
                                         size_t i )
 {
-    int16_t inIndex, MFInIndex, connector;
+    qFIS_Rules_t inIndex, MFInIndex, connector;
     qFIS_FuzzyOperator_t op;
     /*cstat -CERT-INT30-C_a*/
     inIndex = f->rules[ i ];
@@ -511,7 +511,7 @@ static size_t qFIS_InferenceAntecedent( struct _qFIS_s * const f,
 static size_t qFIS_InferenceReachEnd( struct _qFIS_s * const f,
                                       size_t i )
 {
-    int16_t  connector;
+    qFIS_Rules_t  connector;
 
     connector = ( f->nOutputs > 1u )? f->rules[ i + 2u ] : -1;
     i += 2u;
@@ -542,7 +542,7 @@ static size_t qFIS_AggregationFindConsequent( struct _qFIS_s * const f,
 static size_t qFIS_InferenceConsequent( struct _qFIS_s * const f,
                                         size_t i )
 {
-    int16_t outIndex, MFOutIndex, connector;
+    qFIS_Rules_t outIndex, MFOutIndex, connector;
     uint8_t neg = 0u;
 
     outIndex = f->rules[ i ];
@@ -936,7 +936,7 @@ static float qFIS_GBellMF( const qFIS_IO_Base_t * const in,
     a = p[ 0 ];
     b = p[ 1 ];
     c = p[ 2 ];
-    
+
     return ( 1.0f/( 1.0f + QLIB_POW( QLIB_ABS( ( x - c )/a ) , 2.0f*b ) ) );
 }
 /*============================================================================*/

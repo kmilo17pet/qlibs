@@ -71,7 +71,7 @@ extern "C" {
     typedef struct
     {
         /*! @cond  */
-        float kc, ki, kd, b, c, dt, min, max, epsilon, kw, kt, D, u1, beta;
+        float kc, ki, kd, b, c, dt, min, max, epsilon, kw, kt, D, u1, beta, uSat;
         float m, mInput;
         const float *yr;
         float alfa, gamma; /*MRAC additive controller parameters*/
@@ -111,7 +111,7 @@ extern "C" {
                         const qPID_Direction_t d );
 
     /**
-    * @brief Set/Change the PID controller gains by using the [Kc, Ti Td ] 
+    * @brief Set/Change the PID controller gains by using the [Kc, Ti Td ]
     * triplet.
     * @param[in] c A pointer to the PID controller instance.
     * @param[in] kc Proportional Gain.
@@ -195,9 +195,9 @@ extern "C" {
 
     /**
     * @brief Set the PID Reference(Set-Point) Weighting. This value is used in
-    * order to avoid the increase of the rise time due to the smoothing of the 
+    * order to avoid the increase of the rise time due to the smoothing of the
     * reference signal applied to the closed-loop system
-    * @note A value close to zero en @a gc can be used to eliminate the 
+    * @note A value close to zero en @a gc can be used to eliminate the
     * reduce the effect of the phenomena called Derivative Kick
     * @param[in] c A pointer to the PID controller instance.
     * @param[in] gb The reference weight value for the proportional element.
@@ -225,7 +225,7 @@ extern "C" {
     * will be used as the control signal for the process. In
     * ::qPID_Manual mode, the manual input will be used as the control
     * signal for the process and the PID controller loop will continue
-    * operating to guarantee the bumpless-transfer when a switch to 
+    * operating to guarantee the bumpless-transfer when a switch to
     * the ::qPID_Automatic mode its performed;
     * @param[in] c A pointer to the PID controller instance.
     * @param[in] m The desired operational mode.
@@ -286,7 +286,7 @@ extern "C" {
                                const uint32_t tEnable );
 
     /**
-    * @brief Verifies that the auto tuning process has finished with new gains 
+    * @brief Verifies that the auto tuning process has finished with new gains
     * set on the controller
     * @param[in] c A pointer to the PID controller instance.
     * @return 1 if auto-tuning its complete, otherwise return 0.

@@ -23,41 +23,84 @@ void qNumA_StateInit( qNumA_state_t *x,
 /*============================================================================*/
 float qNumA_IntegralRe( qNumA_state_t *x,
                         const float s,
-                        const float dt )
+                        const float dt,
+                        const bool bUpdate )
 {
     x->x[ 0 ] += s*dt;
-    qNumA_Update( x );
+    if ( bUpdate ) {
+        qNumA_Update( x );
+    }
 
     return x->x[ 0 ];
 }
 /*============================================================================*/
 float qNumA_IntegralTr( qNumA_state_t *x,
                         const float s,
-                        const float dt )
+                        const float dt,
+                        const bool bUpdate )
 {
     x->x[ 0 ] += 0.5f*( s + x->x[ 1 ] )*dt;
-    qNumA_Update( x );
+    if ( bUpdate ) {
+        qNumA_Update( x );
+    }
 
     return x->x[ 0 ];
 }
 /*============================================================================*/
 float qNumA_IntegralSi( qNumA_state_t *x,
                         const float s,
-                        const float dt )
+                        const float dt,
+                        const bool bUpdate )
 {
     x->x[ 0 ] += ( 1.0f/6.0f )*( s + ( 4.0f*x->x[ 1 ] ) + x->x[ 2 ] )*dt;
-    qNumA_Update( x );
+    if ( bUpdate ) {
+        qNumA_Update( x );
+    }
 
     return x->x[ 0 ];
 }
 /*============================================================================*/
-float qNumA_Derivative( qNumA_state_t *x,
-                        const float s,
-                        const float dt )
+float qNumA_Derivative2p( qNumA_state_t *x,
+                          const float s,
+                          const float dt,
+                          const bool bUpdate )
 {
-    x->x[ 0 ] = ( s - x->x[ 1 ] )/dt;
-    qNumA_Update( x );
+    float ds;
 
-    return x->x[ 0 ];
+    ds = ( s - x->x[ 1 ] )/dt;
+    if ( bUpdate ) {
+        qNumA_Update( x );
+    }
+
+    return ds;
 }
 /*============================================================================*/
+float qNumA_DerivativeBa( qNumA_state_t *x,
+                          const float s,
+                          const float dt,
+                          const bool bUpdate )
+{
+    float ds;
+
+    ds = ( ( 3.0F*s ) - ( 4.0F*x->x[ 1 ] ) + x->x[ 2 ] )/( 2.0F*dt );
+    if ( bUpdate ) {
+        qNumA_Update( x );
+    }
+
+    return ds;
+}
+/*============================================================================*/
+float qNumA_DerivativeFo( qNumA_state_t *x,
+                          const float s,
+                          const float dt,
+                          const bool bUpdate )
+{
+    float ds;
+
+    ds = ( ( 4.0F*x->x[ 1 ] ) - ( 3.0F*x->x[ 2 ] ) - s )/( 2.0F*dt );
+    if ( bUpdate ) {
+        qNumA_Update( x );
+    }
+
+    return ds;
+}

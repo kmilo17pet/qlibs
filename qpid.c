@@ -121,6 +121,7 @@ int qPID_Reset( qPID_controller_t * const c )
         c->D = 0.0f;
         c->u1 = 0.0f;
         c->m = 0.0f;
+        c->uSat = 0.0f;
         retValue = 1;
     }
 
@@ -268,8 +269,8 @@ float qPID_Control( qPID_controller_t * const c,
             e = 0.0f;
         }
         /*integral with anti-windup*/
-        ie = c->integrate( &c->c_state,  e + c->u1, c->dt );
-        de = qNumA_Derivative( &c->c_state, ( ( c->c*w ) - y ) , c->dt );
+        ie = c->integrate( &c->c_state,  e + c->u1, c->dt, false );
+        de = qNumA_Derivative2p( &c->c_state, ( ( c->c*w ) - y ) , c->dt, true );
         c->D = de + ( c->beta*( c->D - de ) ); /*derivative filtering*/
         v  = ( kc*( ( c->b*w ) - y ) ) + ( ki*ie ) + ( kd*c->D ); /*compute PID action*/
 
@@ -280,15 +281,16 @@ float qPID_Control( qPID_controller_t * const c,
                 const float em = y - c->yr[ 0 ];
                 const float delta = -c->gamma*em*c->yr[ 0 ]/
                                     ( c->alfa + ( c->yr[ 0 ]*c->yr[ 0 ] ) );
-                theta = c->integrate( &c->m_state, delta /*+ c->u1*/, c->dt );
+                theta = c->integrate( &c->m_state, delta /*+ c->u1*/, c->dt, true );
             }
             v += w*theta;
         }
         /*bumpless-transfer*/
-        bt = ( c->kt*c->mInput ) + ( c->kw*( u - c->m ) );
-        c->m = c->integrate( &c->b_state, bt ,c->dt );
-        sw = ( qPID_Automatic == c->mode ) ? v : c->m; 
-        u = qPID_Sat( sw, c->min, c->max );
+        bt = ( c->kt*c->mInput ) + ( c->kw*( c->uSat - c->m ) );
+        c->m = c->integrate( &c->b_state, bt ,c->dt, true );
+        sw = ( qPID_Automatic == c->mode ) ? v : c->m;
+        c->uSat = qPID_Sat( sw, c->min, c->max );
+        u = c->uSat;
         /*anti-windup feedback*/
         c->u1 = c->kw*( u - v );
         if ( NULL != c->adapt ) {
