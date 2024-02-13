@@ -24,7 +24,8 @@ void qTypeGeneric_Swap( void * const x,
 {
     /*cstat -MISRAC2012-Rule-11.5 -CERT-EXP36-C_b*/
     /*cppcheck-suppress misra-c2012-11.5 */
-    uint8_t * const a = (uint8_t * const)x, *b = (uint8_t * const)y;
+    uint8_t * const a = (uint8_t * const)x;
+    uint8_t *b = (uint8_t * const)y;
     /*cstat +MISRAC2012-Rule-11.5 +CERT-EXP36-C_b*/
     size_t i = 0U, j = 0U;
     do {
@@ -177,7 +178,9 @@ void qTypeGeneric_Sort( void * const pbase,
             if ( tmp_ptr != run_ptr ) {
                 uint8_t *tra = run_ptr + size;
                 while ( --tra >= run_ptr ) {
-                    uint8_t c = *tra, *hi = tra, *lo = tra;
+                    uint8_t c = *tra;
+                    uint8_t *hi = tra;
+                    uint8_t *lo = tra;
                     /*cppcheck-suppress misra-c2012-10.3 */
                     while ( (lo -= size) >= tmp_ptr ) {
                         *hi = *lo;
@@ -197,7 +200,8 @@ void qTypeGeneric_Reverse( void * const pbase,
                            const size_t end )
 {
     if ( ( NULL != pbase ) && ( size > 0U ) && ( end > init ) ) {
-        size_t s = size*init, e = size*end;
+        size_t s = size*init;
+        size_t e = size*end;
         /*cstat -MISRAC2012-Rule-11.5 -CERT-EXP36-C_b*/
         /*cppcheck-suppress misra-c2012-11.5 */
         uint8_t *v = (uint8_t*)pbase;

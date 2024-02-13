@@ -36,9 +36,9 @@ static const struct _qFP16_intern_s intern = {
     /*f_6_5*/           425984,
     /*one_fp16_f*/      0.0000152587890625f,
     /*one_fp16_d*/      0.0000152587890625,
-    /*overflow_mask*/   0x80000000u,
+    /*overflow_mask*/   0x80000000U,
     /*fraction_mask*/   0x0000FFFFu,
-    /*integer_mask*/    0xFFFF0000u
+    /*integer_mask*/    0xFFFF0000U
 };
 
 const struct _qFP16_const_s qFP16 = {
@@ -67,7 +67,7 @@ const struct _qFP16_const_s qFP16 = {
     /*f_360*/           23592960,
 };
 
-static qFP16_Settings_t fp_default = { -2147483647, 2147483647, 1u, 0u }; //skipcq: CXX-W2009
+static qFP16_Settings_t fp_default = { -2147483647, 2147483647, 1U, 0U }; //skipcq: CXX-W2009
 static qFP16_Settings_t *fp = &fp_default; //skipcq: CXX-W2009
 
 /*! @endcond  */
@@ -93,7 +93,7 @@ int qFP16_SettingsSet( qFP16_Settings_t * const instance,
 {
     int retValue = 0;
 
-    if ( ( NULL != instance ) && ( max > min ) && ( rounding <= 1u ) && ( saturate <= 1u ) ) {
+    if ( ( NULL != instance ) && ( max > min ) && ( rounding <= 1U ) && ( saturate <= 1U ) ) {
         instance->min = min;
         instance->max = max;
         instance->rounding = rounding;
@@ -121,7 +121,7 @@ int qFP16_FPToInt( const qFP16_t x )
 {
     int retValue;
 
-    if ( 1u == fp->rounding ) {
+    if ( 1U == fp->rounding ) {
         if ( x >= 0 ) {
             /*cppcheck-suppress misra-c2012-10.1 */
             retValue = ( x + ( qFP16.one >> 1 ) ) / qFP16.one;
@@ -149,7 +149,7 @@ qFP16_t qFP16_FloatToFP( const float x )
     /*cstat -CERT-FLP36-C*/
     retValue = x * (float)qFP16.one;
     /*cstat +CERT-FLP36-C*/
-    if ( 1u == fp->rounding ) {
+    if ( 1U == fp->rounding ) {
         retValue += ( retValue >= 0.0f) ? 0.5f : -0.5f;
     }
 
@@ -169,7 +169,7 @@ qFP16_t qFP16_DoubleToFP( const double x )
     /*cstat -CERT-FLP36-C*/
     retValue = x * (double)qFP16.one;
     /*cstat +CERT-FLP36-C*/
-    if ( 1u == fp->rounding ) {
+    if ( 1U == fp->rounding ) {
         retValue += ( retValue >= 0.0 ) ? 0.5 : -0.5;
     }
 
@@ -223,7 +223,7 @@ qFP16_t qFP16_Add( const qFP16_t X,
     uint32_t retValue;
 
     retValue =  x + y;
-    if ( ( 0u == ( ( x ^ y ) & intern.overflow_mask ) ) && ( 0u != ( ( x ^ retValue ) & intern.overflow_mask ) ) ) {
+    if ( ( 0U == ( ( x ^ y ) & intern.overflow_mask ) ) && ( 0U != ( ( x ^ retValue ) & intern.overflow_mask ) ) ) {
         retValue = (uint32_t)qFP16.overflow;
     }
 
@@ -237,7 +237,7 @@ qFP16_t qFP16_Sub( const qFP16_t X,
     uint32_t retValue;
 
     retValue =  x - y;
-    if ( ( 0u != ( ( x ^ y ) & intern.overflow_mask ) ) && ( 0u != ( ( x ^ retValue ) & intern.overflow_mask ) ) ) {
+    if ( ( 0U != ( ( x ^ y ) & intern.overflow_mask ) ) && ( 0U != ( ( x ^ retValue ) & intern.overflow_mask ) ) ) {
         retValue = (uint32_t)qFP16.overflow;
     }
 
@@ -273,7 +273,7 @@ qFP16_t qFP16_Mul( const qFP16_t x,
     a = ( mulH < 0 ) ? -1 : 0;
     /*cppcheck-suppress misra-c2012-10.1 */
     if ( a == ( mulH >> 15 ) ) {
-        if ( 1u == fp->rounding ) {
+        if ( 1U == fp->rounding ) {
             uint32_t tmp2;
 
             tmp2 = mulL;
@@ -301,7 +301,7 @@ qFP16_t qFP16_Div( const qFP16_t x,
     qFP16_t retValue = fp->min;
 
     if ( 0 != y ) {
-        uint32_t xRem, xDiv, bit = 0x10000u;
+        uint32_t xRem, xDiv, bit = 0x10000U;
 
         xRem = (uint32_t)( ( x >= 0 ) ? x : -x );
         xDiv = (uint32_t)( ( y >= 0 ) ? y : -y );
@@ -312,11 +312,11 @@ qFP16_t qFP16_Div( const qFP16_t x,
         }
         retValue = qFP16.overflow;
         /*cstat -MISRAC2012-Rule-14.3_a*/
-        if ( 0u != bit ) { /*MISRAC2012-Rule-14.3_a false positive*/
+        if ( 0U != bit ) { /*MISRAC2012-Rule-14.3_a false positive*/
         /*cstat +MISRAC2012-Rule-14.3_a*/
-            uint32_t quotient = 0u;
+            uint32_t quotient = 0U;
 
-            if ( 0u != ( xDiv & 0x80000000u ) ) {
+            if ( 0U != ( xDiv & 0x80000000U ) ) {
                 if ( xRem >= xDiv ) {
                     quotient |= bit;
                     xRem -= xDiv;
@@ -325,7 +325,7 @@ qFP16_t qFP16_Div( const qFP16_t x,
                 bit >>= 1;
             }
 
-            while ( ( 0u != bit ) && ( 0u != xRem ) ) {
+            while ( ( 0U != bit ) && ( 0U != xRem ) ) {
                 if ( xRem >= xDiv ) {
                     quotient |= bit;
                     xRem -= xDiv;
@@ -333,7 +333,7 @@ qFP16_t qFP16_Div( const qFP16_t x,
                 xRem <<= 1;
                 bit >>= 1;
             }
-            if ( 1u == fp->rounding ) {
+            if ( 1U == fp->rounding ) {
                 if ( xRem >= xDiv ) {
                     ++quotient;
                 }
@@ -341,7 +341,7 @@ qFP16_t qFP16_Div( const qFP16_t x,
 
             retValue = (qFP16_t)quotient;
             /*cppcheck-suppress misra-c2012-10.8 */
-            if ( 0u != ( (uint32_t)( x ^ y ) & intern.overflow_mask ) ) {
+            if ( 0U != ( (uint32_t)( x ^ y ) & intern.overflow_mask ) ) {
                 if ( quotient == (uint32_t)fp->min ) {
                     retValue = qFP16.overflow;
                 }
@@ -377,19 +377,19 @@ qFP16_t qFP16_Sqrt( qFP16_t x )
 
         retValue = 0;
         /*cppcheck-suppress [ cert-INT31-c, misra-c2012-12.2, misra-c2012-12.1  ]*/
-        bit = ( 0 != ( x & (qFP16_t)4293918720 ) ) ? ( 1u << 30u ) : ( 1u << 18u );
+        bit = ( 0 != ( x & (qFP16_t)4293918720 ) ) ? ( 1U << 30U ) : ( 1U << 18u );
         while ( bit > (uint32_t)x ) {
             bit >>= 2u;
         }
 
-        for ( n = 0u ; n < 2u ; ++n ) {
-            while ( 0u != bit ) {
+        for ( n = 0U ; n < 2u ; ++n ) {
+            while ( 0U != bit ) {
                 /*cppcheck-suppress misra-c2012-10.8 */
                 if ( x >= (qFP16_t)( (uint32_t)retValue + bit ) ) {
                     /*cppcheck-suppress misra-c2012-10.8 */
                     x -= (qFP16_t)( (uint32_t)retValue + bit );
                     /*cppcheck-suppress misra-c2012-10.8 */
-                    retValue = (qFP16_t)( ( (uint32_t)retValue >> 1u ) + bit );
+                    retValue = (qFP16_t)( ( (uint32_t)retValue >> 1U ) + bit );
                 }
                 else {
                     /*cppcheck-suppress misra-c2012-10.1 */
@@ -398,7 +398,7 @@ qFP16_t qFP16_Sqrt( qFP16_t x )
                 bit >>= 2u;
             }
 
-            if ( 0u == n ) {
+            if ( 0U == n ) {
                 if ( x > 65535 ) {
                     x -= retValue;
                     /*cppcheck-suppress misra-c2012-10.1 */
@@ -411,11 +411,11 @@ qFP16_t qFP16_Sqrt( qFP16_t x )
                     retValue <<= 16;
                 }
                 /*cppcheck-suppress [ misra-c2012-10.6, misra-c2012-12.2 ] */
-                bit = 1u << 14u;
+                bit = 1U << 14u;
             }
         }
     }
-    if ( ( 1u == fp->rounding ) && ( x > retValue ) ) {
+    if ( ( 1U == fp->rounding ) && ( x > retValue ) ) {
         ++retValue;
     }
 
@@ -521,7 +521,7 @@ qFP16_t qFP16_Log2( const qFP16_t x )
             retValue = qFP16_log2i( x );
         }
     }
-    if ( 1u == fp->saturate ) {
+    if ( 1U == fp->saturate ) {
         if ( qFP16.overflow == retValue ) {
             retValue = fp->min;
         }
@@ -739,7 +739,7 @@ qFP16_t qFP16_Polyval( const qFP16_t * const p,
     size_t i;
     /*polynomial evaluation using Horner's method*/
     fx = p[ 0 ];
-    for ( i = 1u ; i < n ; ++i ) {
+    for ( i = 1U ; i < n ; ++i ) {
         qFP16_t tmp = qFP16_Mul( fx, x );
 
         if ( qFP16.overflow == tmp ) {
@@ -785,7 +785,7 @@ qFP16_t qFP16_Pow( const qFP16_t x,
 {
     qFP16_t retValue = qFP16.overflow;
 
-    if ( ( 0u == ( (uint32_t)y & intern.fraction_mask ) ) && ( y > 0 ) ) {
+    if ( ( 0U == ( (uint32_t)y & intern.fraction_mask ) ) && ( y > 0 ) ) {
         /*handle integer exponent explicitly*/
         retValue = qFP16_IPow( x, y );
     }
@@ -821,7 +821,7 @@ char* qFP16_FPToA( const qFP16_t num,
         str[ 8 ] = '\0';
     }
     else {
-        const uint32_t iScales[ 6 ] = { 1u, 10u, 100u, 1000u, 10000u, 100000u };
+        const uint32_t iScales[ 6 ] = { 1U, 10U, 100U, 1000U, 10000U, 100000U };
         uint32_t uValue, fPart, scale;
         int32_t iPart;
 
@@ -845,11 +845,11 @@ char* qFP16_FPToA( const qFP16_t num,
             iPart++;
             fPart -= scale;
         }
-        str = qFP16_itoa( str, 10000, (uint32_t)iPart, 1u );
+        str = qFP16_itoa( str, 10000, (uint32_t)iPart, 1U );
 
-        if ( 1u != scale ) {
+        if ( 1U != scale ) {
             *str++ = '.';
-            str = qFP16_itoa( str, scale/10u, fPart, 0u );
+            str = qFP16_itoa( str, scale/10U, fPart, 0U );
         }
         *str = '\0';
     }
@@ -860,7 +860,7 @@ char* qFP16_FPToA( const qFP16_t num,
 qFP16_t qFP16_AToFP( const char *s )
 {
     uint8_t neg;
-    uint32_t iPart = 0u, fPart = 0u, scale = 1u, digit;
+    uint32_t iPart = 0U, fPart = 0U, scale = 1U, digit;
     int32_t count = 0;
     qFP16_t retValue = qFP16.overflow;
     bool point_seen = false, overflow = false, badchr = false;
@@ -871,7 +871,7 @@ qFP16_t qFP16_AToFP( const char *s )
         s++; /*discard whitespaces*/
     }
 
-    neg = ( '-' == *s ) ? 1u : 0u;
+    neg = ( '-' == *s ) ? 1U : 0U;
     if ( ( '+' == *s ) || ( '-' == *s ) ) {
         s++; /*move to the next sign*/
     }
@@ -883,17 +883,17 @@ qFP16_t qFP16_AToFP( const char *s )
         else if ( 0 != isdigit( (int)c ) ) {
             digit = (uint32_t)c - (uint32_t)'0';
             if ( point_seen ) { /* Decode the fractional part */
-                scale *= 10u;
-                fPart *= 10u;
+                scale *= 10U;
+                fPart *= 10U;
                 fPart += digit;
             }
             else { /* Decode the decimal part */
-                iPart *= 10u;
+                iPart *= 10U;
                 iPart += digit;
                 ++count;
                 overflow = ( ( 0 == count ) || ( count > 5 ) ||
                              ( iPart > 32768u ) ||
-                             ( ( 0u == neg ) && ( iPart > 32767u ) ) );
+                             ( ( 0U == neg ) && ( iPart > 32767u ) ) );
             }
         }
         else {
@@ -908,7 +908,7 @@ qFP16_t qFP16_AToFP( const char *s )
         /*cppcheck-suppress misra-c2012-10.1 */
         retValue = (qFP16_t)iPart << 16;
         retValue += qFP16_Div( (qFP16_t)fPart, (qFP16_t)scale );
-        retValue = ( 1u == neg ) ? -retValue : retValue;
+        retValue = ( 1U == neg ) ? -retValue : retValue;
     }
     /*cstat +MISRAC2012-Dir-4.11_h*/
     return retValue;
@@ -918,9 +918,9 @@ static qFP16_t qFP16_rs( const qFP16_t x )
 {
     qFP16_t retValue;
 
-    if ( 1u == fp->rounding ) {
+    if ( 1U == fp->rounding ) {
         /*cppcheck-suppress misra-c2012-10.1 */
-        retValue = ( x >> 1u ) + ( x & 1 );
+        retValue = ( x >> 1U ) + ( x & 1 );
     }
     else {
         /*cppcheck-suppress misra-c2012-10.1 */
@@ -953,7 +953,7 @@ static qFP16_t qFP16_log2i( qFP16_t x )
                 x = qFP16_rs( x );
             }
         }
-        if ( 1u == fp->rounding ) {
+        if ( 1U == fp->rounding ) {
             x = qFP16_Mul( x, x );
             if ( x >= intern.f_2 ) {
                 ++retValue;
@@ -969,16 +969,16 @@ static char *qFP16_itoa( char *buf,
                          uint32_t value,
                          uint8_t skip )
 {
-    while ( 0u != scale ) {
+    while ( 0U != scale ) {
         uint32_t digit = ( value / scale );
-        if ( ( 0u == skip ) || ( 0u != digit ) || ( 1u == scale ) ) {
-            skip = 0u;
+        if ( ( 0U == skip ) || ( 0U != digit ) || ( 1U == scale ) ) {
+            skip = 0U;
             /*cstat -MISRAC2012-Rule-10.2 -MISRAC2012-Rule-10.3*/
             *buf++ = (char)'0' + (char)digit;
             /*cstat +MISRAC2012-Rule-10.2 +MISRAC2012-Rule-10.3*/
             value %= scale;
         }
-        scale /= 10u;
+        scale /= 10U;
     }
 
     return buf;
@@ -990,7 +990,7 @@ static qFP16_t qFP16_Saturate( const qFP16_t nsInput,
 {
     qFP16_t retValue = nsInput;
 
-    if ( 1u == fp->saturate ) {
+    if ( 1U == fp->saturate ) {
         if ( qFP16.overflow == nsInput ) {
             retValue = ( ( x >= 0 ) == ( y >= 0 ) ) ? fp->max : fp->min;
         }

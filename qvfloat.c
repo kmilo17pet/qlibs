@@ -211,7 +211,8 @@ float qVFloat_Operate( float * dst,
     float retVal = 0.0F;
 
     if ( ( NULL != x ) && ( n > 0u ) ) {
-        float t, *pt = &t;
+        float t;
+        float *pt = &t;
         float **ppt = ( NULL == dst ) ? &pt : &dst;
         float **pdst = &dst;
 
@@ -233,7 +234,8 @@ float qVFloat_ApplyFx( float *dst,
 {
     size_t i;
     float s = 0.0F;
-    float t, *pt = &t;
+    float t;
+    float *pt = &t;
     float **ppt = ( NULL == dst ) ? &pt : &dst;
 
     if ( NULL != fx1 ) {
@@ -274,7 +276,8 @@ int qVFloat_Moment( qVFloat_Moment_t * const m,
 
     if ( n > 1U ) {
         size_t j;
-        float ep = 0.0F, s = 0.0F;
+        float ep = 0.0F;
+        float s = 0.0F;
         /*cstat -CERT-FLP36-C*/
         const float l = (float)n;
         /*cstat +CERT-FLP36-C*/
@@ -506,7 +509,7 @@ float* qVFloat_Sort( float * const dst,
 {
     float *v = NULL;
 
-    if ( ( src != NULL ) && ( n > 0U) ) {
+    if ( ( src != NULL ) && ( n > 0U ) ) {
         v = ( NULL != dst ) ? qVFloat_Copy( dst, src, n ) : src;
         qTypeGeneric_Sort( v, n, sizeof(float), ( dir ) ? &qVFloat_CmpAsc : &qVFloat_CmpDes, NULL );
     }

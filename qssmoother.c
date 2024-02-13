@@ -155,7 +155,9 @@ static int qSSmoother_Setup_LPF2( _qSSmoother_t * const f,
         /*cppcheck-suppress misra-c2012-11.3 */
         qSSmoother_LPF2_t * const s = (qSSmoother_LPF2_t* const)f;
         /*cstat +MISRAC2012-Rule-11.3 +CERT-EXP39-C_d +CERT-EXP36-C_a*/
-        float aa, p1, r;
+        float aa;
+        float p1;
+        float r;
         aa = alpha*alpha;
         /*cstat -MISRAC2012-Dir-4.11_b*/
         p1 = QLIB_SQRT( 2.0F*alpha ); /*arg always positive*/
@@ -278,9 +280,11 @@ static int qSSmoother_Setup_GMWF( _qSSmoother_t * const f,
         qSSmoother_GMWF_t * const s = (qSSmoother_GMWF_t* const)f;
         /*cstat +MISRAC2012-Rule-11.3 +CERT-EXP39-C_d +CERT-EXP36-C_a*/
         float *kernel = &window[ ws ];
-        float r, sum = 0.0F;
+        float r;
+        float sum = 0.0F;
         size_t i;
-        float l, center;
+        float l;
+        float center;
         /*cstat -CERT-FLP36-C -MISRAC2012-Rule-10.8*/
         /*cppcheck-suppress misra-c2012-10.8 */
         l = (float)( wsize - 1U )/2.0F;
@@ -709,7 +713,8 @@ static float qSSmoother_Filter_ALNF( _qSSmoother_t * const f,
         float *w_1 = &s->w[ s->n ];
 
         for ( i = 0U ; i < s->n ; ++i ) {
-            float w = s->w[ i ],  w1 = w_1[ i ];
+            float w = s->w[ i ];
+            float w1 = w_1[ i ];
 
             s->w[ i ] += ( s->alpha*( x - xe )*s->x[ i ] ) + ( s->mu*( w - w1 ) );
             w_1[ i ] = w;
