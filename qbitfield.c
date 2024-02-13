@@ -31,7 +31,7 @@ static void qBitField_Write_uint32( qBitField_t *b,
 /*============================================================================*/
 static uint32_t qBitField_Mask( const size_t index )
 {
-    return (uint32_t)1u << ( index % qBitField_LBit );
+    return (uint32_t)1U << ( index % qBitField_LBit );
 }
 /*============================================================================*/
 static size_t qBitField_BitSlot( const size_t index )
@@ -44,7 +44,7 @@ static uint32_t qBitField_BitGet( const qBitField_t * const b,
 {
     const size_t slot = qBitField_BitSlot( index );
 
-    return  ( b->field[ slot ] >> ( index % qBitField_LBit ) ) & 1u;
+    return  ( b->field[ slot ] >> ( index % qBitField_LBit ) ) & 1U;
 }
 /*============================================================================*/
 static void qBitField_BitSet( qBitField_t * const b,
@@ -82,7 +82,7 @@ static uint32_t qBitField_SafeMask( const uint32_t val,
 /*============================================================================*/
 static size_t qBitField_Offset( const size_t index )
 {
-    return index & (size_t)31u;
+    return index & (size_t)31U;
 }
 /*============================================================================*/
 static uint32_t qBitField_MaskMerge( const uint32_t w,
@@ -98,12 +98,12 @@ int qBitField_Setup( qBitField_t * const b,
 {
     int retValue = 0;
 
-    if ( ( NULL != b ) && ( NULL != area ) && ( area_size > 0u ) ) {
+    if ( ( NULL != b ) && ( NULL != area ) && ( area_size > 0U ) ) {
         /*cstat -MISRAC2012-Rule-11.5 -CERT-EXP36-C_b*/
         /*cppcheck-suppress misra-c2012-11.5 */
         b->field = (uint32_t *)area;
         /*cstat +MISRAC2012-Rule-11.5 +CERT-EXP36-C_b*/
-        b->size = area_size*8u;
+        b->size = area_size*8U;
         b->nSlots = area_size/sizeof(uint32_t);
         retValue = 1;
     }
@@ -116,7 +116,7 @@ int qBitField_ClearAll( qBitField_t * const b )
     int retValue = 0;
 
     if ( NULL != b ) {
-        (void)memset( b->field, 0, b->size/8u );
+        (void)memset( b->field, 0, b->size/8U );
         retValue = 1;
     }
 
@@ -128,7 +128,7 @@ int qBitField_SetAll( qBitField_t * const b )
     int retValue = 0;
 
     if ( NULL != b ) {
-        (void)memset( b->field, 0xFF, b->size/8u );
+        (void)memset( b->field, 0xFF, b->size/8U );
         retValue = 1;
     }
 
@@ -177,10 +177,10 @@ int qBitField_ToggleBit( qBitField_t * const b,
 uint8_t qBitField_ReadBit( const qBitField_t * const b,
                            const size_t index )
 {
-    uint8_t retValue = 0u;
+    uint8_t retValue = 0U;
 
     if ( NULL != b ) {
-        retValue = ( 0u != qBitField_BitGet( b, index ) )? 1u : 0u;
+        retValue = ( 0U != qBitField_BitGet( b, index ) )? 1U : 0U;
     }
 
     return retValue;
@@ -193,7 +193,7 @@ int qBitField_WriteBit( qBitField_t * const b,
     int retValue = 0;
 
     if ( NULL != b ) {
-        if ( 0u != value ) {
+        if ( 0U != value ) {
             qBitField_BitSet( b, index );
         }
         else {
@@ -209,18 +209,18 @@ uint32_t qBitField_ReadUINTn( const qBitField_t * const b,
                               const size_t index,
                               size_t xBits )
 {
-    uint32_t retValue = 0u;
+    uint32_t retValue = 0U;
 
-    if ( ( NULL != b ) && ( xBits <= 32u ) ) {
-        if ( 1u == xBits ) {
+    if ( ( NULL != b ) && ( xBits <= 32U ) ) {
+        if ( 1U == xBits ) {
             retValue = (uint32_t)qBitField_ReadBit( b, index );
         }
-        else if ( 32u == xBits ) {
+        else if ( 32U == xBits ) {
             retValue = qBitField_Read_uint32( b, index );
         }
         else {
             retValue = qBitField_Read_uint32( b, index );
-            retValue &= qBitField_SafeMask( 0xFFFFFFFFu, 32u, xBits );
+            retValue &= qBitField_SafeMask( 0xFFFFFFFFU, 32U, xBits );
         }
     }
 
@@ -234,20 +234,20 @@ int qBitField_WriteUINTn( qBitField_t * const b,
 {
     int retValue = 0;
 
-    if ( ( NULL != b ) && ( xBits <= 32u ) ) {
+    if ( ( NULL != b ) && ( xBits <= 32U ) ) {
         uint32_t w, mask;
 
-        if ( 1u == xBits ) {
+        if ( 1U == xBits ) {
             (void)qBitField_WriteBit( b, index, (uint8_t)value );
         }
-        else if ( 32u == xBits ) {
+        else if ( 32U == xBits ) {
             qBitField_Write_uint32( b, index, value );
         }
         else {
             w = qBitField_Read_uint32( b, index );
-            value &= qBitField_SafeMask( 0xFFFFFFFFu, 32u, xBits );
+            value &= qBitField_SafeMask( 0xFFFFFFFFU, 32U, xBits );
             /*cstat -ATH-overflow*/
-            mask = (uint32_t)0xFFFFFFFFu << (uint32_t)xBits;
+            mask = (uint32_t)0xFFFFFFFFU << (uint32_t)xBits;
             /*cstat +ATH-overflow*/
             qBitField_Write_uint32( b, index, qBitField_MaskMerge( w, value, mask ) );
         }
@@ -260,7 +260,7 @@ int qBitField_WriteUINTn( qBitField_t * const b,
 float qBitField_ReadFloat( const qBitField_t * const b,
                            const size_t index )
 {
-    float retValue = 0.0f;
+    float retValue = 0.0F;
 
     if ( NULL != b ) {
         uint32_t rval;
@@ -280,7 +280,7 @@ int qBitField_WriteFloat( qBitField_t * const b,
     int retValue = 0;
 
     if ( NULL != b ) {
-        uint32_t fval = 0u;
+        uint32_t fval = 0U;
         /*cppcheck-suppress misra-c2012-21.15 */
         (void)memcpy( &fval, &value, sizeof(float) );
         qBitField_Write_uint32( b, index, fval );
@@ -297,7 +297,7 @@ void* qBitField_Dump( const qBitField_t * const b,
     void *retValue = NULL;
 
     if ( ( NULL != b ) && ( NULL != dst ) ) {
-        if ( n <= ( b->size/8u ) ) {
+        if ( n <= ( b->size/8U ) ) {
             retValue = memcpy( dst, (const void*)b->field, n );
         }
     }
@@ -314,10 +314,10 @@ static uint32_t qBitField_Read_uint32( const qBitField_t * const b,
     slot = qBitField_BitSlot( index );
     of = qBitField_Offset( index );
     result = b->field[ slot ] >> of;
-    bits_taken  = 32u - of;
-    if ( ( 0u != of ) && ( ( index + bits_taken ) < b->size ) ) {
+    bits_taken  = 32U - of;
+    if ( ( 0U != of ) && ( ( index + bits_taken ) < b->size ) ) {
         /*cstat -CERT-INT30-C_a -ATH-shift-bounds -MISRAC2012-Rule-12.2 -CERT-INT34-C_b*/
-        result |= b->field[ slot + 1u ] << (uint32_t)bits_taken;
+        result |= b->field[ slot + 1U ] << (uint32_t)bits_taken;
         /*cstat +CERT-INT30-C_a +ATH-shift-bounds +MISRAC2012-Rule-12.2 +CERT-INT34-C_b*/
     }
 
@@ -333,14 +333,14 @@ static void qBitField_Write_uint32( qBitField_t *b,
 
     slot = qBitField_BitSlot( index );
     of = qBitField_Offset( index );
-    if ( 0u == of ) {
+    if ( 0U == of ) {
         b->field[ slot ] = value;
     }
     else {
-        mask = qBitField_SafeMask( 0xFFFFFFFFu, qBitField_LBit, of );
+        mask = qBitField_SafeMask( 0xFFFFFFFFU, qBitField_LBit, of );
         b->field[ slot ] = ( value << of ) | ( b->field[ slot ] & mask );
         if ( ++slot < b->nSlots ) {
-            b->field[ slot ] = qBitField_SafeMask( value, 32u, of ) |
+            b->field[ slot ] = qBitField_SafeMask( value, 32U, of ) |
                                ( b->field[ slot ] & ( ~mask ) );
         }
     }

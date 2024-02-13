@@ -30,10 +30,10 @@ static float qLTISys_DiscreteUpdate( qLTISys_t * const sys,
 static float qLTISys_ContinuosUpdate( qLTISys_t * const sys,
                                       const float u )
 {
-    float y = 0.0f;
-    float dx0 = 0.0f;
+    float y = 0.0F;
+    float dx0 = 0.0F;
 
-    if ( 1u == sys->n ) {
+    if ( 1U == sys->n ) {
         dx0 = ( u - ( sys->xc[ 0 ].x[ 0 ]*sys->a[ 0 ] ) );
         (void)sys->integrate( &sys->xc[ 0 ], dx0 , sys->dt, true );
         y = ( sys->b[ 0 ] - ( sys->a[ 0 ]*sys->b0 ) )*sys->xc[ 0 ].x[ 0 ];
@@ -41,7 +41,7 @@ static float qLTISys_ContinuosUpdate( qLTISys_t * const sys,
     else {
         size_t i;
         /*compute states of the system by using the controllable canonical form*/
-        for ( i = ( sys->n - 1u ) ; i >= 1u ; --i ) {
+        for ( i = ( sys->n - 1U ) ; i >= 1U ; --i ) {
             dx0 += sys->a[ i ]*sys->xc[ i ].x[ 0 ]; /*compute the first derivative*/
             /*integrate to obtain the remaining states*/
             (void)sys->integrate( &sys->xc[ i ], sys->xc[ i - 1u ].x[ 0 ], sys->dt, true );
@@ -61,7 +61,7 @@ static float qLTISys_ContinuosUpdate( qLTISys_t * const sys,
 float qLTISys_Excite( qLTISys_t * const sys,
                       float u )
 {
-    float y = 0.0f;
+    float y = 0.0F;
 
     if ( 1 == qLTISys_IsInitialized( sys ) ) {
         if ( NULL != sys->tDelay.head ) { /*check if has delay*/
@@ -134,11 +134,11 @@ int qLTISys_SetInitStates( qLTISys_t * const sys, const float * const xi )
     if ( 1 == qLTISys_IsInitialized( sys ) ) {
         size_t i;
 
-        for ( i = 0u; i < sys->n ; ++i ) {
-            const float zero = 0.0f;
+        for ( i = 0U; i < sys->n ; ++i ) {
+            const float zero = 0.0F;
             const float *iv = ( NULL != xi ) ? &xi[ i ] : &zero;
 
-            if ( sys->dt <= 0.0f ) {
+            if ( sys->dt <= 0.0F ) {
                 sys->xd[ i ] = iv[ 0 ];
             }
             else {
@@ -162,11 +162,11 @@ int qLTISys_Setup( qLTISys_t * const sys,
 {
     int retValue = 0;
 
-    if ( ( NULL != sys ) && ( NULL != num ) && ( NULL != den ) && ( NULL != x ) && ( na > 0u ) ) {
+    if ( ( NULL != sys ) && ( NULL != num ) && ( NULL != den ) && ( NULL != x ) && ( na > 0U ) ) {
         float a0;
         size_t i;
 
-        if ( dt <= 0.0f ) { /*discrete system*/
+        if ( dt <= 0.0F ) { /*discrete system*/
             sys->b = num;
             sys->na = na;
             sys->nb = nb;
@@ -180,7 +180,7 @@ int qLTISys_Setup( qLTISys_t * const sys,
         }
         else { /*continuos system*/
             sys->b = &num[ 1 ];
-            sys->n = na - 1u;
+            sys->n = na - 1U;
             sys->nb = sys->n;
             sys->sysUpdate = &qLTISys_ContinuosUpdate;
             /*cstat -MISRAC2012-Rule-11.5 -CERT-EXP36-C_b*/
@@ -194,10 +194,10 @@ int qLTISys_Setup( qLTISys_t * const sys,
         sys->a = &den[ 1 ];
         /*normalize the transfer function coefficients*/
         a0 = den[ 0 ];
-        for ( i = 0 ; i < sys->nb ; ++i ) {
+        for ( i = 0U ; i < sys->nb ; ++i ) {
             num[ i ] /= a0;
         }
-        for ( i = 0 ; i < sys->na ; ++i ) {
+        for ( i = 0U ; i < sys->na ; ++i ) {
             den[ i ] /= a0;
         }
         sys->b0 = num[ 0 ];
@@ -215,18 +215,18 @@ float qLTISys_DiscreteFIRUpdate( float *w,
                                  const float x )
 {
     size_t i;
-    float y = 0.0f;
+    float y = 0.0F;
 
     if ( NULL != c ) {
-        for ( i = ( wsize - 1u ) ; i >= 1u ; --i ) {
-            w[ i ] = w[ i - 1u ];
+        for ( i = ( wsize - 1U ) ; i >= 1U ; --i ) {
+            w[ i ] = w[ i - 1U ];
             y += w[ i ]*c[ i ];
         }
         y += c[ 0 ]*x;
     }
     else {
-        for ( i = ( wsize - 1u ) ; i >= 1u ; --i ) {
-            w[ i ] = w[ i - 1u ];
+        for ( i = ( wsize - 1U ) ; i >= 1U ; --i ) {
+            w[ i ] = w[ i - 1U ];
             y += w[ i ];
         }
         y += x;

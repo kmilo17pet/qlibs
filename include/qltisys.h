@@ -27,17 +27,17 @@ extern "C" {
     /**
     * @brief Macro to specify that the system is time-discrete
     */
-    #define QLTISYS_DISCRETE        ( -1.0f )
+    #define QLTISYS_DISCRETE        ( -1.0F )
 
     /*cstat -MISRAC2012-Rule-2.3*/
 
     /**
-    * @brief Type to specify continuos states 
+    * @brief Type to specify continuos states
     */
     typedef qNumA_state_t qLTISys_ContinuosX_t;
 
     /**
-    * @brief Type to specify continuos states 
+    * @brief Type to specify continuos states
     */
     typedef float qLTISys_DiscreteX_t;
 
@@ -129,7 +129,7 @@ extern "C" {
     * polynomial. Coefficients will be normalized internally.
     * @param[in,out] x Initial conditions of the system. For a continuos system,
     * an array of type qLTISys_ContinuosX_t with n elements.
-    * For a discrete system, an array of type qLTISys_DiscreteX_t with 
+    * For a discrete system, an array of type qLTISys_DiscreteX_t with
     * max(na,nb) elements
     * For both cases, the supplied array will be updated on every invocation of
     * qLTISys_Excite().
@@ -138,9 +138,9 @@ extern "C" {
     * @note If the system is continuous, pass 0 as argument.
     * @param[in] na The order of polynomial @a den. (if system is discrete). For
     * continuous system the number of elements of @a num and @a den.
-    * 
+    *
     * example 1: \f$ a_{0}+a_{1}z^{-1}+a_{2}z^{-2}+a_{3}z^{-3}, na = 3 \f$
-    * 
+    *
     * example 2: \f$ \frac{ b_{0}s^{2}+b_{1}s+b_{2} }{ a_{0}s^{2} + a_{1}s + a_{2} }, na = 3 \f$
     * @note For continuous systems, size of @a num and @a den should be equal.
     * @param[in] dt The time-step of the continuos system. For discrete systems

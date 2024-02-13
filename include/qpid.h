@@ -61,7 +61,7 @@ extern "C" {
     /**
     * @brief Macro to keep the auto-tuner enabled indefinitely
     */
-    #define QPID_AUTOTUNING_UNDEFINED      ( 0xFFFFFFFEuL )
+    #define QPID_AUTOTUNING_UNDEFINED      ( 0xFFFFFFFEUL )
 
     /**
     * @brief A PID controller object

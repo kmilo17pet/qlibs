@@ -67,8 +67,8 @@ const struct _qFP16_const_s qFP16 = {
     /*f_360*/           23592960,
 };
 
-static qFP16_Settings_t fp_default = { -2147483647, 2147483647, 1u, 0u };
-static qFP16_Settings_t *fp = &fp_default;
+static qFP16_Settings_t fp_default = { -2147483647, 2147483647, 1u, 0u }; //skipcq: CXX-W2009
+static qFP16_Settings_t *fp = &fp_default; //skipcq: CXX-W2009
 
 /*! @endcond  */
 

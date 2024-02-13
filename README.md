@@ -1,7 +1,7 @@
 [![Built for](https://img.shields.io/badge/built%20for-microcontrollers-lightgrey?logo=WhiteSource)](https://github.com/kmilo17pet/qTools)
 [![CodeFactor](https://www.codefactor.io/repository/github/kmilo17pet/qlibs/badge)](https://www.codefactor.io/repository/github/kmilo17pet/qlibs)
 [![Codacy Badge](https://app.codacy.com/project/badge/Grade/14d566939d2e4d4181088cc1c6666fa3)](https://www.codacy.com/gh/kmilo17pet/qTools/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=kmilo17pet/qTools&amp;utm_campaign=Badge_Grade)
-[![DeepSource](https://app.deepsource.com/gh/kmilo17pet/qlibs-cpp.svg/?label=code+coverage&show_trend=true&token=v2gmYWIv1qjuUS9q01v_ncon)](https://app.deepsource.com/gh/kmilo17pet/qlibs-cpp/)
+[![DeepSource](https://app.deepsource.com/gh/kmilo17pet/qlibs.svg/?label=active+issues&show_trend=true&token=sM8bC9gGb5PdO1ronKdoDhUh)](https://app.deepsource.com/gh/kmilo17pet/qlibs/)
 [![documentation](https://github.com/kmilo17pet/qlibs/actions/workflows/doxygen_gen.yml/badge.svg)](https://kmilo17pet.github.io/qlibs/)
 [![GitHub release (latest by date)](https://img.shields.io/github/v/release/kmilo17pet/qlibs?logo=webpack)](https://github.com/kmilo17pet/qlibs/releases)
 [![MISRAC2012](https://img.shields.io/badge/MISRAC2012-Compliant-blue.svg?logo=c)](https://en.wikipedia.org/wiki/MISRA_C)

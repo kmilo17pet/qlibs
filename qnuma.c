@@ -39,7 +39,7 @@ float qNumA_IntegralTr( qNumA_state_t *x,
                         const float dt,
                         const bool bUpdate )
 {
-    x->x[ 0 ] += 0.5f*( s + x->x[ 1 ] )*dt;
+    x->x[ 0 ] += 0.5F*( s + x->x[ 1 ] )*dt;
     if ( bUpdate ) {
         qNumA_Update( x );
     }
@@ -52,7 +52,7 @@ float qNumA_IntegralSi( qNumA_state_t *x,
                         const float dt,
                         const bool bUpdate )
 {
-    x->x[ 0 ] += ( 1.0f/6.0f )*( s + ( 4.0f*x->x[ 1 ] ) + x->x[ 2 ] )*dt;
+    x->x[ 0 ] += ( 1.0F/6.0F )*( s + ( 4.0F*x->x[ 1 ] ) + x->x[ 2 ] )*dt;
     if ( bUpdate ) {
         qNumA_Update( x );
     }

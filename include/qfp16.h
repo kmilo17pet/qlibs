@@ -67,8 +67,8 @@ extern "C" {
     * @return The literal argument @a x converted to fixed-point(qFP16_t).
     */
     #define qFP16_Constant(x)                                               \
-    ( (qFP16_t)( ( (x) >= 0 ) ? ( (x) * 65536.0f + 0.5f )                   \
-                              : ( (x) * 65536.0f - 0.5f ) ) )               \
+    ( (qFP16_t)( ( (x) >= 0 ) ? ( (x) * 65536.0F + 0.5F )                   \
+                              : ( (x) * 65536.0F - 0.5F ) ) )               \
 
     /**
     * @brief A Q16.16 fixed-point settings object
@@ -101,7 +101,7 @@ extern "C" {
     /**
     * @brief Select the provided setting instance to perform fixed-point
     * operations.
-    * @param[in] instance A pointer to the fixed-point settings instance. Pass 
+    * @param[in] instance A pointer to the fixed-point settings instance. Pass
     * @c NULL to use the default settings.
     * @return none.
     */

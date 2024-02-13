@@ -80,7 +80,7 @@ static float qVFloat_VV_Add( float **dst,
                              size_t n )
 {
     size_t i;
-    float s = 0.0f;
+    float s = 0.0F;
 
     for ( i = 0u; i < n ; ++i ) {
         pOut[ 0 ][ 0 ] = ( a*x[ i ] ) + ( b*y[ i ] );
@@ -99,7 +99,7 @@ static float qVFloat_kV_Add( float **dst,
                              size_t n )
 {
     size_t i;
-    float s = 0.0f;
+    float s = 0.0F;
 
     for ( i = 0u ; i < n ; ++i ) {
         pOut[ 0 ][ 0 ] = ( a*x[ i ] ) + b;
@@ -119,7 +119,7 @@ static float qVFloat_VV_Mul( float **dst,
                              size_t n )
 {
     size_t i;
-    float s = 0.0f;
+    float s = 0.0F;
     const float k = a*b;
 
     for ( i = 0u ; i < n ; ++i ) {
@@ -139,7 +139,7 @@ static float qVFloat_kV_Mul( float **dst,
                              size_t n )
 {
     size_t i;
-    float s = 0.0f;
+    float s = 0.0F;
     const float k = a*b;
 
     for ( i = 0u ; i < n ; ++i ) {
@@ -160,7 +160,7 @@ static float qVFloat_VV_Div( float **dst,
                              size_t n )
 {
     size_t i;
-    float s = 0.0f;
+    float s = 0.0F;
     const float k = a/b;
 
     for ( i = 0u ; i < n ; ++i ) {
@@ -180,7 +180,7 @@ static float qVFloat_kV_Div( float **dst,
                              size_t n )
 {
     size_t i;
-    float s = 0.0f;
+    float s = 0.0F;
     const float k = a/b;
 
     for ( i = 0u ; i < n ; ++i ) {
@@ -208,7 +208,7 @@ float qVFloat_Operate( float * dst,
     static qVFloat_kVFcn_t kv_fcn[ 3 ] = {
                                          &qVFloat_kV_Add, &qVFloat_kV_Mul, &qVFloat_kV_Div
                                          };
-    float retVal = 0.0f;
+    float retVal = 0.0F;
 
     if ( ( NULL != x ) && ( n > 0u ) ) {
         float t, *pt = &t;
@@ -232,7 +232,7 @@ float qVFloat_ApplyFx( float *dst,
                        const size_t n )
 {
     size_t i;
-    float s = 0.0f;
+    float s = 0.0F;
     float t, *pt = &t;
     float **ppt = ( NULL == dst ) ? &pt : &dst;
 
@@ -272,18 +272,18 @@ int qVFloat_Moment( qVFloat_Moment_t * const m,
 {
     int retVal = 0;
 
-    if ( n > 1u ) {
+    if ( n > 1U ) {
         size_t j;
-        float ep = 0.0f, s = 0.0f;
+        float ep = 0.0F, s = 0.0F;
         /*cstat -CERT-FLP36-C*/
         const float l = (float)n;
         /*cstat +CERT-FLP36-C*/
         (void)memset( m, 0, sizeof(qVFloat_Moment_t) );
-        for ( j = 1u ; j <= n ; ++j ) {
+        for ( j = 1U ; j <= n ; ++j ) {
             s += x[ j ];
         }
         m->mean = s/l;
-        for ( j = 1u ; j <= n ; ++j ) {
+        for ( j = 1U ; j <= n ; ++j ) {
             float p;
 
             s = x[ j ] - m->mean;
@@ -297,12 +297,12 @@ int qVFloat_Moment( qVFloat_Moment_t * const m,
             m->curt += p;
         }
         m->avgDev /= l;
-        m->var = ( m->var - ( ( ep*ep )/l ) )/( l - 1.0f );
+        m->var = ( m->var - ( ( ep*ep )/l ) )/( l - 1.0F );
         /*cstat -MISRAC2012-Dir-4.11_b -CERT-FLP34-C*/
-        m->stdDev =  ( m->var >= 0.0f ) ? QLIB_SQRT( m->var ) : QLIB_NAN;
+        m->stdDev =  ( m->var >= 0.0F ) ? QLIB_SQRT( m->var ) : QLIB_NAN;
         /*cstat +MISRAC2012-Dir-4.11_b*/
-        if ( false == qFMathEx_Equal( 0.0f, m->var ) ) {
-            m->skew /= ( ( m->curt )/( l*m->var*m->var ) ) - 3.0f;
+        if ( false == qFMathEx_Equal( 0.0F, m->var ) ) {
+            m->skew /= ( ( m->curt )/( l*m->var*m->var ) ) - 3.0F;
         }
         else {
             m->skew = QLIB_NAN;
@@ -320,7 +320,7 @@ float* qVFloat_Set( float * const x,
 {
     size_t i;
 
-    for ( i = 0u ; i < n ; ++i ) {
+    for ( i = 0U ; i < n ; ++i ) {
         x[ i ] = c;
     }
 
@@ -342,11 +342,11 @@ float qVFloat_PolyVal( const float * const p,
                        size_t n )
 {
     size_t i;
-    float fx = 0.0f;
+    float fx = 0.0F;
 
-    for ( i = 0u ; i < n ; ++i ) {
+    for ( i = 0U ; i < n ; ++i ) {
         /*cstat -CERT-FLP36-C*/
-        fx += p[ n - i - 1u ]*QLIB_POW( x, (float)i );
+        fx += p[ n - i - 1U ]*QLIB_POW( x, (float)i );
         /*cstat +CERT-FLP36-C*/
     }
 
@@ -360,10 +360,10 @@ float* qVFloat_LinSpace( float * const dst,
 {
     /*cstat -CERT-FLP36-C -MISRAC2012-Rule-10.8*/
     /*cppcheck-suppress misra-c2012-10.8 */
-    float step = ( x2 - x1 )/(float)( n - 1u );
+    float step = ( x2 - x1 )/(float)( n - 1U );
     size_t i;
 
-    for ( i = 0u ; i < n ; ++i ) {
+    for ( i = 0U ; i < n ; ++i ) {
         dst[ i ] = x1 + ( (float)i*step );
     }
     /*cstat +CERT-FLP36-C +MISRAC2012-Rule-10.8*/
@@ -379,7 +379,7 @@ float qVFloat_Distance( const float * const x,
     if ( ( NULL != x ) && ( NULL != y ) ) {
         size_t i;
 
-        for ( i = 0u ; i < n ; ++i ) {
+        for ( i = 0U ; i < n ; ++i ) {
             float tmp = x[ i ] - y[ i ];
 
             s += tmp*tmp;
@@ -388,8 +388,8 @@ float qVFloat_Distance( const float * const x,
         s = QLIB_SQRT( s ); /*always positive*/
         /*cstat +MISRAC2012-Dir-4.11_b*/
     }
-    
-    return s; 
+
+    return s;
 }
 /*============================================================================*/
 float* qVFloat_Reverse( float * const dst,
@@ -414,7 +414,7 @@ float* qVFloat_Rotate( float * const dst,
 {
     float *v = NULL;
 
-    if ( ( NULL != src ) && ( 0 != k ) && ( n > 0u ) ) {
+    if ( ( NULL != src ) && ( 0 != k ) && ( n > 0U ) ) {
         v = ( NULL != dst ) ? qVFloat_Copy( dst, src, n ) : src;
         qTypeGeneric_Rotate( v, sizeof(float), n, k );
     }
@@ -428,12 +428,12 @@ int qVFloat_MinMax( qVFloat_MinMax_t * const o,
 {
     int retVal = 0;
 
-    if ( ( NULL != x ) && ( NULL != o ) && ( n > 0u ) ) {
-        if ( 1u == n ) {
+    if ( ( NULL != x ) && ( NULL != o ) && ( n > 0U ) ) {
+        if ( 1U == n ) {
             o->min = x[ 0 ];
             o->max = x[ 0 ];
-            o->index_min = 0u;
-            o->index_max = 0u;
+            o->index_min = 0U;
+            o->index_max = 0U;
         }
         else {
             size_t i;
@@ -441,17 +441,17 @@ int qVFloat_MinMax( qVFloat_MinMax_t * const o,
             if ( x[ 0 ] > x[ 1 ] ) {
                 o->max = x[ 0 ];
                 o->min = x[ 1 ];
-                o->index_min = 1u;
-                o->index_max = 0u;
-            } 
+                o->index_min = 1U;
+                o->index_max = 0U;
+            }
             else {
                 o->max = x[ 1 ];
                 o->min = x[ 0 ];
-                o->index_min = 0u;
-                o->index_max = 1u;
+                o->index_min = 0U;
+                o->index_max = 1U;
             }
 
-            for ( i = 2u ; i < n ; ++i ) {
+            for ( i = 2U ; i < n ; ++i ) {
                 if ( x[ i ] >  o->max ) {
                     o->max = x[ i ];
                     o->index_max = i;
@@ -506,7 +506,7 @@ float* qVFloat_Sort( float * const dst,
 {
     float *v = NULL;
 
-    if ( ( src != NULL ) && ( n > 0u ) ) {
+    if ( ( src != NULL ) && ( n > 0U) ) {
         v = ( NULL != dst ) ? qVFloat_Copy( dst, src, n ) : src;
         qTypeGeneric_Sort( v, n, sizeof(float), ( dir ) ? &qVFloat_CmpAsc : &qVFloat_CmpDes, NULL );
     }

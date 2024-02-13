@@ -27,19 +27,19 @@ int qPID_Setup( qPID_controller_t * const c,
 
     if ( ( NULL != c ) && ( dt > 0.0f ) ) {
         c->dt = dt;
-        c->init = 1u;
+        c->init = 1U;
         c->adapt = NULL;
         c->integrate = &qNumA_IntegralTr; /*default integration method*/
-        (void)qPID_SetDerivativeFilter( c, 0.98f );
+        (void)qPID_SetDerivativeFilter( c, 0.98F );
         (void)qPID_SetEpsilon( c, FLT_MIN );
         (void)qPID_SetGains( c, kc, ki, kd );
-        (void)qPID_SetSaturation( c , 0.0f, 100.0f );
-        (void)qPID_SetMRAC( c, NULL, 0.5f );
+        (void)qPID_SetSaturation( c , 0.0F, 100.0F );
+        (void)qPID_SetMRAC( c, NULL, 0.5F );
         (void)qPID_SetMode( c, qPID_Automatic );
-        (void)qPID_SetManualInput( c, 0.0f );
-        (void)qPID_SetExtraGains( c, 1.0f, 1.0f );
+        (void)qPID_SetManualInput( c, 0.0F );
+        (void)qPID_SetExtraGains( c, 1.0F, 1.0F );
         (void)qPID_SetDirection( c, qPID_Forward );
-        (void)qPID_SetReferenceWeighting( c, 1.0f, 0.0f );
+        (void)qPID_SetReferenceWeighting( c, 1.0F, 0.0F );
         retValue = qPID_Reset( c );
     }
 
@@ -52,7 +52,7 @@ int qPID_SetDirection( qPID_controller_t * const c,
 {
     int retValue = 0;
 
-    if ( ( NULL != c ) && ( 0u != c->init ) ) {
+    if ( ( NULL != c ) && ( 0U != c->init ) ) {
         c->dir = d;
         retValue = 1;
     }
@@ -67,7 +67,7 @@ int qPID_SetParams( qPID_controller_t * const c,
 {
     int retValue = 0;
 
-    if ( ( NULL != c ) && ( 0u != c->init ) ) {
+    if ( ( NULL != c ) && ( 0U != c->init ) ) {
         c->kc = kc;
         c->ki = kc/ti;
         c->kd = kc*td;
@@ -84,7 +84,7 @@ int qPID_SetGains( qPID_controller_t * const c,
 {
     int retValue = 0;
 
-    if ( ( NULL != c ) && ( 0u != c->init ) ) {
+    if ( ( NULL != c ) && ( 0U != c->init ) ) {
         c->kc = kc;
         c->ki = ki;
         c->kd = kd;
@@ -101,7 +101,7 @@ int qPID_SetExtraGains( qPID_controller_t * const c,
 {
     int retValue = 0;
 
-    if ( ( NULL != c ) && ( 0u != c->init ) ) {
+    if ( ( NULL != c ) && ( 0U != c->init ) ) {
         c->kw = kw;
         c->kt = kt;
         retValue = 1;
@@ -114,14 +114,14 @@ int qPID_Reset( qPID_controller_t * const c )
 {
     int retValue = 0;
 
-    if ( ( NULL != c ) && ( 0u != c->init ) ) {
-        qNumA_StateInit( &c->c_state, 0.0f, 0.0f, 0.0f );
-        qNumA_StateInit( &c->m_state, 0.0f, 0.0f, 0.0f );
-        qNumA_StateInit( &c->b_state, 0.0f, 0.0f, 0.0f );
-        c->D = 0.0f;
-        c->u1 = 0.0f;
-        c->m = 0.0f;
-        c->uSat = 0.0f;
+    if ( ( NULL != c ) && ( 0U != c->init ) ) {
+        qNumA_StateInit( &c->c_state, 0.0F, 0.0F, 0.0F );
+        qNumA_StateInit( &c->m_state, 0.0F, 0.0F, 0.0F );
+        qNumA_StateInit( &c->b_state, 0.0F, 0.0F, 0.0F );
+        c->D = 0.0F;
+        c->u1 = 0.0F;
+        c->m = 0.0F;
+        c->uSat = 0.0F;
         retValue = 1;
     }
 
@@ -134,7 +134,7 @@ int qPID_SetSaturation( qPID_controller_t * const c,
 {
     int retValue = 0;
 
-    if ( ( NULL != c ) && ( max > min ) && ( 0u != c->init ) ) {
+    if ( ( NULL != c ) && ( max > min ) && ( 0U != c->init ) ) {
         c->min = min;
         c->max = max;
         retValue = 1;
@@ -147,12 +147,12 @@ int qPID_SetSeries( qPID_controller_t * const c )
 {
     int retValue = 0;
 
-    if ( ( NULL != c ) && ( 0u != c->init ) ) {
+    if ( ( NULL != c ) && ( 0U != c->init ) ) {
         float ti, td, tmp;
 
         ti = c->kc/c->ki;
         td = c->kd/c->kc;
-        tmp = 1.0f + ( td/ti );
+        tmp = 1.0F + ( td/ti );
         c->kc = c->kc*tmp;
         c->ki = c->kc/( ti*tmp );
         c->kd = c->kc*( td/tmp );
@@ -167,7 +167,7 @@ int qPID_SetEpsilon( qPID_controller_t * const c,
 {
     int retValue = 0;
 
-    if ( ( NULL != c ) && ( 0u != c->init) && ( eps > 0.0f ) ) {
+    if ( ( NULL != c ) && ( 0U != c->init) && ( eps > 0.0F ) ) {
         c->epsilon = eps;
         retValue = 1;
     }
@@ -180,7 +180,7 @@ int qPID_SetDerivativeFilter( qPID_controller_t * const c,
 {
     int retValue = 0;
 
-    if ( ( NULL != c ) && ( 0u != c->init ) && ( beta > 0.0f ) && ( beta < 1.0f ) ) {
+    if ( ( NULL != c ) && ( 0U != c->init ) && ( beta > 0.0F ) && ( beta < 1.0F ) ) {
         c->beta = beta;
         retValue = 1;
     }
@@ -193,7 +193,7 @@ int qPID_SetMode( qPID_controller_t * const c,
 {
     int retValue = 0;
 
-    if ( ( NULL != c ) && ( 0u != c->init ) ) {
+    if ( ( NULL != c ) && ( 0U != c->init ) ) {
         c->mode = m;
         retValue = 1;
     }
@@ -207,9 +207,9 @@ int qPID_SetReferenceWeighting( qPID_controller_t * const c,
 {
     int retValue = 0;
 
-    if ( ( NULL != c ) && ( 0u != c->init ) ) {
-        c->b = qPID_Sat( gb, 0.0f, 1.0f );
-        c->c = qPID_Sat( gc, 0.0f, 1.0f );
+    if ( ( NULL != c ) && ( 0U != c->init ) ) {
+        c->b = qPID_Sat( gb, 0.0F, 1.0F );
+        c->c = qPID_Sat( gc, 0.0F, 1.0F );
         retValue = 1;
     }
 
@@ -221,7 +221,7 @@ int qPID_SetManualInput( qPID_controller_t * const c,
 {
     int retValue = 0;
 
-    if ( ( NULL != c ) && ( 0u != c->init ) ) {
+    if ( ( NULL != c ) && ( 0U != c->init ) ) {
         c->mInput = manualInput;
         retValue = 1;
     }
@@ -235,9 +235,9 @@ int qPID_SetMRAC( qPID_controller_t * const c,
 {
     int retValue = 0;
 
-    if ( ( NULL != c ) && ( gamma > 0.0f ) ) {
-        qNumA_StateInit( &c->m_state, 0.0f, 0.0f, 0.0f );
-        c->alfa = 0.01f;
+    if ( ( NULL != c ) && ( gamma > 0.0F ) ) {
+        qNumA_StateInit( &c->m_state, 0.0F, 0.0F, 0.0F );
+        c->alfa = 0.01F;
         c->gamma = gamma;
         c->yr = modelRef;
         retValue = 1;
@@ -252,16 +252,16 @@ float qPID_Control( qPID_controller_t * const c,
 {
     float u = w;
 
-    if ( ( NULL != c ) && ( 0u != c->init ) ) {
+    if ( ( NULL != c ) && ( 0U != c->init ) ) {
         float e, v, de, ie, bt, sw, kc, ki, kd;
 
         kc = c->kc;
         ki = c->ki;
         kd = c->kd;
         if ( qPID_Backward == c->dir ) {
-            kc = ( kc > 0.0f ) ? -kc : kc;
-            ki = ( ki > 0.0f ) ? -ki : ki;
-            kd = ( kd > 0.0f ) ? -kd : kd;
+            kc = ( kc > 0.0F ) ? -kc : kc;
+            ki = ( ki > 0.0F ) ? -ki : ki;
+            kd = ( kd > 0.0F ) ? -kd : kd;
         }
 
         e = w - y;
@@ -276,7 +276,7 @@ float qPID_Control( qPID_controller_t * const c,
 
         if ( NULL != c->yr ) {
             /*MRAC additive controller using the modified MIT rule*/
-            float theta = 0.0f;
+            float theta = 0.0F;
             if ( QLIB_ABS( c->u1 ) <= c->epsilon ) { /*additive anti-windup*/
                 const float em = y - c->yr[ 0 ];
                 const float delta = -c->gamma*em*c->yr[ 0 ]/
@@ -306,28 +306,28 @@ int qPID_BindAutoTuning( qPID_controller_t * const c,
 {
     int retValue = 0;
 
-    if ( ( NULL != c ) && ( 0u != c->init ) ) {
+    if ( ( NULL != c ) && ( 0U != c->init ) ) {
         if ( NULL != at ) {
             float k,T;
 
             c->adapt = at;
-            at->l = 0.9898f;
-            at->il = 1.0f/at->l;
-            at->p00 = 1000.0f;
-            at->p11 = 1000.0f;
-            at->p01 = 0.0f;
-            at->p10 = 0.0f;
-            at->uk  = 0.0f;
-            at->yk = 0.0f;
-            at->k = 0.0f;
-            at->tao = 0.0f;
-            at->it = 100uL;
-            at->mu = 0.95f;
-            k = c->kc/0.9f;
-            T = ( 0.27f*k )/c->ki;
+            at->l = 0.9898F;
+            at->il = 1.0F/at->l;
+            at->p00 = 1000.0F;
+            at->p11 = 1000.0F;
+            at->p01 = 0.0F;
+            at->p10 = 0.0F;
+            at->uk  = 0.0F;
+            at->yk = 0.0F;
+            at->k = 0.0F;
+            at->tao = 0.0F;
+            at->it = 100UL;
+            at->mu = 0.95F;
+            k = c->kc/0.9F;
+            T = ( 0.27F*k )/c->ki;
             at->a1 = -QLIB_EXP( -c->dt/T );
-            at->b1 = k*( 1.0f + at->a1 );
-            at->speed = 0.25f;
+            at->b1 = k*( 1.0F + at->a1 );
+            at->speed = 0.25F;
             at->it = QPID_AUTOTUNING_UNDEFINED;
         }
         else {
@@ -346,7 +346,7 @@ int qPID_EnableAutoTuning( qPID_controller_t * const c,
 
     if ( NULL != c ) {
         if ( NULL != c->adapt ) {
-            c->adapt->it = ( 0uL == tEnable )? QPID_AUTOTUNING_UNDEFINED : tEnable;
+            c->adapt->it = ( 0UL == tEnable )? QPID_AUTOTUNING_UNDEFINED : tEnable;
             retValue = 1;
         }
     }
@@ -378,29 +378,29 @@ static void qPID_AdaptGains( qPID_controller_t *c,
     lp01 = s->il*s->p01;
     lp10 = s->il*s->p10;
     lp11 = s->il*s->p11;
-    tmp1 = ( l0*s->uk ) - 1.0f;
-    tmp2 = ( l1*s->yk ) + 1.0f;
-    s->p00 = ( l0*lp10*s->yk ) - ( lp00*tmp1 ) + 1e-10f;
+    tmp1 = ( l0*s->uk ) - 1.0F;
+    tmp2 = ( l1*s->yk ) + 1.0F;
+    s->p00 = ( l0*lp10*s->yk ) - ( lp00*tmp1 ) + 1e-10F;
     s->p01 = ( l0*lp11*s->yk ) - ( lp01*tmp1 );
     s->p10 = ( lp10*tmp2 ) - ( l1*lp00*s->uk );
-    s->p11 = ( lp11*tmp2 ) - ( l1*lp01*s->uk ) + 1e-10f;
+    s->p11 = ( lp11*tmp2 ) - ( l1*lp01*s->uk ) + 1e-10F;
     /*update I/O measurements*/
     s->yk = y;
     s->uk = u;
-    k = s->b1/( 1.0f + s->a1 );
-    tmp1 = ( s->a1 < 0.0f ) ? -s->a1 : s->a1;
+    k = s->b1/( 1.0F + s->a1 );
+    tmp1 = ( s->a1 < 0.0F ) ? -s->a1 : s->a1;
     /*cstat -MISRAC2012-Dir-4.11_a -MISRAC2012-Rule-13.5*/
     tao = -c->dt/QLIB_LOG( tmp1 ); /*ok, passing absolute value*/
-    if ( ( 0 != qPID_ATCheck( tao ) ) && ( 0 != qPID_ATCheck( k ) ) && ( s->it > 0uL ) ) {
+    if ( ( 0 != qPID_ATCheck( tao ) ) && ( 0 != qPID_ATCheck( k ) ) && ( s->it > 0UL ) ) {
     /*cstat +MISRAC2012-Dir-4.11_a +MISRAC2012-Rule-13.5*/
         s->k = k + ( s->mu*( s->k - k ) );
         s->tao = tao + ( s->mu*( s->tao - tao ) );
-        if ( ( 0uL == --s->it ) && ( s->it != QPID_AUTOTUNING_UNDEFINED ) ) {
+        if ( ( 0UL == --s->it ) && ( s->it != QPID_AUTOTUNING_UNDEFINED ) ) {
             tmp1 = c->dt/s->tao;
-            tmp2 = ( 1.35f + ( 0.25f*tmp1 ) );
+            tmp2 = ( 1.35F + ( 0.25F*tmp1 ) );
             c->kc = ( s->speed*tmp2*s->tao )/( s->k*c->dt );
-            c->ki = ( ( s->speed*c->kc )*( 0.54f + ( 0.33f*tmp1 ) ) )/( tmp2*c->dt );
-            c->kd = ( 0.5f*s->speed*c->kc*c->dt )/tmp2;
+            c->ki = ( ( s->speed*c->kc )*( 0.54F + ( 0.33F*tmp1 ) ) )/( tmp2*c->dt );
+            c->kd = ( 0.5F*s->speed*c->kc*c->dt )/tmp2;
         }
     }
 }
@@ -412,7 +412,7 @@ int qPID_AutoTuningComplete( const qPID_controller_t * const c )
     if ( NULL != c ) {
         if ( NULL != c->adapt ) {
             /*cppcheck-suppress misra-c2012-10.6 */
-            retVal = ( ( 0uL == c->adapt->it ) && ( c->adapt->it != QPID_AUTOTUNING_UNDEFINED ) ) ? 1 : 0;
+            retVal = ( ( 0UL == c->adapt->it ) && ( c->adapt->it != QPID_AUTOTUNING_UNDEFINED ) ) ? 1 : 0;
         }
     }
 
@@ -426,9 +426,9 @@ int qPID_AutoTuningSetParameters( qPID_controller_t * const c,
 {
     int retVal = 0;
 
-    if ( ( NULL != c ) && ( mu > 0.0f ) && ( mu <= 1.0f ) &&
-         ( alfa > 0.0f ) && ( alfa <= 1.0f ) &&
-         ( lambda >= 0.8f ) && ( lambda <= 1.0f ) ) {
+    if ( ( NULL != c ) && ( mu > 0.0F ) && ( mu <= 1.0F ) &&
+         ( alfa > 0.0F ) && ( alfa <= 1.0F ) &&
+         ( lambda >= 0.8F ) && ( lambda <= 1.0F ) ) {
         if ( NULL != c->adapt ) {
             c->adapt->l = lambda;
             c->adapt->mu = mu;
@@ -460,7 +460,7 @@ static float qPID_Sat( float x,
 static int qPID_ATCheck( const float x )
 {
     /*cstat -MISRAC2012-Rule-13.5 -MISRAC2012-Rule-10.3*/
-    return ( 0 == (int)QLIB_ISNAN( x ) ) && ( x > 0.0f ) && ( 0 == (int)QLIB_ISINF( x ) );
+    return ( 0 == (int)QLIB_ISNAN( x ) ) && ( x > 0.0F ) && ( 0 == (int)QLIB_ISINF( x ) );
     /*cstat +MISRAC2012-Rule-13.5 +MISRAC2012-Rule-10.3*/
 }
 /*============================================================================*/

@@ -82,9 +82,9 @@ bool qFMathEx_InPolygon( const float x,
     }
 
     if ( ( y >= min_y ) && ( y <= max_y ) && ( x >= min_x ) && ( x <= max_x ) ) {
-        size_t j = p - 1u;
+        size_t j = p - 1U;
 
-        for ( i = 0u ; i < p ; ++i ) {
+        for ( i = 0U ; i < p ; ++i ) {
             if ( ( px[ i ] > x ) != ( px[ j ] > x ) ) {
                 const float dx = px[ j ] - px[ i ];
                 const float dy = py[ j ] - py[ i ];

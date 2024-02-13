@@ -26,14 +26,14 @@ void qTypeGeneric_Swap( void * const x,
     /*cppcheck-suppress misra-c2012-11.5 */
     uint8_t * const a = (uint8_t * const)x, *b = (uint8_t * const)y;
     /*cstat +MISRAC2012-Rule-11.5 +CERT-EXP36-C_b*/
-    size_t i = 0u, j = 0u;
+    size_t i = 0U, j = 0U;
     do {
         uint8_t tmp = a[ i ];
         /*cstat -CERT-INT30-C_a*/
         a[ i++ ] = b[ j ];
         b[ j++ ] = tmp;
         /*cstat +CERT-INT30-C_a*/
-    } while( --n > 0u );
+    } while( --n > 0U );
 }
 /*============================================================================*/
 static void qTypeGeneric_SortStackPush( qTypeGeneric_SortStackNode_t **top,
@@ -51,27 +51,27 @@ void qTypeGeneric_Sort( void * const pbase,
                         qTypeGeneric_CompareFcn_t cmp,
                         void *arg )
 {
-    /*cstat -MISRAC2012-Rule-18.4*/ 
-    if ( ( NULL != pbase ) && ( size > 0u ) && ( n > 0u ) && ( NULL != cmp ) ) {
-        const size_t max_thresh = 4u*size;
+    /*cstat -MISRAC2012-Rule-18.4*/
+    if ( ( NULL != pbase ) && ( size > 0U ) && ( n > 0U ) && ( NULL != cmp ) ) {
+        const size_t max_thresh = 4U*size;
         /*cstat -MISRAC2012-Rule-11.5 -CERT-EXP36-C_b*/
         /*cppcheck-suppress misra-c2012-11.5 */
         uint8_t *base_ptr = (uint8_t *)pbase;
         /*cstat +MISRAC2012-Rule-11.5 +CERT-EXP36-C_b*/
-        uint8_t * const end_ptr = &base_ptr[ size*( n - 1u ) ];
+        uint8_t * const end_ptr = &base_ptr[ size*( n - 1U ) ];
         uint8_t *tmp_ptr = base_ptr, *run_ptr;
         uint8_t *thresh = ( end_ptr < ( base_ptr + max_thresh) ) ? end_ptr : ( base_ptr + max_thresh ) ;
 
         if ( n > 4u ) {
-            uint8_t *lo = base_ptr, *hi = &lo[ size*( n - 1u ) ];
-            qTypeGeneric_SortStackNode_t stack[ 8u*sizeof(size_t) ], *top = stack;
+            uint8_t *lo = base_ptr, *hi = &lo[ size*( n - 1U ) ];
+            qTypeGeneric_SortStackNode_t stack[ 8U*sizeof(size_t) ], *top = stack;
 
             qTypeGeneric_SortStackPush( &top, NULL, NULL );
             while ( stack < top ) {
                 uint8_t *left_ptr, *right_ptr;
                 /*cstat -ATH-div-0-unchk-param -CERT-INT33-C_h*/
                 /*cppcheck-suppress misra-c2012-10.8 */
-                uint8_t *mid = &lo[ size*( ( (size_t)( hi - lo )/size ) >> 1u ) ];
+                uint8_t *mid = &lo[ size*( ( (size_t)( hi - lo )/size ) >> 1U ) ];
                 /*cstat +ATH-div-0-unchk-param +CERT-INT33-C_h*/
                 if ( cmp( mid, lo, arg ) < 0 ) {
                     qTypeGeneric_Swap( mid, lo, size );
@@ -196,7 +196,7 @@ void qTypeGeneric_Reverse( void * const pbase,
                            const size_t init,
                            const size_t end )
 {
-    if ( ( NULL != pbase ) && ( size > 0u ) && ( end > init ) ) {
+    if ( ( NULL != pbase ) && ( size > 0U ) && ( end > init ) ) {
         size_t s = size*init, e = size*end;
         /*cstat -MISRAC2012-Rule-11.5 -CERT-EXP36-C_b*/
         /*cppcheck-suppress misra-c2012-11.5 */
@@ -215,22 +215,22 @@ void qTypeGeneric_Rotate( void * const pbase,
                           const size_t n,
                           const int k )
 {
-    if ( ( NULL != pbase ) && ( 0 != k ) && ( n > 0u ) ) {
+    if ( ( NULL != pbase ) && ( 0 != k ) && ( n > 0U ) ) {
         size_t r;
 
         if ( k > 0 ) {
             r = (size_t)k;
             r %= n;
-            qTypeGeneric_Reverse( pbase, size, n - r, n - 1u );
-            qTypeGeneric_Reverse( pbase, size, 0u, n - r - 1u );
-            qTypeGeneric_Reverse( pbase, size, 0u, n - 1u );
+            qTypeGeneric_Reverse( pbase, size, n - r, n - 1U );
+            qTypeGeneric_Reverse( pbase, size, 0U, n - r - 1U );
+            qTypeGeneric_Reverse( pbase, size, 0U, n - 1U );
         }
         else {
             r = (size_t)(-k);
             r %= n;
-            qTypeGeneric_Reverse( pbase, size, 0u, r - 1u );
-            qTypeGeneric_Reverse( pbase, size, r, n - 1u );
-            qTypeGeneric_Reverse( pbase, size, 0u, n - 1u );
+            qTypeGeneric_Reverse( pbase, size, 0U, r - 1U );
+            qTypeGeneric_Reverse( pbase, size, r, n - 1U );
+            qTypeGeneric_Reverse( pbase, size, 0U, n - 1U );
         }
     }
 }
@@ -246,10 +246,10 @@ void* qTypeGeneric_Set( void * const pbase,
     /*cstat +MISRAC2012-Rule-11.5 +CERT-EXP36-C_b*/
     void *retVal = NULL;
 
-    if ( ( NULL != pbase ) && ( size > 0u ) && ( n > 0u ) && ( NULL != ref ) ) {
+    if ( ( NULL != pbase ) && ( size > 0U ) && ( n > 0U ) && ( NULL != ref ) ) {
         size_t i;
 
-        for ( i = 0u ; i < n ; i++ ) {
+        for ( i = 0U ; i < n ; i++ ) {
             retVal = memcpy( &p[ size*i ], ref, size );
         }
     }
@@ -271,7 +271,7 @@ void* qTypeGeneric_LSearch( const void *key,
     void* retVal = NULL;
     size_t i;
 
-    for ( i = 0u ; i < n ; ++i ) {
+    for ( i = 0U ; i < n ; ++i ) {
         const uint8_t *element = &pb[ i*size ];
 
         if ( 0 == compar( key, element, arg) ) {
@@ -300,10 +300,10 @@ void* qTypeGeneric_BSearch( const void *key,
     const uint8_t *p;
     void *retVal = NULL;
 
-    while ( 0u != lim ) {
+    while ( 0U != lim ) {
         int cmp;
 
-        p = &base[ ( lim >> 1u )*size ];
+        p = &base[ ( lim >> 1U )*size ];
         cmp = compar( key, p, arg );
         if ( 0 == cmp ) {
             /*cstat -MISRAC2012-Rule-11.8*/
@@ -319,7 +319,7 @@ void* qTypeGeneric_BSearch( const void *key,
         else {
             /*nothing to do here*/
         }
-        lim >>= 1u;
+        lim >>= 1U;
     }
     return retVal;
 }
@@ -333,7 +333,7 @@ int qTypeGeneric_ForEach( void *pbase,
 {
     int retVal = 0;
 
-    if ( ( NULL != pbase ) && ( NULL != f ) && ( n > 0u ) ) {
+    if ( ( NULL != pbase ) && ( NULL != f ) && ( n > 0U ) ) {
         /*cstat -MISRAC2012-Rule-11.5 -CERT-EXP36-C_b*/
         /*cppcheck-suppress misra-c2012-11.5 */
         uint8_t *pb = (uint8_t *)pbase;
@@ -343,7 +343,7 @@ int qTypeGeneric_ForEach( void *pbase,
             uint8_t *element;
 
             if ( false == dir ) {
-                for ( i = 0u ; i < n ; ++i ) {
+                for ( i = 0U ; i < n ; ++i ) {
                     element = &pb[ i*size ];
                     retVal = f( (int)i , element, arg );
                     if ( 1 == retVal ) {
@@ -353,7 +353,7 @@ int qTypeGeneric_ForEach( void *pbase,
             }
             else {
                 i = n;
-                while ( i-- > 0u ) {
+                while ( i-- > 0U ) {
                     element = &pb[ i*size ];
                     retVal = f( (int)i, element, arg );
                     if ( 1 == retVal ) {
