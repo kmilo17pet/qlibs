@@ -1,7 +1,7 @@
 # qLibs CMakeLists.txt file
 # Copyright (C) 2012 Eng. Juan Camilo Gómez Cadavid MSc. All Rights Reserved.
 #
-# To make use of the qLibs libraries on your solution just add the following 
+# To make use of the qLibs libraries on your solution just add the following
 # directives to the top-level CMakeLists.txt file :
 #
 #     add_subdirectory( <relative/path/to/qlibs> )
@@ -10,8 +10,8 @@
 # This file is part of the qLibs distribution.
 
 cmake_minimum_required( VERSION 3.2 )
-project( qlibs 
-         VERSION 1.2.5
+project( qlibs
+         VERSION 1.2.7
          DESCRIPTION "A collection of useful libraries for embedded systems"
          LANGUAGES C
        )
