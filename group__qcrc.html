@@ -134,7 +134,7 @@ $(document).ready(function(){initNavTree('group__qcrc.html',''); initResizable()
 </div><!--header-->
 <div class="contents">
 
-<p>API for the qCRC Generic Cyclic Redundancy Check (CRC) calculator.  
+<p>API for the qCRC Generic Cyclic Redundancy Check (CRC) calcULator.  
 <a href="#details">More...</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
@@ -320,11 +320,11 @@ Enumerations</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:gaef8143cd8ce3543a87fbef309f22c32c"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qcrc.html#gaef8143cd8ce3543a87fbef309f22c32c">qCRCx</a> (const <a class="el" href="group__qcrc.html#ga2e68685bd767706a72f8dbfed97e1ce3">qCRC_Mode_t</a> mode, const void *const pData, const size_t length, uint32_t poly, const uint32_t init, const uint8_t refIn, const uint8_t refOut, uint32_t xorOut)</td></tr>
-<tr class="memdesc:gaef8143cd8ce3543a87fbef309f22c32c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculates in one pass the common <em>width</em> bit CRC value for a block of data that is passed to the function together with a parameter indicating the <em>length</em>.  <a href="group__qcrc.html#gaef8143cd8ce3543a87fbef309f22c32c">More...</a><br /></td></tr>
+<tr class="memdesc:gaef8143cd8ce3543a87fbef309f22c32c"><td class="mdescLeft">&#160;</td><td class="mdescRight">CalcULates in one pass the common <em>width</em> bit CRC value for a block of data that is passed to the function together with a parameter indicating the <em>length</em>.  <a href="group__qcrc.html#gaef8143cd8ce3543a87fbef309f22c32c">More...</a><br /></td></tr>
 <tr class="separator:gaef8143cd8ce3543a87fbef309f22c32c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<p >API for the qCRC Generic Cyclic Redundancy Check (CRC) calculator. </p>
+<p >API for the qCRC Generic Cyclic Redundancy Check (CRC) calcULator. </p>
 <p >For a brief description of this module, please read <a class="el" href="qcrc_desc.html">Generic Cyclic Redundancy Check (CRC) calculator</a> </p>
 <h2 class="groupheader">Enumeration Type Documentation</h2>
 <a id="ga2e68685bd767706a72f8dbfed97e1ce3" name="ga2e68685bd767706a72f8dbfed97e1ce3"></a>
@@ -414,16 +414,16 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Calculates in one pass the common <em>width</em> bit CRC value for a block of data that is passed to the function together with a parameter indicating the <em>length</em>. </p>
+<p>CalcULates in one pass the common <em>width</em> bit CRC value for a block of data that is passed to the function together with a parameter indicating the <em>length</em>. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">mode</td><td>To select the CRC calculation mode. Only the following values are supported: <a class="el" href="group__qcrc.html#gga2e68685bd767706a72f8dbfed97e1ce3a13b3cc6c7926b0cda942796008f6780e">QCRC8</a>, <a class="el" href="group__qcrc.html#gga2e68685bd767706a72f8dbfed97e1ce3a5b7d1bc2331e27619f22693542828858">QCRC16</a> and <a class="el" href="group__qcrc.html#gga2e68685bd767706a72f8dbfed97e1ce3acf96a4b5766bfc14ed5e712d323369d3">QCRC32</a>. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">mode</td><td>To select the CRC calcULation mode. Only the following values are supported: <a class="el" href="group__qcrc.html#gga2e68685bd767706a72f8dbfed97e1ce3a13b3cc6c7926b0cda942796008f6780e">QCRC8</a>, <a class="el" href="group__qcrc.html#gga2e68685bd767706a72f8dbfed97e1ce3a5b7d1bc2331e27619f22693542828858">QCRC16</a> and <a class="el" href="group__qcrc.html#gga2e68685bd767706a72f8dbfed97e1ce3acf96a4b5766bfc14ed5e712d323369d3">QCRC32</a>. </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">pData</td><td>A pointer to the block of data. </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">length</td><td>The number of bytes in <em>data</em>. </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">poly</td><td>CRC polynomial value. </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">init</td><td>CRC initial value. </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">refIn</td><td>If true, the input data is reflected before processing. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">refOut</td><td>If true, the CRC result is reflected before output. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">refOut</td><td>If true, the CRC resULt is reflected before output. </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">xorOut</td><td>The final XOR value. </td></tr>
   </table>
   </dd>
