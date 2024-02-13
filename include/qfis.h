@@ -55,7 +55,7 @@ extern "C" {
         tsmf,           /*!< Tsukamoto S-Shape membership function f(a,b) [ Only for ::Tsukamoto FIS ]*/
         tzmf,           /*!< Tsukamoto Z-Shape membership function f(a,b) [ Only for ::Tsukamoto FIS ]*/
         /*! @cond  */
-        _NUM_MFS        /*!< Number of supported membership functions*/
+        _NUM_MFS        /*!< Number of supported membership functions*/ //skipcq: CXX-E2000
         /*! @endcond  */
     } qFIS_MF_Name_t;
 
@@ -71,7 +71,7 @@ extern "C" {
         wtaver,         /*!< Weighted average of all rule outputs [ Only for ::Sugeno and ::Tsukamoto FIS ]*/
         wtsum,          /*!< Weighted sum of all rule outputs [ Only for ::Sugeno FIS ]*/
         /*! @cond  */
-        _NUM_DFUZZ      /*!< Number of supported defuzzification methods*/
+        _NUM_DFUZZ      /*!< Number of supported defuzzification methods*/ //skipcq: CXX-E2000
         /*! @endcond  */
     } qFIS_DeFuzz_Method_t;
 
@@ -226,7 +226,7 @@ extern "C" {
     * @details The instance should be initialized using the qFIS_Setup() API.
     * @note Do not access any member of this structure directly.
     */
-    typedef struct _qFIS_s
+    typedef struct _qFIS_s //skipcq: CXX-E2000
     {
         /*! @cond  */
         qFIS_Input_t *input;
@@ -254,18 +254,18 @@ extern "C" {
     } qFIS_t;
 
     /*! @cond  */
-    #define _QFIS_RULES_END         ( FIS_RULES_MIN_VALUE + 1 )
-    #define _QFIS_AND               ( FIS_RULES_MIN_VALUE + 2 )
-    #define _QFIS_OR                ( FIS_RULES_MIN_VALUE + 3 )
-    #define _QFIS_THEN              ( FIS_RULES_MIN_VALUE + 4 )
+    #define _QFIS_RULES_END         ( FIS_RULES_MIN_VALUE + 1 ) //skipcq: CXX-E2000
+    #define _QFIS_AND               ( FIS_RULES_MIN_VALUE + 2 ) //skipcq: CXX-E2000
+    #define _QFIS_OR                ( FIS_RULES_MIN_VALUE + 3 ) //skipcq: CXX-E2000
+    #define _QFIS_THEN              ( FIS_RULES_MIN_VALUE + 4 ) //skipcq: CXX-E2000
 
-    #define _QFIS_IF_STATEMENT      ,
-    #define _QFIS_AND_STATEMENT     +1),_QFIS_AND,
-    #define _QFIS_OR_STATEMENT      +1),_QFIS_OR,
-    #define _QFIS_THEN_STATEMENT    +1),_QFIS_THEN,
-    #define _QFIS_IS_STATEMENT      ,(
-    #define _QFIS_IS_NOT_STATEMENT  ,-(
-    #define _QFIS_END_STATEMENT     +1)
+    #define _QFIS_IF_STATEMENT      ,                   //skipcq: CXX-E2000
+    #define _QFIS_AND_STATEMENT     +1),_QFIS_AND,      //skipcq: CXX-E2000
+    #define _QFIS_OR_STATEMENT      +1),_QFIS_OR,       //skipcq: CXX-E2000
+    #define _QFIS_THEN_STATEMENT    +1),_QFIS_THEN,     //skipcq: CXX-E2000
+    #define _QFIS_IS_STATEMENT      ,(                  //skipcq: CXX-E2000
+    #define _QFIS_IS_NOT_STATEMENT  ,-(                 //skipcq: CXX-E2000
+    #define _QFIS_END_STATEMENT     +1)                 //skipcq: CXX-E2000
     /*! @endcond  */
 
     /*Rules build keywords*/

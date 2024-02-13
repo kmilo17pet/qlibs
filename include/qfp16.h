@@ -25,7 +25,7 @@ extern "C" {
     typedef int32_t qFP16_t;
 
     /*! @cond  */
-    struct _qFP16_const_s
+    struct _qFP16_const_s //skipcq: CXX-E2000
     {
         const qFP16_t
         f_e,            /* [ e ] The base of natural logarithms, e.*/
@@ -57,7 +57,7 @@ extern "C" {
     /**
     * @brief Fixed-point Q16.16 constants
     */
-    extern const struct _qFP16_const_s qFP16;
+    extern const struct _qFP16_const_s qFP16; //skipcq: CXX-E2000
 
     /**
     * @brief A macro for defining a fixed-point constant value.

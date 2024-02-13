@@ -42,11 +42,11 @@ extern "C" {
     /*! @cond  */
     #define qSSmootherPtr_t  void
     /*abstract class*/
-    typedef struct _qSSmoother_s
+    typedef struct _qSSmoother_s //skipcq: CXX-E2000
     {
         void *vt;
         uint8_t init;
-    } _qSSmoother_t;
+    } _qSSmoother_t; //skipcq: CXX-E2000
     /*! @endcond  */
 
     /**
@@ -266,16 +266,16 @@ extern "C" {
     * if ::QSSMOOTHER_TYPE_EXPW, a pointer to a value between [ 0 < @a lambda < 1 ]
     * that represents the forgetting factor.
     *
-    * if ::QSSMOOTHER_TYPE_DESF, an array with three values. The first element 
+    * if ::QSSMOOTHER_TYPE_DESF, an array with three values. The first element
     * [ 0 < @a alpha < 1 ] that represents the weight for the level, the second,
     * [ 0 < @a beta < 1 ] weight for the trend. The third element with the number
-    * of step for the forecast, should be an integer value greater or equal to 
+    * of step for the forecast, should be an integer value greater or equal to
     * zero.
-    * 
+    *
     * if ::QSSMOOTHER_TYPE_ALNF, an array with two values. The first element
     * with learning rate [ 0 < @a alpha < 1 ]. The second element with the
     * momentum [ 0 < @a mu < 1 ].
-    * 
+    *
     * @param[in] window The filter window and coefficients. Depends of the type
     * selected:
     *

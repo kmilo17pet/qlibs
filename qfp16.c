@@ -10,7 +10,7 @@
 
 /*used only for internal operations*/
 /*! @cond  */
-struct _qFP16_intern_s
+struct _qFP16_intern_s //skipcq: CXX-E2000
 {
     const qFP16_t
     exp_max,
@@ -27,7 +27,7 @@ struct _qFP16_intern_s
     integer_mask;
 };
 
-static const struct _qFP16_intern_s intern = {
+static const struct _qFP16_intern_s intern = { //skipcq: CXX-E2000
     /*exp_max*/         681391,
     /*f_2*/             131072,
     /*f_3*/             196608,
@@ -41,7 +41,7 @@ static const struct _qFP16_intern_s intern = {
     /*integer_mask*/    0xFFFF0000U
 };
 
-const struct _qFP16_const_s qFP16 = {
+const struct _qFP16_const_s qFP16 = { //skipcq: CXX-E2000
     /*f_e*/             178145,
     /*f_log2e*/         94548,
     /*f_log10e*/        28462,

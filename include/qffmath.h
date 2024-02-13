@@ -58,7 +58,7 @@ extern "C" {
     */
 
     /*! @cond  */
-    float _qFFMath_GetAbnormal( const int i );
+    float _qFFMath_GetAbnormal( const int i ); //skipcq: CXX-E2000
     /*! @endcond  */
 
     /** @brief The base of natural logarithms ( e ) given as a single-precision floating-point number*/

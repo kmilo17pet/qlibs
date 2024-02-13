@@ -15,7 +15,7 @@ extern "C" {
 
     #include <stdbool.h>
 
-    typedef struct _qNumA_state_s
+    typedef struct _qNumA_state_s //skipcq: CXX-E2000
     {
         /*! @cond  */
         float x[ 3 ];
