@@ -6,7 +6,7 @@
 #include "qbitfield.h"
 #include <string.h>
 
-static const size_t qBitField_LBit = (size_t)( sizeof(uint32_t) * 8u );
+static const size_t qBitField_LBit = (size_t)( sizeof(uint32_t) * 8U );
 
 static uint32_t qBitField_Mask( const size_t index );
 static size_t qBitField_BitSlot( const size_t index );

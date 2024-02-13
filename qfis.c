@@ -547,7 +547,7 @@ static size_t qFIS_InferenceConsequent( struct _qFIS_s * const f,
 
     outIndex = f->rules[ i ];
     MFOutIndex = f->rules[ i + 1U ];
-    connector = ( f->nOutputs > 1U )? f->rules[ i + 2u ] : -1;
+    connector = ( f->nOutputs > 1U )? f->rules[ i + 2U ] : -1;
     if ( MFOutIndex < 0 ) {
         MFOutIndex = -MFOutIndex;
         neg = 1U;
@@ -579,7 +579,7 @@ static size_t qFIS_InferenceConsequent( struct _qFIS_s * const f,
         }
     }
 
-    i += 2u;
+    i += 2U;
     if ( _QFIS_AND != connector ) {
         f->aggregationState = &qFIS_AggregationFindConsequent;
         ++f->ruleCount;

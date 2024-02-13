@@ -174,7 +174,7 @@ static float qFFMath_CalcCbrt( float x , bool r )
     }
     /*cppcheck-suppress misra-c2012-21.15 */
     cast_reinterpret( i, x, uint32_t );
-    i = 0x548C2B4Bu - ( i/3U );
+    i = 0x548C2B4BU - ( i/3U );
     /*cppcheck-suppress misra-c2012-21.15 */
     cast_reinterpret( y, i, float );
     c = x*y*y*y;

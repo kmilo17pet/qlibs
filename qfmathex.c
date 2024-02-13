@@ -74,7 +74,7 @@ bool qFMathEx_InPolygon( const float x,
     bool retVal = false;
     float max_y = py[ 0 ], max_x = px[ 0 ], min_y = py[ 0 ], min_x = px[ 0 ];
 
-    for ( i = 0u ; i < p ; ++i ) {
+    for ( i = 0U ; i < p ; ++i ) {
         max_y = QLIB_MAX( py[ i ], max_y );
         max_x = QLIB_MAX( px[ i ], max_x );
         min_y = QLIB_MIN( py[ i ], min_y );

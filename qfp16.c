@@ -34,10 +34,10 @@ static const struct _qFP16_intern_s intern = {
     /*f_16*/            1048576,
     /*f_100*/           6553600,
     /*f_6_5*/           425984,
-    /*one_fp16_f*/      0.0000152587890625f,
+    /*one_fp16_f*/      0.0000152587890625F,
     /*one_fp16_d*/      0.0000152587890625,
     /*overflow_mask*/   0x80000000U,
-    /*fraction_mask*/   0x0000FFFFu,
+    /*fraction_mask*/   0x0000FFFFU,
     /*integer_mask*/    0xFFFF0000U
 };
 
@@ -150,7 +150,7 @@ qFP16_t qFP16_FloatToFP( const float x )
     retValue = x * (float)qFP16.one;
     /*cstat +CERT-FLP36-C*/
     if ( 1U == fp->rounding ) {
-        retValue += ( retValue >= 0.0f) ? 0.5f : -0.5f;
+        retValue += ( retValue >= 0.0F ) ? 0.5F : -0.5F;
     }
 
     return (qFP16_t)retValue;
@@ -377,12 +377,12 @@ qFP16_t qFP16_Sqrt( qFP16_t x )
 
         retValue = 0;
         /*cppcheck-suppress [ cert-INT31-c, misra-c2012-12.2, misra-c2012-12.1  ]*/
-        bit = ( 0 != ( x & (qFP16_t)4293918720 ) ) ? ( 1U << 30U ) : ( 1U << 18u );
+        bit = ( 0 != ( x & (qFP16_t)4293918720 ) ) ? ( 1U << 30U ) : ( 1U << 18U );
         while ( bit > (uint32_t)x ) {
-            bit >>= 2u;
+            bit >>= 2U;
         }
 
-        for ( n = 0U ; n < 2u ; ++n ) {
+        for ( n = 0U ; n < 2U ; ++n ) {
             while ( 0U != bit ) {
                 /*cppcheck-suppress misra-c2012-10.8 */
                 if ( x >= (qFP16_t)( (uint32_t)retValue + bit ) ) {
@@ -395,7 +395,7 @@ qFP16_t qFP16_Sqrt( qFP16_t x )
                     /*cppcheck-suppress misra-c2012-10.1 */
                     retValue = ( retValue >> 1 );
                 }
-                bit >>= 2u;
+                bit >>= 2U;
             }
 
             if ( 0U == n ) {
@@ -892,8 +892,8 @@ qFP16_t qFP16_AToFP( const char *s )
                 iPart += digit;
                 ++count;
                 overflow = ( ( 0 == count ) || ( count > 5 ) ||
-                             ( iPart > 32768u ) ||
-                             ( ( 0U == neg ) && ( iPart > 32767u ) ) );
+                             ( iPart > 32768U ) ||
+                             ( ( 0U == neg ) && ( iPart > 32767U ) ) );
             }
         }
         else {
