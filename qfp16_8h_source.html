@@ -142,7 +142,7 @@ $(document).ready(function(){initNavTree('qfp16_8h_source.html',''); initResizab
 <div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span> </div>
 <div class="line"><a id="l00025" name="l00025"></a><span class="lineno"><a class="line" href="group__qfp16.html#ga1c178e35bab36bb263045df6d93a26e1">   25</a></span>    <span class="keyword">typedef</span> int32_t <a class="code hl_typedef" href="group__qfp16.html#ga1c178e35bab36bb263045df6d93a26e1">qFP16_t</a>;</div>
 <div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span> </div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>    <span class="keyword">struct </span>_qFP16_const_s</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>    <span class="keyword">struct </span>_qFP16_const_s <span class="comment">//skipcq: CXX-E2000</span></div>
 <div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>    {</div>
 <div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>        <span class="keyword">const</span> <a class="code hl_typedef" href="group__qfp16.html#ga1c178e35bab36bb263045df6d93a26e1">qFP16_t</a></div>
 <div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>        f_e,            <span class="comment">/* [ e ] The base of natural logarithms, e.*/</span></div>
@@ -169,7 +169,7 @@ $(document).ready(function(){initNavTree('qfp16_8h_source.html',''); initResizab
 <div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>        f_180,          <span class="comment">/* [ 180 ] */</span></div>
 <div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>        f_360;          <span class="comment">/* [ 360 ] */</span></div>
 <div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>    };</div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>    <span class="keyword">extern</span> <span class="keyword">const</span> <span class="keyword">struct </span>_qFP16_const_s <a class="code hl_variable" href="group__qfp16.html#gaa0ae25eb4d075d483c7918007b58d452">qFP16</a>;</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>    <span class="keyword">extern</span> <span class="keyword">const</span> <span class="keyword">struct </span>_qFP16_const_s <a class="code hl_variable" href="group__qfp16.html#gaa0ae25eb4d075d483c7918007b58d452">qFP16</a>; <span class="comment">//skipcq: CXX-E2000</span></div>
 <div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span> </div>
 <div class="line"><a id="l00069" name="l00069"></a><span class="lineno"><a class="line" href="group__qfp16.html#ga123222ca2a22f06410950f7fc03b9efc">   69</a></span><span class="preprocessor">    #define qFP16_Constant(x)                                               \</span></div>
 <div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span><span class="preprocessor">    ( (qFP16_t)( ( (x) &gt;= 0 ) ? ( (x) * 65536.0F + 0.5F )                   \</span></div>
