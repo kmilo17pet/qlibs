@@ -269,8 +269,8 @@ float qPID_Control( qPID_controller_t * const c,
             e = 0.0F;
         }
         /*integral with anti-windup*/
-        ie = c->integrate( &c->c_state,  e + c->u1, c->dt, false );
-        de = qNumA_Derivative2p( &c->c_state, ( ( c->c*w ) - y ) , c->dt, true );
+        de = qNumA_Derivative2p( &c->c_state, ( ( c->c*w ) - y ) , c->dt, false );
+        ie = c->integrate( &c->c_state,  e + c->u1, c->dt, true );
         c->D = de + ( c->beta*( c->D - de ) ); /*derivative filtering*/
         v  = ( kc*( ( c->b*w ) - y ) ) + ( ki*ie ) + ( kd*c->D ); /*compute PID action*/
 
