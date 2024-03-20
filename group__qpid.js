@@ -1,5 +1,10 @@
 var group__qpid =
 [
+    [ "qPID_Gains_t", "structq_p_i_d___gains__t.html", [
+      [ "Kc", "structq_p_i_d___gains__t.html#a536603eafa5521cb5b3c363b83016202", null ],
+      [ "Kd", "structq_p_i_d___gains__t.html#a98268d71502ba080d88a9b1f50fdbe80", null ],
+      [ "Ki", "structq_p_i_d___gains__t.html#a59fac16f568541187ff485c4c47b0ec5", null ]
+    ] ],
     [ "qPID_AutoTuning_t", "structq_p_i_d___auto_tuning__t.html", null ],
     [ "qPID_controller_t", "structq_p_i_d__controller__t.html", null ],
     [ "QPID_AUTOTUNING_UNDEFINED", "group__qpid.html#ga3357abb310074b83f5f2b7553f85e82d", null ],
@@ -10,6 +15,12 @@ var group__qpid =
     [ "qPID_Mode_t", "group__qpid.html#ga05a79879807411fa30d5f21816030f5d", [
       [ "qPID_Automatic", "group__qpid.html#gga05a79879807411fa30d5f21816030f5dad3d742debf8eef2ecff74778254b4cf9", null ],
       [ "qPID_Manual", "group__qpid.html#gga05a79879807411fa30d5f21816030f5da0cc4e1987e0c9ff009774cbd63e75edb", null ]
+    ] ],
+    [ "qPID_Type_t", "group__qpid.html#gad7d3496365e59eebaf6f9cf47880460c", [
+      [ "qPID_TYPE_P", "group__qpid.html#ggad7d3496365e59eebaf6f9cf47880460caa2e313152b1fcbbfea44a41825bb1a49", null ],
+      [ "qPID_TYPE_PD", "group__qpid.html#ggad7d3496365e59eebaf6f9cf47880460ca8cc827206408126bd7e46a782e1d876e", null ],
+      [ "qPID_TYPE_PI", "group__qpid.html#ggad7d3496365e59eebaf6f9cf47880460caeb36e415ed47f68cd00c144449446c97", null ],
+      [ "qPID_TYPE_PID", "group__qpid.html#ggad7d3496365e59eebaf6f9cf47880460cafeb4bcebd5423970e120040d5a362c8d", null ]
     ] ],
     [ "qPID_AutoTuningComplete", "group__qpid.html#ga3ee1476f0720116362b366ec0bbddc71", null ],
     [ "qPID_AutoTuningSetParameters", "group__qpid.html#ga72dd200c10860e36458248392f6cda72", null ],

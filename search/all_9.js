@@ -1,8 +1,7 @@
 var searchData=
 [
-  ['mamdani_0',['Mamdani',['../group__qfis.html#gga2f3f0184eca9e38c98afca2275fbe13daaaafece1969d49f7a63d07fd66937799',1,'qfis.h']]],
-  ['max_1',['max',['../structq_v_float___min_max__t.html#a306b5ca364bf842a8ff5bbfc0b4d4a4b',1,'qVFloat_MinMax_t']]],
-  ['mean_2',['mean',['../structq_v_float___moment__t.html#a976925cd66ff0dcd419628463f580f1c',1,'qVFloat_Moment_t']]],
-  ['min_3',['min',['../structq_v_float___min_max__t.html#ad2e88d75f808e6d4e78d48bceb10c336',1,'qVFloat_MinMax_t']]],
-  ['mom_4',['mom',['../group__qfis.html#ggaedbcaf3cb5c4b57eb1f44f4dea0f1a72a91e435ff054716e32ac834ddfdf8ece9',1,'qfis.h']]]
+  ['linearmf_0',['linearmf',['../group__qfis.html#gga57d388104d07dbb852d11d277d439302a3e187547bd00b7f8ef46fd105d170914',1,'qfis.h']]],
+  ['linsmf_1',['linsmf',['../group__qfis.html#gga57d388104d07dbb852d11d277d439302a1b7f254eb17ba94e97a9fe60fb7bf09b',1,'qfis.h']]],
+  ['linzmf_2',['linzmf',['../group__qfis.html#gga57d388104d07dbb852d11d277d439302a50279291d8a418eb06941a1f5208d1aa',1,'qfis.h']]],
+  ['lom_3',['lom',['../group__qfis.html#ggaedbcaf3cb5c4b57eb1f44f4dea0f1a72a58713f014a11fca36091e803ff431b04',1,'qfis.h']]]
 ];

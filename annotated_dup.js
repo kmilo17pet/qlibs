@@ -10,6 +10,7 @@ var annotated_dup =
     [ "qNumA_state_t", "structq_num_a__state__t.html", null ],
     [ "qPID_AutoTuning_t", "structq_p_i_d___auto_tuning__t.html", null ],
     [ "qPID_controller_t", "structq_p_i_d__controller__t.html", null ],
+    [ "qPID_Gains_t", "structq_p_i_d___gains__t.html", "structq_p_i_d___gains__t" ],
     [ "qRMS_t", "structq_r_m_s__t.html", null ],
     [ "qSSmoother_ALNF_t", "structq_s_smoother___a_l_n_f__t.html", null ],
     [ "qSSmoother_DESF_t", "structq_s_smoother___d_e_s_f__t.html", null ],

@@ -140,6 +140,9 @@ $(document).ready(function(){initNavTree('group__qpid.html',''); initResizable()
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Data Structures</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structq_p_i_d___gains__t.html">qPID_Gains_t</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">PID Gains structure.  <a href="structq_p_i_d___gains__t.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structq_p_i_d___auto_tuning__t.html">qPID_AutoTuning_t</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A PID Auto-tuning object.  <a href="structq_p_i_d___auto_tuning__t.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -156,6 +159,13 @@ Macros</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="enum-members" name="enum-members"></a>
 Enumerations</h2></td></tr>
+<tr class="memitem:gad7d3496365e59eebaf6f9cf47880460c"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qpid.html#gad7d3496365e59eebaf6f9cf47880460c">qPID_Type_t</a> { <a class="el" href="group__qpid.html#ggad7d3496365e59eebaf6f9cf47880460caa2e313152b1fcbbfea44a41825bb1a49">qPID_TYPE_P</a>
+, <a class="el" href="group__qpid.html#ggad7d3496365e59eebaf6f9cf47880460ca8cc827206408126bd7e46a782e1d876e">qPID_TYPE_PD</a>
+, <a class="el" href="group__qpid.html#ggad7d3496365e59eebaf6f9cf47880460caeb36e415ed47f68cd00c144449446c97">qPID_TYPE_PI</a>
+, <a class="el" href="group__qpid.html#ggad7d3496365e59eebaf6f9cf47880460cafeb4bcebd5423970e120040d5a362c8d">qPID_TYPE_PID</a>
+ }</td></tr>
+<tr class="memdesc:gad7d3496365e59eebaf6f9cf47880460c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enumeration class with the operational modes for the PID controller.  <a href="group__qpid.html#gad7d3496365e59eebaf6f9cf47880460c">More...</a><br /></td></tr>
+<tr class="separator:gad7d3496365e59eebaf6f9cf47880460c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga05a79879807411fa30d5f21816030f5d"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qpid.html#ga05a79879807411fa30d5f21816030f5d">qPID_Mode_t</a> { <a class="el" href="group__qpid.html#gga05a79879807411fa30d5f21816030f5dad3d742debf8eef2ecff74778254b4cf9">qPID_Automatic</a>
 , <a class="el" href="group__qpid.html#gga05a79879807411fa30d5f21816030f5da0cc4e1987e0c9ff009774cbd63e75edb">qPID_Manual</a>
  }</td></tr>
@@ -229,6 +239,9 @@ Functions</h2></td></tr>
 <tr class="memitem:gacfa6551f0c64bbf9beb24508532609a4"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qpid.html#gacfa6551f0c64bbf9beb24508532609a4">qPID_SetIntegrationMethod</a> (<a class="el" href="structq_p_i_d__controller__t.html">qPID_controller_t</a> *const c, qNumA_IntegrationMethod_t im)</td></tr>
 <tr class="memdesc:gacfa6551f0c64bbf9beb24508532609a4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set integration method for the PID controller.  <a href="group__qpid.html#gacfa6551f0c64bbf9beb24508532609a4">More...</a><br /></td></tr>
 <tr class="separator:gacfa6551f0c64bbf9beb24508532609a4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gafe787e5ae5a9d536020acc8001e43d12"><td class="memItemLeft" align="right" valign="top"><a id="gafe787e5ae5a9d536020acc8001e43d12" name="gafe787e5ae5a9d536020acc8001e43d12"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>qPID_AutoTunningControllerType</b> (<a class="el" href="structq_p_i_d__controller__t.html">qPID_controller_t</a> *c, const <a class="el" href="group__qpid.html#gad7d3496365e59eebaf6f9cf47880460c">qPID_Type_t</a> t)</td></tr>
+<tr class="separator:gafe787e5ae5a9d536020acc8001e43d12"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <p >API for the qPID Controller library. </p>
@@ -273,6 +286,32 @@ Functions</h2></td></tr>
 <tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="gga05a79879807411fa30d5f21816030f5dad3d742debf8eef2ecff74778254b4cf9" name="gga05a79879807411fa30d5f21816030f5dad3d742debf8eef2ecff74778254b4cf9"></a>qPID_Automatic&#160;</td><td class="fielddoc"><p >Fully operational closed-loop PID controller </p>
 </td></tr>
 <tr><td class="fieldname"><a id="gga05a79879807411fa30d5f21816030f5da0cc4e1987e0c9ff009774cbd63e75edb" name="gga05a79879807411fa30d5f21816030f5da0cc4e1987e0c9ff009774cbd63e75edb"></a>qPID_Manual&#160;</td><td class="fielddoc"><p >Open-loop with manual input </p>
+</td></tr>
+</table>
+
+</div>
+</div>
+<a id="gad7d3496365e59eebaf6f9cf47880460c" name="gad7d3496365e59eebaf6f9cf47880460c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gad7d3496365e59eebaf6f9cf47880460c">&#9670;&nbsp;</a></span>qPID_Type_t</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="group__qpid.html#gad7d3496365e59eebaf6f9cf47880460c">qPID_Type_t</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Enumeration class with the operational modes for the PID controller. </p>
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="ggad7d3496365e59eebaf6f9cf47880460caa2e313152b1fcbbfea44a41825bb1a49" name="ggad7d3496365e59eebaf6f9cf47880460caa2e313152b1fcbbfea44a41825bb1a49"></a>qPID_TYPE_P&#160;</td><td class="fielddoc"><p >Proportional controller </p>
+</td></tr>
+<tr><td class="fieldname"><a id="ggad7d3496365e59eebaf6f9cf47880460ca8cc827206408126bd7e46a782e1d876e" name="ggad7d3496365e59eebaf6f9cf47880460ca8cc827206408126bd7e46a782e1d876e"></a>qPID_TYPE_PD&#160;</td><td class="fielddoc"><p >Proportional-Integral controller </p>
+</td></tr>
+<tr><td class="fieldname"><a id="ggad7d3496365e59eebaf6f9cf47880460caeb36e415ed47f68cd00c144449446c97" name="ggad7d3496365e59eebaf6f9cf47880460caeb36e415ed47f68cd00c144449446c97"></a>qPID_TYPE_PI&#160;</td><td class="fielddoc"><p >Proportional-Derivative controller </p>
+</td></tr>
+<tr><td class="fieldname"><a id="ggad7d3496365e59eebaf6f9cf47880460cafeb4bcebd5423970e120040d5a362c8d" name="ggad7d3496365e59eebaf6f9cf47880460cafeb4bcebd5423970e120040d5a362c8d"></a>qPID_TYPE_PID&#160;</td><td class="fielddoc"><p >Proportional-Integral-Derivative controller </p>
 </td></tr>
 </table>
 

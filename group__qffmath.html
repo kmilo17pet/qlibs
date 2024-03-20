@@ -190,6 +190,10 @@ Macros</h2></td></tr>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>QFFM_SQRT1_2</b></td></tr>
 <tr class="memdesc:ga688d716745f87aaf3a10b812d9054db3"><td class="mdescLeft">&#160;</td><td class="mdescRight">The inverse of square root of 2 ( 1/√2 ) given as a single-precision floating-point number. <br /></td></tr>
 <tr class="separator:ga688d716745f87aaf3a10b812d9054db3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga25fc88026cbd12683a275bd465f054c5"><td class="memItemLeft" align="right" valign="top"><a id="ga25fc88026cbd12683a275bd465f054c5" name="ga25fc88026cbd12683a275bd465f054c5"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>QFFM_LN_SQRT_2PI</b></td></tr>
+<tr class="memdesc:ga25fc88026cbd12683a275bd465f054c5"><td class="mdescLeft">&#160;</td><td class="mdescRight">The natural logarithm of the square root of 2π given as a single-precision floating-point number. <br /></td></tr>
+<tr class="separator:ga25fc88026cbd12683a275bd465f054c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga17ec0c21a3a5d71473dd269abb4bac67"><td class="memItemLeft" align="right" valign="top"><a id="ga17ec0c21a3a5d71473dd269abb4bac67" name="ga17ec0c21a3a5d71473dd269abb4bac67"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>QFFM_MAXFLOAT</b></td></tr>
 <tr class="memdesc:ga17ec0c21a3a5d71473dd269abb4bac67"><td class="mdescLeft">&#160;</td><td class="mdescRight">The maximum value of a non-infinite single-precision floating-point number. <br /></td></tr>
@@ -363,6 +367,36 @@ Functions</h2></td></tr>
 <tr class="memitem:ga13316cf4164c7b60f38464e57b9982a7"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qffmath.html#ga13316cf4164c7b60f38464e57b9982a7">qFFMath_NextAfter</a> (float x, float y)</td></tr>
 <tr class="memdesc:ga13316cf4164c7b60f38464e57b9982a7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the next representable value of <em>x</em> in the direction of <em>y</em>. If <em>x</em> equals to <em>y</em>, <em>y</em> is returned.  <a href="group__qffmath.html#ga13316cf4164c7b60f38464e57b9982a7">More...</a><br /></td></tr>
 <tr class="separator:ga13316cf4164c7b60f38464e57b9982a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga95e0da78d4e06958bf9ad9ade1ab1480"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qffmath.html#ga95e0da78d4e06958bf9ad9ade1ab1480">qFFMath_Midpoint</a> (float a, float b)</td></tr>
+<tr class="memdesc:ga95e0da78d4e06958bf9ad9ade1ab1480"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes the midpoint of the floating-points <em>a</em> and <em>b</em>.  <a href="group__qffmath.html#ga95e0da78d4e06958bf9ad9ade1ab1480">More...</a><br /></td></tr>
+<tr class="separator:ga95e0da78d4e06958bf9ad9ade1ab1480"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaec120afdc750b86b0c7012cadef80eaf"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qffmath.html#gaec120afdc750b86b0c7012cadef80eaf">qFFMath_Lerp</a> (float a, float b, float t)</td></tr>
+<tr class="memdesc:gaec120afdc750b86b0c7012cadef80eaf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes the linear interpolation between <em>a</em> and <em>b</em>, if the parameter t is inside [0, 1] (the linear extrapolation otherwise), i.e. the result of <code> a+t*(b-a) </code> with accounting for floating-point calculation imprecision.  <a href="group__qffmath.html#gaec120afdc750b86b0c7012cadef80eaf">More...</a><br /></td></tr>
+<tr class="separator:gaec120afdc750b86b0c7012cadef80eaf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga9183f25bb0bd2b4ee0f7a2d71aeaf40c"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qffmath.html#ga9183f25bb0bd2b4ee0f7a2d71aeaf40c">qFFMath_Normalize</a> (const float x, const float xMin, const float xMax)</td></tr>
+<tr class="memdesc:ga9183f25bb0bd2b4ee0f7a2d71aeaf40c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Normalize the given input <em>x</em> in value range given by <em>xMin</em> and <em>xMax</em> to value range between 0 and 1.  <a href="group__qffmath.html#ga9183f25bb0bd2b4ee0f7a2d71aeaf40c">More...</a><br /></td></tr>
+<tr class="separator:ga9183f25bb0bd2b4ee0f7a2d71aeaf40c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gadb7f917f4c5fafcfe9201a57dc6fb1a0"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qffmath.html#gadb7f917f4c5fafcfe9201a57dc6fb1a0">qFFMath_Map</a> (const float x, const float xMin, const float xMax, const float yMin, const float yMax)</td></tr>
+<tr class="memdesc:gadb7f917f4c5fafcfe9201a57dc6fb1a0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Scales the given input <em>x</em> in value range given by <em>xMin</em> and <em>xMax</em> to value range specified by the <em>yMin</em> and <em>yMax</em>.  <a href="group__qffmath.html#gadb7f917f4c5fafcfe9201a57dc6fb1a0">More...</a><br /></td></tr>
+<tr class="separator:gadb7f917f4c5fafcfe9201a57dc6fb1a0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga7c92cfb30f16e7a32ac83e0c77541775"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qffmath.html#ga7c92cfb30f16e7a32ac83e0c77541775">qFFMath_InRangeCoerce</a> (float *const x, const float lowerL, const float upperL)</td></tr>
+<tr class="memdesc:ga7c92cfb30f16e7a32ac83e0c77541775"><td class="mdescLeft">&#160;</td><td class="mdescRight">Determines if the value pointed by <em>x</em> falls within a range specified by the upper limit and lower limit inputs and coerces the value to fall within the range.  <a href="group__qffmath.html#ga7c92cfb30f16e7a32ac83e0c77541775">More...</a><br /></td></tr>
+<tr class="separator:ga7c92cfb30f16e7a32ac83e0c77541775"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gac157e0cb4dde8aeed51bf27178d42c79"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qffmath.html#gac157e0cb4dde8aeed51bf27178d42c79">qFFMath_InPolygon</a> (const float x, const float y, const float *const px, const float *const py, const size_t p)</td></tr>
+<tr class="memdesc:gac157e0cb4dde8aeed51bf27178d42c79"><td class="mdescLeft">&#160;</td><td class="mdescRight">Determines if the point at ( <em>x</em>, <em>y</em> ) is inside the polygon given by the set of points on <em>px</em> and <em>py</em>.  <a href="group__qffmath.html#gac157e0cb4dde8aeed51bf27178d42c79">More...</a><br /></td></tr>
+<tr class="separator:gac157e0cb4dde8aeed51bf27178d42c79"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga0b24e796688cd91278dbb72785554dd0"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qffmath.html#ga0b24e796688cd91278dbb72785554dd0">qFFMath_InCircle</a> (const float x, const float y, const float cx, const float cy, const float r)</td></tr>
+<tr class="memdesc:ga0b24e796688cd91278dbb72785554dd0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Determines if the point at ( <em>x</em>, <em>y</em>) is inside the circle with radius <em>r</em> located at <em>cx</em> and <em>cy</em>.  <a href="group__qffmath.html#ga0b24e796688cd91278dbb72785554dd0">More...</a><br /></td></tr>
+<tr class="separator:ga0b24e796688cd91278dbb72785554dd0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga38dd559fe7efb3828448d2d50ee15095"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qffmath.html#ga38dd559fe7efb3828448d2d50ee15095">qFFMath_TGamma</a> (float x)</td></tr>
+<tr class="memdesc:ga38dd559fe7efb3828448d2d50ee15095"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes the gamma function of <em>x</em>.  <a href="group__qffmath.html#ga38dd559fe7efb3828448d2d50ee15095">More...</a><br /></td></tr>
+<tr class="separator:ga38dd559fe7efb3828448d2d50ee15095"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaef142f7d12d239b5b8056ef055f4f6e5"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qffmath.html#gaef142f7d12d239b5b8056ef055f4f6e5">qFFMath_LGamma</a> (float x)</td></tr>
+<tr class="memdesc:gaef142f7d12d239b5b8056ef055f4f6e5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes the natural logarithm of the absolute value of the gamma function of <em>x</em>.  <a href="group__qffmath.html#gaef142f7d12d239b5b8056ef055f4f6e5">More...</a><br /></td></tr>
+<tr class="separator:gaef142f7d12d239b5b8056ef055f4f6e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gab42e84785403cc184f8b1dfc354ef7f8"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__qffmath.html#gab42e84785403cc184f8b1dfc354ef7f8">qFFMath_Factorial</a> (float x)</td></tr>
+<tr class="memdesc:gab42e84785403cc184f8b1dfc354ef7f8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the factorial of the integer part of <em>x</em>.  <a href="group__qffmath.html#gab42e84785403cc184f8b1dfc354ef7f8">More...</a><br /></td></tr>
+<tr class="separator:gab42e84785403cc184f8b1dfc354ef7f8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <p >Fast floating-point math library for applications where speed is more important than accuracy. </p>
@@ -837,6 +871,35 @@ Functions</h2></td></tr>
 
 </div>
 </div>
+<a id="gab42e84785403cc184f8b1dfc354ef7f8" name="gab42e84785403cc184f8b1dfc354ef7f8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gab42e84785403cc184f8b1dfc354ef7f8">&#9670;&nbsp;</a></span>qFFMath_Factorial()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float qFFMath_Factorial </td>
+          <td>(</td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>x</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Return the factorial of the integer part of <em>x</em>. </p>
+<dl class="section note"><dt>Note</dt><dd>The argument <em>x</em> needs to be positive </dd></dl>
+<dl class="section warning"><dt>Warning</dt><dd>For <em>x</em> values greater than <code>14</code>, result is imprecise because of the limited precision of the 32-bit floating point data-type. With <em>x</em> values greater than <code>35</code>, this function overflows. </dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">x</td><td>The floating point value </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Upon successful completion, this function shall return the factorial of the integer part of <em>x</em>. If <em>x</em> is non-positive, <a class="el" href="group__qffmath.html#gab42e84785403cc184f8b1dfc354ef7f8" title="Return the factorial of the integer part of x.">qFFMath_Factorial()</a> shall return <code>nan</code>. If the correct value would cause overflow, <a class="el" href="group__qffmath.html#gab42e84785403cc184f8b1dfc354ef7f8" title="Return the factorial of the integer part of x.">qFFMath_Factorial()</a> shall return <code>+inf</code>. </dd></dl>
+
+</div>
+</div>
 <a id="gad4e22fb05e57ba30aff4116a0b408b43" name="gad4e22fb05e57ba30aff4116a0b408b43"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#gad4e22fb05e57ba30aff4116a0b408b43">&#9670;&nbsp;</a></span>qFFMath_Floor()</h2>
 
@@ -960,6 +1023,169 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>If no errors occur, the hypotenuse of a right-angled triangle, <code>sqrt(x^2 + y^2)</code>, is returned. If a range error due to overflow occurs, +<a class="el" href="group__qffmath.html#ga51988161a7fb44a6badf2221f0be792f" title="Positive infinity given as a single-precision floating-point number.">QFFM_INFINITY</a> is returned. If a range error due to underflow occurs, the correct result (after rounding) is returned. </dd></dl>
+
+</div>
+</div>
+<a id="ga0b24e796688cd91278dbb72785554dd0" name="ga0b24e796688cd91278dbb72785554dd0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga0b24e796688cd91278dbb72785554dd0">&#9670;&nbsp;</a></span>qFFMath_InCircle()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool qFFMath_InCircle </td>
+          <td>(</td>
+          <td class="paramtype">const float&#160;</td>
+          <td class="paramname"><em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const float&#160;</td>
+          <td class="paramname"><em>y</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const float&#160;</td>
+          <td class="paramname"><em>cx</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const float&#160;</td>
+          <td class="paramname"><em>cy</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const float&#160;</td>
+          <td class="paramname"><em>r</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Determines if the point at ( <em>x</em>, <em>y</em>) is inside the circle with radius <em>r</em> located at <em>cx</em> and <em>cy</em>. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">x</td><td>Point x-coordinate </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">y</td><td>Point y-coordinate </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">cx</td><td>X-location of the circle </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">cy</td><td>Y-location of the circle </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">r</td><td>Radio of the circle </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><code>true</code> when the given point is inside the circle </dd></dl>
+
+</div>
+</div>
+<a id="gac157e0cb4dde8aeed51bf27178d42c79" name="gac157e0cb4dde8aeed51bf27178d42c79"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gac157e0cb4dde8aeed51bf27178d42c79">&#9670;&nbsp;</a></span>qFFMath_InPolygon()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool qFFMath_InPolygon </td>
+          <td>(</td>
+          <td class="paramtype">const float&#160;</td>
+          <td class="paramname"><em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const float&#160;</td>
+          <td class="paramname"><em>y</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const float *const&#160;</td>
+          <td class="paramname"><em>px</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const float *const&#160;</td>
+          <td class="paramname"><em>py</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const size_t&#160;</td>
+          <td class="paramname"><em>p</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Determines if the point at ( <em>x</em>, <em>y</em> ) is inside the polygon given by the set of points on <em>px</em> and <em>py</em>. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">x</td><td>Point x-coordinate </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">y</td><td>Point y-coordinate </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">px</td><td>x-coordinate points of the polygon </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">py</td><td>y-coordinate points of the polygon </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">p</td><td>Number of points that represent the polygon </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><code>true</code> when the given point is inside the polygon </dd></dl>
+
+</div>
+</div>
+<a id="ga7c92cfb30f16e7a32ac83e0c77541775" name="ga7c92cfb30f16e7a32ac83e0c77541775"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga7c92cfb30f16e7a32ac83e0c77541775">&#9670;&nbsp;</a></span>qFFMath_InRangeCoerce()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool qFFMath_InRangeCoerce </td>
+          <td>(</td>
+          <td class="paramtype">float *const&#160;</td>
+          <td class="paramname"><em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const float&#160;</td>
+          <td class="paramname"><em>lowerL</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const float&#160;</td>
+          <td class="paramname"><em>upperL</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Determines if the value pointed by <em>x</em> falls within a range specified by the upper limit and lower limit inputs and coerces the value to fall within the range. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in,out]</td><td class="paramname">x</td><td>Input </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">lowerL</td><td>Lower limit. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">upperL</td><td>Upper limit. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><code>true</code> when the value falls within the specified range, otherwise false </dd></dl>
 
 </div>
 </div>
@@ -1109,6 +1335,79 @@ Functions</h2></td></tr>
 
 </div>
 </div>
+<a id="gaec120afdc750b86b0c7012cadef80eaf" name="gaec120afdc750b86b0c7012cadef80eaf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gaec120afdc750b86b0c7012cadef80eaf">&#9670;&nbsp;</a></span>qFFMath_Lerp()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float qFFMath_Lerp </td>
+          <td>(</td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>a</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>b</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>t</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Computes the linear interpolation between <em>a</em> and <em>b</em>, if the parameter t is inside [0, 1] (the linear extrapolation otherwise), i.e. the result of <code> a+t*(b-a) </code> with accounting for floating-point calculation imprecision. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">a</td><td>A floating point value </td></tr>
+    <tr><td class="paramname">b</td><td>A floating point value </td></tr>
+    <tr><td class="paramname">t</td><td>A floating point value </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Return <code> a+t*(b-a) </code>. When both <em>a</em> and <em>b</em> are finite, the following properties are guaranteed: If <code>t==0</code>, the result is equal to <em>a</em>. If <code>t==1</code>, the result is equal to <em>b</em>. If <code>t&gt;=0</code> and <code>t&lt;=1</code>, the result is finite. If <em>t</em> is finite and <code>a==b</code>, the result is equal to <em>a</em>. If <em>t</em> is finite or <code> (a-b)!=0</code> with <em>t</em> infinity, the result is not <code>nan</code>. Let <code>CMP(x,y)</code> be <code>1</code> if <code>x&gt;y</code>, <code>-1</code> if <code>x&lt;y</code>, and <code>0</code> otherwise. For any <code>t1</code> and <code>t2</code>, the product of: <code> CMP(lerp(a,b,t2)</code>, <code>lerp(a,b,t1)</code>, <code> CMP(t2,t1)</code> , and <code>CMP(b,a)</code> is non-negative. (That is, lerp() is monotonic.). </dd></dl>
+
+</div>
+</div>
+<a id="gaef142f7d12d239b5b8056ef055f4f6e5" name="gaef142f7d12d239b5b8056ef055f4f6e5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gaef142f7d12d239b5b8056ef055f4f6e5">&#9670;&nbsp;</a></span>qFFMath_LGamma()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float qFFMath_LGamma </td>
+          <td>(</td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>x</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Computes the natural logarithm of the absolute value of the gamma function of <em>x</em>. </p>
+<dl class="section note"><dt>Note</dt><dd>The argument <em>x</em> need not be a non-positive integer ( is defined over the reals, except the non-positive integers). </dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">x</td><td>The floating point value </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Upon successful completion, this function shall return the logarithmic gamma of <em>x</em>. If <em>x</em> is a non-positive integer, <a class="el" href="group__qffmath.html#ga38dd559fe7efb3828448d2d50ee15095" title="Computes the gamma function of x.">qFFMath_TGamma()</a> shall return <code>+inf</code>. If the correct value would cause overflow, <a class="el" href="group__qffmath.html#ga38dd559fe7efb3828448d2d50ee15095" title="Computes the gamma function of x.">qFFMath_TGamma()</a> shall return <code>±inf</code> having the same sign as the correct value. If <em>x</em> is <code>nan</code>, a <code>nan</code> shall be returned. If <em>x</em> is <code>1</code> or <code>2</code>, <code>+0</code> shall be returned. If <em>x</em> is <code>±inf</code>, <code>+inf</code> shall be returned. </dd></dl>
+
+</div>
+</div>
 <a id="ga50db357eda1adee82e49eb48e844e84f" name="ga50db357eda1adee82e49eb48e844e84f"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ga50db357eda1adee82e49eb48e844e84f">&#9670;&nbsp;</a></span>qFFMath_Log()</h2>
 
@@ -1190,6 +1489,65 @@ Functions</h2></td></tr>
 
 </div>
 </div>
+<a id="gadb7f917f4c5fafcfe9201a57dc6fb1a0" name="gadb7f917f4c5fafcfe9201a57dc6fb1a0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gadb7f917f4c5fafcfe9201a57dc6fb1a0">&#9670;&nbsp;</a></span>qFFMath_Map()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float qFFMath_Map </td>
+          <td>(</td>
+          <td class="paramtype">const float&#160;</td>
+          <td class="paramname"><em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const float&#160;</td>
+          <td class="paramname"><em>xMin</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const float&#160;</td>
+          <td class="paramname"><em>xMax</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const float&#160;</td>
+          <td class="paramname"><em>yMin</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const float&#160;</td>
+          <td class="paramname"><em>yMax</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Scales the given input <em>x</em> in value range given by <em>xMin</em> and <em>xMax</em> to value range specified by the <em>yMin</em> and <em>yMax</em>. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">x</td><td>Input </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">xMin</td><td>Input minimum value for range </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">xMax</td><td>Input maximum value for range </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">yMin</td><td>Output minimum value for range </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">yMax</td><td>Output maximum value for range </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The scaled value in range <em>yMin</em> and <em>yMax</em>. </dd></dl>
+
+</div>
+</div>
 <a id="gae396ce63ea627ca6561157268ce8ce71" name="gae396ce63ea627ca6561157268ce8ce71"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#gae396ce63ea627ca6561157268ce8ce71">&#9670;&nbsp;</a></span>qFFMath_Max()</h2>
 
@@ -1225,6 +1583,44 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>If successful, returns the larger of two floating point values </dd></dl>
+
+</div>
+</div>
+<a id="ga95e0da78d4e06958bf9ad9ade1ab1480" name="ga95e0da78d4e06958bf9ad9ade1ab1480"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga95e0da78d4e06958bf9ad9ade1ab1480">&#9670;&nbsp;</a></span>qFFMath_Midpoint()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float qFFMath_Midpoint </td>
+          <td>(</td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>a</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>b</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Computes the midpoint of the floating-points <em>a</em> and <em>b</em>. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">a</td><td>A floating point value </td></tr>
+    <tr><td class="paramname">b</td><td>A floating point value </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Half the sum of <em>a</em> and <em>b</em>. No overflow occurs. A at most one inexact operation occurs. </dd></dl>
 
 </div>
 </div>
@@ -1339,6 +1735,51 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>If no errors occur, the next representable value of <em>x</em> in the direction of <em>y</em> is returned. If <em>x</em> equals <em>y</em>, then <em>yis</em> returned. If a range error due to overflow occurs, ± <a class="el" href="group__qffmath.html#ga51988161a7fb44a6badf2221f0be792f" title="Positive infinity given as a single-precision floating-point number.">QFFM_INFINITY</a> is returned (with the same sign as <em>x</em>). If a range error occurs due to underflow, the correct result is returned. </dd></dl>
+
+</div>
+</div>
+<a id="ga9183f25bb0bd2b4ee0f7a2d71aeaf40c" name="ga9183f25bb0bd2b4ee0f7a2d71aeaf40c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga9183f25bb0bd2b4ee0f7a2d71aeaf40c">&#9670;&nbsp;</a></span>qFFMath_Normalize()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float qFFMath_Normalize </td>
+          <td>(</td>
+          <td class="paramtype">const float&#160;</td>
+          <td class="paramname"><em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const float&#160;</td>
+          <td class="paramname"><em>xMin</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const float&#160;</td>
+          <td class="paramname"><em>xMax</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Normalize the given input <em>x</em> in value range given by <em>xMin</em> and <em>xMax</em> to value range between 0 and 1. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">x</td><td>Input </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">xMin</td><td>Input minimum value for range </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">xMax</td><td>Input maximum value for range </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The scaled value in range [0 - 1]. </dd></dl>
 
 </div>
 </div>
@@ -1696,6 +2137,33 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>If no errors occur, the hyperbolic tangent of <em>x</em> <code>tanh(x)</code> is returned. </dd></dl>
+
+</div>
+</div>
+<a id="ga38dd559fe7efb3828448d2d50ee15095" name="ga38dd559fe7efb3828448d2d50ee15095"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga38dd559fe7efb3828448d2d50ee15095">&#9670;&nbsp;</a></span>qFFMath_TGamma()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float qFFMath_TGamma </td>
+          <td>(</td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>x</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Computes the gamma function of <em>x</em>. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">x</td><td>The floating point value </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Upon successful completion, this function shall return <code>Gamma(x)</code>. If <em>x</em> is a negative integer, a <code>inf</code> value shall be returned. If the correct value would cause overflow, <a class="el" href="group__qffmath.html#ga38dd559fe7efb3828448d2d50ee15095" title="Computes the gamma function of x.">qFFMath_TGamma()</a> shall return <code>±Inf</code>, with the same sign as the correct value of the function. If <em>x</em> is <code>nan</code>, a <code>nan</code> shall be returned. If <em>x</em> is <code>+inf</code>, <em>x</em> shall be returned. If <em>x</em> is <code>±0</code>, tgamma() shall return <code>±Inf</code>. If <em>x</em> is <code>-inf</code>, a <code>nan</code> value shall be returned. For IEEE Std 754-1985 float, overflow happens when <code> 0 &lt; x &lt; 1/FLT_MAX</code>, and <code>171.7 &lt; x</code>. </dd></dl>
 
 </div>
 </div>
