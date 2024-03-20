@@ -11,10 +11,15 @@
 static float qPID_Sat( float x,
                        const float min,
                        const float max );
-static void qPID_AdaptGains( qPID_controller_t * const c,
-                             const float u,
-                             const float y );
+static bool qPID_AutoTuningStep( qPID_controller_t *c,
+                                 const float u,
+                                 const float y );
+static void qPID_AutoTunningAdaptGains( qPID_controller_t *c,
+                                        const float u,
+                                        const float y );
 static int qPID_ATCheck( const float x );
+
+static qPID_Gains_t qPID_AutoTuningGetEstimates( qPID_controller_t *c );
 
 /*============================================================================*/
 int qPID_Setup( qPID_controller_t * const c,
@@ -246,6 +251,17 @@ int qPID_SetMRAC( qPID_controller_t * const c,
     return retValue;
 }
 /*============================================================================*/
+static float qPID_Error( qPID_controller_t * const c, float w, float y, float k )
+{
+    float e = ( k*w ) - y;
+
+    if ( QLIB_ABS( e ) <= c->epsilon ) {
+        e = 0.0F;
+    }
+
+    return e;
+}
+/*============================================================================*/
 float qPID_Control( qPID_controller_t * const c,
                     const float w,
                     const float y )
@@ -264,15 +280,15 @@ float qPID_Control( qPID_controller_t * const c,
             kd = ( kd > 0.0F ) ? -kd : kd;
         }
 
-        e = w - y;
+        e = qPID_Error( c, w, y, 1.0F );
         if ( QLIB_ABS( e ) <= c->epsilon ) {
             e = 0.0F;
         }
         /*integral with anti-windup*/
-        de = qNumA_Derivative2p( &c->c_state, ( ( c->c*w ) - y ) , c->dt, false );
+        de = qNumA_Derivative2p( &c->c_state, qPID_Error( c, w, y, c->c ), c->dt, false );
         ie = c->integrate( &c->c_state,  e + c->u1, c->dt, true );
         c->D = de + ( c->beta*( c->D - de ) ); /*derivative filtering*/
-        v  = ( kc*( ( c->b*w ) - y ) ) + ( ki*ie ) + ( kd*c->D ); /*compute PID action*/
+        v  = ( kc*qPID_Error( c, w, y, c->b ) ) + ( ki*ie ) + ( kd*c->D ); /*compute PID action*/
 
         if ( NULL != c->yr ) {
             /*MRAC additive controller using the modified MIT rule*/
@@ -294,7 +310,7 @@ float qPID_Control( qPID_controller_t * const c,
         /*anti-windup feedback*/
         c->u1 = c->kw*( u - v );
         if ( NULL != c->adapt ) {
-            qPID_AdaptGains( c, u, y );
+            qPID_AutoTunningAdaptGains( c, u, y );
         }
     }
 
@@ -346,7 +362,7 @@ int qPID_EnableAutoTuning( qPID_controller_t * const c,
 
     if ( NULL != c ) {
         if ( NULL != c->adapt ) {
-            c->adapt->it = ( 0UL == tEnable )? QPID_AUTOTUNING_UNDEFINED : tEnable;
+            c->adapt->it = ( 0UL == tEnable ) ? QPID_AUTOTUNING_UNDEFINED : tEnable;
             retValue = 1;
         }
     }
@@ -354,11 +370,12 @@ int qPID_EnableAutoTuning( qPID_controller_t * const c,
     return retValue;
 }
 /*============================================================================*/
-static void qPID_AdaptGains( qPID_controller_t *c,
-                             const float u,
-                             const float y )
+static bool qPID_AutoTuningStep( qPID_controller_t *c,
+                                 const float u,
+                                 const float y )
 {
     qPID_AutoTuning_t *s = c->adapt;
+    bool ready = false;
     float error , r, l0, l1;
     float lp00, lp01, lp10, lp11;
     float k, tao, tmp1, tmp2;
@@ -396,13 +413,68 @@ static void qPID_AdaptGains( qPID_controller_t *c,
         s->k = k + ( s->mu*( s->k - k ) );
         s->tao = tao + ( s->mu*( s->tao - tao ) );
         if ( ( 0UL == --s->it ) && ( s->it != QPID_AUTOTUNING_UNDEFINED ) ) {
-            tmp1 = c->dt/s->tao;
-            tmp2 = ( 1.35F + ( 0.25F*tmp1 ) );
-            c->kc = ( s->speed*tmp2*s->tao )/( s->k*c->dt );
-            c->ki = ( ( s->speed*c->kc )*( 0.54F + ( 0.33F*tmp1 ) ) )/( tmp2*c->dt );
-            c->kd = ( 0.5F*s->speed*c->kc*c->dt )/tmp2;
+            ready = true;
         }
     }
+
+    return ready;
+}
+/*============================================================================*/
+static qPID_Gains_t qPID_AutoTuningGetEstimates( qPID_controller_t *c )
+{
+    qPID_Gains_t gains = { 0.0F, 0.0F, 0.0F };
+    qPID_AutoTuning_t *s = c->adapt;
+    const float td = s->tao*0.1F;
+
+    switch ( c->type ) {
+        case qPID_TYPE_P:
+            gains.Kc = s->speed*( 1.03F/s->k )*( ( s->tao/td ) + 0.34F );
+            break;
+        case qPID_TYPE_PD:
+            gains.Kc = s->speed*( 1.24F/s->k )*( ( s->tao/td ) + 0.129F );
+            gains.Kd = gains.Kc*( 0.27F*td )*( s->tao - ( 0.324F*td ) )/( s->tao + ( 0.129F*td ) );
+            break;
+        case qPID_TYPE_PI:
+            gains.Kc = s->speed*( 0.9F/s->k )*( ( s->tao/td ) + 0.092F );
+            gains.Ki = gains.Kc*( s->tao + ( 2.22F*td ) )/( 3.33F*td*( s->tao + ( 0.092F*td ) ) );
+            break;
+        case qPID_TYPE_PID:
+            gains.Kc = s->speed*( 1.35F/s->k )*( ( s->tao/td ) + 0.185F );
+            gains.Ki = gains.Kc*( s->tao + ( 0.611F*td ) )/( 2.5F*td*( s->tao + ( 0.185F*td ) ) );
+            gains.Kd = ( 0.37F*gains.Kc*td*s->tao )/( s->tao + ( 0.185F*td ) );
+            break;
+        default:
+            break;
+    }
+
+    return gains;
+}
+/*============================================================================*/
+static void qPID_AutoTunningAdaptGains( qPID_controller_t *c,
+                                        const float u,
+                                        const float y )
+{
+    if ( qPID_AutoTuningStep( c, u, y ) ) {
+        qPID_Gains_t newGains = qPID_AutoTuningGetEstimates( c );
+        c->kc = newGains.Kc;
+        c->ki = newGains.Ki;
+        c->kd = newGains.Kd;
+    }
+}
+/*============================================================================*/
+bool qPID_AutoTunningControllerType( qPID_controller_t *c,
+                                     const qPID_Type_t t )
+{
+    bool retVal = false;
+
+    if ( NULL != c ) {
+        if ( NULL != c->adapt ) {
+            c->type = t;
+            retVal = true;
+        }
+    }
+
+    return retVal;
 }
 /*============================================================================*/
 int qPID_AutoTuningComplete( const qPID_controller_t * const c )

@@ -24,6 +24,25 @@ extern "C" {
     */
 
     /**
+    * @brief PID Gains structure
+    */
+   typedef struct {
+       float Kc;        /*!< Proportional gain */
+       float Ki;        /*!< Integral gain */
+       float Kd;        /*!< Derivative gain */
+   } qPID_Gains_t;
+
+    /**
+    * @brief Enumeration class with the operational modes for the PID controller
+    */
+    typedef enum {
+        qPID_TYPE_P,    /*!< Proportional controller */
+        qPID_TYPE_PD,   /*!< Proportional-Integral controller */
+        qPID_TYPE_PI,   /*!< Proportional-Derivative controller */
+        qPID_TYPE_PID   /*!< Proportional-Integral-Derivative controller */
+    } qPID_Type_t;
+
+    /**
     * @brief Enumeration with the operational modes for the PID controller
     */
     typedef enum {
@@ -82,6 +101,7 @@ extern "C" {
         qNumA_IntegrationMethod_t integrate;
         qPID_Mode_t mode;
         qPID_Direction_t dir;
+        qPID_Type_t type;
         uint8_t init;
         /*! @endcond  */
     } qPID_controller_t;
@@ -321,6 +341,9 @@ extern "C" {
     int qPID_SetIntegrationMethod( qPID_controller_t * const c,
                                    qNumA_IntegrationMethod_t im );
 
+
+    bool qPID_AutoTunningControllerType( qPID_controller_t *c,
+                                        const qPID_Type_t t );
 
      /** @}*/
 

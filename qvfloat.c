@@ -6,7 +6,6 @@
 
 #include "qvfloat.h"
 #include "qtypegeneric.h"
-#include "qfmathex.h"
 #include "qffmath.h"
 #include <string.h>
 
@@ -304,7 +303,7 @@ int qVFloat_Moment( qVFloat_Moment_t * const m,
         /*cstat -MISRAC2012-Dir-4.11_b -CERT-FLP34-C*/
         m->stdDev =  ( m->var >= 0.0F ) ? QLIB_SQRT( m->var ) : QLIB_NAN;
         /*cstat +MISRAC2012-Dir-4.11_b*/
-        if ( false == qFMathEx_Equal( 0.0F, m->var ) ) {
+        if ( false == qFFMath_IsEqual( 0.0F, m->var ) ) {
             m->skew /= ( ( m->curt )/( l*m->var*m->var ) ) - 3.0F;
         }
         else {

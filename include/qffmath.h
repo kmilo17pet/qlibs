@@ -15,6 +15,7 @@ extern "C" {
 #endif
 
     #include <stdint.h>
+    #include <stdlib.h>
     #include <stdbool.h>
 
 #ifdef QLIBS_USE_STD_MATH
@@ -87,6 +88,9 @@ extern "C" {
     #define QFFM_SQRT2      ( 1.41421356237309504880F )
     /** @brief The inverse of square root of 2 ( 1/√2 ) given as a single-precision floating-point number */
     #define QFFM_SQRT1_2    ( 0.70710678118654752440F )
+    /** @brief The natural logarithm of the square root of 2π given as a single-precision floating-point number */
+    #define QFFM_LN_SQRT_2PI ( 0.918938533204672669540968854562379419F )
+
     /** @brief The maximum value of a non-infinite single-precision floating-point number */
     #define QFFM_MAXFLOAT   ( 3.40282347e+38F )
     /** @brief Positive infinity given as a single-precision floating-point number */
@@ -161,10 +165,10 @@ extern "C" {
     bool qFFMath_IsNormal( const float x );
 
     /*! @cond  */
-    bool qFFMath_isEqual( const float a,
+    bool qFFMath_IsEqual( const float a,
                           const float b );
 
-    bool qFFMath_isAlmostEqual( const float a,
+    bool qFFMath_IsAlmostEqual( const float a,
                                 const float b,
                                 const float tol );
     /*! @endcond  */
@@ -548,6 +552,161 @@ extern "C" {
     */
     float qFFMath_NextAfter( float x,
                              float y );
+
+    /**
+    * @brief Computes the midpoint of the floating-points @a  a and @a b.
+    * @param a A floating point value
+    * @param b A floating point value
+    * @return Half the sum of @a a and @a b. No overflow occurs. A at most
+    * one inexact operation occurs.
+    */
+    float qFFMath_Midpoint( float a,
+                            float b );
+
+    /**
+    * @brief  Computes the linear interpolation between @a a and @a b, if
+    * the parameter t is inside [0, 1] (the linear extrapolation otherwise),
+    * i.e. the result of <tt> a+t*(b-a) </tt> with accounting for floating-point
+    * calculation imprecision.
+    * @param a A floating point value
+    * @param b A floating point value
+    * @param t A floating point value
+    * @return Return <tt> a+t*(b-a) </tt>. When both @a a and @a b are finite, the
+    * following properties are guaranteed:
+    * If @c t==0, the result is equal to @a a.
+    * If @c t==1, the result is equal to @a b.
+    * If @c t>=0 and @c t<=1, the result is finite.
+    * If @a t is finite and @c a==b, the result is equal to @a a.
+    * If @a t is finite or <tt> (a-b)!=0</tt> with @a t infinity, the result
+    * is not @c nan.
+    * Let @c CMP(x,y) be @c 1 if @c x>y, @c -1 if @c x<y, and @c 0 otherwise.
+    * For any @c t1 and @c t2, the product of: <tt> CMP(lerp(a,b,t2)</tt>,
+    * <tt>lerp(a,b,t1)</tt>, <tt> CMP(t2,t1)</tt> , and @c CMP(b,a) is non-negative.
+    * (That is, lerp() is monotonic.).
+    */
+    float qFFMath_Lerp( float a,
+                        float b,
+                        float t );
+
+    /**
+    * @brief Normalize the given input @a x in value range given by @a xMin and
+    * @a xMax to value range between 0 and 1.
+    * @param[in] x Input
+    * @param[in] xMin Input minimum value for range
+    * @param[in] xMax Input maximum  value for range
+    * @return The scaled value in range [0 - 1].
+    */
+    float qFFMath_Normalize( const float x,
+                             const float xMin,
+                             const float xMax );
+
+    /**
+    * @brief Scales the given input @a x in value range given by  @a xMin and
+    * @a xMax to value range specified by the @a yMin and @a yMax.
+    * @param[in] x Input
+    * @param[in] xMin Input minimum value for range
+    * @param[in] xMax Input maximum  value for range
+    * @param[in] yMin Output minimum value for range
+    * @param[in] yMax Output maximum value for range
+    * @return The scaled value in range @a yMin and @a yMax.
+    */
+    float qFFMath_Map( const float x,
+                       const float xMin,
+                       const float xMax,
+                       const float yMin,
+                       const float yMax );
+
+    /**
+    * @brief Determines if the value pointed by @a x falls within a range
+    * specified by the upper limit and lower limit inputs and coerces the value
+    * to fall within the range
+    * @param[in,out] x Input
+    * @param[in] lowerL Lower limit.
+    * @param[in] upperL Upper limit.
+    * @return @c true when the value falls within the specified range, otherwise
+    * false
+    */
+    bool qFFMath_InRangeCoerce( float * const x,
+                                const float lowerL,
+                                const float upperL );
+
+    /**
+    * @brief Determines if the point at ( @a x, @a y ) is inside the polygon
+    * given by the set of points on  @a px and @a py.
+    * @param[in] x Point x-coordinate
+    * @param[in] y Point y-coordinate
+    * @param[in] px x-coordinate points of the polygon
+    * @param[in] py y-coordinate points of the polygon
+    * @param[in] p Number of points that represent the polygon
+    * @return @c true when the given point is inside the polygon
+    */
+    bool qFFMath_InPolygon( const float x,
+                            const float y,
+                            const float * const px,
+                            const float * const py,
+                            const size_t p );
+
+    /**
+    * @brief Determines if the point at ( @a x, @a y) is inside the circle
+    * with radius @a r located at @a cx and @a cy.
+    * @param[in] x Point x-coordinate
+    * @param[in] y Point y-coordinate
+    * @param[in] cx X-location of the circle
+    * @param[in] cy Y-location of the circle
+    * @param[in] r Radio of the circle
+    * @return @c true when the given point is inside the circle
+    */
+    bool qFFMath_InCircle( const float x,
+                           const float y,
+                           const float cx,
+                           const float cy,
+                           const float r );
+
+    /**
+    * @brief Computes the gamma function of @a x
+    * @param[in] x The floating point value
+    * @return Upon successful completion, this function shall return @c Gamma(x).
+    * If @a x is a negative integer, a @c inf value shall be returned. If the
+    * correct value would cause overflow, qFFMath_TGamma() shall return @c ±Inf,
+    * with the same sign as the correct value of the function.
+    * If @a x is @c nan, a @c nan shall be returned.
+    * If @a x is @c +inf, @a x shall be returned.
+    * If @a x is @c ±0, tgamma() shall return @c ±Inf.
+    * If @a x is @c -inf, a @c nan  value shall be returned.
+    * For IEEE Std 754-1985 float, overflow happens when <tt> 0 < x < 1/FLT_MAX</tt>,
+    * and <tt>171.7 < x</tt>.
+    */
+    float qFFMath_TGamma( float x );
+
+    /**
+    * @brief Computes the natural logarithm of the absolute value of the
+    * gamma function of @a x
+    * @note The argument @a x need not be a non-positive integer ( is defined
+    * over the reals, except the non-positive integers).
+    * @param[in] x The floating point value
+    * @return Upon successful completion, this function shall return the
+    * logarithmic gamma of @a x. If @a x is a non-positive integer, qFFMath_TGamma() shall
+    * return @c +inf. If the correct value would cause overflow, qFFMath_TGamma() shall
+    * return @c ±inf having the same sign as the correct value.
+    * If @a x is @c nan, a @c nan shall be returned.
+    * If @a x is @c 1 or @c 2, @c +0 shall be returned.
+    * If @a x is @c ±inf, @c +inf shall be returned.
+    */
+    float qFFMath_LGamma( float x );
+
+    /**
+    * @brief Return the factorial of the integer part of @a x.
+    * @note The argument @a x needs to be positive
+    * @warning For @a x values greater than @c 14, result is imprecise because of
+    * the limited precision of the 32-bit floating point data-type.
+    * With @a x values greater than @c 35, this function overflows.
+    * @param[in] x The floating point value
+    * @return Upon successful completion, this function shall return the
+    * factorial of the integer part of @a x. If @a x is non-positive, qFFMath_Factorial() shall
+    * return @c nan. If the correct value would cause overflow, qFFMath_Factorial() shall
+    * return @c +inf.
+    */
+    float qFFMath_Factorial( float x );
 
 #endif /*#ifdef QLIBS_USE_STD_MATH*/
 

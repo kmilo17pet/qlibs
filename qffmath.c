@@ -16,6 +16,8 @@
 (void)memcpy( &dst, &src, sizeof(dst_type) )                                \
 
 static float qFFMath_CalcCbrt( float x , bool r );
+static float lgamma_positive( float x );
+
 /*============================================================================*/
 float _qFFMath_GetAbnormal( const int i )
 {
@@ -80,14 +82,14 @@ bool qFFMath_IsNormal( const float x )
     return ( qFFMath_FPClassify( x ) == QFFM_FP_NORMAL );
 }
 /*============================================================================*/
-bool qFFMath_isAlmostEqual( const float a,
+bool qFFMath_IsAlmostEqual( const float a,
                             const float b,
                             const float tol )
 {
     return ( qFFMath_Abs( a - b ) <= qFFMath_Abs( tol ) );
 }
 /*============================================================================*/
-bool qFFMath_isEqual( const float a,
+bool qFFMath_IsEqual( const float a,
                       const float b )
 {
     return ( qFFMath_Abs( a - b ) <= FLT_MIN );
@@ -262,7 +264,7 @@ float qFFMath_Cos( float x )
     float y;
     const float abs_x = qFFMath_Abs( x );
 
-    if ( qFFMath_isEqual( abs_x, QFFM_PI_2 ) ) {
+    if ( qFFMath_IsEqual( abs_x, QFFM_PI_2 ) ) {
         y = 1.0e-12F;
     }
     else {
@@ -593,4 +595,477 @@ float qFFMath_NextAfter( float x,
     return retVal;
 }
 /*============================================================================*/
+float qFFMath_Midpoint( float a,
+                        float b )
+{
+    float y;
+    const float lo = 2.0F*FLT_MIN;
+    const float hi = 0.5F*FLT_MAX;
+    const float abs_a = qFFMath_Abs( a );
+    const float abs_b = qFFMath_Abs( b );
+
+    if ( ( abs_a <= hi ) && ( abs_b <= hi ) ) {
+        y = 0.5F*( a + b );
+    }
+    else if ( abs_a < lo ) {
+        y = a + ( 0.5F*b );
+    }
+    else if ( abs_b < lo) {
+        y = ( 0.5F*a ) + b;
+    }
+    else {
+        y = ( 0.5F*a ) + ( 0.5F*b );
+    }
+
+    return y;
+}
+/*============================================================================*/
+float qFFMath_Lerp( float a,
+                    float b,
+                    float t )
+{
+    float y;
+
+    if ( ( ( a <= 0.0F ) && ( b >= 0.0F ) ) || ( ( a >= 0.0F ) && ( b <= 0.0F ) ) ) {
+        y = ( t*b ) + ( a*( 1.0F - t ) );
+    }
+    else if ( qFFMath_IsEqual( t, 1.0F ) ) {
+        y = b;
+    }
+    else {
+        const float x = a + ( t*( b - a ) );
+        y = ( ( t > 1.0F ) == ( b > a ) ) ? ( ( b < x ) ? x : b )
+                                          : ( ( b > x ) ? x : b );
+    }
+
+    return y;
+}
+/*============================================================================*/
+float qFFMath_Normalize( const float x,
+                         const float xMin,
+                         const float xMax )
+{
+    return ( x - xMin )/( xMax - xMin );
+}
+/*============================================================================*/
+float qFFMath_Map( const float x,
+                   const float xMin,
+                   const float xMax,
+                   const float yMin,
+                   const float yMax )
+{
+    return ( ( yMax - yMin )*qFFMath_Normalize( x, xMin, xMax ) ) + yMin;
+}
+/*============================================================================*/
+bool qFFMath_InRangeCoerce( float * const x,
+                            const float lowerL,
+                            const float upperL )
+{
+    bool retVal = false;
+
+    if ( qFFMath_IsNaN( x[ 0 ] ) ) {
+        x[ 0 ] = lowerL;
+    }
+    else {
+        if ( x[ 0 ] < lowerL ) {
+            x[ 0 ] = lowerL;
+        }
+        else if ( x[ 0 ] > upperL ) {
+            x[ 0 ] = upperL;
+        }
+        else {
+            retVal = true;
+        }
+    }
+
+    return retVal;
+}
+/*============================================================================*/
+bool qFFMath_InPolygon( const float x,
+                        const float y,
+                        const float * const px,
+                        const float * const py,
+                        const size_t p )
+{
+    size_t i;
+    bool retVal = false;
+    float max_y = py[ 0 ], max_x = px[ 0 ], min_y = py[ 0 ], min_x = px[ 0 ];
+
+    for ( i = 0U ; i < p ; ++i ) {
+        max_y = ( py[ i ] > max_y ) ? py[ i ] : max_y;
+        max_x = ( px[ i ] > max_x ) ? px[ i ] : max_x;
+        min_y = ( py[ i ] < min_y ) ? py[ i ] : min_y;
+        min_x = ( px[ i ] < min_x ) ? px[ i ] : min_x;
+    }
+
+    if ( ( y >= min_y ) && ( y <= max_y ) && ( x >= min_x ) && ( x <= max_x ) ) {
+        size_t j = p - 1U;
+
+        for ( i = 0U ; i < p ; ++i ) {
+            if ( ( px[ i ] > x ) != ( px[ j ] > x ) ) {
+                const float dx = px[ j ] - px[ i ];
+                const float dy = py[ j ] - py[ i ];
+                if ( y < ( ( dy*( x - px[ i ] ) )/( dx + py[ i ] ) ) ) {
+                    retVal = !retVal;
+                }
+            }
+            j = i;
+        }
+    }
+
+    return retVal;
+}
+/*============================================================================*/
+bool qFFMath_InCircle( const float x,
+                       const float y,
+                       const float cx,
+                       const float cy,
+                       const float r )
+{
+    const float d = ( ( x - cx )*( x - cx ) ) + ( ( y - cy )*( y - cy ) );
+    return ( d <= ( r*r ) );
+}
+/*============================================================================*/
+float qFFMath_TGamma( float x )
+{
+    float result;
+
+    const int fClass = qFFMath_FPClassify( x );
+    if ( QFFM_FP_NAN == fClass ) {
+        result = QFFM_NAN;
+    }
+    else if ( QFFM_FP_ZERO == fClass ) {
+        result = QFFM_INFINITY; /* a huge value */
+    }
+    else if ( QFFM_FP_INFINITE == fClass ) {
+        result = ( x > 0.0F ) ? QFFM_INFINITY : QFFM_NAN;
+    }
+    else {
+        bool parity = false;
+        float fact = 1.0F;
+        float y = x;
+        float y1;
+
+        if ( y <= 0.0F ) {
+            float isItAnInt;
+
+            y = -x;
+            y1 = qFFMath_Trunc( y );
+            isItAnInt = y - y1;
+            if ( !qFFMath_IsEqual( 0.0F, isItAnInt ) ) {
+                const float tmp = 2.0F*qFFMath_Trunc( y1*0.5F );
+
+                if ( !qFFMath_IsEqual( y1, tmp ) ) {
+                    parity = true;
+                }
+                fact = -QFFM_PI/qFFMath_Sin( QFFM_PI*isItAnInt );
+                y += 1.0F;
+            }
+            else {
+                result = QFFM_NAN;
+                goto EXIT_TGAMMA;
+            }
+        }
+        if ( y < FLT_EPSILON ) {
+            if ( y >= FLT_MIN ) {
+                result = 1.0F/y;
+            }
+            else {
+                result = QFFM_INFINITY;
+            }
+        }
+        else if ( y < 12.0F ) {
+            float num = 0.0F, den = 1.0F, z;
+            int n = 0;
+
+            y1 = y;
+            if ( y < 1.0F ) {
+                z = y;
+                y += 1.0F;
+            }
+            else {
+                n = (int)y - 1;
+                /*cstat -CERT-FLP36-C */
+                y -= (float)n;
+                /*cstat +CERT-FLP36-C */
+                z = y - 1.0F;
+            }
+
+            num = z*( num + -1.71618513886549492533811e+0F );
+            den = ( den*z ) -3.08402300119738975254353e+1F;
+            num = z*( num + 2.47656508055759199108314e+1F );
+            den = ( den*z ) + 3.15350626979604161529144e+2F;
+            num = z*( num - 3.79804256470945635097577e+2F );
+            den = ( den*z ) - 1.01515636749021914166146e+3F;
+            num = z*( num + 6.29331155312818442661052e+2F );
+            den = ( den*z ) - 3.10777167157231109440444e+3F;
+            num = z*( num + 8.66966202790413211295064e+2F );
+            den = ( den*z ) + 2.25381184209801510330112e+4F;
+            num = z*( num - 3.14512729688483675254357e+4F );
+            den = ( den*z ) + 4.75584627752788110767815e+3F;
+            num = z*( num - 3.61444134186911729807069e+4F );
+            den = ( den*z ) - 1.34659959864969306392456e+5F;
+            num = z*( num + 6.64561438202405440627855e+4F );
+            den = ( den*z ) - 1.15132259675553483497211e+5F;
+
+            result = ( num/den ) + 1.0F;
+            if ( y1 < y ) {
+                  result /= y1;
+            }
+            else if ( y1 > y ) {
+                for ( int i = 0; i < n ; ++i ) {
+                    result *= y;
+                    y += 1.0F;
+                }
+            }
+        }
+        else {
+            if ( x <= 171.624F ) { /* x <= xBig */
+                const float yy  = y*y;
+                float sum = 5.7083835261e-03F;
+
+                sum = ( sum/yy ) - 1.910444077728e-03F;
+                sum = ( sum/yy ) + 8.4171387781295e-04F;
+                sum = ( sum/yy ) - 5.952379913043012e-04F;
+                sum = ( sum/yy ) + 7.93650793500350248e-04F;
+                sum = ( sum/yy ) - 2.777777777777681622553e-03F;
+                sum = ( sum/yy ) + 8.333333333333333331554247e-02F;
+
+                sum = ( sum /y ) - y + QFFM_LN_SQRT_2PI;
+                sum += ( y - 0.5F )*qFFMath_Log( y );
+                result = qFFMath_Exp( sum );
+            }
+            else {
+                result = QFFM_INFINITY;
+            }
+        }
+        if ( parity ) {
+            result = -result;
+        }
+        if ( !qFFMath_IsEqual( fact, 1.0F ) ) {
+            result = fact/result;
+        }
+    }
+
+    EXIT_TGAMMA:
+    return result;
+}
+/*============================================================================*/
+static float lgamma_positive( float x )
+{
+    const float d1 = -5.772156649015328605195174e-1F;
+    const float d2 = 4.227843350984671393993777e-1F;
+    const float d4 = 1.791759469228055000094023e+0F;
+    const float pnt68 = 0.6796875F;
+    float result;
+
+    if ( x > 171.624F ) {
+        result = QFFM_INFINITY;
+    }
+    else {
+        float y, corrector, num, den;
+
+        y = x;
+        if ( y <= FLT_EPSILON ) {
+            result = -qFFMath_Log( y );
+        }
+        else if ( y <= 1.5F ) {
+            float xMinus;
+
+            if ( y < pnt68 ) {
+                corrector = -qFFMath_Log( y );
+                xMinus = y;
+            }
+            else {
+                corrector = 0.0F;
+                xMinus = ( y - 0.5F ) - 0.5F;
+            }
+            if ( ( y <= 0.5F ) || ( y >= pnt68 ) ) {
+                den = 1.0F;
+                num = 0.0F;
+                num = ( num*xMinus ) + 4.945235359296727046734888e+0F;
+                num = ( num*xMinus ) + 2.018112620856775083915565e+2F;
+                num = ( num*xMinus ) + 2.290838373831346393026739e+3F;
+                num = ( num*xMinus ) + 1.131967205903380828685045e+4F;
+                num = ( num*xMinus ) + 2.855724635671635335736389e+4F;
+                num = ( num*xMinus ) + 3.848496228443793359990269e+4F;
+                num = ( num*xMinus ) + 2.637748787624195437963534e+4F;
+                num = ( num*xMinus ) + 7.225813979700288197698961e+3F;
+                den = ( den*xMinus ) + 6.748212550303777196073036e+1F;
+                den = ( den*xMinus ) + 1.113332393857199323513008e+3F;
+                den = ( den*xMinus ) + 7.738757056935398733233834e+3F;
+                den = ( den*xMinus ) + 2.763987074403340708898585e+4F;
+                den = ( den*xMinus ) + 5.499310206226157329794414e+4F;
+                den = ( den*xMinus ) + 6.161122180066002127833352e+4F;
+                den = ( den*xMinus ) + 3.635127591501940507276287e+4F;
+                den = ( den*xMinus ) + 8.785536302431013170870835e+3F;
+                result = corrector + ( xMinus*( d1 + ( xMinus*( num/den ) ) ) );
+            }
+            else {
+                xMinus = ( y - 0.5F ) - 0.5F;
+                den = 1.0F;
+                num = 0.0F;
+                num = ( num*xMinus ) + 4.974607845568932035012064e+0F;
+                num = ( num*xMinus ) + 5.424138599891070494101986e+2F;
+                num = ( num*xMinus ) + 1.550693864978364947665077e+4F;
+                num = ( num*xMinus ) + 1.847932904445632425417223e+5F;
+                num = ( num*xMinus ) + 1.088204769468828767498470e+6F;
+                num = ( num*xMinus ) + 3.338152967987029735917223e+6F;
+                num = ( num*xMinus ) + 5.106661678927352456275255e+6F;
+                num = ( num*xMinus ) + 3.074109054850539556250927e+6F;
+                den = ( den*xMinus ) + 1.830328399370592604055942e+2F;
+                den = ( den*xMinus ) + 7.765049321445005871323047e+3F;
+                den = ( den*xMinus ) + 1.331903827966074194402448e+5F;
+                den = ( den*xMinus ) + 1.136705821321969608938755e+6F;
+                den = ( den*xMinus ) + 5.267964117437946917577538e+6F;
+                den = ( den*xMinus ) + 1.346701454311101692290052e+7F;
+                den = ( den*xMinus ) + 1.782736530353274213975932e+7F;
+                den = ( den*xMinus ) + 9.533095591844353613395747e+6F;
+                result = corrector + ( xMinus*( d2 + ( xMinus*( num/den ) ) ) );
+            }
+        }
+        else if ( y <= 4.0F ) {
+            const float xMinus = y - 2.0F;
+            den = 1.0F;
+            num = 0.0F;
+            num = ( num*xMinus ) + 4.974607845568932035012064e+0F;
+            num = ( num*xMinus ) + 5.424138599891070494101986e+2F;
+            num = ( num*xMinus ) + 1.550693864978364947665077e+4F;
+            num = ( num*xMinus ) + 1.847932904445632425417223e+5F;
+            num = ( num*xMinus ) + 1.088204769468828767498470e+6F;
+            num = ( num*xMinus ) + 3.338152967987029735917223e+6F;
+            num = ( num*xMinus ) + 5.106661678927352456275255e+6F;
+            num = ( num*xMinus ) + 3.074109054850539556250927e+6F;
+            den = ( den*xMinus ) + 1.830328399370592604055942e+2F;
+            den = ( den*xMinus ) + 7.765049321445005871323047e+3F;
+            den = ( den*xMinus ) + 1.331903827966074194402448e+5F;
+            den = ( den*xMinus ) + 1.136705821321969608938755e+6F;
+            den = ( den*xMinus ) + 5.267964117437946917577538e+6F;
+            den = ( den*xMinus ) + 1.346701454311101692290052e+7F;
+            den = ( den*xMinus ) + 1.782736530353274213975932e+7F;
+            den = ( den*xMinus ) + 9.533095591844353613395747e+6F;
+            result = xMinus*( d2 + ( xMinus*( num/den ) ) );
+        }
+        else if ( y <= 12.0F ) {
+            const float xMinus = y - 4.0F;
+            den = -1.0F;
+            num = 0.0F;
+            num = ( num*xMinus ) + 1.474502166059939948905062e+04F;
+            num = ( num*xMinus ) + 2.426813369486704502836312e+06F;
+            num = ( num*xMinus ) + 1.214755574045093227939592e+08F;
+            num = ( num*xMinus ) + 2.663432449630976949898078e+09F;
+            num = ( num*xMinus ) + 2.940378956634553899906876e+10F;
+            num = ( num*xMinus ) + 1.702665737765398868392998e+11F;
+            num = ( num*xMinus ) + 4.926125793377430887588120e+11F;
+            num = ( num*xMinus ) + 5.606251856223951465078242e+11F;
+            den = ( den*xMinus ) + 2.690530175870899333379843e+03F;
+            den = ( den*xMinus ) + 6.393885654300092398984238e+05F;
+            den = ( den*xMinus ) + 4.135599930241388052042842e+07F;
+            den = ( den*xMinus ) + 1.120872109616147941376570e+09F;
+            den = ( den*xMinus ) + 1.488613728678813811542398e+10F;
+            den = ( den*xMinus ) + 1.016803586272438228077304e+11F;
+            den = ( den*xMinus ) + 3.417476345507377132798597e+11F;
+            den = ( den*xMinus ) + 4.463158187419713286462081e+11F;
+            result = d4 + ( xMinus*( num/den ) );
+        }
+        else {
+            result = 0.0F;
+            if ( y <= 4294967296.87842273712158203125F ) { /* y < xBig^(1/4)*/
+                const float yy = y*y;
+                result = 5.7083835261e-03F;
+                result = ( result/yy ) - 1.910444077728e-03F;
+                result = ( result/yy ) + 8.4171387781295e-04F;
+                result = ( result/yy ) - 5.952379913043012e-04F;
+                result = ( result/yy ) + 7.93650793500350248e-04F;
+                result = ( result/yy ) - 2.777777777777681622553e-03F;
+                result = ( result/yy ) + 8.333333333333333331554247e-02F;
+            }
+            result /= y;
+            corrector = qFFMath_Log( y );
+            result += QFFM_LN_SQRT_2PI - ( 0.5F*corrector );
+            result += y*( corrector - 1.0F );
+        }
+    }
+
+    return result;
+}
+/*============================================================================*/
+float qFFMath_LGamma( float x )
+{
+    float result;
+
+    const int fClass = qFFMath_FPClassify( x );
+    if ( QFFM_FP_NAN == fClass ) {
+        result = QFFM_NAN;
+    }
+    else if ( ( QFFM_FP_ZERO == fClass ) || ( QFFM_FP_INFINITE == fClass ) ) {
+        result = QFFM_INFINITY;
+    }
+    else {
+        if ( x < 0.0F ) {
+            if ( x <= -4503599627370496.0F ) { /* x < 2^52 */
+                result = QFFM_INFINITY;
+            }
+            else {
+                float y, y1, isItAnInt;
+
+                y = -x;
+                y1 = qFFMath_Trunc( y );
+                isItAnInt = y - y1;
+                if ( qFFMath_IsEqual( 0.0F, isItAnInt ) ) {
+                    result = QFFM_INFINITY;
+                }
+                else {
+                    float a;
+
+                    a = qFFMath_Sin( QFFM_PI*isItAnInt );
+                    result = qFFMath_Log( QFFM_PI/qFFMath_Abs( a*x ) ) - lgamma_positive( -x );
+                }
+            }
+        }
+        else {
+            result = lgamma_positive( x );
+        }
+    }
+
+    return result;
+}
+/*============================================================================*/
+float qFFMath_Factorial( float x )
+{
+    static const float ft[ 35 ] = { 1.0F, 1.0F, 2.0F, 6.0F, 24.0F, 120.0F, 720.0F,
+                                    5040.0F, 40320.0F, 362880.0F, 3628800.0F,
+                                    39916800.0F, 479001600.0F, 6227020800.0F,
+                                    87178291200.0F, 1307674368000.0F,
+                                    20922789888000.0F, 355687428096000.0F,
+                                    6402373705728001.0F, 121645100408832000.0F,
+                                    2432902008176640000.0F, 51090942171709440000.0F,
+                                    1124000727777607680000.0F,
+                                    25852016738884978212864.0F,
+                                    620448401733239544217600.0F,
+                                    15511210043330988202786816.0F,
+                                    403291461126605719042260992.0F,
+                                    10888869450418351940239884288.0F,
+                                    304888344611713836734530715648.0F,
+                                    8841761993739700772720181510144.0F,
+                                    265252859812191104246398737973248.0F,
+                                    8222838654177921277277005322125312.0F,
+                                    263130836933693591553328612565319680.0F,
+                                    8683317618811885938715673895318323200.0F,
+                                    295232799039604119555149671006000381952.0F,
+                                 };
+    float y;
+
+    if ( x > 34.0F ) {
+        y = QFFM_INFINITY;
+    }
+    else if ( x >= 0.0F ) {
+        y = ft[ (size_t)x ];
+    }
+    else {
+        y = QFFM_NAN;
+    }
+
+    return y;
+}
 #endif /*#ifndef QLIBS_USE_STD_MATH*/

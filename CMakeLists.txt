@@ -11,7 +11,7 @@
 
 cmake_minimum_required( VERSION 3.2 )
 project( qlibs
-         VERSION 1.2.7
+         VERSION 1.2.8
          DESCRIPTION "A collection of useful libraries for embedded systems"
          LANGUAGES C
        )
@@ -21,7 +21,6 @@ add_library( ${PROJECT_NAME}
              qcrc.c
              qffmath.c
              qfis.c
-             qfmathex.c
              qfp16.c
              qltisys.c
              qnuma.c

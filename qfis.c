@@ -5,7 +5,6 @@
  **/
 
 #include "qfis.h"
-#include "qfmathex.h"
 #include "qffmath.h"
 #include <stdbool.h>
 
@@ -535,8 +534,9 @@ static size_t qFIS_AggregationFindConsequent( struct _qFIS_s * const f,
 {
     while ( _QFIS_THEN != f->rules[ i++ ] ) {}
     f->aggregationState = &qFIS_InferenceConsequent;
-
-    return --i;
+    /*cstat -MISRAC2012-Rule-2.2_c*/
+    return --i; /*!ok*/
+    /*cstat +MISRAC2012-Rule-2.2_c*/
 }
 /*============================================================================*/
 static size_t qFIS_InferenceConsequent( struct _qFIS_s * const f,
@@ -736,7 +736,7 @@ static float qFIS_DeFuzz_MOM( qFIS_Output_t * const o,
                 o->data[ 2 ] = o->x;
                 o->data[ 3 ] = 1.0F;
             }
-            else if ( qFMathEx_Equal( o->y , o->data[ 0 ] ) && ( o->data[ 3 ] > 0.0F ) ) {
+            else if ( qFFMath_IsEqual( o->y , o->data[ 0 ] ) && ( o->data[ 3 ] > 0.0F ) ) {
                 o->data[ 2 ] = o->x;
             }
             else if ( o->y < o->data[ 0 ] ) {
@@ -996,7 +996,7 @@ static float qFIS_TSigMF( const qFIS_IO_Base_t * const in,
 
     a = p[ 0 ]; /*slope*/
     b = p[ 1 ]; /*inflection*/
-    if ( qFMathEx_Equal( x, 1.0F ) ) {
+    if ( qFFMath_IsEqual( x, 1.0F ) ) {
         if ( a >= 0.0F ) {
             y = max;
         }
@@ -1004,7 +1004,7 @@ static float qFIS_TSigMF( const qFIS_IO_Base_t * const in,
             y = min;
         }
     }
-    else if ( qFMathEx_Equal( x, 0.0F ) ) {
+    else if ( qFFMath_IsEqual( x, 0.0F ) ) {
         if ( a >= 0.0F ) {
             y = min;
         }
@@ -1142,7 +1142,7 @@ static float qFIS_LinSMF( const qFIS_IO_Base_t * const in,
             y = ( x - a )/( b - a );
         }
     }
-    else if ( qFMathEx_Equal( a, b ) ) {
+    else if ( qFFMath_IsEqual( a, b ) ) {
         y = ( x < a ) ? 0.0F : 1.0F;
     }
     else {
@@ -1173,7 +1173,7 @@ static float qFIS_LinZMF( const qFIS_IO_Base_t * const in,
             y = ( a - x )/( a - b );
         }
     }
-    else if ( qFMathEx_Equal( a, b ) ) {
+    else if ( qFFMath_IsEqual( a, b ) ) {
         y = ( x < a ) ? 1.0F : 0.0F;
     }
     else {
@@ -1221,7 +1221,7 @@ static float qFIS_SingletonMF( const qFIS_IO_Base_t * const in,
     float x = in[ 0 ].value;
     (void)n;
 
-    return ( qFMathEx_Equal( x, p[ 0 ] ) ) ? 1.0F : 0.0F;
+    return ( qFFMath_IsEqual( x, p[ 0 ] ) ) ? 1.0F : 0.0F;
 }
 /*============================================================================*/
 static float qFIS_ConcaveMF( const qFIS_IO_Base_t * const in,
@@ -1394,7 +1394,7 @@ static float qFIS_Bound( float y,
                          const float yMin,
                          const float yMax )
 {
-    (void)qFMathEx_InRangeCoerce( &y, yMin, yMax );
+    (void)qFFMath_InRangeCoerce( &y, yMin, yMax );
 
     return y;
 }
