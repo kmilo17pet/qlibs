@@ -24,7 +24,7 @@
 */
 var NAVTREE =
 [
-  [ "API Reference", "index.html", [
+  [ "Documentation", "index.html", [
     [ "qLibs", "index.html", "index" ],
     [ "Topics", "topics.html", "topics" ],
     [ "Data Structures", "annotated.html", [
