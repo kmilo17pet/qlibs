@@ -11,21 +11,21 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Checkout repository and submodules
-      uses: actions/checkout@v2
+      uses: actions/checkout@v4
       with:
-        submodules: recursive      
+        submodules: recursive
     - name: create dirs
       run: mkdir docout
     - name: set repo url on corner
       run: sed -i 's,https://github.com/jothepro/doxygen-awesome-css,https://github.com/kmilo17pet/qlibs,g' doc/stylesheet/doxygen-custom/header.html
     - name: Doxygen Action
-      uses: mattnotmitt/doxygen-action@v1.9.2
+      uses: mattnotmitt/doxygen-action@edge
       with:
         doxyfile-path: './doc/Doxyfile'
     - name: rm gitignore
-      run: rm .gitignore  
+      run: rm .gitignore
     - name: Deploy doc
-      uses: peaceiris/actions-gh-pages@v3
+      uses: peaceiris/actions-gh-pages@v4
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: ./doxyout/html    
+        publish_dir: ./doxyout/html
