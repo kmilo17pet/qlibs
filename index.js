@@ -85,7 +85,7 @@ var index =
       [ "Working with bitfields", "qbitfield_desc.html#qbitfield_workingwith", null ]
     ] ],
     [ "Recursive Root Mean Square estimator", "qrms_desc.html", [
-      [ "Example :  By using a timer interrupt", "qrms_desc.html#qrms_ex1", null ]
+      [ "Example : By using a timer interrupt", "qrms_desc.html#qrms_ex1", null ]
     ] ],
     [ "Generic Cyclic Redundancy Check (CRC) calculator", "qcrc_desc.html", null ],
     [ "Tapped Delay Line in O(1)", "qtdl_desc.html", [

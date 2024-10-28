@@ -13,7 +13,7 @@ var group__qfis =
     [ "QFIS_RULES_BEGIN", "group__qfis.html#gadd5af13b8fd13530a1a481cec2ef0637", null ],
     [ "QFIS_RULES_END", "group__qfis.html#ga80454033f67a79247305ba0a18d98247", null ],
     [ "THEN", "group__qfis.html#gad9884c43f4f50a5852711a614f2343ac", null ],
-    [ "qFIS_Rules_t", "group__qfis.html#ga31d2098e69ca5600385a0b2b259c0aac", null ],
+    [ "qFIS_Rules_t", "group__qfis.html#ga07efc356794273b23e2d469e8e4d882e", null ],
     [ "qFIS_DeFuzz_Method_t", "group__qfis.html#gaedbcaf3cb5c4b57eb1f44f4dea0f1a72", [
       [ "centroid", "group__qfis.html#ggaedbcaf3cb5c4b57eb1f44f4dea0f1a72a6fb78ba59773ac48c2709d20df1ebefd", null ],
       [ "bisector", "group__qfis.html#ggaedbcaf3cb5c4b57eb1f44f4dea0f1a72a5f0b55cf3261a197a8d0212f90669e35", null ],

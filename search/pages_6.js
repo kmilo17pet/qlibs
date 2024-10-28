@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['tapped_20delay_20line_20in_20o_281_29_0',['Tapped Delay Line in O(1)',['../qtdl_desc.html',1,'index']]]
+  ['generic_20cyclic_20redundancy_20check_20crc_20calculator_0',['Generic Cyclic Redundancy Check (CRC) calculator',['../qcrc_desc.html',1,'index']]]
 ];

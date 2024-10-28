@@ -1,14 +1,13 @@
 var searchData=
 [
-  ['tapped_20delay_20line_20in_20o_281_29_0',['Tapped Delay Line in O(1)',['../qtdl_desc.html',1,'index']]],
-  ['tconcavemf_1',['tconcavemf',['../group__qfis.html#gga57d388104d07dbb852d11d277d439302a43b3471fcf257414fd73960961f71f8c',1,'qfis.h']]],
-  ['then_2',['THEN',['../group__qfis.html#gad9884c43f4f50a5852711a614f2343ac',1,'qfis.h']]],
-  ['tlinsmf_3',['tlinsmf',['../group__qfis.html#gga57d388104d07dbb852d11d277d439302ad23bd69a0c39f41ec183701ea88fca62',1,'qfis.h']]],
-  ['tlinzmf_4',['tlinzmf',['../group__qfis.html#gga57d388104d07dbb852d11d277d439302a7e69801214edbd12464450ec32caa952',1,'qfis.h']]],
-  ['trapmf_5',['trapmf',['../group__qfis.html#gga57d388104d07dbb852d11d277d439302a7676242f70c14c24cddeb8ee5bedf094',1,'qfis.h']]],
-  ['trimf_6',['trimf',['../group__qfis.html#gga57d388104d07dbb852d11d277d439302a8f91868e5f151b88a97174ac79cbc6b9',1,'qfis.h']]],
-  ['tsigmf_7',['tsigmf',['../group__qfis.html#gga57d388104d07dbb852d11d277d439302a15d4fd087b99bfae1ad35c04a4196be4',1,'qfis.h']]],
-  ['tsmf_8',['tsmf',['../group__qfis.html#gga57d388104d07dbb852d11d277d439302a5ac08b226723d99e82d613115b2fef6a',1,'qfis.h']]],
-  ['tsukamoto_9',['Tsukamoto',['../group__qfis.html#gga2f3f0184eca9e38c98afca2275fbe13da7b5af38242e88e34875821666e361935',1,'qfis.h']]],
-  ['tzmf_10',['tzmf',['../group__qfis.html#gga57d388104d07dbb852d11d277d439302af737be9cb431f74baa61fca9f29688c3',1,'qfis.h']]]
+  ['o_201_0',['O 1',['../qssmoother_desc.html#qssmoother_mor2',1,'Moving Outlier Removal Filter O(1)'],['../qssmoother_desc.html#qssmoother_mwm2',1,'Moving Window Median Filter O(1)'],['../qtdl_desc.html',1,'Tapped Delay Line in O(1)']]],
+  ['o_20n_1',['O n',['../qssmoother_desc.html#qssmoother_mor1',1,'Moving Outlier Removal Filter O(n)'],['../qssmoother_desc.html#qssmoother_mwm1',1,'Moving Window Median Filter O(n)']]],
+  ['of_20signal_20smoothing_2',['Example of signal smoothing',['../qssmoother_desc.html#qssmoother_ex10',1,'']]],
+  ['of_20the_20quadratic_20equation_3',['Example: Solution of the quadratic equation',['../qfp16_desc.html#qfp16_example',1,'']]],
+  ['or_4',['OR',['../group__qfis.html#ga3363ca4d6d3cc0230b2804280591c991',1,'qfis.h']]],
+  ['order_20low_20pass_20filter_5',['Order Low Pass Filter',['../qssmoother_desc.html#qssmoother_lpf1',1,'First Order Low Pass Filter'],['../qssmoother_desc.html#qssmoother_lpf2',1,'Second Order Low Pass Filter']]],
+  ['order_20low_20pass_20filter_3a_6',['order low pass filter:',['../qssmoother_desc.html#qssmoother_ex1',1,'Example: setting up a 1st order low-pass filter:'],['../qssmoother_desc.html#qssmoother_ex2',1,'Example: setting up a 2nd order low-pass filter:']]],
+  ['outlier_20removal_20filter_20o_201_7',['Moving Outlier Removal Filter O(1)',['../qssmoother_desc.html#qssmoother_mor2',1,'']]],
+  ['outlier_20removal_20filter_20o_20n_8',['Moving Outlier Removal Filter O(n)',['../qssmoother_desc.html#qssmoother_mor1',1,'']]],
+  ['outlier_20removal_20filter_3a_9',['outlier removal filter:',['../qssmoother_desc.html#qssmoother_ex5',1,'Example: setting up an outlier removal filter:'],['../qssmoother_desc.html#qssmoother_ex6',1,'Example: setting up an outlier removal filter:']]]
 ];

@@ -1,0 +1,28 @@
+var searchData=
+[
+  ['tapped_20delay_20line_20in_20o_201_0',['Tapped Delay Line in O(1)',['../qtdl_desc.html',1,'index']]],
+  ['tconcavemf_1',['tconcavemf',['../group__qfis.html#gga57d388104d07dbb852d11d277d439302a43b3471fcf257414fd73960961f71f8c',1,'qfis.h']]],
+  ['tdl_20to_20hold_20up_20to_20256_20delays_2',['Example : Code snippet to instantiate a TDL to hold up to 256 delays.',['../qtdl_desc.html#qtdl_ex1',1,'']]],
+  ['the_20controller_3',['Using the controller',['../qpid_desc.html#qfpid_usage',1,'']]],
+  ['the_20given_20continuous_20transfer_20function_4',['Example: Evaluate the given continuous transfer function',['../qltisys_desc.html#qltisys_ex1',1,'']]],
+  ['the_20given_20discrete_20transfer_20function_5',['Example: Evaluate the given discrete transfer function',['../qltisys_desc.html#qltisys_ex2',1,'']]],
+  ['the_20quadratic_20equation_6',['Example: Solution of the quadratic equation',['../qfp16_desc.html#qfp16_example',1,'']]],
+  ['then_7',['THEN',['../group__qfis.html#gad9884c43f4f50a5852711a614f2343ac',1,'qfis.h']]],
+  ['time_20transfer_20functions_8',['time transfer functions',['../qltisys_desc.html#qltisys_cont',1,'Continous-time transfer functions'],['../qltisys_desc.html#qltisys_disc',1,'Discrete-time transfer functions']]],
+  ['timer_20interrupt_9',['Example :  By using a timer interrupt',['../qrms_desc.html#qrms_ex1',1,'']]],
+  ['tlinsmf_10',['tlinsmf',['../group__qfis.html#gga57d388104d07dbb852d11d277d439302ad23bd69a0c39f41ec183701ea88fca62',1,'qfis.h']]],
+  ['tlinzmf_11',['tlinzmf',['../group__qfis.html#gga57d388104d07dbb852d11d277d439302a7e69801214edbd12464450ec32caa952',1,'qfis.h']]],
+  ['to_20256_20delays_12',['Example : Code snippet to instantiate a TDL to hold up to 256 delays.',['../qtdl_desc.html#qtdl_ex1',1,'']]],
+  ['to_20hold_20up_20to_20256_20delays_13',['Example : Code snippet to instantiate a TDL to hold up to 256 delays.',['../qtdl_desc.html#qtdl_ex1',1,'']]],
+  ['to_20instantiate_20a_20tdl_20to_20hold_20up_20to_20256_20delays_14',['Example : Code snippet to instantiate a TDL to hold up to 256 delays.',['../qtdl_desc.html#qtdl_ex1',1,'']]],
+  ['transcendental_20functions_15',['Exponential and transcendental functions',['../qfp16_desc.html#qfp16_exp_functions',1,'']]],
+  ['transfer_20function_16',['transfer function',['../qltisys_desc.html#qltisys_ex1',1,'Example: Evaluate the given continuous transfer function'],['../qltisys_desc.html#qltisys_ex2',1,'Example: Evaluate the given discrete transfer function']]],
+  ['transfer_20functions_17',['transfer functions',['../qltisys_desc.html#qltisys_cont',1,'Continous-time transfer functions'],['../qltisys_desc.html#qltisys_disc',1,'Discrete-time transfer functions'],['../qltisys_desc.html',1,'Recursive LTI Systems Evaluation by transfer functions.']]],
+  ['trapmf_18',['trapmf',['../group__qfis.html#gga57d388104d07dbb852d11d277d439302a7676242f70c14c24cddeb8ee5bedf094',1,'qfis.h']]],
+  ['trigonometric_20functions_20and_20helpers_19',['Trigonometric functions and helpers',['../qfp16_desc.html#qfp16_trig_functions',1,'']]],
+  ['trimf_20',['trimf',['../group__qfis.html#gga57d388104d07dbb852d11d277d439302a8f91868e5f151b88a97174ac79cbc6b9',1,'qfis.h']]],
+  ['tsigmf_21',['tsigmf',['../group__qfis.html#gga57d388104d07dbb852d11d277d439302a15d4fd087b99bfae1ad35c04a4196be4',1,'qfis.h']]],
+  ['tsmf_22',['tsmf',['../group__qfis.html#gga57d388104d07dbb852d11d277d439302a5ac08b226723d99e82d613115b2fef6a',1,'qfis.h']]],
+  ['tsukamoto_23',['Tsukamoto',['../group__qfis.html#gga2f3f0184eca9e38c98afca2275fbe13da7b5af38242e88e34875821666e361935',1,'Tsukamoto:&#160;qfis.h'],['../qfis_desc.html#qfis_tsukamoto',1,'Tsukamoto']]],
+  ['tzmf_24',['tzmf',['../group__qfis.html#gga57d388104d07dbb852d11d277d439302af737be9cb431f74baa61fca9f29688c3',1,'qfis.h']]]
+];

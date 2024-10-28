@@ -1,6 +1,26 @@
 var searchData=
 [
-  ['rectmf_0',['rectmf',['../group__qfis.html#gga57d388104d07dbb852d11d277d439302a72d1cca9c64d5a0ff1ef5f931713d74e',1,'qfis.h']]],
-  ['recursive_20lti_20systems_20evaluation_20by_20transfer_20functions_2e_1',['Recursive LTI Systems Evaluation by transfer functions.',['../qltisys_desc.html',1,'index']]],
-  ['recursive_20root_20mean_20square_20estimator_2',['Recursive Root Mean Square estimator',['../qrms_desc.html',1,'index']]]
+  ['mamdani_0',['Mamdani',['../group__qfis.html#gga2f3f0184eca9e38c98afca2275fbe13daaaafece1969d49f7a63d07fd66937799',1,'Mamdani:&#160;qfis.h'],['../qfis_desc.html#qfis_mamdani',1,'Mamdani']]],
+  ['mamdani_20fis_1',['Building a Mamdani FIS',['../qfis_desc.html#qfis_buildfis',1,'']]],
+  ['manipulation_20library_2',['Bit-Field manipulation library',['../qbitfield_desc.html',1,'index']]],
+  ['manual_20mode_3',['Manual Mode',['../qpid_desc.html#qpid_maninput',1,'']]],
+  ['max_4',['max',['../structq_v_float___min_max__t.html#a306b5ca364bf842a8ff5bbfc0b4d4a4b',1,'qVFloat_MinMax_t']]],
+  ['mean_5',['mean',['../structq_v_float___moment__t.html#a976925cd66ff0dcd419628463f580f1c',1,'qVFloat_Moment_t']]],
+  ['mean_20square_20estimator_6',['Recursive Root Mean Square estimator',['../qrms_desc.html',1,'index']]],
+  ['median_20filter_20o_201_7',['Moving Window Median Filter O(1)',['../qssmoother_desc.html#qssmoother_mwm2',1,'']]],
+  ['median_20filter_20o_20n_8',['Moving Window Median Filter O(n)',['../qssmoother_desc.html#qssmoother_mwm1',1,'']]],
+  ['median_20filter_3a_9',['median filter:',['../qssmoother_desc.html#qssmoother_ex4',1,'Example: Setting up a moving window median filter:'],['../qssmoother_desc.html#qssmoother_ex3',1,'Example: setting up a moving window median filter:']]],
+  ['methods_10',['Defuzzification Methods',['../qfis_desc.html#qfis_defuzz',1,'']]],
+  ['min_11',['min',['../structq_v_float___min_max__t.html#ad2e88d75f808e6d4e78d48bceb10c336',1,'qVFloat_MinMax_t']]],
+  ['mode_12',['Manual Mode',['../qpid_desc.html#qpid_maninput',1,'']]],
+  ['model_20reference_20adaptive_20control_13',['Additive MRAC (Model Reference Adaptive Control)',['../qpid_desc.html#qpid_mrac',1,'']]],
+  ['mom_14',['mom',['../group__qfis.html#ggaedbcaf3cb5c4b57eb1f44f4dea0f1a72a91e435ff054716e32ac834ddfdf8ece9',1,'qfis.h']]],
+  ['moving_20outlier_20removal_20filter_20o_201_15',['Moving Outlier Removal Filter O(1)',['../qssmoother_desc.html#qssmoother_mor2',1,'']]],
+  ['moving_20outlier_20removal_20filter_20o_20n_16',['Moving Outlier Removal Filter O(n)',['../qssmoother_desc.html#qssmoother_mor1',1,'']]],
+  ['moving_20window_20median_20filter_20o_201_17',['Moving Window Median Filter O(1)',['../qssmoother_desc.html#qssmoother_mwm2',1,'']]],
+  ['moving_20window_20median_20filter_20o_20n_18',['Moving Window Median Filter O(n)',['../qssmoother_desc.html#qssmoother_mwm1',1,'']]],
+  ['moving_20window_20median_20filter_3a_19',['moving window median filter:',['../qssmoother_desc.html#qssmoother_ex4',1,'Example: Setting up a moving window median filter:'],['../qssmoother_desc.html#qssmoother_ex3',1,'Example: setting up a moving window median filter:']]],
+  ['mrac_20model_20reference_20adaptive_20control_20',['Additive MRAC (Model Reference Adaptive Control)',['../qpid_desc.html#qpid_mrac',1,'']]],
+  ['mrac_3a_21',['Example: Speed control with PID controller with an additive MRAC:',['../qpid_desc.html#qpid_ex2',1,'']]],
+  ['multiple_20bits_22',['Multiple-bits',['../qbitfield_desc.html#qbitfield_pattern',1,'']]]
 ];

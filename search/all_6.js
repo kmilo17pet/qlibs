@@ -1,7 +1,12 @@
 var searchData=
 [
-  ['gauss2mf_0',['gauss2mf',['../group__qfis.html#gga57d388104d07dbb852d11d277d439302a4d57e0dc8df50e01b5912fcf06ac9af7',1,'qfis.h']]],
-  ['gaussmf_1',['gaussmf',['../group__qfis.html#gga57d388104d07dbb852d11d277d439302af622ac933207179e7864deb02eb3aa29',1,'qfis.h']]],
-  ['gbellmf_2',['gbellmf',['../group__qfis.html#gga57d388104d07dbb852d11d277d439302ab211a8a8f9c9933e4ee7f2738684e8d3',1,'qfis.h']]],
-  ['generic_20cyclic_20redundancy_20check_20_28crc_29_20calculator_3',['Generic Cyclic Redundancy Check (CRC) calculator',['../qcrc_desc.html',1,'index']]]
+  ['datatype_20limits_0',['Datatype limits',['../qfp16_desc.html#qfp16_datatype_limits',1,'']]],
+  ['defuzzification_20methods_1',['Defuzzification Methods',['../qfis_desc.html#qfis_defuzz',1,'']]],
+  ['delay_20line_20in_20o_201_2',['Tapped Delay Line in O(1)',['../qtdl_desc.html',1,'index']]],
+  ['delays_3',['Example : Code snippet to instantiate a TDL to hold up to 256 delays.',['../qtdl_desc.html#qtdl_ex1',1,'']]],
+  ['discrete_20time_20transfer_20functions_4',['Discrete-time transfer functions',['../qltisys_desc.html#qltisys_disc',1,'']]],
+  ['discrete_20transfer_20function_5',['Example: Evaluate the given discrete transfer function',['../qltisys_desc.html#qltisys_ex2',1,'']]],
+  ['double_20exponential_20smoothing_6',['Double Exponential Smoothing',['../qssmoother_desc.html#qssmoother_desf',1,'']]],
+  ['dsigmf_7',['dsigmf',['../group__qfis.html#gga57d388104d07dbb852d11d277d439302aff5a8ec6d6ec62d577ca656cfe4fc85a',1,'qfis.h']]],
+  ['dump_8',['Dump',['../qbitfield_desc.html#qbitfield_dump',1,'']]]
 ];

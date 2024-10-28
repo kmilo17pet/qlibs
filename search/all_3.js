@@ -1,4 +1,31 @@
 var searchData=
 [
-  ['dsigmf_0',['dsigmf',['../group__qfis.html#gga57d388104d07dbb852d11d277d439302aff5a8ec6d6ec62d577ca656cfe4fc85a',1,'qfis.h']]]
+  ['a_201st_20order_20low_20pass_20filter_3a_0',['Example: setting up a 1st order low-pass filter:',['../qssmoother_desc.html#qssmoother_ex1',1,'']]],
+  ['a_202nd_20order_20low_20pass_20filter_3a_1',['Example: setting up a 2nd order low-pass filter:',['../qssmoother_desc.html#qssmoother_ex2',1,'']]],
+  ['a_20fuzzy_20inference_20system_2',['Evaluating a Fuzzy Inference System',['../qfis_desc.html#qfis_eval',1,'']]],
+  ['a_20gaussian_20filter_3a_3',['Example: setting up a gaussian filter:',['../qssmoother_desc.html#qssmoother_ex7',1,'']]],
+  ['a_20mamdani_20fis_4',['Building a Mamdani FIS',['../qfis_desc.html#qfis_buildfis',1,'']]],
+  ['a_20moving_20window_20median_20filter_3a_5',['a moving window median filter:',['../qssmoother_desc.html#qssmoother_ex4',1,'Example: Setting up a moving window median filter:'],['../qssmoother_desc.html#qssmoother_ex3',1,'Example: setting up a moving window median filter:']]],
+  ['a_20pid_20controller_6',['Creating a PID Controller',['../qpid_desc.html#qpid_create',1,'']]],
+  ['a_20pid_20controller_3a_7',['Example: Speed control using a PID controller:',['../qpid_desc.html#qpid_ex1',1,'']]],
+  ['a_20scalar_20kalman_20filter_3a_8',['Example: setting up a scalar Kalman filter:',['../qssmoother_desc.html#qssmoother_ex9',1,'']]],
+  ['a_20tdl_20to_20hold_20up_20to_20256_20delays_9',['Example : Code snippet to instantiate a TDL to hold up to 256 delays.',['../qtdl_desc.html#qtdl_ex1',1,'']]],
+  ['a_20timer_20interrupt_10',['Example :  By using a timer interrupt',['../qrms_desc.html#qrms_ex1',1,'']]],
+  ['adaptive_20control_11',['Additive MRAC (Model Reference Adaptive Control)',['../qpid_desc.html#qpid_mrac',1,'']]],
+  ['adaptive_20linear_20filter_12',['Adaptive Linear Filter',['../qssmoother_desc.html#qssmoother_alnf',1,'']]],
+  ['additive_20mrac_20model_20reference_20adaptive_20control_13',['Additive MRAC (Model Reference Adaptive Control)',['../qpid_desc.html#qpid_mrac',1,'']]],
+  ['additive_20mrac_3a_14',['Example: Speed control with PID controller with an additive MRAC:',['../qpid_desc.html#qpid_ex2',1,'']]],
+  ['an_20additive_20mrac_3a_15',['Example: Speed control with PID controller with an additive MRAC:',['../qpid_desc.html#qpid_ex2',1,'']]],
+  ['an_20exponential_20weighting_20filter_3a_16',['Example: setting up an exponential weighting filter:',['../qssmoother_desc.html#qssmoother_ex8',1,'']]],
+  ['an_20outlier_20removal_20filter_3a_17',['an outlier removal filter:',['../qssmoother_desc.html#qssmoother_ex5',1,'Example: setting up an outlier removal filter:'],['../qssmoother_desc.html#qssmoother_ex6',1,'Example: setting up an outlier removal filter:']]],
+  ['and_18',['AND',['../group__qfis.html#gacd1b97556dfbbac61063a63031d2f91d',1,'qfis.h']]],
+  ['and_20autotuning_3a_19',['Example: Speed control with PID controller and autotuning:',['../qpid_desc.html#qpid_ex3',1,'']]],
+  ['and_20helpers_20',['Trigonometric functions and helpers',['../qfp16_desc.html#qfp16_trig_functions',1,'']]],
+  ['and_20transcendental_20functions_21',['Exponential and transcendental functions',['../qfp16_desc.html#qfp16_exp_functions',1,'']]],
+  ['approach_22',['PID Controller approach',['../qpid_desc.html#qpid_approach',1,'']]],
+  ['arithmetic_23',['Basic arithmetic',['../qfp16_desc.html#qfp16_basic_arithmetic',1,'']]],
+  ['autotuning_24',['Autotuning',['../qpid_desc.html#qpid_autotune',1,'']]],
+  ['autotuning_20usage_25',['Autotuning Usage',['../qpid_desc.html#qpid_autotune_usage',1,'']]],
+  ['autotuning_3a_26',['Example: Speed control with PID controller and autotuning:',['../qpid_desc.html#qpid_ex3',1,'']]],
+  ['avgdev_27',['avgDev',['../structq_v_float___moment__t.html#add526a623d2cc6f5e59cb55677ce6dcf',1,'qVFloat_Moment_t']]]
 ];

@@ -115,9 +115,8 @@ var NAVTREEINDEX1 =
 "group__qvfloat.html#ggaa2afe87cb0916aa0883fc01716b4e290a3203df95f69d65e61f2cc4059c83506a":[1,11,2,2],
 "group__qvfloat.html#ggaa2afe87cb0916aa0883fc01716b4e290ac0e3daed50388574d02d2a9f462ab1fa":[1,11,2,1],
 "group__qvfloat.html#ggaa2afe87cb0916aa0883fc01716b4e290ae720f7e2a050b51ab22962debb7803d6":[1,11,2,0],
-"index.html":[0],
 "index.html":[],
-"modules.html":[1],
+"index.html":[0],
 "pages.html":[],
 "qbitfield_desc.html":[0,5],
 "qbitfield_desc.html#qbitfield_dump":[0,5,1,3],
@@ -224,5 +223,6 @@ var NAVTREEINDEX1 =
 "structq_v_float___moment__t.html#a591f963594328579761e552ed671ac18":[1,11,0,5],
 "structq_v_float___moment__t.html#a81cdc83f0bb44b4f187edfbffc614fbc":[1,11,0,1],
 "structq_v_float___moment__t.html#a976925cd66ff0dcd419628463f580f1c":[1,11,0,2],
-"structq_v_float___moment__t.html#add526a623d2cc6f5e59cb55677ce6dcf":[1,11,0,0]
+"structq_v_float___moment__t.html#add526a623d2cc6f5e59cb55677ce6dcf":[1,11,0,0],
+"topics.html":[1]
 };

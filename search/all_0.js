@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['and_0',['AND',['../group__qfis.html#gacd1b97556dfbbac61063a63031d2f91d',1,'qfis.h']]],
-  ['avgdev_1',['avgDev',['../structq_v_float___moment__t.html#add526a623d2cc6f5e59cb55677ce6dcf',1,'qVFloat_Moment_t']]]
+  ['1_0',['1',['../qssmoother_desc.html#qssmoother_mor2',1,'Moving Outlier Removal Filter O(1)'],['../qssmoother_desc.html#qssmoother_mwm2',1,'Moving Window Median Filter O(1)'],['../qtdl_desc.html',1,'Tapped Delay Line in O(1)']]],
+  ['16_20library_1',['Fixed-Point Q16.16 library',['../qfp16_desc.html',1,'index']]],
+  ['1st_20order_20low_20pass_20filter_3a_2',['Example: setting up a 1st order low-pass filter:',['../qssmoother_desc.html#qssmoother_ex1',1,'']]]
 ];

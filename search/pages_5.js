@@ -1,5 +1,9 @@
 var searchData=
 [
-  ['recursive_20lti_20systems_20evaluation_20by_20transfer_20functions_2e_0',['Recursive LTI Systems Evaluation by transfer functions.',['../qltisys_desc.html',1,'index']]],
-  ['recursive_20root_20mean_20square_20estimator_1',['Recursive Root Mean Square estimator',['../qrms_desc.html',1,'index']]]
+  ['field_20manipulation_20library_0',['Bit-Field manipulation library',['../qbitfield_desc.html',1,'index']]],
+  ['filters_20for_20signal_20smoothing_1',['Filters for signal smoothing',['../qssmoother_desc.html',1,'index']]],
+  ['fixed_20point_20q16_2016_20library_2',['Fixed-Point Q16.16 library',['../qfp16_desc.html',1,'index']]],
+  ['for_20signal_20smoothing_3',['Filters for signal smoothing',['../qssmoother_desc.html',1,'index']]],
+  ['functions_4',['Recursive LTI Systems Evaluation by transfer functions.',['../qltisys_desc.html',1,'index']]],
+  ['fuzzy_20inference_20system_20engine_5',['Fuzzy Inference System Engine',['../qfis_desc.html',1,'index']]]
 ];

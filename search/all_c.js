@@ -1,6 +1,8 @@
 var searchData=
 [
-  ['pid_20controller_0',['PID Controller',['../qpid_desc.html',1,'index']]],
-  ['pimf_1',['pimf',['../group__qfis.html#gga57d388104d07dbb852d11d277d439302a2ebaaf5da9f4f9658a77cbb7b955fde4',1,'qfis.h']]],
-  ['psigmf_2',['psigmf',['../group__qfis.html#gga57d388104d07dbb852d11d277d439302ab0662075b7e1fe69127012a8963f3ae1',1,'qfis.h']]]
+  ['kalman_20filter_0',['Scalar Kalman filter',['../qssmoother_desc.html#qssmoother_klmn',1,'']]],
+  ['kalman_20filter_3a_1',['Example: setting up a scalar Kalman filter:',['../qssmoother_desc.html#qssmoother_ex9',1,'']]],
+  ['kc_2',['Kc',['../structq_p_i_d___gains__t.html#a536603eafa5521cb5b3c363b83016202',1,'qPID_Gains_t']]],
+  ['kd_3',['Kd',['../structq_p_i_d___gains__t.html#a98268d71502ba080d88a9b1f50fdbe80',1,'qPID_Gains_t']]],
+  ['ki_4',['Ki',['../structq_p_i_d___gains__t.html#a59fac16f568541187ff485c4c47b0ec5',1,'qPID_Gains_t']]]
 ];

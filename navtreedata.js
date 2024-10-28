@@ -26,7 +26,7 @@ var NAVTREE =
 [
   [ "API Reference", "index.html", [
     [ "qLibs", "index.html", "index" ],
-    [ "Modules", "modules.html", "modules" ],
+    [ "Topics", "topics.html", "topics" ],
     [ "Data Structures", "annotated.html", [
       [ "Data Structures", "annotated.html", "annotated_dup" ],
       [ "Data Structure Index", "classes.html", null ],
