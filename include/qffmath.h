@@ -91,6 +91,13 @@ extern "C" {
     /** @brief The natural logarithm of the square root of 2π given as a single-precision floating-point number */
     #define QFFM_LN_SQRT_2PI ( 0.918938533204672669540968854562379419F )
 
+    /** @brief Constant Euler-Mascheroni given as a single-precision floating-point number*/
+    #define QFFM_GAMMA_E     ( 0.577215664901532860606512090082402431F )
+     /** @brief Twice circumference of a circle with diameter 1, ( 2π ) given as a single-precision floating-point number */
+    #define QFFM_2PI         ( 6.283185307179586231995926937088370323F )
+    /** @brief The natural logarithm of π ( ln(π) ) given as a single-precision floating-point number */
+    #define QFFM_LN_PI       ( 1.144729885849400163877476188645232468F )
+
     /** @brief The maximum value of a non-infinite single-precision floating-point number */
     #define QFFM_MAXFLOAT   ( 3.40282347e+38F )
     /** @brief Positive infinity given as a single-precision floating-point number */
@@ -465,6 +472,42 @@ extern "C" {
     float qFFMath_ATanh( float x );
 
     /**
+    * @brief Wraps angle @a x, in radians, to the interval <tt>[−pi, pi]</tt> such that
+    * @c pi maps to @c pi and @c -pi maps to @c -pi. In general, odd, positive multiples
+    * of @c pi map to @c pi and odd, negative multiples of @c pi map to @c -pi.
+    * @param x The angle in radians
+    * @return The angle @a x wrapped to the <tt>[-pi, pi]</tt> interval
+    */
+    float qFFMath_WrapToPi( float x );
+
+    /**
+    * @brief Wraps angle @a x, in radians, to the interval <tt>[0, 2*pi]</tt> such that
+    * @c 0 maps to @c 0 and @c 2*pi and @c 2*pi maps to @c 2*pi. In general, positive multiples
+    * of @c 2*pi map to @c 2*pi and negative multiples of @c 2*pi map to @c 0.
+    * @param x The angle in radians
+    * @return The angle @a x wrapped to the <tt>[0, 2*pi]</tt> interval
+    */
+    float qFFMath_WrapTo2Pi( float x );
+
+    /**
+    * @brief Wraps angle @a x, in degrees, to the interval <tt>[–180, 180]</tt> such
+    * that @c 180 maps to @c 180 and @c -180 maps to @c -180. In general, odd, positive
+    * multiples of @c 180 map to @c 180 and odd, negative multiples of @c 180 map to @c -180.
+    * @param x The angle in degrees
+    * @return The angle @a x wrapped to the <tt>[-180, 180]</tt> interval
+    */
+    float qFFMath_WrapTo180( float x );
+
+    /**
+    * @brief Wraps angle @a x, in degrees, to the interval <tt>[0, 360]</tt> such
+    * that @c 0 maps to @c 0 and @c 360 maps to @c 360. In general, positive multiples
+    * of @c 360 map to @c 360 and negative multiples of @c 360 map to zero.
+    * @param x The angle in degrees
+    * @return The angle @a x wrapped to the <tt>[0, 360]</tt> interval
+    */
+    float qFFMath_WrapTo360( float x );
+
+    /**
     * @brief Computes the error function of @a x.
     * @param[in] x The floating point value
     * @return If no errors occur, value the error function is returned.
@@ -708,6 +751,265 @@ extern "C" {
     */
     float qFFMath_Factorial( float x );
 
+    /**
+    * @brief Computes the associated Laguerre polynomials of the degree @a n,
+    * order @a m, and argument @a x.
+    * @param[in] n The degree of the polynomial, an unsigned integer value
+    * @param[in] m The order of the polynomial, an unsigned integer value
+    * @param[in] x The argument, a floating-point or integer value
+    * @return Upon successful completion, the value of the associated Laguerre
+    * polynomial of @a x shall be returned. If the argument is @c nan, a @c nan is
+    * returned. If @a x is negative, @c nan is returned. If @a n or @a m is greater or
+    * equal to @c 128, the behavior is implementation-defined.
+    */
+    float qFFMath_Assoc_laguerre( size_t n,
+                                size_t m,
+                                float x );
+
+    /**
+    * @brief Computes the associated Legendre polynomials of the degree @a n,
+    * order @a m, and argument @a x.
+    * @param[in] n The degree of the polynomial, an unsigned integer value
+    * @param[in] m The order of the polynomial, an unsigned integer value
+    * @param[in] x The argument, a floating-point or integer value
+    * @return Upon successful completion, the value of the associated Legendre
+    * polynomial of x shall be returned. If the argument is @c nan, a @c nan is
+    * returned. If <tt>|x| > 1</tt>, @c nan is returned due the domain error.
+    * If @a n is greater or equal to @c 128, the behavior is implementation-defined.
+    */
+    float qFFMath_Assoc_legendre( size_t n,
+                                size_t m,
+                                float x );
+
+    /**
+    * @brief Computes the Beta function of @a x and @a y.
+    * @param[in] x The argument, a floating-point or integer value
+    * @param[in] y The argument, a floating-point or integer value
+    * @return Upon successful completion, the value of the Beta function of
+    * @a x and @a y. If the argument is @c nan, @c nan is returned. The function
+    * is only required to be defined where both @a x and @a y are greater
+    * than zero, and is allowed to return @c nan otherwise.
+    */
+    float qFFMath_Beta( float x,
+                        float y );
+
+    /**
+    * @brief Computes the complete elliptic integral of the first kind of @a k
+    * @param[in] k Elliptic modulus or eccentricity as a floating-point value
+    * @return Upon successful completion, the value of the complete elliptic
+    * integral of the first kind of @a k. If the argument is @c nan, @c nan is
+    * returned. If <tt>|k| > 1</tt>, NaN is returned due the domain error
+    */
+    float qFFMath_Comp_ellint_1( float k );
+
+    /**
+    * @brief Computes the complete elliptic integral of the second kind of @a k
+    * @param[in] k Elliptic modulus or eccentricity as a floating-point value
+    * @return Upon successful completion, the value of the complete elliptic
+    * integral of the second kind of @a k. If the argument is @c nan, @c nan is
+    * returned. If <tt>|k| > 1</tt>, @c nan is returned due the domain error
+    */
+    float qFFMath_Comp_ellint_2( float k );
+
+    /**
+    * @brief Computes the complete elliptic integral of the third kind of
+    * @a k and @a nu.
+    * @param[in] k Elliptic modulus or eccentricity as a floating-point value
+    * @param[in] nu Elliptic characteristic as a floating-point value
+    * @return Upon successful completion, the value of the complete elliptic
+    * integral of the third kind of @a k and @a nu. If the argument is @c nan,
+    * @c nan is returned. If <tt>|k| > 1</tt>, @c nan is returned due the domain error
+    */
+    float qFFMath_Comp_ellint_3( float k,
+                                float nu );
+
+    /**
+    * @brief Computes the incomplete elliptic integral of the first kind of
+    * @a k and @a phi
+    * @param[in] k Elliptic modulus or eccentricity as a floating-point value
+    * @param[in] phi Jacobi amplitude as a floating-point value given in radians
+    * @return Upon successful completion, the value of the incomplete elliptic
+    * integral of the first kind of @a k and @a phi. If the argument is @c nan,
+    * @c nan is returned. If <tt>|k| > 1</tt>, @c nan is returned due the domain error
+    */
+    float qFFMath_Ellint_1( float k,
+                            float phi );
+
+    /**
+    * @brief Computes the incomplete elliptic integral of the second kind of
+    * @a k and @a phi
+    * @param[in] k Elliptic modulus or eccentricity as a floating-point value
+    * @param[in] phi Jacobi amplitude as a floating-point value given in radians
+    * @return Upon successful completion, the value of the incomplete elliptic
+    * integral of the second kind of @a k and @a phi. If the argument is @c nan,
+    * @c nan is returned. If <tt>|k| > 1</tt>, @c nan is returned due the domain error
+    */
+    float qFFMath_Ellint_2( float k,
+                            float phi );
+
+    /**
+    * @brief Computes the incomplete elliptic integral of the third kind of
+    * @a k, @a nu and @a phi
+    * @param[in] k Elliptic modulus or eccentricity as a floating-point value
+    * @param[in] nu Elliptic characteristic as a floating-point value
+    * @param[in] phi Jacobi amplitude as a floating-point value given in radians
+    * @return Upon successful completion, the value of the incomplete elliptic
+    * integral of the third kind of @a k, @a nu and @a phi. If the argument is @c nan,
+    * @c nan is returned. If <tt>|k| > 1</tt>, @c nan is returned due the domain error
+    */
+    float qFFMath_Ellint_3( float k,
+                            float nu,
+                            float phi );
+
+    /**
+    * @brief Computes the Exponential integral of @a num
+    * @param[in] num A floating-point value
+    * @return Upon successful completion, the value of the exponential integral
+    * of @a num. If the argument is @c nan, @c nan is returned. If the argument
+    * is @c ±0, @c -inf is returned.
+    */
+    float qFFMath_Expint( float num );
+
+    /**
+    * @brief Computes the (physicist's) Hermite polynomials of the degree
+    * @a n and argument @a x
+    * @param[in] n The degree of the polynomial
+    * @param[in] x The argument, a floating-point value
+    * @return Upon successful completion, the value of order-n Hermite polynomial
+    * of @a x. If the argument is @c nan, @c nan is returned. If <tt>n>=128</tt>,
+    * the behavior is implementation-defined.
+    */
+    float qFFMath_Hermite( size_t n,
+                           float x );
+
+    /**
+    * @brief Computes the non-associated Laguerre polynomials of the degree @a n,
+    * and argument @a x.
+    * @param[in] n The degree of the polynomial, an unsigned integer value
+    * @param[in] x The argument, a floating-point or integer value
+    * @return Upon successful completion, the value of the non-associated Laguerre
+    * polynomial of @a x shall be returned. If the argument is @c nan, a @c nan is
+    * returned. If @a x is negative, @c nan is returned. If @a n is greater or
+    * equal than @c 128, the behavior is implementation-defined.
+    */
+    float qFFMath_Laguerre( size_t n,
+                            float x );
+
+    /**
+    * @brief Computes the unassociated Legendre polynomials of the degree @a n,
+    * and argument @a x.
+    * @param[in] n The degree of the polynomial, an unsigned integer value
+    * @param[in] x The argument, a floating-point or integer value
+    * @return Upon successful completion, the value of the unassociated Legendre
+    * polynomial of @a x shall be returned. If the argument is @c nan, a @c nan is
+    * returned. The function is not required to be defined for <tt>|x| > 1 </tt>.
+    * If @a n is greater or equal than @c 128, the behavior is implementation-defined.
+    */
+    float qFFMath_Legendre( size_t n,
+                            float x );
+
+    /**
+    * @brief Computes the Riemann zeta function of @a s
+    * @param[in] s A floating-point value
+    * @return Upon successful completion, the value of the Riemann zeta function
+    * of @a s. If the argument is @c nan, @c nan is returned.
+    */
+    float qFFMath_Riemann_zeta( float s );
+
+    /**
+    * @brief Computes the spherical Bessel function of the first kind @a n,
+    * and @a x.
+    * @param[in] n The order of the function
+    * @param[in] x The argument to the function, a floating-point or integer value
+    * @return Upon successful completion, the value of the spherical Bessel
+    * function of the first kind of @a n and @a x. If the argument is @c nan, a @c nan is
+    * returned. If @a n is greater or equal than @c 128, the behavior is
+    * implementation-defined.
+    */
+    float qFFMath_Sph_bessel( size_t n,
+                              float x );
+
+    /**
+    * @brief Computes the spherical Bessel function of the second kind also
+    * known as the spherical Neumann function of @a n and @a x.
+    * @param[in] n The order of the function
+    * @param[in] x The argument to the function, a floating-point or integer value
+    * @return Upon successful completion, the value of the spherical Bessel
+    * function of the second kind (spherical Neumann function) of  @a n and
+    * @a x. If the argument is @c nan, a @c nan is
+    * returned. If @a n is greater or equal than @c 128, the behavior is
+    * implementation-defined.
+    */
+    float qFFMath_Sph_neumann( size_t n,
+                               float x );
+
+    /**
+    * @brief Computes the regular modified cylindrical Bessel function of
+    * @a nu and @a x
+    * @param[in] nu The order of the function
+    * @param[in] x The argument to the function, a floating-point or integer value
+    * @return Upon successful completion, the value of the regular modified
+    * cylindrical Bessel function of @a nu and @a x. If the argument is
+    * @c nan, a @c nan is returned. If @a nu is greater or equal than @c 128,
+    * the behavior is implementation-defined.
+    */
+    float qFFMath_Cyl_bessel_i( float nu,
+                            float x );
+
+    /**
+    * @brief Computes the cylindrical Bessel function of the first kind of @a nu
+    * and @a x
+    * @param[in] nu The order of the function
+    * @param[in] x The argument to the function, a floating-point or integer value
+    * @return Upon successful completion, the value of the irregular modified cylindrical Bessel function
+    * (also known as modified Bessel function of the second kind) of @a nu
+    * and @a x. If the argument is @c nan, a @c nan is returned. If @a nu is
+    * greater or equal than @c 128, the behavior is implementation-defined.
+    */
+    float qFFMath_Cyl_bessel_j( float nu,
+                                float x );
+
+    /**
+    * @brief Computes the irregular modified cylindrical Bessel function
+    * (also known as modified Bessel function of the second kind) of @a nu
+    * and @a x
+    * @param[in] nu The order of the function
+    * @param[in] x The argument to the function, a floating-point or integer value
+    * @return Upon successful completion, the value of the irregular modified cylindrical Bessel function
+    * (also known as modified Bessel function of the second kind) of @a nu
+    * and @a x. If the argument is @c nan, a @c nan is returned. If @a nu is
+    * greater or equal than @c 128, the behavior is implementation-defined.
+    */
+    float qFFMath_Cyl_bessel_k( float nu,
+                                float x );
+
+    /**
+    * @brief Computes the cylindrical Neumann function ( also known as Bessel
+    * function of the second kind or Weber function) of @a nu and @a x.
+    * @param[in] nu The order of the function
+    * @param[in] x The argument to the function, a floating-point or integer value
+    * @return Upon successful completion, the value of the cylindrical Neumann
+    * function ( Bessel function of the second kind) of @a nu
+    * and @a x. If the argument is @c nan, a @c nan is returned. If @a nu is
+    * greater or equal than @c 128, the behavior is implementation-defined.
+    */
+    float qFFMath_Cyl_neumann( float nu,
+                               float x );
+
+    /**
+    * @brief 1-3) Computes the spherical associated Legendre function of
+    * degree @a l, order @a m, and polar angle @a theta
+    * @param[in] l The degree
+    * @param[in] m The order
+    * @param[in] theta Polar angle, measured in radians
+    * @return Upon successful completion, the value of the spherical associated
+    * Legendre function (that is, spherical harmonic with sigma = 0) of @a l,
+    * @a m, and @a theta. If the argument @a theta is @c nan, a @c nan is returned.
+    * If @a l is greater or equal than @c 128, the behavior is implementation-defined.
+    */
+    float qFFMath_Sph_legendre( size_t l,
+                                size_t m,
+                                float theta );
 #endif /*#ifdef QLIBS_USE_STD_MATH*/
 
     /** @}*/
