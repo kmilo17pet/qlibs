@@ -1,7 +1,7 @@
 /*!
  * @file qssmoother.h
  * @author J. Camilo Gomez C.
- * @version 1.06
+ * @version 1.09
  * @note This file is part of the qLibs distribution.
  * @brief API to smooth noisy signals.
  **/
@@ -15,11 +15,9 @@ extern "C" {
 
     #include <stdlib.h>
     #include <stdint.h>
-    #include <float.h>
-    #include <math.h>
     #include "qtdl.h"
 
-    /** @addtogroup qssmoother qSSMoother :  Filters to smooth noisy signals
+    /** @addtogroup qssmoother qSSMoother : Filters to smooth noisy signals
     * @brief API for the qSSmoother library
     *  @{
     */
@@ -37,16 +35,18 @@ extern "C" {
         QSSMOOTHER_TYPE_GMWF,       /*!< Gaussian Filter*/
         QSSMOOTHER_TYPE_KLMN,       /*!< Kalman Filter*/
         QSSMOOTHER_TYPE_EXPW,       /*!< Exponential weighting filter*/
+        QSSMOOTHER_TYPE_DESF,       /*!< Double Exponential Smoother*/
+        QSSMOOTHER_TYPE_ALNF,       /*!< Adaptive Noise Cancellation*/
     } qSSmoother_Type_t;
 
     /*! @cond  */
     #define qSSmootherPtr_t  void
     /*abstract class*/
-    typedef struct _qSSmoother_s
+    typedef struct _qSSmoother_s //skipcq: CXX-E2000
     {
         void *vt;
         uint8_t init;
-    } _qSSmoother_t;
+    } _qSSmoother_t; //skipcq: CXX-E2000
     /*! @endcond  */
 
     /**
@@ -157,12 +157,37 @@ extern "C" {
         float x;  /* state */
         float A;  /* x(n)=A*x(n-1)+u(n),u(n)~N(0,q) */
         float H;  /* z(n)=H*x(n)+w(n),w(n)~N(0,r) */
-        float q;  /* process(predict) noise convariance */
-        float r;  /* measure noise convariance */
-        float p;  /* estimated error convariance */
+        float q;  /* process(predict) noise covariance */
+        float r;  /* measure noise covariance */
+        float p;  /* estimated error covariance */
         float gain;
         /*! @endcond  */
     } qSSmoother_KLMN_t;
+
+    /**
+    * @brief Double exponential smoothing (Holt’s Method)
+    */
+    typedef struct
+    {
+        /*! @cond  */
+        _qSSmoother_t f;
+        float alpha, beta;
+        float lt, bt, n;
+        /*! @endcond  */
+    } qSSmoother_DESF_t;
+
+    /**
+    * @brief Adaptive Filter LMS
+    */
+    typedef struct
+    {
+        /*! @cond  */
+        _qSSmoother_t f;
+        float alpha, mu;
+        float *w, *w_1, *x;
+        size_t n;
+        /*! @endcond  */
+    } qSSmoother_ALNF_t;
 
     /**
     * @brief Check if the smoother filter is initialized.
@@ -180,6 +205,7 @@ extern "C" {
 
     /**
     * @brief Perform the smooth operation recursively for the input signal @a x.
+    * @pre Instance must be previously initialized by qSSmoother_Setup()
     * @param[in] s A pointer to the signal smoother instance.
     * @param[in] x A sample of the input signal.
     * @return The smoothed output.
@@ -210,38 +236,52 @@ extern "C" {
     *
     * - ::QSSMOOTHER_TYPE_EXPW
     *
+    * - ::QSSMOOTHER_TYPE_DESF
+    *
+    * - ::QSSMOOTHER_TYPE_ALNF
+    *
     * @param[in] param The smoother parameters. Depends of the type selected:
     *
-    * if ::QSSMOOTHER_TYPE_LPF1 a pointer to a value between  [ 0 < alpha < 1 ]
+    * if ::QSSMOOTHER_TYPE_LPF1 a pointer to a value between  [ 0 < @a alpha < 1 ]
     *
-    * if ::QSSMOOTHER_TYPE_LPF2 a pointer to a value between  [ 0 < alpha < 1 ]
+    * if ::QSSMOOTHER_TYPE_LPF2 a pointer to a value between  [ 0 < @a alpha < 1 ]
     *
-    * if ::QSSMOOTHER_TYPE_MWM1 can be ignored. Pass NULL as argument.
+    * if ::QSSMOOTHER_TYPE_MWM1 can be ignored. Pass @c NULL as argument.
     *
-    * if ::QSSMOOTHER_TYPE_MWM2 can be ignored. Pass NULL as argument.
+    * if ::QSSMOOTHER_TYPE_MWM2 can be ignored. Pass @c NULL as argument.
     *
-    * if ::QSSMOOTHER_TYPE_MOR1 a pointer to a value between  [ 0 < alpha < 1 ]
+    * if ::QSSMOOTHER_TYPE_MOR1 a pointer to a value between  [ 0 < @a alpha < 1 ]
     *
-    * if ::QSSMOOTHER_TYPE_MOR2 a pointer to a value between  [ 0 < alpha < 1 ]
+    * if ::QSSMOOTHER_TYPE_MOR2 a pointer to a value between  [ 0 < @a alpha < 1 ]
     *
     * if ::QSSMOOTHER_TYPE_GMWF, an array with two values. The first element
-    * with the Standard deviation [ sigma > 0 ]. The second element with the
-    * offset of the gaussian center. [ 0 < pos < (wsize-1) ].
+    * with the Standard deviation [ @a sigma > 0 ]. The second element with the
+    * offset of the gaussian center. [ 0 < @a offset < ( @a wsize - 1 ) ].
     *
     * if ::QSSMOOTHER_TYPE_KLMN, an array with three values. The first element
-    * with the initial estimated error convariance. The second element with the
-    * process(predict) noise convariance. The third element with the measure
+    * with the initial estimated error covariance. The second element with the
+    * process(predict) noise covariance. The third element with the measure
     * noise convariance
     *
-    * if ::QSSMOOTHER_TYPE_EXPW, a pointer to a value between [ 0 < lambda < 1 ]
+    * if ::QSSMOOTHER_TYPE_EXPW, a pointer to a value between [ 0 < @a lambda < 1 ]
     * that represents the forgetting factor.
+    *
+    * if ::QSSMOOTHER_TYPE_DESF, an array with three values. The first element
+    * [ 0 < @a alpha < 1 ] that represents the weight for the level, the second,
+    * [ 0 < @a beta < 1 ] weight for the trend. The third element with the number
+    * of step for the forecast, should be an integer value greater or equal to
+    * zero.
+    *
+    * if ::QSSMOOTHER_TYPE_ALNF, an array with two values. The first element
+    * with learning rate [ 0 < @a alpha < 1 ]. The second element with the
+    * momentum [ 0 < @a mu < 1 ].
     *
     * @param[in] window The filter window and coefficients. Depends of the type
     * selected:
     *
-    * if ::QSSMOOTHER_TYPE_LPF1, can be ignored. Pass NULL as argument.
+    * if ::QSSMOOTHER_TYPE_LPF1, can be ignored. Pass @c NULL as argument.
     *
-    * if ::QSSMOOTHER_TYPE_LPF2, can be ignored. Pass NULL as argument.
+    * if ::QSSMOOTHER_TYPE_LPF2, can be ignored. Pass @c NULL as argument.
     *
     * if ::QSSMOOTHER_TYPE_MWM1, An array of @a wsize elements.
     *
@@ -251,12 +291,17 @@ extern "C" {
     *
     * if ::QSSMOOTHER_TYPE_MOR2, An array of @a wsize elements.
     *
-    * if ::QSSMOOTHER_TYPE_GMWF, An array of 2x @a wsize to hold both, the
+    * if ::QSSMOOTHER_TYPE_GMWF, An array of 2* @a wsize to hold both, the
     * window and the gaussian kernel coefficients.
     *
-    * if ::QSSMOOTHER_TYPE_KLMN, can be ignored. Pass NULL as argument.
+    * if ::QSSMOOTHER_TYPE_KLMN, can be ignored. Pass @c NULL as argument.
     *
-    * if ::QSSMOOTHER_TYPE_EXPW, can be ignored. Pass NULL as argument.
+    * if ::QSSMOOTHER_TYPE_EXPW, can be ignored. Pass @c NULL as argument.
+    *
+    * if ::QSSMOOTHER_TYPE_DESF, can be ignored. Pass @c NULL as argument.
+    *
+    * if ::QSSMOOTHER_TYPE_ALNF, An array of 2* @a wsize elements when momentum
+    * is set to zero, otherwise an array of 3* @a wsize elements.
     *
     * @param[in] wsize If used, the number of elements in @a window, otherwise
     * pass 0uL as argument.

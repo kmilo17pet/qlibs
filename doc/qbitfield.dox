@@ -1,15 +1,46 @@
 /*! @page qbitfield_desc Bit-Field manipulation library
-* \ref qbitfield bitfield is a library of functions for creating and manipulate
-* bit fields (or bit arrays), i.e. series of zeroes and ones spread across an 
-* array of storage units (unsigned long integers).
+* @tableofcontents
+* \ref qbitfield is a library of functions for creating and manipulating
+* bit fields also known as bit arrays. These are series of zeroes and ones
+* spread across an array of storage units, such as unsigned long integers.
 *
-* <b> Structure </b>
+* @section qbitfield_structure Structure
 * 
 * Bit arrays are stored in data structures of type \ref qBitField_t. This structure
-* has two elements: an array of unsigned long integers 'field' for storing the 
-* bits and an integer 'size' for storing the number of bits in the array. 
+* has two elements: an array of unsigned long integers called @c field for storing the
+* bits and an integer @c size for storing the number of bits in the array. 
 *
-* <b> Working with bitfields </b>
+*
+* @section qbitfield_functions Functions
+*
+* @subsection qbitfield_setup Instance setup
+*
+* - \ref #QBITFIELD_SIZE Use it to determine the number of bytes required for a BitField.
+* - \ref qBitField_Setup() Setup a initialize a BitField instance.
+*
+* @subsection qbitfield_sbit Single-bit
+*
+* - \ref qBitField_SetBit() Sets one bit in a BitField.
+* - \ref qBitField_ClearBit()  Clears one bit in a BitField.
+* - \ref qBitField_ToggleBit() Toggles (i.e. reverses the state of) a bit in a BitField.
+* - \ref qBitField_ReadBit() Retrieve the state of a bit in a bitfield.
+* - \ref qBitField_WriteBit() Writes one bit in a bitfield.
+*
+* @subsection qbitfield_pattern Multiple-bits
+*
+* - \ref qBitField_ClearAll()  Clear all the bits in the BitField.
+* - \ref qBitField_SetAll() Set all the bits in the BitField.
+* - \ref qBitField_ReadUINTn() Reads an unsigned 32-bit value from the BitField.
+* - \ref qBitField_WriteUINTn() Writes an unsigned n-bit value from the BitField.
+* - \ref qBitField_ReadFloat() Reads a 32-bit floating point value from the BitField.
+* - \ref qBitField_WriteFloat() Writes a 32-bit floating point value to the BitField.
+*
+* @subsection qbitfield_dump Dump
+*
+* - \ref qBitField_Dump() Copies n bytes from the bit-field instance to a designed memory area.
+*
+*
+* @section qbitfield_workingwith Working with bitfields
 *
 *  @code{.c}
 *  #include <stdio.h>
@@ -17,12 +48,12 @@
 *  #include <stdint.h>
 *  #include "qbitfield.h"
 *  
-*  int main( int argc, char *argv[] ) 
+*  int main( int argc, char *argv[] )
 *  {
 *      qBitField_t vPort; // create the bitfield instance
 *      uint8_t vPortArea[ QBITFIELD_SIZE(48) ] = { 0 }; // Create the bitfield storage area to hold 48bits
 *      uint16_t rWord; 
-*      
+*
 *      qBitField_Setup( &vPort, vPortArea, sizeof(vPortArea) );
 *      qBitField_ClearAll( &vPort);
 *      //we are going to write the following value in the bitfield = 0x8177AA55FF88

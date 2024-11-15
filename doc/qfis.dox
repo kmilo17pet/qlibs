@@ -1,46 +1,77 @@
 /*! @page qfis_desc Fuzzy Inference System Engine
-* The \ref qfis Fuzzy Inference System engine provides an API for building and 
-* evaluation of type-1 fuzzy logic systems. You can tune membership functions 
-* and rules easily.
+* @tableofcontents
+* A Fuzzy Inference System (FIS) is a key component of any fuzzy logic system. It
+* uses fuzzy set theory, IF-THEN rules and fuzzy reasoning process to find the
+* output corresponding to crisp inputs. Predicates in @c IF-THEN rules are connected
+* using @c AND or @c OR logical connectives.
+*
+* Fuzzy inference works by sending any process's crisp input to the fuzzifier,
+* which applies a fuzzy membership function and maps the actual readings into 
+* fuzzy values. The inference engine applies fuzzy rules from the knowledge base
+* and produces the fuzzy output. This output can not be used directly in any
+* process or system. It needs to be mapped into the original domain. For this,
+* the defuzzifier is used, which is the inverse process of fuzzification. It
+* converts the fuzzy output into crisp output, which can be fed to the process.
+*
+* The \ref qfis Fuzzy Inference System engine provides an API for building and
+* evaluation of type-1 fuzzy logic inference systems. 
 * 
-* The types of inferences supported by qFIS are listed in the \ref qFIS_Type_t and
-* are detailed below:
+* The types of inferences supported by qFIS are listed in the \ref qFIS_Type_t
+* and are detailed below:
 *
-* - <b> Mamdani Fuzzy Inference Systems </b>
+* @section qfis_mamdani Mamdani
 *
-* In a Mamdani system, the output of each rule is a fuzzy set. Since Mamdani 
-* systems have more intuitive and easier to understand rule bases, they are 
+* In a Mamdani system, the output of each rule is a fuzzy set. Since Mamdani
+* systems have more intuitive and easier to understand rule bases, they are
 * well-suited to expert system applications where the rules are created
-* from human expert knowledge.
+* from human expert knowledge. 
 *
 * The output of each rule is a fuzzy set derived from the output membership
 * function and the implication method of the FIS. These output fuzzy sets are
-* combined into a single fuzzy set using the aggregation method of the FIS. 
+* combined into a single fuzzy set using the aggregation method of the FIS.
 * Then, to compute a final crisp output value, the combined output fuzzy set is
 * defuzzified using one of the methods described in Defuzzification Methods.
+* To specify a FIS of this type use the ::Mamdani enum definition when calling
+* qFIS_Setup().
 *
-* - <b> Sugeno Fuzzy Inference Systems </b>
+* <center>
+* @htmlonly
+* <!DOCTYPE html>
+* <html>
+* <head>
+* <title>mamdanifis</title>
+* <meta charset="utf-8"/>
+* </head>
+* <body><div class="mxgraph" style="max-width:100%;border:1px solid transparent;" data-mxgraph="{&quot;highlight&quot;:&quot;#0000ff&quot;,&quot;nav&quot;:true,&quot;resize&quot;:true,&quot;toolbar&quot;:&quot;zoom layers tags lightbox&quot;,&quot;edit&quot;:&quot;_blank&quot;,&quot;xml&quot;:&quot;&lt;mxfile host=\&quot;app.diagrams.net\&quot; modified=\&quot;2022-10-21T12:24:51.086Z\&quot; agent=\&quot;5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36\&quot; etag=\&quot;GporpD4HgS3TULajmcnV\&quot; version=\&quot;20.4.2\&quot; type=\&quot;google\&quot;&gt;&lt;diagram id=\&quot;b76JhKOhOGUdQaUB4UHg\&quot; name=\&quot;Página-1\&quot;&gt;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&lt;/diagram&gt;&lt;/mxfile&gt;&quot;}"></div>
+* <script type="text/javascript" src="https://viewer.diagrams.net/js/viewer-static.min.js"></script>
+* </body>
+* </html>
+* @endhtmlonly
+* <em>Mamdani inference system</em>
+* </center>
+*
+* @section qfis_sugeno Sugeno
 *
 * Sugeno fuzzy inference, also referred to as Takagi-Sugeno-Kang fuzzy inference,
 * uses singleton output membership functions that are either constant or a linear
-* function of the input values. The defuzzification process for a Sugeno system 
-* is more computationally efficient compared to that of a Mamdani system, since 
-* it uses a weighted average or weighted sum of a few data points rather than 
+* function of the input values. The defuzzification process for a Sugeno system
+* is more computationally efficient compared to that of a Mamdani system, since
+* it uses a weighted average or weighted sum of a few data points rather than
 * computing the centroid of a two-dimensional area.
 *
 * Each rule generates two values:
 *
-* \f$z_i\f$ Rule output level, which is either a constant value or a linear 
+* \f$u_i\f$ Rule output level, which is either a constant value or a linear
 * function of the input values.
 *
-* and \f$w_i\f$, the rule firing strength, is determined by the rule antecedent
+* and \f$w_i\f$, the rule firing strength, that is determined by the rule antecedent
 * 
-* The output of each rule is the weighted output level, which is the product of 
-* \f$w_i\f$ and \f$z_i\f$.
+* The output of each rule is the weighted output level, which is the product of
+* \f$w_i\f$ and \f$u_i\f$.
 * 
 * The final output of the system is the weighted average/sum over all rule outputs:
 *
-* \f$out= \frac{ \sum_{i=1}^{N}w_{i}z_{i} }{ \sum_{i=1}^{N}w_{i}} \f$ 
+* <center> \f$out= \frac{ \sum_{i=1}^{N}w_{i}u_{i} }{ \sum_{i=1}^{N}w_{i}} \f$  </center>
 * 
 * where \f$N\f$  is the number of rules.
 *
@@ -49,124 +80,171 @@
 * controllers that are to be applied, respectively, to different operating 
 * conditions of a dynamic nonlinear system.
 *
+* To specificy a FIS of this type,  use the ::Sugeno enum definition when calling qFIS_Setup().
 *
-* - <b> Tsukamoto Fuzzy Inference Systems </b>
+* <center>
+* @htmlonly
+* <!DOCTYPE html>
+* <html>
+* <head>
+* <title>sugenofis</title>
+* <meta charset="utf-8"/>
+* </head>
+* <body><div class="mxgraph" style="max-width:100%;border:1px solid transparent;" data-mxgraph="{&quot;highlight&quot;:&quot;#0000ff&quot;,&quot;nav&quot;:true,&quot;resize&quot;:true,&quot;toolbar&quot;:&quot;zoom layers tags lightbox&quot;,&quot;edit&quot;:&quot;_blank&quot;,&quot;xml&quot;:&quot;&lt;mxfile host=\&quot;app.diagrams.net\&quot; modified=\&quot;2022-10-21T12:26:53.087Z\&quot; agent=\&quot;5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36\&quot; etag=\&quot;Gn7_LPBRFnYcJWAdcmce\&quot; version=\&quot;20.4.2\&quot; type=\&quot;google\&quot;&gt;&lt;diagram id=\&quot;B5A3irbYMv0O7n4GprYW\&quot; name=\&quot;Página-1\&quot;&gt;7V1dc5s4FP01nunuTBkkgQ2PcdJsO9PuZpqdbV8JVmymGFzAsdNfvxKW+JCEMbaFk5SkncC1uAKdoyvdI4WM0PVy+1firRZf4hkOR9CcbUfoZgQhMF1AflDLM7dMrJ1lngQzZisN98EvzAsy6zqY4bRWMIvjMAtWdaMfRxH2s5rNS5J4Uy/2GIf1WlfeHEuGe98LZeu3YJYtmBWM3fKDjziYL1jVDpzsPlh6vDB7knThzeJNxYQ+jNB1EsfZ7mi5vcYhbT3eLrvrbhs+LW4swVF2yAVR9PHTcpGs777iZez+63/+/l/wHu68PHnhmj0wu9nsmbcAjmZXtCHJmR96aRr4IzRdZMuQGAA5TOJ1NMO0EpOcpVkS/yiaChaW6ziMk9whckz6TT7ZVYVnEgLlI4GioQjFcLzEWfJMimxKKGzWvIsKCNyW4NDLgqe6e48xYl64K2q4iwNSMTQZfSfMDeMudM26hzReJz5mF1Vbfr8fMBH8ZF4yx5nkhxxUHro05bh2wBgNGB+OseMa9nEoFyGr2ZVmoK1OQEdxhNtRrmBqmpPb21sl/i8dZWCeqSsDS+jLoiPNENsDxE3IOG8E4vEQrptRLmZTlSA7OTZgC77InE7ypRnryYB1N6zhkVijcbsvzVg7Q+huAto+Y6d2hU6t8KUZaHcAuqkXihH32DH6BaDMZ/sDzDLM1pmmYq180Y0xGMbnZpiF1NmyXMNxzOILHIe54BXBvV51EwAOBOhEAHQ6AUQdpcWtbgZ0U89+pzDvSDgdB7goziDRkW6IB92sUVSxJGiOlUcVKPcsj4Ju4tlvFszFbJuG3TE6PZpDeTzf41Y3BQZxrSMFwOkUELWXFre6KdBNc/udor2Mv3NkpxeHDbvnvG3Q2hoxFvMrEZpXg/EgszXqL7xteD8+GuM2smjGmMejAeP2mfmxGIOJqUqvm6ijG/FuiltnxKf59+tEXJxGjY9FXHDU934kDumAsRxwRU3lWIxFR71jLMtm30dwHGYUlvUDOZzTQ8BtpJKKWaJDhrdZnQN11BlHHoMwFExeGMwjcuoTgDGxT59wkgW+F16xD5bBbEarmW4WQYbvV55P69wk3kpiGnV/z24qjUPaANPHOMrYrlWA2Lkq98vLsWsBO7/1lkFIAfqIwydM76p4dnqXeNuVpMXYMFGzqEJiDlCVxMhs5muNIJ3ZICtsJRtWXlQDe/xzTbfE5i30Ps2b9ooUAKbhIIRW27yNeKGSMRK3YBO3Smte9UC5M1AOjh1h3uBcmHKy2PdFFYCGCKQlAsF6BgLG8MJ0kIU/JR0ag8ZAh1Oig7hd4+IDkiwCqugAh+igJTqY4xodEMf+YnSQ9UIlHYbooCU6WPYLo4NmaXFPgjrz0kV+IXgd2eoe6QjylZbO60Xd3Or+7SnNGuRbIYOoKhXrA13ht1CLI92AX06CfNWAW+DI1UJLXHaEPQPeTY988FJ8Q4BqB51Di1Q0KIZacYTPYjqUkwpvA/oczJ+XZIobyO2Vci+dMzS0u3YZ2lEdeJ4lnnfEAKJb3XzSvGXwrQSQ/dMHRH8bC5SfmpYObrTVopsqB2w9TBfeih766yR8niae/wNnDfN/JYfAiamAxD83/1JGuWpGQ0p+GNPv/G4ywpSYhje3jFOnZQ18bzZD8j1EBmvNat6goC8CY8NpJutJqQOSZce7BC+DFL+7Ihmdj2fk8f6QMGYJY9csMcSP2b4cMSX0CKL557zYjVVavrLWoKaYXP4Y5qFoQS7ExMN0RQmft409Jf9II16bhj2yyb1ek3NQnpN/tHhCqBOR2/eCHD3spdkGpxmH3nvInzSnE38NBpA5V6zHN6abbZvv6nnrGaQKYQeEK1OsWInvJTdFB+xgHCKGEktrbBn1mDFBBp/8tcQMQKILsnVhKquR3/K6CRqkOvLQ9CU1Z4oZ7crSa4saNdHqRUQNkgoZdmWaawrrsY4sfwNyCR/R+gkkB+yRrAqYHACzOs00uxGLxaXldk7fFmXs3s8Edz+pW9o+pjGZ0GPalAAakIaNWZBgn0UDMu+jbTaN4sxf5OWBHFmgug+0bc0+MbzYxth2y6866DYnQUukEZPf8wEuq5pfPv1NDO/If9Ig0Lz7+s/N2eYmQ5xpizNk9I2T4BexefX8/SQaSm86sA7jHQC6iGfJCuq3YS9QT4srSFh6LeTzSy2uWLK8qmIDHNjQAxuQIp/plw0q7bXjxjDYsCdsc3iQ+XPdJSApPTcQVvB8wuM09oi3tJ+Nj5KX7igWsI1JXZ22FakiUOpL2jqLSljuv7N06wADP/vip31xfspq9prTdID6eKiBBLUl75CxIP91+n6w1vwmSkFMbMqi2OO93EUuy1J0VMewJxWhoO7z0IUt21R47vfNGZZKjD7TgNRlRoZuvG2X8athRJo+qLw0jmtTf4hsp0U2iAy3zmBVetrzIKZ6P4BGTjfR60KcTgZOn8hpMcN2L01oWeinaij+ucZsVBjU3lexFm2ZlsH1Gv3L0eS0/NsUuwlD+Sc+0If/AQ==&lt;/diagram&gt;&lt;/mxfile&gt;&quot;}"></div>
+* <script type="text/javascript" src="https://viewer.diagrams.net/js/viewer-static.min.js"></script>
+* </body>
+* </html>
+* @endhtmlonly
+* <em>Sugeno inference system</em>
+* </center>
 *
-* In the Tsukamoto inference system, the consequent of each fuzzy if-then rule 
-* is represented by a fuzzy set with a monotonical membership function, As a result, 
-* the inferred output of each rule is defined as a crisp value induced by the 
+* @section qfis_tsukamoto Tsukamoto
+*
+* In the Tsukamoto inference system, the consequent of each fuzzy if-then rule
+* is represented by a fuzzy set with a monotonical membership function, As a result,
+* the inferred output of each rule is defined as a crisp value induced by the
 * rule's firing strength. 
 *
 * The overall output is taken as the weighted average of each rule's output.
-* Since each rule infers a crisp output, the Tsukamoto fuzzy model aggregates 
-* each rule's output by the method of weighted average and thus avoids the 
+* Since each rule infers a crisp output, the Tsukamoto fuzzy model aggregates
+* each rule's output by the method of weighted average and thus avoids the
 * time-consuming process of defuzzification.
 *
+* To specify a FIS of this type, use the ::Tsukamoto enum definition when
+* calling qFIS_Setup().
 *
-* <b> Comparision among supported Inference Systems</b>
+* <center>
+* @htmlonly
+* <!DOCTYPE html>
+* <html>
+* <head>
+* <title>tsukamotofis</title>
+* <meta charset="utf-8"/>
+* </head>
+* <body><div class="mxgraph" style="max-width:100%;border:1px solid transparent;" data-mxgraph="{&quot;highlight&quot;:&quot;#0000ff&quot;,&quot;nav&quot;:true,&quot;resize&quot;:true,&quot;toolbar&quot;:&quot;zoom layers tags lightbox&quot;,&quot;edit&quot;:&quot;_blank&quot;,&quot;xml&quot;:&quot;&lt;mxfile host=\&quot;app.diagrams.net\&quot; modified=\&quot;2022-10-21T12:28:30.817Z\&quot; agent=\&quot;5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36\&quot; etag=\&quot;GO0rFroHnX2iWalfD0AV\&quot; version=\&quot;20.4.2\&quot; type=\&quot;google\&quot;&gt;&lt;diagram id=\&quot;yG3-giIi_3HVufmugneO\&quot; name=\&quot;Página-1\&quot;&gt;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&lt;/diagram&gt;&lt;/mxfile&gt;&quot;}"></div>
+* <script type="text/javascript" src="https://viewer.diagrams.net/js/viewer-static.min.js"></script>
+* </body>
+* </html>
+* @endhtmlonly
+* <em>Tsukamoto inference system</em>
+* </center>
 *
-* \image html https://user-images.githubusercontent.com/11412210/192664066-ab40cb04-a36f-4b49-9c14-cc34a4683f43.jpg width=50%
-*
-*
-* <b> Defuzzification Methods </b>
+* @section qfis_defuzz Defuzzification Methods
 * 
-*  qFIS supports five different methods, as listed in the \ref qFIS_DeFuzz_Method_t type
+* qFIS supports five different methods, as listed in the \ref qFIS_DeFuzz_Method_t type
 * for computing a single crisp output value for such a fuzzy set.
 *
-*  -# Centroid : this method applies only to Mamdani systems and returns the 
-* center of gravity of the fuzzy set along the x-axis. If you think of the area 
-* as a plate with uniform thickness and density, the centroid is the point along 
-* the x-axis about which the fuzzy set would balance. The centroid is computed 
-* using the following formula, where \f$\mu(x)\f$ is the membership value for 
+*  -# ::centroid (default): this method applies only to ::Mamdani systems and returns the
+* center of gravity of the fuzzy set along the x-axis. If you think of the area
+* as a plate with uniform thickness and density, the centroid is the point along
+* the x-axis about which the fuzzy set would balance. The centroid is computed
+* using the following formula, where \f$\mu(x)\f$ is the membership value for
 * point \f$x_i\f$ in the universe of discourse.
 *
 *
-* \f$\text{centroid}= \frac{ \sum_{i=1}\mu(x_{i})x_{i} }{ \sum_{i=1}\mu(x_{i})} \f$ 
+* <center> \f$\text{centroid}= \frac{ \sum_{i=1}\mu(x_{i})x_{i} }{ \sum_{i=1}\mu(x_{i})} \f$  </center>
 *
-*  -# Bisector : this method applies only for Mamdani systems and finds the 
+*  -# ::bisector : this method applies only for ::Mamdani systems and finds the 
 * vertical line that divides the fuzzy set into two sub-regions of equal area. 
 * It is sometimes, but not always, coincident with the centroid line.
 *
-*  -# MOM : Middle of Maximum. Only for Mamdani systems.
+*  -# ::mom : Middle of Maximum. Only for ::Mamdani systems.
 *
-*  -# SOM : Smallest of Maximum. Only for Mamdani systems.
+*  -# ::som : Smallest of Maximum. Only for ::Mamdani systems.
 *
-*  -# LOM : Largest of Maximum. Only for Mamdani systems.
+*  -# ::lom : Largest of Maximum. Only for ::Mamdani systems.
 *
-*  -# WtAver: Weighted average of all rule outputs. this method applies only 
-* for Sugeno and Tsukamoto systems.
+*  -# ::wtaver (default): Weighted average of all rule outputs. this method applies only 
+* for ::Sugeno and ::Tsukamoto systems.
 *
-*  -# WtSum:  Weighted sum of all rule outputs. This method applies only for 
-* Sugeno and Tsukamoto systems.
+*  -# ::wtsum:  Weighted sum of all rule outputs. This method applies only for
+* ::Sugeno and ::Tsukamoto systems.
 *
+* @note The defuzzification method is selected by default when setting up the 
+* FIS instance with qFIS_Setup(). However, the user can later change the default
+* method using the qFIS_SetDeFuzzMethod() function.
 *
-* <b> Building a Mamdani FIS </b>
+* @section qfis_buildfis Building a Mamdani FIS
 *
-* To carry the FIS building process in a more friendly way, we are going to explain 
-* it with a particular example. 
+* To carry out the FIS building process in a more friendly manner, we will explain
+* it using a specific example. The goal is to solve the tipping problem, which
+* is described as follows:
 *
-* This example goal is to solve the tipping problem, and its described as follows:
-*
-* Given a number from 0 through 10 that represents the quality of service at a 
-* restaurant, where 10 is excellent, and another number from 0 through 10 that 
+* Given a number from 0 through 10 that represents the quality of service at a
+* restaurant, where 10 is excellent, and another number from 0 through 10 that
 * represents the quality of the food, where 10 is delicious, what should the tip be?
-*
-* Tipping behavior varies depending on local traditions and personal preferences. 
-* In this example, the problem is based on tipping as it is typically practiced 
-* in the United States. An average tip for a meal in the US is 15%. A generous 
+* Tipping behavior varies depending on local traditions and personal preferences.
+* In this example, the problem is based on tipping as it is typically practiced
+* in the United States. An average tip for a meal in the US is 15%. A generous
 * tip could be as high as 25% and a cheap tip could be 5%.
 *
 * The actual amount of the tip can vary depending on the quality of the service
-* and food. 
-*
-* To solve this problem using fuzzy logic, first capture the essentials of the 
-* desired tipping behavior, leaving aside all the factors that could be arbitrary. 
-*
-* After  analyzing this problem, the tipping behavior is defined using the following
+* and food.  For this problem, tipping behavior is defined using the following
 * three rules.
 *
-* -# If the service is poor or the food is rancid, then the tip is cheap.
-* -# If the service is good, then the tip is average.
-* -# If the service is excellent or the food is delicious, then the tip is generous.
+* -# <tt> IF the service IS poor OR the food IS rancid, THEN the tip IS cheap. </tt>
+* -# <tt> IF the service IS good, THEN the tip IS average. </tt>
+* -# <tt> IF the service IS excellent OR the food IS delicious, THEN the tip IS generous. </tt>
 *
-* This leads to a system with 2 inputs
-*
-* -# service
-* -# food
-*
-* and 1 output: tip
-*
+* This leads to a system with 2 inputs : @c service and @c food and 1 output: @c tip
 * 
-* \image html https://www.mathworks.com/help/examples/fuzzy/win64/BuildMamdaniSystemsAtTheCommandLineExample_01.png
+* <center>
+* @htmlonly
+* <!DOCTYPE html>
+* <html>
+* <head>
+* <title>fistipper</title>
+* <meta charset="utf-8"/>
+* </head>
+* <body><div class="mxgraph" style="max-width:100%;border:1px solid transparent;" data-mxgraph="{&quot;highlight&quot;:&quot;#0000ff&quot;,&quot;nav&quot;:true,&quot;zoom&quot;:1.1,&quot;resize&quot;:true,&quot;toolbar&quot;:&quot;zoom layers tags lightbox&quot;,&quot;edit&quot;:&quot;_blank&quot;,&quot;xml&quot;:&quot;&lt;mxfile host=\&quot;app.diagrams.net\&quot; modified=\&quot;2022-10-21T02:08:39.175Z\&quot; agent=\&quot;5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36\&quot; etag=\&quot;SCuM4LE2NdtaU8qmsqFR\&quot; version=\&quot;20.4.2\&quot; type=\&quot;google\&quot;&gt;&lt;diagram id=\&quot;tCH73QwP0SZsCBjILYLj\&quot; name=\&quot;Página-1\&quot;&gt;7VvbcuI4EP0aHuOybr48BhI2u7Wpmt1s1ew8arAA1xibscVtv35btoxvODjEwGQGQiWoJbVbrXOkVisMyGix/S3my/lz5IlggE1vOyAPA4xdG8FvJdhlAmTaOJPMYt/TskLw4v8n8oZauvI9kVQayigKpL+sCidRGIqJrMh4HEebarNpFFSfuuQz0RC8THjQlH72PTnXUmS5RcWT8Gdz/WgH21nFgueN9UiSOfeiTUlEHgdkFEeRzD4ttiMRKOflfsn6jVtq94bFIpRdOiy+/3H3Of6LfUO/Dz1r/fTlmZA7PRlrHqz0gLWxcpd7II5WoSeUEnNAhpu5L8XLkk9U7QbmHGRzuQighOBjIuPomxhFQRSnvYljqp99Te5DGP1w6gdB3jKMQlA41NaIWIpt6zDR3nmAOhEthIx30ER3wI72t0Ycobq8KabP0VrnpYljuhnXgJntNRc+hQ/arW9wMTnu4skqXqceVi4UoXevgFt4peTf6mR09bZWO/aV5WnPzAThNcB/1M0lN+YuO+TGWARc+uuq+kO+1U/4FPnw4NIsouosurXpSaJVPBG6Vxn1NUXEOqJI8ngmZEMRTAHflZotVYOk3WCCDj+n1S5ca0+PtCev6ocPmcUFTvdzdjp06Q26b4cuQZaBXLN4sZ6QzF7XW1/A+gI26TScVqtpJ6vPCmN2g/EJMMbMcJxi3npaj7EDam23eF0GxCYzKCk9lb4JxBDHGg65PHCt48D94NEZNa8cndnHXXy25QDs/1d1NCgcGrTgi6o1TNPNBQ9brTsr7cqlTyL2wQ0ifuOaAmeolFfHoHe96I8ZLmvdNCg6dQtFGPRWddFzrTjNR6ELLBnOj4BnxlAZz6bhuvhXxjNh+Dx4xo196Wx4JraBWGkHtS+PbfcAtq1Aqs0qSm2d7IFqfV+pvAogiJimPZ1Oy6ISGXKhUnCXpNmne2iA8HKbNi06WTP9N31gsuThuxQ984XHQz/X9zV+l7Z/dkuh6nN14N7MwqrVIM48lYuvEUxAywf6iMZMj0/n/BDOy9oe1EO4QZzGKnwoH2TZRk7JMvtRnZe9RR254p8osqM2NWjN1faVg7s8J/Nz7IZi68tMI7FsXc7DRaLLhT5V2JUKp++t2W50FM3X2lyZ6TY47kBMfdqWSh1kWAS1HHspPs/uSl1qIKtlDGfdUxG+UeS9FLka8rFlYGx3xWpXCjCTGJZTUMCsJksocg2HNjI4PTOCIRhbLecEjMDsApTocGNzo8QPSgnqGnBU6YkIwC/bNVtylRfiAYEBodZ86aUo0eEmqESJScCTxJ+8iRVwTBuPx4cD1uKU4OrioY450lEJ5cCjVzHeYxSkPXI0E+Fekx/EbqalyIn0oLh5uHK6xUe94bLD1c6vjsvrZr5stXG1X7zYzCilxUx8GhKzY373/Nq5Udnh3uZDorIIT6qhCTsSmPSIZrfjKnvdM+kR2FNCK9XOibB3D9wxuK9pPjfwm7dp0l8uIXqsw1+KrWzgWkfSB/JTPPBnoaIK4EXFokOVqvInPLjXFQvf85RulZid+OHsTzFVM0oLyd96kpUogu7TICXfHDoK0DDUgRhYx4bwBhyMFLAZWDuCMirK8FbNY6BVCAPgfophwRO5EYlMuSu55F/Tsabszf/zDzX5uD8MKPmYL/xAzeSTCNZCDbBlJWjwvdecqWXUj5JU46jEHkoMx24SqB5r95fLa95sAbZuwPo4wFJJLrOa5Nofza4JrOa10jSKvBuyPg6ysOsYrHboZ9dHFm7e8iQiXvsQ4NzA9YHApcZZObUcWLWsA8HkCcCCYvGNgCwsK75XQR7/Bw==&lt;/diagram&gt;&lt;/mxfile&gt;&quot;}"></div>
+* <script type="text/javascript" src="https://viewer.diagrams.net/js/viewer-static.min.js"></script>
+* </body>
+* </html>
+* @endhtmlonly
+* <em>Tipper FIS</em>
+* </center>
 *
 * 5 membership functions for the inputs
 *
-* -# (service)poor : A gaussian membership function with spread of 1.5 and center on 0
-* -# (service)good : A gaussian membership function with spread of 1.5 and center on 5
-* -# (service)excelent  : A gaussian membership function with spread of 1.5 and center on 10
-* -# (food)rancid : A trapezoidal membership function with points located on [0 0 1 3]
-* -# (food)delicious : A trapezoidal membership function with points located on [7 9 10 10]
-*
-* \image html https://www.mathworks.com/help/examples/fuzzy/win64/BuildMamdaniSystemsAtTheCommandLineExample_02.png
+* -# (service)poor : A @a gaussian membership function with spread of @c 1.5 and center on @c 0
+* -# (service)good : A @a gaussian membership function with spread of @c 1.5 and center on @c 5
+* -# (service)excelent : A @a gaussian membership function with spread of @c 1.5 and center on @c 10
+* -# (food)rancid : A @a trapezoidal membership function with points located on <tt> [0 0 1 3] </tt>
+* -# (food)delicious : A @a trapezoidal membership function with points located on <tt> [7 9 10 10] </tt>
 *
 * and 3 membership functions for the output 
 *
-* -# (tip)cheap : A triangular membership function with points located on [0 5 10]
-* -# (tip)average : A triangular membership function with points located on [10 15 20]
-* -# (tip)generous : A triangular membership function with points located on [20 25 30]
+* -# (tip)cheap : A @a triangular membership function with points located on <tt> [0 5 10] </tt>
+* -# (tip)average : A @a triangular membership function with points located on <tt> [10 15 20] </tt>
+* -# (tip)generous : A @a triangular membership function with points located on <tt> [20 25 30] </tt>
 *
-* \image html https://www.mathworks.com/help/examples/fuzzy/win64/BuildMamdaniSystemsAtTheCommandLineExample_03.png
+* <center>
+* @htmlonly
+* <!DOCTYPE html>
+* <html>
+* <head>
+* <title>tippermfs</title>
+* <meta charset="utf-8"/>
+* </head>
+* <body><div class="mxgraph" style="max-width:100%;border:1px solid transparent;" data-mxgraph="{&quot;highlight&quot;:&quot;#0000ff&quot;,&quot;nav&quot;:true,&quot;resize&quot;:true,&quot;toolbar&quot;:&quot;zoom layers tags lightbox&quot;,&quot;edit&quot;:&quot;_blank&quot;,&quot;xml&quot;:&quot;&lt;mxfile host=\&quot;app.diagrams.net\&quot; modified=\&quot;2022-10-31T01:03:46.138Z\&quot; agent=\&quot;5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36\&quot; etag=\&quot;2-IGhcoIFnCwtGoDrFKq\&quot; version=\&quot;20.5.1\&quot; type=\&quot;google\&quot;&gt;&lt;diagram id=\&quot;TkKrG8LqcgTcTKjQ6oiX\&quot; name=\&quot;Página-1\&quot;&gt;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&lt;/diagram&gt;&lt;/mxfile&gt;&quot;}"></div>
+* <script type="text/javascript" src="https://viewer.diagrams.net/js/viewer-static.min.js"></script>
+* </body>
+* </html>
+* @endhtmlonly
+* <em>Membership functions for the tipper FIS</em>
+* </center>
 *
-* To build a fuzzy system, you must first instantiate an abstract object of
-* type \ref qFIS_t that represents the fuzzy inference system, then the input and 
-* output vectors, fuzzy set vectors for inputs and outputs, and enumerations with 
+* To build the fuzzy system, you must first instantiate an abstract object of
+* type \ref qFIS_t that represents the fuzzy inference system, then the input and
+* output vectors, fuzzy set vectors for inputs and outputs, and enumerations with
 * the tags for all of them. Let's take a look :
 *
 *  @code{.c}
 *  // FIS Object
 *  static qFIS_t tipper;
 *  // I/O Fuzzy Objects
-*  static qFIS_IO_t tipper_inputs[2], tipper_outputs[1];
+*  static qFIS_Input_t tipper_inputs[ 2 ];
+*  static qFIS_Output_t tipper_outputs[ 1 ];
 *  // I/O Membership Objects
 *  static qFIS_MF_t MFin[5], MFout[3];
 *  // I/O Names
@@ -177,8 +255,11 @@
 *  enum { tip_cheap, tip_average, tip_generous};
 *  @endcode
 *
-* Please note that all tag names are unique. Then we will define the rules of 
-* the fuzzy system using the previously defined tags. Rules should be defined through
+* @attention
+* Please note that all tag names are unique. 
+*
+* Then, we will define the rules of 
+* the fuzzy system using the previously defined tags. Rules should be defined as
 * an array of type \ref qFIS_Rules_t and the contents should be rules constructed
 * with the provided statements: 
 * 
@@ -211,7 +292,7 @@
 *  @endcode
 *
 * Once all the necessary elements have been defined, we can proceed to the 
-* construction of the system. First we must configure the inputs and outputs by
+* construction of the fuzzy system. First, we must configure the inputs and outputs by
 * setting the ranges of each. For this, we will use the \ref qFIS_InputSetup() 
 * and qFIS_OutputSetup() functions as follows:
 *
@@ -235,9 +316,10 @@
 *  static const float tip_generous_p[] = { 20.0f, 25.0f, 30.0f }
 *  @endcode
 *
-* Note: The number of parameters may vary depending on the shape of the membership function.
+* @note
+* The number of parameters may vary depending on the shape of the membership function.
 *
-* Then, let's proceed to configure the membership functions by relating I/O, 
+* the next step is to configure the membership functions by relating I/O, 
 * tags, shape and parameters one by one by using the \ref qFIS_SetMF() API as follows:
 *
 *  @code{.c}
@@ -265,7 +347,7 @@
 *              rules, rStrength, 3u );
 *  @endcode
 *
-* <b> Evaluating the Fuzzy Inference System</b>
+* @section qfis_eval Evaluating a Fuzzy Inference System
 *
 * If we already have a fuzzy system configured with \ref qFIS_Setup(), we can 
 * evaluate it by using \ref qFIS_Fuzzify(), \ref qFIS_Inference() and 
@@ -274,8 +356,8 @@
 * obtained with \ref qFIS_GetOutput()
 *
 * To show its use, first we are going to put everything together in a single 
-* code snippet, and we are going to create a function tipper_run() that will be in
-* charge of evaluating the fuzzy system by invoking the previously mentioned functions.
+* code snippet and we are going to create two functions, @c tipper_init() and @c tipper_run() that will be in
+* charge of setting up the fuzzy inference system and evaluating it respectively.
 *
 *  @code{.c}
 *  #include "tipper_fis.h"
@@ -315,7 +397,8 @@
 *  static const float tip_average_p[] = { 10.0f, 15.0f, 20.0f };
 *  static const float tip_generous_p[] = { 20.0f, 25.0f, 30.0f };
 *  
-*  void tipper_init( void ){
+*  void tipper_init( void )
+*  {
 *      // Set inputs 
 *      qFIS_InputSetup( tipper_inputs, service, 0.0f, 10.0f );
 *      qFIS_InputSetup( tipper_inputs, food, 0.0f, 10.0f );
@@ -339,7 +422,8 @@
 *                  rules, rStrength, 3u );
 *  }
 *  
-*  void tipper_run( float *inputs, float *outputs ) {
+*  void tipper_run( float *inputs, float *outputs )
+*  {
 *      // Set the crips inputs
 *      qFIS_SetInput( tipper_inputs, service, inputs[ service ] );
 *      qFIS_SetInput( tipper_inputs, food, inputs[ food ] );
@@ -357,15 +441,18 @@
 *  }
 *  @endcode
 *
-* Building a fuzzy system in code can become tedious, especially when you want 
-* to tune membership function parameters, where it would be appropriate to have 
-* a graphical tool that reflects the changes made by each tweak.
 *
-* Although the qFIS engine does not provide such a tool, a well-known tool can
-* be used to build the fuzzy system and generate qFIS-compatible C code. The 
-* tool we are talking about is MATLAB's Fuzzy Logic Toolbox and qLibs provides
-* a MATLAB command that can be used to take a fis object generated from MATLAB
-* and generate C code based on the qFIS engine.
+* @section qfis_codegen Code generation
+*
+* Building a fuzzy system in code can become tedious, especially when you want
+* to tune membership function parameters. It would be appropriate to have a
+* graphical tool that reflects the changes made by each tweak.
+*
+* Although the qFIS engine does not provide such a tool, a well-known tool,
+* MATLAB's Fuzzy Logic Toolbox, can be used to build the fuzzy system and
+* generate qFIS-compatible C code. qLibs provides a MATLAB command that can be
+* used to take a FIS object generated by that tool and generate C code based
+* on the qFIS engine.
 *
 * Download the C-Code generator here: 
 *

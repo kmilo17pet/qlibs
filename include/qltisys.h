@@ -1,7 +1,7 @@
 /*!
  * @file qltisys.h
  * @author J. Camilo Gomez C.
- * @version 1.07
+ * @version 1.09
  * @note This file is part of the qTools distribution.
  * @brief API to simulate continuous and discrete LTI systems.
  **/
@@ -15,7 +15,6 @@ extern "C" {
 
     #include <stdlib.h>
     #include <stdint.h>
-    #include <float.h>
     #include "qtdl.h"
     #include "qnuma.h"
 
@@ -28,24 +27,28 @@ extern "C" {
     /**
     * @brief Macro to specify that the system is time-discrete
     */
-    #define QLTISYS_DISCRETE        ( -1.0f )
+    #define QLTISYS_DISCRETE        ( -1.0F )
+
+    /*cstat -MISRAC2012-Rule-2.3*/
 
     /**
-    * @brief Type to specify continuos states 
+    * @brief Type to specify continuos states
     */
     typedef qNumA_state_t qLTISys_ContinuosX_t;
 
     /**
-    * @brief Type to specify continuos states 
+    * @brief Type to specify continuos states
     */
     typedef float qLTISys_DiscreteX_t;
+
+    /*cstat +MISRAC2012-Rule-2.3*/
 
     /**
     * @brief A LTI system object
     * @details The instance should be initialized using the qLTISys_Setup() API.
     * @note Do not access any member of this structure directly.
     */
-    typedef struct _qLTISys_s
+    typedef struct _qLTISys_s //skipcq: CXX-E2000
     {
         /*! @cond  */
         float (*sysUpdate)( struct _qLTISys_s *sys, float u );
@@ -61,6 +64,7 @@ extern "C" {
 
     /**
     * @brief Drives the LTI system recursively using the input signal provided
+    * @pre Instance must be previously initialized by qLTISys_Setup()
     * @note The user must ensure that this function is executed in the time
     * specified in @a dt either by using a HW or SW timer, a real time task,
     * or a timing service.
@@ -103,6 +107,16 @@ extern "C" {
     int qLTISys_IsInitialized( const qLTISys_t * const sys );
 
     /**
+    * @brief Set the initial states for the given system
+    * @pre System should be previously initialized by using qLTISys_Setup()
+    * @param[in] sys A pointer to the LTI system instance
+    * @param[in] xi An array of n-elements with the initial state values. User
+    * can pass @c NULL as argument to set initial conditions equal to zero.
+    * @return 1 on success, otherwise return 0.
+    */
+    int qLTISys_SetInitStates( qLTISys_t * const sys, const float * const xi );
+
+    /**
     * @brief Setup and initialize an instance of a LTI system.
     * @param[in] sys A pointer to the continuous LTI system instance
     * @param[in,out] num : An array of n+1(if continuous) or nb+1(if discrete)
@@ -114,23 +128,26 @@ extern "C" {
     * Coefficients should be given in descending powers of the n or nb-degree
     * polynomial. Coefficients will be normalized internally.
     * @param[in,out] x Initial conditions of the system. For a continuos system,
-    * an array of type qNumA_state_t with n elements.
-    * For a discrete system, an array of type float with max(na,nb) elements
+    * an array of type qLTISys_ContinuosX_t with n elements.
+    * For a discrete system, an array of type qLTISys_DiscreteX_t with
+    * max(na,nb) elements
     * For both cases, the supplied array will be updated on every invocation of
     * qLTISys_Excite().
     * @param[in] nb The order of polynomial @a num + 1 (Only for discrete systems).
-    * example: b0 + b1*z^-1 + b2*z^-2 + b3*z^-3 , nb = 4
+    * example: \f$ b_{0}+b_{1}z^{-1}+b_{2}z^{-2}+b_{3}z^{-3}, nb = 4 \f$
     * @note If the system is continuous, pass 0 as argument.
     * @param[in] na The order of polynomial @a den. (if system is discrete). For
     * continuous system the number of elements of @a num and @a den.
-    * 
-    * example 1: a0 + a1*z^-1 + a2*z^-2 + a3*z^-3 , na = 3
-    * 
-    * example 2: num = b0*s^2 + b1*s + b2 , den = a0*s^2 + a1*s + a2 , na = 3
+    *
+    * example 1: \f$ a_{0}+a_{1}z^{-1}+a_{2}z^{-2}+a_{3}z^{-3}, na = 3 \f$
+    *
+    * example 2: \f$ \frac{ b_{0}s^{2}+b_{1}s+b_{2} }{ a_{0}s^{2} + a_{1}s + a_{2} }, na = 3 \f$
     * @note For continuous systems, size of @a num and @a den should be equal.
     * @param[in] dt The time-step of the continuos system. For discrete systems
     * pass #QLTISYS_DISCRETE as argument
     * @return 1 on success, otherwise return 0.
+    * @note By default, initial conditions are set to zero. To change the initial
+    * conditions to the desired values, use the qLTISys_SetInitStates() function.
     */
     int qLTISys_Setup( qLTISys_t * const sys,
                        float *num,
@@ -149,7 +166,7 @@ extern "C" {
     * the delay lines of @a x.
     * @param[in] c An array of @a wsize elements with the coefficients of the
     * FIR filter. Coefficients should be given in descending powers of the
-    * nth-degree polynomial. To ignore pass NULL.
+    * nth-degree polynomial. To ignore pass @c NULL.
     * @param[in] wsize The number of elements of @a w.
     * @param[in] x A sample of the input signal.
     * @return If @a c is provided, returns the evaluation of the FIR filter.
@@ -165,11 +182,11 @@ extern "C" {
     * @param[in] sys A pointer to the continuous LTI system instance
     * @param[in] im The desired integration method. Use one of the following:
     *
-    * qNumA_IntegralRe : Integrate using the Rectangular rule.
+    * @c qNumA_IntegralRe : Integrate using the Rectangular rule.
     *
-    * qNumA_IntegralTr : (default) Integrate using the Trapezoidal rule.
+    * @c qNumA_IntegralTr : (default) Integrate using the Trapezoidal rule.
     *
-    * qNumA_IntegralSi : Integrate using the Simpson's 1/3 rule.
+    * @c qNumA_IntegralSi : Integrate using the Simpson's 1/3 rule.
     *
     * @return 1 on success, otherwise return 0.
     */

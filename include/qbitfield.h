@@ -14,10 +14,10 @@ extern "C" {
 #endif
 
     #include <stdint.h>
-    #include <string.h>
+    #include <stdlib.h>
 
     /** @addtogroup  qbitfield A Bit-Field manipulation library
-    * @brief API for the Bit-Field manipulation libraryr
+    * @brief API for the Bit-Field manipulation library
     *  @{
     */
 
@@ -38,7 +38,7 @@ extern "C" {
     /**
     * @brief Use to determine the uint8_t array-size for a BitField.
     */
-    #define QBITFIELD_SIZE( NBITS )     ( 4* ( ( ( NBITS-1 ) / 32 ) + 1 ) )
+    #define QBITFIELD_SIZE( NBITS )     ( 4 * ( ( ( (NBITS)-1 ) / 32 ) + 1 ) )
 
     /**
     * @brief Setup a initialize a BitField instance.
@@ -165,7 +165,7 @@ extern "C" {
     * @param[in] dst Pointer to the destination array where the content is to
     * be copied.
     * @param[in] n Number of bytes to copy.
-    * @return Destination is returned on success, otherwise NULL.
+    * @return Destination is returned on success, otherwise @c NULL.
     */
     void* qBitField_Dump( const qBitField_t * const b,
                           void * const dst,

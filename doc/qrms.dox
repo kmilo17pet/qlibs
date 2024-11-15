@@ -1,23 +1,23 @@
 /*! @page qrms_desc  Recursive Root Mean Square estimator
-* Real-time digital systems often require the calculation of a root-mean, such 
-* as a root-mean square (RMS) level or average magnitude of a complex signal. 
-* While averaging can be efficiently implemented by most microprocessors, 
-* obtaining an efficient and rapidly converging algorithm is surely a 
-* time-consuming task between adjustments and optimizations that need to be 
-* performed. By the other hand, the square root may not be–especially with 
-* low-cost hardware. If the processor doesn't implement a fast square root 
-* function, it must be implemented in software; although this yields accurate 
-* results, it may not be efficient.
+* Real-time digital systems often require the calculation of a root-mean, such
+* as a root-mean-square (RMS) level or average magnitude of a complex signal.
+* While averaging can be efficiently implemented by most microprocessors,
+* obtaining an efficient and rapidly converging algorithm is surely a
+* time-consuming task due to the adjustments and optimizations that need to be
+* performed. On the other hand, calculating the square root can be challenging,
+* especially with low-cost hardware. If the processor does not have a built-in
+* fast square root function, it must be implemented in software. While this
+* can provide accurate results, it may not be as efficient.
 *
 * \ref qrms provides a super-efficient method to compute the Recursive Root
-* Mean Square (RMS). The implementation uses 3-stage filtering and Newton's 
-* method to obtain the square root. The filter parameters are perfectly tuned 
-* and optimized to converge in around 16 cycles operating at a sampling rate 
-* of 1mS. This means that you must configure your embedded system to meet those 
-* specifications, either by configuring a timer interrupt or by delegating 
+* Mean Square (RMS). The implementation uses 3-stage filtering and Newton's
+* method to obtain the square root. The filter parameters are perfectly tuned
+* and optimized to converge in around 16 cycles, operating at a sampling rate
+* of 1mS. This means that you must configure your embedded system to meet those
+* specifications, either by configuring a timer interrupt or by delegating
 * responsibility to a real-time task.
 *
-* Example :  By using a timer interrupt
+* @section qrms_ex1 Example :  By using a timer interrupt
 *
 *  rms_compute.c
 *  @code{.c}
@@ -31,12 +31,14 @@
 *  static volatile float rms_value = 0.0f;
 *  static float window[ RMS_WIN_SIZE ] = { 0.0f };
 *
-*  void TimerA0_Int_Handler( void ) { //interrupt tick at 1mS
+*  void TimerA0_Int_Handler( void ) //interrupt tick at 1mS
+*  {
 *      rms_value = qRMS_Update( &rms_instance, get_sample() );
 *      HAL_TimerA0_ClearStatusFlag();
 *  }
 *
-*  void rms_setup( void ) {
+*  void rms_setup( void )
+*  {
 *      qRMS_Setup( &rms_instance, window, RMS_WIN_SIZE );
 *      HAL_TimerA0_Init();
 *      HAL_TimerA0_SetPeriod_mS( 1 );
@@ -44,7 +46,8 @@
 *      HAL_TimerA0_Enable();
 *  }
 *
-*  float rms_getvalue( void ) { 
+*  float rms_getvalue( void )
+*  {
 *      return rms_value;
 *  }
 *

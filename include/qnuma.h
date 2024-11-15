@@ -13,7 +13,9 @@
 extern "C" {
 #endif
 
-    typedef struct _qNumA_state_s
+    #include <stdbool.h>
+
+    typedef struct _qNumA_state_s //skipcq: CXX-E2000
     {
         /*! @cond  */
         float x[ 3 ];
@@ -23,7 +25,8 @@ extern "C" {
     /*! @cond  */
     typedef float (*qNumA_IntegrationMethod_t)( qNumA_state_t *x,
                                                 const float s,
-                                                const float dt );
+                                                const float dt,
+                                                const bool bUpdate );
      /*! @endcond  */
 
     /**
@@ -47,7 +50,8 @@ extern "C" {
     */
     float qNumA_IntegralRe( qNumA_state_t *x,
                             const float s,
-                            const float dt );
+                            const float dt,
+                            const bool bUpdate );
 
      /**
     * @brief Perform a numerical integration step by using the trapezoidal rule.
@@ -58,7 +62,8 @@ extern "C" {
     */
     float qNumA_IntegralTr( qNumA_state_t *x,
                             const float s,
-                            const float dt );
+                            const float dt,
+                            const bool bUpdate );
 
      /**
     * @brief Perform a numerical integration step by using the Simpson's rule.
@@ -69,7 +74,8 @@ extern "C" {
     */
     float qNumA_IntegralSi( qNumA_state_t *x,
                             const float s,
-                            const float dt );
+                            const float dt,
+                            const bool bUpdate);
 
      /**
     * @brief Perform a numerical derivation step by using the delta rule.
@@ -78,10 +84,36 @@ extern "C" {
     * @param[in] dt The time-step given in seconds.
     * @return The current value of the derivation step.
     */
-    float qNumA_Derivative( qNumA_state_t *x,
-                            const float s,
-                            const float dt );
+    float qNumA_Derivative2p( qNumA_state_t *x,
+                              const float s,
+                              const float dt,
+                              const bool bUpdate );
 
+     /**
+    * @brief Perform a numerical derivation step by using the three-point
+    * backward-difference.
+    * @param[in] x A pointer to the numerical state instance
+    * @param[in] s The input signal
+    * @param[in] dt The time-step given in seconds.
+    * @return The current value of the derivation step.
+    */
+    float qNumA_DerivativeBa( qNumA_state_t *x,
+                              const float s,
+                              const float dt,
+                              const bool bUpdate );
+
+     /**
+    * @brief Perform a numerical derivation step by using the three-point
+    * forward-difference.
+    * @param[in] x A pointer to the numerical state instance
+    * @param[in] s The input signal
+    * @param[in] dt The time-step given in seconds.
+    * @return The current value of the derivation step.
+    */
+    float qNumA_DerivativeFo( qNumA_state_t *x,
+                              const float s,
+                              const float dt,
+                              const bool bUpdate );
 
 #ifdef __cplusplus
 }
