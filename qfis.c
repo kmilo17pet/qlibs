@@ -1039,7 +1039,7 @@ static float qFIS_SMF( const qFIS_IO_Base_t * const in,
                        const float *p,
                        const size_t n )
 {
-    float a, b, tmp, y;
+    float a, b, tmp, y = 0.0F;
     float x = in[ 0 ].value;
     (void)n;
 
@@ -1060,7 +1060,7 @@ static float qFIS_SMF( const qFIS_IO_Base_t * const in,
         y = ( 1.0F - ( 2.0F*tmp*tmp ) );
     }
     else {
-        y = 0.0F;
+        /* Nothing to do here */
     }
 
     return y;
@@ -1094,7 +1094,7 @@ static float qFIS_ZMF( const qFIS_IO_Base_t * const in,
                        const float *p,
                        const size_t n )
 {
-    float a, b, tmp, y;
+    float a, b, tmp, y = 0.0F;
     float x = in[ 0 ].value;
     (void)n;
 
@@ -1115,7 +1115,7 @@ static float qFIS_ZMF( const qFIS_IO_Base_t * const in,
         y = 2.0F*tmp*tmp;
     }
     else {
-        y = 0.0F;
+        /* Nothing to do here */
     }
 
     return y;
