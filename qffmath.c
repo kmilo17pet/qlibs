@@ -267,11 +267,13 @@ float qFFMath_Round( float x )
     float ret = x;
 
     cast_reinterpret( i0, x, int32_t );
-    /*cstat -MISRAC2012-Rule-10.1_R7 -MISRAC2012-Rule-10.3 -MISRAC2012-Rule-10.1_R6 -ATH-shift-neg -CERT-INT34-C_c -MISRAC2012-Rule-1.3_n -MISRAC2012-Rule-10.4_a*/
+    /*cstat -MISRAC2012-Rule-10.1_R7 -MISRAC2012-Rule-10.3 */
+    /*cstat -MISRAC2012-Rule-10.1_R6 -ATH-shift-neg -CERT-INT34-C_c */
+    /*cstat -MISRAC2012-Rule-1.3_n -MISRAC2012-Rule-10.4_a*/
     j0 = ( ( i0 >> 23 ) & 0xFF ) - 0x7F;
     if ( j0 < 23 ) {
         if ( j0 < 0 ) {
-            i0 &= (int32_t)0x80000000;
+            i0 &= (int32_t)0x80000000U;
             if ( -1 == j0 ) {
                 i0 |= 0x3F800000;
             }
@@ -286,7 +288,9 @@ float qFFMath_Round( float x )
             }
         }
     }
-    /*cstat +MISRAC2012-Rule-10.1_R7 +MISRAC2012-Rule-10.3 +MISRAC2012-Rule-10.1_R6 +ATH-shift-neg +CERT-INT34-C_c +MISRAC2012-Rule-1.3_n +MISRAC2012-Rule-10.4_a*/
+    /*cstat +MISRAC2012-Rule-10.1_R7 +MISRAC2012-Rule-10.3 */
+    /*cstat +MISRAC2012-Rule-10.1_R6 +ATH-shift-neg +CERT-INT34-C_c */
+    /*cstat +MISRAC2012-Rule-1.3_n +MISRAC2012-Rule-10.4_a */
     return ret;
 }
 /*============================================================================*/
@@ -296,7 +300,9 @@ float qFFMath_Floor( float x )
     float ret = x;
 
     cast_reinterpret( i0, x, int32_t );
-    /*cstat -MISRAC2012-Rule-10.1_R7 -MISRAC2012-Rule-10.3 -MISRAC2012-Rule-10.1_R6 -ATH-shift-neg -CERT-INT34-C_c -MISRAC2012-Rule-1.3_n -MISRAC2012-Rule-10.4_a*/
+    /*cstat -MISRAC2012-Rule-10.1_R7 -MISRAC2012-Rule-10.3 */
+    /*cstat -MISRAC2012-Rule-10.1_R6 -ATH-shift-neg -CERT-INT34-C_c */
+    /*cstat -MISRAC2012-Rule-1.3_n -MISRAC2012-Rule-10.4_a*/
     j0 = ( ( i0 >> 23 ) & 0xFF ) - 0x7F;
     if ( j0 < 23 ) {
         if ( j0 < 0 ) {
@@ -304,7 +310,7 @@ float qFFMath_Floor( float x )
                 i0 = 0;
             }
             else if ( 0 != ( i0 & 0x7FFFFFFF ) ) {
-                i0 = (int32_t)0xBF800000;
+                i0 = (int32_t)0xBF800000U;
             }
             else {
                 /*nothing to do here*/
@@ -322,7 +328,9 @@ float qFFMath_Floor( float x )
             }
         }
     }
-    /*cstat +MISRAC2012-Rule-10.1_R7 +MISRAC2012-Rule-10.3 +MISRAC2012-Rule-10.1_R6 +ATH-shift-neg +CERT-INT34-C_c +MISRAC2012-Rule-1.3_n +MISRAC2012-Rule-10.4_a*/
+    /*cstat +MISRAC2012-Rule-10.1_R7 +MISRAC2012-Rule-10.3 */
+    /*cstat +MISRAC2012-Rule-10.1_R6 +ATH-shift-neg +CERT-INT34-C_c */
+    /*cstat +MISRAC2012-Rule-1.3_n +MISRAC2012-Rule-10.4_a */
     return ret;
 }
 /*============================================================================*/
@@ -332,15 +340,17 @@ float qFFMath_Ceil( float x )
     float ret = x;
 
     cast_reinterpret( i0, x, int32_t );
-    /*cstat -MISRAC2012-Rule-10.1_R7 -MISRAC2012-Rule-10.3 -MISRAC2012-Rule-10.1_R6 -ATH-shift-neg -CERT-INT34-C_c -MISRAC2012-Rule-1.3_n -MISRAC2012-Rule-10.4_a*/
+    /*cstat -MISRAC2012-Rule-10.1_R7 -MISRAC2012-Rule-10.3 */
+    /*cstat -MISRAC2012-Rule-10.1_R6 -ATH-shift-neg -CERT-INT34-C_c */
+    /*cstat -MISRAC2012-Rule-1.3_n -MISRAC2012-Rule-10.4_a*/
     j0 = ( ( i0 >> 23 ) & 0xFF ) - 0x7F;
     if ( j0 < 23 ) {
         if ( j0 < 0 ) {
             if ( i0 < 0 ) {
-                i0 = (int32_t)0x80000000;
+                i0 = (int32_t)0x80000000U;
             }
             else if ( 0 != i0 ) {
-                i0 = (int32_t)0x3F800000;
+                i0 = (int32_t)0x3F800000U;
             }
             else {
                 /*nothing to do here*/
@@ -358,7 +368,9 @@ float qFFMath_Ceil( float x )
             }
         }
     }
-    /*cstat +MISRAC2012-Rule-10.1_R7 +MISRAC2012-Rule-10.3 +MISRAC2012-Rule-10.1_R6 +ATH-shift-neg +CERT-INT34-C_c +MISRAC2012-Rule-1.3_n +MISRAC2012-Rule-10.4_a*/
+    /*cstat +MISRAC2012-Rule-10.1_R7 +MISRAC2012-Rule-10.3 */
+    /*cstat +MISRAC2012-Rule-10.1_R6 +ATH-shift-neg +CERT-INT34-C_c */
+    /*cstat +MISRAC2012-Rule-1.3_n +MISRAC2012-Rule-10.4_a */
     return ret;
 }
 /*============================================================================*/
@@ -368,14 +380,18 @@ float qFFMath_Trunc( float x )
     float ret = x;
 
     cast_reinterpret( i0, x, int32_t );
-    /*cstat -MISRAC2012-Rule-10.1_R7 -MISRAC2012-Rule-10.3 -MISRAC2012-Rule-10.1_R6 -ATH-shift-neg -CERT-INT34-C_c -MISRAC2012-Rule-1.3_n -MISRAC2012-Rule-10.4_a*/
-    sx = i0 & (int32_t)0x80000000;
+    /*cstat -MISRAC2012-Rule-10.1_R7 -MISRAC2012-Rule-10.3 */
+    /*cstat -MISRAC2012-Rule-10.1_R6 -ATH-shift-neg -CERT-INT34-C_c */
+    /*cstat -MISRAC2012-Rule-1.3_n -MISRAC2012-Rule-10.4_a*/
+    sx = i0 & (int32_t)0x80000000U;
     j0 = ( ( i0 >> 23 ) & 0xFF ) - 0x7F;
     if ( j0 < 23 ) {
         const int32_t tmp = ( j0 < 0 ) ? sx : ( sx | ( i0 & ~( 0x007FFFFF >> j0 ) ) );
         cast_reinterpret( ret, tmp, float );
     }
-    /*cstat +MISRAC2012-Rule-10.1_R7 +MISRAC2012-Rule-10.3 +MISRAC2012-Rule-10.1_R6 +ATH-shift-neg +CERT-INT34-C_c +MISRAC2012-Rule-1.3_n +MISRAC2012-Rule-10.4_a*/
+    /*cstat +MISRAC2012-Rule-10.1_R7 +MISRAC2012-Rule-10.3 */
+    /*cstat +MISRAC2012-Rule-10.1_R6 +ATH-shift-neg +CERT-INT34-C_c */
+    /*cstat +MISRAC2012-Rule-1.3_n +MISRAC2012-Rule-10.4_a */
     return ret;
 }
 /*============================================================================*/
@@ -1250,7 +1266,7 @@ static float poly_laguerre_recursion( size_t n,
 {
     const float l0 = 1.0F;
     float y;
-
+    /*cstat -MISRAC2012-Rule-14.3_b*/
     if ( 0U == n ) {
         y = l0;
     }
@@ -1275,7 +1291,7 @@ static float poly_laguerre_recursion( size_t n,
             y = ln;
         }
     }
-
+    /*cstat +MISRAC2012-Rule-14.3_b*/
     return y;
 }
 /*============================================================================*/
@@ -1302,7 +1318,8 @@ static float poly_laguerre_large_n( size_t n,
     const float lnPre = lg_b - ln_fact + ( 0.5F*x ) + preTerm1 - preTerm2;
     const float serTerm1 = qFFMath_Sin( QFFM_PI*a );
     const float th2 = 2.0F*th;
-    const float serTerm2 = qFFMath_Sin( ( ( 0.25F*eta*( ( th2 ) - qFFMath_Sin( th2 ) ) ) + QFFM_PI_4 ) );
+    const float sin_th2 = qFFMath_Sin( th2 );
+    const float serTerm2 = qFFMath_Sin( ( ( 0.25F*eta*( th2 - sin_th2 ) ) + QFFM_PI_4 ) );
 
     return qFFMath_Exp( lnPre )*( serTerm1 + serTerm2 );
 }
@@ -1313,7 +1330,10 @@ static float poly_laguerre_hyperg( size_t n,
 {
     const float b = alpha + 1.0F;
     const float mx = -x;
-    const float tc_sgn = ( x < 0.0F ) ? 1.0F : ( ( 1U == ( n % 2U ) ) ? -1.0F : 1.0F );
+    /*cstat -MISRAC2012-Rule-14.3_b*/
+    const float tc_sgn = ( x < 0.0F ) ? 1.0F :
+                                        ( ( 1U == ( n % 2U ) ) ? -1.0F : 1.0F );
+    /*cstat +MISRAC2012-Rule-14.3_b*/
     const float ax = qFFMath_Abs( x );
     float tc = 1.0F;
 
@@ -1330,7 +1350,8 @@ static float poly_laguerre_hyperg( size_t n,
     for ( int i = ( N - 1 ) ; i >= 0; --i ) {
         /*cstat -CERT-FLP36-C -MISRAC++2008-5-0-7*/
         const float k = (float)i;
-        term *= ( b + k )/((float)( N - i ))*( k + 1.0F )/mx;
+        const int tmp = N - i;
+        term *= ( b + k )/( (float)tmp )*( k + 1.0F )/mx;
         /*cstat +CERT-FLP36-C +MISRAC++2008-5-0-7*/
         sum += term;
     }
@@ -1344,7 +1365,7 @@ float qFFMath_Assoc_laguerre( size_t n,
 {
     float y;
     /*cstat -CERT-FLP36-C*/
-    const float alpha = (float)m;
+    const float a = (float)m;
     const float N = (float)n;
     /*cstat +CERT-FLP36-C -MISRAC2012-Rule-13.5*/
     if ( ( x < 0.0F ) || qFFMath_IsNaN( x ) ) {
@@ -1354,26 +1375,26 @@ float qFFMath_Assoc_laguerre( size_t n,
         y = 1.0F;
     }
     else if ( 1U == n ) {
-        y = 1.0F + alpha - x;
+        y = 1.0F + a - x;
     }
     else if ( qFFMath_IsEqual( 0.0F, x ) ) {
-        float prod = alpha + 1.0F;
+        float prod = a + 1.0F;
         for ( size_t i = 2U ; i < n ; ++i ) {
             /*cstat -CERT-FLP36-C*/
             const float k = (float)i;
             /*cstat +CERT-FLP36-C*/
-            prod *= ( alpha + k )/k;
+            prod *= ( a + k )/k;
         }
         y = prod;
     }
-    else if ( ( alpha > -1.0F ) && ( x < ( ( 2.0F*( alpha + 1.0F ) ) + ( 4.0F*N ) ) ) ) {
-        y = poly_laguerre_large_n( n, alpha, x );
+    else if ( ( a > -1.0F ) && ( x < ( ( 2.0F*( a + 1.0F ) ) + ( 4.0F*N ) ) ) ) {
+        y = poly_laguerre_large_n( n, a, x );
     }
-    else if ( ( ( x > 0.0F ) && ( alpha < -( N + 1.0F ) ) ) ) {
-        y = poly_laguerre_recursion( n, alpha, x );
+    else if ( ( ( x > 0.0F ) && ( a < -( N + 1.0F ) ) ) ) {
+        y = poly_laguerre_recursion( n, a, x );
     }
     else {
-        y = poly_laguerre_hyperg( n, alpha, x );
+        y = poly_laguerre_hyperg( n, a, x );
     }
     /*cstat +MISRAC2012-Rule-13.5*/
     return y;
@@ -1409,7 +1430,8 @@ static float poly_legendre_p( size_t l,
                     /*cstat -CERT-FLP36-C*/
                     const float ll = (float)i;
                     /*cstat +CERT-FLP36-C*/
-                    p_l = ( 2.0F*x* p_lm1 ) - p_lm2 - ( ( ( x*p_lm1 ) - p_lm2)/ll );
+                    const float x_p_lm1 = x*p_lm1;
+                    p_l = ( 2.0F*x_p_lm1 ) - p_lm2 - ( ( x_p_lm1 - p_lm2)/ll );
                     p_lm2 = p_lm1;
                     p_lm1 = p_l;
                 }
@@ -1466,7 +1488,8 @@ float qFFMath_Assoc_legendre( size_t n,
                 for ( size_t i = ( m + 2U ) ; i <= n ; ++i ) {
                     const float j = (float)i;
                     /*cstat +CERT-FLP36-C*/
-                    p_lm = ( ( ( 2.0F*j ) - 1.0F )*x*p_lm1m ) - ( ( j + M - 1.0F )*p_lm2m/( j - M ) );
+                    p_lm = ( ( ( 2.0F*j ) - 1.0F )*x*p_lm1m ) -
+                           ( ( j + M - 1.0F )*p_lm2m/( j - M ) );
                     p_lm2m = p_lm1m;
                     p_lm1m = p_lm;
                 }
@@ -1487,7 +1510,8 @@ float qFFMath_Beta( float x,
         result = QFFM_NAN;
     }
     else {
-        const float bet = qFFMath_LGamma( x ) + qFFMath_LGamma( y ) - qFFMath_LGamma( x + y );
+        const float bet = qFFMath_LGamma( x ) + qFFMath_LGamma( y ) -
+                          qFFMath_LGamma( x + y );
         result = qFFMath_Exp( bet );
     }
     /*cstat +MISRAC2012-Rule-13.5*/
@@ -1502,9 +1526,8 @@ static float ellint_rf( float x,
     float result;
 
 
-    if ( ( x < 0.0F ) || ( y < 0.0F ) || ( z < 0.0F ) ||
-        ( ( x + y ) < loLim ) || ( ( x + z ) < loLim ) || ( ( y + z) < loLim )
-       ) {
+    if ( ( x < 0.0F ) || ( y < 0.0F ) || ( z < 0.0F ) || ( ( x + y ) < loLim )
+         || ( ( x + z ) < loLim ) || ( ( y + z) < loLim ) ) {
         result = QFFM_NAN;
     }
     else {
@@ -1766,10 +1789,10 @@ float qFFMath_Comp_ellint_2( float k )
     }
     else {
         const float kk = k*k;
-        const float one_m_kk = 1.0F - kk;
+        const float t = 1.0F - kk;
         const float c13 = 1.0F/3.0F;
 
-        y = ellint_rf( 0.0F, one_m_kk, 1.0F ) - ( c13*kk*ellint_rd( 0.0F, one_m_kk, 1.0F ) );
+        y = ellint_rf( 0.0F, t, 1.0F ) - ( c13*kk*ellint_rd( 0.0F, t, 1.0F ) );
     }
 
     return y;
@@ -1779,20 +1802,18 @@ float qFFMath_Comp_ellint_3( float k,
                              float nu )
 {
     float y;
-    const float abs_k = qFFMath_Abs( k );
     /*cstat -MISRAC2012-Rule-13.5*/
-    if ( qFFMath_IsNaN( k ) || qFFMath_IsNaN( nu ) || ( abs_k > 1.0F ) ) { //no side effects here
+    if ( qFFMath_IsNaN( k ) || qFFMath_IsNaN( nu ) || ( qFFMath_Abs( k ) > 1.0F ) ) { //no side effects here
         y = QFFM_NAN;
     }
     else if ( qFFMath_IsEqual( 1.0F, nu ) ) {
         y = QFFM_INFINITY;
     }
     else {
-        const float kk = k*k;
-        const float one_m_kk = 1.0F - kk;
+        const float t = 1.0F - ( k*k );
         const float c13 = 1.0F/3.0F;
 
-        y = ellint_rf( 0.0F, one_m_kk, 1.0F ) + ( c13*nu*ellint_rj( 0.0F, one_m_kk, 1.0F, 1.0F - nu ) );
+        y = ellint_rf( 0.0F, t, 1.0F ) + ( c13*nu*ellint_rj( 0.0F, t, 1.0F, 1.0F - nu ) );
     }
     /*cstat +MISRAC2012-Rule-13.5*/
     return y;
@@ -1803,7 +1824,7 @@ float qFFMath_Ellint_1( float k,
 {
     float y;
     /*cstat -MISRAC2012-Rule-13.5*/
-    if ( qFFMath_IsNaN( k ) || qFFMath_IsNaN( phi ) || ( qFFMath_Abs(k) > 1.0F ) ) { //no side effects here
+    if ( qFFMath_IsNaN( k ) || qFFMath_IsNaN( phi ) || ( qFFMath_Abs( k ) > 1.0F ) ) { //no side effects here
         y = QFFM_NAN;
     }
     else {
@@ -1963,7 +1984,7 @@ static float expint_Ei_asymp( float x )
 static float expint_E1( float x )
 {
     float y;
-
+    /*cstat -MISRAC2012-Rule-14.3_b*/
     if ( x < 0.0F ) {
         y = -expint_Ei( -x );
     }
@@ -1976,7 +1997,7 @@ static float expint_E1( float x )
     else {
         y = expint_E1_asymp( x );
     }
-
+    /*cstat +MISRAC2012-Rule-14.3_b*/
     return y;
 }
 /*============================================================================*/
@@ -1995,7 +2016,8 @@ static float expint_En_cont_frac( size_t n,
 
     for ( int i = 1; i <= maxIter; ++i ) {
         /*cstat -MISRAC++2008-5-0-7 -CERT-FLP36-C*/
-        const float a = -( (float)( i*( nm1 + i ) ) );
+        const int tmp = i*( nm1 + i );
+        const float a = -( (float)tmp );
         /*cstat MISRAC++2008-5-0-7 +CERT-FLP36-C*/
         b += 2.0F;
         d = 1.0F/( ( a*d ) + b );
@@ -2079,7 +2101,8 @@ float qFFMath_Hermite( size_t n,
                 H_nm1 = H_1;
                 for ( size_t i = 2U; i <= n; ++i ) {
                     /*cstat -CERT-FLP36-C*/
-                    const float j = (float)( i - 1U );
+                    const size_t tmp = i - 1U;
+                    const float j = (float)( tmp );
                     /*cstat +CERT-FLP36-C*/
                     y = 2.0F*( ( x*H_nm1 ) - ( j*H_nm2 ) );
                     H_nm2 = H_nm1;
@@ -2129,7 +2152,8 @@ float qFFMath_Legendre( size_t n,
                     /*cstat -CERT-FLP36-C*/
                     const float ll_f = (float)ll;
                     /*cstat +CERT-FLP36-C*/
-                    y = ( 2.0F*x*p_lm1 ) - p_lm2 - ( ( ( x*p_lm1 ) - p_lm2)/ll_f );
+                    const float x_plm1 = x*p_lm1;
+                    y = ( 2.0F*x_plm1 ) - p_lm2 - ( ( x_plm1 - p_lm2 )/ll_f );
                     p_lm2 = p_lm1;
                     p_lm1 = y;
                 }
@@ -2292,9 +2316,11 @@ static void bessel_jn( float nu,
         const int max_iter = 15000;
         const float x_min = 2.0F;
         /*cstat -CERT-FLP34-C*/
-        const int tmp_nl = (int)( nu - x + 1.5F );
-        const int nl = ( x < x_min ) ? (int)( nu + 0.5F )
-                                     : ( ( tmp_nl > 0 )? tmp_nl : 0 );
+        const float pre_tmp = nu - x + 1.5F;
+        const int tmp_nl = (int)pre_tmp;
+        const float tmp_1 = nu + 0.5F;
+        const int nl = ( x < x_min ) ? (int)tmp_1
+                                     : ( ( tmp_nl > 0 ) ? tmp_nl : 0 );
         /*cstat +CERT-FLP34-C -CERT-FLP36-C*/
         const float mu = nu - (float)nl;
         /*cstat +CERT-FLP36-C*/
@@ -2352,10 +2378,12 @@ static void bessel_jn( float nu,
         if ( x < x_min ) {
             const float x2 = 0.5F*x;
             const float pi_mu = QFFM_PI*mu;
-            const float fact_l = ( qFFMath_Abs( pi_mu ) < eps ) ? 1.0F : ( pi_mu/qFFMath_Sin( pi_mu ) );
+            const float fact_l = ( qFFMath_Abs( pi_mu ) < eps ) ? 1.0F
+                                                                : ( pi_mu/qFFMath_Sin( pi_mu ) );
             d = -qFFMath_Log( x2 );
             float e = mu*d;
-            const float fact2 = ( qFFMath_Abs( e ) < eps ) ? 1.0F : ( qFFMath_Sinh(e)/e );
+            const float fact2 = ( qFFMath_Abs( e ) < eps ) ? 1.0F
+                                                           : ( qFFMath_Sinh(e)/e );
             float gam1 = 0.0F, gam2 = 0.0F, gam_pl = 0.0F, gam_mi = 0.0F;
 
             gamma_temme( mu, &gam1, &gam2, &gam_pl, &gam_mi );
@@ -2364,7 +2392,8 @@ static void bessel_jn( float nu,
             float p = e/( QFFM_PI*gam_pl );
             float q = 1.0F/( e*QFFM_PI*gam_mi );
             const float pi_mu2 = pi_mu / 2.0F;
-            const float fact3 = ( qFFMath_Abs( pi_mu2 ) < eps ) ? 1.0F : ( qFFMath_Sin( pi_mu2 )/pi_mu2 );
+            const float fact3 = ( qFFMath_Abs( pi_mu2 ) < eps ) ? 1.0F
+                                                                : ( qFFMath_Sin( pi_mu2 )/pi_mu2 );
             const float r = QFFM_PI*pi_mu2*fact3*fact3;
             float sum = ff + ( r*q );
             float sum1 = p;
@@ -2411,7 +2440,10 @@ static void bessel_jn( float nu,
             p = temp;
 
             for ( int i = 2; i <= max_iter; ++i ) {
-                a += (float)( 2*( i - 1 ) );
+                const int tmp = 2*( i - 1 );
+                /*cstat -CERT-FLP36-C*/
+                a += (float)tmp;
+                /*cstat +CERT-FLP36-C*/
                 bi += 2.0F;
                 dr = ( a*dr ) + br;
                 di = ( a*di ) + bi;
@@ -2554,8 +2586,9 @@ static void bessel_ik( float nu,
         const int max_iter = 15000;
         const float x_min = 2.0F;
         /*cstat -CERT-FLP34-C -CERT-FLP36-C*/
-        const int nl = (int)( nu + 0.5F );
-        const float mu = nu - (float)nl;
+        const float nl_f = nu + 0.5F;
+        const int nl = (int)nl_f;
+        const float mu = nu - nl_f;
         /*cstat +CERT-FLP34-C +CERT-FLP36-C*/
         const float mu2 = mu*mu;
         const float xi = 1.0F/x;
@@ -2599,10 +2632,12 @@ static void bessel_ik( float nu,
         if ( x < x_min ) {
             const float x2 = 0.5F*x;
             const float pi_mu = QFFM_PI*mu;
-            const float fact = ( qFFMath_Abs( pi_mu ) < eps ) ? 1.0F : ( pi_mu/qFFMath_Sin( pi_mu ) );
+            const float fact = ( qFFMath_Abs( pi_mu ) < eps ) ? 1.0F
+                                                              : ( pi_mu/qFFMath_Sin( pi_mu ) );
             d = -qFFMath_Log( x2 );
             float e = mu*d;
-            const float fact2 = ( qFFMath_Abs( e ) < eps ) ? 1.0F : ( qFFMath_Sinh( e )/e );
+            const float fact2 = ( qFFMath_Abs( e ) < eps ) ? 1.0F
+                                                           : ( qFFMath_Sinh( e )/e );
             float gam1 = 0.0F, gam2 = 0.0F, gam_pl = 0.0F, gam_mi = 0.0F;
             gamma_temme(mu, &gam1, &gam2, &gam_pl, &gam_mi);
             float ff = fact*( ( gam1*qFFMath_Cosh( e ) ) + ( gam2*fact2*d ) );
@@ -2615,7 +2650,9 @@ static void bessel_ik( float nu,
             d = x2*x2;
 
             for ( int i = 1; i <= max_iter; ++i ) {
+                /*cstat -CERT-FLP36-C*/
                 const float j = (float)i;
+                /*cstat +CERT-FLP36-C*/
                 ff = ( ( j*ff ) + p + q )/( ( j*j ) - mu2 );
                 c *= d/j;
                 p /= j - mu;
@@ -2645,8 +2682,11 @@ static void bessel_ik( float nu,
             h = d;
             c = a1;
             for ( int i = 2 ; i <= max_iter; ++i) {
-                a -= (float)( 2*( i - 1 ) );
+                /*cstat -CERT-FLP36-C*/
+                const int tmp = 2*( i - 1 );
+                a -= (float)tmp;
                 c = -a*c/( (float)i );
+                /*cstat +CERT-FLP36-C*/
                 const float q_new = ( q1 - ( b*q2 ) )/a;
                 q1 = q2;
                 q2 = q_new;
@@ -2754,15 +2794,17 @@ static void cyl_bessel_jn_asymp( float nu,
     do {
         bool epsP, epsQ;
         float k2_1;
-        /*cstat -MISRAC++2008-0-1-2_b*/
+        /*cstat -CERT-FLP36-C*/
         float k = (float)i;
-        /*cstat +MISRAC++2008-0-1-2_b*/
+        /*cstat +CERT-FLP36-C*/
         k2_1 = ( 2.0F*k ) - 1.0F;
         term *= ( i == 0U ) ? 1.0F : ( -( mu - ( k2_1*k2_1 ) )/( k*x8 ) );
         epsP = qFFMath_Abs( term ) < ( eps*qFFMath_Abs( P ) );
         P += term;
         ++i;
+        /*cstat -CERT-FLP36-C*/
         k = (float)i;
+        /*cstat +CERT-FLP36-C*/
         k2_1 = ( 2.0F*k ) - 1.0F;
         term *= ( mu - ( k2_1*k2_1 ) )/( k*x8 );
         epsQ = qFFMath_Abs( term ) < ( eps*qFFMath_Abs( Q ) );
@@ -2867,7 +2909,8 @@ float qFFMath_Sph_legendre( size_t l,
         else if ( 0U == m ) {
             float P = qFFMath_Legendre( l, x );
             /*cstat -CERT-FLP36-C*/
-            const float fact = qFFMath_Sqrt( (float)( ( 2U*l ) + 1U )/pi4 );
+            const size_t tmp  = ( 2U*l ) + 1U;
+            const float fact = qFFMath_Sqrt( ( (float)tmp )/pi4 );
             /*cstat +CERT-FLP36-C*/
             P *= fact;
             y = P;
@@ -2878,7 +2921,8 @@ float qFFMath_Sph_legendre( size_t l,
         else {
             /*cstat -CERT-FLP36-C*/
             const float mf = (float)m;
-            const float y_mp1m_factor = x*qFFMath_Sqrt( (float)( ( 2U*m ) + 3U ) );
+            const size_t tmp = ( 2U*m ) + 3U;
+            const float y_mp1m_factor = x*qFFMath_Sqrt( (float)tmp );
             /*cstat +CERT-FLP36-C*/
             const float sgn = ( 1U == ( m % 2U ) ) ? -1.0F : 1.0F;
             const float ln_circ = qFFMath_Log( 1.0F - ( x*x ) );
@@ -2899,17 +2943,27 @@ float qFFMath_Sph_legendre( size_t l,
 
                 for ( size_t ll = ( m + 2U ) ; ll <= l; ++ll ) {
                     /*cstat -CERT-FLP36-C*/
-                    const float ll_m_m = (float)( ll - m );
-                    const float ll_p_m = (float)( ll + m );
-                    const float ll2_p_1 = (float)( ( 2U*ll ) + 1U );
-                    const float ll2_m_1 = (float)( ( 2U*ll ) - 1U );
-                    const float ll_pm_m1 = (float)( ll + m - 1U );
-                    const float ll_mm_m1 = (float)( ll - m - 1U );
+                    const size_t u_ll_m_m = ll - m;
+                    const size_t u_ll_p_m = ll + m;
+                    const size_t u_ll2_p_1 = ( 2U*ll ) + 1U;
+                    const size_t u_ll2_m_1 = ( 2U*ll ) - 1U;
+                    const size_t u_ll_pm_m1 = ll + m - 1U;
+                    const size_t u_ll_mm_m1 = ll - m - 1U;
+                    const size_t u_ll2_m_3 = ( 2U*ll ) - 3U;
+
+                    const float ll_m_m = (float)u_ll_m_m;
+                    const float ll_p_m = (float)u_ll_p_m;
+                    const float ll2_p_1 = (float)u_ll2_p_1;
+                    const float ll2_m_1 = (float)u_ll2_m_1;
+                    const float ll_pm_m1 = (float)u_ll_pm_m1;
+                    const float ll_mm_m1 = (float)u_ll_mm_m1;
+                    const float ll2_m_3 = (float)u_ll2_m_3;
                     /*cstat +CERT-FLP36-C*/
                     const float rat1 = ll_m_m/ll_p_m;
-                    const float fact1 = qFFMath_Sqrt( rat1*ll2_p_1*ll2_m_1 );
+                    const float rl2p1 = rat1*ll2_p_1;
+                    const float fact1 = qFFMath_Sqrt( rl2p1*ll2_m_1 );
                     /*cstat -CERT-FLP36-C*/
-                    const float fact2 = qFFMath_Sqrt( rat1*( ll_mm_m1/ll_pm_m1 )*ll2_p_1/(float)( ( 2U*ll ) - 3U ) );
+                    const float fact2 = qFFMath_Sqrt( rl2p1*( ll_mm_m1/ll_pm_m1 )/ll2_m_3 );
                     /*cstat -CERT-FLP36-C*/
                     y_lm = ( ( x*y_mp1m*fact1 ) - ( ll_pm_m1*y_mm*fact2 ) )/ll_m_m;
                     y_mm = y_mp1m;
