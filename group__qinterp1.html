@@ -139,8 +139,9 @@ $(function(){initNavTree('group__qinterp1.html',''); initResizable(true); });
 
 <div class="header">
   <div class="summary">
+<a href="#nested-classes">Data Structures</a> &#124;
 <a href="#enum-members">Enumerations</a> &#124;
-<a href="#enumval-members">Enumerator</a>  </div>
+<a href="#func-members">Functions</a>  </div>
   <div class="headertitle"><div class="title">qInterp1</div></div>
 </div><!--header-->
 <div class="contents">
@@ -148,6 +149,12 @@ $(function(){initNavTree('group__qinterp1.html',''); initResizable(true); });
 <p>One-dimensional interpolation class.  
 <a href="#details">More...</a></p>
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
+Data Structures</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structq_interp1__t.html">qInterp1_t</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A 1D interpolation object.  <a href="structq_interp1__t.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="enum-members" name="enum-members"></a>
 Enumerations</h2></td></tr>
 <tr class="memitem:gade2d688f3958e8f1583300d0e3a5558d" id="r_gade2d688f3958e8f1583300d0e3a5558d"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#gade2d688f3958e8f1583300d0e3a5558d">qInterp1Method_t</a> { <br />
@@ -167,6 +174,21 @@ Enumerations</h2></td></tr>
  }</td></tr>
 <tr class="memdesc:gade2d688f3958e8f1583300d0e3a5558d"><td class="mdescLeft">&#160;</td><td class="mdescRight">An enum with all the available interpolation methods.  <a href="#gade2d688f3958e8f1583300d0e3a5558d">More...</a><br /></td></tr>
 <tr class="separator:gade2d688f3958e8f1583300d0e3a5558d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
+Functions</h2></td></tr>
+<tr class="memitem:ga5369a761eea910fea8cdf8ec48debd8c" id="r_ga5369a761eea910fea8cdf8ec48debd8c"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ga5369a761eea910fea8cdf8ec48debd8c">qInterp1_Setup</a> (<a class="el" href="structq_interp1__t.html">qInterp1_t</a> *const i, const float *const xTable, const float *const yTable, const size_t sizeTable)</td></tr>
+<tr class="memdesc:ga5369a761eea910fea8cdf8ec48debd8c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Setup and initialize the 1D interpolation instance.  <br /></td></tr>
+<tr class="separator:ga5369a761eea910fea8cdf8ec48debd8c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaa8daa1490fdfb3965f5c4aeb199c709b" id="r_gaa8daa1490fdfb3965f5c4aeb199c709b"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#gaa8daa1490fdfb3965f5c4aeb199c709b">qInterp1_SetData</a> (<a class="el" href="structq_interp1__t.html">qInterp1_t</a> *const i, const float *const xTable, const float *const yTable, const size_t sizeTable)</td></tr>
+<tr class="memdesc:gaa8daa1490fdfb3965f5c4aeb199c709b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the data table for the 1D interpolation instance.  <br /></td></tr>
+<tr class="separator:gaa8daa1490fdfb3965f5c4aeb199c709b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga28d258ad80976c5eaa0e7dc5c8663a15" id="r_ga28d258ad80976c5eaa0e7dc5c8663a15"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ga28d258ad80976c5eaa0e7dc5c8663a15">qInterp1_SetMethod</a> (<a class="el" href="structq_interp1__t.html">qInterp1_t</a> *const i, const <a class="el" href="#gade2d688f3958e8f1583300d0e3a5558d">qInterp1Method_t</a> m)</td></tr>
+<tr class="memdesc:ga28d258ad80976c5eaa0e7dc5c8663a15"><td class="mdescLeft">&#160;</td><td class="mdescRight">Specify the interpolation method to use.  <br /></td></tr>
+<tr class="separator:ga28d258ad80976c5eaa0e7dc5c8663a15"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga14d87ce60d9f4c67e79f8588ad16105b" id="r_ga14d87ce60d9f4c67e79f8588ad16105b"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ga14d87ce60d9f4c67e79f8588ad16105b">qInterp1_Get</a> (<a class="el" href="structq_interp1__t.html">qInterp1_t</a> *const i, const float x)</td></tr>
+<tr class="memdesc:ga14d87ce60d9f4c67e79f8588ad16105b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Interpolate input point <em>x</em> to determine the value of <em>y</em> at the points <em>xi</em> using the current method. If value is beyond the endpoints, extrapolation is performed using the current method.  <br /></td></tr>
+<tr class="separator:ga14d87ce60d9f4c67e79f8588ad16105b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <p>One-dimensional interpolation class. </p>
@@ -204,6 +226,155 @@ Enumerations</h2></td></tr>
 <tr><td class="fieldname"><a id="ggade2d688f3958e8f1583300d0e3a5558da6dd05414a09e1ac42dcec59b3e02fcb6" name="ggade2d688f3958e8f1583300d0e3a5558da6dd05414a09e1ac42dcec59b3e02fcb6"></a>QINTERP1_CONSTRAINED_SPLINE&#160;</td><td class="fielddoc"><p>A special kind of spline that doesn't overshoot. </p>
 </td></tr>
 </table>
+
+</div>
+</div>
+<h2 class="groupheader">Function Documentation</h2>
+<a id="ga14d87ce60d9f4c67e79f8588ad16105b" name="ga14d87ce60d9f4c67e79f8588ad16105b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga14d87ce60d9f4c67e79f8588ad16105b">&#9670;&#160;</a></span>qInterp1_Get()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float qInterp1_Get </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structq_interp1__t.html">qInterp1_t</a> *const</td>          <td class="paramname"><span class="paramname"><em>i</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const float</td>          <td class="paramname"><span class="paramname"><em>x</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Interpolate input point <em>x</em> to determine the value of <em>y</em> at the points <em>xi</em> using the current method. If value is beyond the endpoints, extrapolation is performed using the current method. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">i</td><td>A pointer to the interpolation instance. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">x</td><td>The input point. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The interpolated-extrapolated <em>y</em> value. </dd></dl>
+
+</div>
+</div>
+<a id="gaa8daa1490fdfb3965f5c4aeb199c709b" name="gaa8daa1490fdfb3965f5c4aeb199c709b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gaa8daa1490fdfb3965f5c4aeb199c709b">&#9670;&#160;</a></span>qInterp1_SetData()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int qInterp1_SetData </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structq_interp1__t.html">qInterp1_t</a> *const</td>          <td class="paramname"><span class="paramname"><em>i</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const float *const</td>          <td class="paramname"><span class="paramname"><em>xTable</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const float *const</td>          <td class="paramname"><span class="paramname"><em>yTable</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const size_t</td>          <td class="paramname"><span class="paramname"><em>sizeTable</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Set the data table for the 1D interpolation instance. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">i</td><td>A pointer to the interpolation instance. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">xTable</td><td>An array of size <em>sizeTable</em> with the x points sorted in ascending order. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">yTable</td><td>An array of size <em>sizeTable</em> with the y points. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">sizeTable</td><td>The number of points in <em>xTable</em> <em>yTable</em> </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>1 on success, otherwise return 0. </dd></dl>
+
+</div>
+</div>
+<a id="ga28d258ad80976c5eaa0e7dc5c8663a15" name="ga28d258ad80976c5eaa0e7dc5c8663a15"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga28d258ad80976c5eaa0e7dc5c8663a15">&#9670;&#160;</a></span>qInterp1_SetMethod()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int qInterp1_SetMethod </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structq_interp1__t.html">qInterp1_t</a> *const</td>          <td class="paramname"><span class="paramname"><em>i</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="#gade2d688f3958e8f1583300d0e3a5558d">qInterp1Method_t</a></td>          <td class="paramname"><span class="paramname"><em>m</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Specify the interpolation method to use. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">i</td><td>A pointer to the interpolation instance. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">m</td><td>The interpolation method. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>1 on success, otherwise return 0. </dd></dl>
+
+</div>
+</div>
+<a id="ga5369a761eea910fea8cdf8ec48debd8c" name="ga5369a761eea910fea8cdf8ec48debd8c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga5369a761eea910fea8cdf8ec48debd8c">&#9670;&#160;</a></span>qInterp1_Setup()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int qInterp1_Setup </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structq_interp1__t.html">qInterp1_t</a> *const</td>          <td class="paramname"><span class="paramname"><em>i</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const float *const</td>          <td class="paramname"><span class="paramname"><em>xTable</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const float *const</td>          <td class="paramname"><span class="paramname"><em>yTable</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const size_t</td>          <td class="paramname"><span class="paramname"><em>sizeTable</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Setup and initialize the 1D interpolation instance. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">i</td><td>A pointer to the interpolation instance. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">xTable</td><td>An array of size <em>sizeTable</em> with the x points sorted in ascending order. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">yTable</td><td>An array of size <em>sizeTable</em> with the y points. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">sizeTable</td><td>The number of points in <em>xTable</em> <em>yTable</em> </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>1 on success, otherwise return 0. </dd></dl>
 
 </div>
 </div>
