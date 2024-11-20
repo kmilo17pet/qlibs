@@ -186,6 +186,8 @@ var NAVTREEINDEX1 =
 "qfp16_desc.html#qfp16_exp_functions":[0,4,1,2],
 "qfp16_desc.html#qfp16_functions":[0,4,1],
 "qfp16_desc.html#qfp16_trig_functions":[0,4,1,3],
+"qinterp1_desc.html":[0,9],
+"qinterp1_desc.html#qinterp1_ex1":[0,9,0],
 "qltisys_desc.html":[0,3],
 "qltisys_desc.html#qltisys_cont":[0,3,0],
 "qltisys_desc.html#qltisys_disc":[0,3,1],
@@ -247,7 +249,5 @@ var NAVTREEINDEX1 =
 "structq_s_smoother___a_l_n_f__t.html":[1,1,10],
 "structq_s_smoother___d_e_s_f__t.html":[1,1,9],
 "structq_s_smoother___e_x_p_w__t.html":[1,1,7],
-"structq_s_smoother___g_m_w_f__t.html":[1,1,6],
-"structq_s_smoother___k_l_m_n__t.html":[1,1,8],
-"structq_s_smoother___l_p_f1__t.html":[1,1,0]
+"structq_s_smoother___g_m_w_f__t.html":[1,1,6]
 };
