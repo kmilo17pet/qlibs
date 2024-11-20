@@ -1,5 +1,5 @@
 /*!
- * @file qinterp1.hp
+ * @file qinterp1.h
  * @author J. Camilo Gomez C.
  * @version 1.01
  * @note This file is part of the qLibs distribution.
@@ -38,7 +38,9 @@ extern "C" {
     } qInterp1Method_t;
 
 
-
+    /**
+    * @brief A 1D interpolation object.
+    */
     typedef struct {
         float (*method)( const float x,
                          const float * const tx,
