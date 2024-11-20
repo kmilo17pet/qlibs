@@ -80,6 +80,7 @@ int qInterp1_Setup( qInterp1_t * const i,
         i->xData = xTable;
         i->yData = yTable;
         i->dataSize = sizeTable;
+        i->method = &qInterp1_linear;
         retVal = 1;
     }
 
