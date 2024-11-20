@@ -439,15 +439,17 @@ int qFIS_Fuzzify( qFIS_t * const f )
 static float qFIS_ParseFuzzValue( qFIS_MF_t * const mfIO,
                                   qFIS_Rules_t index )
 {
+    /*cstat -CERT-STR34-C*/
     uint8_t neg = ( index < 0 ) ? 1U : 0U ;
+    /*cstat +CERT-STR34-C*/
     float y;
 
     if ( 0U != neg ) {
         index = -index;
     }
-    /*cstat -CERT-INT32-C_a*/
+    /*cstat -CERT-INT32-C_a -CERT-STR34-C*/
     y = qFIS_Bound( mfIO[ index - 1 ].fx, 0.0F, 1.0F );
-    /*cstat +CERT-INT32-C_a*/
+    /*cstat +CERT-INT32-C_a +CERT-STR34-C*/
     /*cppcheck-suppress misra-c2012-12.1 */
     y = ( 0U != neg ) ? ( 1.0F - y ) : y ;
 
@@ -555,9 +557,10 @@ static size_t qFIS_InferenceConsequent( struct _qFIS_s * const f,
     MFOutIndex -= 1;
 
     if ( f->wi[ f->ruleCount ] > 0.0F ) {
+        /*cstat -CERT-STR34-C*/
         qFIS_Output_t *o = &f->output[ outIndex ];
         qFIS_MF_t *m = &f->outMF[ MFOutIndex ];
-
+        /*cstat +CERT-STR34-C*/
         if ( Mamdani == f->type ) {
             float v;
             /*cstat -MISRAC2012-Rule-11.3 -CERT-EXP39-C_d*/
@@ -1039,7 +1042,7 @@ static float qFIS_SMF( const qFIS_IO_Base_t * const in,
                        const float *p,
                        const size_t n )
 {
-    float a, b, tmp, y;
+    float a, b, tmp, y = 0.0F;
     float x = in[ 0 ].value;
     (void)n;
 
@@ -1060,7 +1063,7 @@ static float qFIS_SMF( const qFIS_IO_Base_t * const in,
         y = ( 1.0F - ( 2.0F*tmp*tmp ) );
     }
     else {
-        y = 0.0F;
+        /* Nothing to do here */
     }
 
     return y;
@@ -1094,7 +1097,7 @@ static float qFIS_ZMF( const qFIS_IO_Base_t * const in,
                        const float *p,
                        const size_t n )
 {
-    float a, b, tmp, y;
+    float a, b, tmp, y = 0.0F;
     float x = in[ 0 ].value;
     (void)n;
 
@@ -1115,7 +1118,7 @@ static float qFIS_ZMF( const qFIS_IO_Base_t * const in,
         y = 2.0F*tmp*tmp;
     }
     else {
-        y = 0.0F;
+        /* Nothing to do here */
     }
 
     return y;

@@ -114,6 +114,8 @@ extern "C" {
     } qFIS_DeFuzzState_t;
     /*! @endcond  */
 
+    /*cstat -MISRAC2012-Dir-4.8*/
+    
     /*! @cond  */
     typedef struct
     {
@@ -148,6 +150,8 @@ extern "C" {
         /*! @endcond  */
     } qFIS_Output_t;
 
+    /*cstat +MISRAC2012-Dir-4.8*/
+    
     /*! @cond  */
     typedef float (*qFIS_MF_Fcn_t)( const qFIS_IO_Base_t * const in, const float *p, const size_t n );
     /*! @endcond  */

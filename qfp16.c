@@ -374,8 +374,8 @@ qFP16_t qFP16_Sqrt( qFP16_t x )
     if ( x > 0 ) {
         uint32_t bit;
         uint8_t n;
-
         retValue = 0;
+        /*cstat -ATH-shift-bounds -MISRAC2012-Rule-12.2 -CERT-INT34-C_b*/
         /*cppcheck-suppress [ cert-INT31-c, misra-c2012-12.2, misra-c2012-12.1  ]*/
         bit = ( 0 != ( x & (qFP16_t)4293918720 ) ) ? ( 1U << 30U ) : ( 1U << 18U );
         while ( bit > (uint32_t)x ) {
@@ -418,7 +418,7 @@ qFP16_t qFP16_Sqrt( qFP16_t x )
     if ( ( 1U == fp->rounding ) && ( x > retValue ) ) {
         ++retValue;
     }
-
+    /*cstat +ATH-shift-bounds +MISRAC2012-Rule-12.2 +CERT-INT34-C_b*/
     return (qFP16_t)retValue;
 }
 /*============================================================================*/
