@@ -6,8 +6,8 @@
  * @brief Class for a set of one-dimensional interpolators
  **/
 
-#ifndef QCRC_H
-#define QCRC_H
+#ifndef QINTERP1_H
+#define QINTERP1_H
 
 #ifdef __cplusplus
 extern "C" {
