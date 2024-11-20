@@ -1,5 +1,9 @@
 var NAVTREEINDEX2 =
 {
+"structq_s_smoother___a_l_n_f__t.html":[1,1,10],
+"structq_s_smoother___d_e_s_f__t.html":[1,1,9],
+"structq_s_smoother___e_x_p_w__t.html":[1,1,7],
+"structq_s_smoother___g_m_w_f__t.html":[1,1,6],
 "structq_s_smoother___k_l_m_n__t.html":[1,1,8],
 "structq_s_smoother___l_p_f1__t.html":[1,1,0],
 "structq_s_smoother___l_p_f2__t.html":[1,1,1],
