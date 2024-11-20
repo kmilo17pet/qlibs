@@ -42,6 +42,7 @@ extern "C" {
     * @brief A 1D interpolation object.
     */
     typedef struct {
+        /*! @cond  */
         float (*method)( const float x,
                          const float * const tx,
                          const float * const ty,
@@ -49,6 +50,7 @@ extern "C" {
         const float *xData;
         const float *yData;
         size_t dataSize;
+        /*! @cond  */
     } qInterp1_t;
 
     /**
