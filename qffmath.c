@@ -44,7 +44,6 @@ static float ellint_rj( float x,
 static float expint_E1_series( float x );
 static float expint_E1_asymp( float x );
 static float expint_Ei_asymp( float x );
-static float expint_E1( float x );
 static float expint_En_cont_frac( size_t n,
                                   float x );
 static float expint_Ei_series( float x );
@@ -306,6 +305,7 @@ float qFFMath_Floor( float x )
     j0 = ( ( i0 >> 23 ) & 0xFF ) - 0x7F;
     if ( j0 < 23 ) {
         if ( j0 < 0 ) {
+            /*cstat -ATH-neg-check-nonneg*/
             if ( i0 >= 0 ) {
                 i0 = 0;
             }
@@ -315,14 +315,17 @@ float qFFMath_Floor( float x )
             else {
                 /*nothing to do here*/
             }
+            /*cstat +ATH-neg-check-nonneg*/
             cast_reinterpret( ret, i0, float);
         }
         else {
             const int32_t i = ( 0x007FFFFF ) >> j0;
             if ( 0 != ( i0 & i ) ) {
+                /*cstat -ATH-neg-check-nonneg*/
                 if ( i0 < 0 ) {
                     i0 += 0x00800000 >> j0;
                 }
+                /*cstat +ATH-neg-check-nonneg*/
                 i0 &= (~i);
                 cast_reinterpret( ret, i0, float);
             }
@@ -346,6 +349,7 @@ float qFFMath_Ceil( float x )
     j0 = ( ( i0 >> 23 ) & 0xFF ) - 0x7F;
     if ( j0 < 23 ) {
         if ( j0 < 0 ) {
+            /*cstat -ATH-neg-check-nonneg*/
             if ( i0 < 0 ) {
                 i0 = (int32_t)0x80000000U;
             }
@@ -355,6 +359,7 @@ float qFFMath_Ceil( float x )
             else {
                 /*nothing to do here*/
             }
+            /*cstat +ATH-neg-check-nonneg*/
             cast_reinterpret( ret, i0, float);
         }
         else {
@@ -1981,26 +1986,6 @@ static float expint_Ei_asymp( float x )
     return qFFMath_Exp( x )*sum/x;
 }
 /*============================================================================*/
-static float expint_E1( float x )
-{
-    float y;
-    /*cstat -MISRAC2012-Rule-14.3_b*/
-    if ( x < 0.0F ) {
-        y = -expint_Ei( -x );
-    }
-    else if ( x < 1.0F ) {
-        y = expint_E1_series( x );
-    }
-    else if ( x < 100.F ) {
-        y = expint_En_cont_frac( 1, x );
-    }
-    else {
-        y = expint_E1_asymp( x );
-    }
-    /*cstat +MISRAC2012-Rule-14.3_b*/
-    return y;
-}
-/*============================================================================*/
 static float expint_En_cont_frac( size_t n,
                                   float x )
 {
@@ -2058,13 +2043,24 @@ static float expint_Ei( float x )
     float y;
 
     if ( x < 0.0F ) {
-        y = -expint_E1( -x );
-    }
-    else if ( x < logEps ) {
-        y = expint_Ei_series( x );
+        x = -x;
+        if ( x < 1.0F ) {
+            y = expint_E1_series( x );
+        }
+        else if ( x < 100.F ) {
+            y = -expint_En_cont_frac( 1, x );
+        }
+        else {
+            y = -expint_E1_asymp( x );
+        }
     }
     else {
-        y = expint_Ei_asymp( x );
+        if ( x < logEps ) {
+            y = expint_Ei_series( x );
+        }
+        else {
+            y = expint_Ei_asymp( x );
+        }
     }
 
     return y;
