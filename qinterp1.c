@@ -420,7 +420,8 @@ static float qInterp1_spline( const float x,
             const float x1_x0 = tx[ i + 1U ] - tx[ i ];
             const float y0 = ty[ i ];
             const float y1 = ty[ i + 1U ];
-            float m0, m1;
+            float m0;
+            float m1;
 
             if ( 0U == i ) {
                 m0 = ( ty[ 1 ] - ty[ 0 ] )/( tx[ 1 ] - tx[ 0 ] );
