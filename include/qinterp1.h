@@ -93,7 +93,7 @@ extern "C" {
     * the endpoints, extrapolation is performed using the current method.
     * @param[in] i A pointer to the interpolation instance.
     * @param[in] x The input point.
-    * @return @c The interpolated-extrapolated @a y value.
+    * @return The interpolated-extrapolated @a y value.
     */
     float qInterp1_Get( qInterp1_t * const i,
                         const float x );
