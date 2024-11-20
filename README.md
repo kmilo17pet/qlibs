@@ -58,5 +58,6 @@ Below is the list of the modules provided and their features:
 - Type-generic array operations
 - Single precision floating-point vector(1D-Array) operations
 - Fast single precision floating-point math
+- One-dimensional interpolation
 
 

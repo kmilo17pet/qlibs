@@ -1,10 +1,10 @@
 /** @mainpage qLibs
-* @image html https://user-images.githubusercontent.com/11412210/199044031-0e37f39d-5a57-4a68-9da1-fe3cdbc7c0fa.jpg 
-* A collection of useful libraries written in C for embedded systems. 
+* @image html https://user-images.githubusercontent.com/11412210/199044031-0e37f39d-5a57-4a68-9da1-fe3cdbc7c0fa.jpg
+* A collection of useful libraries written in C for embedded systems.
 *
 * @remark
-* qLibs is developed using a formal and rigorous process framed in compliance with 
-* the MISRA C 2012 and CERT coding standard guidelines and complemented with 
+* qLibs is developed using a formal and rigorous process framed in compliance with
+* the MISRA C 2012 and CERT coding standard guidelines and complemented with
 * multiple static-analysis checks targeted to safe critical applications.
 *
 * qLibs includes the following modules:
@@ -37,6 +37,7 @@
 * - @subpage qrms_desc "qRMS : Recursive Root Mean Square (RMS) calculation"
 * - @subpage qcrc_desc "qCRC : Generic Cyclic Redundancy Check (CRC) calculator"
 * - @subpage qtdl_desc "qTDL : Tapped Delay Line in O(1)"
+* - @subpage qinterp1_desc "qInterp1 : 1D Interpolation class"
 * - Type-generic array operations
 * - Single precision floating-point vector(1D-Array) operations
 * - Fast single-precision floating-point math

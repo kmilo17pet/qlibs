@@ -11,7 +11,7 @@
 
 cmake_minimum_required( VERSION 3.2 )
 project( qlibs
-         VERSION 1.2.8
+         VERSION 1.2.9
          DESCRIPTION "A collection of useful libraries for embedded systems"
          LANGUAGES C
        )
@@ -30,5 +30,6 @@ add_library( ${PROJECT_NAME}
              qtdl.c
              qtypegeneric.c
              qvfloat.c
+             qinterp1.c
            )
 target_include_directories( ${PROJECT_NAME} PUBLIC include )
