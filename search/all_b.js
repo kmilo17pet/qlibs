@@ -8,7 +8,8 @@ var searchData=
   ['inference_20system_20engine_5',['Fuzzy Inference System Engine',['../qfis_desc.html',1,'index']]],
   ['instance_20setup_6',['Instance setup',['../qbitfield_desc.html#qbitfield_setup',1,'']]],
   ['instantiate_20a_20tdl_20to_20hold_20up_20to_20256_20delays_7',['Example : Code snippet to instantiate a TDL to hold up to 256 delays.',['../qtdl_desc.html#qtdl_ex1',1,'']]],
-  ['interrupt_8',['Example :  By using a timer interrupt',['../qrms_desc.html#qrms_ex1',1,'']]],
-  ['is_9',['IS',['../group__qfis.html#gad28e1b10e158ae134bb6fa3bb2f34a06',1,'qfis.h']]],
-  ['is_5fnot_10',['IS_NOT',['../group__qfis.html#gab3262baea101d64a3d11969b9dd2e78d',1,'qfis.h']]]
+  ['interpolation_8',['1D Interpolation',['../group__qinterp1.html',1,'']]],
+  ['interrupt_9',['Example :  By using a timer interrupt',['../qrms_desc.html#qrms_ex1',1,'']]],
+  ['is_10',['IS',['../group__qfis.html#gad28e1b10e158ae134bb6fa3bb2f34a06',1,'qfis.h']]],
+  ['is_5fnot_11',['IS_NOT',['../group__qfis.html#gab3262baea101d64a3d11969b9dd2e78d',1,'qfis.h']]]
 ];

@@ -6,6 +6,7 @@ var annotated_dup =
     [ "qFIS_Output_t", "structq_f_i_s___output__t.html", null ],
     [ "qFIS_t", "structq_f_i_s__t.html", null ],
     [ "qFP16_Settings_t", "structq_f_p16___settings__t.html", null ],
+    [ "qInterp1_t", "structq_interp1__t.html", null ],
     [ "qLTISys_t", "structq_l_t_i_sys__t.html", null ],
     [ "qNumA_state_t", "structq_num_a__state__t.html", null ],
     [ "qPID_AutoTuning_t", "structq_p_i_d___auto_tuning__t.html", null ],
