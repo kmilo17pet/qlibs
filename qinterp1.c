@@ -76,7 +76,7 @@ int qInterp1_Setup( qInterp1_t * const i,
 {
     int retVal = 0;
 
-    if ( ( NULL != i ) && ( sizeTable > 2U ) && ( NULL != xTable ) && ( NULL != xTable ) ) {
+    if ( ( NULL != i ) && ( sizeTable > 2U ) && ( NULL != xTable ) && ( NULL != yTable ) ) {
         i->xData = xTable;
         i->yData = yTable;
         i->dataSize = sizeTable;
