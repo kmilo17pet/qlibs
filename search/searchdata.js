@@ -7,7 +7,7 @@ var indexSectionsWithContent =
   4: "q",
   5: "q",
   6: "bcdglmpqrstvwz",
-  7: "1iq",
+  7: "q",
   8: "1bcdefgilmopqrst"
 };
 
