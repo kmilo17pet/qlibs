@@ -50,7 +50,7 @@ extern "C" {
         const float *xData;
         const float *yData;
         size_t dataSize;
-        /*! @cond  */
+        /*! @endcond  */
     } qInterp1_t;
 
     /**
