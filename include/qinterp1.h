@@ -16,7 +16,7 @@ extern "C" {
     #include <stdlib.h>
     #include <stdint.h>
 
-    /** @addtogroup  qinterp1 1D Interpolation
+    /** @addtogroup qinterp1 qInterp1
     * @brief One-dimensional interpolation class.
     *  @{
     */
