@@ -11,6 +11,13 @@
 #include <string.h>
 #include <float.h>
 
+static const union {
+    uint32_t u[ 2 ];
+    float f[ 2 ];
+} s_values = { { 0x7F800000U, 0x7FBFFFFFU } };
+const float * const qFFMath_Infinity = &s_values.f[ 0 ];
+const float * const qFFMath_NotANumber = &s_values.f[ 1 ];
+
 /*cppcheck-suppress misra-c2012-20.7 */
 #define cast_reinterpret( dst, src, dst_type )                              \
 (void)memcpy( &dst, &src, sizeof(dst_type) )                                \
@@ -78,21 +85,6 @@ static float cyl_bessel_ij_series( float nu,
                                    float sgn,
                                    size_t max_iter );
 
-/*============================================================================*/
-float _qFFMath_GetAbnormal( const int i )
-{
-    static const uint32_t u_ab[ 2 ] = { 0x7F800000U, 0x7FBFFFFFU };
-    static float f_ab[ 2 ] = { 0.0F, 0.0F };
-    static bool init = true;
-
-    if ( init ) {
-        /*cppcheck-suppress misra-c2012-21.15 */
-        (void)memcpy( f_ab, u_ab, sizeof(f_ab) );
-        init = false;
-    }
-
-    return f_ab[ i ];
-}
 /*============================================================================*/
 int qFFMath_FPClassify( const float f )
 {
@@ -1511,7 +1503,7 @@ float qFFMath_Beta( float x,
 {
     float result;
     /*cstat -MISRAC2012-Rule-13.5*/
-    if ( qFFMath_IsNaN( x ) || qFFMath_IsNaN( y ) ) { //no side effects here
+    if ( qFFMath_IsNaN( x ) || qFFMath_IsNaN( y ) ) { /*no side effects*/
         result = QFFM_NAN;
     }
     else {
@@ -1808,7 +1800,7 @@ float qFFMath_Comp_ellint_3( float k,
 {
     float y;
     /*cstat -MISRAC2012-Rule-13.5*/
-    if ( qFFMath_IsNaN( k ) || qFFMath_IsNaN( nu ) || ( qFFMath_Abs( k ) > 1.0F ) ) { //no side effects here
+    if ( qFFMath_IsNaN( k ) || qFFMath_IsNaN( nu ) || ( qFFMath_Abs( k ) > 1.0F ) ) { /*no side effects*/
         y = QFFM_NAN;
     }
     else if ( qFFMath_IsEqual( 1.0F, nu ) ) {
@@ -1829,7 +1821,7 @@ float qFFMath_Ellint_1( float k,
 {
     float y;
     /*cstat -MISRAC2012-Rule-13.5*/
-    if ( qFFMath_IsNaN( k ) || qFFMath_IsNaN( phi ) || ( qFFMath_Abs( k ) > 1.0F ) ) { //no side effects here
+    if ( qFFMath_IsNaN( k ) || qFFMath_IsNaN( phi ) || ( qFFMath_Abs( k ) > 1.0F ) ) { /*no side effects*/
         y = QFFM_NAN;
     }
     else {
@@ -1854,7 +1846,7 @@ float qFFMath_Ellint_2( float k,
 {
     float y;
     /*cstat -MISRAC2012-Rule-13.5*/
-    if ( qFFMath_IsNaN( k ) || qFFMath_IsNaN( phi ) || ( qFFMath_Abs( k ) > 1.0F ) ) { //no side effects here
+    if ( qFFMath_IsNaN( k ) || qFFMath_IsNaN( phi ) || ( qFFMath_Abs( k ) > 1.0F ) ) { /*no side effects*/
         y = QFFM_NAN;
     }
     else {

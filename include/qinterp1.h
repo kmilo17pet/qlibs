@@ -34,7 +34,9 @@ extern "C" {
         QINTERP1_HERMITE,                /*!< Piecewise cubic Hermite interpolation.*/
         QINTERP1_SPLINE,                 /*!< Catmull spline interpolation.*/
         QINTERP1_CONSTRAINED_SPLINE,     /*!< A special kind of spline that doesn't overshoot.*/
+        /*! @cond  */
         QINTERP1_MAX,
+        /*! @endcond  */
     } qInterp1Method_t;
 
 

@@ -47,7 +47,7 @@ extern "C" {
     #define QLIB_ISINF      qFFMath_IsInf
     #define QLIB_MAX        qFFMath_Max
     #define QLIB_MIN        qFFMath_Min
-    #define QLIB_NAN        QFFM_NAN
+    #define QLIB_NAN        ( qFFMath_NotANumber[ 0 ] )
     #define QLIB_FMOD       qFFMath_Mod
     #define QLIB_ROUND      qFFMath_Round
     /*! @endcond  */
@@ -57,10 +57,6 @@ extern "C" {
     * more important than accuracy
     *  @{
     */
-
-    /*! @cond  */
-    float _qFFMath_GetAbnormal( const int i ); //skipcq: CXX-E2000
-    /*! @endcond  */
 
     /** @brief The base of natural logarithms ( e ) given as a single-precision floating-point number*/
     #define QFFM_E          ( 2.7182818284590452354F )
@@ -101,9 +97,9 @@ extern "C" {
     /** @brief The maximum value of a non-infinite single-precision floating-point number */
     #define QFFM_MAXFLOAT   ( 3.40282347e+38F )
     /** @brief Positive infinity given as a single-precision floating-point number */
-    #define QFFM_INFINITY   _qFFMath_GetAbnormal( 0 )
+    #define QFFM_INFINITY   ( qFFMath_Infinity[ 0 ] )
     /** @brief Not a Number (NaN) given as a single-precision floating-point number */
-    #define QFFM_NAN        _qFFMath_GetAbnormal( 1 )
+    #define QFFM_NAN        ( qFFMath_NotANumber[ 0 ] )
 
     /** @brief Indicates that the value is positive or negative zero */
     #define QFFM_FP_ZERO        ( 0 )
@@ -1010,6 +1006,12 @@ extern "C" {
     float qFFMath_Sph_legendre( size_t l,
                                 size_t m,
                                 float theta );
+
+    /*! @cond  */
+    extern const float * const qFFMath_Infinity;
+    extern const float * const qFFMath_NotANumber;
+    /*! @endcond  */
+
 #endif /*#ifdef QLIBS_USE_STD_MATH*/
 
     /** @}*/
