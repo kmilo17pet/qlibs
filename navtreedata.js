@@ -45,5 +45,5 @@ var NAVTREEINDEX =
 "structq_s_smoother___k_l_m_n__t.html"
 ];
 
-var SYNCONMSG = 'click to disable panel synchronisation';
-var SYNCOFFMSG = 'click to enable panel synchronisation';
+var SYNCONMSG = 'click to disable panel synchronization';
+var SYNCOFFMSG = 'click to enable panel synchronization';
