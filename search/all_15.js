@@ -11,7 +11,7 @@ var searchData=
   ['the_20spline_20interpolation_8',['Example : Code snippet that demonstrates the spline interpolation .',['../qinterp1_desc.html#qinterp1_ex1',1,'']]],
   ['then_9',['THEN',['../group__qfis.html#gad9884c43f4f50a5852711a614f2343ac',1,'qfis.h']]],
   ['time_20transfer_20functions_10',['time transfer functions',['../qltisys_desc.html#qltisys_cont',1,'Continous-time transfer functions'],['../qltisys_desc.html#qltisys_disc',1,'Discrete-time transfer functions']]],
-  ['timer_20interrupt_11',['Example :  By using a timer interrupt',['../qrms_desc.html#qrms_ex1',1,'']]],
+  ['timer_20interrupt_11',['Example : By using a timer interrupt',['../qrms_desc.html#qrms_ex1',1,'']]],
   ['tlinsmf_12',['tlinsmf',['../group__qfis.html#gga57d388104d07dbb852d11d277d439302ad23bd69a0c39f41ec183701ea88fca62',1,'qfis.h']]],
   ['tlinzmf_13',['tlinzmf',['../group__qfis.html#gga57d388104d07dbb852d11d277d439302a7e69801214edbd12464450ec32caa952',1,'qfis.h']]],
   ['to_20256_20delays_14',['Example : Code snippet to instantiate a TDL to hold up to 256 delays.',['../qtdl_desc.html#qtdl_ex1',1,'']]],

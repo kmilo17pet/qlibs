@@ -10,7 +10,7 @@ var searchData=
   ['a_20pid_20controller_3a_7',['Example: Speed control using a PID controller:',['../qpid_desc.html#qpid_ex1',1,'']]],
   ['a_20scalar_20kalman_20filter_3a_8',['Example: setting up a scalar Kalman filter:',['../qssmoother_desc.html#qssmoother_ex9',1,'']]],
   ['a_20tdl_20to_20hold_20up_20to_20256_20delays_9',['Example : Code snippet to instantiate a TDL to hold up to 256 delays.',['../qtdl_desc.html#qtdl_ex1',1,'']]],
-  ['a_20timer_20interrupt_10',['Example :  By using a timer interrupt',['../qrms_desc.html#qrms_ex1',1,'']]],
+  ['a_20timer_20interrupt_10',['Example : By using a timer interrupt',['../qrms_desc.html#qrms_ex1',1,'']]],
   ['adaptive_20control_11',['Additive MRAC (Model Reference Adaptive Control)',['../qpid_desc.html#qpid_mrac',1,'']]],
   ['adaptive_20linear_20filter_12',['Adaptive Linear Filter',['../qssmoother_desc.html#qssmoother_alnf',1,'']]],
   ['additive_20mrac_20model_20reference_20adaptive_20control_13',['Additive MRAC (Model Reference Adaptive Control)',['../qpid_desc.html#qpid_mrac',1,'']]],

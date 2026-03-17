@@ -8,7 +8,7 @@ var searchData=
   ['evaluate_20the_20given_20discrete_20transfer_20function_5',['Example: Evaluate the given discrete transfer function',['../qltisys_desc.html#qltisys_ex2',1,'']]],
   ['evaluating_20a_20fuzzy_20inference_20system_6',['Evaluating a Fuzzy Inference System',['../qfis_desc.html#qfis_eval',1,'']]],
   ['evaluation_20by_20transfer_20functions_7',['Recursive LTI Systems Evaluation by transfer functions.',['../qltisys_desc.html',1,'index']]],
-  ['example_20_3a_20by_20using_20a_20timer_20interrupt_8',['Example :  By using a timer interrupt',['../qrms_desc.html#qrms_ex1',1,'']]],
+  ['example_20_3a_20by_20using_20a_20timer_20interrupt_8',['Example : By using a timer interrupt',['../qrms_desc.html#qrms_ex1',1,'']]],
   ['example_20_3a_20code_20snippet_20that_20demonstrates_20the_20spline_20interpolation_9',['Example : Code snippet that demonstrates the spline interpolation .',['../qinterp1_desc.html#qinterp1_ex1',1,'']]],
   ['example_20_3a_20code_20snippet_20to_20instantiate_20a_20tdl_20to_20hold_20up_20to_20256_20delays_10',['Example : Code snippet to instantiate a TDL to hold up to 256 delays.',['../qtdl_desc.html#qtdl_ex1',1,'']]],
   ['example_20of_20signal_20smoothing_11',['Example of signal smoothing',['../qssmoother_desc.html#qssmoother_ex10',1,'']]],

@@ -10,6 +10,6 @@ var searchData=
   ['up_20to_20256_20delays_7',['Example : Code snippet to instantiate a TDL to hold up to 256 delays.',['../qtdl_desc.html#qtdl_ex1',1,'']]],
   ['usage_8',['Autotuning Usage',['../qpid_desc.html#qpid_autotune_usage',1,'']]],
   ['using_20a_20pid_20controller_3a_9',['Example: Speed control using a PID controller:',['../qpid_desc.html#qpid_ex1',1,'']]],
-  ['using_20a_20timer_20interrupt_10',['Example :  By using a timer interrupt',['../qrms_desc.html#qrms_ex1',1,'']]],
+  ['using_20a_20timer_20interrupt_10',['Example : By using a timer interrupt',['../qrms_desc.html#qrms_ex1',1,'']]],
   ['using_20the_20controller_11',['Using the controller',['../qpid_desc.html#qfpid_usage',1,'']]]
 ];

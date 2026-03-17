@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['q16_2016_20library_0',['Fixed-Point Q16.16 library',['../qfp16_desc.html',1,'index']]],
-  ['qlibs_1',['qLibs',['../index.html',1,'']]]
+  ['kalman_20filter_0',['Scalar Kalman filter',['../qssmoother_desc.html#qssmoother_klmn',1,'']]],
+  ['kalman_20filter_3a_1',['Example: setting up a scalar Kalman filter:',['../qssmoother_desc.html#qssmoother_ex9',1,'']]]
 ];

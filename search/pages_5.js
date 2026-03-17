@@ -1,9 +1,25 @@
 var searchData=
 [
-  ['field_20manipulation_20library_0',['Bit-Field manipulation library',['../qbitfield_desc.html',1,'index']]],
-  ['filters_20for_20signal_20smoothing_1',['Filters for signal smoothing',['../qssmoother_desc.html',1,'index']]],
-  ['fixed_20point_20q16_2016_20library_2',['Fixed-Point Q16.16 library',['../qfp16_desc.html',1,'index']]],
-  ['for_20signal_20smoothing_3',['Filters for signal smoothing',['../qssmoother_desc.html',1,'index']]],
-  ['functions_4',['Recursive LTI Systems Evaluation by transfer functions.',['../qltisys_desc.html',1,'index']]],
-  ['fuzzy_20inference_20system_20engine_5',['Fuzzy Inference System Engine',['../qfis_desc.html',1,'index']]]
+  ['calculator_0',['Generic Cyclic Redundancy Check (CRC) calculator',['../qcrc_desc.html',1,'index']]],
+  ['check_20crc_20calculator_1',['Generic Cyclic Redundancy Check (CRC) calculator',['../qcrc_desc.html',1,'index']]],
+  ['class_2',['1D Interpolation class',['../qinterp1_desc.html',1,'index']]],
+  ['code_20generation_3',['Code generation',['../qfis_desc.html#qfis_codegen',1,'']]],
+  ['code_20snippet_20that_20demonstrates_20the_20spline_20interpolation_4',['Example : Code snippet that demonstrates the spline interpolation .',['../qinterp1_desc.html#qinterp1_ex1',1,'']]],
+  ['code_20snippet_20to_20instantiate_20a_20tdl_20to_20hold_20up_20to_20256_20delays_5',['Example : Code snippet to instantiate a TDL to hold up to 256 delays.',['../qtdl_desc.html#qtdl_ex1',1,'']]],
+  ['continous_20time_20transfer_20functions_6',['Continous-time transfer functions',['../qltisys_desc.html#qltisys_cont',1,'']]],
+  ['continuous_20transfer_20function_7',['Example: Evaluate the given continuous transfer function',['../qltisys_desc.html#qltisys_ex1',1,'']]],
+  ['control_8',['Additive MRAC (Model Reference Adaptive Control)',['../qpid_desc.html#qpid_mrac',1,'']]],
+  ['control_20using_20a_20pid_20controller_3a_9',['Example: Speed control using a PID controller:',['../qpid_desc.html#qpid_ex1',1,'']]],
+  ['control_20with_20pid_20controller_20and_20autotuning_3a_10',['Example: Speed control with PID controller and autotuning:',['../qpid_desc.html#qpid_ex3',1,'']]],
+  ['control_20with_20pid_20controller_20with_20an_20additive_20mrac_3a_11',['Example: Speed control with PID controller with an additive MRAC:',['../qpid_desc.html#qpid_ex2',1,'']]],
+  ['controller_12',['Controller',['../qpid_desc.html#qpid_create',1,'Creating a PID Controller'],['../qpid_desc.html',1,'PID Controller']]],
+  ['controller_13',['Using the controller',['../qpid_desc.html#qfpid_usage',1,'']]],
+  ['controller_20and_20autotuning_3a_14',['Example: Speed control with PID controller and autotuning:',['../qpid_desc.html#qpid_ex3',1,'']]],
+  ['controller_20approach_15',['PID Controller approach',['../qpid_desc.html#qpid_approach',1,'']]],
+  ['controller_20with_20an_20additive_20mrac_3a_16',['Example: Speed control with PID controller with an additive MRAC:',['../qpid_desc.html#qpid_ex2',1,'']]],
+  ['controller_3a_17',['Example: Speed control using a PID controller:',['../qpid_desc.html#qpid_ex1',1,'']]],
+  ['conversion_20functions_18',['Conversion functions',['../qfp16_desc.html#qfp16_conv_functions',1,'']]],
+  ['crc_20calculator_19',['Generic Cyclic Redundancy Check (CRC) calculator',['../qcrc_desc.html',1,'index']]],
+  ['creating_20a_20pid_20controller_20',['Creating a PID Controller',['../qpid_desc.html#qpid_create',1,'']]],
+  ['cyclic_20redundancy_20check_20crc_20calculator_21',['Generic Cyclic Redundancy Check (CRC) calculator',['../qcrc_desc.html',1,'index']]]
 ];

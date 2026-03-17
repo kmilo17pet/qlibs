@@ -8,5 +8,5 @@ var searchData=
   ['bits_5',['Multiple-bits',['../qbitfield_desc.html#qbitfield_pattern',1,'']]],
   ['building_20a_20mamdani_20fis_6',['Building a Mamdani FIS',['../qfis_desc.html#qfis_buildfis',1,'']]],
   ['by_20transfer_20functions_7',['Recursive LTI Systems Evaluation by transfer functions.',['../qltisys_desc.html',1,'index']]],
-  ['by_20using_20a_20timer_20interrupt_8',['Example :  By using a timer interrupt',['../qrms_desc.html#qrms_ex1',1,'']]]
+  ['by_20using_20a_20timer_20interrupt_8',['Example : By using a timer interrupt',['../qrms_desc.html#qrms_ex1',1,'']]]
 ];
